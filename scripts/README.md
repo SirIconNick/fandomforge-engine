@@ -11,6 +11,8 @@ One-command shortcuts for the common dev workflows. Run from the repo root.
 | `scripts/test-extension.sh` | Boots the dashboard and runs the Chrome extension's Playwright end-to-end test (popup + options + real YouTube grab). Auto-creates the `grab-smoketest` project if missing, skips cleanly if chromium isn't installed. |
 | `scripts/smoke-test-full.sh` | `smoke-test.sh` + `test-extension.sh`. The canonical "everything green" check. |
 | `scripts/autopilot-demo.sh [slug]` | Scaffolds a demo project using a cached Incompetech fixture song, runs cost estimate, then runs the full autopilot DAG. Default slug is `demo-autopilot`. |
+| `ff library link / scan / list / tag / unlink` | Global media library — register folders of movies once, reuse across edits. See `docs/guides/library-workflow.md`. |
+| `ff grab song --search "…"` | Pick the best-ranked audio upload for a song query (Official Audio > Visualizer > Lyric Video > Music Video). Prefer this over `--url`. |
 | `scripts/clean.sh` | Clears build artifacts and test caches. Does NOT touch your `projects/`, fixtures, or `.env.local`. |
 | `scripts/new-project.sh` | (legacy) Interactive project-scaffolding wizard. |
 | `scripts/markers-to-resolve.py` | (legacy) Helper for exporting markers to DaVinci Resolve. |

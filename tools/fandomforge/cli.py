@@ -3354,7 +3354,15 @@ def grab_video_cmd(
 
 @grab.command("song")
 @click.option("--project", required=True)
-@click.option("--url", required=True)
+@click.option("--url", default=None, help="Direct URL. Use --search instead to auto-pick the best audio upload.")
+@click.option("--search", "search_query", default=None,
+              help="Search query (e.g. 'Fall Out Boy Centuries'). Auto-picks the best-ranked audio upload — Official Audio > Visualizer > Lyric Video > Music Video.")
+@click.option("--pick", type=int, default=1,
+              help="Which ranked search result to use (1 = top). Only with --search.")
+@click.option("--dry-run", is_flag=True,
+              help="With --search, print rankings and exit without downloading.")
+@click.option("--no-warn-on-music-video", is_flag=True,
+              help="Suppress the warning when --url points at a Music Video upload.")
 @click.option("--filename", default="song", help="Filename (no extension). Defaults to 'song'.")
 @click.option("--audio-format", default="mp3", help="Audio codec (mp3, m4a, flac, wav, opus).")
 @click.option("--cookies-from-browser", default=None,
@@ -3366,7 +3374,11 @@ def grab_video_cmd(
 @click.option("--note", default=None, help="Optional free-form note stored in the sidecar.")
 def grab_song_cmd(
     project: str,
-    url: str,
+    url: str | None,
+    search_query: str | None,
+    pick: int,
+    dry_run: bool,
+    no_warn_on_music_video: bool,
     filename: str,
     audio_format: str,
     cookies_from_browser: str | None,
@@ -3375,15 +3387,77 @@ def grab_song_cmd(
 ) -> None:
     """Download an audio track into projects/<slug>/assets/song.*.
 
+    Two ways to specify the source:
+      --search "Artist Track"   auto-picks the best-ranked upload (Official Audio / Visualizer > Lyric > MV)
+      --url https://...         use an explicit URL (warns if it scores like a Music Video)
+
     Wrapper over `ff grab video --audio-only`. Uses the same robust download
     layer (retries, rate-limit backoff, typed errors, cookies, format fallback).
     """
     from fandomforge.sources.download import download_source, DownloadErrorKind
+    from fandomforge.sources.song_search import (
+        rank_song_source, search_song, SongKind,
+    )
+
+    if not url and not search_query:
+        console.print("[red]must pass --url or --search[/red]")
+        sys.exit(1)
+    if url and search_query:
+        console.print("[red]use --url OR --search, not both[/red]")
+        sys.exit(1)
 
     proj_dir = Path("projects") / project
     if not proj_dir.exists():
         console.print(f"[red]project not found: {project}[/red]")
         sys.exit(1)
+
+    quality = None
+
+    if search_query:
+        console.print(f"[cyan]searching[/cyan] {search_query}")
+        candidates = search_song(search_query, max_results=10)
+        if not candidates:
+            console.print(f"[red]no results for[/red] {search_query}")
+            console.print("  is yt-dlp installed? run `yt-dlp --version` to check.")
+            sys.exit(1)
+        console.print(f"  top rankings:")
+        for i, c in enumerate(candidates[:5], start=1):
+            marker = "←" if i == pick else " "
+            console.print(
+                f"  {marker} {i}. [{c.quality.score:3d}] "
+                f"[dim]{c.quality.kind.value:16s}[/dim] "
+                f"{c.title[:60]:<60s} "
+                f"[dim]({c.duration_sec:5.1f}s, {c.uploader[:20]})[/dim]"
+            )
+        if dry_run:
+            console.print("\n[yellow]dry-run, not downloading[/yellow]")
+            return
+        if pick < 1 or pick > len(candidates):
+            console.print(f"[red]--pick {pick} out of range (1..{len(candidates)})[/red]")
+            sys.exit(1)
+        chosen = candidates[pick - 1]
+        url = chosen.url
+        quality = chosen.quality
+        console.print(f"[cyan]picked[/cyan] #{pick}: [bold]{chosen.title}[/bold]")
+        console.print(f"  [dim]{url}[/dim]")
+    else:
+        # User passed --url explicitly. Probe quality and warn if it looks like MV.
+        quality = rank_song_source(url)
+        if quality.score > 0:
+            console.print(
+                f"  quality: [{quality.score}] {quality.kind.value} — "
+                f"[dim]{quality.reason[:100]}[/dim]"
+            )
+        if quality.kind == SongKind.MUSIC_VIDEO and not no_warn_on_music_video:
+            console.print(
+                "[yellow]⚠ this URL is a Music Video upload.[/yellow] "
+                "Music videos often have SFX / radio edits / truncated endings."
+            )
+            console.print(
+                "  [yellow]suggest:[/yellow] retry with "
+                "[bold]--search \"<artist> <track>\"[/bold] to auto-pick a "
+                "cleaner audio source, or pass [bold]--no-warn-on-music-video[/bold] to proceed anyway."
+            )
 
     assets = proj_dir / "assets"
 
@@ -3417,7 +3491,10 @@ def grab_song_cmd(
             console.print(f"  [dim]{result.stderr[-400:]}[/dim]")
         sys.exit(1)
 
-    _write_song_sidecar(result.path, url, result.route or "yt-dlp", audio_format, note)
+    _write_song_sidecar(
+        result.path, url, result.route or "yt-dlp", audio_format, note,
+        quality=quality,
+    )
     console.print(f"  [green]✓[/green] {result.path.name} ({result.path.stat().st_size:,} bytes)")
     console.print(f"  sidecar: {result.path.name}.grab.json")
 
@@ -3454,7 +3531,10 @@ def grab_cookies_export_cmd(browser: str, output: str) -> None:
     console.print(f"  use with: [bold]ff grab video --cookies {target} --url ...[/bold]")
 
 
-def _write_song_sidecar(path: Path, url: str, via: str, audio_format: str, note: str | None) -> None:
+def _write_song_sidecar(
+    path: Path, url: str, via: str, audio_format: str, note: str | None,
+    quality=None,
+) -> None:
     import hashlib
     import json as _json
     from datetime import datetime, timezone
@@ -3462,7 +3542,7 @@ def _write_song_sidecar(path: Path, url: str, via: str, audio_format: str, note:
     data = path.read_bytes()
     sha = hashlib.sha256(data).hexdigest()
     sidecar = path.with_suffix(path.suffix + ".grab.json")
-    sidecar.write_text(_json.dumps({
+    payload: dict = {
         "url": url,
         "mode": "audio_only",
         "via": via,
@@ -3471,7 +3551,280 @@ def _write_song_sidecar(path: Path, url: str, via: str, audio_format: str, note:
         "sha256": sha,
         "bytes": len(data),
         "downloaded_at": datetime.now(timezone.utc).isoformat(),
-    }, indent=2) + "\n")
+    }
+    if quality is not None:
+        payload["source_quality"] = {
+            "kind": quality.kind.value if hasattr(quality.kind, "value") else str(quality.kind),
+            "score": quality.score,
+            "reason": quality.reason,
+            "title": quality.title,
+            "uploader": quality.uploader,
+        }
+    sidecar.write_text(_json.dumps(payload, indent=2) + "\n")
+
+
+# ---------- library (global media library) ----------
+
+
+@main.group("library")
+def library_group() -> None:
+    """Link folders of movies once, reuse across every project.
+
+    Typical flow:
+        ff library link /Volumes/Movies --name home
+        ff library scan
+        ff library list
+        ff autopilot --project my-edit --from-library --theme "..." --song ...
+    """
+
+
+@library_group.command("link")
+@click.argument("path", type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.option("--name", default=None, help="Short label for this root (defaults to folder name).")
+@click.option("--auto-fandom",
+              type=click.Choice(["dir1", "dir2", "filename-before-year", "manual"]),
+              default="dir1",
+              help="How to infer the fandom for files under this root.")
+def library_link_cmd(path: Path, name: str | None, auto_fandom: str) -> None:
+    """Register a folder of movies as a source root."""
+    from fandomforge import library as lib
+
+    try:
+        root = lib.link_root(path, name=name, auto_fandom_rule=auto_fandom)
+    except FileNotFoundError as exc:
+        console.print(f"[red]{exc}[/red]")
+        sys.exit(1)
+    console.print(f"[green]✓[/green] linked root [bold]{root.name}[/bold] → {root.path}")
+    console.print(f"  fandom rule: {root.auto_fandom_rule}")
+    console.print(f"  next: [bold]ff library scan[/bold] to discover + ingest files")
+
+
+@library_group.command("list")
+@click.option("--sources", is_flag=True, help="List individual source files, not just roots.")
+@click.option("--fandom", default=None, help="Filter by fandom label.")
+@click.option("--status", type=click.Choice(["pending", "in_progress", "done", "failed"]),
+              default=None, help="Filter by ingest status.")
+def library_list_cmd(sources: bool, fandom: str | None, status: str | None) -> None:
+    """Show linked roots, per-fandom counts, and (with --sources) every file."""
+    from fandomforge import library as lib
+
+    roots = lib.list_roots()
+    if not roots:
+        console.print("[yellow]no library roots linked[/yellow]")
+        console.print("  link one with: [bold]ff library link /path/to/movies[/bold]")
+        return
+
+    table = Table(title="Library roots")
+    table.add_column("name")
+    table.add_column("path")
+    table.add_column("fandom rule")
+    table.add_column("files")
+    for r in roots:
+        count = len(lib.list_sources(root_name=r.name))
+        table.add_row(r.name, str(r.path), r.auto_fandom_rule, str(count))
+    console.print(table)
+
+    counts = lib.fandom_counts()
+    if counts:
+        console.print("\n[bold]By fandom:[/bold]")
+        for f, n in counts.items():
+            console.print(f"  {f:<30s} {n:>6d}")
+
+    if sources:
+        rows = lib.list_sources(fandom=fandom, status=status)
+        if not rows:
+            console.print("\n[dim]no sources match the filter[/dim]")
+            return
+        console.print(f"\n[bold]Sources ({len(rows)}):[/bold]")
+        for s in rows[:200]:
+            status_col = {
+                "pending": "[yellow]pending[/yellow]",
+                "in_progress": "[cyan]in-progress[/cyan]",
+                "done": "[green]done[/green]",
+                "failed": "[red]failed[/red]",
+            }.get(s.ingest_status, s.ingest_status)
+            title = f"{s.title}" + (f" ({s.year})" if s.year else "")
+            console.print(
+                f"  {status_col}  [bold]{s.fandom or '—':<25s}[/bold] {title[:40]:<40s} [dim]{s.path}[/dim]"
+            )
+        if len(rows) > 200:
+            console.print(f"  [dim]... and {len(rows) - 200} more[/dim]")
+
+
+@library_group.command("scan")
+@click.option("--name", default=None, help="Scan only this root (default: all).")
+@click.option("--ingest/--no-ingest", default=True,
+              help="Run ff ingest on new files (default on). --no-ingest just indexes paths.")
+def library_scan_cmd(name: str | None, ingest: bool) -> None:
+    """Recursively walk linked folders and index every media file.
+
+    If --ingest is on (default), also runs scene detection + transcription +
+    CLIP embeddings for any files not yet ingested. These artifacts are
+    shared across projects via the global derived/ cache.
+    """
+    from fandomforge import library as lib
+
+    roots = [lib.get_root(name)] if name else lib.list_roots()
+    if name and roots[0] is None:
+        console.print(f"[red]no root named {name}[/red]")
+        sys.exit(1)
+
+    total = 0
+    pending_sources: list = []
+    for root in roots:
+        if root is None:
+            continue
+        console.print(f"[cyan]scanning[/cyan] {root.name} → {root.path}")
+        result = lib.scan_root(root.name)
+        console.print(
+            f"  discovered {result.discovered}, added {result.added}, "
+            f"already indexed {result.already_indexed}"
+        )
+        if result.errors:
+            for err in result.errors[:5]:
+                console.print(f"  [red]error:[/red] {err}")
+        total += result.added
+        pending_sources.extend(
+            lib.list_sources(root_name=root.name, status="pending")
+        )
+
+    if not ingest:
+        console.print(
+            f"\n[yellow]--no-ingest[/yellow] — indexed {total} files, "
+            f"{len(pending_sources)} still pending. "
+            f"Run [bold]ff library scan[/bold] without the flag to ingest."
+        )
+        return
+
+    if not pending_sources:
+        console.print("\n[green]✓[/green] every file ingested")
+        return
+
+    console.print(
+        f"\n[cyan]ingesting {len(pending_sources)} pending source(s)[/cyan] "
+        f"into the global derived/ cache..."
+    )
+    ok_count = 0
+    fail_count = 0
+    for src in pending_sources:
+        lib.set_ingest_status(src.id, "in_progress")
+        # Fire ff ingest per file. The subprocess already reuses cached
+        # derived/<blake2>/ artifacts via content-hash.
+        rc = subprocess.call(
+            [
+                "ff", "ingest", str(src.path),
+                "--project", str(lib.library_root()),  # library root as pseudo-project
+                "--fandom", src.fandom or "Unknown",
+                "--source-type", src.source_type or "movie",
+                "--title", src.title or "",
+                "--no-characters",
+            ],
+            cwd=Path.cwd(),
+        )
+        if rc == 0:
+            lib.set_ingest_status(src.id, "done")
+            ok_count += 1
+            console.print(f"  [green]✓[/green] {src.title or src.path.name}")
+        else:
+            lib.set_ingest_status(src.id, "failed", f"ff ingest exit {rc}")
+            fail_count += 1
+            console.print(f"  [red]✗[/red] {src.path.name}")
+
+    console.print(
+        f"\n[bold]scan complete:[/bold] {ok_count} ingested, {fail_count} failed"
+    )
+
+
+@library_group.command("tag")
+@click.argument("file", type=click.Path(exists=True, dir_okay=False, path_type=Path))
+@click.option("--fandom", required=True, help="Fandom label to apply.")
+def library_tag_cmd(file: Path, fandom: str) -> None:
+    """Override the auto-inferred fandom for one file."""
+    from fandomforge import library as lib
+
+    try:
+        updated = lib.tag_source(file, fandom=fandom)
+    except KeyError as exc:
+        console.print(f"[red]{exc}[/red]")
+        console.print("  the file must first be indexed. run: [bold]ff library scan[/bold]")
+        sys.exit(1)
+    console.print(f"[green]✓[/green] tagged {updated.path.name} as [bold]{fandom}[/bold]")
+
+
+@library_group.command("unlink")
+@click.argument("name")
+@click.option("--delete-sources", is_flag=True,
+              help="Also drop the source rows (derived/ cache stays on disk).")
+def library_unlink_cmd(name: str, delete_sources: bool) -> None:
+    """Forget a linked root. Ingested artifacts under derived/ remain."""
+    from fandomforge import library as lib
+
+    count = lib.unlink_root(name, delete_sources=delete_sources)
+    verb = "removed" if delete_sources else "unlinked (kept indexed)"
+    console.print(f"[green]✓[/green] {verb} {count} source(s) under root [bold]{name}[/bold]")
+
+
+@library_group.command("show")
+@click.argument("query")
+@click.option("--limit", default=20, type=int)
+def library_show_cmd(query: str, limit: int) -> None:
+    """Preview which sources match a free-text fandom/title query."""
+    from fandomforge import library as lib
+
+    q = query.lower()
+    hits = [
+        s for s in lib.list_sources()
+        if (s.fandom and q in s.fandom.lower())
+        or (s.title and q in s.title.lower())
+    ]
+    if not hits:
+        console.print(f"[yellow]no matches for {query!r}[/yellow]")
+        return
+    console.print(f"[bold]{len(hits)} match(es) for {query!r}[/bold]")
+    for s in hits[:limit]:
+        console.print(
+            f"  [bold]{s.fandom or '—':<20s}[/bold] {s.title or s.path.name:<40s} "
+            f"[dim]{s.ingest_status}[/dim]"
+        )
+
+
+@library_group.command("summary")
+@click.option("--json", "as_json", is_flag=True, help="Emit machine-readable JSON.")
+def library_summary_cmd(as_json: bool) -> None:
+    """Quick machine-readable summary of the library. Used by the dashboard API."""
+    import json as _json
+    from fandomforge import library as lib
+
+    roots = lib.list_roots()
+    counts = lib.fandom_counts()
+    all_sources = lib.list_sources()
+    totals = {
+        "sources": len(all_sources),
+        "pending":     sum(1 for s in all_sources if s.ingest_status == "pending"),
+        "in_progress": sum(1 for s in all_sources if s.ingest_status == "in_progress"),
+        "done":        sum(1 for s in all_sources if s.ingest_status == "done"),
+        "failed":      sum(1 for s in all_sources if s.ingest_status == "failed"),
+    }
+    payload = {
+        "index_path": str(lib.library_db_path()),
+        "exists": lib.library_db_path().exists(),
+        "roots": [
+            {
+                "name": r.name,
+                "path": str(r.path),
+                "auto_fandom_rule": r.auto_fandom_rule,
+                "added_at": r.added_at,
+                "file_count": sum(1 for s in all_sources if s.root_name == r.name),
+            }
+            for r in roots
+        ],
+        "fandoms": [{"fandom": k, "count": v} for k, v in counts.items()],
+        "totals": totals,
+    }
+    if as_json:
+        print(_json.dumps(payload, indent=2))
+        return
+    console.print(_json.dumps(payload, indent=2))
 
 
 # ---------- share (read-only shareable link tokens) ----------
@@ -3632,11 +3985,26 @@ def templates_apply_cmd(template_name: str, project: str, force: bool) -> None:
 @click.option("--sources", default=None, help="Glob for source videos (e.g. 'clips/*.mp4').")
 @click.option("--prompt", default="", help="Theme / concept for the edit.")
 @click.option("--estimate", is_flag=True, help="Print cost/time estimate and exit without running.")
-def autopilot_cmd(project: str, song: Path | None, sources: str | None, prompt: str, estimate: bool) -> None:
+@click.option("--from-library", is_flag=True,
+              help="Pull sources from the global media library (skip local ingest).")
+@click.option("--fandom-mix", default=None,
+              help="When --from-library is set: comma-separated fandom weights, e.g. 'John Wick:0.4,Mad Max:0.6'.")
+def autopilot_cmd(
+    project: str,
+    song: Path | None,
+    sources: str | None,
+    prompt: str,
+    estimate: bool,
+    from_library: bool,
+    fandom_mix: str | None,
+) -> None:
     """One-click path: prompt + song + sources → beat map → shot list → QA gate.
 
     Idempotent: rerunning picks up from the last successful step. Progress is
     streamed to projects/<slug>/.history/autopilot.jsonl.
+
+    --from-library pulls source clips from the global media library
+    (linked via `ff library link`) instead of expecting them in raw/.
     """
     import json as _json
     from fandomforge.autopilot import run_autopilot, estimate_cost
@@ -3646,11 +4014,36 @@ def autopilot_cmd(project: str, song: Path | None, sources: str | None, prompt: 
         console.print(_json.dumps(est, indent=2))
         return
 
+    # Parse --fandom-mix "Name:0.4,Other:0.6" into a dict.
+    parsed_mix: dict[str, float] | None = None
+    if fandom_mix:
+        parsed_mix = {}
+        for chunk in fandom_mix.split(","):
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            if ":" in chunk:
+                name, weight = chunk.rsplit(":", 1)
+                try:
+                    parsed_mix[name.strip()] = float(weight.strip())
+                except ValueError:
+                    parsed_mix[name.strip()] = 1.0
+            else:
+                parsed_mix[chunk] = 1.0
+
+    if from_library and not parsed_mix:
+        console.print(
+            "[yellow]warning:[/yellow] --from-library without --fandom-mix "
+            "will pull every ingested source (no filter)."
+        )
+
     result = run_autopilot(
         project,
         song_path=song,
         source_glob=sources,
         prompt=prompt,
+        from_library=from_library,
+        fandom_mix=parsed_mix,
     )
 
     console.print(

@@ -93,6 +93,12 @@ class AutopilotContext:
     source_glob: str | None
     prompt: str
     verbose: bool = True
+    # Library mode: pull shots from the global library instead of raw/.
+    from_library: bool = False
+    # Fandom filter for library mode, e.g. {"John Wick": 0.4, "Mad Max": 0.6}.
+    # Keys are fandom labels (matched case-insensitively against library index),
+    # values are relative weights for the sampling pass.
+    fandom_mix: dict[str, float] | None = None
 
     def log(self, msg: str) -> None:
         if self.verbose:
@@ -184,6 +190,61 @@ def step_ingest_sources(ctx: AutopilotContext) -> AutopilotEvent:
     """Run `ff ingest` on every source video in raw/ so they land in the catalog."""
     start = time.perf_counter()
     raw = ctx.project_dir / "raw"
+
+    # Library mode: skip local ingest and symlink matching sources into raw/
+    # so downstream steps (roughcut, export) see a populated raw/ dir.
+    if ctx.from_library:
+        try:
+            from fandomforge import library as lib
+        except Exception as exc:  # noqa: BLE001
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="ingest_sources",
+                status="failed",
+                message=f"library mode requested but library module unavailable: {exc}",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+        raw.mkdir(parents=True, exist_ok=True)
+        candidates = lib.candidate_sources(
+            fandoms=ctx.fandom_mix,
+            min_status="done",
+        )
+        if not candidates:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="ingest_sources",
+                status="failed",
+                message=(
+                    "no library sources matched "
+                    + (f"fandoms {list((ctx.fandom_mix or {}).keys())}" if ctx.fandom_mix else "any filter")
+                    + ". run `ff library list --sources` to see what's available."
+                ),
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+        linked = 0
+        for src in candidates:
+            target = raw / src.path.name
+            if target.exists() or target.is_symlink():
+                continue
+            try:
+                target.symlink_to(src.path)
+                linked += 1
+            except OSError as exc:
+                # Fall back to copy if the filesystem doesn't support symlinks
+                import shutil as _sh
+                _sh.copy2(src.path, target)
+                linked += 1
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="ingest_sources",
+            status="ok",
+            message=f"library: linked {linked} source(s) from {len(candidates)} candidate(s)",
+            evidence={
+                "from_library": True,
+                "fandom_mix": ctx.fandom_mix,
+                "linked": linked,
+                "total_candidates": len(candidates),
+            },
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
     catalog = ctx.project_dir / "data" / "catalog.json"
     if not raw.exists():
         return AutopilotEvent(
@@ -194,7 +255,9 @@ def step_ingest_sources(ctx: AutopilotContext) -> AutopilotEvent:
 
     videos: list[Path] = []
     for pattern in ("*.mp4", "*.mov", "*.mkv", "*.webm"):
-        videos.extend(raw.glob(pattern))
+        # rglob → picks up nested fandom dirs like raw/marvel/, raw/star-wars/.
+        # Flat raw/ layouts keep working because rglob includes the top level.
+        videos.extend(raw.rglob(pattern))
 
     if not videos:
         return AutopilotEvent(
@@ -948,6 +1011,8 @@ def run_autopilot(
     verbose: bool = True,
     run_id: str | None = None,
     steps: list[Step] | None = None,
+    from_library: bool = False,
+    fandom_mix: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     root = project_root or Path.cwd()
     project_dir = root / "projects" / project_slug
@@ -960,6 +1025,8 @@ def run_autopilot(
         source_glob=source_glob,
         prompt=prompt,
         verbose=verbose,
+        from_library=from_library,
+        fandom_mix=fandom_mix,
     )
 
     project_dir.mkdir(parents=True, exist_ok=True)

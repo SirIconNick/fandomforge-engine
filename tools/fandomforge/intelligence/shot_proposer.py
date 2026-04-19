@@ -60,6 +60,13 @@ class ProposerConfig:
     max_shot_frames: int = 144  # 6s at 24fps
     hero_shot_frames: int = 48  # 2s at 24fps on drops
     random_seed: int = 42  # deterministic output
+    # Dedupe: never pick (source_id, offset) that's within `dedupe_window_sec`
+    # of an earlier shot's (source_id, offset). Tolerance widens through
+    # `dedupe_window_fallbacks` if the candidate pool is exhausted.
+    dedupe: bool = True
+    dedupe_window_sec: float = 0.1  # 100ms — "basically the same shot"
+    dedupe_window_fallbacks: tuple[float, ...] = (0.5, 2.0)  # widen if stuck
+    dedupe_max_retries_per_shot: int = 32
 
 
 @dataclass
@@ -143,7 +150,7 @@ def _pick_source(
     rng: random.Random,
     fallback_index: int,
 ) -> tuple[str, float]:
-    """Pick a source id and a time offset within that source."""
+    """Pick a source id and a time offset within that source. No dedupe."""
     if catalog:
         clip = rng.choice(catalog)
         source_id = clip.get("id") or clip.get("source_id") or f"catalog_{fallback_index}"
@@ -153,6 +160,48 @@ def _pick_source(
     fandom = fandoms[fallback_index % max(1, len(fandoms))] if fandoms else "placeholder"
     safe = "".join(c if c.isalnum() else "_" for c in fandom).upper() or "SOURCE"
     return f"PLACEHOLDER_{safe}_{fallback_index}", float(fallback_index) * 3.0 + 1.0
+
+
+def _collision(
+    candidate: tuple[str, float],
+    used: set[tuple[str, float]],
+    window_sec: float,
+) -> bool:
+    """True if `candidate` is within `window_sec` of any (source, offset) in `used`."""
+    src, offset = candidate
+    window_ticks = max(1, int(round(window_sec * 10)))  # offsets rounded to 0.1s
+    rounded = round(offset, 1)
+    for tick in range(-window_ticks, window_ticks + 1):
+        if (src, round(rounded + tick * 0.1, 1)) in used:
+            return True
+    return False
+
+
+def _pick_unique_source(
+    catalog: list[dict[str, Any]],
+    fandoms: list[str],
+    rng: random.Random,
+    fallback_index: int,
+    used: set[tuple[str, float]],
+    window_sec: float,
+    max_retries: int,
+    fallback_windows: tuple[float, ...],
+) -> tuple[tuple[str, float], str | None]:
+    """Pick a source that doesn't collide with `used`. Returns ((src, offset), warning_or_None)."""
+    # Try at the tight window first.
+    for window in (window_sec, *fallback_windows):
+        for _ in range(max_retries):
+            candidate = _pick_source(catalog, fandoms, rng, fallback_index)
+            if not _collision(candidate, used, window):
+                warning = None if window == window_sec else (
+                    f"reuse-dedupe tolerance widened to {window}s for shot #{fallback_index + 1}"
+                )
+                return candidate, warning
+    # Exhausted every attempt — drop the constraint and let reuse happen.
+    return (
+        _pick_source(catalog, fandoms, rng, fallback_index),
+        f"reuse-dedupe dropped for shot #{fallback_index + 1} (catalog exhausted)",
+    )
 
 
 def _collect_sync_points(beat_map: dict[str, Any]) -> list[tuple[float, str]]:
@@ -209,6 +258,13 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
 
     shots: list[dict[str, Any]] = []
     fallback_i = 0
+    # Shots we've already emitted — (source_id, rounded_offset). Used for dedup.
+    used_sources: set[tuple[str, float]] = set()
+    # id → (source_id, offset) for callback resolution.
+    shot_index: dict[str, tuple[str, float]] = {}
+    # Map edit-plan-declared callbacks: shot_id -> callback_of (prior shot id)
+    plan_callbacks = _collect_planned_callbacks(inputs.edit_plan)
+    warnings: list[str] = []
 
     for i, (time_sec, kind) in enumerate(sync_points):
         if time_sec >= song_duration:
@@ -230,13 +286,37 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
         end_sec = min(song_duration, time_sec + duration_frames / cfg.fps)
         duration_frames = max(cfg.min_shot_frames, _sec_to_frames(end_sec - time_sec, cfg.fps))
 
-        source_id, offset = _pick_source(inputs.catalog, fandom_names, rng, fallback_i)
+        shot_id = f"s{i+1:03d}"
+        intent = None
+        callback_of = plan_callbacks.get(shot_id)
+
+        if callback_of and callback_of in shot_index:
+            # Intentional reuse — mirror the callback target exactly.
+            source_id, offset = shot_index[callback_of]
+            intent = "callback"
+        elif cfg.dedupe and inputs.catalog:
+            (source_id, offset), warn = _pick_unique_source(
+                inputs.catalog, fandom_names, rng, fallback_i,
+                used_sources,
+                window_sec=cfg.dedupe_window_sec,
+                max_retries=cfg.dedupe_max_retries_per_shot,
+                fallback_windows=cfg.dedupe_window_fallbacks,
+            )
+            if warn:
+                warnings.append(warn)
+        else:
+            source_id, offset = _pick_source(
+                inputs.catalog, fandom_names, rng, fallback_i,
+            )
+
         fallback_i += 1
+        used_sources.add((source_id, round(offset, 1)))
+        shot_index[shot_id] = (source_id, offset)
 
         act = _assign_act(time_sec, acts, fallback_count=max(1, len(acts) or 3))
 
         shot = {
-            "id": f"s{i+1:03d}",
+            "id": shot_id,
             "act": act,
             "start_frame": start_frame,
             "duration_frames": duration_frames,
@@ -259,9 +339,12 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
                 "beat_sync_score": 4.5 if kind == "drop" else 4.0 if kind == "downbeat" else 3.0,
             },
         }
+        if intent:
+            shot["intent"] = intent
+            shot["callback_of"] = callback_of
         shots.append(shot)
 
-    # Dedupe any overlapping shots and sort by start_frame
+    # Dedupe any overlapping shots (timeline overlap, independent of source reuse)
     shots.sort(key=lambda s: s["start_frame"])
     pruned: list[dict[str, Any]] = []
     last_end = -1
@@ -280,6 +363,8 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "shot_proposer/heuristic-v1",
     }
+    if warnings:
+        result["warnings"] = warnings
     if fandom_names and acts:
         quota = {}
         for act_idx in range(1, len(acts) + 1):
@@ -287,6 +372,26 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
             quota[f"act{act_idx}"] = {name: per_fandom_share for name in fandom_names}
         result["fandom_quota"] = quota
     return result
+
+
+def _collect_planned_callbacks(edit_plan: dict[str, Any]) -> dict[str, str]:
+    """Pull out any `{id, callback_of}` pairs the edit plan declared.
+
+    The LLM edit-strategist may put these at act-level (act['shot_intents'])
+    or at the top level (edit_plan['shot_intents']). Callers can also specify
+    them directly on a shot object in a pre-existing shot-list, though the
+    proposer is usually building from scratch.
+    """
+    pairs: dict[str, str] = {}
+    top = edit_plan.get("shot_intents") or []
+    for entry in top:
+        if isinstance(entry, dict) and entry.get("callback_of"):
+            pairs[entry["id"]] = entry["callback_of"]
+    for act in edit_plan.get("acts") or []:
+        for entry in act.get("shot_intents") or []:
+            if isinstance(entry, dict) and entry.get("callback_of"):
+                pairs[entry["id"]] = entry["callback_of"]
+    return pairs
 
 
 def propose_for_project(project_slug: str, *, project_root: Path | None = None) -> dict[str, Any]:

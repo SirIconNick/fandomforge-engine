@@ -146,6 +146,15 @@
           "type": "integer",
           "minimum": 0
         },
+        "intent": {
+          "description": "Intentional-reuse marker. Absent/null = default, treat as a unique shot and do not pick the same source+timecode twice.",
+          "type": ["string", "null"],
+          "enum": [null, "callback", "motif", "rhyme"]
+        },
+        "callback_of": {
+          "description": "When intent=callback, the id of the earlier shot this one literally repeats. The proposer will mirror the source_id + source_timecode of the referenced shot.",
+          "type": "string"
+        },
         "description": {"type": "string"},
         "color_notes": {"type": "string"},
         "characters": {"type": "array", "items": {"type": "string"}},

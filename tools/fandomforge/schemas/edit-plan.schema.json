@@ -134,7 +134,12 @@
       }
     },
     "generated_at": {"type": "string", "format": "date-time"},
-    "generator": {"type": "string"}
+    "generator": {"type": "string"},
+    "shot_intents": {
+      "description": "Top-level intentional-reuse markers that apply across the whole edit (bookends, motifs). Use this when a callback spans two different acts.",
+      "type": "array",
+      "items": {"$ref": "#/$defs/ShotIntent"}
+    }
   },
   "$defs": {
     "Act": {
@@ -159,7 +164,23 @@
         },
         "key_image": {"type": "string"},
         "avoid": {"type": "array", "items": {"type": "string"}},
-        "learning": {"type": "string"}
+        "learning": {"type": "string"},
+        "shot_intents": {
+          "description": "Optional intentional-reuse markers for this act. Each entry names a planned shot id and (for callbacks) the id of the earlier shot it repeats. The proposer honors these by reusing the referenced source + timecode.",
+          "type": "array",
+          "items": {"$ref": "#/$defs/ShotIntent"}
+        }
+      }
+    },
+    "ShotIntent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "intent"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "intent": {"type": "string", "enum": ["callback", "motif", "rhyme"]},
+        "callback_of": {"type": "string", "minLength": 1},
+        "note": {"type": "string"}
       }
     },
     "HandoffRef": {

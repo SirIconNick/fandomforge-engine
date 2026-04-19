@@ -86,13 +86,35 @@ CREATE TABLE IF NOT EXISTS shots (
     lighting         TEXT,
     color_palette    TEXT,
     use_rank         INTEGER DEFAULT 0,
-    quality_score    REAL
+    quality_score    REAL,
+    corpus_id        TEXT
 );
 CREATE INDEX IF NOT EXISTS ix_source    ON shots(source);
 CREATE INDEX IF NOT EXISTS ix_era       ON shots(era);
 CREATE INDEX IF NOT EXISTS ix_character ON shots(character_main);
 CREATE INDEX IF NOT EXISTS ix_action    ON shots(action);
+CREATE INDEX IF NOT EXISTS ix_corpus    ON shots(corpus_id);
 """
+
+
+def _migrate_add_corpus_id(conn: sqlite3.Connection) -> None:
+    """Add the corpus_id column to existing databases that predate the library feature.
+
+    Idempotent — skips when:
+      - the `shots` table doesn't exist yet (fresh DB, DDL will create it)
+      - the `corpus_id` column already exists (newer DB)
+    """
+    has_table = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name='shots'"
+    ).fetchone()
+    if not has_table:
+        return
+    cur = conn.execute("PRAGMA table_info(shots)")
+    cols = {row[1] for row in cur.fetchall()}
+    if "corpus_id" not in cols:
+        conn.execute("ALTER TABLE shots ADD COLUMN corpus_id TEXT")
+        conn.execute("CREATE INDEX IF NOT EXISTS ix_corpus ON shots(corpus_id)")
+        conn.commit()
 
 
 # ---------------------------------------------------------------------------
@@ -323,6 +345,9 @@ class ShotLibrary:
         self._conn.row_factory = sqlite3.Row
         self._conn.execute("PRAGMA journal_mode=WAL")
         self._conn.execute("PRAGMA synchronous=NORMAL")
+        # Migrate BEFORE running DDL — the DDL includes `CREATE INDEX ix_corpus
+        # ON shots(corpus_id)` which fails on legacy tables missing the column.
+        _migrate_add_corpus_id(self._conn)
         self._conn.executescript(_DDL)
         self._conn.commit()
 

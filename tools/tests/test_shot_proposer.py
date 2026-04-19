@@ -111,3 +111,91 @@ def test_proposer_empty_beat_map_falls_back_to_grid():
     draft = propose_shot_list(inputs)
     assert len(draft["shots"]) > 0
     validate(draft, "shot-list")
+
+
+# ---------- No-reuse dedupe ----------
+
+
+def test_dedupe_no_duplicate_source_timecodes_with_enough_catalog():
+    """With a reasonably-sized catalog, the proposer should never pick the
+    same (source_id, offset) twice within 100ms."""
+    inputs = _basic_inputs(catalog=[
+        {"id": f"clip_{i}", "duration_sec": 120.0}
+        for i in range(6)
+    ])
+    draft = propose_shot_list(inputs)
+    keys = [
+        (s["source_id"], round(_tc_to_sec(s["source_timecode"]), 1))
+        for s in draft["shots"]
+    ]
+    assert len(set(keys)) == len(keys), (
+        f"duplicate source+timecode in shot list: {keys}"
+    )
+
+
+def test_dedupe_tolerance_widens_with_small_catalog():
+    """With only 1 clip and many shots, dedupe should emit a warning instead of crashing."""
+    inputs = _basic_inputs(catalog=[
+        {"id": "only_clip", "duration_sec": 10.0},  # very short — tight offset space
+    ])
+    draft = propose_shot_list(inputs)
+    # Output still produced, just with warnings about widening
+    assert draft["shots"], "proposer must still emit shots under pressure"
+    assert "warnings" in draft, (
+        "expected the proposer to record dedupe-tolerance-widened warnings"
+    )
+    assert any("reuse-dedupe" in w for w in draft["warnings"])
+
+
+def test_dedupe_can_be_disabled():
+    """With dedupe off, the same (source, offset) may appear multiple times."""
+    cfg = ProposerConfig(dedupe=False)
+    inputs = _basic_inputs(
+        catalog=[{"id": "only_clip", "duration_sec": 10.0}],
+        config=cfg,
+    )
+    draft = propose_shot_list(inputs)
+    assert "warnings" not in draft or not any(
+        "reuse-dedupe" in w for w in draft.get("warnings", [])
+    )
+
+
+# ---------- Intentional callback ----------
+
+
+def test_callback_mirrors_earlier_shot():
+    """If the edit plan declares a callback, the proposer reuses the earlier shot's
+    source_id and timecode rather than picking a new one."""
+    edit_plan = {
+        "schema_version": 1,
+        "project_slug": "test-proj",
+        "concept": {"theme": "bookend", "one_sentence": "t"},
+        "song": {"title": "x", "artist": "y"},
+        "fandoms": ["Marvel"],
+        "acts": [{"act": 1, "name": "a", "end_sec": 90}],
+        "shot_intents": [
+            {"id": "s003", "intent": "callback", "callback_of": "s001"},
+        ],
+    }
+    inputs = _basic_inputs(
+        edit_plan=edit_plan,
+        catalog=[
+            {"id": "clip_a", "duration_sec": 120.0},
+            {"id": "clip_b", "duration_sec": 120.0},
+        ],
+    )
+    draft = propose_shot_list(inputs)
+    shots_by_id = {s["id"]: s for s in draft["shots"]}
+    assert "s001" in shots_by_id and "s003" in shots_by_id
+    s001 = shots_by_id["s001"]
+    s003 = shots_by_id["s003"]
+    assert s003["source_id"] == s001["source_id"]
+    assert s003["source_timecode"] == s001["source_timecode"]
+    assert s003.get("intent") == "callback"
+    assert s003.get("callback_of") == "s001"
+
+
+def _tc_to_sec(timecode: str) -> float:
+    """Parse HH:MM:SS.mmm back to seconds for test assertions."""
+    h, m, rest = timecode.split(":")
+    return int(h) * 3600 + int(m) * 60 + float(rest)
