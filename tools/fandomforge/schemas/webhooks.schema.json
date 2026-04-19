@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/webhooks.schema.json",
+  "title": "Webhooks",
+  "description": "Per-project webhook config. Fires signed POST requests on pipeline events.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "endpoints"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "endpoints": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Endpoint"}
+    }
+  },
+  "$defs": {
+    "Endpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "url", "events"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "secret": {
+          "description": "Shared secret used for HMAC signature. Store securely.",
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "pipeline.started",
+              "pipeline.completed",
+              "pipeline.failed",
+              "qa.gate.passed",
+              "qa.gate.failed",
+              "artifact.applied",
+              "export.ready",
+              "autopilot.step.failed",
+              "autopilot.completed"
+            ]
+          }
+        },
+        "enabled": {"type": "boolean"},
+        "created_at": {"type": "string", "format": "date-time"},
+        "description": {"type": "string"}
+      }
+    }
+  }
+}

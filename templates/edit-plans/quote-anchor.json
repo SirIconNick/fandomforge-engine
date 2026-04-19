@@ -1,0 +1,20 @@
+{
+  "_template_name": "quote-anchor",
+  "_template_description": "Dialogue-driven structure where key quotes set the emotional sync points. Each quote is a pivot; shots respond to spoken words.",
+  "_template_vibe": "cinematic",
+  "_template_recommended_length_sec": 120,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "spoken-word driven",
+    "one_sentence": "Pick 3-4 iconic quotes across your fandoms. Each quote anchors an act. Shots respond to words."
+  },
+  "song": {"title": "", "artist": "", "notes": "Choose a song with a slow buildup and clear quiet moments between drops so dialogue can breathe."},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "first quote", "end_sec": 35, "energy": "low", "notes": "Open on a quote. Shots establish the world the quote belongs to."},
+    {"act": 2, "name": "second quote", "end_sec": 70, "energy": "rising", "notes": "New quote from a different fandom, same emotional register. Tension builds."},
+    {"act": 3, "name": "third quote", "end_sec": 105, "energy": "peak", "notes": "Quote that ties the theme together. Land on the drop."},
+    {"act": 4, "name": "silence", "end_sec": 120, "energy": "quiet", "notes": "No more words. Visual payoff."}
+  ]
+}

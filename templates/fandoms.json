@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "fandoms": [
+    {
+      "name": "Arcane",
+      "aliases": ["arcane", "league of legends arcane"],
+      "medium": "anime",
+      "seasons": [1, 2],
+      "visual_language": "jewel tones, heavy film grain, high contrast between Piltover (warm gold) and Zaun (green/teal). Chromatic aberration on emotional peaks.",
+      "canonical_songs": ["Enemy - Imagine Dragons", "Goodbye - Ramsey"],
+      "iconic_scenes": [
+        {
+          "scene": "Jinx on the bridge",
+          "episode": "1x03",
+          "timestamp": "12:45",
+          "emotion": "grief",
+          "tags": ["slow-motion", "dialogue-light", "hero-shot"],
+          "sync_targets": ["breakdown", "vocal-hook"]
+        },
+        {
+          "scene": "Silco dies in Jinx's arms",
+          "episode": "1x09",
+          "timestamp": "38:20",
+          "emotion": "grief",
+          "tags": ["close-up", "tears"],
+          "sync_targets": ["breakdown"]
+        }
+      ],
+      "notes": "Most emotional beats are in the second half of season 1. Season 2 leans harder into blue/red contrast."
+    },
+    {
+      "name": "Lord of the Rings",
+      "aliases": ["lotr"],
+      "medium": "film",
+      "visual_language": "desaturated greens and browns with warm highlights on heroism. Sweeping wide shots on emotional peaks.",
+      "iconic_scenes": [
+        {
+          "scene": "I would have gone with you to the end",
+          "film": "Return of the King",
+          "timestamp": "3:10:00",
+          "emotion": "grief",
+          "tags": ["close-up", "dialogue-heavy"],
+          "sync_targets": ["breakdown"]
+        }
+      ]
+    }
+  ]
+}

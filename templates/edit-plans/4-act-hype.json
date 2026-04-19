@@ -1,0 +1,20 @@
+{
+  "_template_name": "4-act-hype",
+  "_template_description": "Four-act structure for high-energy edits. Intro → buildup → drop → bigger drop. Works with most modern cinematic/trailer music.",
+  "_template_vibe": "hype",
+  "_template_recommended_length_sec": 150,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "hype / triumph",
+    "one_sentence": "Four acts of escalating energy — setup, buildup, drop, climax."
+  },
+  "song": {"title": "", "artist": ""},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "setup", "end_sec": 30, "energy": "low", "notes": "Establish the world. One hero per fandom. Wide shots."},
+    {"act": 2, "name": "buildup", "end_sec": 75, "energy": "rising", "notes": "Stakes climb. Faster cuts. Tension-building shots."},
+    {"act": 3, "name": "drop", "end_sec": 120, "energy": "peak", "notes": "The main drop. Hero shots on every downbeat. Biggest moments."},
+    {"act": 4, "name": "climax", "end_sec": 150, "energy": "higher_peak", "notes": "Bigger drop. Unifying moment across fandoms. Biggest visual payoff."}
+  ]
+}

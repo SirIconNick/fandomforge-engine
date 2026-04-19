@@ -1,0 +1,19 @@
+{
+  "_template_name": "3-act-emotional",
+  "_template_description": "Classical three-act emotional arc: setup → escalation → catharsis. For grief, loss, love, mentor arcs.",
+  "_template_vibe": "emotional",
+  "_template_recommended_length_sec": 180,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "emotional arc",
+    "one_sentence": "Introduce the bond, escalate the stakes, deliver catharsis at the breakdown or vocal peak."
+  },
+  "song": {"title": "", "artist": ""},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "setup", "end_sec": 60, "energy": "low", "notes": "Establish relationships. Show what will be lost. Close-ups, eye contact, quiet moments."},
+    {"act": 2, "name": "escalation", "end_sec": 120, "energy": "rising", "notes": "Stakes and separation rise. Intercut between fandoms. Growing tension."},
+    {"act": 3, "name": "catharsis", "end_sec": 180, "energy": "peak_then_release", "notes": "The loss lands on the drop. Emotional release in the breakdown."}
+  ]
+}

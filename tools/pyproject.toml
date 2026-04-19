@@ -55,6 +55,9 @@ strict = true
 python_version = "3.13"
 
 [tool.pytest.ini_options]
+markers = [
+    "requires_fixtures: integration tests that need `ff fixtures fetch` to have been run first",
+]
 filterwarnings = [
     # madmom 0.16.x emits these on every model load. Out of our control
     # until madmom cuts a numpy-2-clean release.

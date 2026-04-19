@@ -1,0 +1,20 @@
+{
+  "_template_name": "duality",
+  "_template_description": "Parallel narratives across two fandoms — heroes and villains, light and dark, past and present.",
+  "_template_vibe": "mixed",
+  "_template_recommended_length_sec": 140,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "duality / parallel lives",
+    "one_sentence": "Two opposing perspectives, cut in alternating sections until they collide."
+  },
+  "song": {"title": "", "artist": ""},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "side A", "end_sec": 35, "energy": "medium", "notes": "First fandom's world. Establish the perspective."},
+    {"act": 2, "name": "side B", "end_sec": 70, "energy": "medium", "notes": "Second fandom's world. Mirror the beats from act 1."},
+    {"act": 3, "name": "interweave", "end_sec": 105, "energy": "rising", "notes": "Rapid intercutting between the two sides. Same emotion different context."},
+    {"act": 4, "name": "collision", "end_sec": 140, "energy": "peak", "notes": "Both arcs resolve on the same drop. The two are actually one story."}
+  ]
+}

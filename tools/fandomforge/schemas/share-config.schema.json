@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/share-config.schema.json",
+  "title": "ShareConfig",
+  "description": "Opaque read-only share token for a project. Token IS the security boundary — treat like a password.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "token", "created_at"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "token": {"type": "string", "minLength": 32},
+    "created_at": {"type": "string", "format": "date-time"},
+    "note": {"type": "string"}
+  }
+}

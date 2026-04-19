@@ -3192,5 +3192,586 @@ def make_edit_cmd(
     sys.exit(0 if result.success else 1)
 
 
+# ---------- grab (download video/audio from any URL) ----------
+
+@main.group()
+def grab() -> None:
+    """Download video/audio from a URL into a project's raw/ or assets/ folder."""
+
+
+@grab.command("video")
+@click.option("--project", required=True)
+@click.option("--url", required=True, help="Any yt-dlp-supported URL (YouTube, Vimeo, Archive.org, direct mp4, etc.)")
+@click.option("--resolution", default="1080", help="Max resolution (e.g. 1080, 720, best)")
+@click.option("--filename", default=None, help="Explicit filename (no extension). Defaults to sanitized title.")
+@click.option("--license-note", default=None,
+              help="Required for YouTube/Vimeo/etc — documents why the specific content is legally usable (e.g. 'Official Marvel Studios trailer — fair use for transformative editing').")
+@click.option("--no-ingest", is_flag=True, help="Skip scene + transcript extraction after download.")
+def grab_video_cmd(project: str, url: str, resolution: str, filename: str | None, license_note: str | None, no_ingest: bool) -> None:
+    """Download a video from a URL into projects/<slug>/raw/ and run ingestion."""
+    from fandomforge.sources.legal_sources import classify_url
+    from fandomforge.sources.download import download_source, DisallowedDomainError
+
+    classification = classify_url(url)
+    if classification.tier == "denied":
+        console.print(f"[red]✗ {classification.reason}[/red]")
+        sys.exit(1)
+    if classification.tier == "requires_license_note" and not license_note:
+        console.print(f"[yellow]{classification.reason}[/yellow]")
+        console.print(
+            f"[yellow]Re-run with --license-note=\"...\" documenting why this specific URL is OK to use.[/yellow]"
+        )
+        sys.exit(1)
+    if classification.tier == "unknown" and not license_note:
+        console.print(f"[yellow]{classification.reason}[/yellow]")
+        console.print(f"[yellow]Re-run with --license-note=\"...\" to override.[/yellow]")
+        sys.exit(1)
+
+    proj_dir = Path("projects") / project
+    if not proj_dir.exists():
+        console.print(f"[red]project not found: {project}[/red]")
+        console.print(f"  create it with: ff project new {project}")
+        sys.exit(1)
+
+    raw_dir = proj_dir / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+
+    console.print(f"[cyan]↓[/cyan] {url}")
+    console.print(f"  license: [dim]{classification.license_description or license_note or classification.tier}[/dim]")
+
+    try:
+        result = download_source(
+            url,
+            raw_dir,
+            filename=filename,
+            resolution=resolution,
+            write_subs=True,
+            auto_subs=True,
+        )
+    except DisallowedDomainError as exc:
+        console.print(f"[red]{exc}[/red]")
+        sys.exit(1)
+
+    if not result.success or not result.path:
+        console.print(f"[red]✗ download failed:[/red]")
+        console.print(result.stderr[-600:] if result.stderr else "(no stderr)")
+        sys.exit(1)
+
+    import hashlib
+    data = result.path.read_bytes()
+    sha = hashlib.sha256(data).hexdigest()
+
+    import json as _json
+    from datetime import datetime, timezone
+    license_sidecar = result.path.with_suffix(result.path.suffix + ".license.json")
+    license_sidecar.write_text(_json.dumps({
+        "url": url,
+        "tier": classification.tier,
+        "license_description": classification.license_description,
+        "license_note": license_note,
+        "sha256": sha,
+        "bytes": len(data),
+        "downloaded_at": datetime.now(timezone.utc).isoformat(),
+    }, indent=2) + "\n")
+
+    console.print(f"  [green]✓[/green] {result.path.name} ({len(data):,} bytes, sha256 {sha[:12]}...)")
+    console.print(f"  license sidecar: {license_sidecar.name}")
+
+    if not no_ingest:
+        console.print(f"[cyan]↓[/cyan] running ingest (scenes + transcript)")
+        rc = subprocess.call(["ff", "ingest", str(result.path), "--project", project], cwd=Path.cwd())
+        if rc == 0:
+            console.print(f"  [green]✓[/green] ingested")
+        else:
+            console.print(f"  [yellow]ingest exit {rc} — rerun with `ff ingest` later[/yellow]")
+
+
+@grab.command("song")
+@click.option("--project", required=True)
+@click.option("--url", required=True)
+@click.option("--filename", default="song", help="Filename (no extension). Defaults to 'song'.")
+@click.option("--license-note", default=None)
+def grab_song_cmd(project: str, url: str, filename: str, license_note: str | None) -> None:
+    """Download an audio track from a URL into projects/<slug>/assets/song.*."""
+    from fandomforge.sources.legal_sources import classify_url
+
+    classification = classify_url(url)
+    if classification.tier == "denied":
+        console.print(f"[red]✗ {classification.reason}[/red]")
+        sys.exit(1)
+    if classification.tier in ("requires_license_note", "unknown") and not license_note:
+        console.print(f"[yellow]{classification.reason or classification.tier}[/yellow]")
+        console.print(f"[yellow]Re-run with --license-note=\"...\" documenting why this URL is OK.[/yellow]")
+        sys.exit(1)
+
+    proj_dir = Path("projects") / project
+    if not proj_dir.exists():
+        console.print(f"[red]project not found: {project}[/red]")
+        sys.exit(1)
+
+    assets = proj_dir / "assets"
+    assets.mkdir(parents=True, exist_ok=True)
+
+    console.print(f"[cyan]↓[/cyan] {url} (audio-only)")
+
+    lower = url.lower().split("?")[0]
+    import urllib.request as _ureq
+    for ext in (".mp3", ".wav", ".m4a", ".flac", ".ogg"):
+        if lower.endswith(ext):
+            target = assets / f"{filename}{ext}"
+            try:
+                with _ureq.urlopen(url, timeout=60) as r:
+                    target.write_bytes(r.read())
+                console.print(f"  [green]✓[/green] {target.name} ({target.stat().st_size:,} bytes)")
+                return
+            except Exception as exc:  # noqa: BLE001
+                console.print(f"[red]direct fetch failed: {exc}[/red]")
+                sys.exit(1)
+
+    cmd = [
+        "yt-dlp", "-x", "--audio-format", "mp3",
+        "-o", str(assets / f"{filename}.%(ext)s"),
+        "--no-playlist", "--restrict-filenames", url,
+    ]
+    rc = subprocess.call(cmd)
+    if rc != 0:
+        console.print(f"[red]yt-dlp exit {rc}[/red]")
+        sys.exit(1)
+    console.print(f"  [green]✓[/green] audio extracted to {assets}/{filename}.mp3")
+
+
+# ---------- share (read-only shareable link tokens) ----------
+
+@main.group()
+def share() -> None:
+    """Generate/revoke opaque share tokens for read-only plan links."""
+
+
+@share.command("generate")
+@click.option("--project", required=True)
+@click.option("--note", default="", help="Optional note about who / why this share exists.")
+def share_generate_cmd(project: str, note: str) -> None:
+    """Generate a 32-byte URL-safe share token for a project."""
+    import json as _json
+    import secrets
+    from datetime import datetime, timezone
+
+    proj_dir = Path("projects") / project
+    if not proj_dir.exists():
+        console.print(f"[red]project not found: {project}[/red]")
+        sys.exit(1)
+
+    token = secrets.token_urlsafe(32)
+    data = {
+        "schema_version": 1,
+        "project_slug": project,
+        "token": token,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "note": note,
+    }
+    target = proj_dir / "share.json"
+    target.write_text(_json.dumps(data, indent=2) + "\n")
+    console.print(f"[green]✓[/green] share token generated")
+    console.print(f"  URL path: /share/{token}")
+    console.print(f"  Written to: {target}")
+
+
+@share.command("revoke")
+@click.option("--project", required=True)
+def share_revoke_cmd(project: str) -> None:
+    """Delete the share token for a project (future link opens will 404)."""
+    proj_dir = Path("projects") / project
+    target = proj_dir / "share.json"
+    if target.exists():
+        target.unlink()
+        console.print(f"[green]✓[/green] share.json removed for {project}")
+    else:
+        console.print(f"[yellow]no share.json to revoke for {project}[/yellow]")
+
+
+@share.command("list")
+def share_list_cmd() -> None:
+    """List all active share tokens."""
+    import json as _json
+    projects_dir = Path("projects")
+    if not projects_dir.exists():
+        console.print("[yellow]no projects/ dir[/yellow]")
+        return
+    table = Table(title="Share tokens")
+    table.add_column("project")
+    table.add_column("token (first 12)")
+    table.add_column("created")
+    table.add_column("note")
+    for share_file in sorted(projects_dir.glob("*/share.json")):
+        try:
+            data = _json.loads(share_file.read_text())
+            table.add_row(
+                data.get("project_slug", share_file.parent.name),
+                (data.get("token") or "")[:12] + "...",
+                (data.get("created_at") or "")[:19],
+                (data.get("note") or "")[:40],
+            )
+        except Exception:  # noqa: BLE001
+            continue
+    console.print(table)
+
+
+# ---------- templates (edit-plan skeletons) ----------
+
+@main.group()
+def templates() -> None:
+    """Manage edit-plan templates (4-act-hype, mentor-loss, duality, etc)."""
+
+
+def _templates_dir() -> Path:
+    return Path(__file__).resolve().parent.parent.parent / "templates" / "edit-plans"
+
+
+@templates.command("list")
+def templates_list_cmd() -> None:
+    """List available edit-plan templates."""
+    import json as _json
+    tdir = _templates_dir()
+    if not tdir.exists():
+        console.print(f"[red]templates dir missing: {tdir}[/red]")
+        sys.exit(1)
+    table = Table(title="Edit-plan templates")
+    table.add_column("name")
+    table.add_column("vibe")
+    table.add_column("length")
+    table.add_column("description")
+    for tf in sorted(tdir.glob("*.json")):
+        try:
+            data = _json.loads(tf.read_text())
+        except Exception:  # noqa: BLE001
+            continue
+        table.add_row(
+            data.get("_template_name", tf.stem),
+            data.get("_template_vibe", "—"),
+            f"{data.get('_template_recommended_length_sec', '—')}s",
+            (data.get("_template_description") or "")[:60],
+        )
+    console.print(table)
+
+
+@templates.command("apply")
+@click.argument("template_name")
+@click.option("--project", required=True, help="Project slug to apply to.")
+@click.option("--force", is_flag=True, help="Overwrite existing edit-plan.json.")
+def templates_apply_cmd(template_name: str, project: str, force: bool) -> None:
+    """Write a new edit-plan.json from the given template."""
+    import json as _json
+
+    source = _templates_dir() / f"{template_name}.json"
+    if not source.exists():
+        console.print(f"[red]Template not found: {template_name}[/red]")
+        console.print(f"  looking in: {source}")
+        console.print(f"  hint: run `ff templates list` to see available templates")
+        sys.exit(1)
+
+    data = _json.loads(source.read_text())
+    data["project_slug"] = project
+    for key in list(data.keys()):
+        if key.startswith("_template_"):
+            data.pop(key)
+
+    target = Path("projects") / project / "data" / "edit-plan.json"
+    if target.exists() and not force:
+        console.print(f"[yellow]{target} exists.[/yellow] Use --force to overwrite.")
+        sys.exit(1)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    tmp = target.with_suffix(target.suffix + ".tmp")
+    tmp.write_text(_json.dumps(data, indent=2) + "\n")
+    tmp.replace(target)
+
+    console.print(
+        f"[green]✓[/green] wrote edit-plan from template '{template_name}' → {target}"
+    )
+
+
+# ---------- autopilot (end-to-end one-click flow) ----------
+
+@main.command("autopilot")
+@click.option("--project", required=True, help="Project slug (created if absent).")
+@click.option("--song", type=click.Path(exists=True, path_type=Path), default=None,
+              help="Path to the song audio. Copied into assets/ if not already there.")
+@click.option("--sources", default=None, help="Glob for source videos (e.g. 'clips/*.mp4').")
+@click.option("--prompt", default="", help="Theme / concept for the edit.")
+@click.option("--estimate", is_flag=True, help="Print cost/time estimate and exit without running.")
+def autopilot_cmd(project: str, song: Path | None, sources: str | None, prompt: str, estimate: bool) -> None:
+    """One-click path: prompt + song + sources → beat map → shot list → QA gate.
+
+    Idempotent: rerunning picks up from the last successful step. Progress is
+    streamed to projects/<slug>/.history/autopilot.jsonl.
+    """
+    import json as _json
+    from fandomforge.autopilot import run_autopilot, estimate_cost
+
+    if estimate:
+        est = estimate_cost(project)
+        console.print(_json.dumps(est, indent=2))
+        return
+
+    result = run_autopilot(
+        project,
+        song_path=song,
+        source_glob=sources,
+        prompt=prompt,
+    )
+
+    console.print(
+        f"\n[bold]autopilot:[/bold] {result['overall_status']} "
+        f"({len(result['steps'])} steps)"
+    )
+    if result["overall_status"] == "failed":
+        sys.exit(1)
+
+
+# ---------- emotion (emotion-arc inference) ----------
+
+@main.group()
+def emotion() -> None:
+    """Emotion analysis for an edit."""
+
+
+@emotion.command("arc")
+@click.option("--project", required=True)
+@click.option("--force", is_flag=True)
+def emotion_arc_cmd(project: str, force: bool) -> None:
+    """Infer a per-shot emotion arc and write data/emotion-arc.json."""
+    import json as _json
+    from fandomforge.intelligence.emotion_arc import infer_for_project, detect_dead_zones
+    from fandomforge.validation import validate, ValidationError
+
+    try:
+        arc = infer_for_project(project)
+    except FileNotFoundError as exc:
+        console.print(f"[red]{exc}[/red]")
+        sys.exit(1)
+
+    try:
+        validate(arc, "emotion-arc")
+    except ValidationError as exc:
+        console.print(f"[red]Arc failed schema validation:[/red]")
+        for f in exc.failures[:10]:
+            console.print(f"  - {f}")
+        sys.exit(1)
+
+    target = Path("projects") / project / "data" / "emotion-arc.json"
+    if target.exists() and not force:
+        console.print(f"[yellow]{target} exists.[/yellow] Use --force to overwrite.")
+        sys.exit(1)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    tmp = target.with_suffix(target.suffix + ".tmp")
+    tmp.write_text(_json.dumps(arc, indent=2) + "\n")
+    tmp.replace(target)
+
+    dead = detect_dead_zones(arc)
+    console.print(
+        f"[green]✓[/green] wrote {len(arc['samples'])} samples → {target}"
+    )
+    if dead:
+        console.print(f"[yellow]dead zones[/yellow] ({len(dead)}):")
+        for start, end in dead[:5]:
+            console.print(f"  - {start:.1f}s → {end:.1f}s ({end-start:.1f}s flat)")
+    else:
+        console.print("[dim]no dead zones longer than 20s[/dim]")
+
+
+# ---------- propose (auto-draft artifacts) ----------
+
+@main.group()
+def propose() -> None:
+    """Auto-draft artifacts from existing project context."""
+
+
+@propose.command("shots")
+@click.option("--project", required=True)
+@click.option("--output", type=click.Path(path_type=Path), default=None,
+              help="Output file. Defaults to projects/<slug>/data/shot-list.json.")
+@click.option("--force", is_flag=True, help="Overwrite existing shot-list.json.")
+@click.option("--dry-run", is_flag=True, help="Print the draft to stdout without writing.")
+def propose_shots_cmd(project: str, output: Path | None, force: bool, dry_run: bool) -> None:
+    """Draft a shot list from the edit-plan + beat-map + catalog."""
+    import json as _json
+    from fandomforge.intelligence.shot_proposer import propose_for_project
+    from fandomforge.validation import validate, ValidationError
+
+    draft = propose_for_project(project)
+
+    try:
+        validate(draft, "shot-list")
+    except ValidationError as exc:
+        console.print("[red]Draft failed schema validation:[/red]")
+        for failure in exc.failures[:10]:
+            console.print(f"  - {failure}")
+        sys.exit(1)
+
+    if dry_run:
+        console.print(_json.dumps(draft, indent=2))
+        return
+
+    proj = Path("projects") / project
+    target = output or (proj / "data" / "shot-list.json")
+    target.parent.mkdir(parents=True, exist_ok=True)
+
+    if target.exists() and not force:
+        console.print(f"[yellow]{target} exists.[/yellow] Use --force to overwrite.")
+        sys.exit(1)
+
+    tmp = target.with_suffix(target.suffix + ".tmp")
+    tmp.write_text(_json.dumps(draft, indent=2) + "\n")
+    tmp.replace(target)
+
+    console.print(
+        f"[green]✓[/green] drafted {len(draft['shots'])} shots → {target}"
+    )
+    if any(s["source_id"].startswith("PLACEHOLDER_") for s in draft["shots"]):
+        console.print(
+            "[yellow]Note:[/yellow] some shots reference PLACEHOLDER_ sources. "
+            "Ingest source videos with `ff ingest` first for real source_ids."
+        )
+
+
+# ---------- fixtures (legal test-media library) ----------
+
+@main.group()
+def fixtures() -> None:
+    """Manage the legal-test-media fixture library."""
+
+
+@fixtures.command("fetch")
+@click.option("--manifest", type=click.Path(exists=True, path_type=Path), default=None,
+              help="Path to fixtures manifest. Defaults to tools/tests/fixtures/manifest.json.")
+@click.option("--only", multiple=True, help="Fetch only these item ids (repeatable).")
+@click.option("--dry-run", is_flag=True, help="Print what would be fetched without downloading.")
+def fixtures_fetch_cmd(manifest: Path | None, only: tuple[str, ...], dry_run: bool) -> None:
+    """Download legal test fixtures from the curated manifest.
+
+    Every item has a documented license. Media lands under
+    tools/tests/fixtures/media/ (gitignored) with a sibling .license.json.
+    """
+    import hashlib
+    import json as _json
+    import urllib.request
+    from fandomforge.sources.legal_sources import classify_url
+
+    default_manifest = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "manifest.json"
+    manifest_path = Path(manifest) if manifest else default_manifest
+    if not manifest_path.exists():
+        console.print(f"[red]Manifest not found:[/red] {manifest_path}")
+        sys.exit(1)
+
+    data = _json.loads(manifest_path.read_text())
+    items = data.get("items", [])
+    if only:
+        selected = set(only)
+        items = [it for it in items if it.get("id") in selected]
+        if not items:
+            console.print(f"[yellow]No items matched:[/yellow] {', '.join(only)}")
+            sys.exit(1)
+
+    media_dir = manifest_path.parent / "media"
+    media_dir.mkdir(parents=True, exist_ok=True)
+
+    ok_count = 0
+    skip_count = 0
+    fail_count = 0
+
+    for item in items:
+        item_id = item.get("id", "<no-id>")
+        url = item.get("url", "")
+        filename = item.get("filename") or item_id
+        license_name = item.get("license", "unspecified")
+
+        classification = classify_url(url)
+        if classification.tier == "denied":
+            console.print(f"[red]✗ {item_id}: denylist — {classification.reason}[/red]")
+            fail_count += 1
+            continue
+        if classification.tier == "unknown":
+            console.print(
+                f"[yellow]⚠ {item_id}: host not classified — {classification.reason}[/yellow]"
+            )
+            fail_count += 1
+            continue
+        if classification.tier == "requires_license_note" and not item.get("license_note"):
+            console.print(
+                f"[red]✗ {item_id}: {classification.host} requires license_note in manifest[/red]"
+            )
+            fail_count += 1
+            continue
+
+        target = media_dir / filename
+        license_sidecar = media_dir / (target.name + ".license.json")
+
+        if dry_run:
+            console.print(f"[cyan]would fetch[/cyan] {item_id} → {target.name} ({license_name})")
+            continue
+
+        if target.exists() and target.stat().st_size > 0:
+            console.print(f"[dim]✓ {item_id}: already cached[/dim]")
+            skip_count += 1
+            continue
+
+        console.print(f"[cyan]↓ {item_id}[/cyan] {url}")
+        try:
+            with urllib.request.urlopen(url, timeout=60) as response:
+                data_bytes = response.read()
+            target.write_bytes(data_bytes)
+            sha = hashlib.sha256(data_bytes).hexdigest()
+            license_sidecar.write_text(_json.dumps({
+                "id": item_id,
+                "url": url,
+                "license": license_name,
+                "license_url": item.get("license_url"),
+                "attribution": item.get("attribution"),
+                "license_note": item.get("license_note"),
+                "tier": classification.tier,
+                "classified_host": classification.host,
+                "sha256": sha,
+                "bytes": len(data_bytes),
+            }, indent=2) + "\n")
+            console.print(f"  [green]✓[/green] {target.name} ({len(data_bytes):,} bytes, sha256 {sha[:12]}...)")
+            ok_count += 1
+        except Exception as exc:  # noqa: BLE001
+            console.print(f"  [red]✗ fetch failed: {exc}[/red]")
+            fail_count += 1
+
+    console.print(
+        f"\n[bold]fixtures:[/bold] {ok_count} fetched, {skip_count} cached, {fail_count} failed"
+    )
+    sys.exit(0 if fail_count == 0 else 1)
+
+
+@fixtures.command("list")
+@click.option("--manifest", type=click.Path(exists=True, path_type=Path), default=None)
+def fixtures_list_cmd(manifest: Path | None) -> None:
+    """List fixtures in the manifest with cache status."""
+    import json as _json
+    default_manifest = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "manifest.json"
+    manifest_path = Path(manifest) if manifest else default_manifest
+    data = _json.loads(manifest_path.read_text())
+    media_dir = manifest_path.parent / "media"
+
+    table = Table(title="Fixtures", show_lines=False)
+    table.add_column("id")
+    table.add_column("kind")
+    table.add_column("tier")
+    table.add_column("license")
+    table.add_column("cached")
+    for item in data.get("items", []):
+        filename = item.get("filename") or item["id"]
+        cached = (media_dir / filename).exists()
+        table.add_row(
+            item.get("id", "—"),
+            item.get("kind", "—"),
+            item.get("tier", "—"),
+            item.get("license", "—"),
+            "[green]yes[/green]" if cached else "[dim]no[/dim]",
+        )
+    console.print(table)
+
+
 if __name__ == "__main__":
     main()

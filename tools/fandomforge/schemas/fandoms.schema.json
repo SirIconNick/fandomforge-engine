@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/fandoms.schema.json",
+  "title": "Fandoms",
+  "description": "Per-project user-extensible fandom knowledge. Lives at projects/<slug>/fandoms.json and is loaded into expert chat context so fandom-researcher and others have access to your custom scenes, visual language notes, and song suggestions alongside their built-in prose knowledge.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "fandoms"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "fandoms": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Fandom"}
+    }
+  },
+  "$defs": {
+    "Fandom": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "aliases": {
+          "description": "Alternate names or abbreviations users might type.",
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "medium": {
+          "type": "string",
+          "enum": ["film", "tv", "anime", "game", "comic", "book", "other"]
+        },
+        "seasons": {
+          "type": "array",
+          "items": {"type": "integer", "minimum": 0}
+        },
+        "visual_language": {
+          "description": "Short note on the color grade, framing, and palette of this property. Guides color-grader.",
+          "type": "string"
+        },
+        "canonical_songs": {
+          "description": "Songs strongly associated with this fandom (trailers, opening themes, iconic needle drops).",
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "iconic_scenes": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/Scene"}
+        },
+        "notes": {"type": "string"}
+      }
+    },
+    "Scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scene"],
+      "properties": {
+        "scene": {
+          "description": "Short human-readable description of the moment.",
+          "type": "string",
+          "minLength": 1
+        },
+        "episode": {"type": "string"},
+        "film": {"type": "string"},
+        "timestamp": {
+          "description": "Timestamp in H:MM:SS or MM:SS form.",
+          "type": "string",
+          "pattern": "^[0-9]{1,3}:[0-5][0-9](:[0-5][0-9])?$"
+        },
+        "duration_sec": {"type": "number", "minimum": 0},
+        "emotion": {
+          "type": "string",
+          "description": "Primary emotion the scene carries (grief, triumph, fear, etc.)."
+        },
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "sync_targets": {
+          "description": "Moments in the scene that match common beat-map events.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["drop", "buildup", "breakdown", "downbeat", "vocal-hook"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/emotion-arc.schema.json",
+  "title": "EmotionArc",
+  "description": "Per-shot emotion vector and scalar intensity across the edit, used to flag emotional dead zones and sync peaks to drops.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "dimensions", "samples"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "dimensions": {
+      "description": "Ordered list of emotion labels. Each sample's vector is aligned to this order.",
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    },
+    "samples": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Sample"}
+    },
+    "method": {
+      "type": "string",
+      "enum": ["heuristic_v1", "clip_prompts_v1", "transcript_sentiment_v1", "mixed_v1"]
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  },
+  "$defs": {
+    "Sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["shot_id", "time_sec", "vector", "intensity"],
+      "properties": {
+        "shot_id": {"type": "string", "minLength": 1},
+        "time_sec": {"type": "number", "minimum": 0},
+        "vector": {
+          "description": "Aligned to parent `dimensions`. Each value in [0, 1].",
+          "type": "array",
+          "items": {"type": "number", "minimum": 0, "maximum": 1}
+        },
+        "intensity": {"type": "number", "minimum": 0, "maximum": 1},
+        "dominant": {"type": "string"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

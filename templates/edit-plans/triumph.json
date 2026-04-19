@@ -1,0 +1,21 @@
+{
+  "_template_name": "triumph",
+  "_template_description": "Hero rise structure — from underdog moment to victory lap. For Rocky, Arcane, Steven Universe, any 'they come back' arc.",
+  "_template_vibe": "triumphant",
+  "_template_recommended_length_sec": 150,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "triumph / hero's return",
+    "one_sentence": "Defeat, resolve, training, comeback, victory — cut across fandoms so each beat is a different hero."
+  },
+  "song": {"title": "", "artist": ""},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "defeat", "end_sec": 30, "energy": "low", "notes": "Heroes down. Slow motion, muted colors."},
+    {"act": 2, "name": "resolve", "end_sec": 60, "energy": "low_but_focused", "notes": "Internal decision. Quiet moments of clarity."},
+    {"act": 3, "name": "training", "end_sec": 90, "energy": "rising", "notes": "Montage energy. Quick cuts, rhythm-locked."},
+    {"act": 4, "name": "comeback", "end_sec": 130, "energy": "peak", "notes": "First major win. Drop lands here."},
+    {"act": 5, "name": "victory", "end_sec": 150, "energy": "sustained_peak", "notes": "Final shots of unified heroes."}
+  ]
+}

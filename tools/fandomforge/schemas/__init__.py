@@ -44,6 +44,10 @@ SCHEMA_IDS: tuple[str, ...] = (
     "transcript",
     "scenes",
     "qa-report",
+    "fandoms",
+    "emotion-arc",
+    "share-config",
+    "webhooks",
 )
 
 

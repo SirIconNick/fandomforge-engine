@@ -1,0 +1,20 @@
+{
+  "_template_name": "mentor-loss",
+  "_template_description": "The sacrifice arc — mentor deaths, last stands, torch-passing. Obi-Wan, Dumbledore, Yondu, Itachi.",
+  "_template_vibe": "sad",
+  "_template_recommended_length_sec": 150,
+  "schema_version": 1,
+  "project_slug": "__PROJECT_SLUG__",
+  "concept": {
+    "theme": "mentor loss / sacrifice / legacy",
+    "one_sentence": "The mentor falls so the student can rise — parallel across fandoms."
+  },
+  "song": {"title": "", "artist": ""},
+  "fandoms": [],
+  "acts": [
+    {"act": 1, "name": "bond", "end_sec": 40, "energy": "low", "notes": "Quiet moments between mentor and student. Looks, laughs, small teachings."},
+    {"act": 2, "name": "threat", "end_sec": 80, "energy": "rising", "notes": "Danger arrives. Student isn't ready. Mentor steps up."},
+    {"act": 3, "name": "sacrifice", "end_sec": 115, "energy": "peak", "notes": "The mentor falls. Cut on the drop or the breakdown."},
+    {"act": 4, "name": "legacy", "end_sec": 150, "energy": "quiet_resolve", "notes": "Student carries it forward. Final hero shot."}
+  ]
+}
