@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 
 export interface ShotRow {
   number: number;
@@ -30,12 +30,94 @@ const ACT_COLORS = [
   "rgba(142, 78, 198, 0.2)",
 ];
 
+function ShotThumb({ url }: { url: string }) {
+  const [ok, setOk] = useState(true);
+  if (!ok) return null;
+  return (
+    <img
+      src={url}
+      alt=""
+      className="w-full aspect-video object-cover bg-black/40"
+      loading="lazy"
+      onError={() => setOk(false)}
+    />
+  );
+}
+
 export function Timeline({ project, shots, onClipSelect }: Props) {
   const [selectedShot, setSelectedShot] = useState<ShotRow | null>(null);
+  const [undoStatus, setUndoStatus] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const totalDuration = useMemo(
     () => shots.reduce((sum, s) => sum + s.duration_sec, 0),
     [shots],
   );
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLInputElement
+      )
+        return;
+      if (shots.length === 0) return;
+      const currentIdx = selectedShot
+        ? shots.findIndex((s) => s.number === selectedShot.number)
+        : -1;
+      const next = (idx: number) => {
+        const bounded = Math.max(0, Math.min(shots.length - 1, idx));
+        const target = shots[bounded];
+        if (target) {
+          setSelectedShot(target);
+          onClipSelect?.(target);
+        }
+      };
+      if (e.key === "ArrowLeft" || e.key === "j" || e.key === "J") {
+        e.preventDefault();
+        next(currentIdx < 0 ? 0 : currentIdx - 1);
+      } else if (e.key === "ArrowRight" || e.key === "l" || e.key === "L") {
+        e.preventDefault();
+        next(currentIdx < 0 ? 0 : currentIdx + 1);
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        next(0);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        next(shots.length - 1);
+      } else if (e.key === "Escape") {
+        setSelectedShot(null);
+      } else if ((e.metaKey || e.ctrlKey) && (e.key === "z" || e.key === "Z")) {
+        e.preventDefault();
+        void rollbackShotList();
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [shots, selectedShot, onClipSelect]);
+
+  async function rollbackShotList() {
+    setUndoStatus("rolling back…");
+    try {
+      const res = await fetch("/api/artifacts/rollback", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          project_slug: project,
+          artifact: "shot-list",
+          steps: 1,
+        }),
+      });
+      const body = await res.json();
+      if (!res.ok) {
+        setUndoStatus(body.error ?? `rollback failed (${res.status})`);
+      } else {
+        setUndoStatus("rolled back — refresh to see changes");
+      }
+    } catch (err) {
+      setUndoStatus((err as Error).message);
+    }
+    setTimeout(() => setUndoStatus(null), 4000);
+  }
 
   const shotsByAct = useMemo(() => {
     const map = new Map<number, ShotRow[]>();
@@ -47,11 +129,21 @@ export function Timeline({ project, shots, onClipSelect }: Props) {
   }, [shots]);
 
   return (
-    <div className="space-y-4">
-      <div className="text-sm text-[var(--color-ash)]">
-        {shots.length} shots · {totalDuration.toFixed(1)}s total runtime ·{" "}
-        {shots.filter((s) => s.is_placeholder).length} placeholders
+    <div className="space-y-4" ref={containerRef}>
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="text-sm text-[var(--color-ash)]">
+          {shots.length} shots · {totalDuration.toFixed(1)}s total runtime ·{" "}
+          {shots.filter((s) => s.is_placeholder).length} placeholders
+        </div>
+        <div className="text-[10px] text-white/40 font-mono">
+          shortcuts: ←/→ or J/L prev/next · home/end jump · esc clear · ⌘Z undo shot-list
+        </div>
       </div>
+      {undoStatus && (
+        <div className="text-xs text-[var(--color-forge)] bg-[var(--color-forge)]/10 border border-[var(--color-forge)]/30 rounded p-2">
+          {undoStatus}
+        </div>
+      )}
 
       {/* Horizontal ribbon — full timeline */}
       <div className="relative h-16 rounded bg-[var(--color-ink)] border border-white/10 overflow-hidden">
@@ -100,6 +192,10 @@ export function Timeline({ project, shots, onClipSelect }: Props) {
             <div className="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
               {actShots.map((s) => {
                 const selected = selectedShot?.number === s.number;
+                const thumbUrl =
+                  s.source_id && !s.is_placeholder
+                    ? `/api/project/${encodeURIComponent(project)}/thumb?source=${encodeURIComponent(s.source_id)}&time=${s.source_timestamp_sec ?? 0}`
+                    : null;
                 return (
                   <button
                     key={s.number}
@@ -107,35 +203,40 @@ export function Timeline({ project, shots, onClipSelect }: Props) {
                       setSelectedShot(s);
                       onClipSelect?.(s);
                     }}
-                    className={`p-3 rounded border text-left transition-colors ${
+                    className={`rounded border text-left transition-colors overflow-hidden ${
                       selected
                         ? "border-[var(--color-forge)] bg-[var(--color-forge)]/10"
                         : "border-white/10 hover:border-white/30"
                     }`}
                   >
-                    <div className="flex items-baseline justify-between mb-1">
-                      <span className="font-mono text-xs text-[var(--color-ash)]">
-                        #{s.number}
-                      </span>
-                      <span className="font-mono text-xs">{s.duration_sec}s</span>
-                    </div>
-                    {s.hero && (
-                      <div className="text-xs font-medium mb-1 truncate">
-                        {s.hero}
+                    {thumbUrl && <ShotThumb url={thumbUrl} />}
+                    <div className="p-3">
+                      <div className="flex items-baseline justify-between mb-1">
+                        <span className="font-mono text-xs text-[var(--color-ash)]">
+                          #{s.number}
+                        </span>
+                        <span className="font-mono text-xs">
+                          {s.duration_sec}s
+                        </span>
                       </div>
-                    )}
-                    <div className="text-xs text-[var(--color-mist)] line-clamp-2">
-                      {s.description || "(no description)"}
-                    </div>
-                    <div className="text-[10px] font-mono text-[var(--color-ash)] mt-1 truncate">
-                      {s.source_id || "—"}
-                      {s.source_timestamp && ` @ ${s.source_timestamp}`}
-                    </div>
-                    {s.mood && (
-                      <div className="text-[10px] text-[var(--color-ember)] mt-1">
-                        {s.mood}
+                      {s.hero && (
+                        <div className="text-xs font-medium mb-1 truncate">
+                          {s.hero}
+                        </div>
+                      )}
+                      <div className="text-xs text-[var(--color-mist)] line-clamp-2">
+                        {s.description || "(no description)"}
                       </div>
-                    )}
+                      <div className="text-[10px] font-mono text-[var(--color-ash)] mt-1 truncate">
+                        {s.source_id || "—"}
+                        {s.source_timestamp && ` @ ${s.source_timestamp}`}
+                      </div>
+                      {s.mood && (
+                        <div className="text-[10px] text-[var(--color-ember)] mt-1">
+                          {s.mood}
+                        </div>
+                      )}
+                    </div>
                   </button>
                 );
               })}

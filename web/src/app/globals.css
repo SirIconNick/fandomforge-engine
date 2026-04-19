@@ -18,6 +18,19 @@
     color-scheme: dark;
   }
 
+  html[data-theme="light"] {
+    color-scheme: light;
+    --color-ink: #f7f5ef;
+    --color-paper: #0b0b0f;
+    --color-midnight: #e6e2d4;
+    --color-mist: #2b2d33;
+    --color-ash: #73706a;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
   html,
   body {
     background: var(--color-ink);
@@ -25,6 +38,26 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-forge);
+    color: var(--color-ink);
+    padding: 8px 16px;
+    z-index: 200;
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-forge);
+    outline-offset: 2px;
   }
 
   h1,

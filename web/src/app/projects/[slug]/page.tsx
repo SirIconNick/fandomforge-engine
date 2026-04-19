@@ -7,6 +7,8 @@ import { MarkdownViewer } from "@/components/MarkdownViewer";
 import { BeatMapVisualizer } from "@/components/BeatMapVisualizer";
 import { UploadDropzone } from "@/components/UploadDropzone";
 import { AssetBrowser } from "@/components/AssetBrowser";
+import OnboardingTour from "@/components/OnboardingTour";
+import UrlIngest from "@/components/UrlIngest";
 
 type Params = Promise<{ slug: string }>;
 
@@ -34,6 +36,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
 
   return (
     <div className="space-y-10">
+      <OnboardingTour projectSlug={slug} />
       <div>
         <Link
           href="/projects"
@@ -50,10 +53,16 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
 
         <div className="flex flex-wrap gap-2 mt-4 text-sm">
           <Link
-            href={`/pipeline/${slug}`}
+            href={`/projects/${slug}/autopilot`}
             className="px-4 py-2 bg-[var(--color-forge)] text-[var(--color-ink)] rounded font-medium hover:bg-[var(--color-ember)]"
           >
-            ▶ Run pipeline
+            ✨ Auto-pilot
+          </Link>
+          <Link
+            href={`/pipeline/${slug}`}
+            className="px-4 py-2 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            Run pipeline (manual)
           </Link>
           <Link
             href={`/projects/${slug}/qa`}
@@ -74,18 +83,71 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
             Player
           </Link>
           <Link
+            href={`/projects/${slug}/preview`}
+            className="px-4 py-2 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            Rough preview
+          </Link>
+          <Link
             href={`/experts/chat/edit-strategist?project=${slug}`}
             className="px-4 py-2 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
           >
             Ask an expert
+          </Link>
+          <Link
+            href={`/projects/${slug}/propose-shots`}
+            className="px-4 py-2 border border-[var(--color-forge)]/30 rounded hover:border-[var(--color-forge)]/60 text-[var(--color-forge)]"
+          >
+            ✨ Draft a shot list
+          </Link>
+        </div>
+
+        <div className="flex flex-wrap gap-2 mt-3 text-xs">
+          <span className="text-white/40 self-center mr-1">Edit artifacts:</span>
+          <Link
+            href={`/projects/${slug}/edit-plan`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            edit-plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/color-plan`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            color-plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/transition-plan`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            transition-plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/audio-plan`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            audio-plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/title-plan`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            title-plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/fandoms`}
+            className="px-3 py-1 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            fandoms
           </Link>
         </div>
       </div>
 
       <div id="upload" className="grid md:grid-cols-[1fr_320px] gap-6 scroll-mt-20">
         <section className="space-y-3">
-          <h2>Upload source media</h2>
+          <h2>Add source media</h2>
           <UploadDropzone slug={slug} />
+          <UrlIngest projectSlug={slug} />
         </section>
         <aside className="border border-white/10 rounded p-3 bg-white/[0.02]">
           <AssetBrowser slug={slug} />
