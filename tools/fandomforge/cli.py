@@ -3563,6 +3563,71 @@ def _write_song_sidecar(
     sidecar.write_text(_json.dumps(payload, indent=2) + "\n")
 
 
+# ---------- review (post-render grade + test) ----------
+
+
+@main.command("review")
+@click.option("--project", required=True, help="Project slug to review.")
+@click.option("--video", default="graded.mp4",
+              help="Which render to review (in exports/). Defaults to graded.mp4.")
+@click.option("--json", "as_json", is_flag=True, help="Print JSON instead of table.")
+@click.option("--save/--no-save", default=True,
+              help="Write the report to data/post-render-review.json.")
+def review_cmd(project: str, video: str, as_json: bool, save: bool) -> None:
+    """Grade a rendered edit: technical / visual / audio / structural / shot list.
+
+    Run this after every render. It surfaces black frames, clipping, duration
+    mismatches, source reuse, and anything else worth a second look before
+    the cut leaves the rough-cut stage.
+    """
+    import json as _json
+    from fandomforge.review import review_rendered_edit
+
+    proj_dir = Path("projects") / project
+    if not proj_dir.exists():
+        console.print(f"[red]project not found: {project}[/red]")
+        sys.exit(1)
+
+    try:
+        report = review_rendered_edit(proj_dir, video_name=video)
+    except FileNotFoundError as exc:
+        console.print(f"[red]{exc}[/red]")
+        sys.exit(1)
+
+    if save:
+        out = proj_dir / "data" / "post-render-review.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(_json.dumps(report.to_dict(), indent=2) + "\n")
+
+    if as_json:
+        print(_json.dumps(report.to_dict(), indent=2))
+        if report.overall_verdict == "fail":
+            sys.exit(1)
+        return
+
+    color = {"green": "green", "yellow": "yellow", "red": "red"}[report.overall]
+    console.print(f"\n[bold]review for[/bold] {report.project_slug}  "
+                  f"([{color}]{report.overall.upper()}[/{color}])")
+    console.print(f"  video: {report.video_path}")
+    console.print()
+    table = Table(show_header=True)
+    table.add_column("dimension")
+    table.add_column("verdict")
+    table.add_column("findings")
+    for d in report.dimensions:
+        color_map = {"pass": "green", "warn": "yellow", "fail": "red"}
+        col = color_map[d.verdict]
+        findings = "\n".join(d.findings) if d.findings else "[dim]—[/dim]"
+        table.add_row(d.name, f"[{col}]{d.verdict}[/{col}]", findings)
+    console.print(table)
+    console.print(f"\n[bold]{report.ship_recommendation}[/bold]")
+    if save:
+        console.print(f"\n[dim]full report: {proj_dir}/data/post-render-review.json[/dim]")
+
+    if report.overall_verdict == "fail":
+        sys.exit(1)
+
+
 # ---------- library (global media library) ----------
 
 

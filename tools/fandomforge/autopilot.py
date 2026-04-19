@@ -814,6 +814,53 @@ def step_qa_gate(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_post_render_review(ctx: AutopilotContext) -> AutopilotEvent:
+    """Grade the rendered edit: technical / visual / audio / structural / shot list."""
+    start = time.perf_counter()
+    video = ctx.project_dir / "exports" / "graded.mp4"
+    if not video.exists():
+        # No render produced (e.g. no-sources project). Skip.
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="post_render_review",
+            status="skipped", message="no graded.mp4 to review",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    try:
+        from fandomforge.review import review_rendered_edit
+        report = review_rendered_edit(ctx.project_dir)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="post_render_review",
+            status="failed",
+            message=f"review crashed: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    # Persist for other tools (/api/project/[slug]/review etc. future).
+    out = ctx.project_dir / "data" / "post-render-review.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(report.to_dict(), indent=2) + "\n")
+
+    # Autopilot status: warn/pass → ok, fail → failed (surfaces to user)
+    status = "failed" if report.overall_verdict == "fail" else "ok"
+    message = f"review: {report.overall.upper()} — {report.ship_recommendation}"
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="post_render_review",
+        status=status,
+        message=message,
+        evidence={
+            "overall": report.overall,
+            "overall_verdict": report.overall_verdict,
+            "dimensions": [
+                {"name": d.name, "verdict": d.verdict, "findings": d.findings}
+                for d in report.dimensions
+            ],
+            "report_path": str(out),
+        },
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def _has_real_sources(ctx: AutopilotContext) -> bool:
     raw = ctx.project_dir / "raw"
     if not raw.exists():
@@ -998,6 +1045,11 @@ STEPS: list[Step] = [
          lambda ctx: (ctx.project_dir / "exports" / f"{ctx.project_slug}.fcpxml").exists()
                      or not _has_real_sources(ctx),
          step_export),
+    Step("post_render_review", "Grade the rendered edit",
+         # Always re-run — the review is fast and its output (post-render-review.json)
+         # is the canonical shippability signal.
+         lambda _ctx: False,
+         step_post_render_review),
 ]
 
 

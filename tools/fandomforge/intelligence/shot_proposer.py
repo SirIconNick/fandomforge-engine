@@ -125,7 +125,11 @@ def load_inputs(project_slug: str, *, project_root: Path | None = None) -> Propo
             catalog_clips.append({
                 "id": source_id,
                 "source_id": source_id,
+                "path": s.get("path"),
                 "duration_sec": (s.get("media") or {}).get("duration_sec"),
+                # Propagate derived-artifact paths so scene-aware offset
+                # picking can find the scenes.json for this source.
+                "derived": s.get("derived") or {},
             })
     if not catalog_clips:
         catalog_data = _load_json(data_dir / "catalog.json") or {}
@@ -144,18 +148,191 @@ def load_inputs(project_slug: str, *, project_root: Path | None = None) -> Propo
     )
 
 
+def _sample_frame_luma(video_path: str, offset_sec: float) -> float | None:
+    """Probe the mean luma (0-255) of a single frame at `offset_sec`.
+
+    Returns None if ffmpeg is unavailable or the probe fails. Used to reject
+    offsets that land on cut-to-black / fade-through moments even within a
+    detected scene — action trailers have plenty of intrinsically dark frames
+    mid-scene.
+    """
+    import shutil as _sh
+    import subprocess as _sp
+    if _sh.which("ffprobe") is None:
+        return None
+    try:
+        proc = _sp.run(
+            [
+                "ffprobe", "-v", "error",
+                "-select_streams", "v:0",
+                "-read_intervals", f"{max(0.0, offset_sec):.3f}%+#1",
+                "-show_entries", "frame=pkt_dts_time",
+                "-show_frames", "-of", "json",
+                "-f", "lavfi",
+                f"movie={video_path},signalstats",
+            ],
+            capture_output=True, text=True, check=False, timeout=10,
+        )
+    except (_sp.TimeoutExpired, FileNotFoundError, OSError):
+        return None
+    # Simpler path: use ffmpeg signalstats in a one-frame pull.
+    try:
+        proc = _sp.run(
+            [
+                "ffmpeg", "-nostdin", "-hide_banner",
+                "-ss", f"{max(0.0, offset_sec):.3f}",
+                "-i", video_path,
+                "-frames:v", "1",
+                "-vf", "signalstats,metadata=print",
+                "-an", "-f", "null", "-",
+            ],
+            capture_output=True, text=True, check=False, timeout=10,
+        )
+    except (_sp.TimeoutExpired, FileNotFoundError, OSError):
+        return None
+    # signalstats prints `lavfi.signalstats.YAVG=123.45` in stderr
+    stderr = proc.stderr or ""
+    for line in stderr.splitlines():
+        if "YAVG=" in line:
+            try:
+                return float(line.split("YAVG=")[1].strip())
+            except (ValueError, IndexError):
+                continue
+    return None
+
+
+def _clip_video_path(clip: dict[str, Any]) -> str | None:
+    """Find a playable path for the clip if available (for luma sampling)."""
+    # Catalog entries may store path directly or via derived['path'] / source-catalog.
+    return clip.get("path") or (clip.get("derived") or {}).get("path")
+
+
+def _load_scenes_for_clip(clip: dict[str, Any]) -> list[tuple[float, float]]:
+    """Read scene boundaries for a source if its catalog entry points at a
+    scenes.json artifact. Returns a list of (start, end) tuples; empty if
+    the file is missing or malformed."""
+    derived = clip.get("derived") or {}
+    scenes_path = derived.get("scenes")
+    if not scenes_path:
+        return []
+    try:
+        from pathlib import Path as _P
+        data = json.loads(_P(scenes_path).read_text())
+    except (OSError, json.JSONDecodeError):
+        return []
+    out: list[tuple[float, float]] = []
+    for s in data.get("scenes", []) or []:
+        try:
+            start = float(s["start_sec"])
+            end = float(s["end_sec"])
+            if end > start:
+                out.append((start, end))
+        except (KeyError, ValueError, TypeError):
+            continue
+    return out
+
+
+def _pick_offset_in_scene(
+    scenes: list[tuple[float, float]],
+    duration: float,
+    rng: random.Random,
+    padding_sec: float = 0.8,
+    min_scene_sec: float = 3.0,
+    shot_span_sec: float = 2.0,
+) -> float:
+    """Pick an offset inside a long-enough scene such that the full 2-second
+    shot window fits between the scene boundaries with padding — so the shot
+    never crosses a cut-to-black transition. Falls back to a uniform random
+    offset if no scene qualifies."""
+    # The shot spans [offset, offset + shot_span_sec]. To keep it fully inside
+    # a scene with padding on both sides, the scene must be at least
+    # (shot_span_sec + 2*padding_sec) long.
+    min_needed = shot_span_sec + 2 * padding_sec
+    eligible = [
+        (start, end) for (start, end) in scenes
+        if (end - start) >= max(min_scene_sec, min_needed)
+        and end <= duration - padding_sec
+    ]
+    if not eligible:
+        # Long tail fallback: pick the longest available scene even if it
+        # doesn't satisfy min_scene_sec, still respecting boundaries.
+        long_scenes = [
+            (s, e) for (s, e) in scenes if (e - s) >= min_needed
+        ]
+        if long_scenes:
+            start, end = rng.choice(long_scenes)
+            lo = start + padding_sec
+            hi = max(lo + 0.1, end - padding_sec - shot_span_sec)
+            return rng.uniform(lo, hi)
+        return rng.uniform(1.0, max(2.0, duration - 5.0))
+    start, end = rng.choice(eligible)
+    lo = start + padding_sec
+    # Ensure offset + shot_span fits inside the scene.
+    hi = end - padding_sec - shot_span_sec
+    if hi <= lo:
+        hi = lo + 0.1
+    return rng.uniform(lo, hi)
+
+
+MIN_LUMA_YAVG = 35.0  # Out of 255. Frames below this read as "too dark" in final render.
+LUMA_PROBE_MAX_RETRIES = 12
+LUMA_SHOT_SPAN_SEC = 2.0  # length of the shot we're trying to place
+
+
+def _shot_span_is_bright(
+    video_path: str,
+    offset_sec: float,
+    shot_span: float = LUMA_SHOT_SPAN_SEC,
+) -> bool:
+    """Probe three frames across the shot's timespan (start, middle, end).
+    Reject if ANY of them is below MIN_LUMA_YAVG — catches shots that fade
+    through dark even though they open bright."""
+    samples = [offset_sec, offset_sec + shot_span / 2, offset_sec + shot_span - 0.05]
+    readings: list[float] = []
+    for t in samples:
+        luma = _sample_frame_luma(video_path, t)
+        if luma is None:
+            # probe unavailable; don't reject based on silence
+            return True
+        readings.append(luma)
+    # All three frames must clear the threshold.
+    return min(readings) >= MIN_LUMA_YAVG
+
+
 def _pick_source(
     catalog: list[dict[str, Any]],
     fandoms: list[str],
     rng: random.Random,
     fallback_index: int,
 ) -> tuple[str, float]:
-    """Pick a source id and a time offset within that source. No dedupe."""
+    """Pick a source id and a time offset within that source. No dedupe.
+
+    Multi-layer darkness defense:
+      1. Prefer offsets inside a detected scene with padding on both sides
+         (avoid fade boundaries).
+      2. Probe the proposed 2-second window's start / middle / end frames via
+         ffmpeg signalstats. If any is below MIN_LUMA_YAVG, pick a new offset.
+      3. Retry up to LUMA_PROBE_MAX_RETRIES times, then give up (no dark-
+         content source will ever produce a bright window — accept it).
+    """
     if catalog:
         clip = rng.choice(catalog)
         source_id = clip.get("id") or clip.get("source_id") or f"catalog_{fallback_index}"
         duration = float(clip.get("duration_sec") or clip.get("duration") or 60.0)
-        offset = rng.uniform(1.0, max(2.0, duration - 5.0))
+        scenes = _load_scenes_for_clip(clip)
+        video_path = _clip_video_path(clip)
+
+        def _fresh_offset() -> float:
+            if scenes:
+                return _pick_offset_in_scene(scenes, duration, rng)
+            return rng.uniform(1.0, max(2.0, duration - 5.0))
+
+        offset = _fresh_offset()
+        if video_path:
+            for _ in range(LUMA_PROBE_MAX_RETRIES):
+                if _shot_span_is_bright(video_path, offset):
+                    break
+                offset = _fresh_offset()
         return source_id, offset
     fandom = fandoms[fallback_index % max(1, len(fandoms))] if fandoms else "placeholder"
     safe = "".join(c if c.isalnum() else "_" for c in fandom).upper() or "SOURCE"
