@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "source_id": "x",
+  "detector": "handwave",
+  "scenes": [
+    {"index": -1, "start_sec": -1, "end_sec": -1, "dominant_color_hex": "red"}
+  ]
+}

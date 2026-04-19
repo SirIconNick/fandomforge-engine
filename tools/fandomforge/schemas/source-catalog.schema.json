@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/source-catalog.schema.json",
+  "title": "SourceCatalog",
+  "description": "Per-project source-video catalog. One entry per ingested source with its path, metadata, derived artifacts (transcript, scenes, clip embeddings, character tags). Written by `ff ingest`.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "sources"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Source"}
+    },
+    "generated_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "Source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "fandom", "source_type", "media"],
+      "properties": {
+        "id": {
+          "description": "Stable identifier. Prefer the blake3 hash of the raw file; CAS key also fine.",
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {"type": "string", "minLength": 1},
+        "fandom": {"type": "string", "minLength": 1},
+        "source_type": {
+          "type": "string",
+          "enum": ["movie", "tv", "anime", "game", "short", "trailer", "other"]
+        },
+        "title": {"type": "string"},
+        "year": {"type": "integer", "minimum": 1888, "maximum": 2100},
+        "media": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["duration_sec", "width", "height", "fps", "codec"],
+          "properties": {
+            "duration_sec": {"type": "number", "exclusiveMinimum": 0},
+            "width": {"type": "integer", "exclusiveMinimum": 0},
+            "height": {"type": "integer", "exclusiveMinimum": 0},
+            "fps": {"type": "number", "exclusiveMinimum": 0},
+            "codec": {"type": "string"},
+            "bitrate_kbps": {"type": "integer", "minimum": 0},
+            "has_audio": {"type": "boolean"},
+            "audio_codec": {"type": "string"},
+            "audio_channels": {"type": "integer", "minimum": 0},
+            "audio_sample_rate": {"type": "integer", "minimum": 0},
+            "variable_frame_rate": {"type": "boolean"}
+          }
+        },
+        "derived": {
+          "description": "Paths to derived artifacts produced during ingest.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "transcript": {"type": "string"},
+            "scenes": {"type": "string"},
+            "clip_embeddings": {"type": "string"},
+            "character_tags": {"type": "string"},
+            "stems_dir": {"type": "string"}
+          }
+        },
+        "characters_present": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["character", "confidence", "appearances"],
+            "properties": {
+              "character": {"type": "string", "minLength": 1},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+              "appearances": {"type": "integer", "minimum": 1}
+            }
+          }
+        },
+        "flags": {
+          "description": "Warnings or blocks attached to this source.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["level", "code", "message"],
+            "properties": {
+              "level": {"type": "string", "enum": ["info", "warn", "block"]},
+              "code": {"type": "string"},
+              "message": {"type": "string"}
+            }
+          }
+        },
+        "added_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

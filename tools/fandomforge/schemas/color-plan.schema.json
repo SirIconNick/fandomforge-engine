@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/color-plan.schema.json",
+  "title": "ColorPlan",
+  "description": "Per-project color unification plan. Specifies the hero frame, global LUT, and per-source adjustments.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "target_color_space", "per_source"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "target_color_space": {
+      "type": "string",
+      "enum": ["Rec.709", "Rec.2020", "DCI-P3", "sRGB", "ACEScg"]
+    },
+    "global_lut": {
+      "description": "Path to a .cube LUT applied at the global timeline level.",
+      "type": "string"
+    },
+    "global_lut_intensity": {"type": "number", "minimum": 0, "maximum": 1},
+    "hero_frame": {
+      "description": "Reference frame used for histogram matching.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "timecode"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "timecode": {"type": "string", "pattern": "^[0-9]{1,3}:[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?$"},
+        "image_path": {"type": "string"}
+      }
+    },
+    "per_source": {
+      "description": "Per-source grade adjustments. Keyed by source_id.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["nodes"],
+        "properties": {
+          "lut": {"type": "string"},
+          "lut_intensity": {"type": "number", "minimum": 0, "maximum": 1},
+          "nodes": {
+            "type": "array",
+            "items": {"$ref": "#/$defs/ColorNode"}
+          }
+        }
+      }
+    },
+    "per_shot_overrides": {
+      "description": "Rare per-shot overrides (keyed by shot.id) when a shot needs a custom grade.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {"$ref": "#/$defs/ColorNode"}
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  },
+  "$defs": {
+    "ColorNode": {
+      "description": "One node in a DaVinci-style color tree. Floats are in their natural ranges (exposure in stops, saturation 0..2, etc).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {"type": "string"},
+        "exposure_stops": {"type": "number", "minimum": -4, "maximum": 4},
+        "contrast": {"type": "number", "minimum": 0, "maximum": 2},
+        "saturation": {"type": "number", "minimum": 0, "maximum": 2},
+        "temperature_k": {"type": "number", "minimum": 2000, "maximum": 12000},
+        "tint": {"type": "number", "minimum": -50, "maximum": 50},
+        "lift": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "r": {"type": "number"},
+            "g": {"type": "number"},
+            "b": {"type": "number"},
+            "y": {"type": "number"}
+          }
+        },
+        "gamma": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "r": {"type": "number"},
+            "g": {"type": "number"},
+            "b": {"type": "number"},
+            "y": {"type": "number"}
+          }
+        },
+        "gain": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "r": {"type": "number"},
+            "g": {"type": "number"},
+            "b": {"type": "number"},
+            "y": {"type": "number"}
+          }
+        },
+        "hue_vs_sat": {
+          "description": "Hue-vs-saturation adjustments in 6 buckets (red, yellow, green, cyan, blue, magenta). Values in [0, 2].",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "red": {"type": "number", "minimum": 0, "maximum": 2},
+            "yellow": {"type": "number", "minimum": 0, "maximum": 2},
+            "green": {"type": "number", "minimum": 0, "maximum": 2},
+            "cyan": {"type": "number", "minimum": 0, "maximum": 2},
+            "blue": {"type": "number", "minimum": 0, "maximum": 2},
+            "magenta": {"type": "number", "minimum": 0, "maximum": 2}
+          }
+        },
+        "qualifier": {
+          "description": "HSL qualifier for targeted adjustments (e.g. skin tones).",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hue_center": {"type": "number", "minimum": 0, "maximum": 360},
+            "hue_width": {"type": "number", "minimum": 0, "maximum": 180},
+            "sat_min": {"type": "number", "minimum": 0, "maximum": 1},
+            "sat_max": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        }
+      }
+    }
+  }
+}

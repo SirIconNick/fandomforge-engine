@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/transition-plan.schema.json",
+  "title": "TransitionPlan",
+  "description": "Frame-accurate per-cut transition plan. Produced by transition-architect / ff match transitions and consumed by NLE exporters.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "fps", "transitions"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "fps": {"type": "number"},
+    "transitions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Transition"}
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  },
+  "$defs": {
+    "Transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_shot_id", "to_shot_id", "type", "at_frame", "duration_frames"],
+      "properties": {
+        "from_shot_id": {"type": "string", "minLength": 1},
+        "to_shot_id": {"type": "string", "minLength": 1},
+        "type": {
+          "type": "string",
+          "enum": [
+            "hard_cut",
+            "match_cut",
+            "flash_cut",
+            "whip_pan",
+            "dip_to_black",
+            "dip_to_white",
+            "cross_dissolve",
+            "speed_ramp",
+            "flash_stack",
+            "morph",
+            "film_burn",
+            "zoom_blur"
+          ]
+        },
+        "at_frame": {"type": "integer", "minimum": 0},
+        "duration_frames": {"type": "integer", "minimum": 0},
+        "motion_direction": {
+          "description": "Direction in degrees (0 = right, 90 = down). Required for whip_pan; optional for match_cut.",
+          "anyOf": [
+            {"type": "number", "minimum": -180, "maximum": 360},
+            {"type": "null"}
+          ]
+        },
+        "requires_motion_blur": {"type": "boolean"},
+        "flash_color": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "speed_ramp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "from_rate": {"type": "number", "exclusiveMinimum": 0},
+            "to_rate": {"type": "number", "exclusiveMinimum": 0},
+            "ease": {"type": "string", "enum": ["linear", "ease_in", "ease_out", "ease_in_out"]}
+          }
+        },
+        "notes": {"type": "string"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"const": "whip_pan"}}, "required": ["type"]},
+          "then": {"required": ["motion_direction"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "speed_ramp"}}, "required": ["type"]},
+          "then": {"required": ["speed_ramp"]}
+        }
+      ]
+    }
+  }
+}

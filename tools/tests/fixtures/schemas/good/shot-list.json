@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 24,
+  "resolution": {"width": 1920, "height": 1080},
+  "song_duration_sec": 180.5,
+  "fandom_quota": {
+    "2": {"Star Wars": 0.4, "Harry Potter": 0.3, "MCU": 0.3}
+  },
+  "shots": [
+    {
+      "id": "act1-shot-01",
+      "act": 1,
+      "start_frame": 0,
+      "duration_frames": 36,
+      "source_id": "rots-cutscenes",
+      "source_timecode": "01:52:30.500",
+      "role": "hero",
+      "mood_tags": ["grief", "mentor-loss"],
+      "framing": "CU",
+      "motion_vector": 0,
+      "eyeline": "left",
+      "beat_sync": {"type": "downbeat", "index": 0, "time_sec": 0.0},
+      "scores": {
+        "theme_fit": 5,
+        "fandom_balance": 4,
+        "emotion": 5,
+        "beat_sync_score": 5
+      },
+      "transition_to_next": "hard_cut",
+      "safe_area_ok": true,
+      "cliche_flag": false,
+      "reuse_index": 0,
+      "description": "Obi-Wan at lava edge",
+      "characters": ["Obi-Wan Kenobi"],
+      "fandom": "Star Wars"
+    }
+  ],
+  "rejected": [
+    {"source_id": "tfa", "source_timecode": "01:42:00.000", "reason": "overused"}
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff match shots (0.1.0)"
+}

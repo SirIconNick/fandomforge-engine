@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source_id": "b3:deadbeef-rots-cutscenes",
+  "language": "en",
+  "model": "whisper-large-v3",
+  "segments": [
+    {
+      "id": 0,
+      "start_sec": 10.24,
+      "end_sec": 14.8,
+      "text": "You were my brother, Anakin. I loved you.",
+      "character": "Obi-Wan Kenobi",
+      "confidence": 0.94,
+      "words": [
+        {"word": "You", "start_sec": 10.24, "end_sec": 10.42, "confidence": 0.96},
+        {"word": "were", "start_sec": 10.42, "end_sec": 10.60, "confidence": 0.98},
+        {"word": "my", "start_sec": 10.60, "end_sec": 10.72, "confidence": 0.95},
+        {"word": "brother", "start_sec": 10.72, "end_sec": 11.04, "confidence": 0.97}
+      ]
+    }
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 17,
+  "resolution": {"width": 0, "height": -1},
+  "shots": [
+    {
+      "id": "",
+      "act": 9,
+      "start_frame": -1,
+      "duration_frames": 0,
+      "source_id": "",
+      "source_timecode": "bad-tc",
+      "role": "selfie",
+      "framing": "super-wide",
+      "cliche_flag": true
+    }
+  ]
+}

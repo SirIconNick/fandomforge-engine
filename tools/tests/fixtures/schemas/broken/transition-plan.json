@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 24,
+  "transitions": [
+    {"from_shot_id": "a", "to_shot_id": "b", "type": "quantum_warp", "at_frame": 0, "duration_frames": 0},
+    {"from_shot_id": "a", "to_shot_id": "c", "type": "whip_pan", "at_frame": 10, "duration_frames": 8},
+    {"from_shot_id": "a", "to_shot_id": "d", "type": "speed_ramp", "at_frame": 20, "duration_frames": 5}
+  ]
+}

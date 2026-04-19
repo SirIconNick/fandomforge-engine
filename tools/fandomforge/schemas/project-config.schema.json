@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/project-config.schema.json",
+  "title": "ProjectConfig",
+  "description": "Per-project configuration. Lives at projects/<slug>/project-config.yaml (or .json). Every field has a default, so partial configs are valid.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "character": {"type": "string", "minLength": 1},
+    "character_aliases": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "era_source_map": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "excluded_sources": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "narrative_priorities": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "era_arc": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start", "end", "sources"],
+        "properties": {
+          "start": {"type": "number", "minimum": 0},
+          "end": {"type": "number", "minimum": 0},
+          "sources": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "concept_beats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["time", "duration", "source", "clip_start"],
+        "properties": {
+          "time": {"type": "number", "minimum": 0},
+          "duration": {"type": "number", "exclusiveMinimum": 0},
+          "source": {"type": "string", "minLength": 1},
+          "clip_start": {"type": "number", "minimum": 0},
+          "desc": {"type": "string"}
+        }
+      }
+    },
+    "song": {"type": "string"},
+    "song_offset_sec": {"type": "number"},
+    "song_gain_db": {"type": "number", "minimum": -24, "maximum": 6},
+    "default_duck_db": {"type": "number", "minimum": -30, "maximum": 0},
+    "template": {"type": "string"},
+    "vision_context": {"type": "string"},
+    "add_titles": {"type": "boolean"},
+    "apply_transitions": {"type": "boolean"},
+    "add_sfx": {"type": "boolean"},
+    "run_qa": {"type": "boolean"},
+    "extract_missing_vo": {"type": "boolean"},
+    "run_director": {"type": "boolean"},
+    "build_storyboard": {"type": "boolean"},
+    "build_thumbnail": {"type": "boolean"},
+    "generate_captions": {"type": "boolean"},
+    "build_youtube_meta": {"type": "boolean"},
+    "copyright_audit": {"type": "boolean"},
+    "enrich_motion": {"type": "boolean"},
+    "enrich_gaze": {"type": "boolean"},
+    "target_duration_sec": {
+      "anyOf": [
+        {"type": "number", "exclusiveMinimum": 0},
+        {"type": "null"}
+      ]
+    },
+    "export_presets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["youtube", "tiktok", "reels", "shorts", "twitter", "master"]
+      }
+    },
+    "cluster_archetype": {"type": "string"},
+    "lut_name": {"type": "string"},
+    "lut_intensity": {"type": "number", "minimum": 0, "maximum": 1},
+    "fandoms": {
+      "description": "Optional multifandom project descriptor — fandoms referenced by shots in this project.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "share": {"type": "number", "minimum": 0, "maximum": 1},
+          "primary_characters": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "platform_target": {
+      "description": "Primary delivery platform. Drives QA safe-area rules, export presets, loudness targets.",
+      "type": "string",
+      "enum": ["youtube", "tiktok", "reels", "shorts", "twitter", "master"]
+    },
+    "target_loudness_lufs": {"type": "number", "minimum": -30, "maximum": -8},
+    "true_peak_ceiling_dbtp": {"type": "number", "minimum": -6, "maximum": 0}
+  }
+}

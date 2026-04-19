@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 24,
+  "transitions": [
+    {
+      "from_shot_id": "act1-shot-01",
+      "to_shot_id": "act1-shot-02",
+      "type": "match_cut",
+      "at_frame": 36,
+      "duration_frames": 0,
+      "motion_direction": 270,
+      "requires_motion_blur": false,
+      "notes": "match on eyeline"
+    },
+    {
+      "from_shot_id": "act1-shot-02",
+      "to_shot_id": "act2-shot-01",
+      "type": "whip_pan",
+      "at_frame": 120,
+      "duration_frames": 8,
+      "motion_direction": 0,
+      "requires_motion_blur": true
+    },
+    {
+      "from_shot_id": "act2-shot-01",
+      "to_shot_id": "act2-shot-02",
+      "type": "speed_ramp",
+      "at_frame": 144,
+      "duration_frames": 12,
+      "speed_ramp": {"from_rate": 1.0, "to_rate": 0.25, "ease": "ease_in_out"}
+    }
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff match transitions (0.1.0)"
+}

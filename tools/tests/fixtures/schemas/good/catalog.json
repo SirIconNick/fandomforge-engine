@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-18T12:00:00+00:00",
+  "clips": [
+    {
+      "id": "rots-obiwan-anakin",
+      "source_title": "Revenge of the Sith",
+      "source_type": "movie",
+      "fandom": "Star Wars",
+      "timestamp": "01:52:30.500",
+      "duration_sec": 2.4,
+      "description": "Obi-Wan looks down at Anakin burning",
+      "mood_tags": ["grief", "betrayal", "mentor-loss"],
+      "framing": "CU",
+      "motion": "static",
+      "color_notes": "Warm lava glow, teal highlights",
+      "notes": "Iconic, risk of cliche",
+      "created_at": "2026-04-18T12:00:00+00:00",
+      "characters": ["Obi-Wan Kenobi", "Anakin Skywalker"],
+      "scene_number": 184
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/beat-map.schema.json",
+  "title": "BeatMap",
+  "description": "Full beat analysis for a single audio file. Produced by `ff beat analyze` and consumed by every downstream pipeline stage.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "song",
+    "artist",
+    "duration_sec",
+    "bpm",
+    "bpm_confidence",
+    "time_signature",
+    "beats",
+    "downbeats",
+    "onsets"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "Schema version. Currently 1.",
+      "type": "integer",
+      "const": 1
+    },
+    "song": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artist": {
+      "type": "string",
+      "minLength": 1
+    },
+    "duration_sec": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "bpm": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 300
+    },
+    "bpm_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "time_signature": {
+      "description": "Time signature as 'N/M' e.g. '4/4', '3/4', '6/8'.",
+      "type": "string",
+      "pattern": "^[0-9]+/[0-9]+$"
+    },
+    "beats": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "downbeats": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "onsets": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "key": {
+      "description": "Detected musical key (e.g. 'C#m', 'Fmaj'). Optional — set only when madmom or essentia is available.",
+      "type": "string"
+    },
+    "downbeat_source": {
+      "description": "Which detector produced the downbeats. 'madmom-dbn' is preferred; 'librosa-heuristic' is the fallback approximation.",
+      "type": "string",
+      "enum": ["madmom-dbn", "madmom-rnn", "librosa-heuristic"]
+    },
+    "drops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["time", "intensity", "type"],
+        "properties": {
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "intensity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "type": {
+            "type": "string",
+            "pattern": "^(main_drop|second_drop|outro_drop|peak|drop_[0-9]+)$"
+          }
+        }
+      }
+    },
+    "buildups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start", "end", "curve"],
+        "properties": {
+          "start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end": {
+            "type": "number",
+            "minimum": 0
+          },
+          "curve": {
+            "type": "string",
+            "enum": ["linear", "exponential", "stepped"]
+          }
+        }
+      }
+    },
+    "breakdowns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start", "end", "intensity"],
+        "properties": {
+          "start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end": {
+            "type": "number",
+            "minimum": 0
+          },
+          "intensity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "energy_curve": {
+      "description": "Per-sample normalized energy. Each entry is [time_sec, energy_0_to_1].",
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          {"type": "number", "minimum": 0},
+          {"type": "number", "minimum": 0, "maximum": 1}
+        ],
+        "items": false
+      }
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "description": "Tool/version tag that produced this artifact.",
+      "type": "string"
+    }
+  }
+}

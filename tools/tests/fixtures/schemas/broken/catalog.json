@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "updated_at": "yesterday",
+  "clips": [
+    {
+      "id": "x",
+      "source_title": "",
+      "source_type": "graphic-novel",
+      "fandom": "Star Wars",
+      "timestamp": "1h52m",
+      "duration_sec": 0,
+      "description": "missing stuff",
+      "framing": "super-wide"
+    }
+  ]
+}

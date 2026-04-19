@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "project_slug": "",
+  "sources": [
+    {
+      "id": "",
+      "path": "",
+      "fandom": "",
+      "source_type": "holodisc",
+      "media": {"duration_sec": 0, "width": 0, "height": 0, "fps": 0, "codec": ""}
+    }
+  ]
+}

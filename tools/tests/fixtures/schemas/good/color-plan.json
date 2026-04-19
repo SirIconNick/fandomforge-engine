@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "target_color_space": "Rec.709",
+  "global_lut": "luts/teal-orange-cinematic.cube",
+  "global_lut_intensity": 0.6,
+  "hero_frame": {
+    "source_id": "rots-cutscenes",
+    "timecode": "01:52:30.500",
+    "image_path": "references/hero.png"
+  },
+  "per_source": {
+    "rots-cutscenes": {
+      "lut": "luts/rots-match.cube",
+      "lut_intensity": 0.8,
+      "nodes": [
+        {"label": "match-hero", "exposure_stops": -0.3, "contrast": 1.1, "saturation": 0.95, "temperature_k": 5200, "tint": -4},
+        {"label": "skin-protect", "hue_vs_sat": {"red": 1.05, "yellow": 1.0, "green": 1.0, "cyan": 1.0, "blue": 1.0, "magenta": 1.0}}
+      ]
+    }
+  },
+  "per_shot_overrides": {
+    "act1-shot-01": [
+      {"label": "push-warm", "temperature_k": 5600}
+    ]
+  },
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff match color (0.1.0)"
+}

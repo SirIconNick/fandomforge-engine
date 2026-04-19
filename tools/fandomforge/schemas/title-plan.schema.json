@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/title-plan.schema.json",
+  "title": "TitlePlan",
+  "description": "Per-project title/overlay plan. Produced by title-designer, consumed by QA gate (safe-area check) and NLE exporters (as essential-graphics / Fusion titles).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "fps", "resolution", "titles"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "fps": {"type": "number"},
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": {"type": "integer", "exclusiveMinimum": 0},
+        "height": {"type": "integer", "exclusiveMinimum": 0}
+      }
+    },
+    "titles": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/Title"}
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  },
+  "$defs": {
+    "Title": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "in_frame", "out_frame", "font", "size_px", "position", "safe_area_ok"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "in_frame": {"type": "integer", "minimum": 0},
+        "out_frame": {"type": "integer", "minimum": 0},
+        "font": {"type": "string", "minLength": 1},
+        "font_weight": {
+          "type": "string",
+          "enum": ["thin", "light", "regular", "medium", "semibold", "bold", "heavy", "black"]
+        },
+        "italic": {"type": "boolean"},
+        "size_px": {"type": "integer", "exclusiveMinimum": 0},
+        "color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "stroke_color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+        "stroke_width_px": {"type": "integer", "minimum": 0},
+        "background": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "color": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+            "opacity": {"type": "number", "minimum": 0, "maximum": 1},
+            "padding_px": {"type": "integer", "minimum": 0}
+          }
+        },
+        "position": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "anchor"],
+          "properties": {
+            "x": {"type": "integer"},
+            "y": {"type": "integer"},
+            "anchor": {
+              "type": "string",
+              "enum": ["top-left", "top-center", "top-right", "center-left", "center", "center-right", "bottom-left", "bottom-center", "bottom-right"]
+            }
+          }
+        },
+        "animation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "in_preset": {
+              "type": "string",
+              "enum": ["none", "fade", "slide_up", "slide_down", "slide_left", "slide_right", "type_on", "zoom_in", "kinetic_stack"]
+            },
+            "out_preset": {
+              "type": "string",
+              "enum": ["none", "fade", "slide_up", "slide_down", "slide_left", "slide_right", "type_off", "zoom_out"]
+            },
+            "in_frames": {"type": "integer", "minimum": 0},
+            "out_frames": {"type": "integer", "minimum": 0}
+          }
+        },
+        "safe_area_ok": {"type": "boolean"},
+        "platform_safe_area": {
+          "description": "Which platform's safe area was checked.",
+          "type": "string",
+          "enum": ["youtube", "tiktok", "reels", "shorts", "twitter", "master"]
+        }
+      }
+    }
+  }
+}

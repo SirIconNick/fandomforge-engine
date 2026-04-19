@@ -1,0 +1,64 @@
+[project]
+name = "fandomforge-tools"
+version = "0.1.0"
+description = "Python analysis tools for multifandom video editing"
+requires-python = ">=3.13"
+dependencies = [
+  "librosa>=0.11.0",
+  "numpy>=2.0.0",
+  "scipy>=1.14.0",
+  "soundfile>=0.12.0",
+  "click>=8.2.0",
+  "rich>=13.9.0",
+  "ffmpeg-python>=0.2.0",
+  "jsonschema>=4.23.0",
+  "pyyaml>=6.0.2",
+  "scenedetect[opencv]>=0.6.4",
+  "openai-whisper>=20240930",
+  "Pillow>=10.0.0",
+  "open_clip_torch>=2.24.0",
+  "torch>=2.4.0",
+  "demucs>=4.0.1",
+  "face_recognition>=1.3.0",
+  "madmom>=0.16.1",
+  "Cython>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+  "ruff>=0.8.0",
+  "mypy>=1.14.0",
+]
+
+[project.scripts]
+ff = "fandomforge.cli:main"
+
+[build-system]
+requires = ["setuptools>=70.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fandomforge*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+strict = true
+python_version = "3.13"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    # madmom 0.16.x emits these on every model load. Out of our control
+    # until madmom cuts a numpy-2-clean release.
+    "ignore::DeprecationWarning:madmom",
+    "ignore::DeprecationWarning:audioread",
+    "ignore:.*pkg_resources.*:UserWarning",
+]

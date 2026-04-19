@@ -1,0 +1,8 @@
+{
+  "character": "",
+  "song_gain_db": -100,
+  "lut_intensity": 2.0,
+  "platform_target": "myspace",
+  "target_loudness_lufs": 0,
+  "unknown_yaml_key": true
+}

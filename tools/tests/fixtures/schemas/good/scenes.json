@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_id": "b3:deadbeef-rots-cutscenes",
+  "detector": "adaptive",
+  "threshold": 3.0,
+  "scenes": [
+    {
+      "index": 0,
+      "start_sec": 0.0,
+      "end_sec": 5.2,
+      "start_frame": 0,
+      "end_frame": 125,
+      "shot_type": "wide",
+      "motion_magnitude": 0.42,
+      "dominant_color_hex": "#2B1810"
+    },
+    {
+      "index": 1,
+      "start_sec": 5.2,
+      "end_sec": 9.1,
+      "start_frame": 125,
+      "end_frame": 218,
+      "shot_type": "CU"
+    }
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00"
+}

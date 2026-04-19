@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "song": "",
+  "artist": "Broken Artist",
+  "duration_sec": -10,
+  "bpm": 500,
+  "bpm_confidence": 1.7,
+  "time_signature": "four-four",
+  "beats": [0.0],
+  "downbeats": [0.0],
+  "onsets": [0.0],
+  "drops": [
+    {"time": 10, "intensity": 2.0, "type": "giant_drop"}
+  ],
+  "energy_curve": [
+    [0.0, 0.2, "extra"]
+  ],
+  "bogus_field": "should not be here"
+}

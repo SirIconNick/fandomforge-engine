@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 24,
+  "resolution": {"width": 1080, "height": 1920},
+  "titles": [
+    {
+      "id": "opening",
+      "text": "WE COULDN'T SAVE THEM",
+      "in_frame": 24,
+      "out_frame": 96,
+      "font": "Inter",
+      "font_weight": "black",
+      "italic": false,
+      "size_px": 96,
+      "color": "#FFFFFF",
+      "stroke_color": "#000000",
+      "stroke_width_px": 2,
+      "background": {"color": "#000000", "opacity": 0.4, "padding_px": 24},
+      "position": {"x": 0, "y": -120, "anchor": "bottom-center"},
+      "animation": {
+        "in_preset": "fade",
+        "out_preset": "fade",
+        "in_frames": 6,
+        "out_frames": 6
+      },
+      "safe_area_ok": true,
+      "platform_safe_area": "reels"
+    }
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff title plan (0.1.0)"
+}

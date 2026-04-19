@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "stage": "pre-export",
+  "status": "pass",
+  "rules": [
+    {"id": "qa.refs", "name": "Unresolved references", "level": "block", "status": "pass"},
+    {"id": "qa.duration", "name": "Duration math", "level": "block", "status": "pass",
+     "evidence": {"shot_total_sec": 162.0, "song_duration_sec": 162.3, "delta_sec": 0.3}},
+    {"id": "qa.cliche", "name": "Cliche shots", "level": "warn", "status": "overridden",
+     "message": "Obi-Wan burning shot flagged as cliche",
+     "override_reason": "single intentional use as emotional anchor"}
+  ],
+  "summary": {"total": 3, "passed": 2, "warned": 0, "failed": 0, "overridden": 1},
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff qa gate (0.1.0)"
+}

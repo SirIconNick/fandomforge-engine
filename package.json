@@ -1,0 +1,22 @@
+{
+  "name": "fandomforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered multifandom video creation suite",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "lint": "pnpm --filter web lint",
+    "new": "bash scripts/new-project.sh",
+    "beat": "python tools/cli.py beat",
+    "setup": "bash scripts/setup.sh"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "workspaces": [
+    "web"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "concept": {
+    "theme": "Mentors who knew",
+    "one_sentence": "Every mentor who saw the fall coming and stayed anyway.",
+    "mode": "woven",
+    "archetype": "sacrifice",
+    "risks": ["overused Obi-Wan", "too much Dumbledore"]
+  },
+  "song": {
+    "title": "Until I Bleed Out",
+    "artist": "Twenty One Pilots",
+    "file": "raw/until-i-bleed-out.mp3",
+    "duration_sec": 162.3,
+    "credit_line": "Twenty One Pilots — Until I Bleed Out (Fueled by Ramen, 2020)"
+  },
+  "fandoms": [
+    {"name": "Star Wars", "share": 0.35, "primary_characters": ["Obi-Wan"]},
+    {"name": "Harry Potter", "share": 0.35, "primary_characters": ["Dumbledore"]},
+    {"name": "MCU", "share": 0.30, "primary_characters": ["Tony Stark", "Yondu"]}
+  ],
+  "vibe": "emotional",
+  "length_seconds": 162,
+  "platform_target": "youtube",
+  "resolution": {"width": 1920, "height": 1080},
+  "fps": 24,
+  "target_lufs": -14,
+  "acts": [
+    {
+      "number": 1,
+      "name": "Setup",
+      "start_sec": 0,
+      "end_sec": 40,
+      "energy_target": 30,
+      "emotional_goal": "They see it coming",
+      "fandom_focus": {"Star Wars": 0.5, "Harry Potter": 0.3, "MCU": 0.2},
+      "beat_targets": ["downbeat:0", "buildup:0"],
+      "key_image": "mentor watching their student across a room",
+      "avoid": ["pre-death monologue"],
+      "learning": "Establish the knowing look"
+    },
+    {
+      "number": 2,
+      "name": "Descent",
+      "start_sec": 40,
+      "end_sec": 110,
+      "energy_target": 80,
+      "emotional_goal": "The fall is unstoppable",
+      "fandom_focus": {"Star Wars": 0.3, "Harry Potter": 0.3, "MCU": 0.4},
+      "beat_targets": ["main_drop"],
+      "key_image": "hero refuses mentor's plea",
+      "avoid": ["repeated shots"],
+      "learning": "Use match cuts on motion across fandoms"
+    }
+  ],
+  "energy_curve": [[0, 20], [40, 60], [80, 100]],
+  "handoffs": {
+    "beat_map": {"path": "data/beat-map.json", "status": "final", "validated_at": "2026-04-18T12:00:00+00:00", "schema_id": "beat-map"},
+    "shot_list": {"path": "data/shot-list.json", "status": "draft", "schema_id": "shot-list"}
+  },
+  "credits": {
+    "song_credit": "Twenty One Pilots — Until I Bleed Out",
+    "source_credits": [
+      "Revenge of the Sith (2005, Lucasfilm)",
+      "Half-Blood Prince (2009, Warner Bros)",
+      "Endgame (2019, Marvel Studios)"
+    ],
+    "fair_use_statement": "Non-commercial transformative fan edit. All source material owned by respective rights holders."
+  },
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "edit-strategist (claude-opus-4.7)"
+}

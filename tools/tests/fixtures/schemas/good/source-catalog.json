@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "sources": [
+    {
+      "id": "b3:deadbeef-rots-cutscenes",
+      "path": "projects/mentor-loss/raw/rots-cutscenes.mp4",
+      "fandom": "Star Wars",
+      "source_type": "movie",
+      "title": "Revenge of the Sith",
+      "year": 2005,
+      "media": {
+        "duration_sec": 8280.5,
+        "width": 1920,
+        "height": 1080,
+        "fps": 23.976,
+        "codec": "h264",
+        "bitrate_kbps": 12000,
+        "has_audio": true,
+        "audio_codec": "aac",
+        "audio_channels": 2,
+        "audio_sample_rate": 48000,
+        "variable_frame_rate": false
+      },
+      "derived": {
+        "transcript": "projects/mentor-loss/derived/rots-cutscenes/transcript.json",
+        "scenes": "projects/mentor-loss/derived/rots-cutscenes/scenes.json",
+        "clip_embeddings": "projects/mentor-loss/derived/rots-cutscenes/clip.npz",
+        "character_tags": "projects/mentor-loss/derived/rots-cutscenes/characters.json"
+      },
+      "characters_present": [
+        {"character": "Obi-Wan Kenobi", "confidence": 0.92, "appearances": 184}
+      ],
+      "flags": [],
+      "added_at": "2026-04-18T12:00:00+00:00"
+    }
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00"
+}

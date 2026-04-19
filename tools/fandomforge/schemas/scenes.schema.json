@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/scenes.schema.json",
+  "title": "Scenes",
+  "description": "Scene-cut detection output for a source video. Produced by PySceneDetect during ingest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "source_id", "detector", "scenes"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "detector": {
+      "type": "string",
+      "enum": ["content", "adaptive", "threshold", "hash"]
+    },
+    "threshold": {"type": "number"},
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["index", "start_sec", "end_sec"],
+        "properties": {
+          "index": {"type": "integer", "minimum": 0},
+          "start_sec": {"type": "number", "minimum": 0},
+          "end_sec": {"type": "number", "minimum": 0},
+          "start_frame": {"type": "integer", "minimum": 0},
+          "end_frame": {"type": "integer", "minimum": 0},
+          "shot_type": {
+            "type": "string",
+            "enum": ["", "ECU", "CU", "MCU", "medium", "MS", "MWS", "wide", "WS", "EWS", "insert", "OTS", "POV"]
+          },
+          "motion_magnitude": {"type": "number", "minimum": 0},
+          "dominant_color_hex": {"type": "string", "pattern": "^#[0-9A-Fa-f]{6}$"},
+          "thumbnail_path": {"type": "string"}
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"}
+  }
+}

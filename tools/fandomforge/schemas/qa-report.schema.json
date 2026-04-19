@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/qa-report.schema.json",
+  "title": "QAReport",
+  "description": "Output of `ff qa gate` and `ff qa post-render`. Captures every rule checked, its result, and any override used.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "stage", "status", "rules"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "stage": {
+      "type": "string",
+      "enum": ["pre-export", "post-render"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "warn", "fail"]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "level", "status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "level": {
+            "type": "string",
+            "enum": ["block", "warn", "info"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pass", "warn", "fail", "skipped", "overridden"]
+          },
+          "message": {"type": "string"},
+          "evidence": {
+            "description": "Concrete evidence for the ruling: file paths, timestamps, counts.",
+            "type": "object"
+          },
+          "override_reason": {"type": "string"}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "passed": {"type": "integer", "minimum": 0},
+        "warned": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "overridden": {"type": "integer", "minimum": 0}
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

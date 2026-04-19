@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "target_lufs": -14,
+  "true_peak_ceiling_dbtp": -1,
+  "song_gain_db": -6,
+  "layers": [
+    {"name": "song", "role": "music", "gain_db": -6, "file": "raw/in-the-end.mp3"},
+    {"name": "obiwan-line", "role": "dialogue", "gain_db": 0, "file": "dialogue/obiwan-01.wav", "pan": -0.1, "reverb_preset": "room-small"},
+    {"name": "impact-drop1", "role": "impact", "gain_db": -3, "file": "sfx/impact-01.wav"}
+  ],
+  "duck_events": [
+    {"from_sec": 60, "to_sec": 62, "target_layer": "song", "duck_db": -10, "attack_ms": 120, "release_ms": 400}
+  ],
+  "impacts": [
+    {"at_sec": 60.5, "kind": "impact", "gain_db": -3, "file": "sfx/impact-01.wav"}
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff audio plan (0.1.0)"
+}

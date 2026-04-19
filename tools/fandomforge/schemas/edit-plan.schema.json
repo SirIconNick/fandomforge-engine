@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/edit-plan.schema.json",
+  "title": "EditPlan",
+  "description": "Master edit plan — the concept, song, fandoms, act breakdown, and explicit handoff refs to every downstream artifact. Produced by edit-strategist, referenced by every other agent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_slug",
+    "concept",
+    "song",
+    "fandoms",
+    "vibe",
+    "length_seconds",
+    "platform_target",
+    "acts"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "concept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["theme", "one_sentence"],
+      "properties": {
+        "theme": {"type": "string", "minLength": 3},
+        "one_sentence": {"type": "string", "minLength": 10},
+        "mode": {
+          "type": "string",
+          "enum": ["convergent", "parallel", "relay", "woven", "single-character"]
+        },
+        "archetype": {"type": "string"},
+        "risks": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "song": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "artist"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "artist": {"type": "string", "minLength": 1},
+        "file": {"type": "string"},
+        "duration_sec": {"type": "number", "exclusiveMinimum": 0},
+        "credit_line": {"type": "string"}
+      }
+    },
+    "fandoms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "share": {"type": "number", "minimum": 0, "maximum": 1},
+          "primary_characters": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "vibe": {
+      "type": "string",
+      "enum": ["action", "emotional", "hype", "sad", "funny", "mixed", "cinematic", "horror", "romantic", "triumphant"]
+    },
+    "length_seconds": {"type": "number", "exclusiveMinimum": 0, "maximum": 900},
+    "platform_target": {
+      "type": "string",
+      "enum": ["youtube", "tiktok", "reels", "shorts", "twitter", "master"]
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height"],
+      "properties": {
+        "width": {"type": "integer", "exclusiveMinimum": 0},
+        "height": {"type": "integer", "exclusiveMinimum": 0}
+      }
+    },
+    "fps": {"type": "number"},
+    "target_lufs": {"type": "number", "minimum": -30, "maximum": -8},
+    "acts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/Act"}
+    },
+    "energy_curve": {
+      "description": "Planned per-act or per-second energy target (0-100). Used by QA to compare against actual beat-map energy curve.",
+      "type": "array",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "prefixItems": [
+          {"type": "number", "minimum": 0},
+          {"type": "number", "minimum": 0, "maximum": 100}
+        ],
+        "items": false
+      }
+    },
+    "handoffs": {
+      "description": "Required downstream artifacts. Each entry is validated before the edit is considered 'done planning'.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "beat_map": {"$ref": "#/$defs/HandoffRef"},
+        "shot_list": {"$ref": "#/$defs/HandoffRef"},
+        "color_plan": {"$ref": "#/$defs/HandoffRef"},
+        "transition_plan": {"$ref": "#/$defs/HandoffRef"},
+        "audio_plan": {"$ref": "#/$defs/HandoffRef"},
+        "title_plan": {"$ref": "#/$defs/HandoffRef"}
+      }
+    },
+    "credits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "song_credit": {"type": "string", "minLength": 1},
+        "source_credits": {"type": "array", "items": {"type": "string"}},
+        "fair_use_statement": {"type": "string"}
+      }
+    },
+    "copyright_overrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule", "reason"],
+        "properties": {
+          "rule": {"type": "string"},
+          "reason": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  },
+  "$defs": {
+    "Act": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["number", "name", "start_sec", "end_sec", "energy_target", "emotional_goal"],
+      "properties": {
+        "number": {"type": "integer", "minimum": 1, "maximum": 5},
+        "name": {"type": "string", "minLength": 1},
+        "start_sec": {"type": "number", "minimum": 0},
+        "end_sec": {"type": "number", "minimum": 0},
+        "energy_target": {"type": "number", "minimum": 0, "maximum": 100},
+        "emotional_goal": {"type": "string", "minLength": 3},
+        "fandom_focus": {
+          "type": "object",
+          "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}
+        },
+        "beat_targets": {
+          "description": "References to beat-map events this act should align to (e.g. 'main_drop', 'downbeat:32').",
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "key_image": {"type": "string"},
+        "avoid": {"type": "array", "items": {"type": "string"}},
+        "learning": {"type": "string"}
+      }
+    },
+    "HandoffRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "status"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "enum": ["pending", "draft", "final", "approved"]},
+        "validated_at": {"type": "string", "format": "date-time"},
+        "schema_id": {"type": "string"}
+      }
+    }
+  }
+}

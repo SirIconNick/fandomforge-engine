@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "fps": 24,
+  "resolution": {"width": 0, "height": 0},
+  "titles": [
+    {"id": "bad", "text": "", "in_frame": -1, "out_frame": 0, "font": "", "size_px": 0,
+     "color": "red", "position": {"x": 0, "y": 0, "anchor": "centerish"}, "safe_area_ok": "yes"}
+  ]
+}

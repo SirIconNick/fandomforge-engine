@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "song": "Demo Song",
+  "artist": "Demo Artist",
+  "duration_sec": 180.5,
+  "bpm": 128.0,
+  "bpm_confidence": 0.91,
+  "time_signature": "4/4",
+  "beats": [0.47, 0.94, 1.41, 1.88, 2.35],
+  "downbeats": [0.47, 2.35],
+  "onsets": [0.1, 0.47, 0.94, 1.41, 1.88, 2.35],
+  "downbeat_source": "librosa-heuristic",
+  "drops": [
+    {"time": 60.5, "intensity": 1.0, "type": "main_drop"},
+    {"time": 120.0, "intensity": 0.82, "type": "second_drop"}
+  ],
+  "buildups": [
+    {"start": 52.5, "end": 60.5, "curve": "exponential"}
+  ],
+  "breakdowns": [
+    {"start": 75.0, "end": 85.0, "intensity": 0.18}
+  ],
+  "energy_curve": [
+    [0.0, 0.2],
+    [1.0, 0.35],
+    [60.5, 1.0]
+  ],
+  "generated_at": "2026-04-18T12:00:00+00:00",
+  "generator": "ff beat analyze (0.1.0)"
+}

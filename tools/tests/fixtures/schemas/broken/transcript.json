@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "source_id": "",
+  "language": "english",
+  "segments": [
+    {"start_sec": -1, "end_sec": 0, "text": "bad", "confidence": 2}
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "project_slug": "mentor-loss",
+  "target_color_space": "WeirdSpace",
+  "global_lut_intensity": 3,
+  "per_source": {
+    "src-1": {
+      "nodes": [
+        {"exposure_stops": 10, "saturation": 99}
+      ]
+    }
+  }
+}
