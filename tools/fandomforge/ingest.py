@@ -277,22 +277,29 @@ def _transcribe_to_schema(
     )
 
     segments: list[dict[str, Any]] = []
+    import math as _math
     for i, seg in enumerate(result.get("segments", [])):
         words_raw = seg.get("words") or []
         words: list[dict[str, Any]] = []
         for w in words_raw:
+            # whisper word-level already reports probability in [0,1]
+            prob = float(w.get("probability", 0.0))
             words.append({
                 "word": str(w.get("word", "")).strip(),
                 "start_sec": float(w.get("start", 0.0)),
                 "end_sec": float(w.get("end", 0.0)),
-                "confidence": float(w.get("probability", 0.0)),
+                "confidence": max(0.0, min(1.0, prob)),
             })
+        # whisper segment-level gives avg_logprob (natural log, always <= 0).
+        # Convert to a probability in (0, 1] via exp(), clamp for safety.
+        avg_logprob = float(seg.get("avg_logprob", 0.0))
+        seg_conf = _math.exp(avg_logprob) if avg_logprob < 0 else avg_logprob
         segments.append({
             "id": i,
             "start_sec": float(seg["start"]),
             "end_sec": float(seg["end"]),
             "text": str(seg.get("text", "")).strip(),
-            "confidence": float(seg.get("avg_logprob", 0.0)),
+            "confidence": max(0.0, min(1.0, seg_conf)),
             "words": words,
         })
 
