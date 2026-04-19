@@ -132,3 +132,4 @@ export, upload, watch the views roll in
 - An NLE: DaVinci Resolve (free), Premiere Pro, CapCut, or Vegas
 - Claude Code CLI (for the expert agents)
 
+
