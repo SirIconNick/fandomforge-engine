@@ -131,3 +131,4 @@ export, upload, watch the views roll in
 - ffmpeg (brew install ffmpeg)
 - An NLE: DaVinci Resolve (free), Premiere Pro, CapCut, or Vegas
 - Claude Code CLI (for the expert agents)
+
