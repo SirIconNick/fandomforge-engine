@@ -3216,6 +3216,7 @@ def grab() -> None:
               help="Path to a Netscape-format cookies.txt (alternative to --cookies-from-browser).")
 @click.option("--note", default=None, help="Optional free-form note stored in the sidecar (e.g. where this came from).")
 @click.option("--no-ingest", is_flag=True, help="Skip scene + transcript extraction after download.")
+@click.option("--no-verify", is_flag=True, help="Skip post-download stream verification (ffprobe + silence check).")
 def grab_video_cmd(
     project: str,
     url: str,
@@ -3228,6 +3229,7 @@ def grab_video_cmd(
     cookies_file: str | None,
     note: str | None,
     no_ingest: bool,
+    no_verify: bool,
 ) -> None:
     """Download a URL into projects/<slug>/. Default: video+audio mp4 into raw/.
     Use --audio-only for mp3 into assets/, or --no-audio for silent mp4.
@@ -3268,9 +3270,10 @@ def grab_video_cmd(
         audio_format=audio_format,
         cookies_from_browser=cookies_from_browser,
         cookies_file=cookies_file,
+        verify_streams=not no_verify,
     )
 
-    if not result.success or not result.path:
+    if not result.success:
         kind = result.error_kind.value if result.error_kind else "unknown"
         console.print(f"[red]✗ download failed:[/red] [bold]{kind}[/bold]")
         if result.error_message:
@@ -3279,8 +3282,25 @@ def grab_video_cmd(
             console.print(f"  [dim]attempts: {' → '.join(result.attempts)}[/dim]")
         if result.error_kind in (DownloadErrorKind.AGE_RESTRICTED, DownloadErrorKind.PRIVATE) and not (cookies_from_browser or cookies_file):
             console.print("  [yellow]hint:[/yellow] retry with [bold]--cookies-from-browser chrome[/bold] (or firefox/safari/edge/brave/opera/vivaldi/whale/chromium)")
+        if result.error_kind in (
+            DownloadErrorKind.MISSING_VIDEO_STREAM,
+            DownloadErrorKind.MISSING_AUDIO_STREAM,
+            DownloadErrorKind.SILENT_AUDIO,
+        ):
+            # Purge the broken file + sidecar so the next attempt starts clean
+            if result.path and result.path.exists():
+                try:
+                    result.path.unlink()
+                    console.print(f"  [dim]removed broken file: {result.path.name}[/dim]")
+                except OSError:
+                    pass
+            console.print("  [yellow]hint:[/yellow] try a different URL for this source")
         if result.stderr:
             console.print(f"  [dim]{result.stderr[-400:]}[/dim]")
+        sys.exit(1)
+
+    if not result.path:
+        console.print(f"[red]✗ download failed:[/red] no file produced")
         sys.exit(1)
 
     import hashlib
@@ -3304,10 +3324,18 @@ def grab_video_cmd(
         "attempts": result.attempts,
         "subtitles_dropped": result.subtitles_dropped,
         "format_fallback_used": result.format_fallback_used,
+        "has_video_stream": result.has_video_stream,
+        "has_audio_stream": result.has_audio_stream,
+        "audio_mean_dbfs": result.audio_mean_dbfs,
     }, indent=2) + "\n")
 
     console.print(f"  [green]✓[/green] {result.path.name} ({len(data):,} bytes, sha256 {sha[:12]}...)")
     console.print(f"  sidecar: {sidecar.name}")
+    if result.has_video_stream is not None or result.has_audio_stream is not None:
+        v = "✓" if result.has_video_stream else "—"
+        a = "✓" if result.has_audio_stream else "—"
+        dbfs = f" @ {result.audio_mean_dbfs:.1f} dB" if result.audio_mean_dbfs is not None else ""
+        console.print(f"  streams: video {v}  audio {a}{dbfs}")
     if result.subtitles_dropped:
         console.print("  [yellow]⚠[/yellow] subtitles unavailable (429 or missing) — media was still pulled")
     if result.format_fallback_used and result.final_resolution:

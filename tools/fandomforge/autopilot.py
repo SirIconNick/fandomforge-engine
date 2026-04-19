@@ -779,10 +779,19 @@ def step_roughcut(ctx: AutopilotContext) -> AutopilotEvent:
             duration_sec=round(time.perf_counter() - start, 3),
         )
     exports_dir.mkdir(parents=True, exist_ok=True)
+
+    # Pass the song so the mp4 has audio. copy_song landed it in assets/
+    # as song.<ext>; the orchestrator's path search handles assets/ vs raw/.
+    song_arg: list[str] = []
+    song = _find_song(ctx)
+    if song is not None:
+        song_arg = ["--song", song.name]
+
     rc, stdout, stderr = _run_subproc(
         ["ff", "roughcut",
          "--project", ctx.project_slug,
-         "--output", str(rough_path)],
+         "--output", str(rough_path),
+         *song_arg],
         cwd=ctx.project_dir.parent.parent,
     )
     if rc != 0:

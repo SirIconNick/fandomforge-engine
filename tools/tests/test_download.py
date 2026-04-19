@@ -192,3 +192,31 @@ class TestDownloadResultDefaults:
         assert r.final_resolution is None
         assert r.route is None
         assert r.attempts == []
+        assert r.has_video_stream is None
+        assert r.has_audio_stream is None
+        assert r.audio_mean_dbfs is None
+
+
+class TestStreamValidation:
+    """The stream validator fills DownloadResult fields and classifies errors."""
+
+    def test_new_error_kinds_exist(self) -> None:
+        assert DownloadErrorKind.MISSING_VIDEO_STREAM.value == "missing_video_stream"
+        assert DownloadErrorKind.MISSING_AUDIO_STREAM.value == "missing_audio_stream"
+        assert DownloadErrorKind.SILENT_AUDIO.value == "silent_audio"
+
+    def test_validator_graceful_when_ffprobe_absent(self, tmp_path, monkeypatch) -> None:
+        """If ffprobe isn't installed, validator returns (True, True, None) — skip, not fail."""
+        from fandomforge.sources import download as dl
+
+        monkeypatch.setattr(dl.shutil, "which", lambda _: None)
+        p = tmp_path / "fake.mp4"
+        p.write_bytes(b"\x00")
+        has_v, has_a, dbfs = dl._validate_streams(p, expect_video=True, expect_audio=True)
+        assert has_v is True and has_a is True and dbfs is None
+
+    def test_silent_threshold_is_reasonable(self) -> None:
+        from fandomforge.sources.download import SILENT_THRESHOLD_DBFS
+        # Typical YouTube audio is ~-20 dB, ambient noise floor is ~-60 dB,
+        # truly silent tracks report -91 dB. Threshold of -70 sits between.
+        assert -85.0 < SILENT_THRESHOLD_DBFS < -50.0

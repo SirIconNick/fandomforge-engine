@@ -445,8 +445,22 @@ def build_rough_cut(
     mix_result: MixResult | None = None
     audio_path: Path | None = None
     if song_filename:
-        song_path = raw_dir / song_filename
-        if song_path.exists():
+        # Autopilot's copy_song step writes to assets/; legacy callers may put
+        # the song in raw/. Also accept an absolute / project-relative path.
+        given = Path(song_filename)
+        candidates: list[Path] = []
+        if given.is_absolute():
+            candidates.append(given)
+        else:
+            candidates.extend([
+                project_dir / "assets" / given.name,
+                project_dir / "assets" / song_filename,
+                raw_dir / given.name,
+                raw_dir / song_filename,
+                project_dir / song_filename,
+            ])
+        song_path = next((p for p in candidates if p.exists()), None)
+        if song_path is not None:
             dialogue_resolved: Path | None = None
             if dialogue_script_json:
                 given = Path(dialogue_script_json)
@@ -486,7 +500,9 @@ def build_rough_cut(
                 )
                 audio_path = None
         else:
-            warnings.append(f"Song file not found in raw/: {song_filename}")
+            warnings.append(
+                f"Song file not found in assets/ or raw/: {song_filename}"
+            )
 
     # 9. Merge video + audio
     final_output = exports_dir / output_name

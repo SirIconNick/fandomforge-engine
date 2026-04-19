@@ -67,6 +67,9 @@ class DownloadErrorKind(str, Enum):
     FORMAT_UNAVAILABLE = "format_unavailable"
     DISK_FULL = "disk_full"
     PERMISSION = "permission_denied"
+    MISSING_VIDEO_STREAM = "missing_video_stream"
+    MISSING_AUDIO_STREAM = "missing_audio_stream"
+    SILENT_AUDIO = "silent_audio"
     UNKNOWN = "unknown"
 
 
@@ -82,6 +85,9 @@ ERROR_HINTS: dict[DownloadErrorKind, str] = {
     DownloadErrorKind.UNSUPPORTED: "yt-dlp doesn't recognize this site. Update yt-dlp: pip install -U yt-dlp",
     DownloadErrorKind.FORMAT_UNAVAILABLE: "Requested format/resolution isn't available — tried every fallback.",
     DownloadErrorKind.DISK_FULL: "Not enough disk space for the download. Free up space and retry.",
+    DownloadErrorKind.MISSING_VIDEO_STREAM: "Downloaded file has no video stream — try a different URL or format.",
+    DownloadErrorKind.MISSING_AUDIO_STREAM: "Downloaded file has no audio stream — try a different URL or format.",
+    DownloadErrorKind.SILENT_AUDIO: "Downloaded file has an audio track but it's silent — try a different URL.",
     DownloadErrorKind.PERMISSION: "Can't write to the output directory. Check permissions.",
     DownloadErrorKind.UNKNOWN: "Something went wrong — see stderr for details.",
 }
@@ -113,6 +119,71 @@ class DownloadResult:
     final_resolution: str | None = None
     route: RouteKind | None = None
     attempts: list[str] = field(default_factory=list)
+    # Stream validation (filled by _validate_streams after a successful fetch)
+    has_video_stream: bool | None = None
+    has_audio_stream: bool | None = None
+    audio_mean_dbfs: float | None = None  # None if no audio / measurement skipped
+
+
+# ---------- Stream validation ----------
+
+SILENT_THRESHOLD_DBFS = -70.0
+
+
+def _validate_streams(
+    path: Path,
+    *,
+    expect_video: bool,
+    expect_audio: bool,
+    check_silence: bool = True,
+) -> tuple[bool, bool, float | None]:
+    """Return (has_video, has_audio, audio_mean_dbfs).
+
+    Uses ffprobe to count streams and ffmpeg volumedetect for a silence check.
+    If ffprobe/ffmpeg aren't installed, returns (True, True, None) — caller
+    treats that as a skip (nothing proven, nothing rejected).
+    """
+    if shutil.which("ffprobe") is None:
+        return (True, True, None)
+
+    def _count_streams(kind: str) -> int:
+        try:
+            out = subprocess.run(
+                [
+                    "ffprobe", "-v", "error",
+                    "-select_streams", kind,
+                    "-show_entries", "stream=codec_type",
+                    "-of", "csv=p=0",
+                    str(path),
+                ],
+                capture_output=True, text=True, check=True,
+            )
+            return sum(1 for line in out.stdout.splitlines() if line.strip())
+        except subprocess.CalledProcessError:
+            return 0
+
+    has_video = _count_streams("v") > 0
+    has_audio = _count_streams("a") > 0
+
+    mean_dbfs: float | None = None
+    if has_audio and expect_audio and check_silence and shutil.which("ffmpeg") is not None:
+        try:
+            vd = subprocess.run(
+                ["ffmpeg", "-nostdin", "-i", str(path), "-af", "volumedetect",
+                 "-vn", "-sn", "-dn", "-f", "null", "-"],
+                capture_output=True, text=True, check=False,
+            )
+            for line in (vd.stderr or "").splitlines():
+                if "mean_volume:" in line:
+                    try:
+                        mean_dbfs = float(line.split("mean_volume:")[1].split("dB")[0].strip())
+                    except ValueError:
+                        pass
+                    break
+        except OSError:
+            pass
+
+    return has_video, has_audio, mean_dbfs
 
 
 # ---------- URL routing ----------
@@ -554,12 +625,18 @@ def download_source(
     audio_format: str = "mp3",
     cookies_from_browser: str | None = None,
     cookies_file: Path | str | None = None,
+    verify_streams: bool = True,
 ) -> DownloadResult:
     """Download a single source via the appropriate backend.
 
     Direct media URLs (ending in common media extensions) are fetched with
     urllib + Range resume. Everything else goes through yt-dlp with a format
     cascade, retry/backoff, and subtitle-failure fallback.
+
+    Post-download, verify_streams=True runs ffprobe + ffmpeg to confirm the
+    file actually has the streams we asked for. Missing streams or silent
+    audio produce typed errors (MISSING_VIDEO_STREAM / MISSING_AUDIO_STREAM /
+    SILENT_AUDIO) so the caller can retry with a different URL.
 
     Every failure returns a DownloadResult with a DownloadErrorKind and an
     actionable error_message. Never raises for expected failure modes.
@@ -612,7 +689,7 @@ def download_source(
         yt_dlp_check.route = "yt_dlp"
         return yt_dlp_check
 
-    return _download_via_ytdlp(
+    result = _download_via_ytdlp(
         url,
         output_dir,
         filename=filename,
@@ -627,6 +704,63 @@ def download_source(
         cookies_from_browser=cookies_from_browser,
         cookies_file=cookies_path,
     )
+
+    if result.success and result.path is not None and verify_streams:
+        expect_video = not audio_only
+        expect_audio = not no_audio
+        has_v, has_a, mean_dbfs = _validate_streams(
+            result.path,
+            expect_video=expect_video,
+            expect_audio=expect_audio,
+        )
+        result.has_video_stream = has_v
+        result.has_audio_stream = has_a
+        result.audio_mean_dbfs = mean_dbfs
+
+        if expect_video and not has_v:
+            kind = DownloadErrorKind.MISSING_VIDEO_STREAM
+            return DownloadResult(
+                success=False,
+                path=result.path,
+                error_kind=kind,
+                error_message=ERROR_HINTS[kind],
+                attempts=result.attempts,
+                route=result.route,
+                has_video_stream=has_v,
+                has_audio_stream=has_a,
+                audio_mean_dbfs=mean_dbfs,
+            )
+        if expect_audio and not has_a:
+            kind = DownloadErrorKind.MISSING_AUDIO_STREAM
+            return DownloadResult(
+                success=False,
+                path=result.path,
+                error_kind=kind,
+                error_message=ERROR_HINTS[kind],
+                attempts=result.attempts,
+                route=result.route,
+                has_video_stream=has_v,
+                has_audio_stream=has_a,
+                audio_mean_dbfs=mean_dbfs,
+            )
+        if expect_audio and mean_dbfs is not None and mean_dbfs <= SILENT_THRESHOLD_DBFS:
+            kind = DownloadErrorKind.SILENT_AUDIO
+            return DownloadResult(
+                success=False,
+                path=result.path,
+                error_kind=kind,
+                error_message=(
+                    f"{ERROR_HINTS[kind]} (mean_volume {mean_dbfs:.1f} dB, "
+                    f"threshold {SILENT_THRESHOLD_DBFS:.0f} dB)"
+                ),
+                attempts=result.attempts,
+                route=result.route,
+                has_video_stream=has_v,
+                has_audio_stream=has_a,
+                audio_mean_dbfs=mean_dbfs,
+            )
+
+    return result
 
 
 def export_cookies_from_browser(browser: str, output: Path) -> DownloadResult:
