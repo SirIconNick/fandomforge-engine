@@ -4,7 +4,7 @@ This is the multifandom video creation suite. When working in this project, foll
 
 ## Project scope
 
-FandomForge helps the user plan, research, and execute multifandom video edits. We do **planning, research, analysis, and code** — we don't actually render video. The user edits in their NLE of choice (Resolve / Premiere / CapCut / Vegas).
+FandomForge helps the user plan, research, and execute multifandom video edits — including autonomous end-to-end rendering. The pipeline runs from `ff autopilot` (scaffold → beat analyze → edit plan → shot list → emotion arc → QA gate → assembly → color → export) or the user can run each stage manually, or finish the final cut in their NLE of choice (Resolve / Premiere / CapCut / Vegas).
 
 ## Core mental model
 
@@ -17,9 +17,11 @@ A multifandom edit is:
 
 Everything we do serves one of those five layers.
 
-## The 10 experts
+## The 12 experts
 
-All expert definitions live in `agents/`. When the user asks for something specific to an expert's domain, either answer in that expert's voice/style or delegate via the Agent tool.
+All expert definitions live in `agents/` and are registered as Claude Code subagents in `.claude/agents/`. When the user asks for something specific to an expert's domain, either answer in that expert's voice/style or delegate via the Agent tool.
+
+The 10 core experts cover the creative layers of an edit:
 
 - **edit-strategist** — master orchestrator, project planning
 - **beat-mapper** — audio analysis, timing
@@ -31,6 +33,11 @@ All expert definitions live in `agents/`. When the user asks for something speci
 - **editor-guide** — NLE-specific software help
 - **audio-producer** — song, mix, SFX
 - **title-designer** — text, kinetic type
+
+Plus two experts who handle the render and ship stages:
+
+- **pipeline-tuner** — ffmpeg params, speed-vs-quality tradeoffs before a big render
+- **qa-reviewer** — post-pipeline quality gate before shipping the rough cut
 
 ## Working with projects
 
@@ -78,7 +85,6 @@ Walk them through this sequence:
 
 ## What not to do
 
-- Don't auto-generate a video. We plan, we don't render.
 - Don't scrape copyrighted content.
 - Don't claim fair use blankets — fair use is case-by-case, always flag uncertainty.
 - Don't invent fandom scenes — if the fandom-researcher doesn't know, say so and ask the user.
