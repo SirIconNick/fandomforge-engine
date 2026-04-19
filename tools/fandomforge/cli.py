@@ -3606,19 +3606,36 @@ def review_cmd(project: str, video: str, as_json: bool, save: bool) -> None:
         return
 
     color = {"green": "green", "yellow": "yellow", "red": "red"}[report.overall]
-    console.print(f"\n[bold]review for[/bold] {report.project_slug}  "
-                  f"([{color}]{report.overall.upper()}[/{color}])")
+    # Letter grade color: A* green, B* cyan, C* yellow, D/F red
+    grade_color = {
+        "A+": "green", "A": "green", "A-": "green",
+        "B+": "cyan", "B": "cyan", "B-": "cyan",
+        "C+": "yellow", "C": "yellow", "C-": "yellow",
+        "D+": "red", "D": "red", "D-": "red", "F": "red",
+    }.get(report.grade, "white")
+    console.print(
+        f"\n[bold]review for[/bold] {report.project_slug}  "
+        f"([{color}]{report.overall.upper()}[/{color}])  "
+        f"grade [bold {grade_color}]{report.grade}[/bold {grade_color}]  "
+        f"score [{grade_color}]{report.score:.1f}/100[/{grade_color}]"
+    )
     console.print(f"  video: {report.video_path}")
     console.print()
     table = Table(show_header=True)
     table.add_column("dimension")
     table.add_column("verdict")
+    table.add_column("score", justify="right")
     table.add_column("findings")
     for d in report.dimensions:
         color_map = {"pass": "green", "warn": "yellow", "fail": "red"}
         col = color_map[d.verdict]
         findings = "\n".join(d.findings) if d.findings else "[dim]—[/dim]"
-        table.add_row(d.name, f"[{col}]{d.verdict}[/{col}]", findings)
+        table.add_row(
+            d.name,
+            f"[{col}]{d.verdict}[/{col}]",
+            f"{d.score:.0f}",
+            findings,
+        )
     console.print(table)
     console.print(f"\n[bold]{report.ship_recommendation}[/bold]")
     if save:

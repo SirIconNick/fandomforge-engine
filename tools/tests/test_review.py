@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 
 from fandomforge.review import (
+    DIMENSION_WEIGHTS,
     DimensionReport,
     ReviewReport,
     _dim_shot_list,
@@ -19,7 +20,9 @@ from fandomforge.review import (
     _overall_label,
     _roll_up,
     _ship_recommendation,
+    overall_score,
     review_rendered_edit,
+    score_to_letter,
 )
 
 
@@ -195,3 +198,89 @@ class TestReviewRenderedEditMissingVideo:
         (proj / "exports").mkdir(parents=True)
         with pytest.raises(FileNotFoundError):
             review_rendered_edit(proj, video_name="nope.mp4")
+
+
+class TestGradeAndScore:
+    def _dims_all(self, verdict: str, findings_per: int = 0) -> list[DimensionReport]:
+        out = []
+        for name in DIMENSION_WEIGHTS:
+            findings = [f"f{i}" for i in range(findings_per)]
+            out.append(DimensionReport(name=name, verdict=verdict, findings=findings))
+        return out
+
+    def test_all_pass_no_findings_is_perfect(self) -> None:
+        score = overall_score(self._dims_all("pass", 0))
+        assert score == 100.0
+        assert score_to_letter(score) == "A+"
+
+    def test_all_warn_one_finding_each_is_mid_tier(self) -> None:
+        # pass base 1.00 - 0.06 * 1 finding = 0.94 → if warn: 0.75 - 0.06 = 0.69 → 69
+        score = overall_score(self._dims_all("warn", 1))
+        assert 65 <= score <= 75, score
+        letter = score_to_letter(score)
+        assert letter.startswith("C") or letter.startswith("D")
+
+    def test_all_fail_is_F(self) -> None:
+        score = overall_score(self._dims_all("fail", 2))
+        assert score <= 20
+        assert score_to_letter(score) == "F"
+
+    def test_one_visual_warn_is_B_range(self) -> None:
+        """Visual is the heaviest dim (0.30). Other four pass clean. Visual warn
+        with one finding deducts 0.06 + 0.75 = 0.69. Contribution 0.30 * 69 = 20.7.
+        Others contribute 0.70 * 100 = 70. Total ~90.7 → A-."""
+        dims = self._dims_all("pass", 0)
+        for d in dims:
+            if d.name == "visual":
+                d.verdict = "warn"
+                d.findings = ["dark segment 0.5s"]
+        score = overall_score(dims)
+        letter = score_to_letter(score)
+        # Should be in the A-/B+ range
+        assert letter in ("A-", "B+"), f"got {letter} from score {score}"
+
+    def test_letter_bands_are_monotonic(self) -> None:
+        """Sanity — higher scores should never map to worse letters."""
+        letters = [score_to_letter(s) for s in (100, 95, 90, 85, 80, 75, 70, 65, 60, 50)]
+        # Strict ordering of letter ranks
+        rank = {
+            "A+": 12, "A": 11, "A-": 10,
+            "B+": 9, "B": 8, "B-": 7,
+            "C+": 6, "C": 5, "C-": 4,
+            "D+": 3, "D": 2, "D-": 1,
+            "F": 0,
+        }
+        ranks = [rank[l] for l in letters]
+        assert ranks == sorted(ranks, reverse=True)
+
+    def test_boundary_scores_resolve_to_expected_letters(self) -> None:
+        assert score_to_letter(97.0) == "A+"
+        assert score_to_letter(96.99) == "A"
+        assert score_to_letter(93.0) == "A"
+        assert score_to_letter(92.99) == "A-"
+        assert score_to_letter(60.0) == "D-"
+        assert score_to_letter(59.99) == "F"
+
+    def test_dimension_score_falls_with_findings(self) -> None:
+        no_findings = DimensionReport(name="visual", verdict="warn", findings=[])
+        lots = DimensionReport(
+            name="visual", verdict="warn", findings=[f"f{i}" for i in range(10)]
+        )
+        assert lots.score < no_findings.score
+
+    def test_report_to_dict_includes_grade_and_score(self) -> None:
+        import json
+        dims = [DimensionReport(name=n, verdict="pass") for n in DIMENSION_WEIGHTS]
+        r = ReviewReport(
+            project_slug="t", video_path="x.mp4",
+            generated_at="2026-04-19T00:00:00+00:00",
+            overall="green", overall_verdict="pass",
+            score=100.0, grade="A+",
+            dimensions=dims, ship_recommendation="ok",
+        )
+        d = r.to_dict()
+        json.loads(json.dumps(d))
+        assert d["grade"] == "A+"
+        assert d["score"] == 100.0
+        # Per-dimension score surfaces too
+        assert d["dimensions"][0]["score"] == 100.0

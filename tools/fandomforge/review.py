@@ -33,12 +33,65 @@ from typing import Any
 VERDICT_RANK = {"pass": 0, "warn": 1, "fail": 2}
 
 
+# Per-dimension contribution to the overall 0-100 score. Visual weighs heaviest
+# because dark / frozen / flashed frames are what the human eye catches first.
+DIMENSION_WEIGHTS: dict[str, float] = {
+    "technical":  0.20,
+    "visual":     0.30,
+    "audio":      0.20,
+    "structural": 0.15,
+    "shot_list":  0.15,
+}
+
+# Base credit per verdict (before per-finding adjustments).
+_VERDICT_BASE = {"pass": 1.00, "warn": 0.75, "fail": 0.25}
+
+# Each finding shaves this much off the dimension's credit (capped).
+_FINDING_DEDUCT = 0.06
+_MAX_FINDING_DEDUCT = 0.30
+
+# (lower-bound-inclusive, letter) table. Checked in order, first match wins.
+_LETTER_BANDS: list[tuple[float, str]] = [
+    (97, "A+"), (93, "A"),  (90, "A-"),
+    (87, "B+"), (83, "B"),  (80, "B-"),
+    (77, "C+"), (73, "C"),  (70, "C-"),
+    (67, "D+"), (63, "D"),  (60, "D-"),
+    (0,  "F"),
+]
+
+
+def score_to_letter(score: float) -> str:
+    for threshold, letter in _LETTER_BANDS:
+        if score >= threshold:
+            return letter
+    return "F"
+
+
+def _dimension_score(dim: "DimensionReport") -> float:
+    base = _VERDICT_BASE.get(dim.verdict, 0.0)
+    deduction = min(_MAX_FINDING_DEDUCT, len(dim.findings) * _FINDING_DEDUCT)
+    return max(0.0, (base - deduction)) * 100.0
+
+
+def overall_score(dimensions: list["DimensionReport"]) -> float:
+    """Weighted 0-100 score across all review dimensions."""
+    total = 0.0
+    for d in dimensions:
+        weight = DIMENSION_WEIGHTS.get(d.name, 0.0)
+        total += weight * _dimension_score(d)
+    return round(total, 1)
+
+
 @dataclass
 class DimensionReport:
     name: str
     verdict: str  # pass | warn | fail
     findings: list[str] = field(default_factory=list)
     measurements: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def score(self) -> float:
+        return round(_dimension_score(self), 1)
 
 
 @dataclass
@@ -48,6 +101,8 @@ class ReviewReport:
     generated_at: str
     overall: str                        # green | yellow | red
     overall_verdict: str                # pass | warn | fail
+    score: float = 100.0                # 0 - 100, weighted across dimensions
+    grade: str = "A+"                   # A+ / A / A- / B+ ... / F
     dimensions: list[DimensionReport] = field(default_factory=list)
     ship_recommendation: str = ""
 
@@ -58,11 +113,14 @@ class ReviewReport:
             "generated_at": self.generated_at,
             "overall": self.overall,
             "overall_verdict": self.overall_verdict,
+            "score": self.score,
+            "grade": self.grade,
             "ship_recommendation": self.ship_recommendation,
             "dimensions": [
                 {
                     "name": d.name,
                     "verdict": d.verdict,
+                    "score": d.score,
                     "findings": d.findings,
                     "measurements": d.measurements,
                 }
@@ -576,6 +634,8 @@ def review_rendered_edit(
 
     dimensions = [tech, visual, audio, structural, shotlist]
     overall_verdict = _roll_up([d.verdict for d in dimensions])
+    score = overall_score(dimensions)
+    grade = score_to_letter(score)
 
     return ReviewReport(
         project_slug=project_dir.name,
@@ -583,13 +643,18 @@ def review_rendered_edit(
         generated_at=datetime.now(timezone.utc).isoformat(),
         overall=_overall_label(overall_verdict),
         overall_verdict=overall_verdict,
+        score=score,
+        grade=grade,
         dimensions=dimensions,
         ship_recommendation=_ship_recommendation(overall_verdict, dimensions),
     )
 
 
 __all__ = [
+    "DIMENSION_WEIGHTS",
     "DimensionReport",
     "ReviewReport",
+    "overall_score",
     "review_rendered_edit",
+    "score_to_letter",
 ]

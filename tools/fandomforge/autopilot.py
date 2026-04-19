@@ -843,7 +843,10 @@ def step_post_render_review(ctx: AutopilotContext) -> AutopilotEvent:
 
     # Autopilot status: warn/pass → ok, fail → failed (surfaces to user)
     status = "failed" if report.overall_verdict == "fail" else "ok"
-    message = f"review: {report.overall.upper()} — {report.ship_recommendation}"
+    message = (
+        f"review: grade [{report.grade}] score {report.score:.0f}/100 "
+        f"({report.overall}) — {report.ship_recommendation}"
+    )
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="post_render_review",
         status=status,
@@ -851,8 +854,15 @@ def step_post_render_review(ctx: AutopilotContext) -> AutopilotEvent:
         evidence={
             "overall": report.overall,
             "overall_verdict": report.overall_verdict,
+            "grade": report.grade,
+            "score": report.score,
             "dimensions": [
-                {"name": d.name, "verdict": d.verdict, "findings": d.findings}
+                {
+                    "name": d.name,
+                    "verdict": d.verdict,
+                    "score": d.score,
+                    "findings": d.findings,
+                }
                 for d in report.dimensions
             ],
             "report_path": str(out),
