@@ -67,16 +67,35 @@ extension card in `chrome://extensions`.
 drives the popup + options page against a live dashboard, and verifies a real
 grab lands end-to-end.
 
-```bash
-# Prereqs: dashboard running + chromium installed
-pnpm --dir web build && pnpm --dir web start &
-pnpm --dir web exec playwright install chromium   # first time only
+Easiest way to run it — the shell wrapper handles everything (build, dashboard
+lifecycle, teardown):
 
-# Run the test
-node browser-extensions/chrome/test-extension.mjs
+```bash
+# First time only — download a chromium that matches the installed playwright:
+pnpm --dir web exec playwright install chromium
+
+# Run (auto-starts and tears down the dashboard):
+scripts/test-extension.sh
+
+# Or as part of the full smoke:
+scripts/smoke-test-full.sh
 ```
 
-Exit 0 on pass, 1 on any assertion failure.
+The raw driver can also be called directly if you already have a dashboard
+running somewhere:
 
-Override the chromium binary via `FF_CHROMIUM_BIN=/path/to/chromium` and the
-dashboard URL via `FF_DASHBOARD=http://localhost:4321`.
+```bash
+FF_DASHBOARD=http://localhost:4321 node browser-extensions/chrome/test-extension.mjs
+```
+
+Exit codes:
+- `0` — all 12 assertions passed
+- `1` — one or more assertions failed
+- `2` — skipped (chromium, playwright, or dashboard not available). Set
+  `FF_EXT_STRICT=1` to treat skips as failures.
+
+Env overrides:
+- `FF_CHROMIUM_BIN` — explicit path to a chromium binary
+- `FF_DASHBOARD` — dashboard base URL (default `http://localhost:4321`)
+- `FF_EXT_PROJECT` — project slug to use (default `grab-smoketest`, auto-created)
+- `FF_EXT_URL` — grab target URL (default "Me at the zoo" 19s clip)

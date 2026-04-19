@@ -7,7 +7,9 @@ One-command shortcuts for the common dev workflows. Run from the repo root.
 | `scripts/setup.sh` | Full environment bootstrap — checks ffmpeg/node/pnpm, creates `.venv`, installs Python + web deps, copies agents into `.claude/agents/`, creates `web/.env.local` from the example, fetches legal test fixtures. |
 | `scripts/verify-anthropic.sh` | Makes one ~40-token live call to the Anthropic API to confirm your key works and your account has credits. Prints model, tokens, and `reply`. |
 | `scripts/dev.sh` | Starts the web dashboard on http://localhost:4321. Warns if `.env.local` is missing. |
-| `scripts/smoke-test.sh` | Runs the full pytest suite (excluding known sandbox-hangs), vitest, typecheck, and production build. Exits non-zero on any failure. |
+| `scripts/smoke-test.sh` | **Fast** — pytest (excluding sandbox-hangs), vitest, typecheck, production build. ~1 minute. Exits non-zero on any failure. |
+| `scripts/test-extension.sh` | Boots the dashboard and runs the Chrome extension's Playwright end-to-end test (popup + options + real YouTube grab). Auto-creates the `grab-smoketest` project if missing, skips cleanly if chromium isn't installed. |
+| `scripts/smoke-test-full.sh` | `smoke-test.sh` + `test-extension.sh`. The canonical "everything green" check. |
 | `scripts/autopilot-demo.sh [slug]` | Scaffolds a demo project using a cached Incompetech fixture song, runs cost estimate, then runs the full autopilot DAG. Default slug is `demo-autopilot`. |
 | `scripts/clean.sh` | Clears build artifacts and test caches. Does NOT touch your `projects/`, fixtures, or `.env.local`. |
 | `scripts/new-project.sh` | (legacy) Interactive project-scaffolding wizard. |
@@ -23,10 +25,21 @@ scripts/autopilot-demo.sh        # end-to-end demo
 scripts/dev.sh                   # open http://localhost:4321
 ```
 
-## Typical verification flow (before a commit)
+## Typical verification flow
 
 ```bash
-scripts/smoke-test.sh
+scripts/smoke-test.sh         # fast — pytest, vitest, typecheck, build (~1 min)
+scripts/smoke-test-full.sh    # adds Chrome extension e2e (dashboard + chromium + real grab)
+```
+
+Run `smoke-test.sh` before every commit. Run `smoke-test-full.sh` before a release
+or whenever you touch the `browser-extensions/` folder. The extension test
+skips (exit 2, not 1) if chromium or the dashboard are missing — set
+`FF_EXT_STRICT=1` to make skips fail instead.
+
+First-time prereq for the full smoke:
+```bash
+pnpm --dir web exec playwright install chromium
 ```
 
 ## What the autopilot does

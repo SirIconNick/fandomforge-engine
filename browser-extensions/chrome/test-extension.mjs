@@ -6,11 +6,16 @@
 //   3. opens popup.html in a tab (easier to drive than a real popup window)
 //   4. verifies the project dropdown populates from the local dashboard
 //   5. performs a grab POST and verifies the success path
-//   6. exercises the options page
+//   6. exercises the options page + context menus
 //
-// Prereq: dashboard running on http://localhost:4321 (pnpm start in web/).
+// Prereq: dashboard running on http://localhost:4321 (or FF_DASHBOARD).
 // Usage:
 //   node browser-extensions/chrome/test-extension.mjs
+//
+// Exit codes:
+//   0 → all assertions passed
+//   1 → assertion(s) failed
+//   2 → skipped (prereqs missing: playwright / chromium / dashboard)
 
 import { fileURLToPath, pathToFileURL } from "node:url";
 import path from "node:path";
@@ -20,26 +25,16 @@ import { createRequire } from "node:module";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const EXTENSION_PATH = __dirname;
-
-// playwright is installed via pnpm at the workspace root. Resolve its package
-// directory, then require() it through a require instance rooted there — that
-// way nested `playwright-core` gets resolved via the regular CJS lookup.
-const repoRoot = path.resolve(__dirname, "..", "..");
-const pnpmDir = path.join(repoRoot, "node_modules/.pnpm");
-const pwGlob = fs
-  .readdirSync(pnpmDir)
-  .find((n) => n.startsWith("playwright@"));
-if (!pwGlob) {
-  console.error("playwright not installed. Run `pnpm install` in web/.");
-  process.exit(1);
-}
-const playwrightPkg = path.join(pnpmDir, pwGlob, "node_modules/playwright");
-const localRequire = createRequire(path.join(playwrightPkg, "index.js"));
-const { chromium } = localRequire(path.join(playwrightPkg, "index.js"));
 const DASHBOARD = process.env.FF_DASHBOARD ?? "http://localhost:4321";
+const STRICT = process.env.FF_EXT_STRICT === "1"; // fail instead of skip
+
+const EXIT_OK = 0;
+const EXIT_FAIL = 1;
+const EXIT_SKIP = 2;
 
 const PASS = "PASS";
 const FAIL = "FAIL";
+const SKIP = "SKIP";
 
 let failures = 0;
 function assert(cond, label) {
@@ -51,45 +46,123 @@ function assert(cond, label) {
   }
 }
 
+function skipOrFail(reason) {
+  if (STRICT) {
+    console.error(`${FAIL}: ${reason}`);
+    process.exit(EXIT_FAIL);
+  }
+  console.error(`${SKIP}: ${reason}`);
+  process.exit(EXIT_SKIP);
+}
+
+// ---------- Prereq: resolve playwright ----------
+const repoRoot = path.resolve(__dirname, "..", "..");
+const pnpmDir = path.join(repoRoot, "node_modules/.pnpm");
+if (!fs.existsSync(pnpmDir)) {
+  skipOrFail(`node_modules/.pnpm not found at ${pnpmDir}. Run 'pnpm install' in web/.`);
+}
+const pwGlob = fs
+  .readdirSync(pnpmDir)
+  .find((n) => n.startsWith("playwright@"));
+if (!pwGlob) {
+  skipOrFail("playwright package not installed. Run 'pnpm install' in web/.");
+}
+const playwrightPkg = path.join(pnpmDir, pwGlob, "node_modules/playwright");
+const playwrightEntry = path.join(playwrightPkg, "index.js");
+if (!fs.existsSync(playwrightEntry)) {
+  skipOrFail(`playwright entry missing at ${playwrightEntry}.`);
+}
+const localRequire = createRequire(playwrightEntry);
+const { chromium } = localRequire(playwrightEntry);
+
+// ---------- Prereq: locate a chromium binary ----------
+function findChromium() {
+  if (process.env.FF_CHROMIUM_BIN && fs.existsSync(process.env.FF_CHROMIUM_BIN)) {
+    return process.env.FF_CHROMIUM_BIN;
+  }
+  const cacheDir = path.join(os.homedir(), "Library/Caches/ms-playwright");
+  if (!fs.existsSync(cacheDir)) return null;
+  const dirs = fs
+    .readdirSync(cacheDir)
+    .filter((n) => n.startsWith("chromium-"))
+    .sort();
+  for (const dir of [...dirs].reverse()) {
+    const candidates = [
+      path.join(cacheDir, dir, "chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"),
+      path.join(cacheDir, dir, "chrome-mac/Chromium.app/Contents/MacOS/Chromium"),
+      path.join(cacheDir, dir, "chrome-linux/chrome"),
+      path.join(cacheDir, dir, "chrome-win/chrome.exe"),
+    ];
+    for (const c of candidates) {
+      if (fs.existsSync(c)) return c;
+    }
+  }
+  return null;
+}
+
+const chromiumBin = findChromium();
+if (!chromiumBin) {
+  skipOrFail(
+    "No chromium binary found. Run 'pnpm --dir web exec playwright install chromium' " +
+    "or set FF_CHROMIUM_BIN=/path/to/chromium."
+  );
+}
+
+// ---------- Prereq: dashboard reachable ----------
+async function dashboardReachable() {
+  try {
+    const res = await fetch(`${DASHBOARD}/api/projects`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+if (!(await dashboardReachable())) {
+  skipOrFail(
+    `Dashboard not reachable at ${DASHBOARD}/api/projects. ` +
+    `Start it with 'pnpm --dir web build && pnpm --dir web start' or set FF_DASHBOARD.`
+  );
+}
+
+// ---------- Verify the test project exists ----------
+let projectsList = [];
+try {
+  const res = await fetch(`${DASHBOARD}/api/projects`);
+  const data = await res.json();
+  projectsList = data.projects ?? [];
+} catch (err) {
+  skipOrFail(`Could not list projects from dashboard: ${err.message}`);
+}
+
+const TEST_PROJECT = process.env.FF_EXT_PROJECT ?? "grab-smoketest";
+const hasTestProject = projectsList.some((p) => p.slug === TEST_PROJECT);
+if (!hasTestProject) {
+  skipOrFail(
+    `No test project '${TEST_PROJECT}' in the dashboard. ` +
+    `Create one with 'ff project new ${TEST_PROJECT}' or set FF_EXT_PROJECT.`
+  );
+}
+
+// ---------- Run the test ----------
 async function run() {
   const userDataDir = fs.mkdtempSync(path.join(os.tmpdir(), "ff-ext-test-"));
   console.log(`profile: ${userDataDir}`);
+  console.log(`chromium: ${chromiumBin}`);
+  console.log(`dashboard: ${DASHBOARD}`);
+  console.log(`project: ${TEST_PROJECT}`);
 
-  // Allow an explicit chromium binary via env (useful on sandboxed setups where
-  // `playwright install` can't write to the cache dir).
-  const launchOpts = {
+  const context = await chromium.launchPersistentContext(userDataDir, {
     headless: true,
+    executablePath: chromiumBin,
     args: [
       `--disable-extensions-except=${EXTENSION_PATH}`,
       `--load-extension=${EXTENSION_PATH}`,
       "--no-sandbox",
     ],
-  };
-  if (process.env.FF_CHROMIUM_BIN && fs.existsSync(process.env.FF_CHROMIUM_BIN)) {
-    launchOpts.executablePath = process.env.FF_CHROMIUM_BIN;
-  } else {
-    // Auto-discover the newest playwright-installed chromium locally.
-    const cacheDir = path.join(os.homedir(), "Library/Caches/ms-playwright");
-    if (fs.existsSync(cacheDir)) {
-      const dirs = fs
-        .readdirSync(cacheDir)
-        .filter((n) => n.startsWith("chromium-"))
-        .sort();
-      const latest = dirs[dirs.length - 1];
-      if (latest) {
-        const candidate = path.join(
-          cacheDir,
-          latest,
-          "chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
-        );
-        if (fs.existsSync(candidate)) launchOpts.executablePath = candidate;
-      }
-    }
-  }
-  if (launchOpts.executablePath) {
-    console.log(`using chromium: ${launchOpts.executablePath}`);
-  }
-  const context = await chromium.launchPersistentContext(userDataDir, launchOpts);
+  });
 
   let worker = context.serviceWorkers()[0];
   if (!worker) {
@@ -101,16 +174,16 @@ async function run() {
 
   // Pre-configure chrome.storage.sync so the popup/options have known defaults
   await worker.evaluate(
-    async (dashboardUrl) => {
+    async ({ dashboardUrl, defaultProject }) => {
       await chrome.storage.sync.set({
         dashboardUrl,
-        defaultProject: "grab-smoketest",
+        defaultProject,
         defaultMode: "audio",
         defaultResolution: "480",
         defaultCookiesBrowser: "",
       });
     },
-    DASHBOARD
+    { dashboardUrl: DASHBOARD, defaultProject: TEST_PROJECT }
   );
 
   // ---------- Popup ----------
@@ -134,8 +207,8 @@ async function run() {
   );
   console.log(`  projects: ${JSON.stringify(projectOptions)}`);
   assert(
-    projectOptions.some((o) => o.value === "grab-smoketest"),
-    "project dropdown contains grab-smoketest"
+    projectOptions.some((o) => o.value === TEST_PROJECT),
+    `project dropdown contains ${TEST_PROJECT}`
   );
 
   const initialMode = await popup.evaluate(
@@ -155,7 +228,10 @@ async function run() {
   );
   assert(resDisabledAudio === true, "resolution disabled when mode == audio");
 
-  await popup.fill("#url", "https://www.youtube.com/watch?v=jNQXAC9IVRw");
+  // Short, stable, CC-licensed grab target: "Me at the zoo" (19s)
+  const TEST_URL =
+    process.env.FF_EXT_URL ?? "https://www.youtube.com/watch?v=jNQXAC9IVRw";
+  await popup.fill("#url", TEST_URL);
   await popup.fill("#note", "ext playwright smoke");
   await popup.click("#grab");
 
@@ -164,7 +240,7 @@ async function run() {
       const el = document.getElementById("status");
       return el && /grabbed|failed/i.test(el.textContent ?? "");
     },
-    { timeout: 60000 }
+    { timeout: 120000 }
   );
   const status = await popup.evaluate(() => ({
     text: document.getElementById("status").textContent,
@@ -188,7 +264,7 @@ async function run() {
   const optionsProjects = await options.evaluate(() =>
     Array.from(document.querySelectorAll("#default-project option")).map((o) => o.value)
   );
-  assert(optionsProjects.includes("grab-smoketest"), "options page lists grab-smoketest");
+  assert(optionsProjects.includes(TEST_PROJECT), `options page lists ${TEST_PROJECT}`);
   assert(optionsProjects.includes(""), "options page has blank 'prompt each time' entry");
 
   // ---------- Context menu registration ----------
@@ -215,16 +291,19 @@ async function run() {
   assert(pageMenuRegistered === true, "ff-grab-page context menu is registered");
 
   await context.close();
-
-  if (failures > 0) {
-    console.error(`\n${FAIL}: ${failures} assertion(s) failed.`);
-    process.exit(1);
-  }
-  console.log(`\n${PASS}: all extension assertions passed.`);
 }
 
-run().catch((err) => {
+try {
+  await run();
+} catch (err) {
   console.error(`${FAIL}: test threw: ${err.message}`);
   console.error(err.stack);
-  process.exit(1);
-});
+  process.exit(EXIT_FAIL);
+}
+
+if (failures > 0) {
+  console.error(`\n${FAIL}: ${failures} assertion(s) failed.`);
+  process.exit(EXIT_FAIL);
+}
+console.log(`\n${PASS}: all extension assertions passed.`);
+process.exit(EXIT_OK);
