@@ -28,10 +28,30 @@
           "title": {"type": "string"},
           "url": {"type": "string", "format": "uri"},
           "duration_sec": {"type": "number", "minimum": 0},
+          "youtube_metadata": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Optional YouTube-sourced metadata — view_count, like_count, like_ratio, channel, upload_date (YYYYMMDD), duration_sec, title."
+          },
+          "quality_score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "description": "Composite 0-100 quality score combining audience reception + editing craft."
+          },
+          "quality_tier": {
+            "type": "string",
+            "enum": ["S", "A", "B", "C", "D"]
+          },
+          "quality_components": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Per-axis scores that combine into quality_score."
+          },
           "metrics": {
             "type": "object",
             "additionalProperties": true,
-            "description": "Extensible metrics block. Deep analyzer adds pacing curve, visual stats, and beat-sync rate on top of the basic duration stats.",
+            "description": "Extensible metrics block. Deep analyzer adds pacing curve, visual stats, beat-sync rate, transitions distribution, motion-cut distribution, and lyric-alignment on top of the basic duration stats.",
             "properties": {
               "shot_count": {"type": "integer", "minimum": 0},
               "avg_shot_duration_sec": {"type": "number", "minimum": 0},

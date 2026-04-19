@@ -145,7 +145,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 89.1,
         "cuts_on_beat_pct": 44.9,
-        "cuts_checked": 89
+        "cuts_checked": 89,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 3,
+            "dissolve": 57,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 5.0,
+            "dissolve": 95.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.1985,
+          "variety_entropy_normalized": 0.1233,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 8,
+            "neutral": 12,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 20.0,
+            "neutral": 30.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 43.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 89,
+          "cuts_on_word_boundary_pct": 56.18,
+          "cuts_on_phrase_boundary_pct": 1.12,
+          "word_count": 855,
+          "phrase_count": 1
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 65383403,
+        "like_count": 464687,
+        "like_ratio": 0.007107,
+        "duration_sec": 251.0,
+        "channel": "Echale Mojo Remix",
+        "upload_date": "20170629",
+        "title": "Tech N9ne, 2Pac & Eminem - Till I Die (2017)"
+      },
+      "quality_score": 48.12,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 12.33,
+        "beat_sync": 44.9,
+        "lyric_sync": 23.14,
+        "motion": 43.0,
+        "approval": 23.69
       }
     },
     {
@@ -279,7 +342,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 63.9,
-        "cuts_checked": 119
+        "cuts_checked": 119,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 40,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 66.67,
+            "dissolve": 28.33,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.7774,
+          "variety_entropy_normalized": 0.483,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 21,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 52.5,
+            "disconnected": 25.0
+          },
+          "continuity_score": 38.38
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 119,
+          "cuts_on_word_boundary_pct": 26.05,
+          "cuts_on_phrase_boundary_pct": 11.76,
+          "word_count": 406,
+          "phrase_count": 42
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 27581386,
+        "like_count": 450872,
+        "like_ratio": 0.016347,
+        "duration_sec": 232.0,
+        "channel": "Eli Bernet",
+        "upload_date": "20170413",
+        "title": "Harley & Joker | Until you come back home"
+      },
+      "quality_score": 58.85,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 48.3,
+        "beat_sync": 63.9,
+        "lyric_sync": 17.48,
+        "motion": 38.38,
+        "approval": 54.49
       }
     },
     {
@@ -397,7 +523,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 83.35,
         "cuts_on_beat_pct": 37.3,
-        "cuts_checked": 59
+        "cuts_checked": 59,
+        "transitions": {
+          "sample_count": 59,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 34,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 35.59,
+            "dissolve": 57.63,
+            "flash_cut": 0.0,
+            "whip_pan": 6.78,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8678,
+          "variety_entropy_normalized": 0.5392,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 20,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 50.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 40.62
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 59,
+          "cuts_on_word_boundary_pct": 5.08,
+          "cuts_on_phrase_boundary_pct": 0.0,
+          "word_count": 64,
+          "phrase_count": 3
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 13952473,
+        "like_count": 138273,
+        "like_ratio": 0.00991,
+        "duration_sec": 194.0,
+        "channel": "Blue Mask",
+        "upload_date": "20160329",
+        "title": "Punisher - God's Gonna Cut You Down (remix)"
+      },
+      "quality_score": 50.25,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 53.92,
+        "beat_sync": 37.3,
+        "lyric_sync": 2.03,
+        "motion": 40.62,
+        "approval": 33.03
       }
     },
     {
@@ -515,7 +704,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 60.0,
-        "cuts_checked": 110
+        "cuts_checked": 110,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 20,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 53.33,
+            "dissolve": 33.33,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 1.0204,
+          "variety_entropy_normalized": 0.634,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 8,
+            "neutral": 19,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 20.0,
+            "neutral": 47.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 41.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 14038571,
+        "like_count": 57984,
+        "like_ratio": 0.00413,
+        "duration_sec": 199.0,
+        "channel": "MsTabularasa",
+        "upload_date": "20150301",
+        "title": "WALK THE MOON - Shut Up and Dance (Movie dance compilation)"
+      },
+      "quality_score": 61.63,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 63.4,
+        "beat_sync": 60.0,
+        "lyric_sync": 50.0,
+        "motion": 41.62,
+        "approval": 13.77
       }
     },
     {
@@ -649,7 +893,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 143.55,
         "cuts_on_beat_pct": 69.9,
-        "cuts_checked": 153
+        "cuts_checked": 153,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 30,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 6
+          },
+          "distribution_pct": {
+            "hard_cut": 50.0,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 10.0
+          },
+          "variety_entropy": 0.9433,
+          "variety_entropy_normalized": 0.5861,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 15,
+            "impact_cut": 7,
+            "neutral": 9,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 37.5,
+            "impact_cut": 17.5,
+            "neutral": 22.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 58.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 9166812,
+        "like_count": 266295,
+        "like_ratio": 0.02905,
+        "duration_sec": 238.0,
+        "channel": "EMM",
+        "upload_date": "20171102",
+        "title": "Iron Man & Captain America - \"Legends Never Die\""
+      },
+      "quality_score": 65.15,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 65.7,
+        "variety": 58.61,
+        "beat_sync": 69.9,
+        "lyric_sync": 50.0,
+        "motion": 58.5,
+        "approval": 96.83
       }
     },
     {
@@ -751,7 +1050,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 80.75,
         "cuts_on_beat_pct": 37.3,
-        "cuts_checked": 134
+        "cuts_checked": 134,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.8451,
+          "variety_entropy_normalized": 0.5251,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 11,
+            "impact_cut": 7,
+            "neutral": 14,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 27.5,
+            "impact_cut": 17.5,
+            "neutral": 35.0,
+            "disconnected": 20.0
+          },
+          "continuity_score": 52.87
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8789076,
+        "like_count": 160818,
+        "like_ratio": 0.018297,
+        "duration_sec": 150.0,
+        "channel": "Trailer Blend",
+        "upload_date": "20170825",
+        "title": "Marvel Cinematic Universe - We Will Rock You (Tribute)"
+      },
+      "quality_score": 52.61,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 62.99,
+        "variety": 52.51,
+        "beat_sync": 37.3,
+        "lyric_sync": 50.0,
+        "motion": 52.87,
+        "approval": 60.99
       }
     },
     {
@@ -885,7 +1239,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 55.3,
-        "cuts_checked": 152
+        "cuts_checked": 152,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 28,
+            "dissolve": 24,
+            "flash_cut": 2,
+            "whip_pan": 2,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 46.67,
+            "dissolve": 40.0,
+            "flash_cut": 3.33,
+            "whip_pan": 3.33,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 1.1295,
+          "variety_entropy_normalized": 0.7018,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 8,
+            "neutral": 13,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 20.0,
+            "neutral": 32.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 41.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8548997,
+        "like_count": 53159,
+        "like_ratio": 0.006218,
+        "duration_sec": 231.0,
+        "channel": "Red Flash",
+        "upload_date": "20160822",
+        "title": "The Flash \u26a1 Feel Invincible"
+      },
+      "quality_score": 52.68,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 61.27,
+        "variety": 70.18,
+        "beat_sync": 55.3,
+        "lyric_sync": 50.0,
+        "motion": 41.38,
+        "approval": 20.73
       }
     },
     {
@@ -1055,7 +1464,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 64.7,
-        "cuts_checked": 136
+        "cuts_checked": 136,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 28,
+            "dissolve": 30,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 46.67,
+            "dissolve": 50.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.8156,
+          "variety_entropy_normalized": 0.5068,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 5,
+            "neutral": 19,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 12.5,
+            "neutral": 47.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 33.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8485051,
+        "like_count": 135990,
+        "like_ratio": 0.016027,
+        "duration_sec": 320.0,
+        "channel": "tstudios",
+        "upload_date": "20160811",
+        "title": "Game Of Thrones || Rise Of The Starks || HD"
+      },
+      "quality_score": 53.61,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 60.81,
+        "variety": 50.68,
+        "beat_sync": 64.7,
+        "lyric_sync": 50.0,
+        "motion": 33.5,
+        "approval": 53.42
       }
     },
     {
@@ -1221,7 +1685,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 59.6,
-        "cuts_checked": 166
+        "cuts_checked": 166,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 18,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 30.0,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9847,
+          "variety_entropy_normalized": 0.6118,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 4,
+            "neutral": 22,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 10.0,
+            "neutral": 55.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 31.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8070340,
+        "like_count": 168503,
+        "like_ratio": 0.020879,
+        "duration_sec": 317.0,
+        "channel": "Slyfer2812",
+        "upload_date": "20180904",
+        "title": "(Marvel) Steve Rogers | I'll Be There"
+      },
+      "quality_score": 54.78,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 57.84,
+        "variety": 61.18,
+        "beat_sync": 59.6,
+        "lyric_sync": 50.0,
+        "motion": 31.75,
+        "approval": 69.6
       }
     },
     {
@@ -1351,7 +1870,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 172.27,
         "cuts_on_beat_pct": 58.6,
-        "cuts_checked": 239
+        "cuts_checked": 239,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 47,
+            "dissolve": 5,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 78.33,
+            "dissolve": 8.33,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.7552,
+          "variety_entropy_normalized": 0.4692,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 9,
+            "neutral": 15,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 22.5,
+            "neutral": 37.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 47.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 7784339,
+        "like_count": 185149,
+        "like_ratio": 0.023785,
+        "duration_sec": 229.0,
+        "channel": "Grable424",
+        "upload_date": "20180520",
+        "title": "MARVEL || Lions Inside (collab w/ djcprod)"
+      },
+      "quality_score": 55.26,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 55.79,
+        "variety": 46.92,
+        "beat_sync": 58.6,
+        "lyric_sync": 50.0,
+        "motion": 47.5,
+        "approval": 79.28
       }
     },
     {
@@ -1521,7 +2095,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 63.4,
-        "cuts_checked": 153
+        "cuts_checked": 153,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 38,
+            "dissolve": 16,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 63.33,
+            "dissolve": 26.67,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9171,
+          "variety_entropy_normalized": 0.5698,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 5,
+            "neutral": 21,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 12.5,
+            "neutral": 52.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 35.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 7406791,
+        "like_count": 207533,
+        "like_ratio": 0.028019,
+        "duration_sec": 327.0,
+        "channel": "Slyfer2812",
+        "upload_date": "20181222",
+        "title": "We think too much and feel too little."
+      },
+      "quality_score": 56.63,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 53.09,
+        "variety": 56.98,
+        "beat_sync": 63.4,
+        "lyric_sync": 50.0,
+        "motion": 35.25,
+        "approval": 93.4
       }
     },
     {
@@ -1529,7 +2158,17 @@
       "title": "Multifemales | 'Miss Jackson'",
       "url": "https://www.youtube.com/watch?v=RncU2R-z_OM",
       "duration_sec": 134.0,
-      "metrics": {}
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
     },
     {
       "id": "p9MnXkWLe5M",
@@ -1654,7 +2293,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 136.0,
         "cuts_on_beat_pct": 66.0,
-        "cuts_checked": 197
+        "cuts_checked": 197,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 38,
+            "dissolve": 18,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 63.33,
+            "dissolve": 30.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 0.831,
+          "variety_entropy_normalized": 0.5163,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 12,
+            "neutral": 14,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 30.0,
+            "neutral": 35.0,
+            "disconnected": 17.5
+          },
+          "continuity_score": 52.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6842691,
+        "like_count": 133198,
+        "like_ratio": 0.019466,
+        "duration_sec": 215.0,
+        "channel": "MonikaProdz",
+        "upload_date": "20180102",
+        "title": "\u25ba Infinity War | Whatever It Takes"
+      },
+      "quality_score": 55.03,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 49.04,
+        "variety": 51.63,
+        "beat_sync": 66.0,
+        "lyric_sync": 50.0,
+        "motion": 52.25,
+        "approval": 64.89
       }
     },
     {
@@ -1664,6 +2358,25 @@
       "duration_sec": 232.0,
       "metrics": {
         "shot_count": 0
+      },
+      "youtube_metadata": {
+        "view_count": 6853320,
+        "like_count": 88857,
+        "like_ratio": 0.012966,
+        "duration_sec": 231.0,
+        "channel": "Dany_Ela Cat",
+        "upload_date": "20160506",
+        "title": "The 100 music 3x13 - Radioactive - Koda"
+      },
+      "quality_score": 49.1,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 49.12,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 43.22
       }
     },
     {
@@ -1769,7 +2482,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 86.13,
         "cuts_on_beat_pct": 17.9,
-        "cuts_checked": 184
+        "cuts_checked": 184,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 15,
+            "flash_cut": 2,
+            "whip_pan": 7,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 25.0,
+            "flash_cut": 3.33,
+            "whip_pan": 11.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 1.0171,
+          "variety_entropy_normalized": 0.632,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 14,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 35.0,
+            "disconnected": 37.5
+          },
+          "continuity_score": 35.37
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6687982,
+        "like_count": 168312,
+        "like_ratio": 0.025166,
+        "duration_sec": 167.0,
+        "channel": "Grable424",
+        "upload_date": "20160529",
+        "title": "MARVEL || Glitter & Gold (collab w/ djcprod)"
+      },
+      "quality_score": 46.24,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 47.93,
+        "variety": 63.2,
+        "beat_sync": 17.9,
+        "lyric_sync": 50.0,
+        "motion": 35.37,
+        "approval": 83.89
       }
     },
     {
@@ -1923,7 +2691,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 56.3,
-        "cuts_checked": 167
+        "cuts_checked": 167,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.9902,
+          "variety_entropy_normalized": 0.6152,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 7,
+            "neutral": 22,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 17.5,
+            "neutral": 55.0,
+            "disconnected": 20.0
+          },
+          "continuity_score": 39.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6530474,
+        "like_count": 190310,
+        "like_ratio": 0.029142,
+        "duration_sec": 284.0,
+        "channel": "Slyfer2812",
+        "upload_date": "20180805",
+        "title": "(Marvel) Tony Stark | I Hope They'll Remember You"
+      },
+      "quality_score": 55.39,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 46.81,
+        "variety": 61.52,
+        "beat_sync": 56.3,
+        "lyric_sync": 50.0,
+        "motion": 39.88,
+        "approval": 97.14
       }
     },
     {
@@ -1997,7 +2820,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 99.38,
         "cuts_on_beat_pct": 32.1,
-        "cuts_checked": 106
+        "cuts_checked": 106,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 48,
+            "dissolve": 7,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 80.0,
+            "dissolve": 11.67,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6779,
+          "variety_entropy_normalized": 0.4212,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 9,
+            "neutral": 8,
+            "disconnected": 18
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 22.5,
+            "neutral": 20.0,
+            "disconnected": 45.0
+          },
+          "continuity_score": 36.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 5813049,
+        "like_count": 185796,
+        "like_ratio": 0.031962,
+        "duration_sec": 88.0,
+        "channel": "voordeel",
+        "upload_date": "20170826",
+        "title": "marvel || battle royale"
+      },
+      "quality_score": 46.11,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 41.66,
+        "variety": 42.12,
+        "beat_sync": 32.1,
+        "lyric_sync": 50.0,
+        "motion": 36.38,
+        "approval": 100.0
       }
     },
     {
@@ -2159,7 +3037,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 143.55,
         "cuts_on_beat_pct": 63.6,
-        "cuts_checked": 110
+        "cuts_checked": 110,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.8769,
+          "variety_entropy_normalized": 0.5449,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 4,
+            "neutral": 21,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 10.0,
+            "neutral": 52.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 43.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 5735387,
+        "like_count": 49756,
+        "like_ratio": 0.008675,
+        "duration_sec": 308.0,
+        "channel": "Star T",
+        "upload_date": "20160824",
+        "title": "(GOT) Jon Snow || The Prince That Was Promised"
+      },
+      "quality_score": 48.07,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 41.11,
+        "variety": 54.49,
+        "beat_sync": 63.6,
+        "lyric_sync": 50.0,
+        "motion": 43.38,
+        "approval": 28.92
       }
     },
     {
@@ -2167,7 +3100,17 @@
       "title": "Shameless | She Didn't Love You",
       "url": "https://www.youtube.com/watch?v=zQVKx2JjsGA",
       "duration_sec": 196.0,
-      "metrics": {}
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
     },
     {
       "id": "ck4tizK6HSk",
@@ -2260,7 +3203,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 161.5,
         "cuts_on_beat_pct": 50.0,
-        "cuts_checked": 48
+        "cuts_checked": 48,
+        "transitions": {
+          "sample_count": 48,
+          "distribution": {
+            "hard_cut": 29,
+            "dissolve": 12,
+            "flash_cut": 1,
+            "whip_pan": 6,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 60.42,
+            "dissolve": 25.0,
+            "flash_cut": 2.08,
+            "whip_pan": 12.5,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9916,
+          "variety_entropy_normalized": 0.6161,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 8,
+            "neutral": 21,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 20.0,
+            "neutral": 52.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 40.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 5093136,
+        "like_count": 105399,
+        "like_ratio": 0.020694,
+        "duration_sec": 136.0,
+        "channel": "TheRedSoxFan18",
+        "upload_date": "20150513",
+        "title": "Harry Potter || See You Again"
+      },
+      "quality_score": 48.9,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 36.5,
+        "variety": 61.61,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 40.88,
+        "approval": 68.98
       }
     },
     {
@@ -2362,7 +3360,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 66.7,
-        "cuts_checked": 36
+        "cuts_checked": 36,
+        "transitions": {
+          "sample_count": 36,
+          "distribution": {
+            "hard_cut": 2,
+            "dissolve": 23,
+            "flash_cut": 0,
+            "whip_pan": 11,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 5.56,
+            "dissolve": 63.89,
+            "flash_cut": 0.0,
+            "whip_pan": 30.56,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8091,
+          "variety_entropy_normalized": 0.5027,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 36,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 6,
+            "neutral": 16,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 8.33,
+            "impact_cut": 16.67,
+            "neutral": 44.44,
+            "disconnected": 30.56
+          },
+          "continuity_score": 36.39
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 4998669,
+        "like_count": 96658,
+        "like_ratio": 0.019337,
+        "duration_sec": 153.0,
+        "channel": "Annaece",
+        "upload_date": "20110307",
+        "title": "Shameless US | Fiona's Speech to Monica"
+      },
+      "quality_score": 49.24,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 35.83,
+        "variety": 50.27,
+        "beat_sync": 66.7,
+        "lyric_sync": 50.0,
+        "motion": 36.39,
+        "approval": 64.46
       }
     },
     {
@@ -2492,7 +3545,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 83.35,
         "cuts_on_beat_pct": 76.7,
-        "cuts_checked": 150
+        "cuts_checked": 150,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 12,
+            "dissolve": 46,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 20.0,
+            "dissolve": 76.67,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.639,
+          "variety_entropy_normalized": 0.397,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 4,
+            "neutral": 23,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 10.0,
+            "neutral": 57.5,
+            "disconnected": 17.5
+          },
+          "continuity_score": 42.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 4113304,
+        "like_count": 88409,
+        "like_ratio": 0.021493,
+        "duration_sec": 220.0,
+        "channel": "piratesandsuperheros",
+        "upload_date": "20180301",
+        "title": "Captain America | Soldier"
+      },
+      "quality_score": 49.72,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 29.48,
+        "variety": 39.7,
+        "beat_sync": 76.7,
+        "lyric_sync": 50.0,
+        "motion": 42.62,
+        "approval": 71.64
       }
     },
     {
@@ -2662,7 +3770,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 143.55,
         "cuts_on_beat_pct": 71.0,
-        "cuts_checked": 124
+        "cuts_checked": 124,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 28,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 21,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 46.67,
+            "dissolve": 16.67,
+            "flash_cut": 0.0,
+            "whip_pan": 35.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 1.09,
+          "variety_entropy_normalized": 0.6772,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 11,
+            "impact_cut": 3,
+            "neutral": 15,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 27.5,
+            "impact_cut": 7.5,
+            "neutral": 37.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 46.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3625257,
+        "like_count": 145116,
+        "like_ratio": 0.040029,
+        "duration_sec": 325.0,
+        "channel": "evie may sellars",
+        "upload_date": "20180722",
+        "title": "I don't have any friends."
+      },
+      "quality_score": 55.29,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 25.98,
+        "variety": 67.72,
+        "beat_sync": 71.0,
+        "lyric_sync": 50.0,
+        "motion": 46.25,
+        "approval": 100.0
       }
     },
     {
@@ -2776,7 +3939,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 71.78,
         "cuts_on_beat_pct": 17.5,
-        "cuts_checked": 194
+        "cuts_checked": 194,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 34,
+            "dissolve": 18,
+            "flash_cut": 1,
+            "whip_pan": 5,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 56.67,
+            "dissolve": 30.0,
+            "flash_cut": 1.67,
+            "whip_pan": 8.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 1.0717,
+          "variety_entropy_normalized": 0.6659,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 6,
+            "neutral": 15,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 15.0,
+            "neutral": 37.5,
+            "disconnected": 30.0
+          },
+          "continuity_score": 41.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3555661,
+        "like_count": 81267,
+        "like_ratio": 0.022856,
+        "duration_sec": 183.0,
+        "channel": "Grable424",
+        "upload_date": "20150915",
+        "title": "GOTHAM || I'm So Sorry"
+      },
+      "quality_score": 41.26,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 25.48,
+        "variety": 66.59,
+        "beat_sync": 17.5,
+        "lyric_sync": 50.0,
+        "motion": 41.88,
+        "approval": 76.19
       }
     },
     {
@@ -2854,7 +4072,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 86.13,
         "cuts_on_beat_pct": 40.0,
-        "cuts_checked": 95
+        "cuts_checked": 95,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 45,
+            "dissolve": 7,
+            "flash_cut": 0,
+            "whip_pan": 7,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 75.0,
+            "dissolve": 11.67,
+            "flash_cut": 0.0,
+            "whip_pan": 11.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.7853,
+          "variety_entropy_normalized": 0.4879,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 5,
+            "neutral": 13,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 12.5,
+            "neutral": 32.5,
+            "disconnected": 42.5
+          },
+          "continuity_score": 33.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3541686,
+        "like_count": 101342,
+        "like_ratio": 0.028614,
+        "duration_sec": 90.0,
+        "channel": "voordeel",
+        "upload_date": "20150927",
+        "title": "Hannibal || Glitter & Gold"
+      },
+      "quality_score": 43.69,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 25.38,
+        "variety": 48.79,
+        "beat_sync": 40.0,
+        "lyric_sync": 50.0,
+        "motion": 33.25,
+        "approval": 95.38
       }
     },
     {
@@ -3000,7 +4273,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 72.7,
-        "cuts_checked": 66
+        "cuts_checked": 66,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 19,
+            "dissolve": 37,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 31.67,
+            "dissolve": 61.67,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8428,
+          "variety_entropy_normalized": 0.5237,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 6,
+            "neutral": 19,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 15.0,
+            "neutral": 47.5,
+            "disconnected": 25.0
+          },
+          "continuity_score": 40.37
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3112225,
+        "like_count": 41602,
+        "like_ratio": 0.013367,
+        "duration_sec": 264.0,
+        "channel": "sassycargo",
+        "upload_date": "20150602",
+        "title": "Knocking On Heaven's Door | Supernatural"
+      },
+      "quality_score": 45.98,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 22.31,
+        "variety": 52.37,
+        "beat_sync": 72.7,
+        "lyric_sync": 50.0,
+        "motion": 40.37,
+        "approval": 44.56
       }
     },
     {
@@ -3146,7 +4474,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 72.7,
-        "cuts_checked": 66
+        "cuts_checked": 66,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 19,
+            "dissolve": 37,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 31.67,
+            "dissolve": 61.67,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8428,
+          "variety_entropy_normalized": 0.5237,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 6,
+            "neutral": 19,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 15.0,
+            "neutral": 47.5,
+            "disconnected": 25.0
+          },
+          "continuity_score": 40.37
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3112225,
+        "like_count": 41602,
+        "like_ratio": 0.013367,
+        "duration_sec": 264.0,
+        "channel": "sassycargo",
+        "upload_date": "20150602",
+        "title": "Knocking On Heaven's Door | Supernatural"
+      },
+      "quality_score": 45.98,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 22.31,
+        "variety": 52.37,
+        "beat_sync": 72.7,
+        "lyric_sync": 50.0,
+        "motion": 40.37,
+        "approval": 44.56
       }
     },
     {
@@ -3280,7 +4663,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 99.38,
         "cuts_on_beat_pct": 35.8,
-        "cuts_checked": 67
+        "cuts_checked": 67,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 23,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 53.33,
+            "dissolve": 38.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9516,
+          "variety_entropy_normalized": 0.5913,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 2,
+            "neutral": 19,
+            "disconnected": 14
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 5.0,
+            "neutral": 47.5,
+            "disconnected": 35.0
+          },
+          "continuity_score": 32.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2999648,
+        "like_count": 65261,
+        "like_ratio": 0.021756,
+        "duration_sec": 234.0,
+        "channel": "purpleheart",
+        "upload_date": "20170307",
+        "title": "Sad Multifandom - how come he don't want me"
+      },
+      "quality_score": 41.09,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 21.5,
+        "variety": 59.13,
+        "beat_sync": 35.8,
+        "lyric_sync": 50.0,
+        "motion": 32.88,
+        "approval": 72.52
       }
     },
     {
@@ -3414,7 +4852,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 136.0,
         "cuts_on_beat_pct": 60.6,
-        "cuts_checked": 71
+        "cuts_checked": 71,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 19,
+            "dissolve": 40,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 31.67,
+            "dissolve": 66.67,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.7027,
+          "variety_entropy_normalized": 0.4366,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 4,
+            "neutral": 25,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 10.0,
+            "neutral": 62.5,
+            "disconnected": 17.5
+          },
+          "continuity_score": 39.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2959407,
+        "like_count": 72791,
+        "like_ratio": 0.024596,
+        "duration_sec": 230.0,
+        "channel": "kedits",
+        "upload_date": "20170812",
+        "title": "sad multifandom | i'm in pain and you put me here"
+      },
+      "quality_score": 45.58,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 21.21,
+        "variety": 43.66,
+        "beat_sync": 60.6,
+        "lyric_sync": 50.0,
+        "motion": 39.38,
+        "approval": 81.99
       }
     },
     {
@@ -3422,12 +4915,23 @@
       "title": "IF I DISAPPEAR",
       "url": "https://www.youtube.com/watch?v=2i9kJQzFBfY",
       "duration_sec": 173.0,
-      "metrics": {}
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
     }
   ],
   "priors": {
-    "median_shot_duration_sec": 1.393,
-    "cuts_per_minute": 35.97,
+    "median_shot_duration_sec": 1.418,
+    "cuts_per_minute": 35.9,
+    "quality_weighted": true,
     "shot_duration_range_sec": [
       0.93,
       3.191
@@ -3444,8 +4948,13 @@
     "bright_shot_pct_mean": 1.59,
     "saturation_mean_mean": 0.3726,
     "intro_to_first_cut_sec_median": 3.393,
-    "pacing_profile": "peaks-and-valleys"
+    "pacing_profile": "peaks-and-valleys",
+    "tier_samples": {
+      "D": 18,
+      "C": 7,
+      "B": 1
+    }
   },
-  "generated_at": "2026-04-19T22:27:40.683872+00:00",
+  "generated_at": "2026-04-19T23:37:26.733341+00:00",
   "generator": "ff reference ingest"
 }

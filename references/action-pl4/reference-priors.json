@@ -121,7 +121,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 89.1,
         "cuts_on_beat_pct": 45.3,
-        "cuts_checked": 86
+        "cuts_checked": 86,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 29,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 7,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 48.33,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 11.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9686,
+          "variety_entropy_normalized": 0.6018,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 1,
+            "neutral": 26,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 2.5,
+            "neutral": 65.0,
+            "disconnected": 27.5
+          },
+          "continuity_score": 29.62
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 86,
+          "cuts_on_word_boundary_pct": 22.09,
+          "cuts_on_phrase_boundary_pct": 5.81,
+          "word_count": 220,
+          "phrase_count": 15
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 709403,
+        "like_count": 25724,
+        "like_ratio": 0.036261,
+        "duration_sec": 194.0,
+        "channel": "frissxedits",
+        "upload_date": "20201120",
+        "title": "Supernatural | THE GRAND STORY (2005-2020, Carry On My Wayward Son)"
+      },
+      "quality_score": 55.38,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 84.0,
+        "variety": 60.18,
+        "beat_sync": 45.3,
+        "lyric_sync": 12.32,
+        "motion": 29.62,
+        "approval": 100.0
       }
     },
     {
@@ -231,7 +294,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 68.5,
-        "cuts_checked": 162
+        "cuts_checked": 162,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 47,
+            "dissolve": 8,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 78.33,
+            "dissolve": 13.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.7087,
+          "variety_entropy_normalized": 0.4404,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 6,
+            "neutral": 12,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 15.0,
+            "neutral": 30.0,
+            "disconnected": 42.5
+          },
+          "continuity_score": 34.25
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 162,
+          "cuts_on_word_boundary_pct": 9.88,
+          "cuts_on_phrase_boundary_pct": 2.47,
+          "word_count": 167,
+          "phrase_count": 19
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8340,
+        "like_count": 409,
+        "like_ratio": 0.049041,
+        "duration_sec": 178.0,
+        "channel": "ASTrix UI",
+        "upload_date": "20210115",
+        "title": "(Multifandom) Die In This Town (By 5 Amazing Editors)"
+      },
+      "quality_score": 36.51,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 0.99,
+        "variety": 44.04,
+        "beat_sync": 68.5,
+        "lyric_sync": 5.43,
+        "motion": 34.25,
+        "approval": 100.0
       }
     },
     {
@@ -325,7 +451,70 @@
         "beat_sync_available": true,
         "tempo_bpm": 152.0,
         "cuts_on_beat_pct": 78.9,
-        "cuts_checked": 109
+        "cuts_checked": 109,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 15,
+            "dissolve": 42,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 25.0,
+            "dissolve": 70.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.746,
+          "variety_entropy_normalized": 0.4635,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 20,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 50.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 40.62
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 109,
+          "cuts_on_word_boundary_pct": 13.76,
+          "cuts_on_phrase_boundary_pct": 6.42,
+          "word_count": 66,
+          "phrase_count": 11
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 172373,
+        "like_count": 7498,
+        "like_ratio": 0.043499,
+        "duration_sec": 140.0,
+        "channel": "Ak Editx",
+        "upload_date": "20220522",
+        "title": "Multifandom - ENEMY VOL.2 ft.@ImagineDragonsVEVO @jid6871"
+      },
+      "quality_score": 45.33,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 20.41,
+        "variety": 46.35,
+        "beat_sync": 78.9,
+        "lyric_sync": 9.36,
+        "motion": 40.62,
+        "approval": 100.0
       }
     },
     {
@@ -427,7 +616,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 66.3,
-        "cuts_checked": 178
+        "cuts_checked": 178,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 13,
+            "dissolve": 44,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 21.67,
+            "dissolve": 73.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.7086,
+          "variety_entropy_normalized": 0.4403,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 10,
+            "neutral": 16,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 25.0,
+            "neutral": 40.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 45.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 282662,
+        "like_count": 9631,
+        "like_ratio": 0.034072,
+        "duration_sec": 156.0,
+        "channel": "Ak Editx",
+        "upload_date": "20211017",
+        "title": "Multifandom || Believer @ImagineDragons"
+      },
+      "quality_score": 52.52,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 33.47,
+        "variety": 44.03,
+        "beat_sync": 66.3,
+        "lyric_sync": 50.0,
+        "motion": 45.25,
+        "approval": 100.0
       }
     },
     {
@@ -513,7 +757,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 143.55,
         "cuts_on_beat_pct": 55.3,
-        "cuts_checked": 103
+        "cuts_checked": 103,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 32,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 53.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 0.9533,
+          "variety_entropy_normalized": 0.5923,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 6,
+            "neutral": 17,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 15.0,
+            "neutral": 42.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 36.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 356065,
+        "like_count": 4987,
+        "like_ratio": 0.014006,
+        "duration_sec": 114.0,
+        "channel": "MKG Edits",
+        "upload_date": "20210522",
+        "title": "Multifandom | Arise"
+      },
+      "quality_score": 48.07,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 42.16,
+        "variety": 59.23,
+        "beat_sync": 55.3,
+        "lyric_sync": 50.0,
+        "motion": 36.12,
+        "approval": 46.69
       }
     },
     {
@@ -599,7 +898,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 136.0,
         "cuts_on_beat_pct": 58.3,
-        "cuts_checked": 108
+        "cuts_checked": 108,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 50,
+            "dissolve": 5,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 83.33,
+            "dissolve": 8.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.6078,
+          "variety_entropy_normalized": 0.3776,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 7,
+            "neutral": 16,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 17.5,
+            "neutral": 40.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 39.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 93534,
+        "like_count": 1937,
+        "like_ratio": 0.020709,
+        "duration_sec": 117.0,
+        "channel": "SolitaryEdits",
+        "upload_date": "20210130",
+        "title": "Multifandom || Harder, Better, Faster, Stronger"
+      },
+      "quality_score": 40.44,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 11.08,
+        "variety": 37.76,
+        "beat_sync": 58.3,
+        "lyric_sync": 50.0,
+        "motion": 39.62,
+        "approval": 69.03
       }
     },
     {
@@ -713,7 +1067,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 64.8,
-        "cuts_checked": 142
+        "cuts_checked": 142,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 34,
+            "dissolve": 12,
+            "flash_cut": 1,
+            "whip_pan": 8,
+            "speed_ramp": 5
+          },
+          "distribution_pct": {
+            "hard_cut": 56.67,
+            "dissolve": 20.0,
+            "flash_cut": 1.67,
+            "whip_pan": 13.33,
+            "speed_ramp": 8.33
+          },
+          "variety_entropy": 1.1877,
+          "variety_entropy_normalized": 0.738,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 8,
+            "impact_cut": 7,
+            "neutral": 12,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 20.0,
+            "impact_cut": 17.5,
+            "neutral": 30.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 43.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 271381,
+        "like_count": 6261,
+        "like_ratio": 0.023071,
+        "duration_sec": 184.0,
+        "channel": "MKG Edits",
+        "upload_date": "20210808",
+        "title": "Multifandom | Blue Monday"
+      },
+      "quality_score": 53.8,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 32.14,
+        "variety": 73.8,
+        "beat_sync": 64.8,
+        "lyric_sync": 50.0,
+        "motion": 43.62,
+        "approval": 76.9
       }
     },
     {
@@ -811,7 +1220,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 103.36,
         "cuts_on_beat_pct": 31.6,
-        "cuts_checked": 95
+        "cuts_checked": 95,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 41,
+            "dissolve": 13,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 68.33,
+            "dissolve": 21.67,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8218,
+          "variety_entropy_normalized": 0.5106,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 5,
+            "neutral": 12,
+            "disconnected": 18
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 12.5,
+            "neutral": 30.0,
+            "disconnected": 45.0
+          },
+          "continuity_score": 32.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 613984,
+        "like_count": 11038,
+        "like_ratio": 0.017978,
+        "duration_sec": 149.0,
+        "channel": "MKG Edits",
+        "upload_date": "20211126",
+        "title": "Multifandom | Goddamn Vol.2 (6K sub special)"
+      },
+      "quality_score": 50.5,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 72.7,
+        "variety": 51.06,
+        "beat_sync": 31.6,
+        "lyric_sync": 50.0,
+        "motion": 32.38,
+        "approval": 59.93
       }
     },
     {
@@ -917,7 +1381,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 54.8,
-        "cuts_checked": 157
+        "cuts_checked": 157,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 47,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 78.33,
+            "dissolve": 16.67,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.6715,
+          "variety_entropy_normalized": 0.4172,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 2,
+            "neutral": 11,
+            "disconnected": 21
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 5.0,
+            "neutral": 27.5,
+            "disconnected": 52.5
+          },
+          "continuity_score": 28.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 581138,
+        "like_count": 10606,
+        "like_ratio": 0.01825,
+        "duration_sec": 166.0,
+        "channel": "MKG Edits",
+        "upload_date": "20220620",
+        "title": "Multifandom | Supermassive Army"
+      },
+      "quality_score": 52.26,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 68.81,
+        "variety": 41.72,
+        "beat_sync": 54.8,
+        "lyric_sync": 50.0,
+        "motion": 28.38,
+        "approval": 60.83
       }
     },
     {
@@ -1007,7 +1526,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 107.67,
         "cuts_on_beat_pct": 49.2,
-        "cuts_checked": 126
+        "cuts_checked": 126,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 35,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 58.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 0.8624,
+          "variety_entropy_normalized": 0.5358,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 13,
+            "impact_cut": 4,
+            "neutral": 10,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 32.5,
+            "impact_cut": 10.0,
+            "neutral": 25.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 48.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 492870,
+        "like_count": 13092,
+        "like_ratio": 0.026563,
+        "duration_sec": 123.0,
+        "channel": "Ak Editx",
+        "upload_date": "20220306",
+        "title": "Multifandom || Edamame ft.@bbnomoney @richbrian"
+      },
+      "quality_score": 56.13,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 58.36,
+        "variety": 53.58,
+        "beat_sync": 49.2,
+        "lyric_sync": 50.0,
+        "motion": 48.75,
+        "approval": 88.54
       }
     },
     {
@@ -1133,7 +1707,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 143.55,
         "cuts_on_beat_pct": 74.6,
-        "cuts_checked": 256
+        "cuts_checked": 256,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 32,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 53.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 0.9533,
+          "variety_entropy_normalized": 0.5923,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 6,
+            "neutral": 18,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 15.0,
+            "neutral": 45.0,
+            "disconnected": 27.5
+          },
+          "continuity_score": 39.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 848334,
+        "like_count": 21053,
+        "like_ratio": 0.024817,
+        "duration_sec": 212.0,
+        "channel": "Ak Editx",
+        "upload_date": "20201218",
+        "title": "Multifandom || Radioactive in the dark (Light em up x Radioactive)"
+      },
+      "quality_score": 70.5,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 59.23,
+        "beat_sync": 74.6,
+        "lyric_sync": 50.0,
+        "motion": 39.5,
+        "approval": 82.72
       }
     },
     {
@@ -1235,7 +1864,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 152.0,
         "cuts_on_beat_pct": 56.3,
-        "cuts_checked": 71
+        "cuts_checked": 71,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 27,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 16
+          },
+          "distribution_pct": {
+            "hard_cut": 45.0,
+            "dissolve": 28.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 26.67
+          },
+          "variety_entropy": 1.0691,
+          "variety_entropy_normalized": 0.6643,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 9,
+            "impact_cut": 10,
+            "neutral": 13,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 22.5,
+            "impact_cut": 25.0,
+            "neutral": 32.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 52.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 648030,
+        "like_count": 13282,
+        "like_ratio": 0.020496,
+        "duration_sec": 155.0,
+        "channel": "AnneSoshi",
+        "upload_date": "20141031",
+        "title": "Multifandom | READY OR NOT"
+      },
+      "quality_score": 62.63,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 76.74,
+        "variety": 66.43,
+        "beat_sync": 56.3,
+        "lyric_sync": 50.0,
+        "motion": 52.62,
+        "approval": 68.32
       }
     },
     {
@@ -1381,7 +2065,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 50.0,
-        "cuts_checked": 16
+        "cuts_checked": 16,
+        "transitions": {
+          "sample_count": 16,
+          "distribution": {
+            "hard_cut": 6,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 37.5,
+            "dissolve": 62.5,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6616,
+          "variety_entropy_normalized": 0.4111,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 16,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 0,
+            "neutral": 12,
+            "disconnected": 3
+          },
+          "distribution_pct": {
+            "match_cut": 6.25,
+            "impact_cut": 0.0,
+            "neutral": 75.0,
+            "disconnected": 18.75
+          },
+          "continuity_score": 32.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 70963,
+        "like_count": 1294,
+        "like_ratio": 0.018235,
+        "duration_sec": 263.0,
+        "channel": "\u2665TheMica993\u2665",
+        "upload_date": "20141214",
+        "title": "Sad multifandom | \"hide as villains or live as heroes\""
+      },
+      "quality_score": 36.72,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 8.4,
+        "variety": 41.11,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 32.5,
+        "approval": 60.78
       }
     },
     {
@@ -1575,7 +2314,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 107.67,
         "cuts_on_beat_pct": 46.6,
-        "cuts_checked": 461
+        "cuts_checked": 461,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 45,
+            "dissolve": 5,
+            "flash_cut": 1,
+            "whip_pan": 7,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 75.0,
+            "dissolve": 8.33,
+            "flash_cut": 1.67,
+            "whip_pan": 11.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.8551,
+          "variety_entropy_normalized": 0.5313,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 2,
+            "neutral": 20,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 5.0,
+            "neutral": 50.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 33.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 608568,
+        "like_count": 19860,
+        "like_ratio": 0.032634,
+        "duration_sec": 385.0,
+        "channel": "Pteryx Videos",
+        "upload_date": "20141216",
+        "title": "Multifandom Mashup 2014"
+      },
+      "quality_score": 57.87,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 72.06,
+        "variety": 53.13,
+        "beat_sync": 46.6,
+        "lyric_sync": 50.0,
+        "motion": 33.75,
+        "approval": 100.0
       }
     },
     {
@@ -1677,7 +2471,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 52.3,
-        "cuts_checked": 172
+        "cuts_checked": 172,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 17,
+            "dissolve": 39,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 28.33,
+            "dissolve": 65.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 0.8179,
+          "variety_entropy_normalized": 0.5082,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 6,
+            "neutral": 15,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 15.0,
+            "neutral": 37.5,
+            "disconnected": 37.5
+          },
+          "continuity_score": 34.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 22331,
+        "like_count": 675,
+        "like_ratio": 0.030227,
+        "duration_sec": 151.0,
+        "channel": "Zurik 23M",
+        "upload_date": "20150313",
+        "title": "Multifandom || What a Wonderful World"
+      },
+      "quality_score": 41.4,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 2.64,
+        "variety": 50.82,
+        "beat_sync": 52.3,
+        "lyric_sync": 50.0,
+        "motion": 34.38,
+        "approval": 100.0
       }
     },
     {
@@ -1803,7 +2652,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 152.0,
         "cuts_on_beat_pct": 67.3,
-        "cuts_checked": 49
+        "cuts_checked": 49,
+        "transitions": {
+          "sample_count": 49,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 14,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 67.35,
+            "dissolve": 28.57,
+            "flash_cut": 0.0,
+            "whip_pan": 2.04,
+            "speed_ramp": 2.04
+          },
+          "variety_entropy": 0.783,
+          "variety_entropy_normalized": 0.4865,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 17,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 42.5,
+            "disconnected": 30.0
+          },
+          "continuity_score": 38.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6804,
+        "like_count": 219,
+        "like_ratio": 0.032187,
+        "duration_sec": 214.0,
+        "channel": "Zurik 23M",
+        "upload_date": "20140704",
+        "title": "Multifandom || All Men Fall"
+      },
+      "quality_score": 44.16,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 0.81,
+        "variety": 48.65,
+        "beat_sync": 67.3,
+        "lyric_sync": 50.0,
+        "motion": 38.0,
+        "approval": 100.0
       }
     },
     {
@@ -1905,7 +2809,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 136.0,
         "cuts_on_beat_pct": 41.1,
-        "cuts_checked": 107
+        "cuts_checked": 107,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 39,
+            "dissolve": 14,
+            "flash_cut": 3,
+            "whip_pan": 3,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 65.0,
+            "dissolve": 23.33,
+            "flash_cut": 5.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9874,
+          "variety_entropy_normalized": 0.6135,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 16,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 40.0,
+            "disconnected": 37.5
+          },
+          "continuity_score": 34.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 119006,
+        "like_count": 4227,
+        "like_ratio": 0.035519,
+        "duration_sec": 151.0,
+        "channel": "EnchantedxPassion",
+        "upload_date": "20150427",
+        "title": "Multifandom | 5 Stages of Grief"
+      },
+      "quality_score": 43.55,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.09,
+        "variety": 61.35,
+        "beat_sync": 41.1,
+        "lyric_sync": 50.0,
+        "motion": 34.0,
+        "approval": 100.0
       }
     },
     {
@@ -2039,7 +2998,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 95.7,
         "cuts_on_beat_pct": 69.7,
-        "cuts_checked": 132
+        "cuts_checked": 132,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 12,
+            "flash_cut": 0,
+            "whip_pan": 8,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 20.0,
+            "flash_cut": 0.0,
+            "whip_pan": 13.33,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 1.0776,
+          "variety_entropy_normalized": 0.6695,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 6,
+            "neutral": 15,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 15.0,
+            "neutral": 37.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 39.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 237190,
+        "like_count": 3558,
+        "like_ratio": 0.015001,
+        "duration_sec": 236.0,
+        "channel": "eemersonm",
+        "upload_date": "20150423",
+        "title": "No Bravery | Multifandom"
+      },
+      "quality_score": 49.41,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 28.09,
+        "variety": 66.95,
+        "beat_sync": 69.7,
+        "lyric_sync": 50.0,
+        "motion": 39.38,
+        "approval": 50.0
       }
     },
     {
@@ -2189,7 +3203,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 99.38,
         "cuts_on_beat_pct": 54.1,
-        "cuts_checked": 133
+        "cuts_checked": 133,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 37,
+            "dissolve": 14,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 61.67,
+            "dissolve": 23.33,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 1.0177,
+          "variety_entropy_normalized": 0.6323,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 14,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 35.0,
+            "disconnected": 42.5
+          },
+          "continuity_score": 32.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 428879,
+        "like_count": 9827,
+        "like_ratio": 0.022913,
+        "duration_sec": 275.0,
+        "channel": "Grable424",
+        "upload_date": "20111105",
+        "title": "Harry Potter || Never Fall Away"
+      },
+      "quality_score": 52.98,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.79,
+        "variety": 63.23,
+        "beat_sync": 54.1,
+        "lyric_sync": 50.0,
+        "motion": 32.25,
+        "approval": 76.38
       }
     },
     {
@@ -2323,7 +3392,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 152.0,
         "cuts_on_beat_pct": 82.0,
-        "cuts_checked": 167
+        "cuts_checked": 167,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 28,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 46.67,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 1.0411,
+          "variety_entropy_normalized": 0.6469,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 10,
+            "neutral": 15,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 25.0,
+            "neutral": 37.5,
+            "disconnected": 30.0
+          },
+          "continuity_score": 39.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 844499,
+        "like_count": 11755,
+        "like_ratio": 0.013919,
+        "duration_sec": 239.0,
+        "channel": "Cornelis van Dijkhuizen",
+        "upload_date": "20130224",
+        "title": "SKYFALL: 50 Years of Bond"
+      },
+      "quality_score": 69.15,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 64.69,
+        "beat_sync": 82.0,
+        "lyric_sync": 50.0,
+        "motion": 39.38,
+        "approval": 46.4
       }
     },
     {
@@ -2469,7 +3593,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 89.1,
         "cuts_on_beat_pct": 43.4,
-        "cuts_checked": 159
+        "cuts_checked": 159,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 41,
+            "dissolve": 13,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 68.33,
+            "dissolve": 21.67,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.8911,
+          "variety_entropy_normalized": 0.5537,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 8,
+            "neutral": 15,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 20.0,
+            "neutral": 37.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 38.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 7320,
+        "like_count": 195,
+        "like_ratio": 0.026639,
+        "duration_sec": 267.0,
+        "channel": "xoxoDamonFanMusic Channelxoxo",
+        "upload_date": "20180208",
+        "title": "Multifandom  \ud83c\udfb6 Him & I (5000+ Subs Thank You)"
+      },
+      "quality_score": 39.3,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 0.87,
+        "variety": 55.37,
+        "beat_sync": 43.4,
+        "lyric_sync": 50.0,
+        "motion": 38.12,
+        "approval": 88.8
       }
     },
     {
@@ -2603,7 +3782,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 33.1,
-        "cuts_checked": 326
+        "cuts_checked": 326,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 42,
+            "dissolve": 10,
+            "flash_cut": 1,
+            "whip_pan": 5,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 70.0,
+            "dissolve": 16.67,
+            "flash_cut": 1.67,
+            "whip_pan": 8.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.937,
+          "variety_entropy_normalized": 0.5822,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 4,
+            "neutral": 14,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 10.0,
+            "neutral": 35.0,
+            "disconnected": 37.5
+          },
+          "continuity_score": 37.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 118425,
+        "like_count": 2607,
+        "like_ratio": 0.022014,
+        "duration_sec": 235.0,
+        "channel": "Disastrous",
+        "upload_date": "20180204",
+        "title": "\u2718 MULTIFANDOM [Personal Skinhead]"
+      },
+      "quality_score": 39.28,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.02,
+        "variety": 58.22,
+        "beat_sync": 33.1,
+        "lyric_sync": 50.0,
+        "motion": 37.25,
+        "approval": 73.38
       }
     },
     {
@@ -2753,7 +3987,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 152.0,
         "cuts_on_beat_pct": 65.3,
-        "cuts_checked": 98
+        "cuts_checked": 98,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 20,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 33.33,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.8994,
+          "variety_entropy_normalized": 0.5589,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 0,
+            "neutral": 30,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 2.5,
+            "impact_cut": 0.0,
+            "neutral": 75.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 28.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 120608,
+        "like_count": 6258,
+        "like_ratio": 0.051887,
+        "duration_sec": 279.0,
+        "channel": "Lydia Martin",
+        "upload_date": "20200803",
+        "title": "Five Hargreeves | TUA | So much can change in a matter of seconds"
+      },
+      "quality_score": 46.83,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.28,
+        "variety": 55.89,
+        "beat_sync": 65.3,
+        "lyric_sync": 50.0,
+        "motion": 28.75,
+        "approval": 100.0
       }
     },
     {
@@ -2903,7 +4192,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 65.6,
-        "cuts_checked": 180
+        "cuts_checked": 180,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 40,
+            "dissolve": 15,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 66.67,
+            "dissolve": 25.0,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.88,
+          "variety_entropy_normalized": 0.5468,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 3,
+            "neutral": 24,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 7.5,
+            "neutral": 60.0,
+            "disconnected": 25.0
+          },
+          "continuity_score": 34.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 15425,
+        "like_count": 416,
+        "like_ratio": 0.026969,
+        "duration_sec": 271.0,
+        "channel": "Al RNL",
+        "upload_date": "20230828",
+        "title": "What It's Like To Feel Alone..."
+      },
+      "quality_score": 43.39,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.83,
+        "variety": 54.68,
+        "beat_sync": 65.6,
+        "lyric_sync": 50.0,
+        "motion": 34.12,
+        "approval": 89.9
       }
     },
     {
@@ -3093,7 +4437,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 172.27,
         "cuts_on_beat_pct": 85.5,
-        "cuts_checked": 427
+        "cuts_checked": 427,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 20,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 33.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 0.9457,
+          "variety_entropy_normalized": 0.5876,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 8,
+            "neutral": 19,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 20.0,
+            "neutral": 47.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 44.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 359746,
+        "like_count": 15218,
+        "like_ratio": 0.042302,
+        "duration_sec": 373.0,
+        "channel": "Pteryx Videos",
+        "upload_date": "20161215",
+        "title": "Multifandom Mashup 2016"
+      },
+      "quality_score": 60.68,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 42.6,
+        "variety": 58.76,
+        "beat_sync": 85.5,
+        "lyric_sync": 50.0,
+        "motion": 44.12,
+        "approval": 100.0
       }
     },
     {
@@ -3211,7 +4610,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 60.0,
-        "cuts_checked": 110
+        "cuts_checked": 110,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 20,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 7
+          },
+          "distribution_pct": {
+            "hard_cut": 53.33,
+            "dissolve": 33.33,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 11.67
+          },
+          "variety_entropy": 1.0204,
+          "variety_entropy_normalized": 0.634,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 8,
+            "neutral": 19,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 20.0,
+            "neutral": 47.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 41.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 14038659,
+        "like_count": 57984,
+        "like_ratio": 0.00413,
+        "duration_sec": 199.0,
+        "channel": "MsTabularasa",
+        "upload_date": "20150301",
+        "title": "WALK THE MOON - Shut Up and Dance (Movie dance compilation)"
+      },
+      "quality_score": 61.63,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 63.4,
+        "beat_sync": 60.0,
+        "lyric_sync": 50.0,
+        "motion": 41.62,
+        "approval": 13.77
       }
     },
     {
@@ -3313,7 +4767,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 123.05,
         "cuts_on_beat_pct": 73.0,
-        "cuts_checked": 185
+        "cuts_checked": 185,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 38,
+            "dissolve": 17,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 63.33,
+            "dissolve": 28.33,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8954,
+          "variety_entropy_normalized": 0.5563,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 12,
+            "impact_cut": 3,
+            "neutral": 12,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 30.0,
+            "impact_cut": 7.5,
+            "neutral": 30.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 46.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1521402,
+        "like_count": 36697,
+        "like_ratio": 0.024121,
+        "duration_sec": 151.0,
+        "channel": "lightningxdisaster",
+        "upload_date": "20170317",
+        "title": "\u25baMultiFandom | Believer"
+      },
+      "quality_score": 70.4,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 55.63,
+        "beat_sync": 73.0,
+        "lyric_sync": 50.0,
+        "motion": 46.12,
+        "approval": 80.4
       }
     },
     {
@@ -3443,7 +4952,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 117.45,
         "cuts_on_beat_pct": 56.2,
-        "cuts_checked": 89
+        "cuts_checked": 89,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 28,
+            "dissolve": 17,
+            "flash_cut": 1,
+            "whip_pan": 10,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 46.67,
+            "dissolve": 28.33,
+            "flash_cut": 1.67,
+            "whip_pan": 16.67,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 1.2604,
+          "variety_entropy_normalized": 0.7831,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 4,
+            "neutral": 12,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 10.0,
+            "neutral": 30.0,
+            "disconnected": 42.5
+          },
+          "continuity_score": 35.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 212792,
+        "like_count": 3375,
+        "like_ratio": 0.015861,
+        "duration_sec": 227.0,
+        "channel": "WalterPinkman",
+        "upload_date": "20120310",
+        "title": "Sherlock BBC || Nobody Could Be That Clever"
+      },
+      "quality_score": 47.4,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 25.2,
+        "variety": 78.31,
+        "beat_sync": 56.2,
+        "lyric_sync": 50.0,
+        "motion": 35.5,
+        "approval": 52.87
       }
     },
     {
@@ -3577,7 +5141,62 @@
         "beat_sync_available": true,
         "tempo_bpm": 80.75,
         "cuts_on_beat_pct": 63.3,
-        "cuts_checked": 128
+        "cuts_checked": 128,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 39,
+            "dissolve": 16,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 65.0,
+            "dissolve": 26.67,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8813,
+          "variety_entropy_normalized": 0.5476,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 15,
+            "disconnected": 14
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 37.5,
+            "disconnected": 35.0
+          },
+          "continuity_score": 36.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 382568,
+        "like_count": 10308,
+        "like_ratio": 0.026944,
+        "duration_sec": 231.0,
+        "channel": "sasuwux",
+        "upload_date": "20170630",
+        "title": "Supernatural \u2718 Way Down We Go | Collab"
+      },
+      "quality_score": 54.12,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 45.3,
+        "variety": 54.76,
+        "beat_sync": 63.3,
+        "lyric_sync": 50.0,
+        "motion": 36.25,
+        "approval": 89.81
       }
     },
     {
@@ -3699,13 +5318,69 @@
         "beat_sync_available": true,
         "tempo_bpm": 129.2,
         "cuts_on_beat_pct": 80.0,
-        "cuts_checked": 95
+        "cuts_checked": 95,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 16,
+            "dissolve": 40,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 26.67,
+            "dissolve": 66.67,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 0.8033,
+          "variety_entropy_normalized": 0.4991,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 9,
+            "neutral": 15,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 22.5,
+            "neutral": 37.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 42.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 219582,
+        "like_count": 7065,
+        "like_ratio": 0.032175,
+        "duration_sec": 208.0,
+        "channel": "Vivien",
+        "upload_date": "20161113",
+        "title": "\u25cf Supernatural || Dear God"
+      },
+      "quality_score": 53.86,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 26.0,
+        "variety": 49.91,
+        "beat_sync": 80.0,
+        "lyric_sync": 50.0,
+        "motion": 42.5,
+        "approval": 100.0
       }
     }
   ],
   "priors": {
-    "median_shot_duration_sec": 0.94,
-    "cuts_per_minute": 45.98,
+    "median_shot_duration_sec": 0.92,
+    "cuts_per_minute": 46.84,
+    "quality_weighted": true,
     "shot_duration_range_sec": [
       0.781,
       2.136
@@ -3722,8 +5397,13 @@
     "bright_shot_pct_mean": 1.69,
     "saturation_mean_mean": 0.3896,
     "intro_to_first_cut_sec_median": 4.215,
-    "pacing_profile": "peaks-and-valleys"
+    "pacing_profile": "peaks-and-valleys",
+    "tier_samples": {
+      "C": 6,
+      "D": 21,
+      "B": 3
+    }
   },
-  "generated_at": "2026-04-19T22:29:35.737815+00:00",
+  "generated_at": "2026-04-19T23:37:26.735191+00:00",
   "generator": "ff reference ingest"
 }

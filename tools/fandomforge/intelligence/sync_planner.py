@@ -563,13 +563,24 @@ def build_sync_plan(
         beat_map, lyric_sections, include_downbeats=include_downbeats
     )
 
+    # When the corpus has enough S-tier edits, prefer their signature over
+    # the all-videos average. Falls back gracefully when no tier breakdown
+    # exists (unscored corpora, small corpora).
+    effective_priors = reference_priors
+    if reference_priors and isinstance(reference_priors.get("priors"), dict):
+        tiered = reference_priors["priors"].get("s_tier_only")
+        if isinstance(tiered, dict) and tiered.get("video_count", 0) >= 5:
+            # Wrap as a full reference-priors envelope so the existing
+            # consumer in match_shots_to_song_points works unchanged.
+            effective_priors = {"priors": tiered, "tag": reference_priors.get("tag", "") + "+S-tier"}
+
     shots = shot_list.get("shots") or []
     point_dicts = match_shots_to_song_points(
         song_points,
         shots,
         song_duration=song_duration,
         top_k=top_k,
-        priors=reference_priors,
+        priors=effective_priors,
     )
 
     plan: dict[str, Any] = {

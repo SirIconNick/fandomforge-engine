@@ -203,13 +203,61 @@ def analyze_reference_video(
     }
 
 
-def aggregate_priors(videos: list[dict[str, Any]]) -> dict[str, Any]:
+def _weighted_mean(values_and_weights: list[tuple[float, float]]) -> float | None:
+    if not values_and_weights:
+        return None
+    total_w = sum(w for _v, w in values_and_weights)
+    if total_w <= 0:
+        return None
+    return sum(v * w for v, w in values_and_weights) / total_w
+
+
+def _weighted_median(values_and_weights: list[tuple[float, float]]) -> float | None:
+    if not values_and_weights:
+        return None
+    pairs = sorted(values_and_weights, key=lambda p: p[0])
+    total_w = sum(w for _v, w in pairs)
+    if total_w <= 0:
+        return None
+    cum = 0.0
+    half = total_w / 2.0
+    for v, w in pairs:
+        cum += w
+        if cum >= half:
+            return v
+    return pairs[-1][0]
+
+
+def _tier_only_priors(videos: list[dict[str, Any]], tier: str) -> dict[str, Any] | None:
+    """Run aggregate_priors on just the subset of videos at a given tier.
+
+    Returns None when the subset is too small to be meaningful (< 5 videos).
+    """
+    tier_videos = [
+        v for v in videos if (v.get("quality_tier") or "") == tier
+    ]
+    if len(tier_videos) < 5:
+        return None
+    subset = aggregate_priors(tier_videos, _skip_tiered=True)
+    subset["video_count"] = len(tier_videos)
+    return subset
+
+
+def aggregate_priors(
+    videos: list[dict[str, Any]],
+    *,
+    _skip_tiered: bool = False,
+) -> dict[str, Any]:
     """Roll up per-video metrics into corpus-wide editing priors.
 
-    Pulls rich signals from the deep analyzer when present — beat-sync %,
-    luma/saturation, act pacing from real measurements, pacing profile. Each
-    signal is optional and only aggregated when the corpus has enough data
-    points to be meaningful.
+    When videos carry `quality_score`, each video's contribution to the
+    median / mean is weighted by `quality_score / 100` — so S-tier edits
+    (95+) drive the priors ~1.5x harder than C-tier (65) videos. This is
+    how the planner learns from the best edits, not the average.
+
+    The caller gets `s_tier_only` and `a_tier_only` sub-priors when the
+    corpus has >=5 videos in those tiers — lets the sync planner
+    deliberately target the "excellent" signature when enough data exists.
     """
     def _metric(v, key, default=None):
         m = v.get("metrics") or {}
@@ -225,8 +273,25 @@ def aggregate_priors(videos: list[dict[str, Any]]) -> dict[str, Any]:
         if (v.get("metrics") or {}).get("shot_count", 0) > 0
     ]
 
-    medians = [_metric(v, "median_shot_duration_sec", 0) for v in valid]
-    cpm = [_metric(v, "cuts_per_minute", 0) for v in valid]
+    # Per-video weight. Videos without a quality_score get a neutral 1.0 so
+    # pre-quality data still aggregates sanely.
+    def _weight(v: dict[str, Any]) -> float:
+        q = v.get("quality_score")
+        if isinstance(q, (int, float)) and q > 0:
+            # 50 → 1.0, 100 → 2.0, 0 → 0.0. Linear scaling bounded at 0.2.
+            return max(0.2, float(q) / 50.0)
+        return 1.0
+
+    medians_w = [
+        (_metric(v, "median_shot_duration_sec", 0), _weight(v))
+        for v in valid
+        if _metric(v, "median_shot_duration_sec", 0)
+    ]
+    cpm_w = [
+        (_metric(v, "cuts_per_minute", 0), _weight(v))
+        for v in valid
+        if _metric(v, "cuts_per_minute", 0)
+    ]
 
     all_durations: list[float] = []
     for v in valid:
@@ -234,11 +299,17 @@ def aggregate_priors(videos: list[dict[str, Any]]) -> dict[str, Any]:
         avg = m.get("avg_shot_duration_sec")
         count = int(m.get("shot_count", 0))
         if avg and count:
-            all_durations.extend([float(avg)] * count)
+            # Weight percentile contributions by quality too.
+            w = _weight(v)
+            all_durations.extend([float(avg)] * max(1, int(count * w)))
+
+    median_shot = _weighted_median(medians_w)
+    mean_cpm = _weighted_mean(cpm_w)
 
     priors: dict[str, Any] = {
-        "median_shot_duration_sec": round(statistics.median(medians), 3) if medians else 2.0,
-        "cuts_per_minute": round(statistics.mean(cpm), 2) if cpm else 20.0,
+        "median_shot_duration_sec": round(median_shot, 3) if median_shot else 2.0,
+        "cuts_per_minute": round(mean_cpm, 2) if mean_cpm else 20.0,
+        "quality_weighted": any("quality_score" in v for v in valid),
     }
 
     if all_durations:
@@ -309,6 +380,22 @@ def aggregate_priors(videos: list[dict[str, Any]]) -> dict[str, Any]:
     # Pacing profile — classify the corpus's pacing shape.
     priors["pacing_profile"] = _classify_pacing(priors.get("cuts_per_minute", 0))
 
+    # Tier breakdown and per-tier sub-priors.
+    if not _skip_tiered:
+        tier_counts: dict[str, int] = {}
+        for v in valid:
+            t = v.get("quality_tier")
+            if t:
+                tier_counts[t] = tier_counts.get(t, 0) + 1
+        if tier_counts:
+            priors["tier_samples"] = tier_counts
+        s_only = _tier_only_priors(valid, "S")
+        if s_only:
+            priors["s_tier_only"] = s_only
+        a_only = _tier_only_priors(valid, "A")
+        if a_only:
+            priors["a_tier_only"] = a_only
+
     return priors
 
 
@@ -338,11 +425,17 @@ def ingest_playlist(
     max_videos: int | None = None,
     max_height: int = 480,
     download: bool = True,
+    lyric_sample_n: int = 0,
 ) -> dict[str, Any]:
     """Enumerate a playlist, download each video, analyze, and emit priors.
 
     Set `download=False` to skip the download step — useful when videos are
     already present under <references_root>/<tag>/.
+
+    `lyric_sample_n` runs whisper-based lyric alignment on the first N
+    videos (0 = skip). Whisper is ~2-5 min per video so small samples are
+    the norm. The signal generalizes well — 5 videos per corpus is enough
+    to see whether editors in that corpus sync to lyrics or only to beats.
     """
     target_dir = references_root() / tag
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -375,14 +468,76 @@ def ingest_playlist(
             m = analyze_reference_video(target_file)
             if m is not None:
                 metrics = m
+            # Enrich with transition + motion signals whenever we have shot
+            # boundaries to classify.
+            try:
+                from fandomforge.intelligence.reference_analyzer_deep import (
+                    _scene_boundaries,
+                )
+                from fandomforge.intelligence.reference_transitions import (
+                    classify_transitions,
+                )
+                from fandomforge.intelligence.reference_motion import (
+                    classify_motion_cuts,
+                )
+                boundaries = _scene_boundaries(target_file)
+                if boundaries:
+                    tr = classify_transitions(target_file, boundaries)
+                    if tr.get("sample_count"):
+                        metrics["transitions"] = tr
+                    mo = classify_motion_cuts(target_file, boundaries)
+                    if mo.get("sample_count"):
+                        metrics["motion_cuts"] = mo
+                    # Lyric alignment on a sample of the corpus — whisper is
+                    # expensive so we cap it. len(analyzed) is how many we've
+                    # already processed in this ingest pass.
+                    if lyric_sample_n > 0 and len(analyzed) < lyric_sample_n:
+                        from fandomforge.intelligence.reference_lyrics import (
+                            score_lyric_alignment,
+                        )
+                        cut_times = [s for s, _e in boundaries[1:]]
+                        la = score_lyric_alignment(target_file, cut_times)
+                        if la.get("available"):
+                            metrics["lyric_alignment"] = la
+            except Exception as exc:  # noqa: BLE001
+                logger.warning("transition/motion/lyric enrich failed: %s", exc)
 
-        analyzed.append({
+        youtube_metadata: dict[str, Any] = {}
+        try:
+            yt = fetch_youtube_metadata(e["url"])
+            if yt is not None:
+                youtube_metadata = yt
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("youtube metadata fetch failed for %s: %s", e["id"], exc)
+
+        entry: dict[str, Any] = {
             "id": e["id"],
             "title": e["title"],
             "url": e["url"],
             "duration_sec": float(e.get("duration_sec") or 0),
             "metrics": metrics,
-        })
+        }
+        if youtube_metadata:
+            entry["youtube_metadata"] = youtube_metadata
+        analyzed.append(entry)
+
+    # Audience reference = 90th percentile view count, robust against a
+    # single mega-viral outlier skewing every other video into single digits.
+    view_counts = sorted([
+        int((v.get("youtube_metadata") or {}).get("view_count") or 0)
+        for v in analyzed
+        if isinstance((v.get("youtube_metadata") or {}).get("view_count"), (int, float))
+    ])
+    if view_counts:
+        p90_idx = max(0, int(len(view_counts) * 0.9) - 1)
+        audience_ref = view_counts[p90_idx] or max(view_counts)
+    else:
+        audience_ref = None
+    for v in analyzed:
+        q = score_quality(v, corpus_audience_reference=audience_ref)
+        v["quality_score"] = q["quality_score"]
+        v["quality_tier"] = q["quality_tier"]
+        v["quality_components"] = q["components"]
 
     priors_payload: dict[str, Any] = {
         "schema_version": 1,
@@ -428,13 +583,167 @@ def load_priors(tag: str | None = None) -> dict[str, Any] | None:
         return None
 
 
+# Thresholds calibrated against the empirical distribution of the 148-video
+# corpus — mid-60s is genuinely great work once all signals are computed; 85+
+# is the rare edit that has audience, craft, and discipline all at once.
+QUALITY_TIER_THRESHOLDS: tuple[tuple[float, str], ...] = (
+    (82.0, "S"),
+    (73.0, "A"),
+    (65.0, "B"),
+    (55.0, "C"),
+    (0.0, "D"),
+)
+
+
+def score_quality(
+    video_entry: dict[str, Any],
+    *,
+    corpus_audience_reference: int | None = None,
+) -> dict[str, Any]:
+    """Compute a 0-100 quality score for a single video entry.
+
+    Components (all 0-100):
+
+    - 25% audience: view_count normalized against corpus_audience_reference
+      (typically the 90th-percentile view count — robust against outliers
+      like a non-fandom video with 60M+ views)
+    - 15% transition variety: entropy of transition distribution
+    - 20% beat-sync %: rhythm discipline from deep analyzer
+    - 15% lyric-boundary sync %: meaning discipline from whisper alignment
+    - 15% motion continuity: match_cut + impact_cut rate
+    - 10% like ratio: likes / views from yt-dlp metadata
+
+    When a signal is completely missing (e.g. whisper never ran on this
+    video) the component falls back to the corpus-neutral 50 so we don't
+    punish videos for signals we didn't compute. When a signal IS computed
+    but low, the actual value stands.
+    """
+    metrics = video_entry.get("metrics") or {}
+    yt = video_entry.get("youtube_metadata") or {}
+    transitions = metrics.get("transitions") or {}
+    lyric = metrics.get("lyric_alignment") or {}
+    motion = metrics.get("motion_cuts") or {}
+
+    comp: dict[str, float] = {}
+    MISSING_NEUTRAL = 50.0
+
+    # Audience reception — cap at 100 when the video meets or exceeds the
+    # corpus reference (90th percentile). Linear below that.
+    vc = yt.get("view_count")
+    if isinstance(vc, (int, float)) and vc > 0 and corpus_audience_reference:
+        comp["audience"] = min(100.0, (vc / corpus_audience_reference) * 100.0)
+    else:
+        comp["audience"] = MISSING_NEUTRAL
+
+    # Craft: transition variety entropy (normalized 0..1 → 0..100)
+    ent = transitions.get("variety_entropy_normalized")
+    if isinstance(ent, (int, float)):
+        comp["variety"] = float(ent) * 100.0
+    else:
+        comp["variety"] = MISSING_NEUTRAL
+
+    # Rhythm discipline
+    bs = metrics.get("cuts_on_beat_pct")
+    comp["beat_sync"] = float(bs) if isinstance(bs, (int, float)) else MISSING_NEUTRAL
+
+    # Meaning discipline — only substitute the neutral when whisper didn't
+    # run at all (lyric.available is explicitly missing or False).
+    if lyric.get("available"):
+        lb = lyric.get("cuts_on_phrase_boundary_pct") or 0.0
+        wb = lyric.get("cuts_on_word_boundary_pct") or 0.0
+        comp["lyric_sync"] = float(lb) * 0.6 + float(wb) * 0.4
+    else:
+        comp["lyric_sync"] = MISSING_NEUTRAL
+
+    # Motion continuity
+    mc = motion.get("continuity_score")
+    comp["motion"] = float(mc) if isinstance(mc, (int, float)) else MISSING_NEUTRAL
+
+    # Audience approval — like ratio at ~3% is typical for viral fandom
+    # edits; normalize so 3% → 100, cap at 100. Missing = neutral.
+    lr = yt.get("like_ratio")
+    if isinstance(lr, (int, float)):
+        comp["approval"] = min(100.0, float(lr) / 0.03 * 100.0)
+    else:
+        comp["approval"] = MISSING_NEUTRAL
+
+    weights = {
+        "audience": 0.25,
+        "variety": 0.15,
+        "beat_sync": 0.20,
+        "lyric_sync": 0.15,
+        "motion": 0.15,
+        "approval": 0.10,
+    }
+    score = sum(comp[k] * weights[k] for k in weights)
+    score = round(max(0.0, min(100.0, score)), 2)
+
+    tier = "D"
+    for threshold, name in QUALITY_TIER_THRESHOLDS:
+        if score >= threshold:
+            tier = name
+            break
+
+    return {
+        "quality_score": score,
+        "quality_tier": tier,
+        "components": {k: round(v, 2) for k, v in comp.items()},
+    }
+
+
+def fetch_youtube_metadata(url: str) -> dict[str, Any] | None:
+    """Pull view_count / like_count / upload_date / channel / duration without
+    downloading the video. Cheap enough to call for every video in a corpus
+    (yt-dlp caches internally and YouTube tolerates metadata rates).
+
+    Returns None when yt-dlp is unavailable or the fetch fails — callers
+    should treat metadata as optional.
+    """
+    if not _yt_dlp_available():
+        return None
+    try:
+        proc = subprocess.run(
+            ["yt-dlp", "--dump-json", "--skip-download", "--no-playlist", url],
+            capture_output=True, text=True, check=True, timeout=30,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return None
+    try:
+        payload = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return None
+
+    view_count = payload.get("view_count")
+    like_count = payload.get("like_count")
+    duration = payload.get("duration")
+
+    # like_ratio = likes / views. Fall back to None when either missing.
+    like_ratio = None
+    if isinstance(view_count, (int, float)) and view_count > 0 \
+       and isinstance(like_count, (int, float)):
+        like_ratio = round(like_count / view_count, 6)
+
+    return {
+        "view_count": int(view_count) if isinstance(view_count, (int, float)) else None,
+        "like_count": int(like_count) if isinstance(like_count, (int, float)) else None,
+        "like_ratio": like_ratio,
+        "duration_sec": float(duration) if isinstance(duration, (int, float)) else None,
+        "channel": str(payload.get("channel") or payload.get("uploader") or ""),
+        "upload_date": str(payload.get("upload_date") or ""),  # YYYYMMDD
+        "title": str(payload.get("title") or ""),
+    }
+
+
 __all__ = [
+    "QUALITY_TIER_THRESHOLDS",
     "RefVideo",
     "aggregate_priors",
     "analyze_reference_video",
     "download_reference_video",
+    "fetch_youtube_metadata",
     "ingest_playlist",
     "list_playlist_entries",
     "load_priors",
     "references_root",
+    "score_quality",
 ]
