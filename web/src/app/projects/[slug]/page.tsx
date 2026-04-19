@@ -9,6 +9,8 @@ import { UploadDropzone } from "@/components/UploadDropzone";
 import { AssetBrowser } from "@/components/AssetBrowser";
 import OnboardingTour from "@/components/OnboardingTour";
 import UrlIngest from "@/components/UrlIngest";
+import { ProjectActions } from "@/components/ProjectActions";
+import type { PostRenderReview } from "@/lib/types/generated";
 
 type Params = Promise<{ slug: string }>;
 
@@ -20,6 +22,31 @@ async function readIfExists(p: string): Promise<string | null> {
   }
 }
 
+async function loadReviewSummary(slug: string): Promise<PostRenderReview | null> {
+  const p = path.join(PROJECT_ROOT, "projects", slug, "data", "post-render-review.json");
+  try {
+    return JSON.parse(await fs.readFile(p, "utf8")) as PostRenderReview;
+  } catch {
+    return null;
+  }
+}
+
+const GRADE_COLOR: Record<string, string> = {
+  "A+": "text-green-400 border-green-500/40",
+  A: "text-green-400 border-green-500/40",
+  "A-": "text-green-400 border-green-500/40",
+  "B+": "text-cyan-400 border-cyan-500/40",
+  B: "text-cyan-400 border-cyan-500/40",
+  "B-": "text-cyan-400 border-cyan-500/40",
+  "C+": "text-yellow-400 border-yellow-500/40",
+  C: "text-yellow-400 border-yellow-500/40",
+  "C-": "text-yellow-400 border-yellow-500/40",
+  "D+": "text-red-400 border-red-500/40",
+  D: "text-red-400 border-red-500/40",
+  "D-": "text-red-400 border-red-500/40",
+  F: "text-red-500 border-red-500/60",
+};
+
 export default async function ProjectDetailPage({ params }: { params: Params }) {
   const { slug } = await params;
   const projects = await loadProjects();
@@ -27,11 +54,12 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
   if (!project) notFound();
 
   const projPath = path.join(PROJECT_ROOT, "projects", slug);
-  const [editPlan, shotList, beatMapMd, beatMap] = await Promise.all([
+  const [editPlan, shotList, beatMapMd, beatMap, reviewSummary] = await Promise.all([
     readIfExists(path.join(projPath, "edit-plan.md")),
     readIfExists(path.join(projPath, "shot-list.md")),
     readIfExists(path.join(projPath, "beat-map.md")),
     loadBeatMap(slug),
+    loadReviewSummary(slug),
   ]);
 
   return (
@@ -100,6 +128,31 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           >
             ✨ Draft a shot list
           </Link>
+          <Link
+            href={`/projects/${slug}/sync`}
+            className="px-4 py-2 border border-white/10 rounded hover:border-[var(--color-forge)]/50"
+          >
+            Sync plan
+          </Link>
+          <Link
+            href={`/projects/${slug}/review`}
+            className={`px-4 py-2 border rounded hover:bg-white/5 flex items-center gap-2 ${
+              reviewSummary
+                ? GRADE_COLOR[reviewSummary.grade] ?? "border-white/10"
+                : "border-white/10"
+            }`}
+          >
+            {reviewSummary ? (
+              <>
+                <span className="font-serif text-lg">{reviewSummary.grade}</span>
+                <span className="font-mono text-xs opacity-70">
+                  {reviewSummary.score.toFixed(0)}/100
+                </span>
+              </>
+            ) : (
+              <span>Review</span>
+            )}
+          </Link>
         </div>
 
         <div className="flex flex-wrap gap-2 mt-3 text-xs">
@@ -142,6 +195,15 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           </Link>
         </div>
       </div>
+
+      <section className="border border-white/10 rounded p-4 bg-white/[0.02]">
+        <h2 className="text-lg font-serif mb-3">Render & export</h2>
+        <p className="text-xs text-white/60 mb-3">
+          Run each stage independently from the web without dropping to the CLI.
+          Renders are long — the button stays disabled until the pipeline returns.
+        </p>
+        <ProjectActions slug={slug} />
+      </section>
 
       <div id="upload" className="grid md:grid-cols-[1fr_320px] gap-6 scroll-mt-20">
         <section className="space-y-3">

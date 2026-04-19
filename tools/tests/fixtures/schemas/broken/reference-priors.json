@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "video_count": -3,
+  "videos": [
+    {
+      "id": "x",
+      "title": "t",
+      "duration_sec": "nope"
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": -1
+  }
+}

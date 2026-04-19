@@ -1,0 +1,3822 @@
+{
+  "schema_version": 1,
+  "tag": "action-pl1",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA"
+  ],
+  "video_count": 30,
+  "videos": [
+    {
+      "id": "WJTd1iSch94",
+      "title": "(Marvel) Tony Stark | The Way",
+      "url": "https://www.youtube.com/watch?v=WJTd1iSch94",
+      "duration_sec": 376.0,
+      "metrics": {
+        "shot_count": 134,
+        "avg_shot_duration_sec": 2.795,
+        "median_shot_duration_sec": 2.085,
+        "cuts_per_minute": 21.47,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 11.261,
+        "shot_duration_stddev_sec": 2.206,
+        "shot_duration_p25": 1.251,
+        "shot_duration_p75": 3.629,
+        "shot_duration_p90": 6.048,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 9.5
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 7.87
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          29.9,
+          35.1,
+          35.1
+        ],
+        "intro_to_first_cut_sec": 7.049,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1776,
+        "luma_stddev": 0.1139,
+        "dark_shot_pct": 71.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 48.0,
+        "saturation_mean": 0.3119,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 50.4,
+        "cuts_checked": 133
+      }
+    },
+    {
+      "id": "JL6zvX_RcS8",
+      "title": "(SW) Obi-Wan Kenobi | Jedi Knight",
+      "url": "https://www.youtube.com/watch?v=JL6zvX_RcS8",
+      "duration_sec": 297.0,
+      "metrics": {
+        "shot_count": 233,
+        "avg_shot_duration_sec": 1.266,
+        "median_shot_duration_sec": 1.043,
+        "cuts_per_minute": 47.38,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 13.347,
+        "shot_duration_stddev_sec": 1.065,
+        "shot_duration_p25": 0.709,
+        "shot_duration_p75": 1.543,
+        "shot_duration_p90": 2.211,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 92.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 88.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 13.82
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 7.48
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          33.0,
+          39.5,
+          27.5
+        ],
+        "intro_to_first_cut_sec": 0.667,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1955,
+        "luma_stddev": 0.1144,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 55.06,
+        "saturation_mean": 0.4147,
+        "beat_sync_available": true,
+        "tempo_bpm": 92.29,
+        "cuts_on_beat_pct": 45.7,
+        "cuts_checked": 232
+      }
+    },
+    {
+      "id": "YweYRl7IUPc",
+      "title": "Loneliness | Multifandom",
+      "url": "https://www.youtube.com/watch?v=YweYRl7IUPc",
+      "duration_sec": 215.0,
+      "metrics": {
+        "shot_count": 114,
+        "avg_shot_duration_sec": 1.883,
+        "median_shot_duration_sec": 1.585,
+        "cuts_per_minute": 31.87,
+        "min_shot_duration_sec": 0.375,
+        "max_shot_duration_sec": 12.137,
+        "shot_duration_stddev_sec": 1.587,
+        "shot_duration_p25": 1.168,
+        "shot_duration_p75": 2.002,
+        "shot_duration_p90": 2.753,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.08
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 4.04
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          28.1,
+          37.7,
+          34.2
+        ],
+        "intro_to_first_cut_sec": 9.927,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.201,
+        "luma_stddev": 0.1217,
+        "dark_shot_pct": 55.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.05,
+        "saturation_mean": 0.2512,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 61.9,
+        "cuts_checked": 113
+      }
+    },
+    {
+      "id": "gQkjJ6PzPjo",
+      "title": "MARVEL - Run Boy Run",
+      "url": "https://www.youtube.com/watch?v=gQkjJ6PzPjo",
+      "duration_sec": 187.0,
+      "metrics": {
+        "shot_count": 142,
+        "avg_shot_duration_sec": 1.304,
+        "median_shot_duration_sec": 0.968,
+        "cuts_per_minute": 46.02,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 7.808,
+        "shot_duration_stddev_sec": 0.975,
+        "shot_duration_p25": 0.634,
+        "shot_duration_p75": 1.735,
+        "shot_duration_p90": 2.336,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 31.36
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 21.45
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          37.3,
+          31.0,
+          31.7
+        ],
+        "intro_to_first_cut_sec": 3.904,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2678,
+        "luma_stddev": 0.1397,
+        "dark_shot_pct": 36.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 96.7,
+        "saturation_mean": 0.3925,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 70.2,
+        "cuts_checked": 141
+      }
+    },
+    {
+      "id": "vz8Uy-owlu4",
+      "title": "War | Multifandom [20K Subs]",
+      "url": "https://www.youtube.com/watch?v=vz8Uy-owlu4",
+      "duration_sec": 341.0,
+      "metrics": {
+        "shot_count": 246,
+        "avg_shot_duration_sec": 1.383,
+        "median_shot_duration_sec": 1.251,
+        "cuts_per_minute": 43.38,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 20.479,
+        "shot_duration_stddev_sec": 1.362,
+        "shot_duration_p25": 0.918,
+        "shot_duration_p75": 1.668,
+        "shot_duration_p90": 2.085,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.0,
+          38.6,
+          26.4
+        ],
+        "intro_to_first_cut_sec": 1.71,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2413,
+        "luma_stddev": 0.1294,
+        "dark_shot_pct": 48.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 155.29,
+        "saturation_mean": 0.3999,
+        "beat_sync_available": true,
+        "tempo_bpm": 112.35,
+        "cuts_on_beat_pct": 64.1,
+        "cuts_checked": 245
+      }
+    },
+    {
+      "id": "OEh7YrjO5_0",
+      "title": "Multifandom || Blood in the water",
+      "url": "https://www.youtube.com/watch?v=OEh7YrjO5_0",
+      "duration_sec": 193.0,
+      "metrics": {
+        "shot_count": 188,
+        "avg_shot_duration_sec": 1.021,
+        "median_shot_duration_sec": 0.834,
+        "cuts_per_minute": 58.75,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 3.637,
+        "shot_duration_stddev_sec": 0.674,
+        "shot_duration_p25": 0.467,
+        "shot_duration_p75": 1.435,
+        "shot_duration_p90": 1.935,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 45.55
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 48.42
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 50.16
+          }
+        ],
+        "act_pacing_pct": [
+          37.8,
+          31.4,
+          30.9
+        ],
+        "intro_to_first_cut_sec": 1.568,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2707,
+        "luma_stddev": 0.1351,
+        "dark_shot_pct": 33.8,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 194.12,
+        "saturation_mean": 0.308,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 73.8,
+        "cuts_checked": 187
+      }
+    },
+    {
+      "id": "REmbZpRifdU",
+      "title": "MARVEL || The Search (NF)",
+      "url": "https://www.youtube.com/watch?v=REmbZpRifdU",
+      "duration_sec": 206.0,
+      "metrics": {
+        "shot_count": 211,
+        "avg_shot_duration_sec": 0.933,
+        "median_shot_duration_sec": 0.767,
+        "cuts_per_minute": 64.3,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 10.067,
+        "shot_duration_stddev_sec": 0.913,
+        "shot_duration_p25": 0.5,
+        "shot_duration_p75": 1.1,
+        "shot_duration_p90": 1.5,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 92.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 35.16
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 26.92
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.8,
+          39.8,
+          28.4
+        ],
+        "intro_to_first_cut_sec": 0.367,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1857,
+        "luma_stddev": 0.1295,
+        "dark_shot_pct": 63.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 101.65,
+        "saturation_mean": 0.4656,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 63.3,
+        "cuts_checked": 210
+      }
+    },
+    {
+      "id": "-OivBldzIO4",
+      "title": "Multifandom || Radioactive in the dark (Light em up x Radioactive)",
+      "url": "https://www.youtube.com/watch?v=-OivBldzIO4",
+      "duration_sec": 213.0,
+      "metrics": {
+        "shot_count": 257,
+        "avg_shot_duration_sec": 0.81,
+        "median_shot_duration_sec": 0.701,
+        "cuts_per_minute": 74.05,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 5.239,
+        "shot_duration_stddev_sec": 0.517,
+        "shot_duration_p25": 0.434,
+        "shot_duration_p75": 0.968,
+        "shot_duration_p90": 1.435,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 86.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 88.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 90.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 64.64
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 58.64
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 26.33
+          }
+        ],
+        "act_pacing_pct": [
+          30.0,
+          36.6,
+          33.5
+        ],
+        "intro_to_first_cut_sec": 5.239,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2062,
+        "luma_stddev": 0.1199,
+        "dark_shot_pct": 55.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 83.29,
+        "saturation_mean": 0.4535,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 74.6,
+        "cuts_checked": 256
+      }
+    },
+    {
+      "id": "HopOP2Djdu8",
+      "title": "Supernatural | THE GRAND STORY (2005-2020, Carry On My Wayward Son)",
+      "url": "https://www.youtube.com/watch?v=HopOP2Djdu8",
+      "duration_sec": 194.0,
+      "metrics": {
+        "shot_count": 87,
+        "avg_shot_duration_sec": 2.219,
+        "median_shot_duration_sec": 1.702,
+        "cuts_per_minute": 27.04,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 16.183,
+        "shot_duration_stddev_sec": 2.218,
+        "shot_duration_p25": 0.901,
+        "shot_duration_p75": 2.569,
+        "shot_duration_p90": 4.605,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 30.47
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 39.63
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 16.54
+          }
+        ],
+        "act_pacing_pct": [
+          32.2,
+          37.9,
+          29.9
+        ],
+        "intro_to_first_cut_sec": 16.183,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2101,
+        "luma_stddev": 0.1417,
+        "dark_shot_pct": 63.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 206.12,
+        "saturation_mean": 0.4399,
+        "beat_sync_available": true,
+        "tempo_bpm": 89.1,
+        "cuts_on_beat_pct": 45.3,
+        "cuts_checked": 86
+      }
+    },
+    {
+      "id": "rvta9j3RcRQ",
+      "title": "MARVEL || Enemy ft. @ImagineDragons @jid6871 (Arcane)",
+      "url": "https://www.youtube.com/watch?v=rvta9j3RcRQ",
+      "duration_sec": 138.0,
+      "metrics": {
+        "shot_count": 131,
+        "avg_shot_duration_sec": 1.031,
+        "median_shot_duration_sec": 0.801,
+        "cuts_per_minute": 58.19,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 5.205,
+        "shot_duration_stddev_sec": 0.73,
+        "shot_duration_p25": 0.567,
+        "shot_duration_p75": 1.368,
+        "shot_duration_p90": 1.768,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 73.14
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 66.78
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 50.92
+          }
+        ],
+        "act_pacing_pct": [
+          24.4,
+          35.1,
+          40.5
+        ],
+        "intro_to_first_cut_sec": 3.003,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2033,
+        "luma_stddev": 0.138,
+        "dark_shot_pct": 57.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 49.41,
+        "saturation_mean": 0.3977,
+        "beat_sync_available": true,
+        "tempo_bpm": 78.3,
+        "cuts_on_beat_pct": 50.0,
+        "cuts_checked": 130
+      }
+    },
+    {
+      "id": "t0aoYk5plHA",
+      "title": "Multifandom | Fight",
+      "url": "https://www.youtube.com/watch?v=t0aoYk5plHA",
+      "duration_sec": 295.0,
+      "metrics": {
+        "shot_count": 173,
+        "avg_shot_duration_sec": 1.694,
+        "median_shot_duration_sec": 1.101,
+        "cuts_per_minute": 35.42,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 18.585,
+        "shot_duration_stddev_sec": 1.882,
+        "shot_duration_p25": 0.601,
+        "shot_duration_p75": 2.302,
+        "shot_duration_p90": 3.337,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 2.43
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          26.0,
+          31.2,
+          42.8
+        ],
+        "intro_to_first_cut_sec": 5.272,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.176,
+        "luma_stddev": 0.1448,
+        "dark_shot_pct": 71.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 149.65,
+        "saturation_mean": 0.699,
+        "beat_sync_available": true,
+        "tempo_bpm": 95.7,
+        "cuts_on_beat_pct": 49.4,
+        "cuts_checked": 172
+      }
+    },
+    {
+      "id": "xFhwF1vk6vk",
+      "title": "Harry Potter || Sandman",
+      "url": "https://www.youtube.com/watch?v=xFhwF1vk6vk",
+      "duration_sec": 203.0,
+      "metrics": {
+        "shot_count": 111,
+        "avg_shot_duration_sec": 1.814,
+        "median_shot_duration_sec": 1.268,
+        "cuts_per_minute": 33.07,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 8.008,
+        "shot_duration_stddev_sec": 1.297,
+        "shot_duration_p25": 1.168,
+        "shot_duration_p75": 2.502,
+        "shot_duration_p90": 3.07,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 15.97
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 9.57
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.5,
+          40.5,
+          27.9
+        ],
+        "intro_to_first_cut_sec": 0.734,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2199,
+        "luma_stddev": 0.1465,
+        "dark_shot_pct": 58.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 159.53,
+        "saturation_mean": 0.4875,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 56.4,
+        "cuts_checked": 110
+      }
+    },
+    {
+      "id": "WA7jbzNjAmA",
+      "title": "[Private video]",
+      "url": "https://www.youtube.com/watch?v=WA7jbzNjAmA",
+      "duration_sec": 0.0,
+      "metrics": {}
+    },
+    {
+      "id": "ExCCwUva39c",
+      "title": "Heroes",
+      "url": "https://www.youtube.com/watch?v=ExCCwUva39c",
+      "duration_sec": 300.0,
+      "metrics": {
+        "shot_count": 228,
+        "avg_shot_duration_sec": 1.312,
+        "median_shot_duration_sec": 1.2,
+        "cuts_per_minute": 45.73,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 5.68,
+        "shot_duration_stddev_sec": 0.7,
+        "shot_duration_p25": 0.96,
+        "shot_duration_p75": 1.44,
+        "shot_duration_p90": 1.96,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 28.04
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 24.05
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 18.07
+          }
+        ],
+        "act_pacing_pct": [
+          37.3,
+          33.3,
+          29.4
+        ],
+        "intro_to_first_cut_sec": 5.36,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.227,
+        "luma_stddev": 0.1466,
+        "dark_shot_pct": 50.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 59.29,
+        "saturation_mean": 0.5333,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 73.1,
+        "cuts_checked": 227
+      }
+    },
+    {
+      "id": "EBUTughOH70",
+      "title": "Multifandom || Die In This Town (ft. @OfficialTeamTAZ )",
+      "url": "https://www.youtube.com/watch?v=EBUTughOH70",
+      "duration_sec": 135.0,
+      "metrics": {
+        "shot_count": 146,
+        "avg_shot_duration_sec": 0.912,
+        "median_shot_duration_sec": 0.751,
+        "cuts_per_minute": 65.78,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 4.972,
+        "shot_duration_stddev_sec": 0.617,
+        "shot_duration_p25": 0.501,
+        "shot_duration_p75": 1.101,
+        "shot_duration_p90": 1.702,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 53.88
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 33.1
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 53.32
+          }
+        ],
+        "act_pacing_pct": [
+          36.3,
+          31.5,
+          32.2
+        ],
+        "intro_to_first_cut_sec": 0.267,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1964,
+        "luma_stddev": 0.1168,
+        "dark_shot_pct": 57.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 82.58,
+        "saturation_mean": 0.4258,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 73.8,
+        "cuts_checked": 145
+      }
+    },
+    {
+      "id": "GCl-mDOFmQE",
+      "title": "LOST || Forget the Horror Here",
+      "url": "https://www.youtube.com/watch?v=GCl-mDOFmQE",
+      "duration_sec": 409.0,
+      "metrics": {
+        "shot_count": 318,
+        "avg_shot_duration_sec": 1.284,
+        "median_shot_duration_sec": 1.001,
+        "cuts_per_minute": 46.72,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 7.007,
+        "shot_duration_stddev_sec": 0.81,
+        "shot_duration_p25": 0.834,
+        "shot_duration_p75": 1.501,
+        "shot_duration_p90": 2.002,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 23.23
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 19.56
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 7.14
+          }
+        ],
+        "act_pacing_pct": [
+          26.1,
+          37.7,
+          36.2
+        ],
+        "intro_to_first_cut_sec": 1.501,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.302,
+        "luma_stddev": 0.1444,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.05,
+        "saturation_mean": 0.4147,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 53.0,
+        "cuts_checked": 317
+      }
+    },
+    {
+      "id": "jFy7j1sX_o8",
+      "title": "Sad Multifandom ][ So Far From Who I Was",
+      "url": "https://www.youtube.com/watch?v=jFy7j1sX_o8",
+      "duration_sec": 270.0,
+      "metrics": {
+        "shot_count": 78,
+        "avg_shot_duration_sec": 3.449,
+        "median_shot_duration_sec": 3.37,
+        "cuts_per_minute": 17.4,
+        "min_shot_duration_sec": 0.667,
+        "max_shot_duration_sec": 10.51,
+        "shot_duration_stddev_sec": 2.153,
+        "shot_duration_p25": 1.668,
+        "shot_duration_p75": 4.171,
+        "shot_duration_p90": 7.074,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 12.41
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 12.63
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 6.67
+          }
+        ],
+        "act_pacing_pct": [
+          26.9,
+          35.9,
+          37.2
+        ],
+        "intro_to_first_cut_sec": 3.804,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 78,
+        "avg_luma": 0.2691,
+        "luma_stddev": 0.1072,
+        "dark_shot_pct": 33.3,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 172.24,
+        "saturation_mean": 0.1908,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 59.7,
+        "cuts_checked": 77
+      }
+    },
+    {
+      "id": "jdsRVaATZAM",
+      "title": "(Multifandom) Die In This Town (By 5 Amazing Editors)",
+      "url": "https://www.youtube.com/watch?v=jdsRVaATZAM",
+      "duration_sec": 178.0,
+      "metrics": {
+        "shot_count": 163,
+        "avg_shot_duration_sec": 1.087,
+        "median_shot_duration_sec": 0.876,
+        "cuts_per_minute": 55.19,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 4.88,
+        "shot_duration_stddev_sec": 0.865,
+        "shot_duration_p25": 0.542,
+        "shot_duration_p75": 1.293,
+        "shot_duration_p90": 2.044,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 30.44
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 23.87
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 31.6
+          }
+        ],
+        "act_pacing_pct": [
+          35.6,
+          33.7,
+          30.7
+        ],
+        "intro_to_first_cut_sec": 0.626,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2437,
+        "luma_stddev": 0.1451,
+        "dark_shot_pct": 47.5,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 139.06,
+        "saturation_mean": 0.3988,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 68.5,
+        "cuts_checked": 162
+      }
+    },
+    {
+      "id": "XFEffg--4MI",
+      "title": "INFINITE UNIVERSE || Bones Ft.@ImagineDragons[Multifandom]",
+      "url": "https://www.youtube.com/watch?v=XFEffg--4MI",
+      "duration_sec": 183.0,
+      "metrics": {
+        "shot_count": 97,
+        "avg_shot_duration_sec": 1.879,
+        "median_shot_duration_sec": 1.068,
+        "cuts_per_minute": 31.94,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 15.082,
+        "shot_duration_stddev_sec": 2.079,
+        "shot_duration_p25": 0.734,
+        "shot_duration_p75": 2.102,
+        "shot_duration_p90": 4.238,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 39.91
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 33.47
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 47.08
+          }
+        ],
+        "act_pacing_pct": [
+          42.3,
+          24.7,
+          33.0
+        ],
+        "intro_to_first_cut_sec": 4.605,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2171,
+        "luma_stddev": 0.1492,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 114.35,
+        "saturation_mean": 0.3837,
+        "beat_sync_available": true,
+        "tempo_bpm": 112.35,
+        "cuts_on_beat_pct": 62.5,
+        "cuts_checked": 96
+      }
+    },
+    {
+      "id": "GGXt-lb1myo",
+      "title": "MARVEL || Bones Ft.@ImagineDragons",
+      "url": "https://www.youtube.com/watch?v=GGXt-lb1myo",
+      "duration_sec": 163.0,
+      "metrics": {
+        "shot_count": 156,
+        "avg_shot_duration_sec": 1.033,
+        "median_shot_duration_sec": 0.968,
+        "cuts_per_minute": 58.08,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 4.204,
+        "shot_duration_stddev_sec": 0.564,
+        "shot_duration_p25": 0.601,
+        "shot_duration_p75": 1.335,
+        "shot_duration_p90": 1.735,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 78.16
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 68.5
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 26.52
+          }
+        ],
+        "act_pacing_pct": [
+          33.3,
+          30.8,
+          35.9
+        ],
+        "intro_to_first_cut_sec": 1.235,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1928,
+        "luma_stddev": 0.1337,
+        "dark_shot_pct": 63.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.76,
+        "saturation_mean": 0.4051,
+        "beat_sync_available": true,
+        "tempo_bpm": 112.35,
+        "cuts_on_beat_pct": 58.1,
+        "cuts_checked": 155
+      }
+    },
+    {
+      "id": "_FOm8eCyUpY",
+      "title": "I have to stop caring  | Sad multifandom",
+      "url": "https://www.youtube.com/watch?v=_FOm8eCyUpY",
+      "duration_sec": 210.0,
+      "metrics": {
+        "shot_count": 55,
+        "avg_shot_duration_sec": 3.807,
+        "median_shot_duration_sec": 3.103,
+        "cuts_per_minute": 15.76,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 13.413,
+        "shot_duration_stddev_sec": 2.623,
+        "shot_duration_p25": 2.035,
+        "shot_duration_p75": 4.738,
+        "shot_duration_p90": 6.44,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 12.24
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 9.27
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          29.1,
+          41.8,
+          29.1
+        ],
+        "intro_to_first_cut_sec": 4.738,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 55,
+        "avg_luma": 0.1822,
+        "luma_stddev": 0.0922,
+        "dark_shot_pct": 61.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 80.47,
+        "saturation_mean": 0.5625,
+        "beat_sync_available": true,
+        "tempo_bpm": 198.77,
+        "cuts_on_beat_pct": 94.4,
+        "cuts_checked": 54
+      }
+    },
+    {
+      "id": "OqUBgUg6Prk",
+      "title": "What is Pain ? (Multifandom)",
+      "url": "https://www.youtube.com/watch?v=OqUBgUg6Prk",
+      "duration_sec": 347.0,
+      "metrics": {
+        "shot_count": 78,
+        "avg_shot_duration_sec": 4.441,
+        "median_shot_duration_sec": 3.42,
+        "cuts_per_minute": 13.51,
+        "min_shot_duration_sec": 0.501,
+        "max_shot_duration_sec": 14.982,
+        "shot_duration_stddev_sec": 3.508,
+        "shot_duration_p25": 1.835,
+        "shot_duration_p75": 5.739,
+        "shot_duration_p90": 9.81,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 4.51
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 3.62
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.9,
+          37.2,
+          26.9
+        ],
+        "intro_to_first_cut_sec": 2.903,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 78,
+        "avg_luma": 0.2851,
+        "luma_stddev": 0.1043,
+        "dark_shot_pct": 21.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.76,
+        "saturation_mean": 0.4123,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 61.0,
+        "cuts_checked": 77
+      }
+    },
+    {
+      "id": "fTIxdmXUtRE",
+      "title": "Arrow | Paralyzed",
+      "url": "https://www.youtube.com/watch?v=fTIxdmXUtRE",
+      "duration_sec": 271.0,
+      "metrics": {
+        "shot_count": 135,
+        "avg_shot_duration_sec": 1.998,
+        "median_shot_duration_sec": 1.835,
+        "cuts_per_minute": 30.03,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 33.951,
+        "shot_duration_stddev_sec": 2.959,
+        "shot_duration_p25": 0.918,
+        "shot_duration_p75": 1.877,
+        "shot_duration_p90": 3.67,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          25.2,
+          48.9,
+          25.9
+        ],
+        "intro_to_first_cut_sec": 0.292,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1781,
+        "luma_stddev": 0.0684,
+        "dark_shot_pct": 75.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 98.82,
+        "saturation_mean": 0.2448,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 41.8,
+        "cuts_checked": 134
+      }
+    },
+    {
+      "id": "K9l95rxxbMg",
+      "title": "Multifandom | Run It",
+      "url": "https://www.youtube.com/watch?v=K9l95rxxbMg",
+      "duration_sec": 127.0,
+      "metrics": {
+        "shot_count": 84,
+        "avg_shot_duration_sec": 1.49,
+        "median_shot_duration_sec": 1.1,
+        "cuts_per_minute": 40.28,
+        "min_shot_duration_sec": 0.32,
+        "max_shot_duration_sec": 4.88,
+        "shot_duration_stddev_sec": 1.073,
+        "shot_duration_p25": 0.72,
+        "shot_duration_p75": 2.04,
+        "shot_duration_p90": 2.96,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 41.47
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 44.89
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 29.8
+          }
+        ],
+        "act_pacing_pct": [
+          38.1,
+          32.1,
+          29.8
+        ],
+        "intro_to_first_cut_sec": 2.44,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2069,
+        "luma_stddev": 0.1331,
+        "dark_shot_pct": 53.8,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 120.0,
+        "saturation_mean": 0.4338,
+        "beat_sync_available": true,
+        "tempo_bpm": 103.36,
+        "cuts_on_beat_pct": 36.1,
+        "cuts_checked": 83
+      }
+    },
+    {
+      "id": "m-Gp80nG7jI",
+      "title": "Multifandom | Goddamn Vol.2 (6K sub special)",
+      "url": "https://www.youtube.com/watch?v=m-Gp80nG7jI",
+      "duration_sec": 149.0,
+      "metrics": {
+        "shot_count": 96,
+        "avg_shot_duration_sec": 1.551,
+        "median_shot_duration_sec": 1.23,
+        "cuts_per_minute": 38.7,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 5.214,
+        "shot_duration_stddev_sec": 1.156,
+        "shot_duration_p25": 0.667,
+        "shot_duration_p75": 2.044,
+        "shot_duration_p90": 3.462,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 24.95
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 22.27
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 27.1
+          }
+        ],
+        "act_pacing_pct": [
+          39.6,
+          35.4,
+          25.0
+        ],
+        "intro_to_first_cut_sec": 0.292,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2158,
+        "luma_stddev": 0.1263,
+        "dark_shot_pct": 52.5,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 70.59,
+        "saturation_mean": 0.4645,
+        "beat_sync_available": true,
+        "tempo_bpm": 103.36,
+        "cuts_on_beat_pct": 31.6,
+        "cuts_checked": 95
+      }
+    },
+    {
+      "id": "ySFnuZVA2Ic",
+      "title": "Multifandom | Supermassive Army",
+      "url": "https://www.youtube.com/watch?v=ySFnuZVA2Ic",
+      "duration_sec": 167.0,
+      "metrics": {
+        "shot_count": 158,
+        "avg_shot_duration_sec": 1.034,
+        "median_shot_duration_sec": 0.867,
+        "cuts_per_minute": 58.04,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 3.733,
+        "shot_duration_stddev_sec": 0.699,
+        "shot_duration_p25": 0.533,
+        "shot_duration_p75": 1.3,
+        "shot_duration_p90": 1.933,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 47.97
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 40.58
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 28.73
+          }
+        ],
+        "act_pacing_pct": [
+          39.9,
+          27.2,
+          32.9
+        ],
+        "intro_to_first_cut_sec": 1.1,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2268,
+        "luma_stddev": 0.1429,
+        "dark_shot_pct": 52.5,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 152.47,
+        "saturation_mean": 0.4379,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 54.8,
+        "cuts_checked": 157
+      }
+    },
+    {
+      "id": "I5ArZp7t0Yc",
+      "title": "Multifandom || Edamame ft.@bbnomoney @richbrian",
+      "url": "https://www.youtube.com/watch?v=I5ArZp7t0Yc",
+      "duration_sec": 123.0,
+      "metrics": {
+        "shot_count": 127,
+        "avg_shot_duration_sec": 0.951,
+        "median_shot_duration_sec": 0.767,
+        "cuts_per_minute": 63.12,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 5.005,
+        "shot_duration_stddev_sec": 0.636,
+        "shot_duration_p25": 0.534,
+        "shot_duration_p75": 1.168,
+        "shot_duration_p90": 1.768,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 74.26
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 76.05
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 22.88
+          }
+        ],
+        "act_pacing_pct": [
+          29.1,
+          33.1,
+          37.8
+        ],
+        "intro_to_first_cut_sec": 2.402,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2187,
+        "luma_stddev": 0.1189,
+        "dark_shot_pct": 46.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 111.53,
+        "saturation_mean": 0.4027,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 49.2,
+        "cuts_checked": 126
+      }
+    },
+    {
+      "id": "AFrOJf4qiqo",
+      "title": "black sea [multifandom collab]",
+      "url": "https://www.youtube.com/watch?v=AFrOJf4qiqo",
+      "duration_sec": 147.0,
+      "metrics": {
+        "shot_count": 154,
+        "avg_shot_duration_sec": 0.942,
+        "median_shot_duration_sec": 0.667,
+        "cuts_per_minute": 63.68,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 6.64,
+        "shot_duration_stddev_sec": 0.762,
+        "shot_duration_p25": 0.501,
+        "shot_duration_p75": 1.068,
+        "shot_duration_p90": 1.668,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 86.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 52.85
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.41
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          30.5,
+          33.8,
+          35.7
+        ],
+        "intro_to_first_cut_sec": 4.004,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2557,
+        "luma_stddev": 0.1436,
+        "dark_shot_pct": 40.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 69.18,
+        "saturation_mean": 0.3764,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 71.2,
+        "cuts_checked": 153
+      }
+    },
+    {
+      "id": "V762aO7W5zg",
+      "title": "\"Why We Fight\" | Multifandom",
+      "url": "https://www.youtube.com/watch?v=V762aO7W5zg",
+      "duration_sec": 358.0,
+      "metrics": {
+        "shot_count": 215,
+        "avg_shot_duration_sec": 1.661,
+        "median_shot_duration_sec": 1.368,
+        "cuts_per_minute": 36.12,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 16.25,
+        "shot_duration_stddev_sec": 1.333,
+        "shot_duration_p25": 0.901,
+        "shot_duration_p75": 2.336,
+        "shot_duration_p90": 2.569,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 15.22
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 6.82
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          30.7,
+          34.0,
+          35.3
+        ],
+        "intro_to_first_cut_sec": 1.468,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.198,
+        "luma_stddev": 0.1438,
+        "dark_shot_pct": 60.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 105.88,
+        "saturation_mean": 0.4374,
+        "beat_sync_available": true,
+        "tempo_bpm": 198.77,
+        "cuts_on_beat_pct": 98.6,
+        "cuts_checked": 214
+      }
+    },
+    {
+      "id": "q_OIRHDOSPg",
+      "title": "Multifandom | The Search",
+      "url": "https://www.youtube.com/watch?v=q_OIRHDOSPg",
+      "duration_sec": 189.0,
+      "metrics": {
+        "shot_count": 170,
+        "avg_shot_duration_sec": 1.103,
+        "median_shot_duration_sec": 0.933,
+        "cuts_per_minute": 54.38,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 6.267,
+        "shot_duration_stddev_sec": 0.727,
+        "shot_duration_p25": 0.7,
+        "shot_duration_p75": 1.333,
+        "shot_duration_p90": 2.0,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 46.05
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 32.14
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 6.92
+          }
+        ],
+        "act_pacing_pct": [
+          38.8,
+          31.8,
+          29.4
+        ],
+        "intro_to_first_cut_sec": 0.4,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2075,
+        "luma_stddev": 0.1487,
+        "dark_shot_pct": 57.5,
+        "bright_shot_pct": 2.5,
+        "hue_median_deg": 97.41,
+        "saturation_mean": 0.4253,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 62.7,
+        "cuts_checked": 169
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.068,
+    "cuts_per_minute": 43.98,
+    "shot_duration_range_sec": [
+      0.933,
+      1.998
+    ],
+    "typical_act_pacing_pct": [
+      32.8,
+      35.1,
+      32.1
+    ],
+    "cuts_on_beat_pct_mean": 60.52,
+    "tempo_bpm_median": 117.45,
+    "avg_luma_mean": 0.2199,
+    "dark_shot_pct_mean": 52.77,
+    "bright_shot_pct_mean": 0.29,
+    "saturation_mean_mean": 0.4128,
+    "intro_to_first_cut_sec_median": 2.402,
+    "pacing_profile": "peaks-and-valleys"
+  },
+  "generated_at": "2026-04-19T22:23:59.049585+00:00",
+  "generator": "ff reference ingest"
+}

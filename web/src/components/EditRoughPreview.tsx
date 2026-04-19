@@ -85,34 +85,42 @@ export default function EditRoughPreview({
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      try {
-        const shotsRes = await fetch(`/api/project/${projectSlug}/shots`);
-        const shotsData = await shotsRes.json();
-        if (cancelled) return;
+      // Fire all three fetches in parallel — none depend on each other.
+      // Sequential awaits (the old pattern) cost ~3x the round-trip time on
+      // a cold project load.
+      const [shotsResult, beatResult, mediaResult] = await Promise.allSettled([
+        fetch(`/api/project/${projectSlug}/shots`).then((r) => r.json()),
+        fetch(
+          `/api/artifacts/read?project=${encodeURIComponent(projectSlug)}&artifact=beat-map`
+        ).then((r) => r.json()),
+        fetch(`/api/project/${projectSlug}/media-list`).then(async (r) =>
+          r.ok ? r.json() : null
+        ),
+      ]);
+      if (cancelled) return;
+
+      if (shotsResult.status === "fulfilled") {
+        const shotsData = shotsResult.value;
         const raw: Shot[] = Array.isArray(shotsData?.shots) ? shotsData.shots : [];
         const normalized = raw.map((s) => normalizeShot(s, fps));
         normalized.sort((a, b) => a.song_start_sec - b.song_start_sec);
         setShots(normalized);
-      } catch (e) {
-        setError(`failed to load shots: ${(e as Error).message}`);
+      } else {
+        setError(`failed to load shots: ${shotsResult.reason}`);
       }
-      try {
-        const beatRes = await fetch(`/api/artifacts/read?project=${encodeURIComponent(projectSlug)}&artifact=beat-map`);
-        const beatData = await beatRes.json();
-        if (!cancelled && beatData?.exists) setBeatMap(beatData.data as BeatMapData);
-      } catch { /* optional */ }
-      try {
-        const mediaRes = await fetch(`/api/project/${projectSlug}/media-list`);
-        if (mediaRes.ok) {
-          const mediaData = await mediaRes.json();
-          const ids = new Set<string>(
-            Array.isArray(mediaData?.videos)
-              ? (mediaData.videos as { id: string }[]).map((v) => v.id)
-              : []
-          );
-          if (!cancelled) setAvailableSources(ids);
-        }
-      } catch { /* non-fatal */ }
+
+      if (beatResult.status === "fulfilled" && beatResult.value?.exists) {
+        setBeatMap(beatResult.value.data as BeatMapData);
+      }
+
+      if (mediaResult.status === "fulfilled" && mediaResult.value) {
+        const ids = new Set<string>(
+          Array.isArray(mediaResult.value?.videos)
+            ? (mediaResult.value.videos as { id: string }[]).map((v) => v.id)
+            : []
+        );
+        setAvailableSources(ids);
+      }
     })();
     return () => {
       cancelled = true;

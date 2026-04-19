@@ -26,7 +26,7 @@ from fandomforge.assembly.assemble import AssemblyResult, assemble_rough_cut
 from fandomforge.assembly.color import ColorPreset, apply_base_grade
 from fandomforge.assembly.color_plan import ColorPlan, load_color_plan
 from fandomforge.assembly.dialogue import load_dialogue_json
-from fandomforge.assembly.mixer import DialogueCue, MixResult, mix_audio
+from fandomforge.assembly.mixer import DialogueCue, MixResult, SfxCue, mix_audio
 from fandomforge.assembly.parser import parse_shot_list
 from fandomforge.assembly.title_overlay import (
     OverlayPlan,
@@ -133,6 +133,8 @@ def build_rough_cut(
     target_fps: int = 24,
     song_start_offset_sec: float = 0.0,
     song_gain_db: float = -4.0,
+    keep_work_dir: bool = False,
+    sfx_plan_json: str | None = None,
 ) -> RoughCutResult:
     """End-to-end rough cut build.
 
@@ -173,6 +175,15 @@ def build_rough_cut(
         target_height: Output pixel height.
         target_fps: Output frame rate.
         song_start_offset_sec: Where in the song to start mixing.
+        song_gain_db: Gain applied to the song before mixing with dialogue.
+        keep_work_dir: If True, `.assembly-work/` stays on disk after a
+            successful render (useful for debugging). Default False cleans it.
+            On failure, the work dir is always preserved so you can inspect
+            what went wrong.
+        sfx_plan_json: Optional sfx-plan.json filename. When provided (or when
+            data/sfx-plan.json exists), action SFX are layered into the mix
+            and source-clip scene audio is blended under the song per the
+            plan's scene_audio_blend settings.
     """
     project_dir = Path(project_dir)
     raw_dir = project_dir / "raw"
@@ -460,6 +471,12 @@ def build_rough_cut(
                 project_dir / song_filename,
             ])
         song_path = next((p for p in candidates if p.exists()), None)
+        if song_path is not None and not _validate_song_stream(song_path):
+            warnings.append(
+                f"Song {song_path.name} has no decodable audio stream — "
+                f"falling back to silent track."
+            )
+            song_path = None
         if song_path is not None:
             dialogue_resolved: Path | None = None
             if dialogue_script_json:
@@ -484,6 +501,20 @@ def build_rough_cut(
                 dialogue_resolved, dialogue_dir
             )
             warnings.extend(dialogue_warnings)
+
+            # Resolve optional sfx-plan.json (arg override > default path).
+            sfx_cues, scene_audio_path, scene_audio_gain_db, sfx_warnings = (
+                _prepare_sfx_and_scene_audio(
+                    project_dir=project_dir,
+                    work_dir=work_dir,
+                    shots=shots,
+                    raw_dir=raw_dir,
+                    total_duration_sec=asm.duration_sec,
+                    sfx_plan_json=sfx_plan_json,
+                )
+            )
+            warnings.extend(sfx_warnings)
+
             audio_path = work_dir / "mixed_audio.wav"
             mix_result = mix_audio(
                 song_path=song_path,
@@ -492,6 +523,9 @@ def build_rough_cut(
                 total_duration_sec=asm.duration_sec,
                 song_start_offset_sec=song_start_offset_sec,
                 song_gain_db=song_gain_db,
+                sfx_cues=sfx_cues,
+                scene_audio_path=scene_audio_path,
+                scene_audio_gain_db=scene_audio_gain_db,
             )
             if not mix_result.success:
                 warnings.append(
@@ -547,6 +581,14 @@ def build_rough_cut(
                 stderr=(exc.stderr or str(exc))[-1000:],
             )
 
+    # Clean the scratch dir on success unless the caller asked to keep it.
+    # On failure we preserve it so the user can inspect the half-finished state.
+    if not keep_work_dir:
+        try:
+            shutil.rmtree(work_dir, ignore_errors=True)
+        except OSError:
+            pass
+
     return RoughCutResult(
         success=True,
         output_path=final_output,
@@ -557,3 +599,217 @@ def build_rough_cut(
         duration_sec=asm.duration_sec,
         warnings=warnings,
     )
+
+
+def _prepare_sfx_and_scene_audio(
+    *,
+    project_dir: Path,
+    work_dir: Path,
+    shots: list[Any],
+    raw_dir: Path,
+    total_duration_sec: float,
+    sfx_plan_json: str | None,
+) -> tuple[list[SfxCue], Path | None, float, list[str]]:
+    """Build SfxCue list + scene-audio WAV from sfx-plan.json.
+
+    - Resolves SFX file paths (falls back silently when a variant is missing)
+    - Builds scene_audio.wav by extracting source-clip audio per shot and
+      concatenating onto a timeline track. Respects scene_audio_blend.enabled.
+    - Returns (cues, scene_audio_path, scene_audio_gain_db, warnings).
+    """
+    warnings: list[str] = []
+
+    candidates: list[Path] = []
+    if sfx_plan_json:
+        given = Path(sfx_plan_json)
+        if given.is_absolute():
+            candidates.append(given)
+        else:
+            candidates.extend([
+                project_dir / sfx_plan_json,
+                project_dir / "data" / sfx_plan_json,
+            ])
+    candidates.append(project_dir / "data" / "sfx-plan.json")
+
+    plan_path = next((p for p in candidates if p.exists()), None)
+    if plan_path is None:
+        return [], None, -20.0, warnings
+
+    try:
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        warnings.append(f"Could not read sfx-plan.json: {exc}")
+        return [], None, -20.0, warnings
+
+    from fandomforge.intelligence.sfx_engine import resolve_sfx_file
+
+    cues: list[SfxCue] = []
+    missing: set[str] = set()
+    for event in plan.get("events") or []:
+        variant = event.get("variant")
+        kind = event.get("kind")
+        if not variant or not kind:
+            continue
+        audio = resolve_sfx_file(variant, kind, project_dir)
+        if audio is None:
+            missing.add(f"{kind}/{variant}")
+            continue
+        cues.append(
+            SfxCue(
+                audio_path=audio,
+                start_sec=float(event.get("time_sec") or 0.0),
+                gain_db=float(event.get("gain_db") or 0.0),
+            )
+        )
+    if missing:
+        warnings.append(
+            f"SFX missing {len(missing)} variant(s) (first: {sorted(missing)[0]}). "
+            f"Drop .wav files under {project_dir}/sfx/<kind>/ or ~/.fandomforge/sfx/<kind>/."
+        )
+
+    blend = plan.get("scene_audio_blend") or {}
+    scene_enabled = bool(blend.get("enabled", False))
+    scene_gain = float(blend.get("gain_db", -20.0))
+    scene_path: Path | None = None
+    if scene_enabled and shots:
+        scene_path = work_dir / "scene_audio.wav"
+        ok, build_warnings = _build_scene_audio_track(
+            shots=shots,
+            raw_dir=raw_dir,
+            work_dir=work_dir,
+            out_wav=scene_path,
+            total_duration_sec=total_duration_sec,
+        )
+        warnings.extend(build_warnings)
+        if not ok:
+            warnings.append(
+                "Scene-audio build produced empty output. Mix continues without scene bed."
+            )
+            scene_path = None
+
+    return cues, scene_path, scene_gain, warnings
+
+
+def _build_scene_audio_track(
+    *,
+    shots: list[Any],
+    raw_dir: Path,
+    work_dir: Path,
+    out_wav: Path,
+    total_duration_sec: float,
+) -> tuple[bool, list[str]]:
+    """Rebuild a timeline-aligned scene-audio WAV from the source clips.
+
+    For each shot: extract <duration> seconds of audio from the source video
+    starting at the shot's source timecode. Concatenate all per-shot WAVs in
+    shot order and trim to total_duration_sec. Silent clips are padded with
+    silence so timing stays honest.
+    """
+    if shutil.which("ffmpeg") is None:
+        return False, ["ffmpeg not found; cannot build scene audio"]
+
+    from fandomforge.assembly.assemble import _find_source_video
+
+    work = work_dir / "scene_audio_clips"
+    work.mkdir(parents=True, exist_ok=True)
+    warnings: list[str] = []
+
+    per_clip_wavs: list[Path] = []
+    for shot in shots:
+        clip_wav = work / f"shot_{shot.number:03d}.wav"
+        dur = float(shot.duration_sec or 0)
+        if dur <= 0:
+            continue
+
+        source = _find_source_video(raw_dir, shot.source_id)
+        start_sec = shot.source_timestamp_sec
+        if source is None or start_sec is None:
+            # Silent filler keeps timing correct on shots with no source audio.
+            _write_silence_wav(clip_wav, dur)
+            per_clip_wavs.append(clip_wav)
+            continue
+
+        try:
+            subprocess.run(
+                ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+                 "-ss", f"{start_sec:.3f}",
+                 "-i", str(source),
+                 "-t", f"{dur:.3f}",
+                 "-vn", "-ac", "2", "-ar", "48000",
+                 "-acodec", "pcm_s16le",
+                 str(clip_wav)],
+                check=True, capture_output=True, timeout=60,
+            )
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+            _write_silence_wav(clip_wav, dur)
+        if clip_wav.exists() and clip_wav.stat().st_size > 0:
+            per_clip_wavs.append(clip_wav)
+
+    if not per_clip_wavs:
+        return False, warnings
+
+    concat_list = work / "concat.txt"
+    with concat_list.open("w") as f:
+        for p in per_clip_wavs:
+            f.write(f"file '{p.resolve()}'\n")
+    try:
+        subprocess.run(
+            ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+             "-f", "concat", "-safe", "0",
+             "-i", str(concat_list),
+             "-t", f"{total_duration_sec:.3f}",
+             "-acodec", "pcm_s16le",
+             str(out_wav)],
+            check=True, capture_output=True, timeout=300,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+        warnings.append(f"scene audio concat failed: {exc}")
+        return False, warnings
+
+    return out_wav.exists() and out_wav.stat().st_size > 1000, warnings
+
+
+def _write_silence_wav(path: Path, duration_sec: float) -> None:
+    """Emit a silent WAV of the given duration to keep concat timing correct."""
+    if shutil.which("ffmpeg") is None:
+        return
+    try:
+        subprocess.run(
+            ["ffmpeg", "-y", "-nostdin", "-hide_banner", "-loglevel", "error",
+             "-f", "lavfi",
+             "-i", f"anullsrc=channel_layout=stereo:sample_rate=48000",
+             "-t", f"{duration_sec:.3f}",
+             "-acodec", "pcm_s16le",
+             str(path)],
+            check=True, capture_output=True, timeout=30,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        pass
+
+
+def _validate_song_stream(path: Path) -> bool:
+    """Confirm a song file has a decodable audio stream before passing to mix.
+
+    A corrupt or video-only container silently muxes to a silent track,
+    producing graded.mp4 files with no audio. Cheap ffprobe pre-check
+    prevents that class of bug.
+    """
+    if shutil.which("ffprobe") is None:
+        return True  # can't check, assume ok
+    try:
+        proc = subprocess.run(
+            ["ffprobe", "-v", "error",
+             "-select_streams", "a:0",
+             "-show_entries", "stream=codec_name,channels,sample_rate",
+             "-of", "default=noprint_wrappers=1:nokey=1",
+             str(path)],
+            capture_output=True, text=True, timeout=10,
+        )
+    except (subprocess.TimeoutExpired, OSError):
+        return False
+    if proc.returncode != 0:
+        return False
+    out = (proc.stdout or "").strip()
+    # Must have codec_name AND channels AND sample_rate (three non-empty lines).
+    lines = [l for l in out.splitlines() if l.strip()]
+    return len(lines) >= 3

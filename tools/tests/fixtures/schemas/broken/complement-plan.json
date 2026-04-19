@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "pairs": [
+    {
+      "thrown_shot_id": "",
+      "received_shot_id": "",
+      "kind": "headbutt",
+      "score": 5.0
+    }
+  ]
+}

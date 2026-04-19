@@ -4361,5 +4361,202 @@ def fixtures_list_cmd(manifest: Path | None) -> None:
     console.print(table)
 
 
+# ---------- sync (lyric + song-point + complement + sfx) ----------
+
+
+@main.group("sync")
+def sync_grp() -> None:
+    """Lyric sync, complement pairing, and SFX planning — the narrative layer."""
+
+
+@sync_grp.command("extract-lyrics")
+@click.option("--project", required=True, help="Project slug")
+@click.option("--model", "model_size", default="small", help="Whisper model size")
+def sync_extract_lyrics_cmd(project: str, model_size: str) -> None:
+    """Extract timestamped lyrics from the project's song via whisper."""
+    from fandomforge.intelligence.sync_planner import extract_song_lyrics
+
+    proj = Path("projects") / project
+    assets = proj / "assets"
+    song = next(
+        (assets / name for name in ("song.mp3", "song.wav", "song.m4a", "song.flac")
+         if (assets / name).exists()),
+        None,
+    )
+    if song is None:
+        console.print("[red]no song found in assets/[/red]")
+        sys.exit(1)
+
+    console.print(f"[cyan]Extracting lyrics from[/cyan] {song.name} (model={model_size})")
+    transcript = extract_song_lyrics(song, model_size=model_size)
+    if transcript is None:
+        console.print("[red]whisper not available — install openai-whisper[/red]")
+        sys.exit(1)
+
+    out = proj / "data" / "song-lyrics.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(transcript, indent=2) + "\n", encoding="utf-8")
+    console.print(f"[green]✓[/green] {out}  ({len(transcript.get('segments', []))} segments)")
+
+
+@sync_grp.command("plan")
+@click.option("--project", required=True, help="Project slug")
+@click.option("--include-downbeats/--no-downbeats", default=False,
+              help="Include per-downbeat sync points (verbose)")
+@click.option("--top-k", type=int, default=3,
+              help="How many shot recommendations to keep per point")
+def sync_plan_cmd(project: str, include_downbeats: bool, top_k: int) -> None:
+    """Build sync-plan.json from beat-map + shot-list + (optional) lyrics."""
+    from fandomforge.intelligence.sync_planner import build_sync_plan, write_sync_plan
+
+    proj = Path("projects") / project
+    beat_map = json.loads((proj / "data" / "beat-map.json").read_text())
+    shot_list = json.loads((proj / "data" / "shot-list.json").read_text())
+    lyrics_path = proj / "data" / "song-lyrics.json"
+    lyrics = json.loads(lyrics_path.read_text()) if lyrics_path.exists() else None
+
+    plan = build_sync_plan(
+        project_slug=project,
+        beat_map=beat_map,
+        shot_list=shot_list,
+        lyrics_transcript=lyrics,
+        include_downbeats=include_downbeats,
+        top_k=top_k,
+    )
+    out = write_sync_plan(plan, proj)
+    console.print(
+        f"[green]✓[/green] {out}  "
+        f"({len(plan['song_points'])} points, {len(plan['lyrics'])} lyric sections)"
+    )
+
+
+@sync_grp.command("complement")
+@click.option("--project", required=True, help="Project slug")
+def sync_complement_cmd(project: str) -> None:
+    """Pair thrown-action shots with received-action shots from other sources."""
+    from fandomforge.intelligence.complement_matcher import (
+        build_complement_plan, write_complement_plan,
+    )
+
+    proj = Path("projects") / project
+    shot_list = json.loads((proj / "data" / "shot-list.json").read_text())
+    plan = build_complement_plan(project_slug=project, shot_list=shot_list)
+    out = write_complement_plan(plan, proj)
+    console.print(
+        f"[green]✓[/green] {out}  "
+        f"({len(plan['pairs'])} pairs, {len(plan['unpaired_thrown'])} unpaired thrown)"
+    )
+
+
+@main.group("sfx")
+def sfx_grp() -> None:
+    """Action sound-effect planning (gunshots, punches, impacts)."""
+
+
+@sfx_grp.command("plan")
+@click.option("--project", required=True, help="Project slug")
+@click.option("--no-scene-audio", is_flag=True,
+              help="Disable scene-audio bleed-through in the plan")
+@click.option("--scene-audio-db", type=float, default=-20.0,
+              help="Scene audio gain under the song (dB)")
+@click.option("--seed", type=int, default=None, help="RNG seed for variant rotation")
+def sfx_plan_cmd(project: str, no_scene_audio: bool, scene_audio_db: float, seed: int | None) -> None:
+    """Emit sfx-plan.json with beat-aligned action SFX placements."""
+    from fandomforge.intelligence.sfx_engine import build_sfx_plan, write_sfx_plan
+
+    proj = Path("projects") / project
+    shot_list = json.loads((proj / "data" / "shot-list.json").read_text())
+    beat_map_path = proj / "data" / "beat-map.json"
+    beat_map = json.loads(beat_map_path.read_text()) if beat_map_path.exists() else None
+
+    plan = build_sfx_plan(
+        project_slug=project,
+        shot_list=shot_list,
+        beat_map=beat_map,
+        scene_audio_enabled=not no_scene_audio,
+        scene_audio_gain_db=scene_audio_db,
+        seed=seed,
+    )
+    out = write_sfx_plan(plan, proj)
+    aligned = sum(1 for e in plan["events"] if e.get("beat_aligned"))
+    console.print(
+        f"[green]✓[/green] {out}  "
+        f"({len(plan['events'])} events, {aligned} beat-aligned)"
+    )
+
+
+# ---------- reference library (learned priors from real edits) ----------
+
+
+@main.group("reference")
+def reference_grp() -> None:
+    """Reference-edit library — ingest fandom playlists, learn editing priors."""
+
+
+@reference_grp.command("ingest")
+@click.option("--playlist", "playlist_url", required=True,
+              help="YouTube playlist URL to ingest.")
+@click.option("--tag", required=True,
+              help="Corpus tag (e.g. 'action-fandom', 'anime-speed').")
+@click.option("--max-videos", type=int, default=None,
+              help="Cap the number of videos analyzed.")
+@click.option("--max-height", type=int, default=480,
+              help="Max video height for download (lower = faster analysis).")
+@click.option("--no-download", is_flag=True,
+              help="Skip download; analyze videos already in the tag dir.")
+def reference_ingest_cmd(
+    playlist_url: str,
+    tag: str,
+    max_videos: int | None,
+    max_height: int,
+    no_download: bool,
+) -> None:
+    """Download + analyze a playlist. Writes ~/.fandomforge/references/<tag>/reference-priors.json."""
+    from fandomforge.intelligence.reference_library import ingest_playlist
+
+    try:
+        priors = ingest_playlist(
+            playlist_url,
+            tag=tag,
+            max_videos=max_videos,
+            max_height=max_height,
+            download=not no_download,
+        )
+    except RuntimeError as exc:
+        console.print(f"[red]ingest failed:[/red] {exc}")
+        sys.exit(1)
+
+    console.print(
+        f"[green]✓[/green] ingested {priors['video_count']} video(s) under tag "
+        f"[bold]{tag}[/bold]"
+    )
+    p = priors["priors"]
+    console.print(
+        f"  median shot: {p['median_shot_duration_sec']}s  "
+        f"cuts/min: {p['cuts_per_minute']}"
+    )
+
+
+@reference_grp.command("show")
+@click.option("--tag", default=None, help="Which corpus to show; default: newest.")
+def reference_show_cmd(tag: str | None) -> None:
+    """Display the learned priors for a reference corpus."""
+    from fandomforge.intelligence.reference_library import load_priors
+
+    priors = load_priors(tag)
+    if priors is None:
+        console.print("[yellow]no reference priors found[/yellow]")
+        console.print("  run: ff reference ingest --playlist <URL> --tag <name>")
+        return
+    console.print(f"[bold]Tag:[/bold] {priors.get('tag', '?')}")
+    console.print(f"[bold]Videos analyzed:[/bold] {priors.get('video_count', 0)}")
+    p = priors["priors"]
+    console.print(f"[bold]Median shot:[/bold] {p['median_shot_duration_sec']}s")
+    console.print(f"[bold]Cuts/min:[/bold] {p['cuts_per_minute']}")
+    if p.get("shot_duration_range_sec"):
+        rng = p["shot_duration_range_sec"]
+        console.print(f"[bold]Shot range (p10–p90):[/bold] {rng[0]}s — {rng[1]}s")
+
+
 if __name__ == "__main__":
     main()

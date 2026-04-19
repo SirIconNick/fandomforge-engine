@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "song_points": [
+    {
+      "id": "",
+      "time_sec": -5,
+      "type": "explosion",
+      "label": "this point has no valid type and negative time"
+    }
+  ]
+}

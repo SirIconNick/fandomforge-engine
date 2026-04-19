@@ -108,6 +108,7 @@ class ReviewReport:
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "schema_version": 1,
             "project_slug": self.project_slug,
             "video_path": self.video_path,
             "generated_at": self.generated_at,

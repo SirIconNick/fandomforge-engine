@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/post-render-review.schema.json",
+  "title": "PostRenderReview",
+  "description": "Output of `ff review` and autopilot `post_render_review` step. Captures the five-dimension grading pass against a rendered edit (technical, visual, audio, structural, shot_list) with an overall letter grade and ship recommendation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_slug",
+    "video_path",
+    "generated_at",
+    "overall",
+    "overall_verdict",
+    "score",
+    "grade",
+    "dimensions",
+    "ship_recommendation"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "video_path": {"type": "string", "minLength": 1},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "overall": {
+      "type": "string",
+      "enum": ["green", "yellow", "red"]
+    },
+    "overall_verdict": {
+      "type": "string",
+      "enum": ["pass", "warn", "fail"]
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Weighted 0-100 score across the five dimensions."
+    },
+    "grade": {
+      "type": "string",
+      "enum": ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "F"]
+    },
+    "ship_recommendation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable guidance: ship / review with caveats / do not ship."
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "verdict", "score"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": ["technical", "visual", "audio", "structural", "shot_list"]
+          },
+          "verdict": {
+            "type": "string",
+            "enum": ["pass", "warn", "fail"]
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "findings": {
+            "type": "array",
+            "items": {"type": "string"},
+            "default": []
+          },
+          "measurements": {
+            "type": "object",
+            "description": "Dimension-specific metrics (ffprobe output, loudness numbers, shot distribution, etc).",
+            "default": {}
+          }
+        }
+      }
+    }
+  }
+}

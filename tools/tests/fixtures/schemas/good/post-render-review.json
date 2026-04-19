@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "video_path": "projects/leon-revenge/exports/graded.mp4",
+  "generated_at": "2026-04-19T14:30:00+00:00",
+  "overall": "green",
+  "overall_verdict": "pass",
+  "score": 92.4,
+  "grade": "A-",
+  "ship_recommendation": "Green across the board. Safe to pull into the NLE.",
+  "dimensions": [
+    {
+      "name": "technical",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 24.0,
+        "duration_sec": 182.3,
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "channels": 2
+      }
+    },
+    {
+      "name": "visual",
+      "verdict": "warn",
+      "score": 69.0,
+      "findings": ["dark segment @ 45.20s → 45.60s (0.40s)"],
+      "measurements": {
+        "black_segments": [{"start": 45.2, "end": 45.6, "duration": 0.4}],
+        "freeze_events": [],
+        "total_black_sec": 0.4
+      }
+    },
+    {
+      "name": "audio",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "input_i": -14.2,
+        "input_tp": -1.8,
+        "mean_dbfs": -18.4
+      }
+    },
+    {
+      "name": "structural",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "rendered_duration_sec": 182.3,
+        "expected_duration_sec": 182.0,
+        "shot_count": 42,
+        "delta_sec": 0.3,
+        "delta_pct": 0.0016
+      }
+    },
+    {
+      "name": "shot_list",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "shot_count": 42,
+        "unique_shots": 42,
+        "intentional_callbacks": 0,
+        "accidental_reuse": 0,
+        "top_source_share": 0.31
+      }
+    }
+  ]
+}

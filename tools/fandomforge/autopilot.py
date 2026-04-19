@@ -150,6 +150,17 @@ def _run_subproc(args: list[str], cwd: Path) -> tuple[int, str, str]:
     return proc.returncode, proc.stdout, proc.stderr
 
 
+def _use_subprocess() -> bool:
+    """When FF_AUTOPILOT_SUBPROCESS=1, fall back to shelling out to `ff <sub>`.
+
+    Default is in-process (each step calls the underlying module function
+    directly). The subprocess path exists for debugging or for cases where
+    process isolation matters — e.g. to confirm a bug isn't caused by
+    cross-step state carried in the same interpreter.
+    """
+    return os.environ.get("FF_AUTOPILOT_SUBPROCESS", "").strip() in ("1", "true", "yes")
+
+
 # ---------- Step implementations ----------
 
 
@@ -295,19 +306,41 @@ def step_ingest_sources(ctx: AutopilotContext) -> AutopilotEvent:
 
     ingested = 0
     failures: list[str] = []
-    for v in videos:
-        rc, out, err = _run_subproc(
-            ["ff", "ingest", str(v),
-             "--project", project_arg,
-             "--fandom", default_fandom,
-             "--source-type", "short",
-             "--no-characters"],
-            cwd=ctx.project_dir.parent.parent,
-        )
-        if rc == 0:
-            ingested += 1
-        else:
-            failures.append(f"{v.name}: exit {rc} — {err[-200:] if err else out[-200:]}")
+    if _use_subprocess():
+        for v in videos:
+            rc, out, err = _run_subproc(
+                ["ff", "ingest", str(v),
+                 "--project", project_arg,
+                 "--fandom", default_fandom,
+                 "--source-type", "short",
+                 "--no-characters"],
+                cwd=ctx.project_dir.parent.parent,
+            )
+            if rc == 0:
+                ingested += 1
+            else:
+                failures.append(f"{v.name}: exit {rc} — {err[-200:] if err else out[-200:]}")
+    else:
+        from fandomforge.ingest import ingest_source
+        for v in videos:
+            try:
+                report = ingest_source(
+                    video_path=v,
+                    project_dir=ctx.project_dir,
+                    fandom=default_fandom,
+                    source_type="short",
+                    run_characters=False,
+                )
+                if report.succeeded:
+                    ingested += 1
+                else:
+                    first_fail = next(
+                        (s for s in report.steps if s.status == "failed"), None
+                    )
+                    detail = first_fail.detail if first_fail else "unknown"
+                    failures.append(f"{v.name}: {detail[:200]}")
+            except Exception as exc:  # noqa: BLE001
+                failures.append(f"{v.name}: {type(exc).__name__}: {exc}")
 
     if failures:
         return AutopilotEvent(
@@ -355,17 +388,55 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
             ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
             status="failed", message="no song found in assets/",
         )
-    rc, stdout, stderr = _run_subproc(
-        ["ff", "beat", "analyze", str(song), "-o", str(out)],
-        cwd=ctx.project_dir.parent.parent,
-    )
-    if rc != 0:
-        return AutopilotEvent(
-            ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
-            status="failed", message=f"ff beat analyze exit {rc}",
-            evidence={"stderr": stderr[-800:]},
-            duration_sec=round(time.perf_counter() - start, 3),
+
+    if _use_subprocess():
+        rc, stdout, stderr = _run_subproc(
+            ["ff", "beat", "analyze", str(song), "-o", str(out)],
+            cwd=ctx.project_dir.parent.parent,
         )
+        if rc != 0:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
+                status="failed", message=f"ff beat analyze exit {rc}",
+                evidence={"stderr": stderr[-800:]},
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+    else:
+        try:
+            from fandomforge import __version__ as _ff_version
+            from fandomforge.audio import (
+                analyze_beats,
+                compute_energy_curve,
+                detect_drops,
+            )
+            from fandomforge.audio.drops import detect_breakdowns, detect_buildups
+            from fandomforge.validation import validate_and_write
+
+            beat_map = analyze_beats(song)
+            drops = detect_drops(song)
+            buildups = detect_buildups(song, drops)
+            breakdowns = detect_breakdowns(song)
+            curve = compute_energy_curve(song)
+            payload = {
+                "schema_version": 1,
+                **beat_map.to_dict(),
+                "drops": [d.to_dict() for d in drops],
+                "buildups": [b.to_dict() for b in buildups],
+                "breakdowns": [bd.to_dict() for bd in breakdowns],
+                "energy_curve": [[t, e] for t, e in curve],
+                "generated_at": _now(),
+                "generator": f"autopilot/beat-analyze ({_ff_version})",
+            }
+            out.parent.mkdir(parents=True, exist_ok=True)
+            validate_and_write(payload, "beat-map", out)
+        except Exception as exc:  # noqa: BLE001
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
+                status="failed",
+                message=f"beat analyze failed: {type(exc).__name__}: {exc}",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
         status="ok", message="beat-map.json written",
@@ -764,6 +835,94 @@ def step_propose_shots(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_sync_plan(ctx: AutopilotContext) -> AutopilotEvent:
+    """Build sync-plan.json + complement-plan.json + sfx-plan.json.
+
+    Pulls in reference priors (when the user has ingested playlists) to bias
+    shot pacing toward real fandom-edit patterns.
+    """
+    start = time.perf_counter()
+    data = ctx.project_dir / "data"
+    shot_list_path = data / "shot-list.json"
+    beat_map_path = data / "beat-map.json"
+    if not shot_list_path.exists() or not beat_map_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="sync_plan",
+            status="skipped",
+            message="need shot-list.json + beat-map.json",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.sync_planner import build_sync_plan, write_sync_plan
+        from fandomforge.intelligence.complement_matcher import (
+            build_complement_plan, write_complement_plan,
+        )
+        from fandomforge.intelligence.sfx_engine import build_sfx_plan, write_sfx_plan
+        from fandomforge.intelligence.reference_library import load_priors
+
+        shot_list = json.loads(shot_list_path.read_text())
+        beat_map = json.loads(beat_map_path.read_text())
+        lyrics_path = data / "song-lyrics.json"
+        lyrics = json.loads(lyrics_path.read_text()) if lyrics_path.exists() else None
+        priors = load_priors()
+
+        sync = build_sync_plan(
+            project_slug=ctx.project_slug,
+            beat_map=beat_map,
+            shot_list=shot_list,
+            lyrics_transcript=lyrics,
+            reference_priors=priors,
+        )
+        write_sync_plan(sync, ctx.project_dir)
+
+        comp = build_complement_plan(project_slug=ctx.project_slug, shot_list=shot_list)
+        write_complement_plan(comp, ctx.project_dir)
+
+        # When complement pairs exist, reorder the shot-list so thrown shots
+        # are immediately followed by their received counterparts. The render
+        # pipeline reads shot-list.md, so we regenerate it from the reordered
+        # JSON to keep the downstream flow honest.
+        if comp.get("pairs"):
+            from fandomforge.intelligence.complement_matcher import apply_pairs_to_shot_list
+            reordered = apply_pairs_to_shot_list(shot_list, comp)
+            shot_list_path.write_text(json.dumps(reordered, indent=2) + "\n")
+            _write_shot_list_md(reordered, ctx.project_dir / "shot-list.md")
+            shot_list = reordered  # downstream steps see the new order
+
+        sfx = build_sfx_plan(
+            project_slug=ctx.project_slug,
+            shot_list=shot_list,
+            beat_map=beat_map,
+        )
+        write_sfx_plan(sfx, ctx.project_dir)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="sync_plan",
+            status="failed",
+            message=f"sync plan build failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="sync_plan",
+        status="ok",
+        message=(
+            f"sync: {len(sync['song_points'])} points, "
+            f"complement: {len(comp['pairs'])} pairs, "
+            f"sfx: {len(sfx['events'])} events"
+            + (" — used reference priors" if priors else "")
+        ),
+        evidence={
+            "sync_points": len(sync["song_points"]),
+            "complement_pairs": len(comp["pairs"]),
+            "sfx_events": len(sfx["events"]),
+            "priors_tag": priors.get("tag") if priors else None,
+        },
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_emotion_arc(ctx: AutopilotContext) -> AutopilotEvent:
     start = time.perf_counter()
     if _artifact_exists_and_valid(ctx, "emotion-arc"):
@@ -796,19 +955,51 @@ def step_emotion_arc(ctx: AutopilotContext) -> AutopilotEvent:
 
 def step_qa_gate(ctx: AutopilotContext) -> AutopilotEvent:
     start = time.perf_counter()
-    rc, stdout, stderr = _run_subproc(
-        ["ff", "qa", "gate", "--project", ctx.project_slug],
-        cwd=ctx.project_dir.parent.parent,
-    )
-    status = "ok" if rc == 0 else "failed"
+    if _use_subprocess():
+        rc, stdout, stderr = _run_subproc(
+            ["ff", "qa", "gate", "--project", str(ctx.project_dir)],
+            cwd=ctx.project_dir.parent.parent,
+        )
+        status = "ok" if rc == 0 else "failed"
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="qa_gate",
+            status=status,
+            message=f"ff qa gate exit {rc}",
+            evidence={
+                "exit_code": rc,
+                "stdout_tail": stdout[-800:],
+                "stderr_tail": stderr[-400:] if stderr else "",
+            },
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.qa import run_gate
+
+        out = ctx.project_dir / "data" / "qa-report.json"
+        report = run_gate(ctx.project_dir, overrides={}, stage="pre-export", write_to=out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="qa_gate",
+            status="failed",
+            message=f"qa gate crashed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    status = "failed" if report.get("status") == "fail" else "ok"
+    failed_rules = [r for r in report.get("rules", []) if r.get("status") == "fail"]
+    warned_rules = [r for r in report.get("rules", []) if r.get("status") == "warn"]
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="qa_gate",
         status=status,
-        message=f"ff qa gate exit {rc}",
+        message=(
+            f"qa gate: {report.get('status', 'unknown')} "
+            f"({len(failed_rules)} failed, {len(warned_rules)} warned)"
+        ),
         evidence={
-            "exit_code": rc,
-            "stdout_tail": stdout[-800:],
-            "stderr_tail": stderr[-400:] if stderr else "",
+            "gate_status": report.get("status"),
+            "failed": [r.get("id") for r in failed_rules],
+            "warned": [r.get("id") for r in warned_rules],
         },
         duration_sec=round(time.perf_counter() - start, 3),
     )
@@ -902,26 +1093,63 @@ def step_roughcut(ctx: AutopilotContext) -> AutopilotEvent:
 
     # Pass the song so the mp4 has audio. copy_song landed it in assets/
     # as song.<ext>; the orchestrator's path search handles assets/ vs raw/.
-    song_arg: list[str] = []
     song = _find_song(ctx)
-    if song is not None:
-        song_arg = ["--song", song.name]
+    song_name = song.name if song is not None else None
 
-    rc, stdout, stderr = _run_subproc(
-        ["ff", "roughcut",
-         "--project", ctx.project_slug,
-         "--output", str(rough_path),
-         *song_arg],
-        cwd=ctx.project_dir.parent.parent,
-    )
-    if rc != 0:
-        return AutopilotEvent(
-            ts=_now(), run_id=ctx.run_id, step_id="roughcut",
-            status="failed",
-            message=f"ff roughcut exit {rc}",
-            evidence={"stderr": stderr[-800:]},
-            duration_sec=round(time.perf_counter() - start, 3),
+    # Auto-wire color-plan.json if the artifact exists — the roughcut step
+    # should respect the user's per-source color plan without a manual flag.
+    color_plan_name: str | None = None
+    color_plan_json = ctx.project_dir / "data" / "color-plan.json"
+    if color_plan_json.exists():
+        color_plan_name = str(color_plan_json)
+
+    if _use_subprocess():
+        song_arg = ["--song", song_name] if song_name else []
+        color_plan_arg = ["--color-plan", color_plan_name] if color_plan_name else []
+        rc, stdout, stderr = _run_subproc(
+            ["ff", "roughcut",
+             "--project", ctx.project_slug,
+             "--output", str(rough_path),
+             *song_arg, *color_plan_arg],
+            cwd=ctx.project_dir.parent.parent,
         )
+        if rc != 0:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="roughcut",
+                status="failed",
+                message=f"ff roughcut exit {rc}",
+                evidence={"stderr": stderr[-800:]},
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+    else:
+        try:
+            from fandomforge.assembly import ColorPreset, build_rough_cut
+
+            result = build_rough_cut(
+                project_dir=ctx.project_dir,
+                shot_list_name="shot-list.md",
+                song_filename=song_name,
+                dialogue_script_json=None,
+                color_preset=ColorPreset.TACTICAL,
+                color_plan_json=color_plan_name,
+                output_name=rough_path.name,
+            )
+            if not result.success:
+                return AutopilotEvent(
+                    ts=_now(), run_id=ctx.run_id, step_id="roughcut",
+                    status="failed",
+                    message=f"roughcut failed: {result.stderr[:400]}",
+                    evidence={"stderr": result.stderr[-800:]},
+                    duration_sec=round(time.perf_counter() - start, 3),
+                )
+        except Exception as exc:  # noqa: BLE001
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="roughcut",
+                status="failed",
+                message=f"roughcut crashed: {type(exc).__name__}: {exc}",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="roughcut",
         status="ok",
@@ -929,6 +1157,7 @@ def step_roughcut(ctx: AutopilotContext) -> AutopilotEvent:
         evidence={
             "path": str(rough_path),
             "bytes": rough_path.stat().st_size if rough_path.exists() else 0,
+            "color_plan_used": color_plan_name,
         },
         duration_sec=round(time.perf_counter() - start, 3),
     )
@@ -952,21 +1181,46 @@ def step_color(ctx: AutopilotContext) -> AutopilotEvent:
             message="no roughcut.mp4 — upstream step did not render (likely no real sources)",
             duration_sec=round(time.perf_counter() - start, 3),
         )
-    rc, stdout, stderr = _run_subproc(
-        ["ff", "color",
-         "--project", ctx.project_slug,
-         "--input", str(rough_path),
-         "--output", str(graded_path)],
-        cwd=ctx.project_dir.parent.parent,
-    )
-    if rc != 0:
-        return AutopilotEvent(
-            ts=_now(), run_id=ctx.run_id, step_id="color",
-            status="failed",
-            message=f"ff color exit {rc}",
-            evidence={"stderr": stderr[-800:]},
-            duration_sec=round(time.perf_counter() - start, 3),
+    if _use_subprocess():
+        rc, stdout, stderr = _run_subproc(
+            ["ff", "color",
+             "--project", ctx.project_slug,
+             "--input", rough_path.name,
+             "--output", graded_path.name],
+            cwd=ctx.project_dir.parent.parent,
         )
+        if rc != 0:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="color",
+                status="failed",
+                message=f"ff color exit {rc}",
+                evidence={"stderr": stderr[-800:]},
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+    else:
+        try:
+            from fandomforge.assembly import ColorPreset, apply_base_grade
+
+            result = apply_base_grade(
+                rough_path,
+                graded_path,
+                preset=ColorPreset.TACTICAL,
+            )
+            if not result.success:
+                return AutopilotEvent(
+                    ts=_now(), run_id=ctx.run_id, step_id="color",
+                    status="failed",
+                    message=f"color grade failed: {result.stderr[:400]}",
+                    evidence={"stderr": result.stderr[-800:]},
+                    duration_sec=round(time.perf_counter() - start, 3),
+                )
+        except Exception as exc:  # noqa: BLE001
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="color",
+                status="failed",
+                message=f"color crashed: {type(exc).__name__}: {exc}",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="color",
         status="ok",
@@ -993,21 +1247,69 @@ def step_export(ctx: AutopilotContext) -> AutopilotEvent:
             message="no real sources — NLE XML requires real clip paths, skipping",
             duration_sec=round(time.perf_counter() - start, 3),
         )
-    rc, stdout, stderr = _run_subproc(
-        ["ff", "export-nle",
-         "--project", ctx.project_slug,
-         "--format", "fcpxml",
-         "--output-base", str(xml_path.with_suffix(""))],
-        cwd=ctx.project_dir.parent.parent,
-    )
-    if rc != 0:
-        return AutopilotEvent(
-            ts=_now(), run_id=ctx.run_id, step_id="export",
-            status="failed",
-            message=f"ff export-nle exit {rc}",
-            evidence={"stderr": stderr[-800:]},
-            duration_sec=round(time.perf_counter() - start, 3),
+    if _use_subprocess():
+        rc, stdout, stderr = _run_subproc(
+            ["ff", "export-nle",
+             "--project", ctx.project_slug,
+             "--format", "fcpxml",
+             "--output-base", xml_path.stem],
+            cwd=ctx.project_dir.parent.parent,
         )
+        if rc != 0:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="export",
+                status="failed",
+                message=f"ff export-nle exit {rc}",
+                evidence={"stderr": stderr[-800:]},
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+    else:
+        try:
+            from fandomforge.assembly import parse_shot_list
+            from fandomforge.intelligence.nle_export import (
+                export_fcpxml,
+                shots_to_clips,
+            )
+
+            shot_list_candidates = [
+                ctx.project_dir / "shot-list.md",
+                ctx.project_dir / "plans" / "shot-list.md",
+            ]
+            shot_path = next((p for p in shot_list_candidates if p.exists()), None)
+            if shot_path is None:
+                return AutopilotEvent(
+                    ts=_now(), run_id=ctx.run_id, step_id="export",
+                    status="failed",
+                    message="no shot-list.md found for NLE export",
+                    duration_sec=round(time.perf_counter() - start, 3),
+                )
+
+            shots = parse_shot_list(shot_path)
+            clips = shots_to_clips(shots, ctx.project_dir / "raw")
+            if not clips:
+                return AutopilotEvent(
+                    ts=_now(), run_id=ctx.run_id, step_id="export",
+                    status="failed",
+                    message="no resolvable clips for NLE export",
+                    duration_sec=round(time.perf_counter() - start, 3),
+                )
+            xml_path.parent.mkdir(parents=True, exist_ok=True)
+            export_fcpxml(
+                clips,
+                xml_path,
+                fps=24,
+                width=1920,
+                height=1080,
+                title=f"FandomForge — {ctx.project_slug}",
+            )
+        except Exception as exc:  # noqa: BLE001
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="export",
+                status="failed",
+                message=f"export crashed: {type(exc).__name__}: {exc}",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="export",
         status="ok",
@@ -1040,6 +1342,10 @@ STEPS: list[Step] = [
     Step("emotion_arc", "Infer emotion arc",
          lambda ctx: _artifact_exists_and_valid(ctx, "emotion-arc"),
          step_emotion_arc),
+    Step("sync_plan", "Build sync + complement + SFX plans",
+         lambda ctx: (ctx.project_dir / "data" / "sync-plan.json").exists()
+                     and (ctx.project_dir / "data" / "sfx-plan.json").exists(),
+         step_sync_plan),
     Step("qa_gate", "Run QA gate",
          lambda _ctx: False,  # always re-run QA; its output is its own signal
          step_qa_gate),

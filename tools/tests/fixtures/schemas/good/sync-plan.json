@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "song_title": "Control",
+  "lyrics": [
+    {
+      "start_sec": 12.4,
+      "end_sec": 14.8,
+      "text": "i'm not the one you wanted to find",
+      "emotion": "somber",
+      "confidence": 0.87
+    },
+    {
+      "start_sec": 15.0,
+      "end_sec": 17.2,
+      "text": "but here i am, one more time",
+      "emotion": "defiant",
+      "confidence": 0.82
+    }
+  ],
+  "song_points": [
+    {
+      "id": "sp001",
+      "time_sec": 12.4,
+      "end_sec": 14.8,
+      "type": "lyric",
+      "label": "i'm not the one you wanted to find",
+      "emotion": "somber",
+      "recommended_shots": [
+        { "shot_id": "s012", "score": 0.91, "reasons": ["mood=somber matches", "same fandom as hero"] },
+        { "shot_id": "s033", "score": 0.84, "reasons": ["mood=melancholy close"] }
+      ]
+    },
+    {
+      "id": "sp002",
+      "time_sec": 42.0,
+      "type": "drop",
+      "label": "drop #1",
+      "intensity": 0.95,
+      "emotion": "intense",
+      "recommended_shots": [
+        { "shot_id": "s021", "score": 0.97, "reasons": ["high-motion action shot", "intensity match"] }
+      ]
+    }
+  ],
+  "generated_at": "2026-04-19T18:00:00+00:00",
+  "generator": "ff sync plan (0.1.0)"
+}

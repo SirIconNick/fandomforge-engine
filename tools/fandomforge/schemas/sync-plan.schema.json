@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/sync-plan.schema.json",
+  "title": "SyncPlan",
+  "description": "Unifies the song's structural points (drops, breakdowns, buildups, downbeats) with timestamped lyric sections, and recommends which shots from the shot list should land on each point. Produced by `ff sync plan` and consumed by the timeline editor + NLE export to surface sync opportunities.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "song_points"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "song_title": {"type": "string"},
+    "lyrics": {
+      "type": "array",
+      "description": "Timestamped lyric sections derived from whisper on the song audio.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start_sec", "end_sec", "text"],
+        "properties": {
+          "start_sec": {"type": "number", "minimum": 0},
+          "end_sec": {"type": "number", "minimum": 0},
+          "text": {"type": "string"},
+          "emotion": {
+            "type": "string",
+            "enum": ["intense", "somber", "hopeful", "defiant", "tender", "neutral"]
+          },
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "song_points": {
+      "type": "array",
+      "description": "Every significant moment on the song timeline with recommended shots.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "time_sec", "type", "label"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "time_sec": {"type": "number", "minimum": 0},
+          "end_sec": {"type": "number", "minimum": 0},
+          "type": {
+            "type": "string",
+            "enum": ["lyric", "drop", "buildup", "breakdown", "downbeat", "custom"]
+          },
+          "label": {"type": "string", "minLength": 1},
+          "emotion": {
+            "type": "string",
+            "enum": ["intense", "somber", "hopeful", "defiant", "tender", "neutral"]
+          },
+          "intensity": {"type": "number", "minimum": 0, "maximum": 1},
+          "recommended_shots": {
+            "type": "array",
+            "description": "Ordered list of shot ids (from shot-list.json) that best match this point. First is the top recommendation.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["shot_id", "score"],
+              "properties": {
+                "shot_id": {"type": "string", "minLength": 1},
+                "score": {"type": "number", "minimum": 0, "maximum": 1},
+                "reasons": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

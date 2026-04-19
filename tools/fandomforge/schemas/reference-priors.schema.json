@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/reference-priors.schema.json",
+  "title": "ReferencePriors",
+  "description": "Aggregate editing statistics learned from a corpus of reference fandom videos. The sync planner reads these priors (when present) to bias shot duration, cuts-per-minute, and act pacing toward the patterns of real edits the user likes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "video_count", "videos", "priors"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "tag": {
+      "type": "string",
+      "description": "Free-form label for this corpus (e.g. 'john-wick-style', 'anime-speed-edits')."
+    },
+    "source_playlists": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"}
+    },
+    "video_count": {"type": "integer", "minimum": 0},
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "duration_sec", "metrics"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "duration_sec": {"type": "number", "minimum": 0},
+          "metrics": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Extensible metrics block. Deep analyzer adds pacing curve, visual stats, and beat-sync rate on top of the basic duration stats.",
+            "properties": {
+              "shot_count": {"type": "integer", "minimum": 0},
+              "avg_shot_duration_sec": {"type": "number", "minimum": 0},
+              "median_shot_duration_sec": {"type": "number", "minimum": 0},
+              "cuts_per_minute": {"type": "number", "minimum": 0},
+              "min_shot_duration_sec": {"type": "number", "minimum": 0},
+              "max_shot_duration_sec": {"type": "number", "minimum": 0},
+              "shot_duration_stddev_sec": {"type": "number", "minimum": 0},
+              "shot_duration_p25": {"type": "number", "minimum": 0},
+              "shot_duration_p75": {"type": "number", "minimum": 0},
+              "shot_duration_p90": {"type": "number", "minimum": 0},
+              "pacing_curve": {
+                "type": "array",
+                "description": "Cuts-per-minute over time (sliding window).",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["t_sec", "cpm"],
+                  "properties": {
+                    "t_sec": {"type": "number", "minimum": 0},
+                    "cpm": {"type": "number", "minimum": 0}
+                  }
+                }
+              },
+              "act_pacing_pct": {
+                "type": "array",
+                "description": "Percentage of shots in act 1 / 2 / 3 thirds.",
+                "items": {"type": "number", "minimum": 0, "maximum": 100}
+              },
+              "intro_to_first_cut_sec": {"type": "number", "minimum": 0},
+              "outro_after_last_cut_sec": {"type": "number", "minimum": 0},
+              "sampled_shots": {"type": "integer", "minimum": 0},
+              "avg_luma": {"type": "number", "minimum": 0, "maximum": 1},
+              "luma_stddev": {"type": "number", "minimum": 0},
+              "dark_shot_pct": {"type": "number", "minimum": 0, "maximum": 100},
+              "bright_shot_pct": {"type": "number", "minimum": 0, "maximum": 100},
+              "hue_median_deg": {"type": "number", "minimum": 0, "maximum": 360},
+              "saturation_mean": {"type": "number", "minimum": 0, "maximum": 1},
+              "motion_available": {"type": "boolean"},
+              "motion_events": {"type": "integer", "minimum": 0},
+              "beat_sync_available": {"type": "boolean"},
+              "tempo_bpm": {"type": "number", "minimum": 0},
+              "cuts_on_beat_pct": {"type": "number", "minimum": 0, "maximum": 100},
+              "cuts_checked": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "priors": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["median_shot_duration_sec", "cuts_per_minute"],
+      "description": "Corpus-wide editing signatures. Used by the sync planner to bias matches toward reference style.",
+      "properties": {
+        "median_shot_duration_sec": {"type": "number", "minimum": 0},
+        "cuts_per_minute": {"type": "number", "minimum": 0},
+        "typical_act_pacing_pct": {
+          "type": "array",
+          "description": "Percentage of total shots that land in act 1 / 2 / 3.",
+          "items": {"type": "number", "minimum": 0, "maximum": 100}
+        },
+        "shot_duration_range_sec": {
+          "type": "array",
+          "description": "[p10, p90] shot duration range.",
+          "items": {"type": "number", "minimum": 0}
+        },
+        "cuts_on_beat_pct_mean": {
+          "type": "number",
+          "description": "Average % of cuts that fall on the beat across the corpus.",
+          "minimum": 0, "maximum": 100
+        },
+        "tempo_bpm_median": {
+          "type": "number",
+          "description": "Median tempo of the corpus's songs.",
+          "minimum": 0
+        },
+        "avg_luma_mean": {
+          "type": "number",
+          "description": "Corpus-wide average luma — low = mostly dark edits, high = bright.",
+          "minimum": 0, "maximum": 1
+        },
+        "dark_shot_pct_mean": {"type": "number", "minimum": 0, "maximum": 100},
+        "bright_shot_pct_mean": {"type": "number", "minimum": 0, "maximum": 100},
+        "saturation_mean_mean": {"type": "number", "minimum": 0, "maximum": 1},
+        "intro_to_first_cut_sec_median": {"type": "number", "minimum": 0},
+        "pacing_profile": {
+          "type": "string",
+          "description": "Categorical pacing signature derived from the average pacing curve shape.",
+          "enum": ["slow-burn", "steady", "escalator", "peaks-and-valleys", "machine-gun"]
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

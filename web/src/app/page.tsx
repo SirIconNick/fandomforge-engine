@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { loadExperts, loadProjects, loadKnowledgeDocs } from "@/lib/fs";
+import { EnvBanner } from "@/components/EnvBanner";
 
 export default async function HomePage() {
   const [experts, projects, docs] = await Promise.all([
@@ -10,6 +11,7 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-20">
+      <EnvBanner />
       <section className="space-y-6">
         <div className="inline-block px-3 py-1 border border-[var(--color-forge)] text-[var(--color-forge)] text-xs tracking-widest uppercase rounded-full">
           Multifandom Video AI Suite

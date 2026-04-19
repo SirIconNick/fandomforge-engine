@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "video_path": "projects/leon-revenge/exports/graded.mp4",
+  "generated_at": "2026-04-19T14:30:00+00:00",
+  "overall": "blue",
+  "overall_verdict": "pass",
+  "score": 200,
+  "grade": "Z",
+  "ship_recommendation": "ok",
+  "dimensions": [
+    {
+      "name": "bogus-dimension",
+      "verdict": "maybe",
+      "score": 50.0
+    }
+  ]
+}

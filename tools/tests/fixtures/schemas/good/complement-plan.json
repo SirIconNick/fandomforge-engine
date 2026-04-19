@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_slug": "leon-revenge",
+  "pairs": [
+    {
+      "thrown_shot_id": "s021",
+      "received_shot_id": "s042",
+      "kind": "punch",
+      "score": 0.89,
+      "reasons": ["inverse-motion match-cut", "framing continuity", "cross-fandom (John Wick→Mad Max)"]
+    },
+    {
+      "thrown_shot_id": "s033",
+      "received_shot_id": "s055",
+      "kind": "gunshot",
+      "score": 0.78,
+      "reasons": ["cause→effect chronology", "framing continuity"]
+    }
+  ],
+  "unpaired_thrown": ["s012"],
+  "unpaired_received": [],
+  "generated_at": "2026-04-19T18:00:00+00:00",
+  "generator": "ff sync complement (0.1.0)"
+}

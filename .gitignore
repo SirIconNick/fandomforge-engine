@@ -72,3 +72,16 @@ projects/*/raw/*.m4a
 
 # Test fixtures — the manifest is committed, the downloaded media is not.
 tools/tests/fixtures/media/
+
+# Reference corpus — downloaded playlist videos are not committed.
+# The priors JSON is committed (that's how the planner learns); the MP4s aren't.
+references/**/*.mp4
+references/**/*.mkv
+references/**/*.webm
+references/.cache/
+
+# Other scraps and local-only dirs
+.history/
+action-legends/
+projects/
+.claude/scheduled_tasks.lock

@@ -18,6 +18,11 @@ Schema IDs (canonical stems, no `.schema.json`):
     transcript
     scenes
     qa-report
+    fandoms
+    emotion-arc
+    share-config
+    webhooks
+    post-render-review
 """
 
 from __future__ import annotations
@@ -48,6 +53,11 @@ SCHEMA_IDS: tuple[str, ...] = (
     "emotion-arc",
     "share-config",
     "webhooks",
+    "post-render-review",
+    "sync-plan",
+    "sfx-plan",
+    "complement-plan",
+    "reference-priors",
 )
 
 

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "tag": "action-fandom-edits",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA"
+  ],
+  "video_count": 2,
+  "videos": [
+    {
+      "id": "WJTd1iSch94",
+      "title": "John Wick | Revenge [edit]",
+      "url": "https://www.youtube.com/watch?v=WJTd1iSch94",
+      "duration_sec": 182.4,
+      "metrics": {
+        "shot_count": 92,
+        "avg_shot_duration_sec": 1.98,
+        "median_shot_duration_sec": 1.6,
+        "cuts_per_minute": 30.3,
+        "min_shot_duration_sec": 0.4,
+        "max_shot_duration_sec": 4.2,
+        "shot_duration_stddev_sec": 0.88
+      }
+    },
+    {
+      "id": "HopOP2Djdu8",
+      "title": "Mad Max | Chase Edit",
+      "url": "https://www.youtube.com/watch?v=HopOP2Djdu8",
+      "duration_sec": 148.0,
+      "metrics": {
+        "shot_count": 64,
+        "avg_shot_duration_sec": 2.31,
+        "median_shot_duration_sec": 2.0,
+        "cuts_per_minute": 25.9,
+        "min_shot_duration_sec": 0.5,
+        "max_shot_duration_sec": 5.0,
+        "shot_duration_stddev_sec": 1.02
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.8,
+    "cuts_per_minute": 28.1,
+    "typical_act_pacing_pct": [25, 45, 30],
+    "shot_duration_range_sec": [0.6, 3.9]
+  },
+  "generated_at": "2026-04-19T19:00:00+00:00",
+  "generator": "ff reference analyze (0.1.0)"
+}

@@ -1,4 +1,11 @@
-"""Audio mixer — combine song + dialogue rips + SFX with ducking into a single audio track."""
+"""Audio mixer — combine song + dialogue rips + SFX + scene audio into a single track.
+
+Layer order (loudest logical to softest):
+    1. Song       (target, ducked under dialogue)
+    2. Dialogue   (ducks the song when present)
+    3. SFX        (beat-aligned punches, gunshots, impacts — not ducked)
+    4. Scene audio (source-clip ambient bleed — heavily gained down)
+"""
 
 from __future__ import annotations
 
@@ -19,11 +26,24 @@ class DialogueCue:
 
 
 @dataclass
+class SfxCue:
+    """A single SFX placement. Parallel shape to DialogueCue but no duck logic —
+    SFX are brief transients that layer on top, not bed elements that should
+    displace the song."""
+
+    audio_path: Path
+    start_sec: float
+    gain_db: float = 0.0
+
+
+@dataclass
 class MixResult:
     success: bool
     output_path: Path | None
     duration_sec: float = 0.0
     dialogue_count: int = 0
+    sfx_count: int = 0
+    scene_audio_applied: bool = False
     warnings: list[str] = field(default_factory=list)
     stderr: str = ""
 
@@ -58,6 +78,9 @@ def mix_audio(
     target_lufs: float = -14.0,
     sample_rate: int = 48000,
     song_start_offset_sec: float = 0.0,
+    sfx_cues: list[SfxCue] | None = None,
+    scene_audio_path: Path | None = None,
+    scene_audio_gain_db: float = -20.0,
 ) -> MixResult:
     """Mix a song with dialogue cues into a single audio file.
 
@@ -100,14 +123,32 @@ def mix_audio(
 
     # Input 0: the song
     cmd += ["-i", str(song_path)]
+    next_input = 1
 
-    # Inputs 1..N: each dialogue cue
+    # Dialogue cue inputs
     valid_cues: list[tuple[int, DialogueCue]] = []
-    for i, cue in enumerate(dialogue_cues):
+    for cue in dialogue_cues:
         if not cue.audio_path.exists():
             continue
         cmd += ["-i", str(cue.audio_path)]
-        valid_cues.append((i, cue))
+        valid_cues.append((next_input, cue))
+        next_input += 1
+
+    # SFX cue inputs — filtered to only those whose audio file resolves
+    valid_sfx: list[tuple[int, SfxCue]] = []
+    for sfx in sfx_cues or []:
+        if not sfx.audio_path.exists():
+            continue
+        cmd += ["-i", str(sfx.audio_path)]
+        valid_sfx.append((next_input, sfx))
+        next_input += 1
+
+    # Scene audio: optional, single input. Skip when missing or path absent.
+    scene_input_idx: int | None = None
+    if scene_audio_path is not None and scene_audio_path.exists():
+        cmd += ["-i", str(scene_audio_path)]
+        scene_input_idx = next_input
+        next_input += 1
 
     # Build filter graph
     filter_parts: list[str] = []
@@ -137,6 +178,31 @@ def mix_audio(
         )
         dialogue_labels.append(label)
 
+    # SFX events — no duck, just gain + delay + pad to timeline length.
+    sfx_labels: list[str] = []
+    for i, (input_i, sfx) in enumerate(valid_sfx, start=1):
+        delay_ms = int(sfx.start_sec * 1000)
+        label = f"[sfx{i}]"
+        filter_parts.append(
+            f"[{input_i}:a]volume={sfx.gain_db}dB,"
+            f"adelay={delay_ms}|{delay_ms},"
+            f"apad=pad_dur={total_duration_sec}"
+            f"{label}"
+        )
+        sfx_labels.append(label)
+
+    # Scene audio bed — trim to total duration, heavy gain reduction.
+    scene_label: str | None = None
+    if scene_input_idx is not None:
+        scene_label = "[scene_bed]"
+        filter_parts.append(
+            f"[{scene_input_idx}:a]volume={scene_audio_gain_db}dB,"
+            f"atrim=end={total_duration_sec},"
+            f"asetpts=PTS-STARTPTS,"
+            f"apad=pad_dur={total_duration_sec}"
+            f"{scene_label}"
+        )
+
     if dialogue_labels:
         # Mix dialogue cues together into one bus (normalize=0 so each stays hot)
         mix_inputs = "".join(dialogue_labels)
@@ -158,7 +224,6 @@ def mix_audio(
                 continue
             start = cue.start_sec
             end = start + cue_dur
-            # Per-cue duck ratio from duck_db (dB -> linear)
             duck_ratio = max(0.01, 10 ** (cue.duck_db / 20))
             rise = 1 - duck_ratio
             vol_expr_parts.append(
@@ -168,25 +233,36 @@ def mix_audio(
                 f"if(between(t,{end:.3f},{end + fade_pad:.3f}),"
                 f"{duck_ratio:.4f}+({rise:.4f})*(t-{end:.3f})/{fade_pad:.3f},"
             )
-        # Default: full volume (1.0). Close all the nested if() parens.
         vol_expr = "".join(vol_expr_parts) + "1" + ")))" * len(vol_expr_parts)
 
         filter_parts.append(
             f"[song_pre]volume='{vol_expr}':eval=frame[song_ducked]"
         )
+        song_bus_label = "[song_ducked]"
+    else:
+        song_bus_label = "[song_pre]"
 
-        # Final mix: ducked song + dialogue.
-        # No loudnorm — it dynamically compresses and would undo our duck.
-        # Use alimiter for peak protection only (keeps dynamic range).
+    # Build the final mix list. Start with song bus, then add dialogue / sfx /
+    # scene layers that are present. Keep normalize=0 so layered gains stay
+    # authoritative; close with alimiter for peak protection.
+    final_layers: list[str] = [song_bus_label]
+    if dialogue_labels:
+        final_layers.append("[dialogue_out]")
+    final_layers.extend(sfx_labels)
+    if scene_label:
+        final_layers.append(scene_label)
+
+    if len(final_layers) == 1:
         filter_parts.append(
-            "[song_ducked][dialogue_out]amix=inputs=2:duration=first:"
-            f"dropout_transition=0:normalize=0,atrim=end={total_duration_sec},"
-            f"alimiter=level_in=0.9:level_out=0.86:limit=0.86:attack=5:release=50[master]"
+            f"{song_bus_label}alimiter=level_in=0.9:level_out=0.86:limit=0.86[master]"
         )
     else:
-        # No dialogue — just the song with alimiter
         filter_parts.append(
-            f"[song_pre]alimiter=level_in=0.9:level_out=0.86:limit=0.86[master]"
+            f"{''.join(final_layers)}amix=inputs={len(final_layers)}:"
+            f"duration=first:dropout_transition=0:normalize=0,"
+            f"atrim=end={total_duration_sec},"
+            f"alimiter=level_in=0.9:level_out=0.86:limit=0.86:"
+            f"attack=5:release=50[master]"
         )
 
     filter_complex = ";".join(filter_parts)
@@ -220,4 +296,6 @@ def mix_audio(
         output_path=output_path,
         duration_sec=total_duration_sec,
         dialogue_count=len(valid_cues),
+        sfx_count=len(valid_sfx),
+        scene_audio_applied=scene_input_idx is not None,
     )

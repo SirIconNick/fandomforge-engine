@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/complement-plan.schema.json",
+  "title": "ComplementPlan",
+  "description": "Cross-source action complement pairs. When a shot shows an action being thrown (punch, kick, shot fired), this plan pairs it with a shot from a DIFFERENT source showing the action being received. Produced by `ff sync complement`; consumed by the renderer to place cause→effect cuts on adjacent beats.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "pairs"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "pairs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["thrown_shot_id", "received_shot_id", "kind", "score"],
+        "properties": {
+          "thrown_shot_id": {"type": "string", "minLength": 1},
+          "received_shot_id": {"type": "string", "minLength": 1},
+          "kind": {
+            "type": "string",
+            "enum": ["punch", "kick", "gunshot", "blade", "tackle", "block"]
+          },
+          "score": {"type": "number", "minimum": 0, "maximum": 1},
+          "reasons": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "unpaired_thrown": {
+      "type": "array",
+      "description": "Thrown-action shots with no suitable complement found.",
+      "items": {"type": "string"}
+    },
+    "unpaired_received": {
+      "type": "array",
+      "description": "Received-action shots that weren't used as a complement.",
+      "items": {"type": "string"}
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

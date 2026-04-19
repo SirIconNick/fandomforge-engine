@@ -1,26 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import type { QaReport } from "@/lib/types/generated";
 
-interface RuleRow {
-  id: string;
-  name: string;
-  level: "block" | "warn" | "info";
-  status: "pass" | "warn" | "fail" | "skipped" | "overridden";
-  message?: string;
-  evidence?: Record<string, unknown>;
-  override_reason?: string;
-}
-
-interface QAReport {
-  schema_version: number;
-  project_slug: string;
-  stage: "pre-export" | "post-render";
-  status: "pass" | "warn" | "fail";
-  rules: RuleRow[];
-  summary?: { total: number; passed: number; warned: number; failed: number; overridden: number };
-  generated_at?: string;
-}
+type RuleRow = QaReport["rules"][number];
 
 const LEVEL_COLOR: Record<RuleRow["level"], string> = {
   block: "text-red-400 border-red-500/40",
@@ -42,7 +25,7 @@ export default function QAPanel({
   slug: string;
   initialReport: unknown;
 }) {
-  const [report, setReport] = useState<QAReport | null>((initialReport as QAReport) ?? null);
+  const [report, setReport] = useState<QaReport | null>((initialReport as QaReport) ?? null);
   const [running, setRunning] = useState(false);
   const [stdout, setStdout] = useState<string>("");
   const [overrides, setOverrides] = useState<Record<string, string>>({});
@@ -56,7 +39,7 @@ export default function QAPanel({
       body: JSON.stringify({ overrides }),
     });
     const body = (await res.json()) as {
-      report?: QAReport;
+      report?: QaReport;
       stdout?: string;
       stderr?: string;
     };
@@ -96,11 +79,11 @@ export default function QAPanel({
 
       {summary && (
         <div className="grid grid-cols-5 gap-2 text-sm">
-          <Stat label="Total" value={summary.total} />
-          <Stat label="Passed" value={summary.passed} tone="text-green-400" />
-          <Stat label="Warned" value={summary.warned} tone="text-yellow-400" />
-          <Stat label="Failed" value={summary.failed} tone="text-red-400" />
-          <Stat label="Overridden" value={summary.overridden} tone="text-cyan-400" />
+          <Stat label="Total" value={summary.total ?? 0} />
+          <Stat label="Passed" value={summary.passed ?? 0} tone="text-green-400" />
+          <Stat label="Warned" value={summary.warned ?? 0} tone="text-yellow-400" />
+          <Stat label="Failed" value={summary.failed ?? 0} tone="text-red-400" />
+          <Stat label="Overridden" value={summary.overridden ?? 0} tone="text-cyan-400" />
         </div>
       )}
 

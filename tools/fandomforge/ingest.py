@@ -318,6 +318,39 @@ def _transcribe_to_schema(
 # ---------------------------------------------------------------------------
 
 
+def _scene_cache_key(video: Path, threshold: float, min_scene_sec: float) -> str:
+    """Stable cache key per source file + detection params.
+
+    Uses sha256 of (size, mtime, first 64KB) plus the threshold/min_scene params.
+    First-64KB hash is 100x faster than full-file hash and enough to tell two
+    real videos apart (container header + first frames change on re-encode).
+    """
+    import hashlib
+
+    try:
+        stat = video.stat()
+        with open(video, "rb") as f:
+            head = f.read(64 * 1024)
+    except OSError:
+        return ""
+    h = hashlib.sha256()
+    h.update(str(stat.st_size).encode())
+    h.update(str(int(stat.st_mtime)).encode())
+    h.update(head)
+    h.update(f"t={threshold};m={min_scene_sec}".encode())
+    return h.hexdigest()[:32]
+
+
+def _scene_cache_dir() -> Path:
+    """Cross-project scene detection cache. Default ~/.fandomforge/cache/scenes/.
+
+    Override with FF_CACHE_DIR env var (useful for CI).
+    """
+    env_dir = os.environ.get("FF_CACHE_DIR")
+    base = Path(env_dir) if env_dir else Path.home() / ".fandomforge" / "cache"
+    return base / "scenes"
+
+
 def _detect_scenes_to_schema(
     video: Path,
     source_id: str,
@@ -325,7 +358,27 @@ def _detect_scenes_to_schema(
     threshold: float = 3.0,
     min_scene_sec: float = 1.0,
 ) -> dict[str, Any] | None:
-    """Run PySceneDetect's adaptive detector and return a scenes.schema.json-valid dict."""
+    """Run PySceneDetect's adaptive detector and return a scenes.schema.json-valid dict.
+
+    Caches the scene list by file-content hash in ~/.fandomforge/cache/scenes/
+    so re-ingesting the same source doesn't re-run scenedetect (which is a
+    2–10 minute OpenCV pass per video).
+    """
+    cache_key = _scene_cache_key(video, threshold, min_scene_sec)
+    cache_path = _scene_cache_dir() / f"{cache_key}.json" if cache_key else None
+
+    if cache_path and cache_path.exists():
+        try:
+            cached = json.loads(cache_path.read_text())
+            # Swap source_id to the caller's — cache is content-addressed, not
+            # identity-addressed, so the same file ingested into two projects
+            # shares scenes but differs on source_id.
+            cached["source_id"] = source_id
+            cached["generated_at"] = _now_iso()
+            return cached
+        except (json.JSONDecodeError, OSError):
+            pass
+
     try:
         from scenedetect import AdaptiveDetector, detect  # type: ignore
     except ImportError:
@@ -352,7 +405,7 @@ def _detect_scenes_to_schema(
             "end_frame": int(end.get_frames()),
         })
 
-    return {
+    payload = {
         "schema_version": 1,
         "source_id": source_id,
         "detector": "adaptive",
@@ -360,6 +413,15 @@ def _detect_scenes_to_schema(
         "scenes": scenes,
         "generated_at": _now_iso(),
     }
+
+    if cache_path:
+        try:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(json.dumps(payload, indent=2))
+        except OSError:
+            pass
+
+    return payload
 
 
 # ---------------------------------------------------------------------------

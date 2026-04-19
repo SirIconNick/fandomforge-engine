@@ -1,0 +1,3451 @@
+{
+  "schema_version": 1,
+  "tag": "action-pl3",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIExxnUj0Ny5N9TklyBXWPrrJ"
+  ],
+  "video_count": 30,
+  "videos": [
+    {
+      "id": "l5yX7cY0iSE",
+      "title": "Tech N9ne, 2Pac & Eminem - Till I Die (2017)",
+      "url": "https://www.youtube.com/watch?v=l5yX7cY0iSE",
+      "duration_sec": 251.0,
+      "metrics": {
+        "shot_count": 90,
+        "avg_shot_duration_sec": 2.785,
+        "median_shot_duration_sec": 2.467,
+        "cuts_per_minute": 21.55,
+        "min_shot_duration_sec": 0.333,
+        "max_shot_duration_sec": 10.733,
+        "shot_duration_stddev_sec": 1.911,
+        "shot_duration_p25": 1.2,
+        "shot_duration_p75": 3.6,
+        "shot_duration_p90": 5.467,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 8.72
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.6,
+          27.8,
+          36.7
+        ],
+        "intro_to_first_cut_sec": 3.367,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1547,
+        "luma_stddev": 0.0758,
+        "dark_shot_pct": 76.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 40.23,
+        "saturation_mean": 0.4718,
+        "beat_sync_available": true,
+        "tempo_bpm": 89.1,
+        "cuts_on_beat_pct": 44.9,
+        "cuts_checked": 89
+      }
+    },
+    {
+      "id": "RLALFf2YRoc",
+      "title": "Harley & Joker | Until you come back home",
+      "url": "https://www.youtube.com/watch?v=RLALFf2YRoc",
+      "duration_sec": 233.0,
+      "metrics": {
+        "shot_count": 120,
+        "avg_shot_duration_sec": 1.934,
+        "median_shot_duration_sec": 1.435,
+        "cuts_per_minute": 31.02,
+        "min_shot_duration_sec": 0.334,
+        "max_shot_duration_sec": 21.522,
+        "shot_duration_stddev_sec": 2.137,
+        "shot_duration_p25": 0.934,
+        "shot_duration_p75": 2.269,
+        "shot_duration_p90": 3.503,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 2.68
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.7,
+          38.3,
+          30.0
+        ],
+        "intro_to_first_cut_sec": 4.938,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.3014,
+        "luma_stddev": 0.1795,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 5.0,
+        "hue_median_deg": 67.06,
+        "saturation_mean": 0.2069,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 63.9,
+        "cuts_checked": 119
+      }
+    },
+    {
+      "id": "FPQTty7t0RQ",
+      "title": "Punisher - God's Gonna Cut You Down (remix)",
+      "url": "https://www.youtube.com/watch?v=FPQTty7t0RQ",
+      "duration_sec": 194.0,
+      "metrics": {
+        "shot_count": 60,
+        "avg_shot_duration_sec": 3.23,
+        "median_shot_duration_sec": 2.386,
+        "cuts_per_minute": 18.57,
+        "min_shot_duration_sec": 0.4,
+        "max_shot_duration_sec": 20.721,
+        "shot_duration_stddev_sec": 2.982,
+        "shot_duration_p25": 1.268,
+        "shot_duration_p75": 4.671,
+        "shot_duration_p90": 6.34,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 20.03
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 25.79
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          38.3,
+          20.0,
+          41.7
+        ],
+        "intro_to_first_cut_sec": 0.834,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 60,
+        "avg_luma": 0.1031,
+        "luma_stddev": 0.08,
+        "dark_shot_pct": 85.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 52.24,
+        "saturation_mean": 0.577,
+        "beat_sync_available": true,
+        "tempo_bpm": 83.35,
+        "cuts_on_beat_pct": 37.3,
+        "cuts_checked": 59
+      }
+    },
+    {
+      "id": "kVJu9AMJJr4",
+      "title": "WALK THE MOON - Shut Up and Dance (Movie dance compilation)",
+      "url": "https://www.youtube.com/watch?v=kVJu9AMJJr4",
+      "duration_sec": 199.0,
+      "metrics": {
+        "shot_count": 111,
+        "avg_shot_duration_sec": 1.788,
+        "median_shot_duration_sec": 1.802,
+        "cuts_per_minute": 33.56,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 4.872,
+        "shot_duration_stddev_sec": 0.862,
+        "shot_duration_p25": 1.268,
+        "shot_duration_p75": 2.169,
+        "shot_duration_p90": 2.703,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 31.65
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 32.55
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 14.23
+          }
+        ],
+        "act_pacing_pct": [
+          32.4,
+          35.1,
+          32.4
+        ],
+        "intro_to_first_cut_sec": 3.804,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2236,
+        "luma_stddev": 0.1062,
+        "dark_shot_pct": 50.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 39.53,
+        "saturation_mean": 0.416,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 60.0,
+        "cuts_checked": 110
+      }
+    },
+    {
+      "id": "PdLv10bVydM",
+      "title": "Iron Man & Captain America - \"Legends Never Die\"",
+      "url": "https://www.youtube.com/watch?v=PdLv10bVydM",
+      "duration_sec": 239.0,
+      "metrics": {
+        "shot_count": 154,
+        "avg_shot_duration_sec": 1.542,
+        "median_shot_duration_sec": 1.001,
+        "cuts_per_minute": 38.91,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 16.934,
+        "shot_duration_stddev_sec": 2.033,
+        "shot_duration_p25": 0.626,
+        "shot_duration_p75": 1.627,
+        "shot_duration_p90": 2.836,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 10.61
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 3.28
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          24.7,
+          44.2,
+          31.2
+        ],
+        "intro_to_first_cut_sec": 5.38,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2591,
+        "luma_stddev": 0.1688,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 141.88,
+        "saturation_mean": 0.3548,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 69.9,
+        "cuts_checked": 153
+      }
+    },
+    {
+      "id": "23gr_kfmQ1o",
+      "title": "Marvel Cinematic Universe - We Will Rock You (Tribute)",
+      "url": "https://www.youtube.com/watch?v=23gr_kfmQ1o",
+      "duration_sec": 151.0,
+      "metrics": {
+        "shot_count": 135,
+        "avg_shot_duration_sec": 1.106,
+        "median_shot_duration_sec": 0.751,
+        "cuts_per_minute": 54.26,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 15.307,
+        "shot_duration_stddev_sec": 1.656,
+        "shot_duration_p25": 0.542,
+        "shot_duration_p75": 1.043,
+        "shot_duration_p90": 2.085,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.47
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 5.77
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.1,
+          37.0,
+          31.9
+        ],
+        "intro_to_first_cut_sec": 15.307,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1973,
+        "luma_stddev": 0.1244,
+        "dark_shot_pct": 53.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 40.94,
+        "saturation_mean": 0.2696,
+        "beat_sync_available": true,
+        "tempo_bpm": 80.75,
+        "cuts_on_beat_pct": 37.3,
+        "cuts_checked": 134
+      }
+    },
+    {
+      "id": "iry5jbjHbXM",
+      "title": "The Flash \u26a1 Feel Invincible",
+      "url": "https://www.youtube.com/watch?v=iry5jbjHbXM",
+      "duration_sec": 232.0,
+      "metrics": {
+        "shot_count": 153,
+        "avg_shot_duration_sec": 1.481,
+        "median_shot_duration_sec": 0.867,
+        "cuts_per_minute": 40.52,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 11.567,
+        "shot_duration_stddev_sec": 1.71,
+        "shot_duration_p25": 0.467,
+        "shot_duration_p75": 1.767,
+        "shot_duration_p90": 3.133,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 68.14
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 91.62
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 52.94
+          }
+        ],
+        "act_pacing_pct": [
+          47.1,
+          22.9,
+          30.1
+        ],
+        "intro_to_first_cut_sec": 0.967,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.22,
+        "luma_stddev": 0.125,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 125.64,
+        "saturation_mean": 0.3116,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 55.3,
+        "cuts_checked": 152
+      }
+    },
+    {
+      "id": "Vyp0S-EUtnk",
+      "title": "Game Of Thrones || Rise Of The Starks || HD",
+      "url": "https://www.youtube.com/watch?v=Vyp0S-EUtnk",
+      "duration_sec": 321.0,
+      "metrics": {
+        "shot_count": 137,
+        "avg_shot_duration_sec": 2.332,
+        "median_shot_duration_sec": 1.793,
+        "cuts_per_minute": 25.73,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 24.942,
+        "shot_duration_stddev_sec": 2.57,
+        "shot_duration_p25": 0.918,
+        "shot_duration_p75": 3.17,
+        "shot_duration_p90": 4.296,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 20.93
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 23.83
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          24.1,
+          41.6,
+          34.3
+        ],
+        "intro_to_first_cut_sec": 3.629,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1404,
+        "luma_stddev": 0.0943,
+        "dark_shot_pct": 77.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 159.53,
+        "saturation_mean": 0.3425,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 64.7,
+        "cuts_checked": 136
+      }
+    },
+    {
+      "id": "_bWpt7KqTW0",
+      "title": "(Marvel) Steve Rogers | I'll Be There",
+      "url": "https://www.youtube.com/watch?v=_bWpt7KqTW0",
+      "duration_sec": 318.0,
+      "metrics": {
+        "shot_count": 167,
+        "avg_shot_duration_sec": 1.9,
+        "median_shot_duration_sec": 1.418,
+        "cuts_per_minute": 31.59,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 7.758,
+        "shot_duration_stddev_sec": 1.412,
+        "shot_duration_p25": 1.001,
+        "shot_duration_p75": 2.461,
+        "shot_duration_p90": 3.754,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 13.22
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 13.93
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 8.29
+          }
+        ],
+        "act_pacing_pct": [
+          24.0,
+          44.3,
+          31.7
+        ],
+        "intro_to_first_cut_sec": 7.758,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2249,
+        "luma_stddev": 0.135,
+        "dark_shot_pct": 55.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 33.88,
+        "saturation_mean": 0.5552,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 59.6,
+        "cuts_checked": 166
+      }
+    },
+    {
+      "id": "Puw6A3d0wbE",
+      "title": "MARVEL || Lions Inside (collab w/ djcprod)",
+      "url": "https://www.youtube.com/watch?v=Puw6A3d0wbE",
+      "duration_sec": 229.0,
+      "metrics": {
+        "shot_count": 240,
+        "avg_shot_duration_sec": 0.947,
+        "median_shot_duration_sec": 0.834,
+        "cuts_per_minute": 63.34,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 7.758,
+        "shot_duration_stddev_sec": 0.689,
+        "shot_duration_p25": 0.542,
+        "shot_duration_p75": 1.084,
+        "shot_duration_p90": 1.668,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 86.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 35.5
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 35.24
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 13.75
+          }
+        ],
+        "act_pacing_pct": [
+          37.1,
+          36.7,
+          26.2
+        ],
+        "intro_to_first_cut_sec": 1.251,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.3346,
+        "luma_stddev": 0.1712,
+        "dark_shot_pct": 22.5,
+        "bright_shot_pct": 2.5,
+        "hue_median_deg": 103.41,
+        "saturation_mean": 0.3964,
+        "beat_sync_available": true,
+        "tempo_bpm": 172.27,
+        "cuts_on_beat_pct": 58.6,
+        "cuts_checked": 239
+      }
+    },
+    {
+      "id": "5kuBR7kPT1Y",
+      "title": "We think too much and feel too little.",
+      "url": "https://www.youtube.com/watch?v=5kuBR7kPT1Y",
+      "duration_sec": 328.0,
+      "metrics": {
+        "shot_count": 154,
+        "avg_shot_duration_sec": 2.124,
+        "median_shot_duration_sec": 1.71,
+        "cuts_per_minute": 28.24,
+        "min_shot_duration_sec": 0.501,
+        "max_shot_duration_sec": 13.847,
+        "shot_duration_stddev_sec": 1.564,
+        "shot_duration_p25": 1.293,
+        "shot_duration_p75": 2.419,
+        "shot_duration_p90": 3.545,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 15.46
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 6.99
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.7,
+          28.6,
+          35.7
+        ],
+        "intro_to_first_cut_sec": 4.296,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2457,
+        "luma_stddev": 0.1588,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 72.0,
+        "saturation_mean": 0.4575,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 63.4,
+        "cuts_checked": 153
+      }
+    },
+    {
+      "id": "RncU2R-z_OM",
+      "title": "Multifemales | 'Miss Jackson'",
+      "url": "https://www.youtube.com/watch?v=RncU2R-z_OM",
+      "duration_sec": 134.0,
+      "metrics": {}
+    },
+    {
+      "id": "p9MnXkWLe5M",
+      "title": "\u25ba Infinity War | Whatever It Takes",
+      "url": "https://www.youtube.com/watch?v=p9MnXkWLe5M",
+      "duration_sec": 215.0,
+      "metrics": {
+        "shot_count": 198,
+        "avg_shot_duration_sec": 1.078,
+        "median_shot_duration_sec": 0.934,
+        "cuts_per_minute": 55.68,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 6.006,
+        "shot_duration_stddev_sec": 0.675,
+        "shot_duration_p25": 0.767,
+        "shot_duration_p75": 1.201,
+        "shot_duration_p90": 1.668,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 46.06
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 36.62
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          37.4,
+          33.8,
+          28.8
+        ],
+        "intro_to_first_cut_sec": 0.934,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2754,
+        "luma_stddev": 0.1536,
+        "dark_shot_pct": 38.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 68.47,
+        "saturation_mean": 0.4034,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 66.0,
+        "cuts_checked": 197
+      }
+    },
+    {
+      "id": "x4jRPwAgwzA",
+      "title": "The 100 music 3x13 - Radioactive - Koda",
+      "url": "https://www.youtube.com/watch?v=x4jRPwAgwzA",
+      "duration_sec": 232.0,
+      "metrics": {
+        "shot_count": 0
+      }
+    },
+    {
+      "id": "aHUrAvKNF8s",
+      "title": "MARVEL || Glitter & Gold (collab w/ djcprod)",
+      "url": "https://www.youtube.com/watch?v=aHUrAvKNF8s",
+      "duration_sec": 168.0,
+      "metrics": {
+        "shot_count": 185,
+        "avg_shot_duration_sec": 0.901,
+        "median_shot_duration_sec": 0.709,
+        "cuts_per_minute": 66.62,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 5.672,
+        "shot_duration_stddev_sec": 0.598,
+        "shot_duration_p25": 0.626,
+        "shot_duration_p75": 1.084,
+        "shot_duration_p90": 1.418,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 51.03
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 42.25
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 17.04
+          }
+        ],
+        "act_pacing_pct": [
+          34.6,
+          35.1,
+          30.3
+        ],
+        "intro_to_first_cut_sec": 0.5,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.3246,
+        "luma_stddev": 0.1964,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 6.2,
+        "hue_median_deg": 64.94,
+        "saturation_mean": 0.3959,
+        "beat_sync_available": true,
+        "tempo_bpm": 86.13,
+        "cuts_on_beat_pct": 17.9,
+        "cuts_checked": 184
+      }
+    },
+    {
+      "id": "eQIbuDVXZHA",
+      "title": "(Marvel) Tony Stark | I Hope They'll Remember You",
+      "url": "https://www.youtube.com/watch?v=eQIbuDVXZHA",
+      "duration_sec": 284.0,
+      "metrics": {
+        "shot_count": 168,
+        "avg_shot_duration_sec": 1.687,
+        "median_shot_duration_sec": 1.356,
+        "cuts_per_minute": 35.57,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 10.844,
+        "shot_duration_stddev_sec": 1.442,
+        "shot_duration_p25": 0.959,
+        "shot_duration_p75": 2.002,
+        "shot_duration_p90": 3.003,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 25.05
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 21.5
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          36.9,
+          35.7,
+          27.4
+        ],
+        "intro_to_first_cut_sec": 3.42,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2283,
+        "luma_stddev": 0.1785,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 3.8,
+        "hue_median_deg": 31.77,
+        "saturation_mean": 0.5529,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 56.3,
+        "cuts_checked": 167
+      }
+    },
+    {
+      "id": "DEBjh_MTNzQ",
+      "title": "marvel || battle royale",
+      "url": "https://www.youtube.com/watch?v=DEBjh_MTNzQ",
+      "duration_sec": 89.0,
+      "metrics": {
+        "shot_count": 107,
+        "avg_shot_duration_sec": 0.824,
+        "median_shot_duration_sec": 0.667,
+        "cuts_per_minute": 72.78,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 3.837,
+        "shot_duration_stddev_sec": 0.53,
+        "shot_duration_p25": 0.542,
+        "shot_duration_p75": 0.918,
+        "shot_duration_p90": 1.46,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 61.67
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 69.18
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 43.83
+          }
+        ],
+        "act_pacing_pct": [
+          32.7,
+          39.3,
+          28.0
+        ],
+        "intro_to_first_cut_sec": 0.667,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.4238,
+        "luma_stddev": 0.1615,
+        "dark_shot_pct": 6.2,
+        "bright_shot_pct": 6.2,
+        "hue_median_deg": 176.47,
+        "saturation_mean": 0.289,
+        "beat_sync_available": true,
+        "tempo_bpm": 99.38,
+        "cuts_on_beat_pct": 32.1,
+        "cuts_checked": 106
+      }
+    },
+    {
+      "id": "HoLwd4bQbJ4",
+      "title": "(GOT) Jon Snow || The Prince That Was Promised",
+      "url": "https://www.youtube.com/watch?v=HoLwd4bQbJ4",
+      "duration_sec": 309.0,
+      "metrics": {
+        "shot_count": 111,
+        "avg_shot_duration_sec": 2.774,
+        "median_shot_duration_sec": 1.84,
+        "cuts_per_minute": 21.63,
+        "min_shot_duration_sec": 0.36,
+        "max_shot_duration_sec": 14.48,
+        "shot_duration_stddev_sec": 2.642,
+        "shot_duration_p25": 1.2,
+        "shot_duration_p75": 3.28,
+        "shot_duration_p90": 5.72,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 10.58
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 6.54
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.5,
+          39.6,
+          28.8
+        ],
+        "intro_to_first_cut_sec": 0.72,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1584,
+        "luma_stddev": 0.0916,
+        "dark_shot_pct": 67.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 189.18,
+        "saturation_mean": 0.4188,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 63.6,
+        "cuts_checked": 110
+      }
+    },
+    {
+      "id": "zQVKx2JjsGA",
+      "title": "Shameless | She Didn't Love You",
+      "url": "https://www.youtube.com/watch?v=zQVKx2JjsGA",
+      "duration_sec": 196.0,
+      "metrics": {}
+    },
+    {
+      "id": "ck4tizK6HSk",
+      "title": "Harry Potter || See You Again",
+      "url": "https://www.youtube.com/watch?v=ck4tizK6HSk",
+      "duration_sec": 137.0,
+      "metrics": {
+        "shot_count": 49,
+        "avg_shot_duration_sec": 2.784,
+        "median_shot_duration_sec": 1.435,
+        "cuts_per_minute": 21.55,
+        "min_shot_duration_sec": 0.734,
+        "max_shot_duration_sec": 23.39,
+        "shot_duration_stddev_sec": 3.597,
+        "shot_duration_p25": 1.134,
+        "shot_duration_p75": 3.003,
+        "shot_duration_p90": 5.806,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 31.81
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 14.63
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 9.37
+          }
+        ],
+        "act_pacing_pct": [
+          16.3,
+          36.7,
+          46.9
+        ],
+        "intro_to_first_cut_sec": 23.39,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 49,
+        "avg_luma": 0.3101,
+        "luma_stddev": 0.239,
+        "dark_shot_pct": 51.0,
+        "bright_shot_pct": 10.2,
+        "hue_median_deg": 207.53,
+        "saturation_mean": 0.4849,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 50.0,
+        "cuts_checked": 48
+      }
+    },
+    {
+      "id": "ykUTh9cVuJs",
+      "title": "Shameless US | Fiona's Speech to Monica",
+      "url": "https://www.youtube.com/watch?v=ykUTh9cVuJs",
+      "duration_sec": 154.0,
+      "metrics": {
+        "shot_count": 37,
+        "avg_shot_duration_sec": 4.138,
+        "median_shot_duration_sec": 3.27,
+        "cuts_per_minute": 14.5,
+        "min_shot_duration_sec": 1.168,
+        "max_shot_duration_sec": 18.018,
+        "shot_duration_stddev_sec": 3.16,
+        "shot_duration_p25": 2.269,
+        "shot_duration_p75": 4.571,
+        "shot_duration_p90": 7.04,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 7.79
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 13.72
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          43.2,
+          32.4,
+          24.3
+        ],
+        "intro_to_first_cut_sec": 1.635,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 37,
+        "avg_luma": 0.1679,
+        "luma_stddev": 0.0535,
+        "dark_shot_pct": 75.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 38.12,
+        "saturation_mean": 0.5602,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 66.7,
+        "cuts_checked": 36
+      }
+    },
+    {
+      "id": "KAy5pK0IRIc",
+      "title": "Captain America | Soldier",
+      "url": "https://www.youtube.com/watch?v=KAy5pK0IRIc",
+      "duration_sec": 221.0,
+      "metrics": {
+        "shot_count": 151,
+        "avg_shot_duration_sec": 1.453,
+        "median_shot_duration_sec": 1.368,
+        "cuts_per_minute": 41.3,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 6.573,
+        "shot_duration_stddev_sec": 0.853,
+        "shot_duration_p25": 0.767,
+        "shot_duration_p75": 1.902,
+        "shot_duration_p90": 2.736,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 59.64
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 47.43
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          27.2,
+          29.8,
+          43.0
+        ],
+        "intro_to_first_cut_sec": 6.573,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2231,
+        "luma_stddev": 0.1378,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 54.35,
+        "saturation_mean": 0.3223,
+        "beat_sync_available": true,
+        "tempo_bpm": 83.35,
+        "cuts_on_beat_pct": 76.7,
+        "cuts_checked": 150
+      }
+    },
+    {
+      "id": "OGXpWSKalNA",
+      "title": "I don't have any friends.",
+      "url": "https://www.youtube.com/watch?v=OGXpWSKalNA",
+      "duration_sec": 326.0,
+      "metrics": {
+        "shot_count": 125,
+        "avg_shot_duration_sec": 2.597,
+        "median_shot_duration_sec": 1.967,
+        "cuts_per_minute": 23.11,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 13.867,
+        "shot_duration_stddev_sec": 2.346,
+        "shot_duration_p25": 1.2,
+        "shot_duration_p75": 3.0,
+        "shot_duration_p90": 4.567,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 16.56
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 7.81
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          36.8,
+          37.6,
+          25.6
+        ],
+        "intro_to_first_cut_sec": 12.067,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.4714,
+        "luma_stddev": 0.1171,
+        "dark_shot_pct": 2.5,
+        "bright_shot_pct": 5.0,
+        "hue_median_deg": 55.06,
+        "saturation_mean": 0.1057,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 71.0,
+        "cuts_checked": 124
+      }
+    },
+    {
+      "id": "uOjnXZP3R8E",
+      "title": "GOTHAM || I'm So Sorry",
+      "url": "https://www.youtube.com/watch?v=uOjnXZP3R8E",
+      "duration_sec": 183.0,
+      "metrics": {
+        "shot_count": 195,
+        "avg_shot_duration_sec": 0.93,
+        "median_shot_duration_sec": 0.801,
+        "cuts_per_minute": 64.53,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 10.878,
+        "shot_duration_stddev_sec": 0.958,
+        "shot_duration_p25": 0.534,
+        "shot_duration_p75": 0.901,
+        "shot_duration_p90": 1.368,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 13.36
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 9.64
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.3,
+          39.0,
+          29.7
+        ],
+        "intro_to_first_cut_sec": 0.334,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2885,
+        "luma_stddev": 0.131,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 137.64,
+        "saturation_mean": 0.2532,
+        "beat_sync_available": true,
+        "tempo_bpm": 71.78,
+        "cuts_on_beat_pct": 17.5,
+        "cuts_checked": 194
+      }
+    },
+    {
+      "id": "RspfMI-rZpw",
+      "title": "Hannibal || Glitter & Gold",
+      "url": "https://www.youtube.com/watch?v=RspfMI-rZpw",
+      "duration_sec": 91.0,
+      "metrics": {
+        "shot_count": 96,
+        "avg_shot_duration_sec": 0.938,
+        "median_shot_duration_sec": 0.751,
+        "cuts_per_minute": 63.94,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 4.046,
+        "shot_duration_stddev_sec": 0.585,
+        "shot_duration_p25": 0.626,
+        "shot_duration_p75": 1.084,
+        "shot_duration_p90": 1.502,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 68.69
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 65.41
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.2,
+          34.4,
+          34.4
+        ],
+        "intro_to_first_cut_sec": 2.753,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2765,
+        "luma_stddev": 0.1188,
+        "dark_shot_pct": 28.7,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 179.29,
+        "saturation_mean": 0.2904,
+        "beat_sync_available": true,
+        "tempo_bpm": 86.13,
+        "cuts_on_beat_pct": 40.0,
+        "cuts_checked": 95
+      }
+    },
+    {
+      "id": "FvAec_l85A8",
+      "title": "Knocking On Heaven's Door | Supernatural",
+      "url": "https://www.youtube.com/watch?v=FvAec_l85A8",
+      "duration_sec": 264.0,
+      "metrics": {
+        "shot_count": 67,
+        "avg_shot_duration_sec": 3.929,
+        "median_shot_duration_sec": 0.959,
+        "cuts_per_minute": 15.27,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 39.498,
+        "shot_duration_stddev_sec": 7.625,
+        "shot_duration_p25": 0.375,
+        "shot_duration_p75": 2.794,
+        "shot_duration_p90": 9.176,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 2.53
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 4.37
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          41.8,
+          50.7,
+          7.5
+        ],
+        "intro_to_first_cut_sec": 2.294,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 67,
+        "avg_luma": 0.2145,
+        "luma_stddev": 0.1085,
+        "dark_shot_pct": 52.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 29.65,
+        "saturation_mean": 0.2492,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 72.7,
+        "cuts_checked": 66
+      }
+    },
+    {
+      "id": "FvAec_l85A8",
+      "title": "Knocking On Heaven's Door | Supernatural",
+      "url": "https://www.youtube.com/watch?v=FvAec_l85A8",
+      "duration_sec": 264.0,
+      "metrics": {
+        "shot_count": 67,
+        "avg_shot_duration_sec": 3.929,
+        "median_shot_duration_sec": 0.959,
+        "cuts_per_minute": 15.27,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 39.498,
+        "shot_duration_stddev_sec": 7.625,
+        "shot_duration_p25": 0.375,
+        "shot_duration_p75": 2.794,
+        "shot_duration_p90": 9.176,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 2.53
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 4.37
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          41.8,
+          50.7,
+          7.5
+        ],
+        "intro_to_first_cut_sec": 2.294,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 67,
+        "avg_luma": 0.2145,
+        "luma_stddev": 0.1085,
+        "dark_shot_pct": 52.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 29.65,
+        "saturation_mean": 0.2492,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 72.7,
+        "cuts_checked": 66
+      }
+    },
+    {
+      "id": "v3WGgtTzS1I",
+      "title": "Sad Multifandom - how come he don't want me",
+      "url": "https://www.youtube.com/watch?v=v3WGgtTzS1I",
+      "duration_sec": 235.0,
+      "metrics": {
+        "shot_count": 68,
+        "avg_shot_duration_sec": 3.444,
+        "median_shot_duration_sec": 2.586,
+        "cuts_per_minute": 17.42,
+        "min_shot_duration_sec": 0.701,
+        "max_shot_duration_sec": 12.446,
+        "shot_duration_stddev_sec": 2.369,
+        "shot_duration_p25": 1.802,
+        "shot_duration_p75": 4.638,
+        "shot_duration_p90": 7.107,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 9.92
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 8.45
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 14.28
+          }
+        ],
+        "act_pacing_pct": [
+          39.7,
+          32.4,
+          27.9
+        ],
+        "intro_to_first_cut_sec": 3.637,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 68,
+        "avg_luma": 0.3222,
+        "luma_stddev": 0.1857,
+        "dark_shot_pct": 36.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 265.41,
+        "saturation_mean": 0.4306,
+        "beat_sync_available": true,
+        "tempo_bpm": 99.38,
+        "cuts_on_beat_pct": 35.8,
+        "cuts_checked": 67
+      }
+    },
+    {
+      "id": "ATe8H-LVFe4",
+      "title": "sad multifandom | i'm in pain and you put me here",
+      "url": "https://www.youtube.com/watch?v=ATe8H-LVFe4",
+      "duration_sec": 231.0,
+      "metrics": {
+        "shot_count": 72,
+        "avg_shot_duration_sec": 3.191,
+        "median_shot_duration_sec": 2.648,
+        "cuts_per_minute": 18.8,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 11.303,
+        "shot_duration_stddev_sec": 2.156,
+        "shot_duration_p25": 2.002,
+        "shot_duration_p75": 4.171,
+        "shot_duration_p90": 5.881,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 11.81
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 17.45
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          36.1,
+          34.7,
+          29.2
+        ],
+        "intro_to_first_cut_sec": 6.173,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 72,
+        "avg_luma": 0.1672,
+        "luma_stddev": 0.0787,
+        "dark_shot_pct": 75.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 208.94,
+        "saturation_mean": 0.3217,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 60.6,
+        "cuts_checked": 71
+      }
+    },
+    {
+      "id": "2i9kJQzFBfY",
+      "title": "IF I DISAPPEAR",
+      "url": "https://www.youtube.com/watch?v=2i9kJQzFBfY",
+      "duration_sec": 173.0,
+      "metrics": {}
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.393,
+    "cuts_per_minute": 35.97,
+    "shot_duration_range_sec": [
+      0.93,
+      3.191
+    ],
+    "typical_act_pacing_pct": [
+      33.9,
+      36.1,
+      30.0
+    ],
+    "cuts_on_beat_pct_mean": 54.4,
+    "tempo_bpm_median": 123.05,
+    "avg_luma_mean": 0.2489,
+    "dark_shot_pct_mean": 47.85,
+    "bright_shot_pct_mean": 1.59,
+    "saturation_mean_mean": 0.3726,
+    "intro_to_first_cut_sec_median": 3.393,
+    "pacing_profile": "peaks-and-valleys"
+  },
+  "generated_at": "2026-04-19T22:27:40.683872+00:00",
+  "generator": "ff reference ingest"
+}

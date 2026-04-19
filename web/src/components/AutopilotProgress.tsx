@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export interface AutopilotEvent {
@@ -31,6 +32,7 @@ const STEP_ORDER = [
   "roughcut",
   "color",
   "export",
+  "post_render_review",
 ];
 
 const STEP_LABELS: Record<string, string> = {
@@ -45,6 +47,7 @@ const STEP_LABELS: Record<string, string> = {
   roughcut: "Render rough cut (requires source videos)",
   color: "Apply color grade",
   export: "Export NLE XML (FCPXML)",
+  post_render_review: "Grade the render (technical / visual / audio / structural / shot list)",
   _run: "Run",
 };
 
@@ -185,6 +188,8 @@ export default function AutopilotProgress({
               status === "skipped" ? "⟳" :
               status === "started" ? "…" :
               status === "failed" ? "✗" : "·";
+            const showReviewLink =
+              step === "post_render_review" && (status === "ok" || status === "skipped");
             return (
               <div
                 key={step}
@@ -192,7 +197,17 @@ export default function AutopilotProgress({
               >
                 <span className={`font-mono text-lg ${color}`}>{icon}</span>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm">{label}</div>
+                  <div className="text-sm flex items-center gap-2 flex-wrap">
+                    <span>{label}</span>
+                    {showReviewLink && (
+                      <Link
+                        href={`/projects/${projectSlug}/review`}
+                        className="text-xs px-2 py-0.5 rounded border border-[var(--color-forge)]/40 text-[var(--color-forge)] hover:bg-[var(--color-forge)]/10"
+                      >
+                        open review →
+                      </Link>
+                    )}
+                  </div>
                   {event?.message && (
                     <div className="text-xs text-white/60 mt-0.5">{event.message}</div>
                   )}

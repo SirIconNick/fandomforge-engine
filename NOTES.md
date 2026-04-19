@@ -98,9 +98,9 @@ Pick up from the last known state. The engine is generalized and working. Likely
 - Timeline export refinements for specific NLEs
 - Web dashboard feature parity with CLI
 
-## Relationship to `~/Video Project/`
+## Relationship to `~/Video Project/` (historical)
 
-This is a COPY, not a link. The original at `~/Video Project/` still works fully. If you plan to actively develop the engine here, pick ONE as the source of truth and stop editing the other, or you'll get divergence. The parent Video Project has the user's real edit projects in `projects/` so that's still the active "content" workspace.
+This project was originally extracted from `~/Video Project/` on 2026-04-18. As of 2026-04-19 this repo is the source of truth — the parent location is no longer being maintained. Edits go here; the `~/Video Project/` copy is kept only for the user's historical projects folder.
 
 ## One-liner context
 

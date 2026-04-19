@@ -13,7 +13,31 @@ export type ArtifactType =
   | "audio-plan"
   | "title-plan"
   | "qa-report"
-  | "fandoms";
+  | "fandoms"
+  | "emotion-arc"
+  | "post-render-review"
+  | "sync-plan"
+  | "sfx-plan"
+  | "complement-plan"
+  | "reference-priors";
+
+export const EXPECTED_SCHEMA_VERSIONS: Record<ArtifactType, number> = {
+  "edit-plan": 1,
+  "beat-map": 1,
+  "shot-list": 1,
+  "color-plan": 1,
+  "transition-plan": 1,
+  "audio-plan": 1,
+  "title-plan": 1,
+  "qa-report": 1,
+  "fandoms": 1,
+  "emotion-arc": 1,
+  "post-render-review": 1,
+  "sync-plan": 1,
+  "sfx-plan": 1,
+  "complement-plan": 1,
+  "reference-priors": 1,
+};
 
 const SCHEMAS_DIR = path.join(PROJECT_ROOT, "tools", "fandomforge", "schemas");
 
@@ -42,6 +66,12 @@ async function loadBundle(): Promise<SchemaBundle> {
     ["title-plan", "title-plan.schema.json"],
     ["qa-report", "qa-report.schema.json"],
     ["fandoms", "fandoms.schema.json"],
+    ["emotion-arc", "emotion-arc.schema.json"],
+    ["post-render-review", "post-render-review.schema.json"],
+    ["sync-plan", "sync-plan.schema.json"],
+    ["sfx-plan", "sfx-plan.schema.json"],
+    ["complement-plan", "complement-plan.schema.json"],
+    ["reference-priors", "reference-priors.schema.json"],
   ];
 
   const validators = new Map<ArtifactType, ValidateFunction>();
@@ -94,6 +124,29 @@ export async function validateArtifact(
         } as ErrorObject,
       ],
     };
+  }
+  const expectedVersion = EXPECTED_SCHEMA_VERSIONS[artifact];
+  if (
+    expectedVersion !== undefined &&
+    typeof data === "object" &&
+    data !== null &&
+    "schema_version" in data
+  ) {
+    const actual = (data as { schema_version?: unknown }).schema_version;
+    if (typeof actual === "number" && actual !== expectedVersion) {
+      return {
+        ok: false,
+        errors: [
+          {
+            instancePath: "/schema_version",
+            schemaPath: "#/properties/schema_version",
+            keyword: "schema-version-mismatch",
+            params: { artifact, expected: expectedVersion, actual },
+            message: `schema_version ${actual} does not match expected ${expectedVersion} for '${artifact}'`,
+          } as ErrorObject,
+        ],
+      };
+    }
   }
   const ok = validate(data);
   return { ok, errors: ok ? null : validate.errors ?? null };

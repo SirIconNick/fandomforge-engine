@@ -14,6 +14,7 @@ import hmac
 import json
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -73,6 +74,9 @@ def fire(
     }
     body = json.dumps(envelope, separators=(",", ":"))
 
+    # Separate skipped/filtered endpoints from ones we actually need to hit,
+    # so a single slow endpoint doesn't stall the rest via sequential urlopen.
+    to_dispatch: list[dict[str, Any]] = []
     for ep in endpoints:
         if not ep.get("enabled", True):
             results.append(DispatchResult(
@@ -84,7 +88,12 @@ def fire(
             continue
         if event_type not in (ep.get("events") or []):
             continue
+        to_dispatch.append(ep)
 
+    if not to_dispatch:
+        return results
+
+    def _post_one(ep: dict[str, Any]) -> DispatchResult:
         req = urllib.request.Request(
             ep["url"],
             data=body.encode("utf-8"),
@@ -99,30 +108,37 @@ def fire(
         secret = ep.get("secret")
         if secret:
             req.add_header("X-Fandomforge-Signature", _sign(body, secret))
-
         try:
             with urllib.request.urlopen(req, timeout=timeout_sec) as resp:
-                results.append(DispatchResult(
+                return DispatchResult(
                     endpoint_id=ep.get("id", "?"),
                     url=ep["url"],
                     status="sent",
                     http_status=resp.status,
-                ))
+                )
         except urllib.error.HTTPError as exc:
-            results.append(DispatchResult(
+            return DispatchResult(
                 endpoint_id=ep.get("id", "?"),
                 url=ep["url"],
                 status="failed",
                 http_status=exc.code,
                 error=str(exc),
-            ))
+            )
         except Exception as exc:  # noqa: BLE001
-            results.append(DispatchResult(
+            return DispatchResult(
                 endpoint_id=ep.get("id", "?"),
                 url=ep["url"],
                 status="failed",
                 error=str(exc),
-            ))
+            )
+
+    # Cap concurrency at 8 — more than plenty for the small number of
+    # endpoints a single project ever has, and keeps thread overhead tiny.
+    max_workers = min(8, len(to_dispatch))
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {pool.submit(_post_one, ep): ep for ep in to_dispatch}
+        for fut in as_completed(futures):
+            results.append(fut.result())
     return results
 
 

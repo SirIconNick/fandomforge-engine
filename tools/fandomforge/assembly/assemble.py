@@ -219,6 +219,23 @@ def assemble_rough_cut(
     def _process(task: tuple[int, ShotEntry, Path]) -> tuple[int, bool, str]:
         idx, shot, clip_out = task
 
+        # Per-shot checkpoint: if a prior run already produced a valid clip at
+        # this path, reuse it. This turns a crashed render into a resumable one
+        # — re-running roughcut picks up where it failed instead of starting
+        # from scratch. 10KB threshold matches the success check below.
+        if clip_out.exists() and clip_out.stat().st_size > 10000:
+            try:
+                probe = subprocess.run(
+                    ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                     "-of", "default=noprint_wrappers=1:nokey=1", str(clip_out)],
+                    stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=15,
+                )
+                if float(probe.stdout.decode().strip() or 0) > 0.1:
+                    return (idx, True, "resumed")
+            except (ValueError, AttributeError, subprocess.TimeoutExpired):
+                pass
+            # Stale / corrupt — re-extract below.
+
         if shot.is_placeholder():
             ok = _make_black_clip(clip_out, shot.duration_sec, width, height, fps)
             return (idx, ok, "placeholder" if ok else "placeholder-failed")

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/sfx-plan.schema.json",
+  "title": "SfxPlan",
+  "description": "Action sound-effects plan. Describes where and how punchy impact / weapon / combat SFX should land in the final mix, beat-aligned with the song. Produced by `ff sfx plan` from the shot-list + beat-map and consumed by the mixer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "events", "scene_audio_blend"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "scene_audio_blend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "gain_db"],
+      "description": "Controls whether original source-clip audio is blended under the song.",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "gain_db": {
+          "type": "number",
+          "description": "Gain applied to source-clip audio. Typical -18 to -24 dB so it sits under the song.",
+          "minimum": -60,
+          "maximum": 0
+        },
+        "duck_to_song_db": {
+          "type": "number",
+          "description": "Duck the scene audio by this much when the song peaks (drops).",
+          "minimum": -30,
+          "maximum": 0
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Ordered list of SFX placements, each pointing at a variant pack.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "time_sec", "kind", "variant"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "time_sec": {"type": "number", "minimum": 0},
+          "kind": {
+            "type": "string",
+            "enum": [
+              "gunshot",
+              "gun_cock",
+              "punch",
+              "kick",
+              "impact",
+              "whoosh",
+              "sub_boom",
+              "riser",
+              "reverse_cymbal",
+              "glass_break",
+              "explosion",
+              "sword_clash"
+            ]
+          },
+          "variant": {
+            "type": "string",
+            "description": "Which SFX file in the pack to use. Rotation is pre-picked so the same shot doesn't reuse the identical sound.",
+            "minLength": 1
+          },
+          "gain_db": {"type": "number", "minimum": -30, "maximum": 12},
+          "source_shot_id": {"type": "string"},
+          "beat_aligned": {"type": "boolean"},
+          "reason": {"type": "string"}
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}
