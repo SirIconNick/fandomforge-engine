@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "fandoms": [
+    {
+      "name": "Arcane",
+      "medium": "anime",
+      "seasons": [1, 2],
+      "visual_language": "jewel tones, heavy grain",
+      "canonical_songs": ["Enemy - Imagine Dragons"],
+      "iconic_scenes": [
+        {
+          "scene": "Jinx on bridge",
+          "episode": "1x03",
+          "timestamp": "12:45",
+          "emotion": "grief",
+          "tags": ["slow-motion"],
+          "sync_targets": ["breakdown"]
+        }
+      ]
+    }
+  ]
+}

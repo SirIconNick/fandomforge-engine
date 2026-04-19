@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "dimensions": [],
+  "samples": [
+    {
+      "shot_id": "s001",
+      "time_sec": -5,
+      "vector": [2.0, 3.0],
+      "intensity": 1.5
+    }
+  ]
+}

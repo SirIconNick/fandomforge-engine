@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "fandoms": [
+    {
+      "name": "",
+      "iconic_scenes": [
+        {"scene": "bad", "timestamp": "not-a-timecode"}
+      ]
+    }
+  ]
+}

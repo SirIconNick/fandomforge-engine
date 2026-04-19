@@ -50,28 +50,43 @@ if [ -d "web" ] && [ -f "web/package.json" ]; then
   echo "    web dependencies installed"
 fi
 
-# 4. Agent symlinks for Claude Code (optional, non-fatal)
+# 4. Agent hookup — copies (symlinks break when project moves)
 echo ""
 echo "→ Agent hookup"
-if command -v claude >/dev/null 2>&1; then
-  mkdir -p .claude/agents 2>/dev/null || true
-  if [ -d ".claude/agents" ]; then
-    for f in agents/*.md; do
-      [ -f "$f" ] || continue
-      name=$(basename "$f")
-      # Skip README
-      [ "$name" = "README.md" ] && continue
-      ln -sf "../../agents/$name" ".claude/agents/$name" 2>/dev/null || true
-    done
-    echo "    agents symlinked to .claude/agents/"
-  else
-    echo "    (skipped — can't create .claude/agents)"
-  fi
+mkdir -p .claude/agents 2>/dev/null || true
+if [ -d ".claude/agents" ]; then
+  for f in agents/*.md; do
+    [ -f "$f" ] || continue
+    name=$(basename "$f")
+    [ "$name" = "README.md" ] && continue
+    cp "$f" ".claude/agents/$name" 2>/dev/null || true
+  done
+  count=$(ls .claude/agents/ 2>/dev/null | wc -l | tr -d ' ')
+  echo "    $count agents copied to .claude/agents/"
 else
-  echo "    (Claude Code CLI not found — skipping agent symlinks)"
+  echo "    (skipped — can't create .claude/agents)"
 fi
 
-# 5. Smoke test
+# 5. .env.local scaffolding
+echo ""
+echo "→ Environment file"
+if [ ! -f "web/.env.local" ] && [ -f "web/.env.local.example" ]; then
+  cp web/.env.local.example web/.env.local
+  echo "    web/.env.local created — edit to add ANTHROPIC_API_KEY"
+else
+  echo "    web/.env.local already present"
+fi
+
+# 6. Fetch legal test fixtures
+echo ""
+echo "→ Fetching legal test fixtures"
+if ff fixtures fetch 2>&1 | grep -E "^\s*(✓|✗|fixtures:)" | tail -8; then
+  :
+else
+  echo "    (some fixtures may not be reachable — that's non-fatal)"
+fi
+
+# 7. Smoke test
 echo ""
 echo "→ Smoke test"
 if ff --version >/dev/null 2>&1; then
@@ -87,7 +102,10 @@ echo "  ✅  Setup complete."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 echo "Next steps:"
-echo "  1. Activate the Python env:    source .venv/bin/activate"
-echo "  2. Start the web dashboard:    pnpm dev"
-echo "  3. Create your first project:  ff project new my-first-edit"
+echo "  1. Activate the Python env:       source .venv/bin/activate"
+echo "  2. Edit web/.env.local:           add ANTHROPIC_API_KEY"
+echo "  3. Verify the key:                scripts/verify-anthropic.sh"
+echo "  4. Start the web dashboard:       scripts/dev.sh"
+echo "  5. Try the auto-pilot demo:       scripts/autopilot-demo.sh"
+echo "  6. Full smoke test anytime:       scripts/smoke-test.sh"
 echo ""

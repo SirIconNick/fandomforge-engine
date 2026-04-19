@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "dimensions": ["grief", "triumph", "fear", "awe", "tension", "release", "sorrow", "elation"],
+  "samples": [
+    {
+      "shot_id": "s001",
+      "time_sec": 0.0,
+      "vector": [0.1, 0.7, 0.0, 0.4, 0.2, 0.0, 0.1, 0.5],
+      "intensity": 0.6,
+      "dominant": "triumph",
+      "confidence": 0.8
+    },
+    {
+      "shot_id": "s002",
+      "time_sec": 2.0,
+      "vector": [0.8, 0.0, 0.0, 0.0, 0.3, 0.0, 0.7, 0.0],
+      "intensity": 0.7,
+      "dominant": "grief"
+    }
+  ],
+  "method": "heuristic_v1",
+  "generator": "emotion_arc/heuristic-v1"
+}

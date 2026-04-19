@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "endpoints": [
+    {
+      "id": "discord-main",
+      "url": "https://discord.com/api/webhooks/example",
+      "events": ["pipeline.completed", "qa.gate.failed", "export.ready"],
+      "enabled": true,
+      "created_at": "2026-04-19T00:00:00Z",
+      "description": "Main Discord channel notifications"
+    }
+  ]
+}

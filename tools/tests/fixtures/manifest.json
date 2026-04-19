@@ -1,0 +1,64 @@
+{
+  "$schema_version": 1,
+  "description": "Curated legal test fixtures for FandomForge integration tests. Each entry is fetched on demand by 'ff fixtures fetch' and cached under tools/tests/fixtures/media/ (gitignored). Every entry has a documented license.",
+  "items": [
+    {
+      "id": "incompetech-sneaky-snitch",
+      "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sneaky%20Snitch.mp3",
+      "kind": "audio",
+      "license": "CC-BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Kevin MacLeod — Sneaky Snitch (incompetech.com)",
+      "filename": "incompetech-sneaky-snitch.mp3",
+      "expected_duration_sec": 138.0,
+      "tier": "allowlist",
+      "notes": "Strong tempo and clear structure — good beat-detection fixture."
+    },
+    {
+      "id": "incompetech-hitman",
+      "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3",
+      "kind": "audio",
+      "license": "CC-BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Kevin MacLeod — Hitman (incompetech.com)",
+      "filename": "incompetech-hitman.mp3",
+      "expected_duration_sec": 131.0,
+      "tier": "allowlist",
+      "notes": "Cinematic buildup and drop — good drop-detection fixture."
+    },
+    {
+      "id": "incompetech-lost-frontier",
+      "url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Lost%20Frontier.mp3",
+      "kind": "audio",
+      "license": "CC-BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Kevin MacLeod — Lost Frontier (incompetech.com)",
+      "filename": "incompetech-lost-frontier.mp3",
+      "expected_duration_sec": 134.0,
+      "tier": "allowlist"
+    },
+    {
+      "id": "archive-charade-trailer",
+      "url": "https://archive.org/download/CharadeGregoryPeck/Charade.mp4",
+      "kind": "video",
+      "license": "Public Domain",
+      "license_url": "https://archive.org/details/CharadeGregoryPeck",
+      "attribution": "Internet Archive — Charade (1963, US public domain due to no copyright notice)",
+      "filename": "archive-charade.mp4",
+      "expected_duration_sec": 6700.0,
+      "tier": "allowlist",
+      "notes": "Full-length PD film — use `ffmpeg -t` to trim for testing."
+    },
+    {
+      "id": "archive-plan9-trailer",
+      "url": "https://archive.org/download/Plan_9_from_Outer_Space_1959/Plan_9_from_Outer_Space_1959_512kb.mp4",
+      "kind": "video",
+      "license": "Public Domain",
+      "license_url": "https://archive.org/details/Plan_9_from_Outer_Space_1959",
+      "attribution": "Internet Archive — Plan 9 from Outer Space (public domain)",
+      "filename": "archive-plan9.mp4",
+      "expected_duration_sec": 4680.0,
+      "tier": "allowlist"
+    }
+  ]
+}
