@@ -39,6 +39,11 @@ Thumbs.db
 web/.env.local
 github.rtf
 github.txt
+claude.rtf
+claude.txt
+anthropic.rtf
+anthropic.txt
+*.rtf
 *.token
 *.pem
 **/secrets/
@@ -64,3 +69,6 @@ projects/*/raw/*.mp3
 projects/*/raw/*.wav
 projects/*/raw/*.m4a
 .fandomforge-cache/
+
+# Test fixtures — the manifest is committed, the downloaded media is not.
+tools/tests/fixtures/media/
