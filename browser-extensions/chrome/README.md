@@ -60,3 +60,23 @@ tab's URL when you open the popup.
 
 Pure vanilla JS / HTML / CSS, no build step. Edit files and hit "Reload" on the
 extension card in `chrome://extensions`.
+
+## Automated end-to-end test
+
+`test-extension.mjs` launches a headless Chromium with the extension loaded,
+drives the popup + options page against a live dashboard, and verifies a real
+grab lands end-to-end.
+
+```bash
+# Prereqs: dashboard running + chromium installed
+pnpm --dir web build && pnpm --dir web start &
+pnpm --dir web exec playwright install chromium   # first time only
+
+# Run the test
+node browser-extensions/chrome/test-extension.mjs
+```
+
+Exit 0 on pass, 1 on any assertion failure.
+
+Override the chromium binary via `FF_CHROMIUM_BIN=/path/to/chromium` and the
+dashboard URL via `FF_DASHBOARD=http://localhost:4321`.
