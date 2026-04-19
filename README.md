@@ -72,24 +72,26 @@ Runs on http://localhost:4321 (`scripts/dev.sh`).
 - **Rough preview** (`/projects/<slug>/preview`) — plays shot list against song audio without running the render pipeline.
 - **Expert chat** — talk to any of the 14 agents; their proposed patches render as reviewable diff cards.
 - **Expert council** (`/experts/council`) — 2-4 experts in parallel, conflicts highlighted.
-- **Grab from URL** — paste a YouTube / Vimeo / Archive.org / direct URL, pick video or song, yt-dlp pulls it into the right folder with a `.license.json` sidecar.
+- **Grab from URL** — paste a YouTube / Vimeo / Archive.org / direct URL, pick video-only / audio-only / both, yt-dlp pulls it into the right folder with a `.grab.json` sidecar.
 - **Usage dashboard** (`/usage`) — cache hit rate, per-expert token spend, recent turns.
 - **Timeline editor** — shot-list visualization with keyboard shortcuts (arrows/J/L step, Home/End jump, Esc clear, ⌘Z rollback).
 
 ## Grabbing video / audio from any URL
 
 ```bash
-# Download a video into projects/<slug>/raw/
-ff grab video --project my-edit \
-    --url "https://www.youtube.com/watch?v=..." \
-    --license-note "Official studio trailer — fair use for transformative editing"
+# Video + audio into projects/<slug>/raw/ (default) + auto-ingest
+ff grab video --project my-edit --url "https://www.youtube.com/watch?v=..."
 
-# Download a song into projects/<slug>/assets/
-ff grab song --project my-edit \
-    --url "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Hitman.mp3"
+# Video only, silent mp4
+ff grab video --project my-edit --url "https://..." --no-audio
+
+# Audio only (mp3), into projects/<slug>/assets/
+ff grab video --project my-edit --url "https://..." --audio-only
+# …or the shortcut, which does the same thing with --filename=song:
+ff grab song --project my-edit --url "https://..."
 ```
 
-Streaming services (Netflix, Disney+, HBO, etc.) are blocked by a denylist. CC0/public-domain sources (Pexels, Internet Archive, Incompetech, Pixabay) pass through automatically. User-generated platforms (YouTube, Vimeo, Dailymotion) require `--license-note` documenting why the specific content is legally usable.
+Any yt-dlp-supported URL works — YouTube, Vimeo, Archive.org, direct media links, etc. No license gating at the download step. Every file gets a `.grab.json` sidecar with the URL, sha256, mode, and an optional `--note` for attribution. Credits still get generated at publish time via `ff credit generate`.
 
 ## Quick start
 

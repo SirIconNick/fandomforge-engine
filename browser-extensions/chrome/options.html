@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FandomForge Grab — Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="options">
+    <h1>FandomForge Grab settings</h1>
+
+    <label class="field">
+      <span class="field-label">Dashboard URL</span>
+      <input id="dashboard-url" type="url" placeholder="http://localhost:4321" />
+      <span class="hint">
+        Where your FandomForge dashboard is running. Start it with
+        <code>scripts/dev.sh</code>.
+      </span>
+    </label>
+
+    <label class="field">
+      <span class="field-label">Default project</span>
+      <select id="default-project"></select>
+      <span class="hint">
+        Used for right-click "Grab" quick actions. Leave blank to always prompt.
+      </span>
+    </label>
+
+    <div class="field-row">
+      <label class="field flex-1">
+        <span class="field-label">Default mode</span>
+        <select id="default-mode">
+          <option value="both">video + audio</option>
+          <option value="video">video only</option>
+          <option value="audio">audio only</option>
+        </select>
+      </label>
+      <label class="field flex-1">
+        <span class="field-label">Default resolution</span>
+        <select id="default-resolution">
+          <option value="1080">1080p</option>
+          <option value="720">720p</option>
+          <option value="480">480p</option>
+          <option value="best">best</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="field">
+      <span class="field-label">Default cookie source</span>
+      <select id="default-cookies-browser">
+        <option value="">none (public content only)</option>
+        <option value="chrome">Chrome</option>
+        <option value="chromium">Chromium</option>
+        <option value="brave">Brave</option>
+        <option value="edge">Edge</option>
+        <option value="firefox">Firefox</option>
+        <option value="safari">Safari</option>
+        <option value="opera">Opera</option>
+        <option value="vivaldi">Vivaldi</option>
+        <option value="whale">Whale</option>
+      </select>
+      <span class="hint">
+        For age-restricted or members-only content. yt-dlp will read cookies from
+        this browser's profile on your machine.
+      </span>
+    </label>
+
+    <div class="options-actions">
+      <button id="save" type="button" class="primary">Save</button>
+      <span id="status" class="status"></span>
+    </div>
+
+    <script src="options.js" type="module"></script>
+  </body>
+</html>

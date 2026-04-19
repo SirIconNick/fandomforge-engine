@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import uuid
 from dataclasses import asdict
@@ -3202,29 +3203,41 @@ def grab() -> None:
 @grab.command("video")
 @click.option("--project", required=True)
 @click.option("--url", required=True, help="Any yt-dlp-supported URL (YouTube, Vimeo, Archive.org, direct mp4, etc.)")
-@click.option("--resolution", default="1080", help="Max resolution (e.g. 1080, 720, best)")
+@click.option("--resolution", default="1080", help="Max resolution (1080, 720, 480, best). Auto-cascades down on format_unavailable.")
 @click.option("--filename", default=None, help="Explicit filename (no extension). Defaults to sanitized title.")
-@click.option("--license-note", default=None,
-              help="Required for YouTube/Vimeo/etc — documents why the specific content is legally usable (e.g. 'Official Marvel Studios trailer — fair use for transformative editing').")
+@click.option("--audio-only", is_flag=True, help="Extract audio only. Writes to assets/ instead of raw/.")
+@click.option("--no-audio", is_flag=True, help="Keep video, drop audio track. Silent mp4.")
+@click.option("--audio-format", default="mp3", help="Audio codec for --audio-only (mp3, m4a, flac, wav, opus).")
+@click.option("--cookies-from-browser", default=None,
+              type=click.Choice(["chrome", "chromium", "brave", "edge", "firefox",
+                                 "safari", "opera", "vivaldi", "whale"], case_sensitive=False),
+              help="Pull auth cookies from this browser (for age-restricted / private content).")
+@click.option("--cookies", "cookies_file", default=None, type=click.Path(exists=False),
+              help="Path to a Netscape-format cookies.txt (alternative to --cookies-from-browser).")
+@click.option("--note", default=None, help="Optional free-form note stored in the sidecar (e.g. where this came from).")
 @click.option("--no-ingest", is_flag=True, help="Skip scene + transcript extraction after download.")
-def grab_video_cmd(project: str, url: str, resolution: str, filename: str | None, license_note: str | None, no_ingest: bool) -> None:
-    """Download a video from a URL into projects/<slug>/raw/ and run ingestion."""
-    from fandomforge.sources.legal_sources import classify_url
-    from fandomforge.sources.download import download_source, DisallowedDomainError
+def grab_video_cmd(
+    project: str,
+    url: str,
+    resolution: str,
+    filename: str | None,
+    audio_only: bool,
+    no_audio: bool,
+    audio_format: str,
+    cookies_from_browser: str | None,
+    cookies_file: str | None,
+    note: str | None,
+    no_ingest: bool,
+) -> None:
+    """Download a URL into projects/<slug>/. Default: video+audio mp4 into raw/.
+    Use --audio-only for mp3 into assets/, or --no-audio for silent mp4.
+    For age-restricted or private content, pass --cookies-from-browser chrome
+    (or firefox/safari/edge/brave/opera/vivaldi/whale/chromium).
+    """
+    from fandomforge.sources.download import download_source, DownloadErrorKind
 
-    classification = classify_url(url)
-    if classification.tier == "denied":
-        console.print(f"[red]✗ {classification.reason}[/red]")
-        sys.exit(1)
-    if classification.tier == "requires_license_note" and not license_note:
-        console.print(f"[yellow]{classification.reason}[/yellow]")
-        console.print(
-            f"[yellow]Re-run with --license-note=\"...\" documenting why this specific URL is OK to use.[/yellow]"
-        )
-        sys.exit(1)
-    if classification.tier == "unknown" and not license_note:
-        console.print(f"[yellow]{classification.reason}[/yellow]")
-        console.print(f"[yellow]Re-run with --license-note=\"...\" to override.[/yellow]")
+    if audio_only and no_audio:
+        console.print("[red]--audio-only and --no-audio are mutually exclusive[/red]")
         sys.exit(1)
 
     proj_dir = Path("projects") / project
@@ -3233,28 +3246,41 @@ def grab_video_cmd(project: str, url: str, resolution: str, filename: str | None
         console.print(f"  create it with: ff project new {project}")
         sys.exit(1)
 
-    raw_dir = proj_dir / "raw"
-    raw_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = (proj_dir / "assets") if audio_only else (proj_dir / "raw")
 
-    console.print(f"[cyan]↓[/cyan] {url}")
-    console.print(f"  license: [dim]{classification.license_description or license_note or classification.tier}[/dim]")
+    mode_label = "audio-only" if audio_only else ("video-only (no audio)" if no_audio else "video+audio")
+    auth_label = ""
+    if cookies_from_browser:
+        auth_label = f", auth via {cookies_from_browser}"
+    elif cookies_file:
+        auth_label = f", auth via cookies.txt"
+    console.print(f"[cyan]↓[/cyan] {url}  [dim]({mode_label}{auth_label})[/dim]")
 
-    try:
-        result = download_source(
-            url,
-            raw_dir,
-            filename=filename,
-            resolution=resolution,
-            write_subs=True,
-            auto_subs=True,
-        )
-    except DisallowedDomainError as exc:
-        console.print(f"[red]{exc}[/red]")
-        sys.exit(1)
+    result = download_source(
+        url,
+        out_dir,
+        filename=filename,
+        resolution=resolution,
+        write_subs=not audio_only,
+        auto_subs=not audio_only,
+        audio_only=audio_only,
+        no_audio=no_audio,
+        audio_format=audio_format,
+        cookies_from_browser=cookies_from_browser,
+        cookies_file=cookies_file,
+    )
 
     if not result.success or not result.path:
-        console.print(f"[red]✗ download failed:[/red]")
-        console.print(result.stderr[-600:] if result.stderr else "(no stderr)")
+        kind = result.error_kind.value if result.error_kind else "unknown"
+        console.print(f"[red]✗ download failed:[/red] [bold]{kind}[/bold]")
+        if result.error_message:
+            console.print(f"  {result.error_message}")
+        if result.attempts:
+            console.print(f"  [dim]attempts: {' → '.join(result.attempts)}[/dim]")
+        if result.error_kind in (DownloadErrorKind.AGE_RESTRICTED, DownloadErrorKind.PRIVATE) and not (cookies_from_browser or cookies_file):
+            console.print("  [yellow]hint:[/yellow] retry with [bold]--cookies-from-browser chrome[/bold] (or firefox/safari/edge/brave/opera/vivaldi/whale/chromium)")
+        if result.stderr:
+            console.print(f"  [dim]{result.stderr[-400:]}[/dim]")
         sys.exit(1)
 
     import hashlib
@@ -3263,46 +3289,68 @@ def grab_video_cmd(project: str, url: str, resolution: str, filename: str | None
 
     import json as _json
     from datetime import datetime, timezone
-    license_sidecar = result.path.with_suffix(result.path.suffix + ".license.json")
-    license_sidecar.write_text(_json.dumps({
+    sidecar = result.path.with_suffix(result.path.suffix + ".grab.json")
+    sidecar.write_text(_json.dumps({
         "url": url,
-        "tier": classification.tier,
-        "license_description": classification.license_description,
-        "license_note": license_note,
+        "mode": "audio_only" if audio_only else ("no_audio" if no_audio else "video_audio"),
+        "resolution_requested": None if audio_only else resolution,
+        "resolution_actual": result.final_resolution,
+        "audio_format": audio_format if audio_only else None,
+        "note": note,
         "sha256": sha,
         "bytes": len(data),
         "downloaded_at": datetime.now(timezone.utc).isoformat(),
+        "route": result.route,
+        "attempts": result.attempts,
+        "subtitles_dropped": result.subtitles_dropped,
+        "format_fallback_used": result.format_fallback_used,
     }, indent=2) + "\n")
 
     console.print(f"  [green]✓[/green] {result.path.name} ({len(data):,} bytes, sha256 {sha[:12]}...)")
-    console.print(f"  license sidecar: {license_sidecar.name}")
+    console.print(f"  sidecar: {sidecar.name}")
+    if result.subtitles_dropped:
+        console.print("  [yellow]⚠[/yellow] subtitles unavailable (429 or missing) — media was still pulled")
+    if result.format_fallback_used and result.final_resolution:
+        console.print(f"  [yellow]⚠[/yellow] requested {resolution}p unavailable, fell back to {result.final_resolution}p")
 
-    if not no_ingest:
-        console.print(f"[cyan]↓[/cyan] running ingest (scenes + transcript)")
-        rc = subprocess.call(["ff", "ingest", str(result.path), "--project", project], cwd=Path.cwd())
-        if rc == 0:
-            console.print(f"  [green]✓[/green] ingested")
-        else:
-            console.print(f"  [yellow]ingest exit {rc} — rerun with `ff ingest` later[/yellow]")
+    if audio_only or no_ingest:
+        return
+
+    console.print(f"[cyan]↓[/cyan] running ingest (scenes + transcript)")
+    rc = subprocess.call(["ff", "ingest", str(result.path), "--project", project], cwd=Path.cwd())
+    if rc == 0:
+        console.print(f"  [green]✓[/green] ingested")
+    else:
+        console.print(f"  [yellow]ingest exit {rc} — rerun with `ff ingest` later[/yellow]")
 
 
 @grab.command("song")
 @click.option("--project", required=True)
 @click.option("--url", required=True)
 @click.option("--filename", default="song", help="Filename (no extension). Defaults to 'song'.")
-@click.option("--license-note", default=None)
-def grab_song_cmd(project: str, url: str, filename: str, license_note: str | None) -> None:
-    """Download an audio track from a URL into projects/<slug>/assets/song.*."""
-    from fandomforge.sources.legal_sources import classify_url
+@click.option("--audio-format", default="mp3", help="Audio codec (mp3, m4a, flac, wav, opus).")
+@click.option("--cookies-from-browser", default=None,
+              type=click.Choice(["chrome", "chromium", "brave", "edge", "firefox",
+                                 "safari", "opera", "vivaldi", "whale"], case_sensitive=False),
+              help="Pull auth cookies from this browser (for age-restricted / private content).")
+@click.option("--cookies", "cookies_file", default=None, type=click.Path(exists=False),
+              help="Path to a Netscape-format cookies.txt (alternative to --cookies-from-browser).")
+@click.option("--note", default=None, help="Optional free-form note stored in the sidecar.")
+def grab_song_cmd(
+    project: str,
+    url: str,
+    filename: str,
+    audio_format: str,
+    cookies_from_browser: str | None,
+    cookies_file: str | None,
+    note: str | None,
+) -> None:
+    """Download an audio track into projects/<slug>/assets/song.*.
 
-    classification = classify_url(url)
-    if classification.tier == "denied":
-        console.print(f"[red]✗ {classification.reason}[/red]")
-        sys.exit(1)
-    if classification.tier in ("requires_license_note", "unknown") and not license_note:
-        console.print(f"[yellow]{classification.reason or classification.tier}[/yellow]")
-        console.print(f"[yellow]Re-run with --license-note=\"...\" documenting why this URL is OK.[/yellow]")
-        sys.exit(1)
+    Wrapper over `ff grab video --audio-only`. Uses the same robust download
+    layer (retries, rate-limit backoff, typed errors, cookies, format fallback).
+    """
+    from fandomforge.sources.download import download_source, DownloadErrorKind
 
     proj_dir = Path("projects") / project
     if not proj_dir.exists():
@@ -3310,34 +3358,92 @@ def grab_song_cmd(project: str, url: str, filename: str, license_note: str | Non
         sys.exit(1)
 
     assets = proj_dir / "assets"
-    assets.mkdir(parents=True, exist_ok=True)
 
-    console.print(f"[cyan]↓[/cyan] {url} (audio-only)")
+    auth_label = ""
+    if cookies_from_browser:
+        auth_label = f", auth via {cookies_from_browser}"
+    elif cookies_file:
+        auth_label = ", auth via cookies.txt"
+    console.print(f"[cyan]↓[/cyan] {url} [dim](audio-only{auth_label})[/dim]")
 
-    lower = url.lower().split("?")[0]
-    import urllib.request as _ureq
-    for ext in (".mp3", ".wav", ".m4a", ".flac", ".ogg"):
-        if lower.endswith(ext):
-            target = assets / f"{filename}{ext}"
-            try:
-                with _ureq.urlopen(url, timeout=60) as r:
-                    target.write_bytes(r.read())
-                console.print(f"  [green]✓[/green] {target.name} ({target.stat().st_size:,} bytes)")
-                return
-            except Exception as exc:  # noqa: BLE001
-                console.print(f"[red]direct fetch failed: {exc}[/red]")
-                sys.exit(1)
+    result = download_source(
+        url,
+        assets,
+        filename=filename,
+        audio_only=True,
+        audio_format=audio_format,
+        cookies_from_browser=cookies_from_browser,
+        cookies_file=cookies_file,
+    )
 
-    cmd = [
-        "yt-dlp", "-x", "--audio-format", "mp3",
-        "-o", str(assets / f"{filename}.%(ext)s"),
-        "--no-playlist", "--restrict-filenames", url,
-    ]
-    rc = subprocess.call(cmd)
-    if rc != 0:
-        console.print(f"[red]yt-dlp exit {rc}[/red]")
+    if not result.success or not result.path:
+        kind = result.error_kind.value if result.error_kind else "unknown"
+        console.print(f"[red]✗ download failed:[/red] [bold]{kind}[/bold]")
+        if result.error_message:
+            console.print(f"  {result.error_message}")
+        if result.attempts:
+            console.print(f"  [dim]attempts: {' → '.join(result.attempts)}[/dim]")
+        if result.error_kind in (DownloadErrorKind.AGE_RESTRICTED, DownloadErrorKind.PRIVATE) and not (cookies_from_browser or cookies_file):
+            console.print("  [yellow]hint:[/yellow] retry with [bold]--cookies-from-browser chrome[/bold] (or firefox/safari/edge/brave/opera/vivaldi/whale/chromium)")
+        if result.stderr:
+            console.print(f"  [dim]{result.stderr[-400:]}[/dim]")
         sys.exit(1)
-    console.print(f"  [green]✓[/green] audio extracted to {assets}/{filename}.mp3")
+
+    _write_song_sidecar(result.path, url, result.route or "yt-dlp", audio_format, note)
+    console.print(f"  [green]✓[/green] {result.path.name} ({result.path.stat().st_size:,} bytes)")
+    console.print(f"  sidecar: {result.path.name}.grab.json")
+
+
+@grab.group("cookies")
+def grab_cookies() -> None:
+    """Export / inspect browser cookies for use with --cookies."""
+
+
+@grab_cookies.command("export")
+@click.option("--browser", required=True,
+              type=click.Choice(["chrome", "chromium", "brave", "edge", "firefox",
+                                 "safari", "opera", "vivaldi", "whale"], case_sensitive=False))
+@click.option("--output", "-o", default="cookies.txt", type=click.Path(),
+              help="Where to write the Netscape-format cookies.txt.")
+def grab_cookies_export_cmd(browser: str, output: str) -> None:
+    """Export a reusable cookies.txt from your local browser.
+
+    The resulting file works with `ff grab video --cookies <file>` and is
+    portable across machines (useful for servers / CI). Requires you to be
+    logged into the relevant site(s) in the chosen browser.
+    """
+    from fandomforge.sources.download import export_cookies_from_browser
+
+    target = Path(output)
+    console.print(f"[cyan]↓[/cyan] exporting cookies from {browser} → {target}")
+    result = export_cookies_from_browser(browser, target)
+    if not result.success:
+        console.print(f"[red]✗ export failed:[/red] {result.error_message}")
+        if result.stderr:
+            console.print(f"  [dim]{result.stderr[-400:]}[/dim]")
+        sys.exit(1)
+    console.print(f"  [green]✓[/green] wrote {target} ({target.stat().st_size:,} bytes)")
+    console.print(f"  use with: [bold]ff grab video --cookies {target} --url ...[/bold]")
+
+
+def _write_song_sidecar(path: Path, url: str, via: str, audio_format: str, note: str | None) -> None:
+    import hashlib
+    import json as _json
+    from datetime import datetime, timezone
+
+    data = path.read_bytes()
+    sha = hashlib.sha256(data).hexdigest()
+    sidecar = path.with_suffix(path.suffix + ".grab.json")
+    sidecar.write_text(_json.dumps({
+        "url": url,
+        "mode": "audio_only",
+        "via": via,
+        "audio_format": audio_format,
+        "note": note,
+        "sha256": sha,
+        "bytes": len(data),
+        "downloaded_at": datetime.now(timezone.utc).isoformat(),
+    }, indent=2) + "\n")
 
 
 # ---------- share (read-only shareable link tokens) ----------
@@ -3649,12 +3755,11 @@ def fixtures_fetch_cmd(manifest: Path | None, only: tuple[str, ...], dry_run: bo
     """Download legal test fixtures from the curated manifest.
 
     Every item has a documented license. Media lands under
-    tools/tests/fixtures/media/ (gitignored) with a sibling .license.json.
+    tools/tests/fixtures/media/ (gitignored) with a sibling .grab.json.
     """
     import hashlib
     import json as _json
     import urllib.request
-    from fandomforge.sources.legal_sources import classify_url
 
     default_manifest = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "manifest.json"
     manifest_path = Path(manifest) if manifest else default_manifest
@@ -3684,26 +3789,8 @@ def fixtures_fetch_cmd(manifest: Path | None, only: tuple[str, ...], dry_run: bo
         filename = item.get("filename") or item_id
         license_name = item.get("license", "unspecified")
 
-        classification = classify_url(url)
-        if classification.tier == "denied":
-            console.print(f"[red]✗ {item_id}: denylist — {classification.reason}[/red]")
-            fail_count += 1
-            continue
-        if classification.tier == "unknown":
-            console.print(
-                f"[yellow]⚠ {item_id}: host not classified — {classification.reason}[/yellow]"
-            )
-            fail_count += 1
-            continue
-        if classification.tier == "requires_license_note" and not item.get("license_note"):
-            console.print(
-                f"[red]✗ {item_id}: {classification.host} requires license_note in manifest[/red]"
-            )
-            fail_count += 1
-            continue
-
         target = media_dir / filename
-        license_sidecar = media_dir / (target.name + ".license.json")
+        grab_sidecar = media_dir / (target.name + ".grab.json")
 
         if dry_run:
             console.print(f"[cyan]would fetch[/cyan] {item_id} → {target.name} ({license_name})")
@@ -3716,19 +3803,17 @@ def fixtures_fetch_cmd(manifest: Path | None, only: tuple[str, ...], dry_run: bo
 
         console.print(f"[cyan]↓ {item_id}[/cyan] {url}")
         try:
-            with urllib.request.urlopen(url, timeout=60) as response:
+            with urllib.request.urlopen(url, timeout=60) as response:  # noqa: S310
                 data_bytes = response.read()
             target.write_bytes(data_bytes)
             sha = hashlib.sha256(data_bytes).hexdigest()
-            license_sidecar.write_text(_json.dumps({
+            grab_sidecar.write_text(_json.dumps({
                 "id": item_id,
                 "url": url,
                 "license": license_name,
                 "license_url": item.get("license_url"),
                 "attribution": item.get("attribution"),
                 "license_note": item.get("license_note"),
-                "tier": classification.tier,
-                "classified_host": classification.host,
                 "sha256": sha,
                 "bytes": len(data_bytes),
             }, indent=2) + "\n")

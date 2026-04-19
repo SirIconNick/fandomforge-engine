@@ -52,25 +52,24 @@ live in the `/projects/<slug>/autopilot` web UI.
 
 ## Grabbing video or audio from a URL
 
-Two CLI commands wrap yt-dlp with the project's legal-source classifier:
+Two CLI commands wrap yt-dlp, no domain gating, three modes:
 
 ```bash
-# Pull a video into projects/<slug>/raw/
-ff grab video --project my-edit \
-    --url "https://www.youtube.com/watch?v=aqz-KE-bpKQ" \
-    --license-note "Big Buck Bunny — Blender Foundation CC-BY"
+# Video + audio, merged mp4 into projects/<slug>/raw/, then auto-ingest
+ff grab video --project my-edit --url "https://www.youtube.com/watch?v=aqz-KE-bpKQ"
 
-# Pull a song into projects/<slug>/assets/
-ff grab song --project my-edit \
-    --url "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sneaky%20Snitch.mp3"
+# Video only (silent mp4)
+ff grab video --project my-edit --url "https://..." --no-audio
+
+# Audio only (mp3 into assets/)
+ff grab video --project my-edit --url "https://..." --audio-only
+ff grab song  --project my-edit --url "https://incompetech.com/.../Sneaky%20Snitch.mp3"
 ```
 
-Streaming services (Netflix, Disney+, HBO, etc) are blocked. URLs on
-YouTube/Vimeo/Dailymotion require a `--license-note` documenting why the
-specific content is OK (fair use for an official studio trailer, CC-licensed
-uploader-owned content, etc). CC0/public-domain sources (Pexels, Internet
-Archive, Incompetech, Pixabay) pass through with no license note.
+Any yt-dlp-supported URL works. Each download writes a `.grab.json` sidecar
+with the URL, mode, sha256, timestamp, and an optional `--note` for
+attribution. Streaming services aren't blocked — if yt-dlp can reach it, the
+tool will grab it.
 
 The web dashboard has a "Grab from URL" panel on each project page — paste
-the URL, pick video or song, add a license note if required, click Grab.
-Everything downloads via yt-dlp into the right folder.
+the URL, pick mode (video+audio / video only / audio only), click Grab.

@@ -67,9 +67,9 @@ Next.js 16 App Router, TypeScript strict, Tailwind, shadcn/ui. Runs on port 4321
 
 ## Rules specific to this project
 
-- **Never rip video from streaming services.** Instruct the user to use legally owned copies or publicly available trailers.
-- **Always remind about copyright when publishing.** See `docs/knowledge/copyright-and-fair-use.md`.
-- **Every edit plan must include the song credit and source disclosure.** Non-negotiable for ethical publishing.
+- **Grab is unrestricted.** `ff grab video` and `ff grab song` pull from any yt-dlp-supported URL without license gating. Nick decides what's fair game on a per-project basis — the tool doesn't police it.
+- **Credits still get generated.** `ff credit generate` writes `credits.md` with song + source attribution at publish time. Copyright awareness lives there, not at the download step.
+- **Every edit plan should include the song credit and source disclosure** when publishing. `credits.md` covers this automatically from the edit plan and source catalog.
 - **Beat maps are authoritative.** If the shot list conflicts with the beat map, fix the shot list.
 - **Templates live in `templates/`** — copy, don't edit the originals.
 
@@ -85,7 +85,6 @@ Walk them through this sequence:
 
 ## What not to do
 
-- Don't scrape copyrighted content.
-- Don't claim fair use blankets — fair use is case-by-case, always flag uncertainty.
+- Don't claim fair use blankets in generated credits — fair use is case-by-case, flag uncertainty when it matters.
 - Don't invent fandom scenes — if the fandom-researcher doesn't know, say so and ask the user.
 - Don't skip the beat map. It's the foundation of everything.

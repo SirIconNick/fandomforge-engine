@@ -6,10 +6,15 @@ From a raw song to NLE markers, step by step.
 
 Your song needs to be:
 - A format librosa can read (MP3, WAV, FLAC, OGG, M4A — basically anything ffmpeg handles)
-- Legally yours (owned, not streamed/DRM)
 - The actual song you'll use (not a lower-quality preview)
 
-If you only have a streaming URL, you have a problem: you cannot ethically rip from streaming services. Buy the song.
+Pulling from YouTube, SoundCloud, Bandcamp, direct links, whatever:
+
+```bash
+ff grab song --project <slug> --url "https://..."
+```
+
+Lands in `projects/<slug>/assets/song.mp3` with a `.grab.json` sidecar that records the URL and sha256.
 
 ## 2. First-pass analysis
 

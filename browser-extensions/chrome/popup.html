@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FandomForge Grab</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="popup">
+    <header class="popup-header">
+      <span class="brand">FandomForge</span>
+      <button id="open-options" class="link-button" type="button">settings</button>
+    </header>
+
+    <label class="field">
+      <span class="field-label">URL</span>
+      <input id="url" type="url" placeholder="https://..." />
+    </label>
+
+    <label class="field">
+      <span class="field-label">Project</span>
+      <select id="project"></select>
+    </label>
+
+    <div class="field">
+      <span class="field-label">Mode</span>
+      <div class="segmented" role="radiogroup" aria-label="Download mode">
+        <button type="button" data-mode="both" class="seg active">video + audio</button>
+        <button type="button" data-mode="video" class="seg">video only</button>
+        <button type="button" data-mode="audio" class="seg">audio only</button>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <label class="field flex-1">
+        <span class="field-label">Resolution</span>
+        <select id="resolution">
+          <option value="1080">1080p</option>
+          <option value="720">720p</option>
+          <option value="480">480p</option>
+          <option value="best">best</option>
+        </select>
+      </label>
+      <label class="field flex-1">
+        <span class="field-label">Cookies</span>
+        <select id="cookies-browser">
+          <option value="">none</option>
+          <option value="chrome">Chrome</option>
+          <option value="chromium">Chromium</option>
+          <option value="brave">Brave</option>
+          <option value="edge">Edge</option>
+          <option value="firefox">Firefox</option>
+          <option value="safari">Safari</option>
+          <option value="opera">Opera</option>
+          <option value="vivaldi">Vivaldi</option>
+          <option value="whale">Whale</option>
+        </select>
+      </label>
+    </div>
+
+    <label class="field">
+      <span class="field-label">Note (optional)</span>
+      <input id="note" type="text" placeholder="attribution, source, etc." />
+    </label>
+
+    <button id="grab" type="button" class="primary">Grab</button>
+
+    <div id="status" class="status" aria-live="polite"></div>
+
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>
