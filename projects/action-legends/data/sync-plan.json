@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "song_title": "centuries",
+  "lyrics": [],
+  "song_points": [
+    {
+      "id": "break_000",
+      "time_sec": 0.0,
+      "type": "breakdown",
+      "label": "breakdown",
+      "emotion": "somber",
+      "intensity": 0.084,
+      "recommended_shots": [
+        {
+          "shot_id": "s004",
+          "score": 0.638,
+          "reasons": [
+            "mood=tender pairs with somber"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.53,
+          "reasons": []
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.52,
+          "reasons": []
+        }
+      ],
+      "end_sec": 5.248
+    },
+    {
+      "id": "drop_000",
+      "time_sec": 29.187,
+      "type": "drop",
+      "label": "drop_11 drop",
+      "emotion": "intense",
+      "intensity": 0.832,
+      "recommended_shots": [
+        {
+          "shot_id": "s006",
+          "score": 0.79,
+          "reasons": [
+            "mood=intense matches intense",
+            "intensity-match"
+          ]
+        },
+        {
+          "shot_id": "s010",
+          "score": 0.756,
+          "reasons": [
+            "mood=intense matches intense",
+            "intensity-match"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.656,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_001",
+      "time_sec": 44.211,
+      "type": "drop",
+      "label": "drop_7 drop",
+      "emotion": "intense",
+      "intensity": 0.848,
+      "recommended_shots": [
+        {
+          "shot_id": "s010",
+          "score": 0.769,
+          "reasons": [
+            "mood=intense matches intense",
+            "intensity-match"
+          ]
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.653,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.643,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_002",
+      "time_sec": 59.211,
+      "type": "drop",
+      "label": "second_drop drop",
+      "emotion": "intense",
+      "intensity": 0.997,
+      "recommended_shots": [
+        {
+          "shot_id": "s003",
+          "score": 0.623,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.613,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.603,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_003",
+      "time_sec": 74.281,
+      "type": "drop",
+      "label": "drop_8 drop",
+      "emotion": "intense",
+      "intensity": 0.847,
+      "recommended_shots": [
+        {
+          "shot_id": "s007",
+          "score": 0.642,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.633,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s008",
+          "score": 0.631,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_004",
+      "time_sec": 91.765,
+      "type": "drop",
+      "label": "drop_12 drop",
+      "emotion": "intense",
+      "intensity": 0.826,
+      "recommended_shots": [
+        {
+          "shot_id": "s001",
+          "score": 0.669,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s008",
+          "score": 0.647,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s009",
+          "score": 0.635,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_005",
+      "time_sec": 107.624,
+      "type": "drop",
+      "label": "drop_9 drop",
+      "emotion": "intense",
+      "intensity": 0.847,
+      "recommended_shots": [
+        {
+          "shot_id": "s008",
+          "score": 0.653,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s009",
+          "score": 0.641,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s011",
+          "score": 0.631,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_006",
+      "time_sec": 126.2,
+      "type": "drop",
+      "label": "drop_6 drop",
+      "emotion": "intense",
+      "intensity": 0.859,
+      "recommended_shots": [
+        {
+          "shot_id": "s009",
+          "score": 0.651,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s011",
+          "score": 0.641,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s012",
+          "score": 0.631,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_007",
+      "time_sec": 141.201,
+      "type": "drop",
+      "label": "main_drop drop",
+      "emotion": "intense",
+      "intensity": 1.0,
+      "recommended_shots": [
+        {
+          "shot_id": "s011",
+          "score": 0.622,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s012",
+          "score": 0.613,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s013",
+          "score": 0.603,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_008",
+      "time_sec": 156.177,
+      "type": "drop",
+      "label": "drop_5 drop",
+      "emotion": "intense",
+      "intensity": 0.881,
+      "recommended_shots": [
+        {
+          "shot_id": "s012",
+          "score": 0.646,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s013",
+          "score": 0.636,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s014",
+          "score": 0.627,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_009",
+      "time_sec": 171.178,
+      "type": "drop",
+      "label": "drop_13 drop",
+      "emotion": "intense",
+      "intensity": 0.82,
+      "recommended_shots": [
+        {
+          "shot_id": "s013",
+          "score": 0.658,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s014",
+          "score": 0.649,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s015",
+          "score": 0.639,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_010",
+      "time_sec": 186.178,
+      "type": "drop",
+      "label": "drop_3 drop",
+      "emotion": "intense",
+      "intensity": 0.992,
+      "recommended_shots": [
+        {
+          "shot_id": "s014",
+          "score": 0.624,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s015",
+          "score": 0.614,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s016",
+          "score": 0.604,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_011",
+      "time_sec": 201.387,
+      "type": "drop",
+      "label": "drop_4 drop",
+      "emotion": "intense",
+      "intensity": 0.919,
+      "recommended_shots": [
+        {
+          "shot_id": "s015",
+          "score": 0.639,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s016",
+          "score": 0.629,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.588,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drop_012",
+      "time_sec": 216.712,
+      "type": "drop",
+      "label": "drop_10 drop",
+      "emotion": "intense",
+      "intensity": 0.836,
+      "recommended_shots": [
+        {
+          "shot_id": "s016",
+          "score": 0.655,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s002",
+          "score": 0.595,
+          "reasons": [
+            "mood=defiant pairs with intense"
+          ]
+        },
+        {
+          "shot_id": "s010",
+          "score": 0.474,
+          "reasons": [
+            "mood=intense matches intense",
+            "intensity-match",
+            "already-used-earlier"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "break_001",
+      "time_sec": 224.026,
+      "type": "breakdown",
+      "label": "breakdown",
+      "emotion": "somber",
+      "intensity": 0.019,
+      "recommended_shots": [
+        {
+          "shot_id": "s002",
+          "score": 0.471,
+          "reasons": []
+        },
+        {
+          "shot_id": "s004",
+          "score": 0.275,
+          "reasons": [
+            "mood=tender pairs with somber",
+            "already-used-earlier"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.236,
+          "reasons": [
+            "act 3 lands in song-act 3",
+            "already-used-earlier"
+          ]
+        }
+      ],
+      "end_sec": 229.204
+    }
+  ],
+  "generated_at": "2026-04-19T23:42:30.527795+00:00",
+  "generator": "ff sync plan"
+}

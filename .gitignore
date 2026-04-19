@@ -79,6 +79,7 @@ references/**/*.mp4
 references/**/*.mkv
 references/**/*.webm
 references/.cache/
+references/**/.transcripts/
 
 # Other scraps and local-only dirs
 .history/

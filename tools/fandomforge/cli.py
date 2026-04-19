@@ -4406,14 +4406,25 @@ def sync_extract_lyrics_cmd(project: str, model_size: str) -> None:
 @click.option("--top-k", type=int, default=3,
               help="How many shot recommendations to keep per point")
 def sync_plan_cmd(project: str, include_downbeats: bool, top_k: int) -> None:
-    """Build sync-plan.json from beat-map + shot-list + (optional) lyrics."""
+    """Build sync-plan.json from beat-map + shot-list + (optional) lyrics.
+
+    Auto-loads reference priors from FF_REFERENCES_DIR (or ~/.fandomforge/references)
+    when present so the planner biases toward real fandom-edit patterns.
+    """
     from fandomforge.intelligence.sync_planner import build_sync_plan, write_sync_plan
+    from fandomforge.intelligence.reference_library import load_priors
 
     proj = Path("projects") / project
     beat_map = json.loads((proj / "data" / "beat-map.json").read_text())
     shot_list = json.loads((proj / "data" / "shot-list.json").read_text())
     lyrics_path = proj / "data" / "song-lyrics.json"
     lyrics = json.loads(lyrics_path.read_text()) if lyrics_path.exists() else None
+    priors = load_priors()
+    if priors:
+        console.print(
+            f"[dim]using reference priors from tag [bold]{priors.get('tag','?')}[/bold] "
+            f"({priors.get('video_count','?')} videos)[/dim]"
+        )
 
     plan = build_sync_plan(
         project_slug=project,
@@ -4422,6 +4433,7 @@ def sync_plan_cmd(project: str, include_downbeats: bool, top_k: int) -> None:
         lyrics_transcript=lyrics,
         include_downbeats=include_downbeats,
         top_k=top_k,
+        reference_priors=priors,
     )
     out = write_sync_plan(plan, proj)
     console.print(
