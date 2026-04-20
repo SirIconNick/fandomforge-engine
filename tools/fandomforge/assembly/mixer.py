@@ -81,7 +81,8 @@ def mix_audio(
     sfx_cues: list[SfxCue] | None = None,
     scene_audio_path: Path | None = None,
     scene_audio_gain_db: float = -20.0,
-    scene_audio_duck_db: float = -60.0,
+    scene_audio_duck_db: float | None = None,
+    duck_fade_sec: float = 0.5,
 ) -> MixResult:
     """Mix a song with dialogue cues into a single audio file.
 
@@ -89,11 +90,12 @@ def mix_audio(
     1. Apply per-cue gain + delay to each dialogue audio
     2. Mix all dialogue into a single "dialogue bus"
     3. Apply deterministic volume automation to the song — duck each cue
-       window by cue.duck_db with 200ms linear fades.
-    4. If scene-audio bed is present, apply the same automation but uniformly
-       duck to scene_audio_duck_db (default -60 dB ≈ silent) so injected
-       dialogue isn't competing with source-clip ambient bleed. Scene bleed
-       returns to full scene_audio_gain_db outside dialogue windows.
+       window by cue.duck_db with `duck_fade_sec` linear fades on each edge.
+    4. If scene-audio bed is present, apply the same automation. By default
+       (scene_audio_duck_db=None) the scene mirrors the per-cue duck depth so
+       it sounds like one unified, natural duck rather than "scene goes
+       silent and back". Pass an explicit value (e.g. -10) to force a uniform
+       depth, or -60 to nearly mute the bed.
     5. Amix song + dialogue + sfx + scene_bed → alimiter for peak protection.
 
     Args:
@@ -107,10 +109,13 @@ def mix_audio(
         song_start_offset_sec: offset into the song if you want to skip the intro
         scene_audio_path: optional WAV/AAC bed of source-clip ambient audio
         scene_audio_gain_db: baseline scene-audio level (typical -18 to -24 dB)
-        scene_audio_duck_db: duck depth applied to scene_audio across each
-            dialogue cue window. Default -60 dB ≈ silent so narrative dialogue
-            sits clean. Use a softer value (e.g. -20 dB) if you want some
-            source bleed to remain audible underneath dialogue.
+        scene_audio_duck_db: optional override for scene-audio duck depth
+            during dialogue. None (default) = mirror per-cue duck_db so the
+            scene drops by the same proportion as the song — feels like one
+            natural duck. Set to a number to force uniform behavior.
+        duck_fade_sec: linear fade in/out time at each cue edge for both
+            song and scene ducks. Default 0.5s. Shorter values (0.1-0.2s)
+            sound abrupt; longer values (0.7-1.0s) feel like a slow swell.
     """
     _check_ffmpeg()
 
@@ -224,13 +229,14 @@ def mix_audio(
             continue
         duck_windows.append((cue.start_sec, cue.start_sec + cue_dur, cue.duck_db))
 
-    fade_pad = 0.20
+    fade_pad = max(0.05, float(duck_fade_sec))
 
     def _build_duck_expr(windows: list[tuple[float, float, float]], uniform_duck_db: float | None) -> str:
         """Build an ffmpeg volume= expression that ducks the carrier at each
-        window. If uniform_duck_db is provided, every window uses that depth
-        (useful for scene-audio: duck to silence regardless of per-cue value).
-        Otherwise each window uses its own per_cue_duck_db."""
+        window. If uniform_duck_db is None, each window uses its own per-cue
+        duck_db (the natural-blend default). If uniform_duck_db is provided,
+        every window uses that depth (e.g. -10 dB for moderate uniform duck,
+        -60 dB to nearly mute)."""
         parts: list[str] = []
         for start, end, per_cue_duck_db in windows:
             duck_db = uniform_duck_db if uniform_duck_db is not None else per_cue_duck_db

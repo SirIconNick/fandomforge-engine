@@ -163,9 +163,37 @@ class TestSceneAudioDialogueDucking:
         # Song duck still happens because dialogue is present.
         assert "[song_ducked]" in graph
 
-    def test_scene_audio_duck_db_param_changes_ratio(self, tmp_path: Path) -> None:
-        """Passing scene_audio_duck_db=-20 should produce a different duck
-        ratio in the volume expression than the default -60."""
+    def test_scene_audio_natural_blend_mirrors_cue_duck(self, tmp_path: Path) -> None:
+        """Default scene_audio_duck_db=None mirrors the per-cue duck depth so
+        the bed drops the same proportion as the song — feels like one
+        unified duck rather than 'scene goes silent'."""
+        song, scene, cue1, out = self._build_files(tmp_path)
+        # cue.duck_db = -10 means scene should also duck by -10 (ratio 0.3162)
+        cues = [DialogueCue(audio_path=cue1, start_sec=1.0, duck_db=-10.0)]
+        fake_run = MagicMock(return_value=MagicMock(returncode=0, stdout="", stderr=""))
+
+        with patch("fandomforge.assembly.mixer.shutil.which",
+                   return_value="/usr/bin/ffmpeg"), \
+             patch("fandomforge.assembly.mixer._probe_duration", return_value=2.0), \
+             patch("fandomforge.assembly.mixer.subprocess.run", fake_run):
+            out.write_bytes(b"WAV")
+            mix_audio(
+                song_path=song,
+                dialogue_cues=cues,
+                output_path=out,
+                total_duration_sec=10.0,
+                scene_audio_path=scene,
+                # default scene_audio_duck_db=None → mirror per-cue
+            )
+
+        graph = _capture_filter_complex(fake_run.call_args)
+        assert "[scene_ducked]" in graph
+        # 10 ** (-10/20) = 0.3162 → expression embeds 0.3162 in scene-duck.
+        assert "0.3162" in graph
+
+    def test_scene_audio_duck_db_param_overrides(self, tmp_path: Path) -> None:
+        """Explicit scene_audio_duck_db forces a uniform depth. -60 nearly
+        silent, -20 a softer cut, regardless of per-cue duck_db."""
         song, scene, cue1, out = self._build_files(tmp_path)
         cues = [DialogueCue(audio_path=cue1, start_sec=1.0, duck_db=-10.0)]
 
@@ -186,22 +214,45 @@ class TestSceneAudioDialogueDucking:
                 )
             return _capture_filter_complex(fake_run.call_args)
 
-        graph_default = _run_with_duck(-60.0)
+        graph_silent = _run_with_duck(-60.0)
         graph_softer = _run_with_duck(-20.0)
-
-        # Both contain a scene_ducked filter, but the embedded duck_ratio differs.
-        # 10 ** (-60 / 20) = 0.001  (clamped at 0.001 floor in the builder)
-        # 10 ** (-20 / 20) = 0.1
-        # Look for the distinctive ratios in the scene_ducked stretch.
-        assert "[scene_ducked]" in graph_default
+        assert "[scene_ducked]" in graph_silent
         assert "[scene_ducked]" in graph_softer
-        # The default-60 case should hit the 0.001 clamp; the -20 case should show 0.1
-        assert "0.0010" in graph_default
+        # 10 ** (-60/20) = 0.001 (clamped to 0.001 floor)
+        # 10 ** (-20/20) = 0.1
+        assert "0.0010" in graph_silent
         assert "0.1000" in graph_softer
+
+    def test_duck_fade_sec_param(self, tmp_path: Path) -> None:
+        """duck_fade_sec controls the linear fade duration on each cue edge.
+        Default 0.5s gives a natural blend; lower values are abrupt."""
+        song, scene, cue1, out = self._build_files(tmp_path)
+        cues = [DialogueCue(audio_path=cue1, start_sec=2.0, duck_db=-10.0)]
+        fake_run = MagicMock(return_value=MagicMock(returncode=0, stdout="", stderr=""))
+
+        with patch("fandomforge.assembly.mixer.shutil.which",
+                   return_value="/usr/bin/ffmpeg"), \
+             patch("fandomforge.assembly.mixer._probe_duration", return_value=3.0), \
+             patch("fandomforge.assembly.mixer.subprocess.run", fake_run):
+            out.write_bytes(b"WAV")
+            mix_audio(
+                song_path=song,
+                dialogue_cues=cues,
+                output_path=out,
+                total_duration_sec=10.0,
+                scene_audio_path=scene,
+                duck_fade_sec=0.5,  # default
+            )
+
+        graph = _capture_filter_complex(fake_run.call_args)
+        # With 0.5s fade, fade-in starts at 1.500 (2.0 - 0.5), hold 2.000-5.000,
+        # fade-out ends 5.500.
+        assert "between(t,1.500,2.000)" in graph
+        assert "between(t,5.000,5.500)" in graph
 
     def test_scene_duck_window_aligns_with_cue(self, tmp_path: Path) -> None:
         """The scene-duck window for a cue at start=2.0s with 3.0s duration
-        should run roughly 2.0–5.0s with a 200ms fade pad on each side."""
+        should run roughly 2.0–5.0s with the default 500ms fade pad on each side."""
         song, scene, cue1, out = self._build_files(tmp_path)
         cues = [DialogueCue(audio_path=cue1, start_sec=2.0, duck_db=-12.0)]
         fake_run = MagicMock(return_value=MagicMock(returncode=0, stdout="", stderr=""))
@@ -220,8 +271,8 @@ class TestSceneAudioDialogueDucking:
             )
 
         graph = _capture_filter_complex(fake_run.call_args)
-        # Window edges: fade-in starts at 1.800, hold at 2.000–5.000, fade-out ends 5.200.
-        # The expression contains literal between(t,1.800,2.000) and between(t,2.000,5.000).
-        assert "between(t,1.800,2.000)" in graph
+        # With default 500ms fade: fade-in starts at 1.500, hold at 2.000–5.000,
+        # fade-out ends 5.500.
+        assert "between(t,1.500,2.000)" in graph
         assert "between(t,2.000,5.000)" in graph
-        assert "between(t,5.000,5.200)" in graph
+        assert "between(t,5.000,5.500)" in graph

@@ -4,8 +4,7 @@
   "scene_audio_blend": {
     "enabled": true,
     "gain_db": -20.0,
-    "duck_to_song_db": -8.0,
-    "duck_db_during_dialogue": -60.0
+    "duck_to_song_db": -8.0
   },
   "events": [
     {

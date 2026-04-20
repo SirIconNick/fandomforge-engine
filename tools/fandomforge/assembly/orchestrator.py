@@ -614,7 +614,7 @@ def _prepare_sfx_and_scene_audio(
     raw_dir: Path,
     total_duration_sec: float,
     sfx_plan_json: str | None,
-) -> tuple[list[SfxCue], Path | None, float, float, list[str]]:
+) -> tuple[list[SfxCue], Path | None, float, float | None, list[str]]:
     """Build SfxCue list + scene-audio WAV from sfx-plan.json.
 
     - Resolves SFX file paths (falls back silently when a variant is missing)
@@ -622,6 +622,9 @@ def _prepare_sfx_and_scene_audio(
       concatenating onto a timeline track. Respects scene_audio_blend.enabled.
     - Returns (cues, scene_audio_path, scene_audio_gain_db,
       scene_audio_duck_db_during_dialogue, warnings).
+    - duck_db_during_dialogue may be None to mirror the per-cue duck_db
+      (natural blend) — that's the recommended default for narrative-dialogue
+      edits where you want the scene bed to feel like part of the same mix.
     """
     warnings: list[str] = []
 
@@ -639,13 +642,13 @@ def _prepare_sfx_and_scene_audio(
 
     plan_path = next((p for p in candidates if p.exists()), None)
     if plan_path is None:
-        return [], None, -20.0, -60.0, warnings
+        return [], None, -20.0, None, warnings
 
     try:
         plan = json.loads(plan_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError) as exc:
         warnings.append(f"Could not read sfx-plan.json: {exc}")
-        return [], None, -20.0, -60.0, warnings
+        return [], None, -20.0, None, warnings
 
     from fandomforge.intelligence.sfx_engine import resolve_sfx_file
 
@@ -676,9 +679,13 @@ def _prepare_sfx_and_scene_audio(
     blend = plan.get("scene_audio_blend") or {}
     scene_enabled = bool(blend.get("enabled", False))
     scene_gain = float(blend.get("gain_db", -20.0))
-    # New (Phase 0.2): how much to duck scene audio while injected dialogue plays.
-    # Default -60 dB ≈ silent. Older plans without the field still work.
-    scene_duck_during_dialogue = float(blend.get("duck_db_during_dialogue", -60.0))
+    # Phase 0.2: how much to duck scene audio while injected dialogue plays.
+    # Missing field OR null → mirror per-cue duck_db (natural blend default).
+    # Numeric value → uniform duck depth (e.g. -60 to nearly mute the bed).
+    raw_duck = blend.get("duck_db_during_dialogue")
+    scene_duck_during_dialogue: float | None = (
+        float(raw_duck) if raw_duck is not None else None
+    )
     scene_path: Path | None = None
     if scene_enabled and shots:
         scene_path = work_dir / "scene_audio.wav"
