@@ -36,8 +36,29 @@
         "beat_sync_score": 3.0
       },
       "fandom": "Extraction",
-      "description": "PREAMBLE \u00b7 hero-down \u00b7 tier=held \u00b7 motion=0.009 \u00b7 luma=0.31",
-      "color_notes": "tier=held luma=0.31"
+      "description": "PREAMBLE · hero-down · tier=held · motion=0.009 · luma=0.31",
+      "color_notes": "tier=held luma=0.31",
+      "emotional_register": [
+        0.833,
+        1.0,
+        0.0,
+        0.833,
+        0.833,
+        0.0,
+        1.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 3.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s002",
@@ -67,8 +88,29 @@
         "beat_sync_score": 3.0
       },
       "fandom": "The Raid",
-      "description": "PREAMBLE \u00b7 hero-down-2 \u00b7 tier=mid \u00b7 motion=0.168 \u00b7 luma=0.21",
-      "color_notes": "tier=mid luma=0.21"
+      "description": "PREAMBLE · hero-down-2 · tier=mid · motion=0.168 · luma=0.21",
+      "color_notes": "tier=mid luma=0.21",
+      "emotional_register": [
+        0.0,
+        1.0,
+        0.0,
+        0.833,
+        0.667,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 68.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s003",
@@ -98,8 +140,29 @@
         "beat_sync_score": 3.0
       },
       "fandom": "Extraction",
-      "description": "PREAMBLE \u00b7 hero-look-up \u00b7 tier=held \u00b7 motion=0.060 \u00b7 luma=0.27",
-      "color_notes": "tier=held luma=0.27"
+      "description": "PREAMBLE · hero-look-up · tier=held · motion=0.060 · luma=0.27",
+      "color_notes": "tier=held luma=0.27",
+      "emotional_register": [
+        0.0,
+        1.0,
+        0.0,
+        0.833,
+        0.667,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 48.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s004",
@@ -129,8 +192,29 @@
         "beat_sync_score": 3.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "PREAMBLE \u00b7 hero-rising \u00b7 tier=mid \u00b7 motion=0.112 \u00b7 luma=0.31",
-      "color_notes": "tier=mid luma=0.31"
+      "description": "PREAMBLE · hero-rising · tier=mid · motion=0.112 · luma=0.31",
+      "color_notes": "tier=mid luma=0.31",
+      "emotional_register": [
+        0.0,
+        1.0,
+        0.0,
+        0.833,
+        0.667,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 29.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s005",
@@ -160,8 +244,29 @@
         "beat_sync_score": 3.0
       },
       "fandom": "The Raid 2",
-      "description": "PREAMBLE \u00b7 hero-ready \u00b7 tier=mid \u00b7 motion=0.125 \u00b7 luma=0.37",
-      "color_notes": "tier=mid luma=0.37"
+      "description": "PREAMBLE · hero-ready · tier=mid · motion=0.125 · luma=0.37",
+      "color_notes": "tier=mid luma=0.37",
+      "emotional_register": [
+        0.0,
+        1.0,
+        0.0,
+        0.833,
+        0.667,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 45.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s006",
@@ -190,8 +295,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.203 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act1/sustain · tier=high · motion=0.203 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s007",
@@ -220,8 +346,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.317 \u00b7 luma=0.34",
-      "color_notes": "tier=high luma=0.34"
+      "description": "act1/sustain · tier=high · motion=0.317 · luma=0.34",
+      "color_notes": "tier=high luma=0.34",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s008",
@@ -250,8 +397,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.207 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act1/sustain · tier=high · motion=0.207 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s009",
@@ -280,8 +448,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.309 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act1/sustain · tier=high · motion=0.309 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s010",
@@ -310,8 +499,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.356 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act1/sustain · tier=high · motion=0.356 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s011",
@@ -340,8 +550,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.249 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act1/sustain · tier=high · motion=0.249 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 81.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s012",
@@ -370,8 +601,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.186 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act1/sustain · tier=high · motion=0.186 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s013",
@@ -400,8 +652,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.226 \u00b7 luma=0.23",
-      "color_notes": "tier=high luma=0.23"
+      "description": "act1/sustain · tier=high · motion=0.226 · luma=0.23",
+      "color_notes": "tier=high luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 59.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s014",
@@ -430,8 +703,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.220 \u00b7 luma=0.47",
-      "color_notes": "tier=high luma=0.47"
+      "description": "act1/sustain · tier=high · motion=0.220 · luma=0.47",
+      "color_notes": "tier=high luma=0.47",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s015",
@@ -460,8 +754,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.186 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act1/sustain · tier=high · motion=0.186 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s016",
@@ -490,8 +805,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.215 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act1/sustain · tier=high · motion=0.215 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s017",
@@ -520,8 +856,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.17",
-      "color_notes": "tier=high luma=0.17"
+      "description": "act1/sustain · tier=high · motion=0.185 · luma=0.17",
+      "color_notes": "tier=high luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s018",
@@ -550,8 +907,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.209 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20"
+      "description": "act1/sustain · tier=high · motion=0.209 · luma=0.20",
+      "color_notes": "tier=high luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s019",
@@ -580,8 +958,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.203 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act1/sustain · tier=high · motion=0.203 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 82.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s020",
@@ -610,8 +1009,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.257 \u00b7 luma=0.32",
-      "color_notes": "tier=climax luma=0.32"
+      "description": "act1/build · tier=climax · motion=0.257 · luma=0.32",
+      "color_notes": "tier=climax luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 83.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s021",
@@ -640,8 +1060,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/drop \u00b7 tier=climax \u00b7 motion=0.289 \u00b7 luma=0.33 \u00b7 DROP@29.2s intensity 0.83",
-      "color_notes": "tier=climax luma=0.33"
+      "description": "act1/drop · tier=climax · motion=0.289 · luma=0.33 · DROP@29.2s intensity 0.83",
+      "color_notes": "tier=climax luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 76.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s022",
@@ -670,8 +1111,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/post-drop \u00b7 tier=high \u00b7 motion=0.227 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act1/post-drop · tier=high · motion=0.227 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 82.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s023",
@@ -700,8 +1162,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/post-drop \u00b7 tier=high \u00b7 motion=0.207 \u00b7 luma=0.17",
-      "color_notes": "tier=high luma=0.17"
+      "description": "act1/post-drop · tier=high · motion=0.207 · luma=0.17",
+      "color_notes": "tier=high luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s024",
@@ -730,8 +1213,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/post-drop \u00b7 tier=high \u00b7 motion=0.256 \u00b7 luma=0.37",
-      "color_notes": "tier=high luma=0.37"
+      "description": "act1/post-drop · tier=high · motion=0.256 · luma=0.37",
+      "color_notes": "tier=high luma=0.37",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s025",
@@ -760,8 +1264,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.225 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act1/sustain · tier=high · motion=0.225 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s026",
@@ -790,8 +1315,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.193 \u00b7 luma=0.34",
-      "color_notes": "tier=high luma=0.34"
+      "description": "act1/sustain · tier=high · motion=0.193 · luma=0.34",
+      "color_notes": "tier=high luma=0.34",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s027",
@@ -820,8 +1366,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.267 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act1/sustain · tier=high · motion=0.267 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s028",
@@ -850,8 +1417,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.246 \u00b7 luma=0.29",
-      "color_notes": "tier=high luma=0.29"
+      "description": "act1/sustain · tier=high · motion=0.246 · luma=0.29",
+      "color_notes": "tier=high luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s029",
@@ -880,8 +1468,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.197 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act1/sustain · tier=high · motion=0.197 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 80.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s030",
@@ -910,8 +1519,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.204 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act1/sustain · tier=high · motion=0.204 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 73.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s031",
@@ -940,8 +1570,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.258 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act1/sustain · tier=high · motion=0.258 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 83.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s032",
@@ -970,8 +1621,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.222 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act1/sustain · tier=high · motion=0.222 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s033",
@@ -1000,8 +1672,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.189 \u00b7 luma=0.35",
-      "color_notes": "tier=high luma=0.35"
+      "description": "act1/sustain · tier=high · motion=0.189 · luma=0.35",
+      "color_notes": "tier=high luma=0.35",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 50.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s034",
@@ -1030,8 +1723,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.238 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20 | phase0-relit luma>=0.22"
+      "description": "act1/sustain · tier=high · motion=0.238 · luma=0.20",
+      "color_notes": "tier=high luma=0.20 | phase0-relit luma>=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s035",
@@ -1060,8 +1774,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.259 \u00b7 luma=0.24",
-      "color_notes": "tier=climax luma=0.24"
+      "description": "act1/build · tier=climax · motion=0.259 · luma=0.24",
+      "color_notes": "tier=climax luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 68.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s036",
@@ -1090,8 +1825,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.254 \u00b7 luma=0.31",
-      "color_notes": "tier=climax luma=0.31"
+      "description": "act1/build · tier=climax · motion=0.254 · luma=0.31",
+      "color_notes": "tier=climax luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 67.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s037",
@@ -1120,8 +1876,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.274 \u00b7 luma=0.27",
-      "color_notes": "tier=climax luma=0.27"
+      "description": "act1/build · tier=climax · motion=0.274 · luma=0.27",
+      "color_notes": "tier=climax luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s038",
@@ -1150,8 +1927,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "John Wick",
-      "description": "act1/drop \u00b7 tier=climax \u00b7 motion=0.310 \u00b7 luma=0.30 \u00b7 DROP@44.2s intensity 0.85",
-      "color_notes": "tier=climax luma=0.30"
+      "description": "act1/drop · tier=climax · motion=0.310 · luma=0.30 · DROP@44.2s intensity 0.85",
+      "color_notes": "tier=climax luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s039",
@@ -1180,8 +1978,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/post-drop \u00b7 tier=high \u00b7 motion=0.205 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act1/post-drop · tier=high · motion=0.205 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s040",
@@ -1210,8 +2029,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/post-drop \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act1/post-drop · tier=high · motion=0.185 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s041",
@@ -1240,8 +2080,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act1/sustain · tier=high · motion=0.190 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 77.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s042",
@@ -1270,8 +2131,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.206 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act1/sustain · tier=high · motion=0.206 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 74.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s043",
@@ -1300,8 +2182,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.256 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act1/sustain · tier=high · motion=0.256 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 83.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s044",
@@ -1330,8 +2233,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.198 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act1/sustain · tier=high · motion=0.198 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s045",
@@ -1360,8 +2284,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.315 \u00b7 luma=0.48",
-      "color_notes": "tier=high luma=0.48"
+      "description": "act1/sustain · tier=high · motion=0.315 · luma=0.48",
+      "color_notes": "tier=high luma=0.48",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s046",
@@ -1390,8 +2335,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.221 \u00b7 luma=0.23",
-      "color_notes": "tier=high luma=0.23"
+      "description": "act1/sustain · tier=high · motion=0.221 · luma=0.23",
+      "color_notes": "tier=high luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s047",
@@ -1420,8 +2386,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.219 \u00b7 luma=0.35",
-      "color_notes": "tier=high luma=0.35"
+      "description": "act1/sustain · tier=high · motion=0.219 · luma=0.35",
+      "color_notes": "tier=high luma=0.35",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s048",
@@ -1450,8 +2437,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.199 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act1/sustain · tier=high · motion=0.199 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s049",
@@ -1480,8 +2488,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.182 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act1/sustain · tier=high · motion=0.182 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 91.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s050",
@@ -1510,8 +2539,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act1/sustain · tier=high · motion=0.185 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 75.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s051",
@@ -1540,8 +2590,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.282 \u00b7 luma=0.36",
-      "color_notes": "tier=climax luma=0.36"
+      "description": "act1/build · tier=climax · motion=0.282 · luma=0.36",
+      "color_notes": "tier=climax luma=0.36",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 91.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s052",
@@ -1570,8 +2641,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/build \u00b7 tier=climax \u00b7 motion=0.273 \u00b7 luma=0.41",
-      "color_notes": "tier=climax luma=0.41"
+      "description": "act1/build · tier=climax · motion=0.273 · luma=0.41",
+      "color_notes": "tier=climax luma=0.41",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 72.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s053",
@@ -1600,8 +2692,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/drop \u00b7 tier=climax \u00b7 motion=0.386 \u00b7 luma=0.33 \u00b7 DROP@59.2s intensity 1.00",
-      "color_notes": "tier=climax luma=0.33"
+      "description": "act1/drop · tier=climax · motion=0.386 · luma=0.33 · DROP@59.2s intensity 1.00",
+      "color_notes": "tier=climax luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s054",
@@ -1630,8 +2743,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act1/drop \u00b7 tier=climax \u00b7 motion=0.271 \u00b7 luma=0.31 \u00b7 DROP@59.2s intensity 1.00",
-      "color_notes": "tier=climax luma=0.31"
+      "description": "act1/drop · tier=climax · motion=0.271 · luma=0.31 · DROP@59.2s intensity 1.00",
+      "color_notes": "tier=climax luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 71.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s055",
@@ -1660,8 +2794,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.213 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act2/post-drop · tier=high · motion=0.213 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 77.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s056",
@@ -1690,8 +2845,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.326 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/post-drop · tier=high · motion=0.326 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s057",
@@ -1720,8 +2896,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.209 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/sustain · tier=high · motion=0.209 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s058",
@@ -1750,8 +2947,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.236 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act2/sustain · tier=high · motion=0.236 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s059",
@@ -1780,8 +2998,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.248 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/sustain · tier=high · motion=0.248 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s060",
@@ -1810,8 +3049,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21 | phase0-relit luma>=0.22"
+      "description": "act2/sustain · tier=high · motion=0.190 · luma=0.21",
+      "color_notes": "tier=high luma=0.21 | phase0-relit luma>=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s061",
@@ -1840,8 +3100,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.253 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19 | phase0-relit luma>=0.22"
+      "description": "act2/sustain · tier=high · motion=0.253 · luma=0.19",
+      "color_notes": "tier=high luma=0.19 | phase0-relit luma>=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 25.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s062",
@@ -1870,8 +3151,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.217 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20"
+      "description": "act2/sustain · tier=high · motion=0.217 · luma=0.20",
+      "color_notes": "tier=high luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 88.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s063",
@@ -1900,8 +3202,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.222 \u00b7 luma=0.37",
-      "color_notes": "tier=high luma=0.37"
+      "description": "act2/sustain · tier=high · motion=0.222 · luma=0.37",
+      "color_notes": "tier=high luma=0.37",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 80.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s064",
@@ -1930,8 +3253,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.216 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act2/sustain · tier=high · motion=0.216 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 70.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s065",
@@ -1960,8 +3304,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act2/sustain · tier=high · motion=0.214 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s066",
@@ -1990,8 +3355,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.219 \u00b7 luma=0.30",
-      "color_notes": "tier=high luma=0.30"
+      "description": "act2/sustain · tier=high · motion=0.219 · luma=0.30",
+      "color_notes": "tier=high luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s067",
@@ -2020,8 +3406,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.212 \u00b7 luma=0.23",
-      "color_notes": "tier=high luma=0.23"
+      "description": "act2/sustain · tier=high · motion=0.212 · luma=0.23",
+      "color_notes": "tier=high luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s068",
@@ -2050,8 +3457,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.253 \u00b7 luma=0.32",
-      "color_notes": "tier=climax luma=0.32"
+      "description": "act2/build · tier=climax · motion=0.253 · luma=0.32",
+      "color_notes": "tier=climax luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s069",
@@ -2080,8 +3508,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.262 \u00b7 luma=0.31",
-      "color_notes": "tier=climax luma=0.31"
+      "description": "act2/build · tier=climax · motion=0.262 · luma=0.31",
+      "color_notes": "tier=climax luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 69.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s070",
@@ -2110,8 +3559,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.269 \u00b7 luma=0.34",
-      "color_notes": "tier=climax luma=0.34"
+      "description": "act2/build · tier=climax · motion=0.269 · luma=0.34",
+      "color_notes": "tier=climax luma=0.34",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 71.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s071",
@@ -2140,8 +3610,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Extraction",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.308 \u00b7 luma=0.27 \u00b7 DROP@74.3s intensity 0.85",
-      "color_notes": "tier=climax luma=0.27"
+      "description": "act2/drop · tier=climax · motion=0.308 · luma=0.27 · DROP@74.3s intensity 0.85",
+      "color_notes": "tier=climax luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s072",
@@ -2170,8 +3661,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.261 \u00b7 luma=0.28 \u00b7 DROP@74.3s intensity 0.85",
-      "color_notes": "tier=climax luma=0.28"
+      "description": "act2/drop · tier=climax · motion=0.261 · luma=0.28 · DROP@74.3s intensity 0.85",
+      "color_notes": "tier=climax luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 69.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s073",
@@ -2200,8 +3712,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.36",
-      "color_notes": "tier=high luma=0.36"
+      "description": "act2/post-drop · tier=high · motion=0.190 · luma=0.36",
+      "color_notes": "tier=high luma=0.36",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s074",
@@ -2230,8 +3763,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.298 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act2/post-drop · tier=high · motion=0.298 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s075",
@@ -2260,8 +3814,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.225 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act2/sustain · tier=high · motion=0.225 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 91.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s076",
@@ -2290,8 +3865,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24 | phase0-relit luma>=0.22 | phase0-relit2 luma>=0.3"
+      "description": "act2/sustain · tier=high · motion=0.190 · luma=0.24",
+      "color_notes": "tier=high luma=0.24 | phase0-relit luma>=0.22 | phase0-relit2 luma>=0.3",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 84.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s077",
@@ -2320,8 +3916,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.240 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24 | phase0-relit3 jw4-relaxed"
+      "description": "act2/sustain · tier=high · motion=0.240 · luma=0.24",
+      "color_notes": "tier=high luma=0.24 | phase0-relit3 jw4-relaxed",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 63.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s078",
@@ -2350,8 +3967,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.243 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/sustain · tier=high · motion=0.243 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s079",
@@ -2380,8 +4018,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.198 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act2/sustain · tier=high · motion=0.198 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s080",
@@ -2410,8 +4069,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.330 \u00b7 luma=0.31",
-      "color_notes": "tier=high luma=0.31"
+      "description": "act2/sustain · tier=high · motion=0.330 · luma=0.31",
+      "color_notes": "tier=high luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s081",
@@ -2440,8 +4120,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.200 \u00b7 luma=0.23",
-      "color_notes": "tier=high luma=0.23"
+      "description": "act2/sustain · tier=high · motion=0.200 · luma=0.23",
+      "color_notes": "tier=high luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s082",
@@ -2470,8 +4171,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.181 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act2/sustain · tier=high · motion=0.181 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 73.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s083",
@@ -2500,8 +4222,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.225 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act2/sustain · tier=high · motion=0.225 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 81.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s084",
@@ -2530,8 +4273,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.31",
-      "color_notes": "tier=high luma=0.31"
+      "description": "act2/sustain · tier=high · motion=0.185 · luma=0.31",
+      "color_notes": "tier=high luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 60.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s085",
@@ -2560,8 +4324,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.244 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act2/sustain · tier=high · motion=0.244 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 99.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s086",
@@ -2590,8 +4375,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.243 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.243 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 98.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s087",
@@ -2620,8 +4426,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.188 \u00b7 luma=0.35",
-      "color_notes": "tier=high luma=0.35"
+      "description": "act2/sustain · tier=high · motion=0.188 · luma=0.35",
+      "color_notes": "tier=high luma=0.35",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s088",
@@ -2650,8 +4477,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.255 \u00b7 luma=0.46",
-      "color_notes": "tier=climax luma=0.46"
+      "description": "act2/build · tier=climax · motion=0.255 · luma=0.46",
+      "color_notes": "tier=climax luma=0.46",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 82.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s089",
@@ -2680,8 +4528,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.251 \u00b7 luma=0.31",
-      "color_notes": "tier=climax luma=0.31"
+      "description": "act2/build · tier=climax · motion=0.251 · luma=0.31",
+      "color_notes": "tier=climax luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s090",
@@ -2710,8 +4579,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.288 \u00b7 luma=0.42 \u00b7 DROP@91.8s intensity 0.83",
-      "color_notes": "tier=climax luma=0.42"
+      "description": "act2/drop · tier=climax · motion=0.288 · luma=0.42 · DROP@91.8s intensity 0.83",
+      "color_notes": "tier=climax luma=0.42",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 76.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s091",
@@ -2740,8 +4630,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.204 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/post-drop · tier=high · motion=0.204 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 82.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s092",
@@ -2770,8 +4681,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.216 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act2/post-drop · tier=high · motion=0.216 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s093",
@@ -2800,8 +4732,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.184 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27 | phase0-relit luma>=0.22"
+      "description": "act2/sustain · tier=high · motion=0.184 · luma=0.27",
+      "color_notes": "tier=high luma=0.27 | phase0-relit luma>=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 44.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s094",
@@ -2830,8 +4783,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act2/sustain · tier=high · motion=0.190 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 77.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s095",
@@ -2860,8 +4834,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.235 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act2/sustain · tier=high · motion=0.235 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s096",
@@ -2890,8 +4885,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.203 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.203 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 73.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s097",
@@ -2920,8 +4936,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.228 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/sustain · tier=high · motion=0.228 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s098",
@@ -2950,8 +4987,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.216 \u00b7 luma=0.29",
-      "color_notes": "tier=high luma=0.29"
+      "description": "act2/sustain · tier=high · motion=0.216 · luma=0.29",
+      "color_notes": "tier=high luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s099",
@@ -2980,8 +5038,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.211 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/sustain · tier=high · motion=0.211 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s100",
@@ -3010,8 +5089,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.198 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.198 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 99.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s101",
@@ -3040,8 +5140,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.238 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act2/sustain · tier=high · motion=0.238 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 63.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s102",
@@ -3070,8 +5191,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.29",
-      "color_notes": "tier=high luma=0.29"
+      "description": "act2/sustain · tier=high · motion=0.185 · luma=0.29",
+      "color_notes": "tier=high luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s103",
@@ -3100,8 +5242,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/sustain · tier=high · motion=0.214 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 56.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s104",
@@ -3130,8 +5293,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.236 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.236 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 76.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s105",
@@ -3160,8 +5344,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.263 \u00b7 luma=0.42",
-      "color_notes": "tier=climax luma=0.42"
+      "description": "act2/build · tier=climax · motion=0.263 · luma=0.42",
+      "color_notes": "tier=climax luma=0.42",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 69.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s106",
@@ -3190,8 +5395,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.271 \u00b7 luma=0.35",
-      "color_notes": "tier=climax luma=0.35"
+      "description": "act2/build · tier=climax · motion=0.271 · luma=0.35",
+      "color_notes": "tier=climax luma=0.35",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 71.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s107",
@@ -3220,8 +5446,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "John Wick",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.299 \u00b7 luma=0.27 \u00b7 DROP@107.6s intensity 0.85",
-      "color_notes": "tier=climax luma=0.27"
+      "description": "act2/drop · tier=climax · motion=0.299 · luma=0.27 · DROP@107.6s intensity 0.85",
+      "color_notes": "tier=climax luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s108",
@@ -3250,8 +5497,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.282 \u00b7 luma=0.33 \u00b7 DROP@107.6s intensity 0.85",
-      "color_notes": "tier=climax luma=0.33"
+      "description": "act2/drop · tier=climax · motion=0.282 · luma=0.33 · DROP@107.6s intensity 0.85",
+      "color_notes": "tier=climax luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 74.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s109",
@@ -3280,8 +5548,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.227 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act2/post-drop · tier=high · motion=0.227 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s110",
@@ -3310,8 +5599,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.201 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act2/post-drop · tier=high · motion=0.201 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 53.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s111",
@@ -3340,8 +5650,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.210 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.210 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s112",
@@ -3370,8 +5701,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20"
+      "description": "act2/sustain · tier=high · motion=0.214 · luma=0.20",
+      "color_notes": "tier=high luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s113",
@@ -3400,8 +5752,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.425 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act2/sustain · tier=high · motion=0.425 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s114",
@@ -3430,8 +5803,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.239 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act2/sustain · tier=high · motion=0.239 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s115",
@@ -3460,8 +5854,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act2/sustain · tier=high · motion=0.185 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 67.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s116",
@@ -3490,8 +5905,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.241 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act2/sustain · tier=high · motion=0.241 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 63.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s117",
@@ -3520,8 +5956,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.253 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/sustain · tier=high · motion=0.253 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s118",
@@ -3550,8 +6007,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.200 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act2/sustain · tier=high · motion=0.200 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 72.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s119",
@@ -3580,8 +6058,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.209 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.209 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s120",
@@ -3610,8 +6109,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.193 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act2/sustain · tier=high · motion=0.193 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 69.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s121",
@@ -3640,8 +6160,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.233 \u00b7 luma=0.30",
-      "color_notes": "tier=high luma=0.30"
+      "description": "act2/sustain · tier=high · motion=0.233 · luma=0.30",
+      "color_notes": "tier=high luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 84.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s122",
@@ -3670,8 +6211,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.203 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act2/sustain · tier=high · motion=0.203 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 53.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s123",
@@ -3700,8 +6262,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.203 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.203 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 73.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s124",
@@ -3730,8 +6313,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/build \u00b7 tier=climax \u00b7 motion=0.256 \u00b7 luma=0.21",
-      "color_notes": "tier=climax luma=0.21"
+      "description": "act2/build · tier=climax · motion=0.256 · luma=0.21",
+      "color_notes": "tier=climax luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s125",
@@ -3760,8 +6364,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=high \u00b7 motion=0.373 \u00b7 luma=0.37",
-      "color_notes": "tier=high luma=0.37"
+      "description": "act2/build · tier=high · motion=0.373 · luma=0.37",
+      "color_notes": "tier=high luma=0.37",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 98.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s126",
@@ -3790,8 +6415,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.317 \u00b7 luma=0.31 \u00b7 DROP@126.2s intensity 0.86",
-      "color_notes": "tier=climax luma=0.31"
+      "description": "act2/drop · tier=climax · motion=0.317 · luma=0.31 · DROP@126.2s intensity 0.86",
+      "color_notes": "tier=climax luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 83.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s127",
@@ -3820,8 +6466,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.235 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act2/post-drop · tier=high · motion=0.235 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 62.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s128",
@@ -3850,8 +6517,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.229 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/post-drop · tier=high · motion=0.229 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s129",
@@ -3880,8 +6568,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.207 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act2/sustain · tier=high · motion=0.207 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 54.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s130",
@@ -3910,8 +6619,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.184 \u00b7 luma=0.17",
-      "color_notes": "tier=high luma=0.17"
+      "description": "act2/sustain · tier=high · motion=0.184 · luma=0.17",
+      "color_notes": "tier=high luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 92.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s131",
@@ -3940,8 +6670,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.233 \u00b7 luma=0.30",
-      "color_notes": "tier=high luma=0.30"
+      "description": "act2/sustain · tier=high · motion=0.233 · luma=0.30",
+      "color_notes": "tier=high luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 94.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s132",
@@ -3970,8 +6721,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.195 \u00b7 luma=0.37",
-      "color_notes": "tier=high luma=0.37"
+      "description": "act2/sustain · tier=high · motion=0.195 · luma=0.37",
+      "color_notes": "tier=high luma=0.37",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 51.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s133",
@@ -4000,8 +6772,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.275 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.275 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s134",
@@ -4030,8 +6823,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.186 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act2/sustain · tier=high · motion=0.186 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 75.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s135",
@@ -4060,8 +6874,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.214 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 77.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s136",
@@ -4090,8 +6925,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.187 \u00b7 luma=0.39",
-      "color_notes": "tier=high luma=0.39"
+      "description": "act2/sustain · tier=high · motion=0.187 · luma=0.39",
+      "color_notes": "tier=high luma=0.39",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s137",
@@ -4120,8 +6976,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.216 \u00b7 luma=0.32",
-      "color_notes": "tier=high luma=0.32"
+      "description": "act2/sustain · tier=high · motion=0.216 · luma=0.32",
+      "color_notes": "tier=high luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 57.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s138",
@@ -4150,8 +7027,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.184 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.184 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s139",
@@ -4180,8 +7078,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.207 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act2/sustain · tier=high · motion=0.207 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 67.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s140",
@@ -4210,8 +7129,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/sustain · tier=high · motion=0.214 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s141",
@@ -4240,8 +7180,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.215 \u00b7 luma=0.38",
-      "color_notes": "tier=high luma=0.38"
+      "description": "act2/sustain · tier=high · motion=0.215 · luma=0.38",
+      "color_notes": "tier=high luma=0.38",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 56.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s142",
@@ -4270,8 +7231,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.253 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act2/sustain · tier=high · motion=0.253 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s143",
@@ -4300,8 +7282,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.219 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.219 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 79.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s144",
@@ -4330,8 +7333,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/build \u00b7 tier=high \u00b7 motion=0.204 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/build · tier=high · motion=0.204 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 83.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s145",
@@ -4360,8 +7384,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/build \u00b7 tier=high \u00b7 motion=0.295 \u00b7 luma=0.34",
-      "color_notes": "tier=high luma=0.34"
+      "description": "act2/build · tier=high · motion=0.295 · luma=0.34",
+      "color_notes": "tier=high luma=0.34",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 78.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s146",
@@ -4390,8 +7435,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Extraction",
-      "description": "act2/drop \u00b7 tier=climax \u00b7 motion=0.386 \u00b7 luma=0.35 \u00b7 DROP@141.2s intensity 1.00",
-      "color_notes": "tier=climax luma=0.35"
+      "description": "act2/drop · tier=climax · motion=0.386 · luma=0.35 · DROP@141.2s intensity 1.00",
+      "color_notes": "tier=climax luma=0.35",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s147",
@@ -4420,8 +7486,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.226 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act2/post-drop · tier=high · motion=0.226 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 92.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s148",
@@ -4450,8 +7537,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.244 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act2/post-drop · tier=high · motion=0.244 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 64.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s149",
@@ -4480,8 +7588,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/post-drop \u00b7 tier=high \u00b7 motion=0.205 \u00b7 luma=0.47",
-      "color_notes": "tier=high luma=0.47"
+      "description": "act2/post-drop · tier=high · motion=0.205 · luma=0.47",
+      "color_notes": "tier=high luma=0.47",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 54.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s150",
@@ -4510,8 +7639,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act2/sustain · tier=high · motion=0.185 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s151",
@@ -4540,8 +7690,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.195 \u00b7 luma=0.31",
-      "color_notes": "tier=high luma=0.31"
+      "description": "act2/sustain · tier=high · motion=0.195 · luma=0.31",
+      "color_notes": "tier=high luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s152",
@@ -4570,8 +7741,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.226 \u00b7 luma=0.50",
-      "color_notes": "tier=high luma=0.50"
+      "description": "act2/sustain · tier=high · motion=0.226 · luma=0.50",
+      "color_notes": "tier=high luma=0.50",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 59.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s153",
@@ -4600,8 +7792,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.221 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "description": "act2/sustain · tier=high · motion=0.221 · luma=0.19",
+      "color_notes": "tier=high luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 58.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s154",
@@ -4630,8 +7843,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.200 \u00b7 luma=0.18",
-      "color_notes": "tier=high luma=0.18"
+      "description": "act2/sustain · tier=high · motion=0.200 · luma=0.18",
+      "color_notes": "tier=high luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 53.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s155",
@@ -4660,8 +7894,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.248 \u00b7 luma=0.22",
-      "color_notes": "tier=high luma=0.22"
+      "description": "act2/sustain · tier=high · motion=0.248 · luma=0.22",
+      "color_notes": "tier=high luma=0.22",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s156",
@@ -4690,8 +7945,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.181 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act3/sustain · tier=high · motion=0.181 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s157",
@@ -4720,8 +7996,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.188 \u00b7 luma=0.28",
-      "color_notes": "tier=high luma=0.28"
+      "description": "act3/sustain · tier=high · motion=0.188 · luma=0.28",
+      "color_notes": "tier=high luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s158",
@@ -4750,8 +8047,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.365 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act3/sustain · tier=high · motion=0.365 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s159",
@@ -4780,8 +8098,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.232 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act3/build · tier=high · motion=0.232 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 75.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s160",
@@ -4810,8 +8149,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.209 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act3/build · tier=high · motion=0.209 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 84.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s161",
@@ -4840,8 +8200,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.260 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act3/build · tier=high · motion=0.260 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s162",
@@ -4870,8 +8251,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/drop \u00b7 tier=climax \u00b7 motion=0.326 \u00b7 luma=0.33 \u00b7 DROP@156.2s intensity 0.88",
-      "color_notes": "tier=climax luma=0.33"
+      "description": "act3/drop · tier=climax · motion=0.326 · luma=0.33 · DROP@156.2s intensity 0.88",
+      "color_notes": "tier=climax luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 86.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s163",
@@ -4900,8 +8302,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/post-drop \u00b7 tier=high \u00b7 motion=0.248 \u00b7 luma=0.33",
-      "color_notes": "tier=high luma=0.33"
+      "description": "act3/post-drop · tier=high · motion=0.248 · luma=0.33",
+      "color_notes": "tier=high luma=0.33",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s164",
@@ -4930,8 +8353,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.226 \u00b7 luma=0.25",
-      "color_notes": "tier=high luma=0.25"
+      "description": "act3/sustain · tier=high · motion=0.226 · luma=0.25",
+      "color_notes": "tier=high luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 81.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s165",
@@ -4960,8 +8404,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.243 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act3/sustain · tier=high · motion=0.243 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 88.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s166",
@@ -4990,8 +8455,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.215 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "description": "act3/sustain · tier=high · motion=0.215 · luma=0.27",
+      "color_notes": "tier=high luma=0.27",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 56.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s167",
@@ -5020,8 +8506,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.188 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act3/sustain · tier=high · motion=0.188 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 49.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s168",
@@ -5050,8 +8557,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.212 \u00b7 luma=0.34",
-      "color_notes": "tier=high luma=0.34"
+      "description": "act3/sustain · tier=high · motion=0.212 · luma=0.34",
+      "color_notes": "tier=high luma=0.34",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s169",
@@ -5080,8 +8608,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.202 \u00b7 luma=0.23",
-      "color_notes": "tier=high luma=0.23"
+      "description": "act3/build · tier=high · motion=0.202 · luma=0.23",
+      "color_notes": "tier=high luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 53.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s170",
@@ -5110,8 +8659,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "description": "act3/build · tier=high · motion=0.190 · luma=0.24",
+      "color_notes": "tier=high luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 77.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s171",
@@ -5140,8 +8710,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/build \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.30",
-      "color_notes": "tier=high luma=0.30"
+      "description": "act3/build · tier=high · motion=0.185 · luma=0.30",
+      "color_notes": "tier=high luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 66.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s172",
@@ -5170,8 +8761,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "John Wick",
-      "description": "act3/drop \u00b7 tier=climax \u00b7 motion=0.282 \u00b7 luma=0.29 \u00b7 DROP@171.2s intensity 0.82",
-      "color_notes": "tier=climax luma=0.29"
+      "description": "act3/drop · tier=climax · motion=0.282 · luma=0.29 · DROP@171.2s intensity 0.82",
+      "color_notes": "tier=climax luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s173",
@@ -5200,8 +8812,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/post-drop \u00b7 tier=high \u00b7 motion=0.214 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act3/post-drop · tier=high · motion=0.214 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s174",
@@ -5230,8 +8863,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid",
-      "description": "act3/post-drop \u00b7 tier=high \u00b7 motion=0.215 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act3/post-drop · tier=high · motion=0.215 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 87.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s175",
@@ -5260,8 +8914,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.218 \u00b7 luma=0.41",
-      "color_notes": "tier=high luma=0.41"
+      "description": "act3/sustain · tier=high · motion=0.218 · luma=0.41",
+      "color_notes": "tier=high luma=0.41",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 57.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s176",
@@ -5290,8 +8965,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.185 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20"
+      "description": "act3/sustain · tier=high · motion=0.185 · luma=0.20",
+      "color_notes": "tier=high luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 48.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s177",
@@ -5320,8 +9016,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.200 \u00b7 luma=0.26",
-      "color_notes": "tier=high luma=0.26"
+      "description": "act3/sustain · tier=high · motion=0.200 · luma=0.26",
+      "color_notes": "tier=high luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 52.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s178",
@@ -5350,8 +9067,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=high \u00b7 motion=0.186 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "description": "act3/sustain · tier=high · motion=0.186 · luma=0.21",
+      "color_notes": "tier=high luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 67.2,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s179",
@@ -5380,8 +9118,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.113 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.113 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s180",
@@ -5410,8 +9169,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.164 \u00b7 luma=0.25",
-      "color_notes": "tier=mid luma=0.25"
+      "description": "act3/sustain · tier=mid · motion=0.164 · luma=0.25",
+      "color_notes": "tier=mid luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s181",
@@ -5440,8 +9220,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.127 \u00b7 luma=0.60",
-      "color_notes": "tier=mid luma=0.60"
+      "description": "act3/sustain · tier=mid · motion=0.127 · luma=0.60",
+      "color_notes": "tier=mid luma=0.60",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s182",
@@ -5470,8 +9271,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.138 \u00b7 luma=0.17",
-      "color_notes": "tier=mid luma=0.17"
+      "description": "act3/sustain · tier=mid · motion=0.138 · luma=0.17",
+      "color_notes": "tier=mid luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s183",
@@ -5500,8 +9322,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.119 \u00b7 luma=0.17",
-      "color_notes": "tier=mid luma=0.17"
+      "description": "act3/sustain · tier=mid · motion=0.119 · luma=0.17",
+      "color_notes": "tier=mid luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 73.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s184",
@@ -5530,8 +9373,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.108 \u00b7 luma=0.31",
-      "color_notes": "tier=mid luma=0.31"
+      "description": "act3/sustain · tier=mid · motion=0.108 · luma=0.31",
+      "color_notes": "tier=mid luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 87.8,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s185",
@@ -5560,8 +9424,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/build \u00b7 tier=mid \u00b7 motion=0.159 \u00b7 luma=0.21",
-      "color_notes": "tier=mid luma=0.21"
+      "description": "act3/build · tier=mid · motion=0.159 · luma=0.21",
+      "color_notes": "tier=mid luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s186",
@@ -5590,8 +9475,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/build \u00b7 tier=mid \u00b7 motion=0.153 \u00b7 luma=0.29",
-      "color_notes": "tier=mid luma=0.29"
+      "description": "act3/build · tier=mid · motion=0.153 · luma=0.29",
+      "color_notes": "tier=mid luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 95.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s187",
@@ -5620,8 +9526,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "John Wick",
-      "description": "act3/drop \u00b7 tier=climax \u00b7 motion=0.385 \u00b7 luma=0.25 \u00b7 DROP@186.2s intensity 0.99",
-      "color_notes": "tier=climax luma=0.25"
+      "description": "act3/drop · tier=climax · motion=0.385 · luma=0.25 · DROP@186.2s intensity 0.99",
+      "color_notes": "tier=climax luma=0.25",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s188",
@@ -5650,8 +9577,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/post-drop \u00b7 tier=mid \u00b7 motion=0.169 \u00b7 luma=0.23",
-      "color_notes": "tier=mid luma=0.23"
+      "description": "act3/post-drop · tier=mid · motion=0.169 · luma=0.23",
+      "color_notes": "tier=mid luma=0.23",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s189",
@@ -5680,8 +9628,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.129 \u00b7 luma=0.29",
-      "color_notes": "tier=mid luma=0.29"
+      "description": "act3/sustain · tier=mid · motion=0.129 · luma=0.29",
+      "color_notes": "tier=mid luma=0.29",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s190",
@@ -5710,8 +9679,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.102 \u00b7 luma=0.42",
-      "color_notes": "tier=mid luma=0.42"
+      "description": "act3/sustain · tier=mid · motion=0.102 · luma=0.42",
+      "color_notes": "tier=mid luma=0.42",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 63.7,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s191",
@@ -5740,8 +9730,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.137 \u00b7 luma=0.40",
-      "color_notes": "tier=mid luma=0.40"
+      "description": "act3/sustain · tier=mid · motion=0.137 · luma=0.40",
+      "color_notes": "tier=mid luma=0.40",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s192",
@@ -5770,8 +9781,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.153 \u00b7 luma=0.19",
-      "color_notes": "tier=mid luma=0.19"
+      "description": "act3/sustain · tier=mid · motion=0.153 · luma=0.19",
+      "color_notes": "tier=mid luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s193",
@@ -5800,8 +9832,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.148 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.148 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s194",
@@ -5830,8 +9883,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.140 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.140 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 87.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s195",
@@ -5860,8 +9934,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.123 \u00b7 luma=0.19",
-      "color_notes": "tier=mid luma=0.19"
+      "description": "act3/sustain · tier=mid · motion=0.123 · luma=0.19",
+      "color_notes": "tier=mid luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s196",
@@ -5890,8 +9985,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.157 \u00b7 luma=0.21",
-      "color_notes": "tier=mid luma=0.21"
+      "description": "act3/sustain · tier=mid · motion=0.157 · luma=0.21",
+      "color_notes": "tier=mid luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s197",
@@ -5920,8 +10036,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.167 \u00b7 luma=0.21",
-      "color_notes": "tier=mid luma=0.21"
+      "description": "act3/sustain · tier=mid · motion=0.167 · luma=0.21",
+      "color_notes": "tier=mid luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s198",
@@ -5950,8 +10087,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/build \u00b7 tier=mid \u00b7 motion=0.154 \u00b7 luma=0.32",
-      "color_notes": "tier=mid luma=0.32"
+      "description": "act3/build · tier=mid · motion=0.154 · luma=0.32",
+      "color_notes": "tier=mid luma=0.32",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 50.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s199",
@@ -5980,8 +10138,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Mad Max: Fury Road",
-      "description": "act3/drop \u00b7 tier=climax \u00b7 motion=0.347 \u00b7 luma=0.28 \u00b7 DROP@201.4s intensity 0.92",
-      "color_notes": "tier=climax luma=0.28"
+      "description": "act3/drop · tier=climax · motion=0.347 · luma=0.28 · DROP@201.4s intensity 0.92",
+      "color_notes": "tier=climax luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 91.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s200",
@@ -6010,8 +10189,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/post-drop \u00b7 tier=mid \u00b7 motion=0.160 \u00b7 luma=0.24",
-      "color_notes": "tier=mid luma=0.24"
+      "description": "act3/post-drop · tier=mid · motion=0.160 · luma=0.24",
+      "color_notes": "tier=mid luma=0.24",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 99.5,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s201",
@@ -6040,8 +10240,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "The Raid 2",
-      "description": "act3/post-drop \u00b7 tier=mid \u00b7 motion=0.113 \u00b7 luma=0.28",
-      "color_notes": "tier=mid luma=0.28"
+      "description": "act3/post-drop · tier=mid · motion=0.113 · luma=0.28",
+      "color_notes": "tier=mid luma=0.28",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 92.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s202",
@@ -6070,8 +10291,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.138 \u00b7 luma=0.17",
-      "color_notes": "tier=mid luma=0.17"
+      "description": "act3/sustain · tier=mid · motion=0.138 · luma=0.17",
+      "color_notes": "tier=mid luma=0.17",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s203",
@@ -6100,8 +10342,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.146 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18 | phase0-relit2 luma>=0.3 | phase0-relit-final"
+      "description": "act3/sustain · tier=mid · motion=0.146 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18 | phase0-relit2 luma>=0.3 | phase0-relit-final",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s204",
@@ -6130,8 +10393,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.173 \u00b7 luma=0.19",
-      "color_notes": "tier=mid luma=0.19"
+      "description": "act3/sustain · tier=mid · motion=0.173 · luma=0.19",
+      "color_notes": "tier=mid luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 56.1,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s205",
@@ -6160,8 +10444,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.138 \u00b7 luma=0.19",
-      "color_notes": "tier=mid luma=0.19"
+      "description": "act3/sustain · tier=mid · motion=0.138 · luma=0.19",
+      "color_notes": "tier=mid luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s206",
@@ -6190,8 +10495,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.150 \u00b7 luma=0.20",
-      "color_notes": "tier=mid luma=0.20"
+      "description": "act3/sustain · tier=mid · motion=0.150 · luma=0.20",
+      "color_notes": "tier=mid luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s207",
@@ -6220,8 +10546,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.155 \u00b7 luma=0.31",
-      "color_notes": "tier=mid luma=0.31"
+      "description": "act3/sustain · tier=mid · motion=0.155 · luma=0.31",
+      "color_notes": "tier=mid luma=0.31",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 50.3,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s208",
@@ -6250,8 +10597,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.147 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.147 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s209",
@@ -6280,8 +10648,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.155 \u00b7 luma=0.20",
-      "color_notes": "tier=mid luma=0.20"
+      "description": "act3/sustain · tier=mid · motion=0.155 · luma=0.20",
+      "color_notes": "tier=mid luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s210",
@@ -6310,8 +10699,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.162 \u00b7 luma=0.21",
-      "color_notes": "tier=mid luma=0.21"
+      "description": "act3/sustain · tier=mid · motion=0.162 · luma=0.21",
+      "color_notes": "tier=mid luma=0.21",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 52.6,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s211",
@@ -6340,8 +10750,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/build \u00b7 tier=mid \u00b7 motion=0.128 \u00b7 luma=0.20",
-      "color_notes": "tier=mid luma=0.20"
+      "description": "act3/build · tier=mid · motion=0.128 · luma=0.20",
+      "color_notes": "tier=mid luma=0.20",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s212",
@@ -6370,8 +10801,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "Extraction",
-      "description": "act3/drop \u00b7 tier=climax \u00b7 motion=0.292 \u00b7 luma=0.30 \u00b7 DROP@216.7s intensity 0.84",
-      "color_notes": "tier=climax luma=0.30"
+      "description": "act3/drop · tier=climax · motion=0.292 · luma=0.30 · DROP@216.7s intensity 0.84",
+      "color_notes": "tier=climax luma=0.30",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 94.9,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s213",
@@ -6400,8 +10852,29 @@
         "beat_sync_score": 5.0
       },
       "fandom": "John Wick",
-      "description": "act3/drop \u00b7 tier=high \u00b7 motion=0.218 \u00b7 luma=0.15 \u00b7 DROP@216.7s intensity 0.84",
-      "color_notes": "tier=high luma=0.15"
+      "description": "act3/drop · tier=high · motion=0.218 · luma=0.15 · DROP@216.7s intensity 0.84",
+      "color_notes": "tier=high luma=0.15",
+      "emotional_register": [
+        0.0,
+        0.75,
+        0.375,
+        0.5,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "climactic",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        0.3,
+        1.0
+      ]
     },
     {
       "id": "s214",
@@ -6430,8 +10903,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/post-drop \u00b7 tier=mid \u00b7 motion=0.120 \u00b7 luma=0.19",
-      "color_notes": "tier=mid luma=0.19"
+      "description": "act3/post-drop · tier=mid · motion=0.120 · luma=0.19",
+      "color_notes": "tier=mid luma=0.19",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s215",
@@ -6460,8 +10954,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/post-drop \u00b7 tier=mid \u00b7 motion=0.167 \u00b7 luma=0.26",
-      "color_notes": "tier=mid luma=0.26"
+      "description": "act3/post-drop · tier=mid · motion=0.167 · luma=0.26",
+      "color_notes": "tier=mid luma=0.26",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s216",
@@ -6490,8 +11005,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "John Wick",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.113 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.113 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 100.0,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     },
     {
       "id": "s217",
@@ -6520,8 +11056,29 @@
         "beat_sync_score": 4.5
       },
       "fandom": "Extraction",
-      "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.109 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "description": "act3/sustain · tier=mid · motion=0.109 · luma=0.18",
+      "color_notes": "tier=mid luma=0.18",
+      "emotional_register": [
+        0.0,
+        0.625,
+        0.375,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "clip_category": "action-mid",
+      "action_intensity_pct": 35.4,
+      "dialogue_clarity_score": null,
+      "lip_sync_confidence": null,
+      "visual_style": "live_action",
+      "audio_type": "scene_audio",
+      "energy_zone_fit": [
+        0.3,
+        1.0,
+        1.0
+      ]
     }
   ],
   "generated_at": "2026-04-19T20:28:50.574509+00:00",

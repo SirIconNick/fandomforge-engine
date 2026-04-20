@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:56:04.971Z
+// Generated at: 2026-04-20T04:03:30.066Z
 
 
 export type Layer = {
@@ -781,6 +781,24 @@ export type Shot = {
     color_notes?: string;
     characters?: Array<string>;
     fandom?: string;
+    /** Phase 1.3 — taxonomy id from clip-category.schema.json. Drives slot-fit scoring. */
+    clip_category?: "establishing" | "action-high" | "action-mid" | "reaction-quiet" | "reaction-emotional" | "dialogue-primary" | "dialogue-reaction" | "transitional" | "climactic" | "resolution" | "texture";
+    /** Phase 1.3 — 8-dim emotional vector. Order matches intent.tone_vector: [grief, triumph, fear, awe, tension, release, sorrow, elation]. Each 0-1. */
+    emotional_register?: Array<number>;
+    /** Phase 1.3 — motion magnitude 0-100, normalized against the source's typical motion baseline. */
+    action_intensity_pct?: number;
+    /** Phase 1.3 — 0-100 SNR + word-confidence proxy from whisper. Null when no transcript. */
+    dialogue_clarity_score?: number | null;
+    /** Phase 1.3 — mouth-region motion vs spoken-line plausibility 0-1. Null when no face / no whisper. */
+    lip_sync_confidence?: number | null;
+    /** Phase 1.3 — inherited from source-profile.source_type so slot-fit can warn on cross-style cuts. */
+    visual_style?: "anime" | "live_action" | "western_animation" | "3d_render" | "archival" | "music_video" | "sports" | "documentary" | "mixed";
+    /** Phase 1.3 — what kind of audio the source-clip carries. Drives mixer's preserve-diegetic / score-strip / voice-carry decisions. */
+    audio_type?: "dialogue_present" | "sfx_only" | "music_clean" | "scene_audio" | "ambience" | "silent";
+    /** Phase 1.3 — suitability for [low, mid, high] energy zones, derived from clip_category × clip-categories.energy_zone_affinity. */
+    energy_zone_fit?: Array<number>;
+    /** Phase 2.2 — composite slot-fit score 0-1 stamped after the slot-fit scorer runs. */
+    slot_fit_score?: number;
   };
 
 /** The authoritative shot list for an edit. Produced by shot-curator / ff match shots and consumed by QA gate, NLE exporters, and the dashboard timeline editor. */

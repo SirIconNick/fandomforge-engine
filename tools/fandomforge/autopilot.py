@@ -446,6 +446,57 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 1.3 — enrich every shot in shot-list.json with the metadata
+    fields the slot-fit scorer keys off (emotional_register, clip_category,
+    action_intensity_pct, dialogue_clarity_score, lip_sync_confidence,
+    visual_style, audio_type, energy_zone_fit). Reads scenes + transcripts
+    + source-profiles from the project's standard locations.
+    """
+    start = time.perf_counter()
+    shot_list_path = ctx.project_dir / "data" / "shot-list.json"
+    if not shot_list_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="extract_clip_metadata",
+            status="skipped",
+            message="no shot-list.json yet (skipping enrichment)",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    try:
+        from fandomforge.intelligence.clip_metadata import (
+            coverage_report,
+            enrich_shot_list,
+        )
+        from fandomforge.validation import validate_and_write
+
+        shot_list = json.loads(shot_list_path.read_text(encoding="utf-8"))
+        enriched = enrich_shot_list(shot_list, ctx.project_dir)
+        validate_and_write(enriched, "shot-list", shot_list_path)
+        coverage = coverage_report(enriched)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="extract_clip_metadata",
+            status="failed",
+            message=f"enrich failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    # Populated %s for the noisy fields
+    msg = (
+        f"shots: {coverage['total_shots']}, "
+        f"register={coverage['emotional_register']*100:.0f}%, "
+        f"category={coverage['clip_category']*100:.0f}%, "
+        f"audio={coverage['audio_type']*100:.0f}%, "
+        f"dialogue={coverage['dialogue_clarity_score']*100:.0f}%"
+    )
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="extract_clip_metadata",
+        status="ok", message=msg,
+        evidence={"coverage": coverage},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
     """Build a source-profile.json per ingested source.
 
@@ -1737,6 +1788,9 @@ STEPS: list[Step] = [
     Step("propose_shots", "Propose shot list",
          lambda ctx: _artifact_exists_and_valid(ctx, "shot-list"),
          step_propose_shots),
+    Step("extract_clip_metadata", "Enrich shot-list with Phase 1.3 metadata",
+         lambda _ctx: False,  # always re-run; cheap + idempotent (only fills missing fields)
+         step_extract_clip_metadata),
     Step("emotion_arc", "Infer emotion arc",
          lambda ctx: _artifact_exists_and_valid(ctx, "emotion-arc"),
          step_emotion_arc),

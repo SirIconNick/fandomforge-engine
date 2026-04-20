@@ -158,7 +158,61 @@
         "description": {"type": "string"},
         "color_notes": {"type": "string"},
         "characters": {"type": "array", "items": {"type": "string"}},
-        "fandom": {"type": "string"}
+        "fandom": {"type": "string"},
+        "clip_category": {
+          "description": "Phase 1.3 — taxonomy id from clip-category.schema.json. Drives slot-fit scoring.",
+          "type": "string",
+          "enum": [
+            "establishing", "action-high", "action-mid", "reaction-quiet",
+            "reaction-emotional", "dialogue-primary", "dialogue-reaction",
+            "transitional", "climactic", "resolution", "texture"
+          ]
+        },
+        "emotional_register": {
+          "description": "Phase 1.3 — 8-dim emotional vector. Order matches intent.tone_vector: [grief, triumph, fear, awe, tension, release, sorrow, elation]. Each 0-1.",
+          "type": "array",
+          "items": {"type": "number", "minimum": 0, "maximum": 1},
+          "minItems": 8,
+          "maxItems": 8
+        },
+        "action_intensity_pct": {
+          "description": "Phase 1.3 — motion magnitude 0-100, normalized against the source's typical motion baseline.",
+          "type": "number", "minimum": 0, "maximum": 100
+        },
+        "dialogue_clarity_score": {
+          "description": "Phase 1.3 — 0-100 SNR + word-confidence proxy from whisper. Null when no transcript.",
+          "anyOf": [
+            {"type": "number", "minimum": 0, "maximum": 100},
+            {"type": "null"}
+          ]
+        },
+        "lip_sync_confidence": {
+          "description": "Phase 1.3 — mouth-region motion vs spoken-line plausibility 0-1. Null when no face / no whisper.",
+          "anyOf": [
+            {"type": "number", "minimum": 0, "maximum": 1},
+            {"type": "null"}
+          ]
+        },
+        "visual_style": {
+          "description": "Phase 1.3 — inherited from source-profile.source_type so slot-fit can warn on cross-style cuts.",
+          "type": "string",
+          "enum": ["anime", "live_action", "western_animation", "3d_render", "archival", "music_video", "sports", "documentary", "mixed"]
+        },
+        "audio_type": {
+          "description": "Phase 1.3 — what kind of audio the source-clip carries. Drives mixer's preserve-diegetic / score-strip / voice-carry decisions.",
+          "type": "string",
+          "enum": ["dialogue_present", "sfx_only", "music_clean", "scene_audio", "ambience", "silent"]
+        },
+        "energy_zone_fit": {
+          "description": "Phase 1.3 — suitability for [low, mid, high] energy zones, derived from clip_category × clip-categories.energy_zone_affinity.",
+          "type": "array",
+          "items": {"type": "number", "minimum": 0, "maximum": 1},
+          "minItems": 3, "maxItems": 3
+        },
+        "slot_fit_score": {
+          "description": "Phase 2.2 — composite slot-fit score 0-1 stamped after the slot-fit scorer runs.",
+          "type": "number", "minimum": 0, "maximum": 1
+        }
       }
     }
   }
