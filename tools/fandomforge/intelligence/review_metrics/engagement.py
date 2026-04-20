@@ -151,8 +151,20 @@ def score_engagement(
     variety, variety_meas = _visual_variety(shots)
     complement, complement_meas = _complement_usage(shots, complement_plan)
 
-    populated = [s for s in (pacing, variety, complement) if s > 0 or s == 0]
-    composite = sum([pacing, variety, complement]) / 3.0
+    # Composite from POPULATED sub-metrics only. A structurally missing
+    # sub-metric (no complement pairs in the plan, no target_cpm in priors)
+    # shouldn't pull the composite to zero — that's a data gap not a quality
+    # failure. Only count complement_usage when there's a real plan with pairs.
+    populated: list[float] = []
+    if target_cpm is not None:
+        populated.append(pacing)
+    elif pacing > 0:
+        populated.append(pacing)
+    if len(shots) > 0:
+        populated.append(variety)
+    if complement_meas.get("complement_pair_count", 0) > 0:
+        populated.append(complement)
+    composite = sum(populated) / len(populated) if populated else 0.0
 
     notes: list[str] = []
     if target_cpm is not None and abs(pacing_meas.get("actual_avg_cpm", 0) - target_cpm) / max(target_cpm, 1) > 0.4:
@@ -160,7 +172,7 @@ def score_engagement(
     if variety_meas.get("fandom_diversity", 0) < 0.3 and len(shots) > 20:
         notes.append("low fandom diversity — one source dominates")
     if complement_meas.get("complement_pair_count", 0) == 0:
-        notes.append("no complement pairs available — visual rhyming opportunities missed")
+        notes.append("no complement pairs in plan — visual rhyming sub-score skipped (not penalized)")
 
     measurements = {**pacing_meas, **variety_meas, **complement_meas}
     return EngagementReport(

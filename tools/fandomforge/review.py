@@ -721,12 +721,16 @@ def review_rendered_edit(
     complement_plan = _load_json(project_dir / "data" / "complement-plan.json")
     edit_type = (intent or {}).get("edit_type") if intent else None
 
-    coherence_dim = _dim_coherence(shot_list, edit_plan)
-    arc_shape_dim = _dim_arc_shape(tension_curve)
-    engagement_dim = _dim_engagement(shot_list, edit_type, complement_plan)
+    dimensions: list[DimensionReport] = [tech, visual, audio, structural, shotlist]
 
-    dimensions = [tech, visual, audio, structural, shotlist,
-                  coherence_dim, arc_shape_dim, engagement_dim]
+    # Phase 4 dims are conditional — only included when their inputs exist.
+    # Otherwise overall_score would dilute toward arbitrary defaults.
+    if shot_list:
+        dimensions.append(_dim_coherence(shot_list, edit_plan))
+    if tension_curve:
+        dimensions.append(_dim_arc_shape(tension_curve))
+    if shot_list:
+        dimensions.append(_dim_engagement(shot_list, edit_type, complement_plan))
     overall_verdict = _roll_up([d.verdict for d in dimensions])
     score = overall_score(dimensions, edit_type=edit_type)
     grade = score_to_letter(score)
