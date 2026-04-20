@@ -39,7 +39,11 @@ buckets:
     description: "Action / fighting multifandom — supplements existing action-pl1..5"
     playlists:
       - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwpDpUDabKQ34uPHO6_bHIs  # confirmed action (Thor/Troy/Kingsman/Daredevil/John Wick)
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA  # Marvel action-leaning (Bones, Run Boy Run, War)
+      # REMOVED 2026-04-20: PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA duplicates the
+      # existing action-pl1 from the 148-video corpus — same playlist ingested
+      # twice, would double-count ~15 videos in action priors. The new
+      # idempotent tag-reuse in ingest-batch would catch this now; dedup
+      # performed manually for the existing state.
     singles: []
 
   tribute:

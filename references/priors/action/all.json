@@ -2,34 +2,34 @@
   "schema_version": 1,
   "edit_type": "action",
   "fandom_family": "all",
-  "video_count": 178,
+  "video_count": 163,
   "priors": {
     "median_shot_duration_sec": 1.23,
-    "cuts_per_minute": 40.43,
+    "cuts_per_minute": 39.86,
     "quality_weighted": true,
     "shot_duration_range_sec": [
       0.823,
-      2.4
+      2.45
     ],
     "typical_act_pacing_pct": [
       32.3,
-      34.6,
-      33.1
+      34.5,
+      33.2
     ],
-    "cuts_on_beat_pct_mean": 59.33,
+    "cuts_on_beat_pct_mean": 59.19,
     "tempo_bpm_median": 123.05,
-    "avg_luma_mean": 0.2335,
-    "dark_shot_pct_mean": 49.82,
-    "bright_shot_pct_mean": 0.92,
-    "saturation_mean_mean": 0.4065,
-    "intro_to_first_cut_sec_median": 2.96,
+    "avg_luma_mean": 0.2351,
+    "dark_shot_pct_mean": 49.41,
+    "bright_shot_pct_mean": 0.99,
+    "saturation_mean_mean": 0.4048,
+    "intro_to_first_cut_sec_median": 2.933,
     "pacing_profile": "peaks-and-valleys",
     "tier_samples": {
-      "C": 36,
-      "D": 114,
-      "B": 15
+      "C": 33,
+      "D": 106,
+      "B": 12
     }
   },
-  "generated_at": "2026-04-20T10:07:41.672781+00:00",
+  "generated_at": "2026-04-20T18:20:06.971805+00:00",
   "generator": "ff reference rebuild-priors"
 }
