@@ -2,6 +2,23 @@
 
 The autonomous daemon is built, tested, and ready but Claude's safety policy blocks the Claude Code session from starting persistent autonomous processes on its own. You start it with **one** of these three commands depending on how persistent you want it.
 
+## Easiest — use the helper scripts
+
+```bash
+./scripts/orchestrator-start.sh           # launches the daemon in background
+./scripts/orchestrator-watch.sh           # live dashboard (pid, thermal, queue, log)
+./scripts/orchestrator-stop.sh            # SIGTERM graceful stop; SIGKILL fallback
+```
+
+The start script picks sane thermal defaults and sets all the env vars. Use `--gentle` for tighter thresholds on a hot day, `--aggressive` when you've got headroom.
+
+```bash
+./scripts/orchestrator-start.sh --gentle       # start<3 kill>5 cool=240s
+./scripts/orchestrator-start.sh --aggressive   # start<6 kill>9 cool=90s
+```
+
+---
+
 ## 1. Launchd (most persistent — survives reboot)
 
 This is what you want if the laptop will be closed/reopened or restarted while the daemon works.
