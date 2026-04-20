@@ -732,7 +732,12 @@ _MIN_FILLER_SEC = 0.4  # don't emit a filler shorter than this; fold into neighb
 # them as fillers and the render showed visible black flashes between shots.
 # We hard-reject anything below this floor and only fall back to it when the
 # source has NO brighter scenes (cataclysmic last resort).
-MIN_SCENE_LUMA = 0.15
+#
+# Threshold was 0.15 initially but the post-render reviewer (blackdetect
+# with pix_th=0.1) still flagged dim action scenes where avg_luma=0.17-0.23
+# had sub-segments below 0.1. Raised to 0.22 to put a safety buffer between
+# the picker's avg_luma floor and the reviewer's per-frame threshold.
+MIN_SCENE_LUMA = 0.22
 
 
 # Pacing → target scene intensity_tier. Drives which scenes densify picks
@@ -1136,6 +1141,14 @@ def densify_shot_list(
             src_tc = _fmt_timecode(float(scene.get("start_sec", 0.0)))
             used_scenes.add((src, scene.get("index", -1)))
             source_use_count[src] = source_use_count.get(src, 0) + 1
+            # Cap the filler duration to the picked scene's length so the
+            # extraction doesn't spill into the next scene. Otherwise a 2.6s
+            # filler using a 1.5s scene grabs the first 1.5s of the scene
+            # PLUS 1.1s of whatever comes after — which is often dark/fade
+            # material the picker specifically rejected.
+            scene_dur_frames = max(1, int(round(_scene_duration(scene) * fps)))
+            if dur_frames > scene_dur_frames:
+                dur_frames = scene_dur_frames
             # Update the continuity memory for the next filler.
             picked_luma = _scene_luma(scene)
             if picked_luma is not None:
@@ -1213,8 +1226,13 @@ def densify_shot_list(
                 if fillers:
                     fillers[-1]["duration_frames"] += remaining_frames
                 break
-            fillers.append(_make_filler(cursor, dur_frames, flank))
-            cursor += dur_frames
+            filler = _make_filler(cursor, dur_frames, flank)
+            # _make_filler may shorten dur_frames (e.g. to cap at the picked
+            # scene's actual duration). Read the stored value so cursor
+            # advances by what we actually filled, not what we asked for.
+            actual_frames = int(filler["duration_frames"])
+            fillers.append(filler)
+            cursor += max(actual_frames, 1)
         return fillers
 
     densified: list[dict[str, Any]] = []
@@ -1242,10 +1260,15 @@ def densify_shot_list(
 
     out = dict(shot_list)
     out["shots"] = densified
-    if warnings := out.get("warnings"):
-        out["warnings"] = list(warnings)
-    else:
-        out["warnings"] = []
+    # Drop any prior densify warnings before appending the new one. Otherwise
+    # repeated densify runs accumulate stale "15 → 297" messages alongside
+    # the current "15 → 53", and reviewers penalize based on the first (old)
+    # string they find.
+    prior = list(out.get("warnings") or [])
+    out["warnings"] = [
+        w for w in prior
+        if not (isinstance(w, str) and w.startswith("densified from "))
+    ]
     out["warnings"].append(
         f"densified from {len(shots_in)} slot shots to {len(densified)} "
         f"(filler={len(densified) - len(shots_in)}, role=insert)"

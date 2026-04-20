@@ -59,6 +59,13 @@ def _find_source_video(raw_dir: Path, source_id: str) -> Path | None:
         return hit
     if source_id.startswith("fight_"):
         return _find(source_id[len("fight_"):])
+    # Inverse mapping: source_id is the bare stem but the raw file has the
+    # 'fight_' prefix (common when sources were symlinked from a project
+    # whose filenames used the prefix but the scene data keys on the clean
+    # stem). Try the fight_-prefixed variant.
+    fight_hit = _find(f"fight_{source_id}")
+    if fight_hit:
+        return fight_hit
     return None
 
 
