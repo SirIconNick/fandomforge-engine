@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import time
@@ -441,6 +442,83 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
         ts=_now(), run_id=ctx.run_id, step_id="beat_analyze",
         status="ok", message="beat-map.json written",
         evidence={"path": str(out)},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
+def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
+    """Build a source-profile.json per ingested source.
+
+    Produces the per-source visual fingerprint (luma/chroma histograms,
+    color cast, grain, sharpness, AR/fps/resolution) that downstream
+    Phase 3 stages (visual signature DB, slot-fit scorer, AR arbiter,
+    quality-gap mitigator) all key off. Idempotent — skips sources that
+    already have a profile written by the same generator version.
+    """
+    start = time.perf_counter()
+    out_dir = ctx.project_dir / "data" / "source-profiles"
+    catalog_path = ctx.project_dir / "data" / "source-catalog.json"
+
+    if not catalog_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="profile_sources",
+            status="skipped",
+            message="no source-catalog.json yet (skipping profiling)",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.source_profiler import (
+            PROFILER_VERSION,
+            profile_source,
+            write_source_profile,
+        )
+
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        profiled = 0
+        skipped = 0
+        failed = 0
+        for entry in catalog.get("sources") or []:
+            sid = entry.get("id") or entry.get("source_id")
+            path_str = entry.get("path")
+            if not sid or not path_str:
+                continue
+            path = Path(path_str)
+            if not path.exists():
+                failed += 1
+                continue
+
+            # Idempotent: skip if a profile already exists at the current
+            # generator version.
+            existing = out_dir / f"{re.sub(r'[^A-Za-z0-9._-]', '_', sid)}.json"
+            if existing.exists():
+                try:
+                    existing_data = json.loads(existing.read_text(encoding="utf-8"))
+                    if existing_data.get("generator", "").endswith(PROFILER_VERSION):
+                        skipped += 1
+                        continue
+                except (json.JSONDecodeError, OSError):
+                    pass  # fall through to re-profile
+
+            try:
+                profile = profile_source(path, sid, deep=True, n_frames=20)
+                write_source_profile(profile, ctx.project_dir)
+                profiled += 1
+            except Exception:  # noqa: BLE001 — best-effort per-source
+                failed += 1
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="profile_sources",
+            status="failed",
+            message=f"profile_sources failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="profile_sources",
+        status="ok",
+        message=f"source profiles: {profiled} new, {skipped} skipped, {failed} failed",
+        evidence={"out_dir": str(out_dir)},
         duration_sec=round(time.perf_counter() - start, 3),
     )
 
@@ -1617,6 +1695,13 @@ STEPS: list[Step] = [
     Step("ingest_sources", "Ingest source videos",
          lambda _ctx: False,  # re-runs cheaply; its own logic checks what's done
          step_ingest_sources),
+    Step("profile_sources", "Build per-source visual profiles",
+         lambda ctx: not (ctx.project_dir / "data" / "source-catalog.json").exists()
+                     or (
+                         (ctx.project_dir / "data" / "source-profiles").is_dir()
+                         and any((ctx.project_dir / "data" / "source-profiles").iterdir())
+                     ),
+         step_profile_sources),
     Step("beat_analyze", "ff beat analyze",
          lambda ctx: _artifact_exists_and_valid(ctx, "beat-map"),
          step_beat_analyze),
