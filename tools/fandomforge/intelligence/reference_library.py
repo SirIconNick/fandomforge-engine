@@ -774,18 +774,36 @@ def list_playlist_metadata_only(
     playlist_url: str,
     *,
     top_n: int = 20,
+    max_workers: int = 8,
+    enumerate_cap: int | None = None,
 ) -> list[dict[str, Any]]:
     """Enumerate a playlist's videos AND fetch each video's metadata
     (view_count, like_count, channel, upload_date, title) without
     downloading any video bytes. Sorted by view_count descending.
 
+    Parallelized via ThreadPoolExecutor — yt-dlp metadata fetches are
+    IO-bound (network roundtrip ~5s each), so 8 workers cuts total time
+    by ~7-8x.
+
     Phase 0.5.2 validation pass — used by `ff reference validate` to surface
     top-rated content per playlist before committing GB of disk to download.
+
+    Args:
+        playlist_url: full YouTube playlist URL (or single-video URL).
+        top_n: cap on returned records (sorted by view_count desc).
+        max_workers: thread pool size for parallel metadata fetches. Higher
+            than ~12 risks YouTube rate-limiting.
+        enumerate_cap: if set, only fetch metadata for the first N entries
+            from the playlist (still in playlist order). Useful when a
+            playlist has hundreds of videos and you only need the top
+            handful. None = fetch metadata for every entry, then sort.
 
     Returns up to `top_n` records. Records that yt-dlp fails to enumerate
     are silently dropped; partial results are returned rather than failing
     the whole batch.
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     try:
         entries = list_playlist_entries(playlist_url)
     except RuntimeError:
@@ -793,31 +811,32 @@ def list_playlist_metadata_only(
     if not entries:
         return []
 
-    enriched: list[dict[str, Any]] = []
-    for e in entries:
-        meta = fetch_youtube_metadata(e["url"])
+    if enumerate_cap is not None and enumerate_cap > 0:
+        entries = entries[:enumerate_cap]
+
+    def _fetch_one(entry: dict[str, Any]) -> dict[str, Any]:
+        meta = fetch_youtube_metadata(entry["url"])
         if meta is None:
-            # Couldn't reach metadata — keep the bare entry so caller knows
-            # the video EXISTS, just with unknown view_count
-            enriched.append({
-                **e,
+            return {
+                **entry,
                 "view_count": None,
                 "like_count": None,
                 "channel": "",
                 "upload_date": "",
                 "metadata_available": False,
-            })
-            continue
-        enriched.append({
-            **e,
-            **meta,
-            "metadata_available": True,
-        })
+            }
+        return {**entry, **meta, "metadata_available": True}
 
-    # Sort by view_count descending (None sorts last)
-    enriched.sort(
-        key=lambda r: -(r.get("view_count") or 0),
-    )
+    enriched: list[dict[str, Any]] = []
+    with ThreadPoolExecutor(max_workers=max(1, max_workers)) as pool:
+        futures = [pool.submit(_fetch_one, e) for e in entries]
+        for f in as_completed(futures):
+            try:
+                enriched.append(f.result())
+            except Exception:  # noqa: BLE001 — keep partial results on per-task failure
+                continue
+
+    enriched.sort(key=lambda r: -(r.get("view_count") or 0))
     return enriched[:top_n]
 
 
