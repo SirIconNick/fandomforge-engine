@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "duration_sec": 10.0,
+  "resolution_sec": 1.0,
+  "samples": [
+    {"time_sec": 0.0, "target_tension": 0.0, "actual_tension": -0.1, "delta": -0.1, "act_index": 1, "arc_role": "setup"},
+    {"time_sec": 1.0, "target_tension": 0.2, "actual_tension": 0.1, "delta": -0.1, "act_index": 1, "arc_role": "setup"},
+    {"time_sec": 5.0, "target_tension": 0.7, "actual_tension": 0.6, "delta": -0.1, "act_index": 2, "arc_role": "escalation"},
+    {"time_sec": 9.0, "target_tension": 1.0, "actual_tension": 0.95, "delta": -0.05, "act_index": 3, "arc_role": "climax"}
+  ],
+  "summary": {
+    "peak_target": 1.0,
+    "peak_actual": 0.95,
+    "peak_actual_time_sec": 9.0,
+    "rms_delta": 0.09,
+    "builds_to_climax": true,
+    "resolves": true
+  },
+  "generated_at": "2026-04-19T22:00:00+00:00",
+  "generator": "ff tension curve"
+}

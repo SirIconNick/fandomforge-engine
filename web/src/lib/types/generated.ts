@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T04:03:30.066Z
+// Generated at: 2026-04-20T04:23:28.395Z
 
 
 export type Layer = {
@@ -572,6 +572,47 @@ export interface ProjectConfig {
     edit_type?: "action" | "emotional" | "tribute" | "shipping" | "speed_amv" | "cinematic" | "comedy" | "hype_trailer";
   }
 
+/** Per-render psychology proxy telemetry (Phase 5.1). Stored every render, NOT graded — when calibration data exists, future correlation work can connect these proxies to actual viewer reception. Fields are deliberately permissive (most optional) so the schema doesn't churn as the proxy methodology evolves. Read by `ff psych report <project>` (amendment A6 read-path commitment). */
+export interface PsychologyReport {
+    schema_version: 1;
+    project_slug: string;
+    video_path?: string;
+    edit_type?: string;
+    /** Each proxy block is independently optional so a partial render still produces a valid report. */
+    proxies: {
+    /** Character familiarity + viewer-bonding proxies. */
+    parasocial?: {
+    /** Per-character total seconds on screen across the edit. */
+    character_screen_time_sec?: Record<string, number>;
+    primary_character?: string;
+    primary_character_share_pct?: number;
+    /** Percent of shots where eyeline = camera (intimacy proxy). */
+    eyeline_to_camera_pct?: number;
+  };
+    /** Music tempo vs viewer physiology proxy. */
+    beat_entrainment?: {
+    song_bpm?: number;
+    heart_rate_band?: "resting" | "calm" | "active" | "hype" | "frantic" | "off-band";
+    /** Percent of cuts within ±2 frames of a beat. */
+    beat_sync_pct?: number;
+  };
+    /** Visual cohesion across mixed sources. */
+    gestalt_unity?: {
+    /** Percent of adjacent shots with luma delta < 0.15 (Gestalt grouping proxy). */
+    color_grouping_pct?: number;
+    /** Shannon entropy of fandom distribution, normalized 0-1. */
+    fandom_diversity_idx?: number;
+  };
+    /** Per-fandom screen-time + canonical-arc adherence. */
+    fandom_reception?: {
+    fandom_screen_time_sec?: Record<string, number>;
+  };
+  };
+    notes?: Array<string>;
+    generated_at: string;
+    generator?: string;
+  }
+
 /** Output of `ff qa gate` and `ff qa post-render`. Captures every rule checked, its result, and any override used. */
 export interface QaReport {
     schema_version: 1;
@@ -979,6 +1020,38 @@ export interface SyncPlan {
     generator?: string;
   }
 
+/** Per-second tension model derived from beat-map energy + emotion-arc + arc-architect's tension_target per act. Each sample carries the target tension and the actual tension the rendered shot list contributes. Phase 4's arc_shape evaluator scores the gap. Cross-type by design: action and emotional both use the same -1..+1 scale, only the target curves differ. */
+export interface TensionCurve {
+    schema_version: 1;
+    duration_sec: number;
+    /** Sample interval. 1.0s default. */
+    resolution_sec?: number;
+    /** Sequential per-resolution_sec samples covering 0..duration_sec. */
+    samples: Array<{
+    time_sec: number;
+    target_tension: number;
+    actual_tension: number;
+    /** actual - target. */
+    delta?: number;
+    act_index?: number;
+    arc_role?: "setup" | "escalation" | "climax" | "release" | "interlude";
+  }>;
+    /** Aggregate stats useful for QA + review. */
+    summary?: {
+    peak_target?: number;
+    peak_actual?: number;
+    peak_actual_time_sec?: number;
+    /** Root-mean-square of (actual - target) across all samples. 0 = perfect match. */
+    rms_delta?: number;
+    /** True if actual tension monotonically trends up into the climax act. */
+    builds_to_climax?: boolean;
+    /** True if actual tension drops or peaks-and-holds in the release act. */
+    resolves?: boolean;
+  };
+    generated_at?: string;
+    generator?: string;
+  }
+
 export type Title = {
     id: string;
     text: string;
@@ -1097,6 +1170,7 @@ export interface ArtifactSchemaMap {
   "intent": Intent;
   "post-render-review": PostRenderReview;
   "project-config": ProjectConfig;
+  "psychology-report": PsychologyReport;
   "qa-report": QaReport;
   "reference-priors": ReferencePriors;
   "scenes": Scenes;
@@ -1106,6 +1180,7 @@ export interface ArtifactSchemaMap {
   "source-catalog": SourceCatalog;
   "source-profile": SourceProfile;
   "sync-plan": SyncPlan;
+  "tension-curve": TensionCurve;
   "title-plan": TitlePlan;
   "transcript": Transcript;
   "transition-plan": TransitionPlan;
@@ -1114,4 +1189,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "psychology-report", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "tension-curve", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

@@ -172,17 +172,33 @@ def _extract_luma(shot: dict[str, Any]) -> float | None:
 
 def _edit_type_preference(candidate: dict[str, Any], edit_type: str) -> float:
     """How much does this edit type prefer this clip category?
-    Returns the bias multiplier from clip-categories.json clamped to 0-1
-    (bias of 1.0 = neutral, >1 = preferred, <1 = avoid). Map bias 0.0-2.0
-    → score 0.0-1.0 (1.0 at bias=1.0, 0 at bias=0)."""
+
+    Reads two sources, in order of precedence:
+      1. edit-types.json → clip_selection_weights (Phase 2.4 per-type override)
+      2. clip-categories.json → edit_type_bias (Phase 0.5.4 base bias)
+
+    Map bias [0..2] → score [0..1] (1.0 at bias=1.0 neutral, 0 at bias=0).
+    """
     cat = candidate.get("clip_category")
     if not cat:
         return 0.5
+
+    # Per-type override (Phase 2.4)
+    try:
+        from fandomforge.intelligence.edit_classifier import load_type_priors
+        priors = load_type_priors(edit_type)
+        if priors:
+            csw = priors.get("clip_selection_weights") or {}
+            if cat in csw:
+                return max(0.0, min(1.0, float(csw[cat]) / 2.0))
+    except Exception:  # noqa: BLE001
+        pass
+
+    # Base bias from taxonomy
     try:
         bias = edit_type_bias(cat, edit_type)
     except KeyError:
         return 0.5
-    # Map bias [0..2] → score [0..1]
     return max(0.0, min(1.0, bias / 2.0))
 
 

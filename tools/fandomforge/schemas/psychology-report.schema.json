@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/psychology-report.schema.json",
+  "title": "PsychologyReport",
+  "description": "Per-render psychology proxy telemetry (Phase 5.1). Stored every render, NOT graded — when calibration data exists, future correlation work can connect these proxies to actual viewer reception. Fields are deliberately permissive (most optional) so the schema doesn't churn as the proxy methodology evolves. Read by `ff psych report <project>` (amendment A6 read-path commitment).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "generated_at", "proxies"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "video_path": {"type": "string"},
+    "edit_type": {"type": "string"},
+    "proxies": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Each proxy block is independently optional so a partial render still produces a valid report.",
+      "properties": {
+        "parasocial": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Character familiarity + viewer-bonding proxies.",
+          "properties": {
+            "character_screen_time_sec": {
+              "type": "object",
+              "additionalProperties": {"type": "number", "minimum": 0},
+              "description": "Per-character total seconds on screen across the edit."
+            },
+            "primary_character": {"type": "string"},
+            "primary_character_share_pct": {"type": "number", "minimum": 0, "maximum": 100},
+            "eyeline_to_camera_pct": {
+              "type": "number", "minimum": 0, "maximum": 100,
+              "description": "Percent of shots where eyeline = camera (intimacy proxy)."
+            }
+          }
+        },
+        "beat_entrainment": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Music tempo vs viewer physiology proxy.",
+          "properties": {
+            "song_bpm": {"type": "number", "minimum": 0},
+            "heart_rate_band": {
+              "type": "string",
+              "enum": ["resting", "calm", "active", "hype", "frantic", "off-band"]
+            },
+            "beat_sync_pct": {
+              "type": "number", "minimum": 0, "maximum": 100,
+              "description": "Percent of cuts within ±2 frames of a beat."
+            }
+          }
+        },
+        "gestalt_unity": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Visual cohesion across mixed sources.",
+          "properties": {
+            "color_grouping_pct": {
+              "type": "number", "minimum": 0, "maximum": 100,
+              "description": "Percent of adjacent shots with luma delta < 0.15 (Gestalt grouping proxy)."
+            },
+            "fandom_diversity_idx": {
+              "type": "number", "minimum": 0, "maximum": 1,
+              "description": "Shannon entropy of fandom distribution, normalized 0-1."
+            }
+          }
+        },
+        "fandom_reception": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Per-fandom screen-time + canonical-arc adherence.",
+          "properties": {
+            "fandom_screen_time_sec": {
+              "type": "object",
+              "additionalProperties": {"type": "number", "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "notes": {"type": "array", "items": {"type": "string"}},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

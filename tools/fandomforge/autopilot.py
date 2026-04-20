@@ -446,6 +446,61 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_tension_curve(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 2.3 — build tension-curve.json from edit-plan + beat-map +
+    emotion-arc. Read by Phase 4.4 arc_shape_realized + qa.arc_shape_realized.
+    """
+    start = time.perf_counter()
+    out = ctx.project_dir / "data" / "tension-curve.json"
+    edit_plan_path = ctx.project_dir / "data" / "edit-plan.json"
+    beat_map_path = ctx.project_dir / "data" / "beat-map.json"
+    emotion_arc_path = ctx.project_dir / "data" / "emotion-arc.json"
+
+    if not edit_plan_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="tension_curve",
+            status="skipped", message="no edit-plan.json yet",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.tension_curve import (
+            build_tension_curve, write_tension_curve,
+        )
+        edit_plan = json.loads(edit_plan_path.read_text(encoding="utf-8"))
+        beat_map = (
+            json.loads(beat_map_path.read_text(encoding="utf-8"))
+            if beat_map_path.exists() else None
+        )
+        emotion_arc = (
+            json.loads(emotion_arc_path.read_text(encoding="utf-8"))
+            if emotion_arc_path.exists() else None
+        )
+        curve = build_tension_curve(edit_plan, beat_map=beat_map, emotion_arc=emotion_arc)
+        write_tension_curve(curve, out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="tension_curve",
+            status="failed",
+            message=f"tension_curve failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    s = curve.get("summary") or {}
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="tension_curve",
+        status="ok",
+        message=(
+            f"tension curve: peak_actual={s.get('peak_actual')} "
+            f"@t={s.get('peak_actual_time_sec')}s "
+            f"builds={s.get('builds_to_climax')} resolves={s.get('resolves')} "
+            f"rms_delta={s.get('rms_delta')}"
+        ),
+        evidence={"path": str(out), "summary": s},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
     """Phase 1.3 — enrich every shot in shot-list.json with the metadata
     fields the slot-fit scorer keys off (emotional_register, clip_category,
@@ -1465,6 +1520,14 @@ def step_post_render_review(ctx: AutopilotContext) -> AutopilotEvent:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report.to_dict(), indent=2) + "\n")
 
+    # Phase 5.1 — psych proxy telemetry. Stored every render, never graded.
+    try:
+        from fandomforge.intelligence.psych_proxies import build_report, write_report
+        psych = build_report(ctx.project_dir, video_path=video)
+        write_report(psych, ctx.project_dir)
+    except Exception:  # noqa: BLE001 — never block the review on telemetry
+        pass
+
     # Autopilot status: warn/pass → ok, fail → failed (surfaces to user)
     status = "failed" if report.overall_verdict == "fail" else "ok"
     message = (
@@ -1794,6 +1857,9 @@ STEPS: list[Step] = [
     Step("emotion_arc", "Infer emotion arc",
          lambda ctx: _artifact_exists_and_valid(ctx, "emotion-arc"),
          step_emotion_arc),
+    Step("tension_curve", "Build tension curve from acts + energy + emotion",
+         lambda _ctx: False,  # cheap re-run; produces fresh signal each time
+         step_tension_curve),
     Step("sync_plan", "Build sync + complement + SFX plans",
          lambda ctx: (ctx.project_dir / "data" / "sync-plan.json").exists()
                      and (ctx.project_dir / "data" / "sfx-plan.json").exists(),

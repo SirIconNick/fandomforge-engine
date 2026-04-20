@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/tension-curve.schema.json",
+  "title": "TensionCurve",
+  "description": "Per-second tension model derived from beat-map energy + emotion-arc + arc-architect's tension_target per act. Each sample carries the target tension and the actual tension the rendered shot list contributes. Phase 4's arc_shape evaluator scores the gap. Cross-type by design: action and emotional both use the same -1..+1 scale, only the target curves differ.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "duration_sec", "samples"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "duration_sec": {"type": "number", "exclusiveMinimum": 0},
+    "resolution_sec": {"type": "number", "exclusiveMinimum": 0,
+      "description": "Sample interval. 1.0s default."},
+    "samples": {
+      "type": "array",
+      "description": "Sequential per-resolution_sec samples covering 0..duration_sec.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["time_sec", "target_tension", "actual_tension"],
+        "properties": {
+          "time_sec": {"type": "number", "minimum": 0},
+          "target_tension": {"type": "number", "minimum": -1, "maximum": 1},
+          "actual_tension": {"type": "number", "minimum": -1, "maximum": 1},
+          "delta": {"type": "number", "minimum": -2, "maximum": 2,
+            "description": "actual - target."},
+          "act_index": {"type": "integer", "minimum": 1, "maximum": 8},
+          "arc_role": {
+            "type": "string",
+            "enum": ["setup", "escalation", "climax", "release", "interlude"]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Aggregate stats useful for QA + review.",
+      "properties": {
+        "peak_target": {"type": "number"},
+        "peak_actual": {"type": "number"},
+        "peak_actual_time_sec": {"type": "number"},
+        "rms_delta": {"type": "number",
+          "description": "Root-mean-square of (actual - target) across all samples. 0 = perfect match."},
+        "builds_to_climax": {"type": "boolean",
+          "description": "True if actual tension monotonically trends up into the climax act."},
+        "resolves": {"type": "boolean",
+          "description": "True if actual tension drops or peaks-and-holds in the release act."}
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

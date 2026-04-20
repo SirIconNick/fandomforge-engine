@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "proxies": "should be object",
+  "extra_field_at_root": true
+}

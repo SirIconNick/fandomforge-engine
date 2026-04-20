@@ -4868,6 +4868,82 @@ def sfx_plan_cmd(project: str, no_scene_audio: bool, scene_audio_db: float, seed
     )
 
 
+# ---------- psych proxies (Phase 5.1 telemetry; not graded) ----------
+
+
+@main.group("psych")
+def psych_grp() -> None:
+    """Psychology proxy telemetry (Phase 5.1) — un-graded signals stored
+    each render for future correlation against viewer reception data."""
+
+
+@psych_grp.command("report")
+@click.option("--project", required=True, help="Project slug.")
+@click.option("--rebuild", is_flag=True,
+              help="Rebuild the report from current artifacts before showing.")
+@click.option("--last", "last_n", type=int, default=10,
+              help="How many history entries to show in the trend table.")
+def psych_report_cmd(project: str, rebuild: bool, last_n: int) -> None:
+    """Print the psychology-report for a project + recent history trend."""
+    from fandomforge.intelligence import psych_proxies
+
+    project_dir = Path("projects") / project
+    if not project_dir.exists():
+        console.print(f"[red]project not found:[/red] {project_dir}")
+        sys.exit(1)
+
+    if rebuild:
+        report = psych_proxies.build_report(project_dir)
+        psych_proxies.write_report(report, project_dir)
+        console.print(f"[green]✓ report rebuilt[/green]")
+
+    report_path = project_dir / "data" / "psychology-report.json"
+    if not report_path.exists():
+        console.print(
+            f"[yellow]no psychology-report.json for {project} yet — "
+            f"rerun with --rebuild or run autopilot.[/yellow]"
+        )
+        sys.exit(0)
+    current = json.loads(report_path.read_text(encoding="utf-8"))
+
+    p = current.get("proxies") or {}
+    para = p.get("parasocial") or {}
+    beat = p.get("beat_entrainment") or {}
+    gestalt = p.get("gestalt_unity") or {}
+
+    console.print(f"\n[bold cyan]{project}[/bold cyan]  edit_type={current.get('edit_type', '?')}")
+    console.print(f"  generated_at: {current.get('generated_at')}")
+
+    console.print(
+        f"\n[bold]Parasocial[/bold]  primary={para.get('primary_character', '—')!r} "
+        f"({para.get('primary_character_share_pct', 0)}% screen)  "
+        f"eyeline_to_camera={para.get('eyeline_to_camera_pct', 0)}%"
+    )
+    console.print(
+        f"[bold]Beat entrainment[/bold]  bpm={beat.get('song_bpm', 0)} "
+        f"({beat.get('heart_rate_band', '?')})  "
+        f"beat_sync={beat.get('beat_sync_pct', 0)}%"
+    )
+    console.print(
+        f"[bold]Gestalt unity[/bold]  color_grouping={gestalt.get('color_grouping_pct', 0)}%  "
+        f"fandom_diversity={gestalt.get('fandom_diversity_idx', 0)}"
+    )
+
+    history = psych_proxies.load_history(project_dir, limit=last_n)
+    if len(history) > 1:
+        console.print(f"\n[bold]Last {len(history)} reports:[/bold]")
+        for i, r in enumerate(history):
+            pp = (r.get("proxies") or {})
+            be = (pp.get("beat_entrainment") or {})
+            ge = (pp.get("gestalt_unity") or {})
+            console.print(
+                f"  {i+1:2}. {r.get('generated_at', '')[:19]}  "
+                f"sync={be.get('beat_sync_pct', 0)}%  "
+                f"color_group={ge.get('color_grouping_pct', 0)}%  "
+                f"diversity={ge.get('fandom_diversity_idx', 0)}"
+            )
+
+
 # ---------- reference library (learned priors from real edits) ----------
 
 

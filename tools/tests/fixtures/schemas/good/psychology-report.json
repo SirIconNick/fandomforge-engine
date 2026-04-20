@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "video_path": "projects/demo/exports/graded.mp4",
+  "edit_type": "action",
+  "proxies": {
+    "parasocial": {
+      "character_screen_time_sec": {
+        "Leon Kennedy": 45.2,
+        "Ada Wong": 12.5
+      },
+      "primary_character": "Leon Kennedy",
+      "primary_character_share_pct": 78.3,
+      "eyeline_to_camera_pct": 12.0
+    },
+    "beat_entrainment": {
+      "song_bpm": 128.0,
+      "heart_rate_band": "active",
+      "beat_sync_pct": 64.5
+    },
+    "gestalt_unity": {
+      "color_grouping_pct": 71.2,
+      "fandom_diversity_idx": 0.85
+    },
+    "fandom_reception": {
+      "fandom_screen_time_sec": {
+        "Resident Evil": 57.7
+      }
+    }
+  },
+  "generated_at": "2026-04-19T22:00:00+00:00",
+  "generator": "ff psych proxies (Phase 5.1)"
+}
