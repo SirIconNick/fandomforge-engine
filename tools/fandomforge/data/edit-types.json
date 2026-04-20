@@ -40,6 +40,12 @@
         "reaction-emotional": 0.4,
         "dialogue-primary": 0.4,
         "dialogue-reaction": 0.4
+      },
+      "genre_color": {
+        "contrast_nudge": 0.1,
+        "saturation_nudge": 0.05,
+        "luma_nudge": -0.05,
+        "cast_hue_target": "teal_orange"
       }
     },
     "emotional": {
@@ -79,6 +85,12 @@
         "action-mid": 0.5,
         "dialogue-primary": 1.0,
         "transitional": 0.7
+      },
+      "genre_color": {
+        "contrast_nudge": -0.05,
+        "saturation_nudge": -0.15,
+        "luma_nudge": 0.05,
+        "cast_hue_target": "warm_neutral"
       }
     },
     "tribute": {
@@ -118,6 +130,12 @@
         "action-mid": 1.0,
         "action-high": 0.9,
         "dialogue-primary": 0.8
+      },
+      "genre_color": {
+        "contrast_nudge": 0.0,
+        "saturation_nudge": 0.0,
+        "luma_nudge": 0.0,
+        "cast_hue_target": "cinematic_warm"
       }
     },
     "shipping": {
@@ -154,6 +172,12 @@
         "establishing": 1.0,
         "action-high": 0.4,
         "action-mid": 0.7
+      },
+      "genre_color": {
+        "contrast_nudge": -0.05,
+        "saturation_nudge": 0.05,
+        "luma_nudge": 0.1,
+        "cast_hue_target": "soft_warm"
       }
     },
     "speed_amv": {
@@ -192,6 +216,12 @@
         "reaction-emotional": 0.5,
         "dialogue-primary": 0.2,
         "dialogue-reaction": 0.2
+      },
+      "genre_color": {
+        "contrast_nudge": 0.15,
+        "saturation_nudge": 0.2,
+        "luma_nudge": 0.0,
+        "cast_hue_target": "neon"
       }
     },
     "cinematic": {
@@ -230,6 +260,12 @@
         "texture": 1.4,
         "action-high": 0.8,
         "action-mid": 1.0
+      },
+      "genre_color": {
+        "contrast_nudge": 0.05,
+        "saturation_nudge": -0.1,
+        "luma_nudge": -0.05,
+        "cast_hue_target": "filmic"
       }
     },
     "comedy": {
@@ -267,6 +303,12 @@
         "climactic": 1.3,
         "transitional": 1.0,
         "action-high": 0.5
+      },
+      "genre_color": {
+        "contrast_nudge": 0.0,
+        "saturation_nudge": 0.1,
+        "luma_nudge": 0.05,
+        "cast_hue_target": "bright_neutral"
       }
     },
     "hype_trailer": {
@@ -306,6 +348,12 @@
         "texture": 1.0,
         "reaction-quiet": 0.7,
         "reaction-emotional": 0.8
+      },
+      "genre_color": {
+        "contrast_nudge": 0.1,
+        "saturation_nudge": 0.05,
+        "luma_nudge": -0.1,
+        "cast_hue_target": "dark_amber"
       }
     }
   }

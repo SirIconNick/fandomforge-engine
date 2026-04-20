@@ -3,8 +3,45 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T04:37:56.109Z
+// Generated at: 2026-04-20T04:48:59.456Z
 
+
+/** Per-clip aspect-ratio normalization decisions (Phase 3.1). For every shot in the timeline, records whether it should be pillarboxed, letterboxed, cropped, scaled, or left alone — plus the safe-zone polygon of content the engine must preserve. Read by the orchestrator before color grade so AR adjustments precede visual unification. */
+export interface AspectPlan {
+    schema_version: 1;
+    project_slug: string;
+    /** Target output aspect ratio (e.g. 16:9 for YouTube, 9:16 for shorts, 1:1 for square). */
+    target_ar: string;
+    decisions: Array<{
+    shot_id: string;
+    source_id: string;
+    source_ar: string;
+    decision: "none" | "pillarbox" | "letterbox" | "crop" | "scale" | "smart_crop";
+    /** Normalized 0-1 rect of content the decision must preserve. x/y = top-left, w/h = size. */
+    safe_zone?: {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+    /** Whether the AR change from the previous shot should animate (smooth pillar/letter reveal over 6-12 frames) or hard-cut. */
+    transition_from_prev?: "smooth" | "hard";
+    reason?: string;
+    /** Pre-built ffmpeg -vf chain the orchestrator can splice in (pad / crop / scale). */
+    ffmpeg_filter?: string;
+  }>;
+    summary?: {
+    no_op_count?: number;
+    pillarbox_count?: number;
+    letterbox_count?: number;
+    crop_count?: number;
+    scale_count?: number;
+    /** Number of AR transitions across the timeline. */
+    ar_change_count?: number;
+  };
+    generated_at?: string;
+    generator?: string;
+  }
 
 export type Layer = {
     name: string;
@@ -1165,6 +1202,7 @@ export interface Webhooks {
   }
 
 export interface ArtifactSchemaMap {
+  "aspect-plan": AspectPlan;
   "audio-plan": AudioPlan;
   "beat-map": BeatMap;
   "catalog": Catalog;
@@ -1199,4 +1237,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "psychology-report", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "tension-curve", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["aspect-plan", "audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "psychology-report", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "tension-curve", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

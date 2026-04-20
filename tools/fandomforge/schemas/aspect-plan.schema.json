@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/aspect-plan.schema.json",
+  "title": "AspectPlan",
+  "description": "Per-clip aspect-ratio normalization decisions (Phase 3.1). For every shot in the timeline, records whether it should be pillarboxed, letterboxed, cropped, scaled, or left alone — plus the safe-zone polygon of content the engine must preserve. Read by the orchestrator before color grade so AR adjustments precede visual unification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "target_ar", "decisions"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "target_ar": {
+      "type": "string",
+      "pattern": "^[0-9]+(\\.[0-9]+)?:[0-9]+(\\.[0-9]+)?$",
+      "description": "Target output aspect ratio (e.g. 16:9 for YouTube, 9:16 for shorts, 1:1 for square)."
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["shot_id", "source_id", "source_ar", "decision"],
+        "properties": {
+          "shot_id": {"type": "string"},
+          "source_id": {"type": "string"},
+          "source_ar": {"type": "string", "pattern": "^[0-9]+(\\.[0-9]+)?:[0-9]+(\\.[0-9]+)?$"},
+          "decision": {
+            "type": "string",
+            "enum": ["none", "pillarbox", "letterbox", "crop", "scale", "smart_crop"]
+          },
+          "safe_zone": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "Normalized 0-1 rect of content the decision must preserve. x/y = top-left, w/h = size.",
+            "required": ["x", "y", "w", "h"],
+            "properties": {
+              "x": {"type": "number", "minimum": 0, "maximum": 1},
+              "y": {"type": "number", "minimum": 0, "maximum": 1},
+              "w": {"type": "number", "minimum": 0, "maximum": 1},
+              "h": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          },
+          "transition_from_prev": {
+            "type": "string",
+            "enum": ["smooth", "hard"],
+            "description": "Whether the AR change from the previous shot should animate (smooth pillar/letter reveal over 6-12 frames) or hard-cut."
+          },
+          "reason": {"type": "string"},
+          "ffmpeg_filter": {
+            "type": "string",
+            "description": "Pre-built ffmpeg -vf chain the orchestrator can splice in (pad / crop / scale)."
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "no_op_count": {"type": "integer", "minimum": 0},
+        "pillarbox_count": {"type": "integer", "minimum": 0},
+        "letterbox_count": {"type": "integer", "minimum": 0},
+        "crop_count": {"type": "integer", "minimum": 0},
+        "scale_count": {"type": "integer", "minimum": 0},
+        "ar_change_count": {"type": "integer", "minimum": 0,
+          "description": "Number of AR transitions across the timeline."}
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

@@ -66,6 +66,7 @@ SCHEMA_IDS: tuple[str, ...] = (
     "source-profile",
     "tension-curve",
     "psychology-report",
+    "aspect-plan",
 )
 
 

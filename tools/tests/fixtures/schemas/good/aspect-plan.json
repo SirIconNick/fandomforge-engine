@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "target_ar": "16:9",
+  "decisions": [
+    {
+      "shot_id": "s001",
+      "source_id": "extraction-2",
+      "source_ar": "16:9",
+      "decision": "none",
+      "reason": "matches target"
+    },
+    {
+      "shot_id": "s002",
+      "source_id": "old-anime",
+      "source_ar": "4:3",
+      "decision": "pillarbox",
+      "safe_zone": {"x": 0.1, "y": 0.1, "w": 0.8, "h": 0.8},
+      "transition_from_prev": "smooth",
+      "reason": "source AR 4:3 narrower than target 16:9",
+      "ffmpeg_filter": "scale=iw*sar:ih,pad='ih*(16/9)':ih:'(ih*(16/9)-iw)/2':0:black"
+    },
+    {
+      "shot_id": "s003",
+      "source_id": "cinescope-film",
+      "source_ar": "2.39:1",
+      "decision": "letterbox",
+      "safe_zone": {"x": 0.1, "y": 0.1, "w": 0.8, "h": 0.8},
+      "transition_from_prev": "smooth",
+      "reason": "source AR 2.39:1 wider than target 16:9"
+    }
+  ],
+  "summary": {
+    "no_op_count": 1,
+    "pillarbox_count": 1,
+    "letterbox_count": 1,
+    "crop_count": 0,
+    "scale_count": 0,
+    "ar_change_count": 2
+  },
+  "generated_at": "2026-04-19T22:30:00+00:00",
+  "generator": "ff aspect arbiter (Phase 3.1)"
+}

@@ -501,6 +501,63 @@ def step_tension_curve(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_aspect_normalize(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 3.1 — build aspect-plan.json from the shot list + per-source
+    profiles. Records pillarbox/letterbox/crop/scale decisions per shot;
+    the orchestrator's render pass reads this before applying color grade
+    so AR adjustments precede visual unification.
+    """
+    start = time.perf_counter()
+    out = ctx.project_dir / "data" / "aspect-plan.json"
+    shot_list_path = ctx.project_dir / "data" / "shot-list.json"
+
+    if not shot_list_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="aspect_normalize",
+            status="skipped", message="no shot-list.json yet",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    # Pull target AR from project-config (default 16:9)
+    target_ar = "16:9"
+    cfg_path = ctx.project_dir / "project-config.json"
+    if cfg_path.exists():
+        try:
+            cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+            target_ar = str(cfg.get("aspect_ratio") or "16:9")
+        except (json.JSONDecodeError, OSError):
+            target_ar = "16:9"
+
+    try:
+        from fandomforge.intelligence.aspect_ratio import (
+            build_aspect_plan, load_source_profiles, write_aspect_plan,
+        )
+        shot_list = json.loads(shot_list_path.read_text(encoding="utf-8"))
+        profiles = load_source_profiles(ctx.project_dir)
+        plan = build_aspect_plan(shot_list, target_ar=target_ar, source_profiles=profiles)
+        write_aspect_plan(plan, out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="aspect_normalize",
+            status="failed",
+            message=f"aspect_normalize failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    s = plan["summary"]
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="aspect_normalize",
+        status="ok",
+        message=(
+            f"aspect plan: {s['no_op_count']} no-op, "
+            f"{s['pillarbox_count']} pillar, {s['letterbox_count']} letter, "
+            f"{s['crop_count']} crop, {s['ar_change_count']} AR transitions"
+        ),
+        evidence={"path": str(out), "summary": s},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
     """Phase 1.3 — enrich every shot in shot-list.json with the metadata
     fields the slot-fit scorer keys off (emotional_register, clip_category,
@@ -1854,6 +1911,9 @@ STEPS: list[Step] = [
     Step("extract_clip_metadata", "Enrich shot-list with Phase 1.3 metadata",
          lambda _ctx: False,  # always re-run; cheap + idempotent (only fills missing fields)
          step_extract_clip_metadata),
+    Step("aspect_normalize", "Plan per-clip aspect-ratio normalization",
+         lambda _ctx: False,  # cheap; re-runs whenever shot list changes
+         step_aspect_normalize),
     Step("emotion_arc", "Infer emotion arc",
          lambda ctx: _artifact_exists_and_valid(ctx, "emotion-arc"),
          step_emotion_arc),

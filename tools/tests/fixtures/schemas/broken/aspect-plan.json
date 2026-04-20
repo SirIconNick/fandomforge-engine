@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "project_slug": "",
+  "target_ar": "not-a-ratio",
+  "decisions": [
+    {
+      "shot_id": "s001",
+      "source_id": "x",
+      "source_ar": "16:9",
+      "decision": "bogus-mode"
+    }
+  ]
+}
