@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "video_path": "projects/action-legends/exports/graded.mp4",
+  "generated_at": "2026-04-20T02:51:49.621357+00:00",
+  "overall": "yellow",
+  "overall_verdict": "warn",
+  "score": 90.7,
+  "grade": "A-",
+  "ship_recommendation": "Reviewable with caveats \u2014 visual flagged. Open the output and eyeball before shipping.",
+  "dimensions": [
+    {
+      "name": "technical",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "width": 1920,
+        "height": 1080,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "fps": 24.0,
+        "duration_sec": 221.416667,
+        "video_bitrate_bps": 6465567,
+        "container_bitrate_bps": 6792415,
+        "audio_codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "audio_bitrate_bps": 321644
+      }
+    },
+    {
+      "name": "visual",
+      "verdict": "warn",
+      "score": 69.0,
+      "findings": [
+        "dark segment @ 203.38s \u2192 203.62s (0.25s)"
+      ],
+      "measurements": {
+        "black_segments": [
+          {
+            "start": 203.375,
+            "end": 203.625,
+            "duration": 0.25
+          }
+        ],
+        "freeze_events": [],
+        "total_black_sec": 0.25
+      }
+    },
+    {
+      "name": "audio",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "input_i": -11.47,
+        "input_tp": -1.4,
+        "input_lra": 2.6,
+        "input_thresh": -21.63,
+        "mean_dbfs": -14.8,
+        "max_dbfs": -2.1,
+        "silences": []
+      }
+    },
+    {
+      "name": "structural",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "rendered_duration_sec": 221.416667,
+        "expected_duration_sec": 221.75,
+        "shot_count": 217,
+        "delta_sec": -0.333,
+        "delta_pct": 0.0015
+      }
+    },
+    {
+      "name": "shot_list",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "shot_count": 217,
+        "unique_shots": 217,
+        "intentional_callbacks": 0,
+        "accidental_reuse": 0,
+        "source_distribution": {
+          "extraction-2": 19,
+          "fight_raid_all_best_fights": 20,
+          "fight_extraction2_every_fight": 18,
+          "mad-max-fury-road": 46,
+          "fight_raid2_brutal_fights": 22,
+          "john-wick-4": 15,
+          "the-raid-2": 14,
+          "fight_extraction2_tyler_rake": 25,
+          "fight_jw_best_fights_4k": 18,
+          "fight_jw_ultimate_mashup": 20
+        },
+        "top_source_share": 0.212
+      }
+    }
+  ]
+}

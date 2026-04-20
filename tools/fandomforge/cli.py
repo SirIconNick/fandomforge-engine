@@ -3645,6 +3645,345 @@ def review_cmd(project: str, video: str, as_json: bool, save: bool) -> None:
         sys.exit(1)
 
 
+# ---------- regress (end-to-end regression suite) ----------
+
+
+@main.group("regress", invoke_without_command=True)
+@click.option("--project", default=None, help="Run only this project slug (default: all).")
+@click.option("--strict", is_flag=True, help="Fail on any score drop, even within normal tolerance.")
+@click.option("--baseline-tolerance", type=float, default=2.0,
+              help="Max overall score drop before FAIL (default: 2.0).")
+@click.option("--dim-tolerance", type=float, default=5.0,
+              help="Max per-dimension score drop before FAIL (default: 5.0).")
+@click.option("--json", "as_json", is_flag=True, help="Emit JSON output for CI consumption.")
+@click.option("--repo-root", type=click.Path(path_type=Path), default=None,
+              help="Repo root dir (default: auto-detected from CWD / parents).")
+@click.pass_context
+def regress_grp(
+    ctx: click.Context,
+    project: str | None,
+    strict: bool,
+    baseline_tolerance: float,
+    dim_tolerance: float,
+    as_json: bool,
+    repo_root: Path | None,
+) -> None:
+    """End-to-end regression suite — compare rendered output against locked baselines.
+
+    Run with no subcommand (or with options) to execute all locked baselines.
+    Use the ``freeze`` subcommand to lock a new project as a baseline.
+    Use the ``run`` subcommand for explicit control with the same options.
+    """
+    if ctx.invoked_subcommand is None:
+        ctx.invoke(
+            regress_run_cmd,
+            project=project,
+            strict=strict,
+            baseline_tolerance=baseline_tolerance,
+            dim_tolerance=dim_tolerance,
+            as_json=as_json,
+            repo_root=repo_root,
+        )
+
+
+@regress_grp.command("run")
+@click.option("--project", default=None, help="Run only this project slug (default: all).")
+@click.option("--strict", is_flag=True,
+              help="Fail on any score drop, even within normal tolerance.")
+@click.option("--baseline-tolerance", type=float, default=2.0,
+              help="Max overall score drop before FAIL (default: 2.0).")
+@click.option("--dim-tolerance", type=float, default=5.0,
+              help="Max per-dimension score drop before FAIL (default: 5.0).")
+@click.option("--json", "as_json", is_flag=True, help="Emit JSON output for CI consumption.")
+@click.option("--repo-root", type=click.Path(path_type=Path), default=None,
+              help="Repo root dir (default: auto-detected from CWD / parents).")
+def regress_run_cmd(
+    project: str | None,
+    strict: bool,
+    baseline_tolerance: float,
+    dim_tolerance: float,
+    as_json: bool,
+    repo_root: Path | None,
+) -> None:
+    """Re-render projects and compare scores against stored baselines."""
+    import json as _json
+    from fandomforge.regress import (
+        TIER_COMPETENT,
+        compare_reviews,
+        find_project_dir,
+        list_baseline_slugs,
+        load_baseline,
+        baseline_name_from_project,
+    )
+    from fandomforge.review import review_rendered_edit
+    from fandomforge.assembly import build_rough_cut
+    from fandomforge.assembly import ColorPreset
+
+    # Locate repo root
+    if repo_root is None:
+        cwd = Path.cwd()
+        for candidate in [cwd, *cwd.parents]:
+            if (candidate / "regression").is_dir():
+                repo_root = candidate
+                break
+        if repo_root is None:
+            console.print("[red]cannot locate regression/ directory — run from repo root[/red]")
+            raise SystemExit(1)
+
+    regression_dir = repo_root / "regression"
+
+    # Determine which projects to run
+    if project:
+        slugs = [project]
+    else:
+        slugs = list_baseline_slugs(regression_dir)
+
+    if not slugs:
+        console.print("[dim]no baselines found — nothing to regress[/dim]")
+        if as_json:
+            print(_json.dumps({"results": [], "overall": "pass"}))
+        raise SystemExit(0)
+
+    results_data: list[dict] = []
+    any_fail = False
+
+    for slug in slugs:
+        baseline_path = regression_dir / "baselines" / baseline_name_from_project(slug)
+        if not baseline_path.exists():
+            console.print(f"[yellow]SKIP[/yellow]  {slug}: baseline file missing")
+            continue
+
+        try:
+            baseline = load_baseline(baseline_path)
+        except (json.JSONDecodeError, OSError) as exc:
+            console.print(f"[red]FAIL[/red]  {slug}: cannot load baseline — {exc}")
+            any_fail = True
+            continue
+
+        proj_dir = find_project_dir(slug, repo_root)
+        if proj_dir is None:
+            console.print(f"[yellow]SKIP[/yellow]  {slug}: project directory not found")
+            continue
+
+        # Re-render the project
+        console.print(f"[dim]rendering[/dim] {slug}...")
+        try:
+            render_result = build_rough_cut(
+                project_dir=proj_dir,
+                shot_list_name="shot-list.md",
+                song_filename=None,
+                dialogue_script_json=None,
+                color_preset=ColorPreset.TACTICAL,
+                color_plan_json=None,
+                output_name="rough-cut.mp4",
+                target_width=1920,
+                target_height=1080,
+                target_fps=24,
+                song_start_offset_sec=0.0,
+            )
+            if not render_result.success:
+                raise RuntimeError("build_rough_cut returned success=False")
+        except Exception as exc:
+            console.print(f"[red]FAIL[/red]  {slug}: render failed — {exc}")
+            any_fail = True
+            results_data.append({"project": slug, "status": "fail", "reason": f"render failed: {exc}"})
+            continue
+
+        # Review the rendered output
+        video_name = "rough-cut.mp4"
+        console.print(f"[dim]reviewing[/dim] {slug}...")
+        try:
+            report = review_rendered_edit(proj_dir, video_name=video_name)
+        except FileNotFoundError as exc:
+            console.print(f"[red]FAIL[/red]  {slug}: review failed — {exc}")
+            any_fail = True
+            results_data.append({"project": slug, "status": "fail", "reason": f"review failed: {exc}"})
+            continue
+
+        current = report.to_dict()
+
+        # Compare
+        from fandomforge.regress import compare_reviews as _compare
+        result = _compare(
+            baseline, current,
+            overall_tolerance=baseline_tolerance,
+            dim_tolerance=dim_tolerance,
+            strict=strict,
+        )
+
+        status_color = {"pass": "green", "fail": "red", "warn": "yellow"}.get(result.status, "white")
+        delta_str = f"{result.overall_delta:+.1f}" if result.overall_delta != 0 else "+0.0"
+        console.print(
+            f"[{status_color}]{result.status.upper()}[/{status_color}]  "
+            f"{slug}  "
+            f"baseline {result.baseline_score:.1f} ({result.baseline_grade})  "
+            f"current {result.current_score:.1f} ({result.current_grade})  "
+            f"delta {delta_str}"
+            + (f"  — {result.reason}" if result.reason else "")
+        )
+
+        if result.status == "fail":
+            any_fail = True
+
+        # Per-dim table when not in JSON mode and there are regressions
+        if not as_json and result.status == "fail":
+            dim_table = Table(show_header=True, box=None, padding=(0, 1))
+            dim_table.add_column("dimension")
+            dim_table.add_column("baseline", justify="right")
+            dim_table.add_column("current", justify="right")
+            dim_table.add_column("delta", justify="right")
+            dim_table.add_column("status")
+            for dr in result.dim_results:
+                dc = {"pass": "green", "fail": "red"}.get(dr.status, "white")
+                dim_table.add_row(
+                    dr.name,
+                    f"{dr.baseline_score:.0f}",
+                    f"{dr.current_score:.0f}",
+                    f"{dr.delta:+.0f}",
+                    f"[{dc}]{dr.status}[/{dc}]",
+                )
+            console.print(dim_table)
+
+        results_data.append({
+            "project": slug,
+            "status": result.status,
+            "baseline_score": result.baseline_score,
+            "current_score": result.current_score,
+            "baseline_grade": result.baseline_grade,
+            "current_grade": result.current_grade,
+            "overall_delta": result.overall_delta,
+            "reason": result.reason,
+            "dimensions": [
+                {
+                    "name": dr.name,
+                    "baseline_score": dr.baseline_score,
+                    "current_score": dr.current_score,
+                    "delta": dr.delta,
+                    "status": dr.status,
+                }
+                for dr in result.dim_results
+            ],
+        })
+
+    overall_status = "fail" if any_fail else "pass"
+
+    if as_json:
+        print(_json.dumps({"results": results_data, "overall": overall_status}, indent=2))
+
+    if not as_json:
+        status_color = "green" if overall_status == "pass" else "red"
+        console.print(
+            f"\n[bold {status_color}]regression suite: {overall_status.upper()}[/bold {status_color}]"
+            f"  ({len(results_data)} project(s) run)"
+        )
+
+    raise SystemExit(0 if not any_fail else 1)
+
+
+
+
+@regress_grp.command("freeze")
+@click.option("--project", required=True, help="Project slug to freeze as a baseline.")
+@click.option("--tier-floor",
+              type=click.Choice(["competent", "exceptional"]),
+              default="competent",
+              help="Minimum tier required to lock (default: competent).")
+@click.option("--use-existing", is_flag=True,
+              help="Use an already-rendered export instead of re-rendering.")
+@click.option("--video", default="graded.mp4",
+              help="Which render file to review (in exports/, default: graded.mp4).")
+@click.option("--repo-root", type=click.Path(path_type=Path), default=None,
+              help="Repo root dir (auto-detected when omitted).")
+def regress_freeze_cmd(
+    project: str,
+    tier_floor: str,
+    use_existing: bool,
+    video: str,
+    repo_root: Path | None,
+) -> None:
+    """Lock a project's current render as its regression baseline.
+
+    Refuses to freeze if the render does not meet the tier floor.
+    """
+    import json as _json
+    from fandomforge.regress import (
+        validate_freeze,
+        write_baseline,
+        baseline_name_from_project,
+        find_project_dir,
+    )
+    from fandomforge.review import review_rendered_edit
+    from fandomforge.assembly import build_rough_cut, ColorPreset
+
+    # Locate repo root
+    if repo_root is None:
+        cwd = Path.cwd()
+        for candidate in [cwd, *cwd.parents]:
+            if (candidate / "regression").is_dir():
+                repo_root = candidate
+                break
+        if repo_root is None:
+            console.print("[red]cannot locate regression/ directory — run from repo root[/red]")
+            raise SystemExit(1)
+
+    proj_dir = find_project_dir(project, repo_root)
+    if proj_dir is None:
+        console.print(f"[red]project not found: {project}[/red]")
+        raise SystemExit(1)
+
+    if not use_existing:
+        console.print(f"[dim]rendering[/dim] {project}...")
+        try:
+            render_result = build_rough_cut(
+                project_dir=proj_dir,
+                shot_list_name="shot-list.md",
+                song_filename=None,
+                dialogue_script_json=None,
+                color_preset=ColorPreset.TACTICAL,
+                color_plan_json=None,
+                output_name="graded.mp4",
+                target_width=1920,
+                target_height=1080,
+                target_fps=24,
+                song_start_offset_sec=0.0,
+            )
+            if not render_result.success:
+                raise RuntimeError("build_rough_cut returned success=False")
+        except Exception as exc:
+            console.print(f"[red]render failed:[/red] {exc}")
+            raise SystemExit(1) from exc
+
+    console.print(f"[dim]reviewing[/dim] {project}...")
+    try:
+        report = review_rendered_edit(proj_dir, video_name=video)
+    except FileNotFoundError as exc:
+        console.print(f"[red]review failed:[/red] {exc}")
+        raise SystemExit(1) from exc
+
+    review_dict = report.to_dict()
+    freeze_result = validate_freeze(review_dict, project, tier_floor=tier_floor)
+
+    tier_color = {"exceptional": "green", "competent": "cyan", "amateur": "red"}.get(
+        freeze_result.tier, "white"
+    )
+    console.print(
+        f"review: score {report.score:.1f} ({report.grade})  "
+        f"tier [{tier_color}]{freeze_result.tier}[/{tier_color}]  "
+        f"floor {tier_floor}"
+    )
+
+    if freeze_result.refused:
+        console.print(
+            f"[red]REFUSED[/red] — project scored {freeze_result.tier} "
+            f"but floor requires {tier_floor}. Improve the render before locking."
+        )
+        raise SystemExit(1)
+
+    baseline_path = repo_root / "regression" / "baselines" / baseline_name_from_project(project)
+    write_baseline(review_dict, baseline_path)
+    console.print(f"[green]frozen[/green] baseline at {baseline_path}")
+
+
 # ---------- library (global media library) ----------
 
 
