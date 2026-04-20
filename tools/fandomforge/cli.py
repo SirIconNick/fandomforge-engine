@@ -4868,6 +4868,70 @@ def sfx_plan_cmd(project: str, no_scene_audio: bool, scene_audio_db: float, seed
     )
 
 
+# ---------- priors (Phase 7 — Resolve feedback loop) ----------
+
+
+@main.group("priors")
+def priors_grp() -> None:
+    """Phase 7 — record user edits from Resolve and retrain engine priors."""
+
+
+@priors_grp.command("record")
+@click.option("--project", required=True, help="Project slug.")
+@click.option("--user-edit", required=True, type=click.Path(exists=True),
+              help=".drp or .fcpxml export from Resolve after user edits.")
+def priors_record_cmd(project: str, user_edit: str) -> None:
+    """Diff the user's Resolve edit vs the engine's shot-list, append to
+    the diff journal so the next retrain consumes it."""
+    from fandomforge.intelligence.resolve_diff import diff_project_against_user_edit
+    from fandomforge.intelligence.prior_updater import append_to_journal
+
+    project_dir = Path("projects") / project
+    if not project_dir.exists():
+        console.print(f"[red]project not found:[/red] {project_dir}")
+        sys.exit(1)
+    user_edit_path = Path(user_edit)
+    try:
+        report = diff_project_against_user_edit(project_dir, user_edit_path)
+    except (FileNotFoundError, ValueError) as exc:
+        console.print(f"[red]diff failed:[/red] {exc}")
+        sys.exit(1)
+    journal = append_to_journal(report.to_dict(), Path.cwd())
+    console.print(
+        f"[green]✓[/green] diff recorded for {project}: "
+        f"{len(report.cuts_added)} added, {len(report.cuts_removed)} removed, "
+        f"{len(report.cuts_duration_changed)} duration changed"
+    )
+    console.print(f"  appended to {journal}")
+
+
+@priors_grp.command("retrain")
+@click.option("--min-diffs", type=int, default=5,
+              help="Refuse to retrain until this many diffs accumulate (amendment A7).")
+@click.option("--apply", is_flag=True, default=False,
+              help="Actually write the nudges (without this flag = dry run).")
+def priors_retrain_cmd(min_diffs: int, apply: bool) -> None:
+    """Aggregate the diff journal and propose / apply prior nudges.
+    Refuses to run until ≥min_diffs entries exist (per amendment A7 —
+    diff-density not wall-clock)."""
+    from fandomforge.intelligence.prior_updater import update_priors
+
+    report = update_priors(Path.cwd(), min_diffs=min_diffs, apply=apply)
+    if not report.get("applied") and "reason" in report:
+        console.print(f"[yellow]{report['reason']}[/yellow]")
+        sys.exit(0)
+    console.print(f"[green]Prior retrain ({'applied' if apply else 'dry run'})[/green]")
+    console.print(f"  diff_count: {report['diff_count']}")
+    console.print(f"  source nudges: {len(report.get('source_nudges') or [])}")
+    for n in (report.get("source_nudges") or [])[:10]:
+        console.print(
+            f"    {n['source_id']:<40} {n['interpretation']:<10} "
+            f"nudge={n['nudge']:+.3f} (added={n['added']}, removed={n['removed']})"
+        )
+    if apply:
+        console.print(f"  written to: {report.get('written_to')}")
+
+
 # ---------- psych proxies (Phase 5.1 telemetry; not graded) ----------
 
 
