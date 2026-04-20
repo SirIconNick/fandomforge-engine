@@ -464,20 +464,51 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
     plan_callbacks = _collect_planned_callbacks(inputs.edit_plan)
     warnings: list[str] = []
 
+    # Phase 2.1+2.2 wire-in: when the edit-plan's acts[] include the new
+    # `pacing` field (slow/medium/fast/frantic), the proposer uses each
+    # act's band to set shot duration instead of the legacy fixed-by-role
+    # defaults. Drops still get hero treatment but their duration anchors
+    # to the act's pacing band rather than a hardcoded 2-second budget.
+    from fandomforge.intelligence.arc_architect import shot_duration_band
+
+    def _act_pacing_at(t: float) -> str | None:
+        for a in acts:
+            if float(a.get("start_sec", 0)) <= t < float(a.get("end_sec", 0)):
+                return a.get("pacing")
+        return None
+
     for i, (time_sec, kind) in enumerate(sync_points):
         if time_sec >= song_duration:
             break
 
-        # Decide duration: drops → hero, downbeats → medium, others → short
-        if kind == "drop":
-            duration_frames = cfg.hero_shot_frames
-            role = "hero"
-        elif kind == "downbeat":
-            duration_frames = cfg.hero_shot_frames // 2
-            role = SHOT_ROLES_ORDER[i % len(SHOT_ROLES_ORDER)]
+        pacing = _act_pacing_at(time_sec)
+
+        # Decide duration: drops → hero (longer end of band),
+        # downbeats → middle of band, others → short end of band.
+        if pacing:
+            lo_sec, hi_sec = shot_duration_band(pacing)
+            if kind == "drop":
+                target_sec = hi_sec  # hero shots take the long end of pacing band
+                role = "hero"
+            elif kind == "downbeat":
+                target_sec = (lo_sec + hi_sec) / 2
+                role = SHOT_ROLES_ORDER[i % len(SHOT_ROLES_ORDER)]
+            else:
+                target_sec = lo_sec
+                role = "insert"
+            duration_frames = max(cfg.min_shot_frames, _sec_to_frames(target_sec, cfg.fps))
         else:
-            duration_frames = cfg.min_shot_frames
-            role = "insert"
+            # Legacy path — kept identical to v1 behavior so old test
+            # snapshots still hold.
+            if kind == "drop":
+                duration_frames = cfg.hero_shot_frames
+                role = "hero"
+            elif kind == "downbeat":
+                duration_frames = cfg.hero_shot_frames // 2
+                role = SHOT_ROLES_ORDER[i % len(SHOT_ROLES_ORDER)]
+            else:
+                duration_frames = cfg.min_shot_frames
+                role = "insert"
 
         # Clamp duration to song bounds
         start_frame = _sec_to_frames(time_sec, cfg.fps)
