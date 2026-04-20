@@ -153,6 +153,22 @@
         "end_sec": {"type": "number", "minimum": 0},
         "energy_target": {"type": "number", "minimum": 0, "maximum": 100},
         "emotional_goal": {"type": "string", "minLength": 3},
+        "pacing": {
+          "type": "string",
+          "description": "Target shot-cadence band for this act. slow = breathing room (2-4s shots), medium = standard (1-2s), fast = quick (0.4-1s), frantic = drop-tier (sub-0.5s). Used by slot-fit + shot proposer to set duration budgets per act so the edit breathes through low-energy zones and hits hard during drops.",
+          "enum": ["slow", "medium", "fast", "frantic"]
+        },
+        "tension_target": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "description": "Target tension contribution of this act, -1 (full release) to +1 (peak tension). Read by the tension-curve constructor and the arc-shape evaluator to verify the rendered edit climbs and resolves as planned."
+        },
+        "arc_role": {
+          "type": "string",
+          "description": "Role of this act in the overall narrative arc. Cross-type: every edit type has a setup, an escalation, a climax, and a release — even comedy. Length and order can vary; role names are fixed.",
+          "enum": ["setup", "escalation", "climax", "release", "interlude"]
+        },
         "fandom_focus": {
           "type": "object",
           "additionalProperties": {"type": "number", "minimum": 0, "maximum": 1}

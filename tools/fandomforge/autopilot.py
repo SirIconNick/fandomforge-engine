@@ -1070,6 +1070,26 @@ def step_edit_plan(ctx: AutopilotContext) -> AutopilotEvent:
     if plan is None:
         plan = _heuristic_edit_plan(ctx, duration)
 
+    # Phase 2.1: arc-architect post-process — replace whatever acts[] the
+    # generator produced with cross-type-aware arc structure (pacing,
+    # tension_target, arc_role per act). Reads intent.json if present so
+    # type-specific templates kick in.
+    try:
+        intent_path = ctx.project_dir / "data" / "intent.json"
+        if intent_path.exists():
+            from fandomforge.intelligence.arc_architect import build_acts as _build_acts
+            intent = json.loads(intent_path.read_text(encoding="utf-8"))
+            arc_acts = _build_acts(
+                intent,
+                beat_map=json.loads(beat_map_path.read_text(encoding="utf-8"))
+                    if beat_map_path.exists() else None,
+                target_duration_sec=duration,
+            )
+            if arc_acts:
+                plan["acts"] = arc_acts
+    except Exception:  # noqa: BLE001 — fall back to whatever generator emitted
+        pass
+
     # Validate — if the LLM returned something that doesn't validate, fall back.
     try:
         from fandomforge.validation import validate, ValidationError

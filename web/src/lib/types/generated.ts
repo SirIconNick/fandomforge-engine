@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:33:59.433Z
+// Generated at: 2026-04-20T03:56:04.971Z
 
 
 export type Layer = {
@@ -278,6 +278,12 @@ export type Act = {
     end_sec: number;
     energy_target: number;
     emotional_goal: string;
+    /** Target shot-cadence band for this act. slow = breathing room (2-4s shots), medium = standard (1-2s), fast = quick (0.4-1s), frantic = drop-tier (sub-0.5s). Used by slot-fit + shot proposer to set duration budgets per act so the edit breathes through low-energy zones and hits hard during drops. */
+    pacing?: "slow" | "medium" | "fast" | "frantic";
+    /** Target tension contribution of this act, -1 (full release) to +1 (peak tension). Read by the tension-curve constructor and the arc-shape evaluator to verify the rendered edit climbs and resolves as planned. */
+    tension_target?: number;
+    /** Role of this act in the overall narrative arc. Cross-type: every edit type has a setup, an escalation, a climax, and a release — even comedy. Length and order can vary; role names are fixed. */
+    arc_role?: "setup" | "escalation" | "climax" | "release" | "interlude";
     fandom_focus?: Record<string, number>;
     /** References to beat-map events this act should align to (e.g. 'main_drop', 'downbeat:32'). */
     beat_targets?: Array<string>;
