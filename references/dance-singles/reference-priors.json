@@ -6,15 +6,16 @@
     "https://www.youtube.com/watch?v=287LolDpfcU",
     "https://www.youtube.com/watch?v=-yHCeSZ-Nik",
     "https://www.youtube.com/watch?v=ETMk4m-_7A0",
-    "https://www.youtube.com/watch?v=00ezoTnw1HM"
+    "https://www.youtube.com/watch?v=00ezoTnw1HM",
+    "file:///Users/damato/Projects/fandomforge-engine/references/dance-singles"
   ],
   "video_count": 5,
   "videos": [
     {
       "id": "uvrJ0oYoZJs",
-      "title": "Dance Monkey // Multifandom",
-      "url": "https://www.youtube.com/watch?v=uvrJ0oYoZJs",
-      "duration_sec": 222.0,
+      "title": "uvrJ0oYoZJs",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/dance-singles/uvrJ0oYoZJs.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 124,
         "avg_shot_duration_sec": 1.755,
@@ -173,33 +174,32 @@
             "disconnected": 20.0
           },
           "continuity_score": 46.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 123,
+          "cuts_on_word_boundary_pct": 22.76,
+          "cuts_on_phrase_boundary_pct": 6.5,
+          "word_count": 406,
+          "phrase_count": 31
         }
       },
-      "youtube_metadata": {
-        "view_count": 1401398,
-        "like_count": 19415,
-        "like_ratio": 0.013854,
-        "duration_sec": 222.0,
-        "channel": "Carol Stk",
-        "upload_date": "20200330",
-        "title": "Dance Monkey // Multifandom"
-      },
-      "quality_score": 61.09,
-      "quality_tier": "C",
+      "quality_score": 43.43,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 49.83,
         "beat_sync": 48.0,
-        "lyric_sync": 50.0,
+        "lyric_sync": 13.0,
         "motion": 46.0,
-        "approval": 46.18
+        "approval": 50.0
       }
     },
     {
       "id": "287LolDpfcU",
-      "title": "Multifandom || HandClap (ft.Fitz and The Tantrums)",
-      "url": "https://www.youtube.com/watch?v=287LolDpfcU",
-      "duration_sec": 202.0,
+      "title": "287LolDpfcU",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/dance-singles/287LolDpfcU.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 145,
         "avg_shot_duration_sec": 1.378,
@@ -350,33 +350,32 @@
             "disconnected": 27.5
           },
           "continuity_score": 46.75
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 144,
+          "cuts_on_word_boundary_pct": 16.67,
+          "cuts_on_phrase_boundary_pct": 5.56,
+          "word_count": 253,
+          "phrase_count": 23
         }
       },
-      "youtube_metadata": {
-        "view_count": 757356,
-        "like_count": 13634,
-        "like_ratio": 0.018002,
-        "duration_sec": 202.0,
-        "channel": "Juso",
-        "upload_date": "20240818",
-        "title": "Multifandom || HandClap (ft.Fitz and The Tantrums)"
-      },
-      "quality_score": 66.47,
-      "quality_tier": "B",
+      "quality_score": 46.97,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 47.19,
         "beat_sync": 69.4,
-        "lyric_sync": 50.0,
+        "lyric_sync": 10.0,
         "motion": 46.75,
-        "approval": 60.01
+        "approval": 50.0
       }
     },
     {
       "id": "-yHCeSZ-Nik",
-      "title": "Multifandom || Dancin",
-      "url": "https://www.youtube.com/watch?v=-yHCeSZ-Nik",
-      "duration_sec": 197.0,
+      "title": "-yHCeSZ-Nik",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/dance-singles/-yHCeSZ-Nik.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 90,
         "avg_shot_duration_sec": 2.173,
@@ -523,33 +522,32 @@
             "disconnected": 22.5
           },
           "continuity_score": 39.25
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 89,
+          "cuts_on_word_boundary_pct": 7.87,
+          "cuts_on_phrase_boundary_pct": 0.0,
+          "word_count": 111,
+          "phrase_count": 3
         }
       },
-      "youtube_metadata": {
-        "view_count": 16331887,
-        "like_count": 331312,
-        "like_ratio": 0.020286,
-        "duration_sec": 197.0,
-        "channel": "Samuel Oliveira",
-        "upload_date": "20201021",
-        "title": "Multifandom || Dancin"
-      },
-      "quality_score": 64.9,
-      "quality_tier": "C",
+      "quality_score": 43.61,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 46.35,
         "beat_sync": 64.0,
-        "lyric_sync": 50.0,
+        "lyric_sync": 3.15,
         "motion": 39.25,
-        "approval": 67.62
+        "approval": 50.0
       }
     },
     {
       "id": "ETMk4m-_7A0",
-      "title": "Multifandom | Dance Monkey",
-      "url": "https://www.youtube.com/watch?v=ETMk4m-_7A0",
-      "duration_sec": 94.0,
+      "title": "ETMk4m-_7A0",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/dance-singles/ETMk4m-_7A0.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 63,
         "avg_shot_duration_sec": 1.487,
@@ -656,33 +654,32 @@
             "disconnected": 40.0
           },
           "continuity_score": 33.12
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 62,
+          "cuts_on_word_boundary_pct": 20.97,
+          "cuts_on_phrase_boundary_pct": 3.23,
+          "word_count": 88,
+          "phrase_count": 6
         }
       },
-      "youtube_metadata": {
-        "view_count": 4040036,
-        "like_count": 65813,
-        "like_ratio": 0.01629,
-        "duration_sec": 94.0,
-        "channel": "LEVA",
-        "upload_date": "20200311",
-        "title": "Multifandom | Dance Monkey"
-      },
-      "quality_score": 57.22,
-      "quality_tier": "C",
+      "quality_score": 38.34,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 46.01,
         "beat_sync": 37.1,
-        "lyric_sync": 50.0,
+        "lyric_sync": 10.33,
         "motion": 33.12,
-        "approval": 54.3
+        "approval": 50.0
       }
     },
     {
       "id": "00ezoTnw1HM",
-      "title": "Shut Up and Dance | Movie Compilation",
-      "url": "https://www.youtube.com/watch?v=00ezoTnw1HM",
-      "duration_sec": 230.0,
+      "title": "00ezoTnw1HM",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/dance-singles/00ezoTnw1HM.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 100,
         "avg_shot_duration_sec": 2.284,
@@ -845,32 +842,31 @@
             "disconnected": 30.0
           },
           "continuity_score": 37.25
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 99,
+          "cuts_on_word_boundary_pct": 23.23,
+          "cuts_on_phrase_boundary_pct": 2.02,
+          "word_count": 310,
+          "phrase_count": 13
         }
       },
-      "youtube_metadata": {
-        "view_count": 11422939,
-        "like_count": 66591,
-        "like_ratio": 0.00583,
-        "duration_sec": 230.0,
-        "channel": "The Age of Cinema",
-        "upload_date": "20210322",
-        "title": "Shut Up and Dance | Movie Compilation"
-      },
-      "quality_score": 60.37,
-      "quality_tier": "C",
+      "quality_score": 45.01,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 52.16,
         "beat_sync": 62.6,
-        "lyric_sync": 50.0,
+        "lyric_sync": 10.5,
         "motion": 37.25,
-        "approval": 19.43
+        "approval": 50.0
       }
     }
   ],
   "priors": {
     "median_shot_duration_sec": 1.55,
-    "cuts_per_minute": 34.42,
+    "cuts_per_minute": 34.34,
     "quality_weighted": true,
     "shot_duration_range_sec": [
       1.378,
@@ -890,10 +886,9 @@
     "intro_to_first_cut_sec_median": 2.933,
     "pacing_profile": "escalator",
     "tier_samples": {
-      "C": 4,
-      "B": 1
+      "D": 5
     }
   },
-  "generated_at": "2026-04-20T10:06:04.505389+00:00",
+  "generated_at": "2026-04-20T20:00:20.833092+00:00",
   "generator": "ff reference ingest"
 }

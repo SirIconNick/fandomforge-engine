@@ -527,7 +527,22 @@ def ingest_playlist(
     target_dir = references_root() / tag
     target_dir.mkdir(parents=True, exist_ok=True)
 
-    entries = list_playlist_entries(playlist_url)
+    # no-download re-analysis: enumerate existing video files in the tag dir
+    # instead of calling yt-dlp. file:// URLs are the sentinel the CLI uses
+    # when --no-download + --playlist omitted.
+    if not download and playlist_url.startswith("file://"):
+        entries = []
+        for child in sorted(target_dir.iterdir()):
+            if child.suffix.lower() not in (".mp4", ".mkv", ".webm"):
+                continue
+            entries.append({
+                "id": child.stem,
+                "title": child.stem,
+                "url": str(child),
+                "duration_sec": 0.0,
+            })
+    else:
+        entries = list_playlist_entries(playlist_url)
     if max_videos is not None:
         entries = entries[:max_videos]
 

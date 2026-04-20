@@ -2,15 +2,16 @@
   "schema_version": 1,
   "tag": "sad-pl1",
   "source_playlists": [
-    "https://www.youtube.com/playlist?list=PL1xSxjuOQA3PjmXLhEWy2hTVwzBRidO4N"
+    "https://www.youtube.com/playlist?list=PL1xSxjuOQA3PjmXLhEWy2hTVwzBRidO4N",
+    "file:///Users/damato/Projects/fandomforge-engine/references/sad-pl1"
   ],
   "video_count": 15,
   "videos": [
     {
       "id": "vPg1ni545Ag",
-      "title": "sad multifandom \u2022 breathin",
-      "url": "https://www.youtube.com/watch?v=vPg1ni545Ag",
-      "duration_sec": 124.0,
+      "title": "vPg1ni545Ag",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/vPg1ni545Ag.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 3,
         "avg_shot_duration_sec": 41.066,
@@ -129,33 +130,32 @@
             "disconnected": 0.0
           },
           "continuity_score": 35.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 2,
+          "cuts_on_word_boundary_pct": 0.0,
+          "cuts_on_phrase_boundary_pct": 0.0,
+          "word_count": 147,
+          "phrase_count": 19
         }
       },
-      "youtube_metadata": {
-        "view_count": 78097,
-        "like_count": 582,
-        "like_ratio": 0.007452,
-        "duration_sec": 123.0,
-        "channel": "moviexshow edits",
-        "upload_date": "20200905",
-        "title": "sad multifandom \u2022 breathin"
-      },
-      "quality_score": 32.61,
+      "quality_score": 39.21,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 3.65,
+        "audience": 50.0,
         "variety": 43.07,
         "beat_sync": 50.0,
-        "lyric_sync": 50.0,
+        "lyric_sync": 0.0,
         "motion": 35.0,
-        "approval": 24.84
+        "approval": 50.0
       }
     },
     {
       "id": "SCNxXN5y5O0",
-      "title": "Sad Multifandom | Where's my love?",
-      "url": "https://www.youtube.com/watch?v=SCNxXN5y5O0",
-      "duration_sec": 248.0,
+      "title": "SCNxXN5y5O0",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/SCNxXN5y5O0.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 80,
         "avg_shot_duration_sec": 3.086,
@@ -322,33 +322,32 @@
             "disconnected": 30.0
           },
           "continuity_score": 31.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 79,
+          "cuts_on_word_boundary_pct": 30.38,
+          "cuts_on_phrase_boundary_pct": 13.92,
+          "word_count": 254,
+          "phrase_count": 33
         }
       },
-      "youtube_metadata": {
-        "view_count": 117190,
-        "like_count": 2575,
-        "like_ratio": 0.021973,
-        "duration_sec": 248.0,
-        "channel": "SunnyVids",
-        "upload_date": "20161213",
-        "title": "Sad Multifandom | Where's my love?"
-      },
-      "quality_score": 34.98,
+      "quality_score": 39.36,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 5.48,
+        "audience": 50.0,
         "variety": 41.95,
         "beat_sync": 39.2,
-        "lyric_sync": 50.0,
+        "lyric_sync": 20.5,
         "motion": 31.0,
-        "approval": 73.24
+        "approval": 50.0
       }
     },
     {
       "id": "CYMwQnSZas4",
-      "title": "Sad Multifandom || Trauma",
-      "url": "https://www.youtube.com/watch?v=CYMwQnSZas4",
-      "duration_sec": 93.0,
+      "title": "CYMwQnSZas4",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/CYMwQnSZas4.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 44,
         "avg_shot_duration_sec": 2.093,
@@ -455,33 +454,32 @@
             "disconnected": 15.0
           },
           "continuity_score": 36.62
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 43,
+          "cuts_on_word_boundary_pct": 25.58,
+          "cuts_on_phrase_boundary_pct": 13.95,
+          "word_count": 152,
+          "phrase_count": 19
         }
       },
-      "youtube_metadata": {
-        "view_count": 149478,
-        "like_count": 4702,
-        "like_ratio": 0.031456,
-        "duration_sec": 93.0,
-        "channel": "KeepHopeAlive",
-        "upload_date": "20200531",
-        "title": "Sad Multifandom || Trauma"
-      },
-      "quality_score": 43.28,
+      "quality_score": 44.32,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 6.99,
+        "audience": 50.0,
         "variety": 42.92,
         "beat_sync": 60.5,
-        "lyric_sync": 50.0,
+        "lyric_sync": 18.6,
         "motion": 36.62,
-        "approval": 100.0
+        "approval": 50.0
       }
     },
     {
       "id": "0YldqEe9U9U",
-      "title": "Sad Multifandom | I can't be strong all the time",
-      "url": "https://www.youtube.com/watch?v=0YldqEe9U9U",
-      "duration_sec": 306.0,
+      "title": "0YldqEe9U9U",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/0YldqEe9U9U.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 37,
         "avg_shot_duration_sec": 8.258,
@@ -672,33 +670,32 @@
             "disconnected": 36.11
           },
           "continuity_score": 28.19
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 36,
+          "cuts_on_word_boundary_pct": 2.78,
+          "cuts_on_phrase_boundary_pct": 13.89,
+          "word_count": 311,
+          "phrase_count": 42
         }
       },
-      "youtube_metadata": {
-        "view_count": 1385117,
-        "like_count": 32635,
-        "like_ratio": 0.023561,
-        "duration_sec": 306.0,
-        "channel": "xShadowBanshee",
-        "upload_date": "20200326",
-        "title": "Sad Multifandom | I can't be strong all the time"
-      },
-      "quality_score": 54.44,
+      "quality_score": 41.82,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 64.73,
+        "audience": 50.0,
         "variety": 54.08,
         "beat_sync": 52.8,
-        "lyric_sync": 50.0,
+        "lyric_sync": 9.45,
         "motion": 28.19,
-        "approval": 78.54
+        "approval": 50.0
       }
     },
     {
       "id": "mOUg8dL-2n8",
-      "title": "Sad Multifandom | Are you okay?",
-      "url": "https://www.youtube.com/watch?v=mOUg8dL-2n8",
-      "duration_sec": 187.0,
+      "title": "mOUg8dL-2n8",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/mOUg8dL-2n8.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 40,
         "avg_shot_duration_sec": 4.658,
@@ -841,33 +838,32 @@
             "disconnected": 20.51
           },
           "continuity_score": 33.59
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 39,
+          "cuts_on_word_boundary_pct": 12.82,
+          "cuts_on_phrase_boundary_pct": 7.69,
+          "word_count": 308,
+          "phrase_count": 36
         }
       },
-      "youtube_metadata": {
-        "view_count": 3626978,
-        "like_count": 80193,
-        "like_ratio": 0.02211,
-        "duration_sec": 186.0,
-        "channel": "Julia",
-        "upload_date": "20161115",
-        "title": "Sad Multifandom | Are you okay?"
-      },
-      "quality_score": 61.61,
-      "quality_tier": "C",
+      "quality_score": 40.7,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 53.23,
         "beat_sync": 43.6,
-        "lyric_sync": 50.0,
+        "lyric_sync": 9.74,
         "motion": 33.59,
-        "approval": 73.7
+        "approval": 50.0
       }
     },
     {
       "id": "WRK15lqGhcQ",
-      "title": "\u25ba sad multifandom | i wish i could take it all back.",
-      "url": "https://www.youtube.com/watch?v=WRK15lqGhcQ",
-      "duration_sec": 285.0,
+      "title": "WRK15lqGhcQ",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/WRK15lqGhcQ.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 77,
         "avg_shot_duration_sec": 3.698,
@@ -1050,33 +1046,32 @@
             "disconnected": 22.5
           },
           "continuity_score": 34.38
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 76,
+          "cuts_on_word_boundary_pct": 19.74,
+          "cuts_on_phrase_boundary_pct": 22.37,
+          "word_count": 334,
+          "phrase_count": 42
         }
       },
-      "youtube_metadata": {
-        "view_count": 1048001,
-        "like_count": 23046,
-        "like_ratio": 0.02199,
-        "duration_sec": 285.0,
-        "channel": "sanp\u00e9",
-        "upload_date": "20180712",
-        "title": "\u25ba sad multifandom | i wish i could take it all back."
-      },
-      "quality_score": 57.22,
-      "quality_tier": "C",
+      "quality_score": 50.85,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 48.97,
+        "audience": 50.0,
         "variety": 63.15,
         "beat_sync": 77.6,
-        "lyric_sync": 50.0,
+        "lyric_sync": 21.32,
         "motion": 34.38,
-        "approval": 73.3
+        "approval": 50.0
       }
     },
     {
       "id": "7CgDocGpUAk",
-      "title": "sad multifandom {I don't feel anything}",
-      "url": "https://www.youtube.com/watch?v=7CgDocGpUAk",
-      "duration_sec": 70.0,
+      "title": "7CgDocGpUAk",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/7CgDocGpUAk.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 22,
         "avg_shot_duration_sec": 3.122,
@@ -1171,33 +1166,32 @@
             "disconnected": 23.81
           },
           "continuity_score": 36.67
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 21,
+          "cuts_on_word_boundary_pct": 14.29,
+          "cuts_on_phrase_boundary_pct": 19.05,
+          "word_count": 91,
+          "phrase_count": 17
         }
       },
-      "youtube_metadata": {
-        "view_count": 26052,
-        "like_count": 94,
-        "like_ratio": 0.003608,
-        "duration_sec": 69.0,
-        "channel": "CrucioEdits",
-        "upload_date": "20200904",
-        "title": "sad multifandom {I don't feel anything}"
-      },
-      "quality_score": 33.46,
+      "quality_score": 44.52,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 1.22,
+        "audience": 50.0,
         "variety": 31.13,
         "beat_sync": 71.4,
-        "lyric_sync": 50.0,
+        "lyric_sync": 17.15,
         "motion": 36.67,
-        "approval": 12.03
+        "approval": 50.0
       }
     },
     {
       "id": "7O1160-dIsw",
-      "title": "Sad Multifandom - \"I Don't Like the Way I Look\"",
-      "url": "https://www.youtube.com/watch?v=7O1160-dIsw",
-      "duration_sec": 441.0,
+      "title": "7O1160-dIsw",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/7O1160-dIsw.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 106,
         "avg_shot_duration_sec": 4.151,
@@ -1444,33 +1438,32 @@
             "disconnected": 20.0
           },
           "continuity_score": 34.5
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 105,
+          "cuts_on_word_boundary_pct": 16.19,
+          "cuts_on_phrase_boundary_pct": 9.52,
+          "word_count": 793,
+          "phrase_count": 77
         }
       },
-      "youtube_metadata": {
-        "view_count": 2238253,
-        "like_count": 95874,
-        "like_ratio": 0.042834,
-        "duration_sec": 441.0,
-        "channel": "MermaidGal90",
-        "upload_date": "20190602",
-        "title": "Sad Multifandom - \"I Don't Like the Way I Look\""
-      },
-      "quality_score": 69.74,
-      "quality_tier": "B",
+      "quality_score": 46.57,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 60.7,
         "beat_sync": 64.8,
-        "lyric_sync": 50.0,
+        "lyric_sync": 12.19,
         "motion": 34.5,
-        "approval": 100.0
+        "approval": 50.0
       }
     },
     {
       "id": "rbfdGTZUyIg",
-      "title": "sad multifandom: 'i don't have any friends'",
-      "url": "https://www.youtube.com/watch?v=rbfdGTZUyIg",
-      "duration_sec": 221.0,
+      "title": "rbfdGTZUyIg",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/rbfdGTZUyIg.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 73,
         "avg_shot_duration_sec": 3.011,
@@ -1629,33 +1622,32 @@
             "disconnected": 12.5
           },
           "continuity_score": 38.75
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 72,
+          "cuts_on_word_boundary_pct": 26.39,
+          "cuts_on_phrase_boundary_pct": 5.56,
+          "word_count": 514,
+          "phrase_count": 33
         }
       },
-      "youtube_metadata": {
-        "view_count": 2104135,
-        "like_count": 65572,
-        "like_ratio": 0.031163,
-        "duration_sec": 221.0,
-        "channel": "skhan",
-        "upload_date": "20180712",
-        "title": "sad multifandom: 'i don't have any friends'"
-      },
-      "quality_score": 64.57,
-      "quality_tier": "C",
+      "quality_score": 42.07,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 98.33,
+        "audience": 50.0,
         "variety": 57.41,
         "beat_sync": 40.3,
-        "lyric_sync": 50.0,
+        "lyric_sync": 13.89,
         "motion": 38.75,
-        "approval": 100.0
+        "approval": 50.0
       }
     },
     {
       "id": "bfJx6pTLoIA",
-      "title": "Sad Multifandom | In A Broken Home |",
-      "url": "https://www.youtube.com/watch?v=bfJx6pTLoIA",
-      "duration_sec": 213.0,
+      "title": "bfJx6pTLoIA",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/bfJx6pTLoIA.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 59,
         "avg_shot_duration_sec": 3.595,
@@ -1810,33 +1802,32 @@
             "disconnected": 17.5
           },
           "continuity_score": 39.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 58,
+          "cuts_on_word_boundary_pct": 24.14,
+          "cuts_on_phrase_boundary_pct": 10.34,
+          "word_count": 445,
+          "phrase_count": 32
         }
       },
-      "youtube_metadata": {
-        "view_count": 1110387,
-        "like_count": 27367,
-        "like_ratio": 0.024646,
-        "duration_sec": 212.0,
-        "channel": "CarpeD!em Lyrics",
-        "upload_date": "20171018",
-        "title": "Sad Multifandom | In A Broken Home |"
-      },
-      "quality_score": 41.96,
+      "quality_score": 33.15,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 51.89,
+        "audience": 50.0,
         "variety": 12.65,
         "beat_sync": 27.6,
-        "lyric_sync": 50.0,
+        "lyric_sync": 15.86,
         "motion": 39.0,
-        "approval": 82.15
+        "approval": 50.0
       }
     },
     {
       "id": "nLRl4PZM_T4",
-      "title": "Sad multifandom - parents issues",
-      "url": "https://www.youtube.com/watch?v=nLRl4PZM_T4",
-      "duration_sec": 199.0,
+      "title": "nLRl4PZM_T4",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/nLRl4PZM_T4.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 22,
         "avg_shot_duration_sec": 9.029,
@@ -1983,33 +1974,32 @@
             "disconnected": 23.81
           },
           "continuity_score": 30.48
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 21,
+          "cuts_on_word_boundary_pct": 28.57,
+          "cuts_on_phrase_boundary_pct": 14.29,
+          "word_count": 522,
+          "phrase_count": 33
         }
       },
-      "youtube_metadata": {
-        "view_count": 831255,
-        "like_count": 24696,
-        "like_ratio": 0.029709,
-        "duration_sec": 199.0,
-        "channel": "kingcobra",
-        "upload_date": "20190903",
-        "title": "Sad multifandom - parents issues"
-      },
-      "quality_score": 51.82,
+      "quality_score": 45.21,
       "quality_tier": "D",
       "quality_components": {
-        "audience": 38.85,
+        "audience": 50.0,
         "variety": 51.72,
         "beat_sync": 61.9,
-        "lyric_sync": 50.0,
+        "lyric_sync": 20.0,
         "motion": 30.48,
-        "approval": 99.03
+        "approval": 50.0
       }
     },
     {
       "id": "r_wkf2bUQkI",
-      "title": "Sad Multifandom | Kids ain't supposed to be grateful",
-      "url": "https://www.youtube.com/watch?v=r_wkf2bUQkI",
-      "duration_sec": 285.0,
+      "title": "r_wkf2bUQkI",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/r_wkf2bUQkI.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 92,
         "avg_shot_duration_sec": 3.087,
@@ -2192,26 +2182,25 @@
             "disconnected": 12.5
           },
           "continuity_score": 39.75
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 91,
+          "cuts_on_word_boundary_pct": 26.37,
+          "cuts_on_phrase_boundary_pct": 9.89,
+          "word_count": 653,
+          "phrase_count": 55
         }
       },
-      "youtube_metadata": {
-        "view_count": 2104805,
-        "like_count": 78483,
-        "like_ratio": 0.037288,
-        "duration_sec": 284.0,
-        "channel": "LifeReader",
-        "upload_date": "20190602",
-        "title": "Sad Multifandom | Kids ain't supposed to be grateful"
-      },
-      "quality_score": 64.33,
-      "quality_tier": "C",
+      "quality_score": 42.21,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 98.36,
+        "audience": 50.0,
         "variety": 49.83,
         "beat_sync": 44.0,
-        "lyric_sync": 50.0,
+        "lyric_sync": 16.48,
         "motion": 39.75,
-        "approval": 100.0
+        "approval": 50.0
       }
     },
     {
@@ -2250,9 +2239,9 @@
     },
     {
       "id": "a5cPV2lFsoI",
-      "title": "sad multifandom-broken",
-      "url": "https://www.youtube.com/watch?v=a5cPV2lFsoI",
-      "duration_sec": 331.0,
+      "title": "a5cPV2lFsoI",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-pl1/a5cPV2lFsoI.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 129,
         "avg_shot_duration_sec": 2.552,
@@ -2455,32 +2444,31 @@
             "disconnected": 25.0
           },
           "continuity_score": 42.62
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 128,
+          "cuts_on_word_boundary_pct": 25.78,
+          "cuts_on_phrase_boundary_pct": 13.28,
+          "word_count": 674,
+          "phrase_count": 54
         }
       },
-      "youtube_metadata": {
-        "view_count": 2139924,
-        "like_count": 27434,
-        "like_ratio": 0.01282,
-        "duration_sec": 330.0,
-        "channel": "lissaloves",
-        "upload_date": "20170301",
-        "title": "sad multifandom-broken"
-      },
-      "quality_score": 62.12,
-      "quality_tier": "C",
+      "quality_score": 45.59,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 57.57,
         "beat_sync": 51.6,
-        "lyric_sync": 50.0,
+        "lyric_sync": 18.28,
         "motion": 42.62,
-        "approval": 42.73
+        "approval": 50.0
       }
     }
   ],
   "priors": {
-    "median_shot_duration_sec": 2.417,
-    "cuts_per_minute": 16.04,
+    "median_shot_duration_sec": 2.82,
+    "cuts_per_minute": 15.95,
     "quality_weighted": true,
     "shot_duration_range_sec": [
       2.552,
@@ -2500,11 +2488,9 @@
     "intro_to_first_cut_sec_median": 3.72,
     "pacing_profile": "steady",
     "tier_samples": {
-      "D": 7,
-      "C": 5,
-      "B": 1
+      "D": 13
     }
   },
-  "generated_at": "2026-04-20T09:01:47.771469+00:00",
+  "generated_at": "2026-04-20T20:06:12.302798+00:00",
   "generator": "ff reference ingest"
 }

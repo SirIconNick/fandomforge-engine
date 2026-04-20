@@ -3,15 +3,16 @@
   "tag": "sad-singles",
   "source_playlists": [
     "https://www.youtube.com/watch?v=polwiLRjX8k",
-    "https://www.youtube.com/watch?v=f4DpkLnBWKY"
+    "https://www.youtube.com/watch?v=f4DpkLnBWKY",
+    "file:///Users/damato/Projects/fandomforge-engine/references/sad-singles"
   ],
   "video_count": 2,
   "videos": [
     {
       "id": "polwiLRjX8k",
-      "title": "what is pain? | sad multifandom",
-      "url": "https://www.youtube.com/watch?v=polwiLRjX8k",
-      "duration_sec": 469.0,
+      "title": "polwiLRjX8k",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-singles/polwiLRjX8k.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 119,
         "avg_shot_duration_sec": 3.933,
@@ -266,33 +267,32 @@
             "disconnected": 15.0
           },
           "continuity_score": 36.0
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 118,
+          "cuts_on_word_boundary_pct": 13.56,
+          "cuts_on_phrase_boundary_pct": 8.47,
+          "word_count": 402,
+          "phrase_count": 60
         }
       },
-      "youtube_metadata": {
-        "view_count": 1732162,
-        "like_count": 30808,
-        "like_ratio": 0.017786,
-        "duration_sec": 469.0,
-        "channel": "cengiz",
-        "upload_date": "20240422",
-        "title": "what is pain? | sad multifandom"
-      },
-      "quality_score": 66.26,
-      "quality_tier": "B",
+      "quality_score": 46.91,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 42.2,
         "beat_sync": 80.5,
-        "lyric_sync": 50.0,
+        "lyric_sync": 10.51,
         "motion": 36.0,
-        "approval": 59.29
+        "approval": 50.0
       }
     },
     {
       "id": "f4DpkLnBWKY",
-      "title": "I don't feel anything (Multifandom)",
-      "url": "https://www.youtube.com/watch?v=f4DpkLnBWKY",
-      "duration_sec": 269.0,
+      "title": "f4DpkLnBWKY",
+      "url": "/Users/damato/Projects/fandomforge-engine/references/sad-singles/f4DpkLnBWKY.mp4",
+      "duration_sec": 0.0,
       "metrics": {
         "shot_count": 147,
         "avg_shot_duration_sec": 1.821,
@@ -467,32 +467,31 @@
             "disconnected": 30.0
           },
           "continuity_score": 38.88
+        },
+        "lyric_alignment": {
+          "available": true,
+          "cuts_checked": 146,
+          "cuts_on_word_boundary_pct": 19.18,
+          "cuts_on_phrase_boundary_pct": 4.11,
+          "word_count": 292,
+          "phrase_count": 27
         }
       },
-      "youtube_metadata": {
-        "view_count": 867531,
-        "like_count": 12700,
-        "like_ratio": 0.014639,
-        "duration_sec": 269.0,
-        "channel": "Sooraj Vids",
-        "upload_date": "20230521",
-        "title": "I don't feel anything (Multifandom)"
-      },
-      "quality_score": 67.9,
-      "quality_tier": "B",
+      "quality_score": 49.54,
+      "quality_tier": "D",
       "quality_components": {
-        "audience": 100.0,
+        "audience": 50.0,
         "variety": 60.48,
         "beat_sync": 78.1,
-        "lyric_sync": 50.0,
+        "lyric_sync": 10.14,
         "motion": 38.88,
-        "approval": 48.8
+        "approval": 50.0
       }
     }
   ],
   "priors": {
     "median_shot_duration_sec": 1.268,
-    "cuts_per_minute": 24.21,
+    "cuts_per_minute": 24.34,
     "quality_weighted": true,
     "shot_duration_range_sec": [
       1.821,
@@ -512,9 +511,9 @@
     "intro_to_first_cut_sec_median": 17.0,
     "pacing_profile": "steady",
     "tier_samples": {
-      "B": 2
+      "D": 2
     }
   },
-  "generated_at": "2026-04-20T10:06:51.784422+00:00",
+  "generated_at": "2026-04-20T20:01:24.285418+00:00",
   "generator": "ff reference ingest"
 }
