@@ -13,24 +13,24 @@
       "intensity": 0.084,
       "recommended_shots": [
         {
-          "shot_id": "s002",
-          "score": 0.572,
-          "reasons": [
-            "duration matches reference priors"
-          ]
-        },
-        {
-          "shot_id": "s003",
-          "score": 0.572,
-          "reasons": [
-            "duration matches reference priors"
-          ]
-        },
-        {
           "shot_id": "s004",
-          "score": 0.571,
+          "score": 0.631,
           "reasons": [
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
+          ]
+        },
+        {
+          "shot_id": "s001",
+          "score": 0.63,
+          "reasons": [
+            "act 1 lands in song-act 1"
+          ]
+        },
+        {
+          "shot_id": "s007",
+          "score": 0.589,
+          "reasons": [
+            "act 1 lands in song-act 1"
           ]
         }
       ],
@@ -45,30 +45,30 @@
       "intensity": 0.832,
       "recommended_shots": [
         {
-          "shot_id": "s020",
-          "score": 0.844,
+          "shot_id": "s010",
+          "score": 0.965,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s019",
-          "score": 0.843,
+          "shot_id": "s007",
+          "score": 0.963,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s017",
-          "score": 0.842,
+          "shot_id": "s008",
+          "score": 0.924,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         }
       ]
@@ -82,30 +82,30 @@
       "intensity": 0.848,
       "recommended_shots": [
         {
-          "shot_id": "s035",
-          "score": 0.849,
+          "shot_id": "s007",
+          "score": 0.957,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s036",
-          "score": 0.849,
+          "shot_id": "s009",
+          "score": 0.918,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s034",
-          "score": 0.848,
+          "shot_id": "s008",
+          "score": 0.917,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         }
       ]
@@ -119,30 +119,30 @@
       "intensity": 0.997,
       "recommended_shots": [
         {
-          "shot_id": "s036",
-          "score": 0.81,
+          "shot_id": "s008",
+          "score": 0.879,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s033",
-          "score": 0.809,
+          "shot_id": "s009",
+          "score": 0.879,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s034",
-          "score": 0.809,
+          "shot_id": "s006",
+          "score": 0.877,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         }
       ]
@@ -156,30 +156,29 @@
       "intensity": 0.847,
       "recommended_shots": [
         {
-          "shot_id": "s034",
-          "score": 0.828,
+          "shot_id": "s009",
+          "score": 0.898,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s033",
-          "score": 0.827,
+          "shot_id": "s006",
+          "score": 0.896,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 1 lands in song-act 1"
           ]
         },
         {
-          "shot_id": "s018",
-          "score": 0.816,
+          "shot_id": "s035",
+          "score": 0.88,
           "reasons": [
             "mood=intense matches intense",
-            "intensity-match",
-            "duration matches reference priors"
+            "intensity-match"
           ]
         }
       ]
@@ -193,30 +192,30 @@
       "intensity": 0.826,
       "recommended_shots": [
         {
-          "shot_id": "s033",
-          "score": 0.812,
+          "shot_id": "s035",
+          "score": 0.939,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s019",
-          "score": 0.801,
+          "shot_id": "s032",
+          "score": 0.937,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s018",
-          "score": 0.8,
+          "shot_id": "s029",
+          "score": 0.936,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         }
       ]
@@ -230,30 +229,30 @@
       "intensity": 0.847,
       "recommended_shots": [
         {
-          "shot_id": "s019",
-          "score": 0.795,
+          "shot_id": "s032",
+          "score": 0.931,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s018",
-          "score": 0.794,
+          "shot_id": "s029",
+          "score": 0.929,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s017",
-          "score": 0.793,
+          "shot_id": "s026",
+          "score": 0.928,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         }
       ]
@@ -267,29 +266,30 @@
       "intensity": 0.859,
       "recommended_shots": [
         {
-          "shot_id": "s018",
-          "score": 0.781,
+          "shot_id": "s029",
+          "score": 0.916,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s017",
-          "score": 0.78,
+          "shot_id": "s026",
+          "score": 0.914,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s004",
-          "score": 0.723,
+          "shot_id": "s023",
+          "score": 0.912,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 2 lands in song-act 2"
           ]
         }
       ]
@@ -303,28 +303,30 @@
       "intensity": 1.0,
       "recommended_shots": [
         {
-          "shot_id": "s017",
-          "score": 0.742,
+          "shot_id": "s026",
+          "score": 0.876,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
-            "duration matches reference priors"
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s004",
-          "score": 0.685,
+          "shot_id": "s023",
+          "score": 0.874,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 2 lands in song-act 2"
           ]
         },
         {
-          "shot_id": "s003",
-          "score": 0.684,
+          "shot_id": "s020",
+          "score": 0.873,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 2 lands in song-act 2"
           ]
         }
       ]
@@ -338,28 +340,29 @@
       "intensity": 0.881,
       "recommended_shots": [
         {
-          "shot_id": "s004",
-          "score": 0.774,
+          "shot_id": "s046",
+          "score": 0.903,
           "reasons": [
             "mood=intense matches intense",
-            "act 3 lands in song-act 3",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s003",
-          "score": 0.773,
+          "shot_id": "s043",
+          "score": 0.901,
           "reasons": [
             "mood=intense matches intense",
-            "act 3 lands in song-act 3",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s001",
-          "score": 0.729,
+          "shot_id": "s038",
+          "score": 0.897,
           "reasons": [
             "mood=intense matches intense",
+            "intensity-match",
             "act 3 lands in song-act 3"
           ]
         }
@@ -374,28 +377,30 @@
       "intensity": 0.82,
       "recommended_shots": [
         {
-          "shot_id": "s003",
-          "score": 0.775,
+          "shot_id": "s043",
+          "score": 0.891,
           "reasons": [
             "mood=intense matches intense",
-            "act 3 lands in song-act 3",
-            "duration matches reference priors"
-          ]
-        },
-        {
-          "shot_id": "s001",
-          "score": 0.731,
-          "reasons": [
-            "mood=intense matches intense",
+            "intensity-match",
             "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s007",
-          "score": 0.704,
+          "shot_id": "s038",
+          "score": 0.888,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
+          ]
+        },
+        {
+          "shot_id": "s050",
+          "score": 0.861,
+          "reasons": [
+            "mood=intense matches intense",
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         }
       ]
@@ -409,27 +414,30 @@
       "intensity": 0.992,
       "recommended_shots": [
         {
-          "shot_id": "s001",
-          "score": 0.687,
+          "shot_id": "s038",
+          "score": 0.855,
           "reasons": [
             "mood=intense matches intense",
+            "intensity-match",
             "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s008",
-          "score": 0.66,
+          "shot_id": "s050",
+          "score": 0.829,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s006",
-          "score": 0.659,
+          "shot_id": "s048",
+          "score": 0.827,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         }
       ]
@@ -443,27 +451,30 @@
       "intensity": 0.919,
       "recommended_shots": [
         {
-          "shot_id": "s008",
-          "score": 0.665,
+          "shot_id": "s050",
+          "score": 0.833,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s007",
-          "score": 0.664,
+          "shot_id": "s048",
+          "score": 0.832,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s006",
-          "score": 0.663,
+          "shot_id": "s041",
+          "score": 0.828,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         }
       ]
@@ -477,27 +488,30 @@
       "intensity": 0.836,
       "recommended_shots": [
         {
-          "shot_id": "s007",
-          "score": 0.671,
+          "shot_id": "s048",
+          "score": 0.833,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s006",
-          "score": 0.67,
+          "shot_id": "s041",
+          "score": 0.829,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s050",
-          "score": 0.651,
+          "shot_id": "s047",
+          "score": 0.827,
           "reasons": [
             "mood=intense matches intense",
-            "duration matches reference priors"
+            "intensity-match",
+            "act 3 lands in song-act 3"
           ]
         }
       ]
@@ -511,30 +525,30 @@
       "intensity": 0.019,
       "recommended_shots": [
         {
-          "shot_id": "s006",
-          "score": 0.471,
+          "shot_id": "s049",
+          "score": 0.575,
           "reasons": [
-            "duration matches reference priors"
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s050",
-          "score": 0.453,
+          "shot_id": "s051",
+          "score": 0.536,
           "reasons": [
-            "duration matches reference priors"
+            "act 3 lands in song-act 3"
           ]
         },
         {
-          "shot_id": "s048",
-          "score": 0.451,
+          "shot_id": "s044",
+          "score": 0.532,
           "reasons": [
-            "duration matches reference priors"
+            "act 3 lands in song-act 3"
           ]
         }
       ],
       "end_sec": 229.204
     }
   ],
-  "generated_at": "2026-04-20T00:10:48.255874+00:00",
+  "generated_at": "2026-04-20T00:31:18.985560+00:00",
   "generator": "ff sync plan"
 }

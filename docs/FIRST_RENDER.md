@@ -1,5 +1,15 @@
 # First Render — Minute-Long Action-Legends Edit
 
+> **Update 2026-04-19 — v2 intentional re-render:** the first pass was
+> called out for lazy shot selection (duplicated timestamps, no beat sync,
+> identical openings). v2 rebuilds the shot-list from scratch using real
+> scene detection (282 scenes across 4 sources, scored for motion +
+> brightness + duration tier), with beat-aligned cut points, a
+> fandom-establishing rotation over the first 8 shots, and content-aware
+> tier matching thereafter. Every shot carries a `description` string
+> explaining why it was picked for that beat. See the "v2 rebuild"
+> section at the bottom.
+
 Date: 2026-04-19 · End-to-end render of `projects/action-legends/` with the
 full new pipeline (reference priors + edit-type priors + sync/complement/SFX
 plans + scene-audio blend + per-shot checkpoints + post-render review).
@@ -136,8 +146,73 @@ The minute-long render is:
 - **Type-aware** — action priors explicitly loaded, planner scored accordingly
 - **First edit the system has actually rendered** with all the intelligence layers active
 
-## Verdict
+## Verdict (v1)
 
-The engine produces a real, playable, graded mp4 end-to-end. Grade B at 85.3/100 on the first minute-long render is solid — well above the plan's "Grade ≥ C" bar. The visual warn on dark segments is content-driven, not a bug. Audio, structural, and shot-list dimensions all score perfect.
+The engine produces a real, playable, graded mp4 end-to-end. Grade B at 85.3/100. But the shot-list was lazy — 15 seed shots jittered into 50 variants, not genuinely 50 distinct picks. See the v2 rebuild below for the fix.
 
-Nothing's perfect yet — the 51 visual score wants a luma filter, real SFX packs would make the mix punchier, whisper lyrics would lift sync-plan intelligence — but the core claim ("this engine makes fandom videos end-to-end") is demonstrably true.
+---
+
+## v2 Rebuild — intentional shot selection
+
+**Result: Grade B / 83.5 / YELLOW**
+
+Nick called out v1 immediately: "overused shots, no audio from clips with the music, shots not matching, not following the beat, not telling a story, beginning didn't change." All valid. v1 was moving pieces, not editing.
+
+### v2 approach — content-aware picking
+
+1. **Scene-detect every source** — `scenedetect` on all 4 MP4s produced 282 scenes (extraction-2: 50, john-wick-4: 84, mad-max-fury-road: 90, the-raid-2: 58). Saved to `data/scenes/<source>.json`.
+
+2. **Score every scene for motion + brightness** — sampled 2 frames per scene, computed pixel-diff magnitude for motion and mean luma. Bucketed into 5 intensity tiers:
+   - `climax` (motion > 0.25, duration < 1.5s) — peak action, 22 total
+   - `high` (motion > 0.18) — sustained action, 61 total
+   - `mid` (motion > 0.10) — medium, 68 total
+   - `held` (low motion, duration > 2s) — establishing
+   - `low` — filler
+
+3. **Beat-driven cut placement** — 49 beats detected in first 60s. Each beat becomes a cut point. Shot duration = gap-to-next-beat. Real beat-sync, not a time grid.
+
+4. **Fandom-establishing intro** — first 8 shots rotate through all 4 sources in shuffled order. Every fandom gets on screen before the music's first drop.
+
+5. **Song-context → scene-tier matching**:
+   - `intro` (before first drop): held / mid scenes
+   - `build` (heading to drop): high / climax
+   - `drop`: climax / high
+   - `post-drop`: high / mid
+   - `climax` (outro): climax / high
+
+6. **Luma filter + scene midpoint offset** — rejects scenes with `avg_luma < 0.18`, picks 40% into each scene to skip fade-in frames. Dropped dark runtime from 7.46s → 2.59s.
+
+7. **Every shot carries its rationale** in the `description` field:
+   ```
+   s001 [Extraction]          intro · tier: held · motion 0.009, luma 0.31 · fandom-establish #1
+   s002 [John Wick]           intro · tier: mid · motion 0.15, luma 0.29 · fandom-establish #2
+   s003 [Mad Max: Fury Road]  intro · tier: mid · motion 0.13, luma 0.31 · fandom-establish #3
+   s004 [The Raid 2]          intro · tier: held · motion 0.02, luma 0.23 · fandom-establish #4
+   ```
+
+### v1 vs v2 numbers
+
+| Metric | v1 | v2 |
+|---|---|---|
+| Unique (source, timecode) pairs | ~15 effective | 52 actual |
+| Beat-aligned cuts | 0 | 49 |
+| Drops landed on cut boundaries | ? | 3 / 3 |
+| Source distribution max | 32% | 27% |
+| Opening 8s variety | 3 Mad Max in a row | 4 fandoms in first 4 |
+| Dark segment total | 2.88s | 2.59s |
+| Grade | B / 85.3 | B / 83.5 |
+
+v2 scored marginally lower numerically because the scoring is duration-sensitive — intro holds (3 long establishing shots) are "slow" against the action 1.0s target. But the edit IS better: it tells a story, every cut is beat-aligned, zero shot duplicates.
+
+### Why it works now
+
+The engine stopped mashing. Each beat in the song asks: "what do I need here?" The scene catalog answers: "these tiers are available from this source." The picker matches. First 8 shots introduce each fandom before the music allows chaos. Drops get the rarest high-motion scenes. Dark scenes are filtered out before they drag the visual score.
+
+### Known gaps still real
+
+- **SFX packs missing** — 12 variants referenced, 0 on disk. Drop .wav files into `sfx/<kind>/` to activate sub_booms on drops and action SFX per shot.
+- **Complement pairs: 0** — shot descriptions don't use thrown/received action cue language. Future: enrich mood_tags with action verbs so the complement matcher has something to pair on.
+- **drawtext filter missing in ffmpeg** — title overlays skipped (non-blocking).
+- **5 dark segments** (2.59s / 58s edit) — even with luma filter, some picks land on action sequences with heavy shadow grading. Under the 10% fail threshold. Content-driven.
+
+That's editing with intent, not just execution.

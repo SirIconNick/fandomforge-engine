@@ -10,703 +10,1563 @@
   "shots": [
     {
       "id": "s001",
-      "act": 3,
+      "act": 1,
       "start_frame": 0,
-      "duration_frames": 48,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:06.802",
-      "role": "hero",
+      "duration_frames": 72,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:03.317",
+      "role": "establishing",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "free",
+        "index": 0,
+        "time_sec": 0.0
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 3.0
+      },
+      "fandom": "Extraction",
+      "description": "song context: intro \u00b7 scene tier: held \u00b7 motion 0.0092, luma 0.3144 \u00b7 fandom-establish shot #1",
+      "color_notes": "tier=held luma=0.31"
     },
     {
       "id": "s002",
-      "act": 3,
-      "start_frame": 48,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:03.310",
-      "role": "hero",
+      "act": 1,
+      "start_frame": 72,
+      "duration_frames": 72,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:01:20.722",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "free",
+        "index": 1,
+        "time_sec": 3.936
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 3.0
+      },
+      "fandom": "John Wick",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1529, luma 0.2901 \u00b7 fandom-establish shot #2",
+      "color_notes": "tier=mid luma=0.29"
     },
     {
       "id": "s003",
-      "act": 3,
-      "start_frame": 72,
-      "duration_frames": 24,
+      "act": 1,
+      "start_frame": 144,
+      "duration_frames": 59,
       "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:09.010",
-      "role": "hero",
+      "source_timecode": "0:01:29.239",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "free",
+        "index": 2,
+        "time_sec": 7.38
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 3.0
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1265, luma 0.3058 \u00b7 fandom-establish shot #3",
+      "color_notes": "tier=mid luma=0.31"
     },
     {
       "id": "s004",
-      "act": 3,
-      "start_frame": 96,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:11.969",
+      "act": 1,
+      "start_frame": 203,
+      "duration_frames": 65,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:00:40.058",
       "role": "hero",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 3,
+        "time_sec": 9.84
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: intro \u00b7 scene tier: held \u00b7 motion 0.0185, luma 0.2336",
+      "color_notes": "tier=held luma=0.23"
     },
     {
       "id": "s005",
-      "act": 4,
-      "start_frame": 120,
-      "duration_frames": 48,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:02:24.186",
-      "role": "hero",
+      "act": 1,
+      "start_frame": 268,
+      "duration_frames": 66,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:31.100",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 4,
+        "time_sec": 12.56
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1548, luma 0.311",
+      "color_notes": "tier=mid luma=0.31"
     },
     {
       "id": "s006",
-      "act": 4,
-      "start_frame": 168,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:02:21.138",
-      "role": "hero",
+      "act": 1,
+      "start_frame": 334,
+      "duration_frames": 16,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:01:42.487",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 5,
+        "time_sec": 15.29
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.16, luma 0.2387",
+      "color_notes": "tier=mid luma=0.24"
     },
     {
       "id": "s007",
-      "act": 4,
-      "start_frame": 192,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:02:26.811",
-      "role": "hero",
+      "act": 1,
+      "start_frame": 350,
+      "duration_frames": 33,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:16.451",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 6,
+        "time_sec": 15.97
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1121, luma 0.3068",
+      "color_notes": "tier=mid luma=0.31"
     },
     {
       "id": "s008",
-      "act": 4,
-      "start_frame": 216,
-      "duration_frames": 24,
+      "act": 1,
+      "start_frame": 383,
+      "duration_frames": 16,
       "source_id": "the-raid-2",
-      "source_timecode": "0:02:29.167",
-      "role": "hero",
+      "source_timecode": "0:01:53.017",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 7,
+        "time_sec": 17.33
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1132, luma 0.2786",
+      "color_notes": "tier=mid luma=0.28"
     },
     {
       "id": "s009",
-      "act": 5,
-      "start_frame": 240,
-      "duration_frames": 48,
+      "act": 1,
+      "start_frame": 399,
+      "duration_frames": 16,
       "source_id": "john-wick-4",
-      "source_timecode": "0:00:14.543",
-      "role": "hero",
+      "source_timecode": "0:01:22.416",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 8,
+        "time_sec": 18.01
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1025, luma 0.4234",
+      "color_notes": "tier=mid luma=0.42"
     },
     {
       "id": "s010",
-      "act": 5,
-      "start_frame": 288,
-      "duration_frames": 24,
-      "source_id": "john-wick-4",
-      "source_timecode": "0:00:11.229",
-      "role": "hero",
+      "act": 1,
+      "start_frame": 415,
+      "duration_frames": 33,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:21.940",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 9,
+        "time_sec": 18.69
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1578, luma 0.1874",
+      "color_notes": "tier=mid luma=0.19"
     },
     {
       "id": "s011",
-      "act": 5,
-      "start_frame": 312,
-      "duration_frames": 24,
-      "source_id": "john-wick-4",
-      "source_timecode": "0:00:16.880",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 448,
+      "duration_frames": 16,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:35.406",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 10,
+        "time_sec": 20.05
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1785, luma 0.3057",
+      "color_notes": "tier=mid luma=0.31"
     },
     {
       "id": "s012",
-      "act": 5,
-      "start_frame": 336,
-      "duration_frames": 24,
-      "source_id": "john-wick-4",
-      "source_timecode": "0:00:20.109",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 464,
+      "duration_frames": 49,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:00:35.558",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 11,
+        "time_sec": 20.73
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1077, luma 0.3123",
+      "color_notes": "tier=mid luma=0.31"
     },
     {
       "id": "s013",
-      "act": 5,
-      "start_frame": 360,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:02:17.953",
-      "role": "reaction",
+      "act": 2,
+      "start_frame": 513,
+      "duration_frames": 16,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:01:02.489",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 12,
+        "time_sec": 22.78
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1644, luma 0.2535",
+      "color_notes": "tier=mid luma=0.25"
     },
     {
       "id": "s014",
-      "act": 5,
-      "start_frame": 384,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 529,
+      "duration_frames": 17,
       "source_id": "mad-max-fury-road",
-      "source_timecode": "0:02:15.091",
-      "role": "reaction",
+      "source_timecode": "0:01:48.927",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 13,
+        "time_sec": 23.46
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1746, luma 0.3691",
+      "color_notes": "tier=mid luma=0.37"
     },
     {
       "id": "s015",
-      "act": 5,
-      "start_frame": 408,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:02:20.952",
-      "role": "reaction",
+      "act": 2,
+      "start_frame": 546,
+      "duration_frames": 33,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:03.575",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 14,
+        "time_sec": 24.15
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1368, luma 0.4028",
+      "color_notes": "tier=mid luma=0.40"
     },
     {
       "id": "s016",
-      "act": 5,
-      "start_frame": 432,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:02:23.868",
-      "role": "reaction",
+      "act": 2,
+      "start_frame": 579,
+      "duration_frames": 16,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:26.156",
+      "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 15,
+        "time_sec": 25.51
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1091, luma 0.1822",
+      "color_notes": "tier=mid luma=0.18"
     },
     {
       "id": "s017",
-      "act": 5,
-      "start_frame": 456,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:22.444",
+      "act": 2,
+      "start_frame": 595,
+      "duration_frames": 49,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:32.194",
       "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 16,
+        "time_sec": 26.19
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1709, luma 0.2662",
+      "color_notes": "tier=mid luma=0.27"
     },
     {
       "id": "s018",
-      "act": 5,
-      "start_frame": 480,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:19.739",
+      "act": 2,
+      "start_frame": 644,
+      "duration_frames": 17,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:06.723",
       "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 17,
+        "time_sec": 28.23
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1401, luma 0.1804",
+      "color_notes": "tier=mid luma=0.18"
     },
     {
       "id": "s019",
-      "act": 5,
-      "start_frame": 504,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 661,
+      "duration_frames": 16,
       "source_id": "extraction-2",
-      "source_timecode": "0:00:25.416",
+      "source_timecode": "0:01:32.281",
       "role": "motion",
       "mood_tags": [
-        "intense",
-        "combat"
+        "establishing",
+        "intense"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 18,
+        "time_sec": 28.92
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 3.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: intro \u00b7 scene tier: mid \u00b7 motion 0.1444, luma 0.3503",
+      "color_notes": "tier=mid luma=0.35"
     },
     {
       "id": "s020",
-      "act": 5,
-      "start_frame": 528,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:27.773",
-      "role": "motion",
+      "act": 2,
+      "start_frame": 677,
+      "duration_frames": 33,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:22.753",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 19,
+        "time_sec": 29.6
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.3147, luma 0.4792",
+      "color_notes": "tier=high luma=0.48"
     },
     {
       "id": "s021",
-      "act": 5,
-      "start_frame": 552,
-      "duration_frames": 48,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:29.538",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 710,
+      "duration_frames": 16,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:02:09.087",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 20,
+        "time_sec": 30.96
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.326, luma 0.3212",
+      "color_notes": "tier=high luma=0.32"
     },
     {
       "id": "s022",
-      "act": 5,
-      "start_frame": 600,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 726,
+      "duration_frames": 16,
       "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:26.452",
-      "role": "hero",
+      "source_timecode": "0:01:12.564",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 21,
+        "time_sec": 31.64
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2263, luma 0.2256",
+      "color_notes": "tier=high luma=0.23"
     },
     {
       "id": "s023",
-      "act": 5,
-      "start_frame": 624,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:31.665",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 742,
+      "duration_frames": 33,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:27.733",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 22,
+        "time_sec": 32.32
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2162, luma 0.2756",
+      "color_notes": "tier=high luma=0.28"
     },
     {
       "id": "s024",
-      "act": 5,
-      "start_frame": 648,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:00:34.517",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 775,
+      "duration_frames": 16,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:33.308",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 23,
+        "time_sec": 33.69
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2187, luma 0.2986",
+      "color_notes": "tier=high luma=0.30"
     },
     {
       "id": "s025",
-      "act": 5,
-      "start_frame": 672,
-      "duration_frames": 48,
-      "source_id": "extraction-2",
-      "source_timecode": "0:01:22.412",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 791,
+      "duration_frames": 17,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:11.622",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 24,
+        "time_sec": 34.36
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2256, luma 0.5019",
+      "color_notes": "tier=high luma=0.50"
     },
     {
       "id": "s026",
-      "act": 5,
-      "start_frame": 720,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:01:18.915",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 808,
+      "duration_frames": 33,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:47.698",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 25,
+        "time_sec": 35.05
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.1981, luma 0.1829",
+      "color_notes": "tier=high luma=0.18"
     },
     {
       "id": "s027",
-      "act": 5,
-      "start_frame": 744,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 841,
+      "duration_frames": 17,
       "source_id": "extraction-2",
-      "source_timecode": "0:01:24.220",
-      "role": "hero",
+      "source_timecode": "0:02:01.192",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 26,
+        "time_sec": 36.41
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.1854, luma 0.31",
+      "color_notes": "tier=high luma=0.31"
     },
     {
       "id": "s028",
-      "act": 5,
-      "start_frame": 768,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:01:27.223",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 858,
+      "duration_frames": 16,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:21.333",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 27,
+        "time_sec": 37.1
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2195, luma 0.4688",
+      "color_notes": "tier=high luma=0.47"
     },
     {
       "id": "s029",
-      "act": 5,
-      "start_frame": 792,
-      "duration_frames": 48,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:23.568",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 874,
+      "duration_frames": 33,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:02:16.044",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 28,
+        "time_sec": 37.78
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2027, luma 0.22",
+      "color_notes": "tier=high luma=0.22"
     },
     {
       "id": "s030",
-      "act": 5,
-      "start_frame": 840,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:20.373",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 907,
+      "duration_frames": 17,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:13.350",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 29,
+        "time_sec": 39.14
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.1845, luma 0.2668",
+      "color_notes": "tier=high luma=0.27"
     },
     {
       "id": "s031",
-      "act": 5,
-      "start_frame": 864,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:26.036",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 924,
+      "duration_frames": 16,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:04.556",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 30,
+        "time_sec": 39.83
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2379, luma 0.1958",
+      "color_notes": "tier=high luma=0.20"
     },
     {
       "id": "s032",
-      "act": 5,
-      "start_frame": 888,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:28.974",
-      "role": "hero",
+      "act": 2,
+      "start_frame": 940,
+      "duration_frames": 33,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:01:41.409",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 31,
+        "time_sec": 40.5
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.1857, luma 0.1882",
+      "color_notes": "tier=high luma=0.19"
     },
     {
       "id": "s033",
-      "act": 5,
-      "start_frame": 912,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 973,
+      "duration_frames": 16,
       "source_id": "extraction-2",
-      "source_timecode": "0:00:44.152",
+      "source_timecode": "0:02:05.342",
       "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 32,
+        "time_sec": 41.87
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: build \u00b7 scene tier: high \u00b7 motion 0.232, luma 0.2468",
+      "color_notes": "tier=high luma=0.25"
     },
     {
       "id": "s034",
-      "act": 5,
-      "start_frame": 936,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:41.501",
+      "act": 2,
+      "start_frame": 989,
+      "duration_frames": 16,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:09.956",
       "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 33,
+        "time_sec": 42.55
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: build \u00b7 scene tier: high \u00b7 motion 0.2525, luma 0.2617",
+      "color_notes": "tier=high luma=0.26"
     },
     {
       "id": "s035",
-      "act": 5,
-      "start_frame": 960,
-      "duration_frames": 24,
-      "source_id": "extraction-2",
-      "source_timecode": "0:00:46.526",
+      "act": 2,
+      "start_frame": 1005,
+      "duration_frames": 33,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:59.400",
       "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 34,
+        "time_sec": 43.23
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: build \u00b7 scene tier: high \u00b7 motion 0.3165, luma 0.3408",
+      "color_notes": "tier=high luma=0.34"
     },
     {
       "id": "s036",
-      "act": 5,
-      "start_frame": 984,
-      "duration_frames": 24,
+      "act": 2,
+      "start_frame": 1038,
+      "duration_frames": 16,
       "source_id": "extraction-2",
-      "source_timecode": "0:00:49.665",
+      "source_timecode": "0:01:47.469",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 35,
+        "time_sec": 44.6
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 5.0
+      },
+      "fandom": "Extraction",
+      "description": "song context: drop \u00b7 scene tier: climax \u00b7 motion 0.2921, luma 0.3022 \u00b7 drop at 44.21s",
+      "color_notes": "tier=climax luma=0.30"
+    },
+    {
+      "id": "s037",
+      "act": 3,
+      "start_frame": 1054,
+      "duration_frames": 16,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:02.336",
       "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
-    },
-    {
-      "id": "s037",
-      "act": 5,
-      "start_frame": 1008,
-      "duration_frames": 48,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:53.516",
-      "role": "hero",
-      "mood_tags": [
-        "intense",
-        "combat"
-      ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 36,
+        "time_sec": 45.28
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2399, luma 0.2433",
+      "color_notes": "tier=high luma=0.24"
     },
     {
       "id": "s038",
-      "act": 5,
-      "start_frame": 1056,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:50.347",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1070,
+      "duration_frames": 33,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:22.958",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 37,
+        "time_sec": 45.96
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2143, luma 0.3238",
+      "color_notes": "tier=high luma=0.32"
     },
     {
       "id": "s039",
-      "act": 5,
-      "start_frame": 1080,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:56.041",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1103,
+      "duration_frames": 16,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:46.142",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 38,
+        "time_sec": 47.32
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2495, luma 0.2777",
+      "color_notes": "tier=high luma=0.28"
     },
     {
       "id": "s040",
-      "act": 5,
-      "start_frame": 1104,
-      "duration_frames": 24,
+      "act": 3,
+      "start_frame": 1119,
+      "duration_frames": 49,
       "source_id": "the-raid-2",
-      "source_timecode": "0:01:58.814",
-      "role": "hero",
+      "source_timecode": "0:02:25.950",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 39,
+        "time_sec": 48.0
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.256, luma 0.3725",
+      "color_notes": "tier=high luma=0.37"
     },
     {
       "id": "s041",
-      "act": 5,
-      "start_frame": 1128,
-      "duration_frames": 48,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:01:37.329",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1168,
+      "duration_frames": 17,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:02:18.665",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 40,
+        "time_sec": 50.05
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2216, luma 0.2414",
+      "color_notes": "tier=high luma=0.24"
     },
     {
       "id": "s042",
-      "act": 5,
-      "start_frame": 1176,
-      "duration_frames": 24,
+      "act": 3,
+      "start_frame": 1185,
+      "duration_frames": 16,
       "source_id": "mad-max-fury-road",
-      "source_timecode": "0:01:33.802",
-      "role": "hero",
+      "source_timecode": "0:01:04.929",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 41,
+        "time_sec": 50.74
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.1848, luma 0.1998",
+      "color_notes": "tier=high luma=0.20"
     },
     {
       "id": "s043",
-      "act": 5,
-      "start_frame": 1200,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:01:39.447",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1201,
+      "duration_frames": 33,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:15.024",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 42,
+        "time_sec": 51.42
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2363, luma 0.1878",
+      "color_notes": "tier=high luma=0.19"
     },
     {
       "id": "s044",
-      "act": 5,
-      "start_frame": 1224,
-      "duration_frames": 24,
-      "source_id": "mad-max-fury-road",
-      "source_timecode": "0:01:42.497",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1234,
+      "duration_frames": 16,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:34.983",
+      "role": "insert",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 43,
+        "time_sec": 52.78
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: post-drop \u00b7 scene tier: low \u00b7 motion 0.0286, luma 0.1976",
+      "color_notes": "tier=low luma=0.20"
     },
     {
       "id": "s045",
-      "act": 5,
-      "start_frame": 1248,
-      "duration_frames": 48,
+      "act": 3,
+      "start_frame": 1250,
+      "duration_frames": 16,
       "source_id": "the-raid-2",
-      "source_timecode": "0:01:53.751",
-      "role": "hero",
+      "source_timecode": "0:01:18.625",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 44,
+        "time_sec": 53.46
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2089, luma 0.317",
+      "color_notes": "tier=high luma=0.32"
     },
     {
       "id": "s046",
-      "act": 5,
-      "start_frame": 1296,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:50.873",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1266,
+      "duration_frames": 33,
+      "source_id": "extraction-2",
+      "source_timecode": "0:02:08.483",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 45,
+        "time_sec": 54.14
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2075, luma 0.2653",
+      "color_notes": "tier=high luma=0.27"
     },
     {
       "id": "s047",
-      "act": 5,
-      "start_frame": 1320,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:56.268",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1299,
+      "duration_frames": 16,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:18.140",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 46,
+        "time_sec": 55.51
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2051, luma 0.4686",
+      "color_notes": "tier=high luma=0.47"
     },
     {
       "id": "s048",
-      "act": 5,
-      "start_frame": 1344,
-      "duration_frames": 24,
+      "act": 3,
+      "start_frame": 1315,
+      "duration_frames": 17,
       "source_id": "the-raid-2",
-      "source_timecode": "0:01:59.409",
-      "role": "hero",
+      "source_timecode": "0:02:13.125",
+      "role": "action",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 47,
+        "time_sec": 56.17
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "The Raid 2",
+      "description": "song context: post-drop \u00b7 scene tier: high \u00b7 motion 0.2431, luma 0.3191",
+      "color_notes": "tier=high luma=0.32"
     },
     {
       "id": "s049",
-      "act": 5,
-      "start_frame": 1368,
-      "duration_frames": 48,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:02:00.024",
-      "role": "hero",
+      "act": 3,
+      "start_frame": 1332,
+      "duration_frames": 33,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:38.638",
+      "role": "insert",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 48,
+        "time_sec": 56.87
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "John Wick",
+      "description": "song context: build \u00b7 scene tier: low \u00b7 motion 0.0672, luma 0.2698",
+      "color_notes": "tier=low luma=0.27"
     },
     {
       "id": "s050",
-      "act": 5,
-      "start_frame": 1416,
-      "duration_frames": 24,
-      "source_id": "the-raid-2",
-      "source_timecode": "0:01:56.807",
+      "act": 3,
+      "start_frame": 1365,
+      "duration_frames": 17,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:11.092",
+      "role": "action",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "beat",
+        "index": 49,
+        "time_sec": 58.23
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 4.5
+      },
+      "fandom": "Extraction",
+      "description": "song context: build \u00b7 scene tier: high \u00b7 motion 0.2581, luma 0.3285",
+      "color_notes": "tier=high luma=0.33"
+    },
+    {
+      "id": "s051",
+      "act": 3,
+      "start_frame": 1382,
+      "duration_frames": 16,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:17.461",
       "role": "hero",
       "mood_tags": [
         "intense",
         "combat"
       ],
-      "fandom": ""
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 50,
+        "time_sec": 58.92
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 5.0
+      },
+      "fandom": "Mad Max: Fury Road",
+      "description": "song context: drop \u00b7 scene tier: climax \u00b7 motion 0.2817, luma 0.327 \u00b7 drop at 59.21s",
+      "color_notes": "tier=climax luma=0.33"
+    },
+    {
+      "id": "s052",
+      "act": 3,
+      "start_frame": 1398,
+      "duration_frames": 10,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:39.622",
+      "role": "insert",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 51,
+        "time_sec": 59.59
+      },
+      "scores": {
+        "theme_fit": 4.0,
+        "fandom_balance": 4.0,
+        "emotion": 4.5,
+        "beat_sync_score": 5.0
+      },
+      "fandom": "John Wick",
+      "description": "song context: drop \u00b7 scene tier: low \u00b7 motion 0.0301, luma 0.2788 \u00b7 drop at 59.21s",
+      "color_notes": "tier=low luma=0.28"
     }
   ],
   "generated_at": "2026-04-19T20:28:50.574509+00:00",
