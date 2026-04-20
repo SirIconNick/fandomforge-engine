@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project_slug": "action-legends",
   "scene_audio_blend": {
-    "enabled": true,
+    "enabled": false,
     "gain_db": -20.0,
     "duck_to_song_db": -8.0
   },
@@ -10,255 +10,216 @@
     {
       "id": "sfx001",
       "time_sec": 0.0,
-      "kind": "gunshot",
-      "variant": "pistol-suppressed-01.wav",
+      "kind": "sword_clash",
+      "variant": "sword-clash-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s001",
       "beat_aligned": false,
-      "reason": "cue=establishing;mood=establishing,intense"
+      "reason": "cue=hero;mood=establishing,preamble,hero-down"
     },
     {
       "id": "sfx002",
-      "time_sec": 0.08,
+      "time_sec": 3.583,
       "kind": "sword_clash",
       "variant": "sword-clash-02.wav",
-      "gain_db": -2.0,
-      "source_shot_id": "s001",
+      "gain_db": 0.0,
+      "source_shot_id": "s002",
       "beat_aligned": false,
-      "reason": "compound-hit"
+      "reason": "cue=hero;mood=establishing,preamble,hero-down-2"
     },
     {
       "id": "sfx003",
-      "time_sec": 3.0,
-      "kind": "gunshot",
-      "variant": "pistol-suppressed-02.wav",
+      "time_sec": 5.0,
+      "kind": "sword_clash",
+      "variant": "sword-draw-01.wav",
       "gain_db": 0.0,
-      "source_shot_id": "s002",
+      "source_shot_id": "s003",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=hero;mood=establishing,preamble,hero-look-up"
     },
     {
       "id": "sfx004",
-      "time_sec": 3.08,
-      "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
-      "gain_db": -2.0,
-      "source_shot_id": "s002",
-      "beat_aligned": false,
-      "reason": "compound-hit"
-    },
-    {
-      "id": "sfx005",
-      "time_sec": 6.0,
-      "kind": "gunshot",
-      "variant": "rifle-short-01.wav",
-      "gain_db": 0.0,
-      "source_shot_id": "s003",
-      "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
-    },
-    {
-      "id": "sfx006",
-      "time_sec": 6.08,
+      "time_sec": 6.292,
       "kind": "sword_clash",
       "variant": "sword-clash-01.wav",
-      "gain_db": -2.0,
-      "source_shot_id": "s003",
-      "beat_aligned": false,
-      "reason": "compound-hit"
-    },
-    {
-      "id": "sfx007",
-      "time_sec": 8.458,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s004",
       "beat_aligned": false,
-      "reason": "cue=hero;mood=establishing,intense"
+      "reason": "cue=hero;mood=establishing,preamble,hero-rising"
     },
     {
-      "id": "sfx008",
-      "time_sec": 11.167,
+      "id": "sfx005",
+      "time_sec": 8.0,
       "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
+      "variant": "sword-clash-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s005",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=hero;mood=establishing,preamble,hero-ready"
     },
     {
-      "id": "sfx009",
-      "time_sec": 13.917,
-      "kind": "sword_clash",
-      "variant": "sword-clash-01.wav",
+      "id": "sfx006",
+      "time_sec": 9.84,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s006",
-      "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx010",
-      "time_sec": 14.583,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
+      "id": "sfx007",
+      "time_sec": 12.333,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s007",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx011",
-      "time_sec": 15.97,
-      "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
+      "id": "sfx008",
+      "time_sec": 14.833,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s008",
-      "beat_aligned": true,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx012",
-      "time_sec": 16.625,
-      "kind": "sword_clash",
-      "variant": "sword-clash-01.wav",
+      "id": "sfx009",
+      "time_sec": 15.5,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s009",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx013",
-      "time_sec": 17.33,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
+      "id": "sfx010",
+      "time_sec": 16.875,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s010",
-      "beat_aligned": true,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx014",
-      "time_sec": 18.69,
-      "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
+      "id": "sfx011",
+      "time_sec": 17.542,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s011",
-      "beat_aligned": true,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx015",
-      "time_sec": 19.333,
-      "kind": "sword_clash",
-      "variant": "sword-clash-01.wav",
+      "id": "sfx012",
+      "time_sec": 18.208,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s012",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx016",
-      "time_sec": 21.375,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
+      "id": "sfx013",
+      "time_sec": 19.583,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s013",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx017",
-      "time_sec": 22.042,
-      "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
+      "id": "sfx014",
+      "time_sec": 20.25,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s014",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx018",
-      "time_sec": 22.78,
-      "kind": "sword_clash",
-      "variant": "sword-clash-01.wav",
+      "id": "sfx015",
+      "time_sec": 22.292,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s015",
-      "beat_aligned": true,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx019",
-      "time_sec": 24.15,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
+      "id": "sfx016",
+      "time_sec": 22.958,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s016",
-      "beat_aligned": true,
-      "reason": "cue=motion;mood=establishing,intense"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx020",
-      "time_sec": 24.792,
-      "kind": "sword_clash",
-      "variant": "sword-draw-01.wav",
+      "id": "sfx017",
+      "time_sec": 23.667,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s017",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx021",
-      "time_sec": 26.833,
-      "kind": "sword_clash",
-      "variant": "sword-clash-01.wav",
+      "id": "sfx018",
+      "time_sec": 25.042,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s018",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx022",
-      "time_sec": 27.542,
-      "kind": "sword_clash",
-      "variant": "sword-clash-02.wav",
+      "id": "sfx019",
+      "time_sec": 25.708,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s019",
       "beat_aligned": false,
-      "reason": "cue=motion;mood=establishing,intense"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx023",
-      "time_sec": 28.23,
+      "id": "sfx020",
+      "time_sec": 27.75,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s020",
-      "beat_aligned": true,
+      "beat_aligned": false,
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx056",
-      "time_sec": 29.187,
-      "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
-      "gain_db": -1.0,
-      "beat_aligned": true,
-      "reason": "drop_1"
-    },
-    {
-      "id": "sfx024",
-      "time_sec": 29.6,
+      "id": "sfx021",
+      "time_sec": 28.458,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s021",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
     },
     {
-      "id": "sfx025",
-      "time_sec": 30.25,
+      "id": "sfx022",
+      "time_sec": 29.125,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
@@ -267,148 +228,157 @@
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx026",
-      "time_sec": 30.96,
+      "id": "sfx218",
+      "time_sec": 29.187,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_1"
+    },
+    {
+      "id": "sfx023",
+      "time_sec": 30.5,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s023",
-      "beat_aligned": true,
+      "beat_aligned": false,
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx027",
-      "time_sec": 32.32,
+      "id": "sfx024",
+      "time_sec": 31.167,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s024",
-      "beat_aligned": true,
+      "beat_aligned": false,
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx028",
-      "time_sec": 32.958,
+      "id": "sfx025",
+      "time_sec": 31.833,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s025",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx029",
-      "time_sec": 33.69,
+      "id": "sfx026",
+      "time_sec": 33.208,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s026",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx030",
-      "time_sec": 35.05,
+      "id": "sfx027",
+      "time_sec": 33.875,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s027",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx031",
-      "time_sec": 35.75,
+      "id": "sfx028",
+      "time_sec": 34.583,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s028",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx032",
-      "time_sec": 36.41,
+      "id": "sfx029",
+      "time_sec": 35.958,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s029",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx033",
-      "time_sec": 37.78,
+      "id": "sfx030",
+      "time_sec": 36.667,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s030",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx034",
-      "time_sec": 38.5,
+      "id": "sfx031",
+      "time_sec": 37.333,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s031",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx035",
-      "time_sec": 39.14,
+      "id": "sfx032",
+      "time_sec": 38.708,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s032",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx036",
-      "time_sec": 40.5,
+      "id": "sfx033",
+      "time_sec": 39.417,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s033",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx037",
-      "time_sec": 41.208,
+      "id": "sfx034",
+      "time_sec": 40.083,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s034",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx038",
-      "time_sec": 41.87,
+      "id": "sfx035",
+      "time_sec": 41.458,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s035",
-      "beat_aligned": true,
+      "beat_aligned": false,
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx039",
-      "time_sec": 43.23,
+      "id": "sfx036",
+      "time_sec": 42.125,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s036",
-      "beat_aligned": true,
-      "reason": "cue=hero;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx040",
-      "time_sec": 43.917,
+      "id": "sfx037",
+      "time_sec": 42.792,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
@@ -417,37 +387,37 @@
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx057",
+      "id": "sfx038",
+      "time_sec": 44.167,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s038",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx219",
       "time_sec": 44.211,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_2"
     },
     {
-      "id": "sfx041",
-      "time_sec": 44.6,
-      "kind": "impact",
-      "variant": "impact-thud-01.wav",
-      "gain_db": 0.0,
-      "source_shot_id": "s038",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
-    },
-    {
-      "id": "sfx042",
-      "time_sec": 45.96,
+      "id": "sfx039",
+      "time_sec": 44.833,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s039",
-      "beat_aligned": true,
+      "beat_aligned": false,
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx043",
-      "time_sec": 46.625,
+      "id": "sfx040",
+      "time_sec": 45.5,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
@@ -456,225 +426,1875 @@
       "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx044",
-      "time_sec": 48.667,
+      "id": "sfx041",
+      "time_sec": 46.875,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s041",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx045",
-      "time_sec": 49.375,
+      "id": "sfx042",
+      "time_sec": 47.542,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s042",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx046",
-      "time_sec": 50.05,
+      "id": "sfx043",
+      "time_sec": 49.583,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s043",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx047",
-      "time_sec": 51.42,
+      "id": "sfx044",
+      "time_sec": 50.292,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s044",
-      "beat_aligned": true,
-      "reason": "cue=insert;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx048",
-      "time_sec": 52.083,
+      "id": "sfx045",
+      "time_sec": 50.958,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s045",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx049",
-      "time_sec": 52.78,
+      "id": "sfx046",
+      "time_sec": 52.333,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s046",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx050",
-      "time_sec": 54.14,
+      "id": "sfx047",
+      "time_sec": 53.0,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s047",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx051",
-      "time_sec": 54.792,
+      "id": "sfx048",
+      "time_sec": 53.667,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s048",
       "beat_aligned": false,
-      "reason": "cue=action;mood=intense,combat"
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx052",
-      "time_sec": 55.51,
+      "id": "sfx049",
+      "time_sec": 55.042,
       "kind": "impact",
       "variant": "impact-heavy-02.wav",
       "gain_db": 0.0,
       "source_shot_id": "s049",
-      "beat_aligned": true,
-      "reason": "cue=insert;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx053",
-      "time_sec": 56.87,
+      "id": "sfx050",
+      "time_sec": 55.708,
       "kind": "impact",
       "variant": "impact-thud-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s050",
-      "beat_aligned": true,
-      "reason": "cue=action;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
     },
     {
-      "id": "sfx054",
-      "time_sec": 57.583,
+      "id": "sfx051",
+      "time_sec": 56.417,
       "kind": "impact",
       "variant": "impact-metal-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s051",
       "beat_aligned": false,
-      "reason": "cue=hero;mood=intense,combat"
+      "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx055",
-      "time_sec": 58.23,
+      "id": "sfx052",
+      "time_sec": 57.792,
       "kind": "impact",
       "variant": "impact-heavy-01.wav",
       "gain_db": 0.0,
       "source_shot_id": "s052",
-      "beat_aligned": true,
-      "reason": "cue=insert;mood=intense,combat"
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
     },
     {
-      "id": "sfx058",
+      "id": "sfx053",
+      "time_sec": 58.5,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s053",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx054",
+      "time_sec": 59.167,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s054",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx220",
       "time_sec": 59.211,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_3"
     },
     {
+      "id": "sfx055",
+      "time_sec": 60.542,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s055",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx056",
+      "time_sec": 61.25,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s056",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx057",
+      "time_sec": 61.917,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s057",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx058",
+      "time_sec": 63.292,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s058",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
       "id": "sfx059",
+      "time_sec": 63.958,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s059",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx060",
+      "time_sec": 64.667,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s060",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx061",
+      "time_sec": 66.042,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s061",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx062",
+      "time_sec": 66.708,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s062",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx063",
+      "time_sec": 67.375,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s063",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx064",
+      "time_sec": 68.75,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s064",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx065",
+      "time_sec": 69.417,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s065",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx066",
+      "time_sec": 70.083,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s066",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx067",
+      "time_sec": 70.75,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s067",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx068",
+      "time_sec": 71.417,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s068",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx069",
+      "time_sec": 72.083,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s069",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx070",
+      "time_sec": 72.792,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s070",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx071",
+      "time_sec": 73.458,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s071",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx072",
+      "time_sec": 74.125,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s072",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx221",
       "time_sec": 74.281,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_4"
     },
     {
-      "id": "sfx060",
+      "id": "sfx073",
+      "time_sec": 74.792,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s073",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx074",
+      "time_sec": 75.458,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s074",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx075",
+      "time_sec": 76.833,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s075",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx076",
+      "time_sec": 77.5,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s076",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx077",
+      "time_sec": 78.167,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s077",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx078",
+      "time_sec": 79.542,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s078",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx079",
+      "time_sec": 80.25,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s079",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx080",
+      "time_sec": 80.917,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s080",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx081",
+      "time_sec": 82.292,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s081",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx082",
+      "time_sec": 83.0,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s082",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx083",
+      "time_sec": 83.667,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s083",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx084",
+      "time_sec": 84.333,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s084",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx085",
+      "time_sec": 85.0,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s085",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx086",
+      "time_sec": 85.667,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s086",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx087",
+      "time_sec": 87.708,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s087",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx088",
+      "time_sec": 89.083,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s088",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx089",
+      "time_sec": 90.458,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s089",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx090",
+      "time_sec": 91.125,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s090",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx091",
+      "time_sec": 91.65,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s091",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx222",
       "time_sec": 91.765,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_5"
     },
     {
-      "id": "sfx061",
+      "id": "sfx092",
+      "time_sec": 93.167,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s092",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx093",
+      "time_sec": 93.7,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s093",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx094",
+      "time_sec": 94.542,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s094",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx095",
+      "time_sec": 95.917,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s095",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx096",
+      "time_sec": 96.625,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s096",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx097",
+      "time_sec": 97.292,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s097",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx098",
+      "time_sec": 98.667,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s098",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx099",
+      "time_sec": 99.333,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s099",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx100",
+      "time_sec": 100.0,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s100",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx101",
+      "time_sec": 101.375,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s101",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx102",
+      "time_sec": 102.042,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s102",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx103",
+      "time_sec": 102.56,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s103",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx104",
+      "time_sec": 104.083,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s104",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx105",
+      "time_sec": 104.792,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s105",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx106",
+      "time_sec": 105.458,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s106",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx107",
+      "time_sec": 106.833,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s107",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx108",
+      "time_sec": 107.5,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s108",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx223",
       "time_sec": 107.624,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_6"
     },
     {
-      "id": "sfx062",
+      "id": "sfx109",
+      "time_sec": 108.167,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s109",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx110",
+      "time_sec": 109.542,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s110",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx111",
+      "time_sec": 110.06,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s111",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx112",
+      "time_sec": 110.74,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s112",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx113",
+      "time_sec": 112.917,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s113",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx114",
+      "time_sec": 113.48,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s114",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx115",
+      "time_sec": 114.958,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s115",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx116",
+      "time_sec": 116.333,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s116",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx117",
+      "time_sec": 117.708,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s117",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx118",
+      "time_sec": 118.24,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s118",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx119",
+      "time_sec": 119.083,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s119",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx120",
+      "time_sec": 120.458,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s120",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx121",
+      "time_sec": 121.125,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s121",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx122",
+      "time_sec": 121.65,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s122",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx123",
+      "time_sec": 123.167,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s123",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx124",
+      "time_sec": 123.875,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s124",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx125",
+      "time_sec": 124.542,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s125",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx126",
+      "time_sec": 125.917,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s126",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx224",
       "time_sec": 126.2,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_7"
     },
     {
-      "id": "sfx063",
+      "id": "sfx127",
+      "time_sec": 126.625,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s127",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx128",
+      "time_sec": 127.292,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s128",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx129",
+      "time_sec": 128.667,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s129",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx130",
+      "time_sec": 129.333,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s130",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx131",
+      "time_sec": 130.0,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s131",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx132",
+      "time_sec": 130.708,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s132",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx133",
+      "time_sec": 131.375,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s133",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx134",
+      "time_sec": 132.042,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s134",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx135",
+      "time_sec": 132.56,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s135",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx136",
+      "time_sec": 133.417,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s136",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx137",
+      "time_sec": 134.083,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s137",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx138",
+      "time_sec": 134.61,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s138",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx139",
+      "time_sec": 135.29,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s139",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx140",
+      "time_sec": 135.97,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s140",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx141",
+      "time_sec": 136.65,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s141",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx142",
+      "time_sec": 137.33,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s142",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx143",
+      "time_sec": 138.01,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s143",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx144",
+      "time_sec": 139.5,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s144",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx145",
+      "time_sec": 140.06,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s145",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx146",
+      "time_sec": 140.74,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s146",
+      "beat_aligned": true,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx225",
       "time_sec": 141.201,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_8"
     },
     {
-      "id": "sfx064",
+      "id": "sfx147",
+      "time_sec": 141.42,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s147",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx148",
+      "time_sec": 142.1,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s148",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx149",
+      "time_sec": 142.79,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s149",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx150",
+      "time_sec": 143.47,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s150",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx151",
+      "time_sec": 144.15,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s151",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx152",
+      "time_sec": 144.83,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s152",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx153",
+      "time_sec": 145.52,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s153",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx154",
+      "time_sec": 147.625,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s154",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx155",
+      "time_sec": 149.0,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s155",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx156",
+      "time_sec": 150.375,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s156",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx157",
+      "time_sec": 150.97,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s157",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx158",
+      "time_sec": 151.66,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s158",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx159",
+      "time_sec": 153.125,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s159",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx160",
+      "time_sec": 153.7,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s160",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx161",
+      "time_sec": 154.38,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s161",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx162",
+      "time_sec": 155.875,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s162",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx226",
       "time_sec": 156.177,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_9"
     },
     {
-      "id": "sfx065",
+      "id": "sfx163",
+      "time_sec": 157.25,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s163",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx164",
+      "time_sec": 159.75,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s164",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx165",
+      "time_sec": 160.417,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s165",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx166",
+      "time_sec": 162.57,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s166",
+      "beat_aligned": true,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx167",
+      "time_sec": 163.167,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s167",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx168",
+      "time_sec": 165.667,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s168",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx169",
+      "time_sec": 166.333,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s169",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx170",
+      "time_sec": 167.667,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s170",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx171",
+      "time_sec": 168.375,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s171",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx172",
+      "time_sec": 169.042,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s172",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx173",
+      "time_sec": 170.417,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s173",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx174",
+      "time_sec": 171.083,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s174",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=intense,combat"
+    },
+    {
+      "id": "sfx227",
       "time_sec": 171.178,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_10"
     },
     {
-      "id": "sfx066",
+      "id": "sfx175",
+      "time_sec": 171.792,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s175",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx176",
+      "time_sec": 173.167,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s176",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx177",
+      "time_sec": 173.833,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s177",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx178",
+      "time_sec": 174.5,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s178",
+      "beat_aligned": false,
+      "reason": "cue=action;mood=action,combat"
+    },
+    {
+      "id": "sfx179",
+      "time_sec": 175.875,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s179",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx180",
+      "time_sec": 176.542,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s180",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx181",
+      "time_sec": 177.208,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s181",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx182",
+      "time_sec": 178.583,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s182",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx183",
+      "time_sec": 179.292,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s183",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx184",
+      "time_sec": 179.958,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s184",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx185",
+      "time_sec": 181.292,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s185",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx186",
+      "time_sec": 182.667,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s186",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx187",
+      "time_sec": 184.042,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s187",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx188",
+      "time_sec": 184.708,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s188",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx228",
       "time_sec": 186.178,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_11"
     },
     {
-      "id": "sfx067",
+      "id": "sfx189",
+      "time_sec": 186.75,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s189",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx190",
+      "time_sec": 189.15,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s190",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx191",
+      "time_sec": 190.625,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s191",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx192",
+      "time_sec": 191.88,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s192",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx193",
+      "time_sec": 192.708,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s193",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx194",
+      "time_sec": 193.25,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s194",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx195",
+      "time_sec": 194.61,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s195",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx196",
+      "time_sec": 195.3,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s196",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx197",
+      "time_sec": 195.98,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s197",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx198",
+      "time_sec": 197.5,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s198",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx199",
+      "time_sec": 198.875,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s199",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx200",
+      "time_sec": 200.25,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s200",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx201",
+      "time_sec": 200.958,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s201",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx229",
       "time_sec": 201.387,
       "kind": "sub_boom",
-      "variant": "sub-boom-01.wav",
+      "variant": "sub-boom-02.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_12"
     },
     {
-      "id": "sfx068",
+      "id": "sfx202",
+      "time_sec": 201.625,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s202",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx203",
+      "time_sec": 203.0,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s203",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx204",
+      "time_sec": 203.667,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s204",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx205",
+      "time_sec": 204.375,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s205",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx206",
+      "time_sec": 205.75,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s206",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx207",
+      "time_sec": 206.417,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s207",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx208",
+      "time_sec": 207.125,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s208",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx209",
+      "time_sec": 208.5,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s209",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx210",
+      "time_sec": 210.98,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s210",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx211",
+      "time_sec": 212.375,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s211",
+      "beat_aligned": false,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx212",
+      "time_sec": 213.7,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s212",
+      "beat_aligned": true,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx213",
+      "time_sec": 214.417,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s213",
+      "beat_aligned": false,
+      "reason": "cue=hero;mood=intense,combat"
+    },
+    {
+      "id": "sfx214",
+      "time_sec": 215.07,
+      "kind": "impact",
+      "variant": "impact-thud-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s214",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx215",
+      "time_sec": 216.43,
+      "kind": "impact",
+      "variant": "impact-metal-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s215",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=intense,combat"
+    },
+    {
+      "id": "sfx230",
       "time_sec": 216.712,
       "kind": "sub_boom",
-      "variant": "sub-boom-02.wav",
+      "variant": "sub-boom-01.wav",
       "gain_db": -1.0,
       "beat_aligned": true,
       "reason": "drop_13"
+    },
+    {
+      "id": "sfx216",
+      "time_sec": 217.8,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s216",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
+    },
+    {
+      "id": "sfx217",
+      "time_sec": 219.16,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s217",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood=action,combat"
     }
   ],
-  "generated_at": "2026-04-20T00:31:20.046539+00:00",
+  "generated_at": "2026-04-20T01:14:28.357349+00:00",
   "generator": "ff sfx plan"
 }

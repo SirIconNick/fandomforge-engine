@@ -1,0 +1,39 @@
+{
+  "schema": "fandomforge-dialogue-v1",
+  "description": "Thematic preamble — 3 chained lines from Extraction 2's opening scene. The line STATES the theme (hero fought back from death); the visuals in preamble shots s001-s005 DELIVER the theme (hero-down → hero-down → looking up → rising → ready). Song ducks -10 dB during each cue, returns by first beat at 9.84s.",
+  "cues": [
+    {
+      "audio": "line1_clinically_dead.wav",
+      "start": 0.5,
+      "duration": 3.6,
+      "gain_db": -3.0,
+      "duck_db": -10.0,
+      "character": "Nik (Extraction 2)",
+      "line": "Tyler, you were clinically dead nine months ago.",
+      "source": "extraction-2",
+      "visual_note": "hero-down / battered / defeat shot"
+    },
+    {
+      "audio": "line2_would_survive.wav",
+      "start": 5.0,
+      "duration": 1.3,
+      "gain_db": -3.0,
+      "duck_db": -10.0,
+      "character": "Nik (Extraction 2)",
+      "line": "Would you survive?",
+      "source": "extraction-2",
+      "visual_note": "hero looking up / opens eyes / hand reaches"
+    },
+    {
+      "audio": "line3_fought_back.wav",
+      "start": 6.8,
+      "duration": 1.8,
+      "gain_db": -3.0,
+      "duck_db": -10.0,
+      "character": "Nik (Extraction 2)",
+      "line": "You fought your way back?",
+      "source": "extraction-2",
+      "visual_note": "hero rising / standing / suiting up"
+    }
+  ]
+}

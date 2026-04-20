@@ -1,0 +1,1200 @@
+{
+  "segments": [
+    {
+      "start": 7.440000000000001,
+      "end": 9.98,
+      "text": "You think your wife can hear you?",
+      "words": [
+        {
+          "word": "You",
+          "start": 7.440000000000001,
+          "end": 8.120000000000001
+        },
+        {
+          "word": "think",
+          "start": 8.120000000000001,
+          "end": 8.8
+        },
+        {
+          "word": "your",
+          "start": 8.8,
+          "end": 9.02
+        },
+        {
+          "word": "wife",
+          "start": 9.02,
+          "end": 9.2
+        },
+        {
+          "word": "can",
+          "start": 9.2,
+          "end": 9.4
+        },
+        {
+          "word": "hear",
+          "start": 9.4,
+          "end": 9.64
+        },
+        {
+          "word": "you?",
+          "start": 9.64,
+          "end": 9.98
+        }
+      ]
+    },
+    {
+      "start": 10.56,
+      "end": 11.24,
+      "text": "No.",
+      "words": [
+        {
+          "word": "No.",
+          "start": 10.56,
+          "end": 11.24
+        }
+      ]
+    },
+    {
+      "start": 12.02,
+      "end": 13.0,
+      "text": "No, I'm not.",
+      "words": [
+        {
+          "word": "No,",
+          "start": 12.02,
+          "end": 12.7
+        },
+        {
+          "word": "I'm",
+          "start": 12.76,
+          "end": 12.98
+        },
+        {
+          "word": "not.",
+          "start": 12.98,
+          "end": 13.0
+        }
+      ]
+    },
+    {
+      "start": 15.5,
+      "end": 16.9,
+      "text": "Maybe I'm wrong.",
+      "words": [
+        {
+          "word": "Maybe",
+          "start": 15.5,
+          "end": 16.18
+        },
+        {
+          "word": "I'm",
+          "start": 16.18,
+          "end": 16.56
+        },
+        {
+          "word": "wrong.",
+          "start": 16.56,
+          "end": 16.9
+        }
+      ]
+    },
+    {
+      "start": 20.72,
+      "end": 22.02,
+      "text": "You're going to die.",
+      "words": [
+        {
+          "word": "You're",
+          "start": 20.72,
+          "end": 21.38
+        },
+        {
+          "word": "going",
+          "start": 21.38,
+          "end": 21.48
+        },
+        {
+          "word": "to",
+          "start": 21.48,
+          "end": 21.68
+        },
+        {
+          "word": "die.",
+          "start": 21.68,
+          "end": 22.02
+        }
+      ]
+    },
+    {
+      "start": 23.32,
+      "end": 24.08,
+      "text": "Maybe not.",
+      "words": [
+        {
+          "word": "Maybe",
+          "start": 23.32,
+          "end": 23.6
+        },
+        {
+          "word": "not.",
+          "start": 23.6,
+          "end": 24.08
+        }
+      ]
+    },
+    {
+      "start": 24.66,
+      "end": 26.9,
+      "text": "Goodbye to you, my trusted friend.",
+      "words": [
+        {
+          "word": "Goodbye",
+          "start": 24.66,
+          "end": 24.96
+        },
+        {
+          "word": "to",
+          "start": 24.96,
+          "end": 25.26
+        },
+        {
+          "word": "you,",
+          "start": 25.26,
+          "end": 25.54
+        },
+        {
+          "word": "my",
+          "start": 25.78,
+          "end": 25.88
+        },
+        {
+          "word": "trusted",
+          "start": 25.88,
+          "end": 26.38
+        },
+        {
+          "word": "friend.",
+          "start": 26.38,
+          "end": 26.9
+        }
+      ]
+    },
+    {
+      "start": 28.98,
+      "end": 29.98,
+      "text": "But no, I'm not.",
+      "words": [
+        {
+          "word": "But",
+          "start": 28.98,
+          "end": 29.66
+        },
+        {
+          "word": "no,",
+          "start": 29.66,
+          "end": 29.86
+        },
+        {
+          "word": "I'm",
+          "start": 29.98,
+          "end": 29.98
+        },
+        {
+          "word": "not.",
+          "start": 29.98,
+          "end": 29.98
+        }
+      ]
+    },
+    {
+      "start": 29.98,
+      "end": 29.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 29.98,
+      "end": 29.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 29.98,
+      "end": 29.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 29.98,
+      "end": 29.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 29.98,
+      "end": 29.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 29.98,
+      "end": 30.7,
+      "text": "The day is dawning.",
+      "words": [
+        {
+          "word": "The",
+          "start": 29.98,
+          "end": 29.98
+        },
+        {
+          "word": "day",
+          "start": 29.98,
+          "end": 30.08
+        },
+        {
+          "word": "is",
+          "start": 30.08,
+          "end": 30.3
+        },
+        {
+          "word": "dawning.",
+          "start": 30.3,
+          "end": 30.7
+        }
+      ]
+    },
+    {
+      "start": 31.3,
+      "end": 35.54,
+      "text": "No ideas, no rules, no management.",
+      "words": [
+        {
+          "word": "No",
+          "start": 31.3,
+          "end": 31.98
+        },
+        {
+          "word": "ideas,",
+          "start": 31.98,
+          "end": 32.3
+        },
+        {
+          "word": "no",
+          "start": 33.0,
+          "end": 33.26
+        },
+        {
+          "word": "rules,",
+          "start": 33.26,
+          "end": 33.76
+        },
+        {
+          "word": "no",
+          "start": 34.66,
+          "end": 34.94
+        },
+        {
+          "word": "management.",
+          "start": 34.94,
+          "end": 35.54
+        }
+      ]
+    },
+    {
+      "start": 36.08,
+      "end": 39.4,
+      "text": "We've known each other since we were in one idea.",
+      "words": [
+        {
+          "word": "We've",
+          "start": 36.08,
+          "end": 36.4
+        },
+        {
+          "word": "known",
+          "start": 36.4,
+          "end": 36.54
+        },
+        {
+          "word": "each",
+          "start": 36.54,
+          "end": 36.94
+        },
+        {
+          "word": "other",
+          "start": 36.94,
+          "end": 37.14
+        },
+        {
+          "word": "since",
+          "start": 37.14,
+          "end": 37.54
+        },
+        {
+          "word": "we",
+          "start": 37.54,
+          "end": 37.94
+        },
+        {
+          "word": "were",
+          "start": 37.94,
+          "end": 38.12
+        },
+        {
+          "word": "in",
+          "start": 38.12,
+          "end": 38.32
+        },
+        {
+          "word": "one",
+          "start": 38.32,
+          "end": 38.58
+        },
+        {
+          "word": "idea.",
+          "start": 38.58,
+          "end": 39.4
+        }
+      ]
+    },
+    {
+      "start": 40.58,
+      "end": 41.8,
+      "text": "Who is this?",
+      "words": [
+        {
+          "word": "Who",
+          "start": 40.58,
+          "end": 41.26
+        },
+        {
+          "word": "is",
+          "start": 41.26,
+          "end": 41.54
+        },
+        {
+          "word": "this?",
+          "start": 41.54,
+          "end": 41.8
+        }
+      ]
+    },
+    {
+      "start": 42.38,
+      "end": 43.58,
+      "text": "The Marti Di Grammo.",
+      "words": [
+        {
+          "word": "The",
+          "start": 42.38,
+          "end": 42.44
+        },
+        {
+          "word": "Marti",
+          "start": 42.44,
+          "end": 42.94
+        },
+        {
+          "word": "Di",
+          "start": 42.94,
+          "end": 43.12
+        },
+        {
+          "word": "Grammo.",
+          "start": 43.12,
+          "end": 43.58
+        }
+      ]
+    },
+    {
+      "start": 44.44,
+      "end": 46.46,
+      "text": "Challenging into simple combat.",
+      "words": [
+        {
+          "word": "Challenging",
+          "start": 44.44,
+          "end": 45.04
+        },
+        {
+          "word": "into",
+          "start": 45.04,
+          "end": 45.32
+        },
+        {
+          "word": "simple",
+          "start": 45.32,
+          "end": 45.78
+        },
+        {
+          "word": "combat.",
+          "start": 45.78,
+          "end": 46.46
+        }
+      ]
+    },
+    {
+      "start": 47.4,
+      "end": 49.22,
+      "text": "We're the loose, so way out.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 47.4,
+          "end": 47.5
+        },
+        {
+          "word": "the",
+          "start": 47.5,
+          "end": 47.56
+        },
+        {
+          "word": "loose,",
+          "start": 47.56,
+          "end": 47.88
+        },
+        {
+          "word": "so",
+          "start": 48.22,
+          "end": 48.48
+        },
+        {
+          "word": "way",
+          "start": 48.48,
+          "end": 48.8
+        },
+        {
+          "word": "out.",
+          "start": 48.8,
+          "end": 49.22
+        }
+      ]
+    },
+    {
+      "start": 51.160000000000004,
+      "end": 53.14,
+      "text": "I don't sit at the table.",
+      "words": [
+        {
+          "word": "I",
+          "start": 51.160000000000004,
+          "end": 51.84
+        },
+        {
+          "word": "don't",
+          "start": 51.84,
+          "end": 52.06
+        },
+        {
+          "word": "sit",
+          "start": 52.06,
+          "end": 52.42
+        },
+        {
+          "word": "at",
+          "start": 52.42,
+          "end": 52.66
+        },
+        {
+          "word": "the",
+          "start": 52.66,
+          "end": 52.9
+        },
+        {
+          "word": "table.",
+          "start": 52.9,
+          "end": 53.14
+        }
+      ]
+    },
+    {
+      "start": 53.78,
+      "end": 54.6,
+      "text": "Your family goes.",
+      "words": [
+        {
+          "word": "Your",
+          "start": 53.78,
+          "end": 53.84
+        },
+        {
+          "word": "family",
+          "start": 53.84,
+          "end": 54.3
+        },
+        {
+          "word": "goes.",
+          "start": 54.3,
+          "end": 54.6
+        }
+      ]
+    },
+    {
+      "start": 55.08,
+      "end": 56.18,
+      "text": "Please pray for me.",
+      "words": [
+        {
+          "word": "Please",
+          "start": 55.08,
+          "end": 55.28
+        },
+        {
+          "word": "pray",
+          "start": 55.28,
+          "end": 55.6
+        },
+        {
+          "word": "for",
+          "start": 55.6,
+          "end": 55.84
+        },
+        {
+          "word": "me.",
+          "start": 55.84,
+          "end": 56.18
+        }
+      ]
+    },
+    {
+      "start": 56.18,
+      "end": 61.44,
+      "text": "I was so black she loved the family.",
+      "words": [
+        {
+          "word": "I",
+          "start": 56.18,
+          "end": 56.24
+        },
+        {
+          "word": "was",
+          "start": 56.24,
+          "end": 59.0
+        },
+        {
+          "word": "so",
+          "start": 59.0,
+          "end": 59.3
+        },
+        {
+          "word": "black",
+          "start": 59.3,
+          "end": 59.56
+        },
+        {
+          "word": "she",
+          "start": 59.56,
+          "end": 59.9
+        },
+        {
+          "word": "loved",
+          "start": 59.9,
+          "end": 60.24
+        },
+        {
+          "word": "the",
+          "start": 60.24,
+          "end": 60.6
+        },
+        {
+          "word": "family.",
+          "start": 60.6,
+          "end": 61.44
+        }
+      ]
+    },
+    {
+      "start": 62.28,
+      "end": 64.64,
+      "text": "Man has to look his best when it's time to get married.",
+      "words": [
+        {
+          "word": "Man",
+          "start": 62.28,
+          "end": 62.78
+        },
+        {
+          "word": "has",
+          "start": 62.78,
+          "end": 62.98
+        },
+        {
+          "word": "to",
+          "start": 62.98,
+          "end": 63.12
+        },
+        {
+          "word": "look",
+          "start": 63.12,
+          "end": 63.24
+        },
+        {
+          "word": "his",
+          "start": 63.24,
+          "end": 63.4
+        },
+        {
+          "word": "best",
+          "start": 63.4,
+          "end": 63.58
+        },
+        {
+          "word": "when",
+          "start": 63.58,
+          "end": 63.78
+        },
+        {
+          "word": "it's",
+          "start": 63.78,
+          "end": 63.92
+        },
+        {
+          "word": "time",
+          "start": 63.92,
+          "end": 64.08
+        },
+        {
+          "word": "to",
+          "start": 64.08,
+          "end": 64.22
+        },
+        {
+          "word": "get",
+          "start": 64.22,
+          "end": 64.32
+        },
+        {
+          "word": "married.",
+          "start": 64.32,
+          "end": 64.64
+        }
+      ]
+    },
+    {
+      "start": 66.08,
+      "end": 66.74,
+      "text": "Or buried.",
+      "words": [
+        {
+          "word": "Or",
+          "start": 66.08,
+          "end": 66.38
+        },
+        {
+          "word": "buried.",
+          "start": 66.38,
+          "end": 66.74
+        }
+      ]
+    },
+    {
+      "start": 67.82000000000001,
+      "end": 69.58,
+      "text": "I'm going to need a gun.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 67.82000000000001,
+          "end": 68.34
+        },
+        {
+          "word": "going",
+          "start": 68.34,
+          "end": 68.62
+        },
+        {
+          "word": "to",
+          "start": 68.62,
+          "end": 68.8
+        },
+        {
+          "word": "need",
+          "start": 68.8,
+          "end": 68.98
+        },
+        {
+          "word": "a",
+          "start": 68.98,
+          "end": 69.16
+        },
+        {
+          "word": "gun.",
+          "start": 69.16,
+          "end": 69.58
+        }
+      ]
+    },
+    {
+      "start": 70.32,
+      "end": 72.36,
+      "text": "You'd better be my friend. It's hard to get.",
+      "words": [
+        {
+          "word": "You'd",
+          "start": 70.32,
+          "end": 70.52
+        },
+        {
+          "word": "better",
+          "start": 70.52,
+          "end": 70.64
+        },
+        {
+          "word": "be",
+          "start": 70.64,
+          "end": 70.8
+        },
+        {
+          "word": "my",
+          "start": 70.8,
+          "end": 70.9
+        },
+        {
+          "word": "friend.",
+          "start": 70.9,
+          "end": 71.26
+        },
+        {
+          "word": "It's",
+          "start": 71.52,
+          "end": 71.62
+        },
+        {
+          "word": "hard",
+          "start": 71.62,
+          "end": 71.9
+        },
+        {
+          "word": "to",
+          "start": 71.9,
+          "end": 72.12
+        },
+        {
+          "word": "get.",
+          "start": 72.12,
+          "end": 72.36
+        }
+      ]
+    },
+    {
+      "start": 81.36,
+      "end": 85.44,
+      "text": "If you win, the table will honor its word.",
+      "words": [
+        {
+          "word": "If",
+          "start": 81.36,
+          "end": 81.88
+        },
+        {
+          "word": "you",
+          "start": 81.88,
+          "end": 82.04
+        },
+        {
+          "word": "win,",
+          "start": 82.04,
+          "end": 82.3
+        },
+        {
+          "word": "the",
+          "start": 83.16,
+          "end": 84.34
+        },
+        {
+          "word": "table",
+          "start": 84.34,
+          "end": 84.62
+        },
+        {
+          "word": "will",
+          "start": 84.62,
+          "end": 84.84
+        },
+        {
+          "word": "honor",
+          "start": 84.84,
+          "end": 85.04
+        },
+        {
+          "word": "its",
+          "start": 85.04,
+          "end": 85.26
+        },
+        {
+          "word": "word.",
+          "start": 85.26,
+          "end": 85.44
+        }
+      ]
+    },
+    {
+      "start": 87.88,
+      "end": 89.0,
+      "text": "We'll have your freedom.",
+      "words": [
+        {
+          "word": "We'll",
+          "start": 87.88,
+          "end": 88.48
+        },
+        {
+          "word": "have",
+          "start": 88.48,
+          "end": 88.62
+        },
+        {
+          "word": "your",
+          "start": 88.62,
+          "end": 88.76
+        },
+        {
+          "word": "freedom.",
+          "start": 88.76,
+          "end": 89.0
+        }
+      ]
+    },
+    {
+      "start": 92.08000000000001,
+      "end": 94.98,
+      "text": "Under the old laws, only one can survive.",
+      "words": [
+        {
+          "word": "Under",
+          "start": 92.08000000000001,
+          "end": 92.68
+        },
+        {
+          "word": "the",
+          "start": 92.68,
+          "end": 92.86
+        },
+        {
+          "word": "old",
+          "start": 92.86,
+          "end": 93.02
+        },
+        {
+          "word": "laws,",
+          "start": 93.02,
+          "end": 93.36
+        },
+        {
+          "word": "only",
+          "start": 93.98,
+          "end": 94.1
+        },
+        {
+          "word": "one",
+          "start": 94.1,
+          "end": 94.32
+        },
+        {
+          "word": "can",
+          "start": 94.32,
+          "end": 94.54
+        },
+        {
+          "word": "survive.",
+          "start": 94.54,
+          "end": 94.98
+        }
+      ]
+    },
+    {
+      "start": 96.04,
+      "end": 97.54,
+      "text": "Failure to meet its unrise.",
+      "words": [
+        {
+          "word": "Failure",
+          "start": 96.04,
+          "end": 96.62
+        },
+        {
+          "word": "to",
+          "start": 96.62,
+          "end": 96.8
+        },
+        {
+          "word": "meet",
+          "start": 96.8,
+          "end": 96.94
+        },
+        {
+          "word": "its",
+          "start": 96.94,
+          "end": 97.14
+        },
+        {
+          "word": "unrise.",
+          "start": 97.14,
+          "end": 97.54
+        }
+      ]
+    },
+    {
+      "start": 99.62,
+      "end": 101.16,
+      "text": "Result in execution.",
+      "words": [
+        {
+          "word": "Result",
+          "start": 99.62,
+          "end": 100.22
+        },
+        {
+          "word": "in",
+          "start": 100.22,
+          "end": 100.64
+        },
+        {
+          "word": "execution.",
+          "start": 100.64,
+          "end": 101.16
+        }
+      ]
+    },
+    {
+      "start": 104.62,
+      "end": 106.14,
+      "text": "Last words, Winston.",
+      "words": [
+        {
+          "word": "Last",
+          "start": 104.62,
+          "end": 105.22
+        },
+        {
+          "word": "words,",
+          "start": 105.22,
+          "end": 105.52
+        },
+        {
+          "word": "Winston.",
+          "start": 105.82,
+          "end": 106.14
+        }
+      ]
+    },
+    {
+      "start": 106.72,
+      "end": 107.78,
+      "text": "Just have fun, aren't they?",
+      "words": [
+        {
+          "word": "Just",
+          "start": 106.72,
+          "end": 106.92
+        },
+        {
+          "word": "have",
+          "start": 106.92,
+          "end": 107.1
+        },
+        {
+          "word": "fun,",
+          "start": 107.1,
+          "end": 107.36
+        },
+        {
+          "word": "aren't",
+          "start": 107.54,
+          "end": 107.66
+        },
+        {
+          "word": "they?",
+          "start": 107.66,
+          "end": 107.78
+        }
+      ]
+    },
+    {
+      "start": 119.1,
+      "end": 126.62,
+      "text": "I want you to find your peace, but the good death only comes after a good life.",
+      "words": [
+        {
+          "word": "I",
+          "start": 119.1,
+          "end": 119.74
+        },
+        {
+          "word": "want",
+          "start": 119.74,
+          "end": 120.38
+        },
+        {
+          "word": "you",
+          "start": 120.38,
+          "end": 120.54
+        },
+        {
+          "word": "to",
+          "start": 120.54,
+          "end": 120.66
+        },
+        {
+          "word": "find",
+          "start": 120.66,
+          "end": 120.98
+        },
+        {
+          "word": "your",
+          "start": 120.98,
+          "end": 121.22
+        },
+        {
+          "word": "peace,",
+          "start": 121.22,
+          "end": 121.7
+        },
+        {
+          "word": "but",
+          "start": 121.86,
+          "end": 122.8
+        },
+        {
+          "word": "the",
+          "start": 122.8,
+          "end": 123.04
+        },
+        {
+          "word": "good",
+          "start": 123.04,
+          "end": 123.2
+        },
+        {
+          "word": "death",
+          "start": 123.2,
+          "end": 123.56
+        },
+        {
+          "word": "only",
+          "start": 123.56,
+          "end": 125.1
+        },
+        {
+          "word": "comes",
+          "start": 125.1,
+          "end": 125.38
+        },
+        {
+          "word": "after",
+          "start": 125.38,
+          "end": 125.8
+        },
+        {
+          "word": "a",
+          "start": 125.8,
+          "end": 125.96
+        },
+        {
+          "word": "good",
+          "start": 125.96,
+          "end": 126.1
+        },
+        {
+          "word": "life.",
+          "start": 126.1,
+          "end": 126.62
+        }
+      ]
+    },
+    {
+      "start": 131.14,
+      "end": 135.22,
+      "text": "You and I left a good life behind a long time, though, my friend.",
+      "words": [
+        {
+          "word": "You",
+          "start": 131.14,
+          "end": 131.64
+        },
+        {
+          "word": "and",
+          "start": 131.64,
+          "end": 131.78
+        },
+        {
+          "word": "I",
+          "start": 131.78,
+          "end": 131.98
+        },
+        {
+          "word": "left",
+          "start": 131.98,
+          "end": 132.26
+        },
+        {
+          "word": "a",
+          "start": 132.26,
+          "end": 132.44
+        },
+        {
+          "word": "good",
+          "start": 132.44,
+          "end": 132.62
+        },
+        {
+          "word": "life",
+          "start": 132.62,
+          "end": 132.94
+        },
+        {
+          "word": "behind",
+          "start": 132.94,
+          "end": 133.48
+        },
+        {
+          "word": "a",
+          "start": 133.48,
+          "end": 133.7
+        },
+        {
+          "word": "long",
+          "start": 133.7,
+          "end": 133.9
+        },
+        {
+          "word": "time,",
+          "start": 133.9,
+          "end": 134.34
+        },
+        {
+          "word": "though,",
+          "start": 134.56,
+          "end": 134.68
+        },
+        {
+          "word": "my",
+          "start": 134.82,
+          "end": 134.9
+        },
+        {
+          "word": "friend.",
+          "start": 134.9,
+          "end": 135.22
+        }
+      ]
+    },
+    {
+      "start": 140.54,
+      "end": 141.38,
+      "text": "My son!",
+      "words": [
+        {
+          "word": "My",
+          "start": 140.54,
+          "end": 141.04
+        },
+        {
+          "word": "son!",
+          "start": 141.04,
+          "end": 141.38
+        }
+      ]
+    }
+  ]
+}

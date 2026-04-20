@@ -1,0 +1,196 @@
+{
+  "segments": [
+    {
+      "start": 24.320000000000004,
+      "end": 27.32,
+      "text": "That is bad.",
+      "words": [
+        {
+          "word": "That",
+          "start": 24.320000000000004,
+          "end": 25.720000000000002
+        },
+        {
+          "word": "is",
+          "start": 25.720000000000002,
+          "end": 27.12
+        },
+        {
+          "word": "bad.",
+          "start": 27.12,
+          "end": 27.32
+        }
+      ]
+    },
+    {
+      "start": 52.620000000000005,
+      "end": 57.3,
+      "text": "\u8c46\u8150, eaten by the",
+      "words": [
+        {
+          "word": "\u8c46\u8150,",
+          "start": 52.620000000000005,
+          "end": 54.02
+        },
+        {
+          "word": "eaten",
+          "start": 54.02,
+          "end": 55.42
+        },
+        {
+          "word": "by",
+          "start": 55.42,
+          "end": 55.58
+        },
+        {
+          "word": "the",
+          "start": 55.58,
+          "end": 57.3
+        }
+      ]
+    },
+    {
+      "start": 177.32,
+      "end": 178.86,
+      "text": "Go! Go!",
+      "words": [
+        {
+          "word": "Go!",
+          "start": 177.32,
+          "end": 177.46
+        },
+        {
+          "word": "Go!",
+          "start": 178.64,
+          "end": 178.86
+        }
+      ]
+    },
+    {
+      "start": 180.0,
+      "end": 181.12,
+      "text": "Go! Go!",
+      "words": [
+        {
+          "word": "Go!",
+          "start": 180.0,
+          "end": 180.22
+        },
+        {
+          "word": "Go!",
+          "start": 180.86,
+          "end": 181.12
+        }
+      ]
+    },
+    {
+      "start": 182.28,
+      "end": 182.94,
+      "text": "Go! Go!",
+      "words": [
+        {
+          "word": "Go!",
+          "start": 182.28,
+          "end": 182.92
+        },
+        {
+          "word": "Go!",
+          "start": 182.94,
+          "end": 182.94
+        }
+      ]
+    },
+    {
+      "start": 339.34000000000003,
+      "end": 340.74,
+      "text": "Oh",
+      "words": [
+        {
+          "word": "Oh",
+          "start": 339.34000000000003,
+          "end": 340.74
+        }
+      ]
+    },
+    {
+      "start": 452.12,
+      "end": 456.26,
+      "text": "One, two, five...",
+      "words": [
+        {
+          "word": "One,",
+          "start": 452.12,
+          "end": 453.52
+        },
+        {
+          "word": "two,",
+          "start": 455.78,
+          "end": 455.78
+        },
+        {
+          "word": "five...",
+          "start": 455.92,
+          "end": 456.26
+        }
+      ]
+    },
+    {
+      "start": 456.26,
+      "end": 457.9,
+      "text": "Good, good.",
+      "words": [
+        {
+          "word": "Good,",
+          "start": 456.26,
+          "end": 456.38
+        },
+        {
+          "word": "good.",
+          "start": 456.54,
+          "end": 457.9
+        }
+      ]
+    },
+    {
+      "start": 462.40000000000003,
+      "end": 463.8,
+      "text": "Alright.",
+      "words": [
+        {
+          "word": "Alright.",
+          "start": 462.40000000000003,
+          "end": 463.8
+        }
+      ]
+    },
+    {
+      "start": 467.38,
+      "end": 468.78,
+      "text": "Again.",
+      "words": [
+        {
+          "word": "Again.",
+          "start": 467.38,
+          "end": 468.78
+        }
+      ]
+    },
+    {
+      "start": 470.64,
+      "end": 475.12,
+      "text": "Damn it.",
+      "words": [
+        {
+          "word": "Damn",
+          "start": 470.64,
+          "end": 470.84
+        },
+        {
+          "word": "it.",
+          "start": 470.84,
+          "end": 475.12
+        }
+      ]
+    }
+  ]
+}

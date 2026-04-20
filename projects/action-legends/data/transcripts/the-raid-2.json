@@ -1,0 +1,793 @@
+{
+  "segments": [
+    {
+      "start": 10.199999999999998,
+      "end": 11.52,
+      "text": "Nama Sey Pedas",
+      "words": [
+        {
+          "word": "Nama",
+          "start": 10.199999999999998,
+          "end": 11.12
+        },
+        {
+          "word": "Sey",
+          "start": 11.12,
+          "end": 11.38
+        },
+        {
+          "word": "Pedas",
+          "start": 11.38,
+          "end": 11.52
+        }
+      ]
+    },
+    {
+      "start": 11.52,
+      "end": 12.22,
+      "text": "Nama dues",
+      "words": [
+        {
+          "word": "Nama",
+          "start": 11.52,
+          "end": 11.68
+        },
+        {
+          "word": "dues",
+          "start": 11.68,
+          "end": 12.22
+        }
+      ]
+    },
+    {
+      "start": 12.22,
+      "end": 13.96,
+      "text": "I've tried...",
+      "words": [
+        {
+          "word": "I've",
+          "start": 12.22,
+          "end": 13.24
+        },
+        {
+          "word": "tried...",
+          "start": 13.24,
+          "end": 13.96
+        }
+      ]
+    },
+    {
+      "start": 13.96,
+      "end": 17.38,
+      "text": "I can handle whatever work.",
+      "words": [
+        {
+          "word": "I",
+          "start": 13.96,
+          "end": 15.28
+        },
+        {
+          "word": "can",
+          "start": 15.28,
+          "end": 15.72
+        },
+        {
+          "word": "handle",
+          "start": 15.72,
+          "end": 16.88
+        },
+        {
+          "word": "whatever",
+          "start": 16.88,
+          "end": 17.2
+        },
+        {
+          "word": "work.",
+          "start": 17.2,
+          "end": 17.38
+        }
+      ]
+    },
+    {
+      "start": 18.98,
+      "end": 19.5,
+      "text": "Are you still blind?",
+      "words": [
+        {
+          "word": "Are",
+          "start": 18.599999999999998,
+          "end": 19.06
+        },
+        {
+          "word": "you",
+          "start": 19.06,
+          "end": 19.18
+        },
+        {
+          "word": "still",
+          "start": 19.18,
+          "end": 19.36
+        },
+        {
+          "word": "blind?",
+          "start": 19.36,
+          "end": 19.5
+        }
+      ]
+    },
+    {
+      "start": 20.58,
+      "end": 23.64,
+      "text": "Even if you start knowing all this someday",
+      "words": [
+        {
+          "word": "Even",
+          "start": 20.58,
+          "end": 21.5
+        },
+        {
+          "word": "if",
+          "start": 21.5,
+          "end": 21.66
+        },
+        {
+          "word": "you",
+          "start": 21.66,
+          "end": 22.18
+        },
+        {
+          "word": "start",
+          "start": 22.18,
+          "end": 22.28
+        },
+        {
+          "word": "knowing",
+          "start": 22.28,
+          "end": 22.28
+        },
+        {
+          "word": "all",
+          "start": 22.28,
+          "end": 23.22
+        },
+        {
+          "word": "this",
+          "start": 23.22,
+          "end": 23.64
+        },
+        {
+          "word": "someday",
+          "start": 23.64,
+          "end": 23.64
+        }
+      ]
+    },
+    {
+      "start": 23.64,
+      "end": 26.5,
+      "text": "you'll become innocent\u306e vontade of scrutiny..",
+      "words": [
+        {
+          "word": "you'll",
+          "start": 23.64,
+          "end": 24.56
+        },
+        {
+          "word": "become",
+          "start": 24.56,
+          "end": 24.74
+        },
+        {
+          "word": "innocent\u306e",
+          "start": 24.74,
+          "end": 25.64
+        },
+        {
+          "word": "vontade",
+          "start": 25.64,
+          "end": 25.64
+        },
+        {
+          "word": "of",
+          "start": 25.64,
+          "end": 25.86
+        },
+        {
+          "word": "scrutiny..",
+          "start": 25.86,
+          "end": 26.5
+        }
+      ]
+    },
+    {
+      "start": 26.5,
+      "end": 29.78,
+      "text": "They will be happy to see you.",
+      "words": [
+        {
+          "word": "They",
+          "start": 26.5,
+          "end": 27.18
+        },
+        {
+          "word": "will",
+          "start": 27.18,
+          "end": 27.56
+        },
+        {
+          "word": "be",
+          "start": 27.56,
+          "end": 27.76
+        },
+        {
+          "word": "happy",
+          "start": 27.76,
+          "end": 27.98
+        },
+        {
+          "word": "to",
+          "start": 27.98,
+          "end": 28.22
+        },
+        {
+          "word": "see",
+          "start": 28.22,
+          "end": 28.5
+        },
+        {
+          "word": "you.",
+          "start": 28.5,
+          "end": 29.78
+        }
+      ]
+    },
+    {
+      "start": 29.78,
+      "end": 31.2,
+      "text": "If we don't get along,",
+      "words": [
+        {
+          "word": "If",
+          "start": 29.78,
+          "end": 30.32
+        },
+        {
+          "word": "we",
+          "start": 30.32,
+          "end": 30.56
+        },
+        {
+          "word": "don't",
+          "start": 30.56,
+          "end": 30.72
+        },
+        {
+          "word": "get",
+          "start": 30.72,
+          "end": 30.86
+        },
+        {
+          "word": "along,",
+          "start": 30.86,
+          "end": 31.2
+        }
+      ]
+    },
+    {
+      "start": 32.1,
+      "end": 33.3,
+      "text": "we will be happy.",
+      "words": [
+        {
+          "word": "we",
+          "start": 32.1,
+          "end": 32.7
+        },
+        {
+          "word": "will",
+          "start": 32.7,
+          "end": 32.92
+        },
+        {
+          "word": "be",
+          "start": 32.92,
+          "end": 33.12
+        },
+        {
+          "word": "happy.",
+          "start": 33.12,
+          "end": 33.3
+        }
+      ]
+    },
+    {
+      "start": 34.34,
+      "end": 35.2,
+      "text": "We should get along.",
+      "words": [
+        {
+          "word": "We",
+          "start": 34.34,
+          "end": 34.84
+        },
+        {
+          "word": "should",
+          "start": 34.84,
+          "end": 35.04
+        },
+        {
+          "word": "get",
+          "start": 35.04,
+          "end": 35.04
+        },
+        {
+          "word": "along.",
+          "start": 35.04,
+          "end": 35.2
+        }
+      ]
+    },
+    {
+      "start": 38.88,
+      "end": 40.5,
+      "text": "Now I'm going to the doctor.",
+      "words": [
+        {
+          "word": "Now",
+          "start": 38.88,
+          "end": 39.48
+        },
+        {
+          "word": "I'm",
+          "start": 39.48,
+          "end": 40.0
+        },
+        {
+          "word": "going",
+          "start": 40.0,
+          "end": 40.0
+        },
+        {
+          "word": "to",
+          "start": 40.0,
+          "end": 40.0
+        },
+        {
+          "word": "the",
+          "start": 40.0,
+          "end": 40.1
+        },
+        {
+          "word": "doctor.",
+          "start": 40.1,
+          "end": 40.5
+        }
+      ]
+    },
+    {
+      "start": 41.7,
+      "end": 45.38,
+      "text": "I'll tell you when we get home and I'll take you to the hospital.",
+      "words": [
+        {
+          "word": "I'll",
+          "start": 41.7,
+          "end": 42.3
+        },
+        {
+          "word": "tell",
+          "start": 42.3,
+          "end": 42.3
+        },
+        {
+          "word": "you",
+          "start": 42.3,
+          "end": 42.58
+        },
+        {
+          "word": "when",
+          "start": 42.58,
+          "end": 42.58
+        },
+        {
+          "word": "we",
+          "start": 42.58,
+          "end": 42.74
+        },
+        {
+          "word": "get",
+          "start": 42.74,
+          "end": 42.86
+        },
+        {
+          "word": "home",
+          "start": 42.86,
+          "end": 43.0
+        },
+        {
+          "word": "and",
+          "start": 43.0,
+          "end": 44.04
+        },
+        {
+          "word": "I'll",
+          "start": 44.04,
+          "end": 44.34
+        },
+        {
+          "word": "take",
+          "start": 44.34,
+          "end": 44.38
+        },
+        {
+          "word": "you",
+          "start": 44.38,
+          "end": 44.74
+        },
+        {
+          "word": "to",
+          "start": 44.74,
+          "end": 44.76
+        },
+        {
+          "word": "the",
+          "start": 44.76,
+          "end": 45.06
+        },
+        {
+          "word": "hospital.",
+          "start": 45.06,
+          "end": 45.38
+        }
+      ]
+    },
+    {
+      "start": 48.099999999999994,
+      "end": 49.64,
+      "text": "But, I'm not going to get along.",
+      "words": [
+        {
+          "word": "But,",
+          "start": 48.099999999999994,
+          "end": 48.699999999999996
+        },
+        {
+          "word": "I'm",
+          "start": 48.699999999999996,
+          "end": 49.3
+        },
+        {
+          "word": "not",
+          "start": 49.3,
+          "end": 49.3
+        },
+        {
+          "word": "going",
+          "start": 49.3,
+          "end": 49.64
+        },
+        {
+          "word": "to",
+          "start": 49.64,
+          "end": 49.64
+        },
+        {
+          "word": "get",
+          "start": 49.64,
+          "end": 49.64
+        },
+        {
+          "word": "along.",
+          "start": 49.64,
+          "end": 49.64
+        }
+      ]
+    },
+    {
+      "start": 50.52,
+      "end": 51.34,
+      "text": "I'm going to be a bit late.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 50.52,
+          "end": 50.7
+        },
+        {
+          "word": "going",
+          "start": 50.7,
+          "end": 50.88
+        },
+        {
+          "word": "to",
+          "start": 50.88,
+          "end": 50.88
+        },
+        {
+          "word": "be",
+          "start": 50.88,
+          "end": 50.96
+        },
+        {
+          "word": "a",
+          "start": 50.96,
+          "end": 50.96
+        },
+        {
+          "word": "bit",
+          "start": 50.96,
+          "end": 50.96
+        },
+        {
+          "word": "late.",
+          "start": 50.96,
+          "end": 51.34
+        }
+      ]
+    },
+    {
+      "start": 52.52,
+      "end": 55.42,
+      "text": "This is the first time I've been in and near India.",
+      "words": [
+        {
+          "word": "This",
+          "start": 52.52,
+          "end": 52.86
+        },
+        {
+          "word": "is",
+          "start": 52.86,
+          "end": 53.08
+        },
+        {
+          "word": "the",
+          "start": 53.08,
+          "end": 53.22
+        },
+        {
+          "word": "first",
+          "start": 53.22,
+          "end": 53.44
+        },
+        {
+          "word": "time",
+          "start": 53.44,
+          "end": 53.52
+        },
+        {
+          "word": "I've",
+          "start": 53.52,
+          "end": 54.06
+        },
+        {
+          "word": "been",
+          "start": 54.06,
+          "end": 54.06
+        },
+        {
+          "word": "in",
+          "start": 54.06,
+          "end": 54.12
+        },
+        {
+          "word": "and",
+          "start": 54.12,
+          "end": 54.82
+        },
+        {
+          "word": "near",
+          "start": 54.82,
+          "end": 55.06
+        },
+        {
+          "word": "India.",
+          "start": 55.06,
+          "end": 55.42
+        }
+      ]
+    },
+    {
+      "start": 56.94,
+      "end": 58.6,
+      "text": "I want you to be with me.",
+      "words": [
+        {
+          "word": "I",
+          "start": 56.94,
+          "end": 57.46
+        },
+        {
+          "word": "want",
+          "start": 57.46,
+          "end": 57.62
+        },
+        {
+          "word": "you",
+          "start": 57.62,
+          "end": 57.84
+        },
+        {
+          "word": "to",
+          "start": 57.84,
+          "end": 58.04
+        },
+        {
+          "word": "be",
+          "start": 58.04,
+          "end": 58.06
+        },
+        {
+          "word": "with",
+          "start": 58.06,
+          "end": 58.06
+        },
+        {
+          "word": "me.",
+          "start": 58.06,
+          "end": 58.6
+        }
+      ]
+    },
+    {
+      "start": 60.400000000000006,
+      "end": 62.92,
+      "text": "You will be the only one who can be better",
+      "words": [
+        {
+          "word": "You",
+          "start": 60.400000000000006,
+          "end": 60.92
+        },
+        {
+          "word": "will",
+          "start": 60.92,
+          "end": 61.14
+        },
+        {
+          "word": "be",
+          "start": 61.14,
+          "end": 61.28
+        },
+        {
+          "word": "the",
+          "start": 61.28,
+          "end": 61.38
+        },
+        {
+          "word": "only",
+          "start": 61.38,
+          "end": 61.62
+        },
+        {
+          "word": "one",
+          "start": 61.62,
+          "end": 61.62
+        },
+        {
+          "word": "who",
+          "start": 61.62,
+          "end": 62.24
+        },
+        {
+          "word": "can",
+          "start": 62.24,
+          "end": 62.36
+        },
+        {
+          "word": "be",
+          "start": 62.36,
+          "end": 62.72
+        },
+        {
+          "word": "better",
+          "start": 62.72,
+          "end": 62.92
+        }
+      ]
+    },
+    {
+      "start": 62.92,
+      "end": 65.94,
+      "text": "to be the most important person.",
+      "words": [
+        {
+          "word": "to",
+          "start": 62.92,
+          "end": 63.8
+        },
+        {
+          "word": "be",
+          "start": 63.8,
+          "end": 65.22
+        },
+        {
+          "word": "the",
+          "start": 65.22,
+          "end": 65.32
+        },
+        {
+          "word": "most",
+          "start": 65.32,
+          "end": 65.68
+        },
+        {
+          "word": "important",
+          "start": 65.68,
+          "end": 65.68
+        },
+        {
+          "word": "person.",
+          "start": 65.68,
+          "end": 65.94
+        }
+      ]
+    },
+    {
+      "start": 69.10000000000001,
+      "end": 70.14,
+      "text": "The day...",
+      "words": [
+        {
+          "word": "The",
+          "start": 69.10000000000001,
+          "end": 69.62
+        },
+        {
+          "word": "day...",
+          "start": 69.62,
+          "end": 70.14
+        }
+      ]
+    },
+    {
+      "start": 71.60000000000001,
+      "end": 73.04,
+      "text": "you have to be with me.",
+      "words": [
+        {
+          "word": "you",
+          "start": 71.60000000000001,
+          "end": 72.12
+        },
+        {
+          "word": "have",
+          "start": 72.12,
+          "end": 72.32
+        },
+        {
+          "word": "to",
+          "start": 72.32,
+          "end": 72.44
+        },
+        {
+          "word": "be",
+          "start": 72.44,
+          "end": 72.58
+        },
+        {
+          "word": "with",
+          "start": 72.58,
+          "end": 72.68
+        },
+        {
+          "word": "me.",
+          "start": 72.68,
+          "end": 73.04
+        }
+      ]
+    },
+    {
+      "start": 149.38,
+      "end": 150.78,
+      "text": "Oh",
+      "words": [
+        {
+          "word": "Oh",
+          "start": 149.38,
+          "end": 150.78
+        }
+      ]
+    }
+  ]
+}

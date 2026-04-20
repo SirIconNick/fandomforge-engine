@@ -1,0 +1,598 @@
+{
+  "segments": [
+    {
+      "start": 1.0600000000000012,
+      "end": 4.66,
+      "text": "Tyler, you were clinically dead nine months ago.",
+      "words": [
+        {
+          "word": "Tyler,",
+          "start": 1.0600000000000012,
+          "end": 1.78
+        },
+        {
+          "word": "you",
+          "start": 2.1,
+          "end": 2.72
+        },
+        {
+          "word": "were",
+          "start": 2.72,
+          "end": 2.8
+        },
+        {
+          "word": "clinically",
+          "start": 2.8,
+          "end": 3.22
+        },
+        {
+          "word": "dead",
+          "start": 3.22,
+          "end": 3.7
+        },
+        {
+          "word": "nine",
+          "start": 3.7,
+          "end": 3.98
+        },
+        {
+          "word": "months",
+          "start": 3.98,
+          "end": 4.28
+        },
+        {
+          "word": "ago.",
+          "start": 4.28,
+          "end": 4.66
+        }
+      ]
+    },
+    {
+      "start": 8.200000000000001,
+      "end": 9.46,
+      "text": "Would you survive?",
+      "words": [
+        {
+          "word": "Would",
+          "start": 8.200000000000001,
+          "end": 8.92
+        },
+        {
+          "word": "you",
+          "start": 8.92,
+          "end": 9.04
+        },
+        {
+          "word": "survive?",
+          "start": 9.04,
+          "end": 9.46
+        }
+      ]
+    },
+    {
+      "start": 11.360000000000001,
+      "end": 13.12,
+      "text": "You fought your way back?",
+      "words": [
+        {
+          "word": "You",
+          "start": 11.360000000000001,
+          "end": 12.08
+        },
+        {
+          "word": "fought",
+          "start": 12.08,
+          "end": 12.36
+        },
+        {
+          "word": "your",
+          "start": 12.36,
+          "end": 12.58
+        },
+        {
+          "word": "way",
+          "start": 12.58,
+          "end": 12.78
+        },
+        {
+          "word": "back?",
+          "start": 12.78,
+          "end": 13.12
+        }
+      ]
+    },
+    {
+      "start": 15.34,
+      "end": 17.4,
+      "text": "You just have to find out why.",
+      "words": [
+        {
+          "word": "You",
+          "start": 15.34,
+          "end": 16.06
+        },
+        {
+          "word": "just",
+          "start": 16.06,
+          "end": 16.24
+        },
+        {
+          "word": "have",
+          "start": 16.24,
+          "end": 16.38
+        },
+        {
+          "word": "to",
+          "start": 16.38,
+          "end": 16.52
+        },
+        {
+          "word": "find",
+          "start": 16.52,
+          "end": 16.78
+        },
+        {
+          "word": "out",
+          "start": 16.78,
+          "end": 17.02
+        },
+        {
+          "word": "why.",
+          "start": 17.02,
+          "end": 17.4
+        }
+      ]
+    },
+    {
+      "start": 26.820000000000004,
+      "end": 30.28,
+      "text": "We got a contract.",
+      "words": [
+        {
+          "word": "We",
+          "start": 26.820000000000004,
+          "end": 28.220000000000002
+        },
+        {
+          "word": "got",
+          "start": 28.220000000000002,
+          "end": 29.62
+        },
+        {
+          "word": "a",
+          "start": 29.62,
+          "end": 29.7
+        },
+        {
+          "word": "contract.",
+          "start": 29.7,
+          "end": 30.28
+        }
+      ]
+    },
+    {
+      "start": 45.760000000000005,
+      "end": 47.78,
+      "text": "You were the client's request.",
+      "words": [
+        {
+          "word": "You",
+          "start": 45.760000000000005,
+          "end": 46.64
+        },
+        {
+          "word": "were",
+          "start": 46.64,
+          "end": 46.78
+        },
+        {
+          "word": "the",
+          "start": 46.78,
+          "end": 46.9
+        },
+        {
+          "word": "client's",
+          "start": 46.9,
+          "end": 47.42
+        },
+        {
+          "word": "request.",
+          "start": 47.42,
+          "end": 47.78
+        }
+      ]
+    },
+    {
+      "start": 75.76,
+      "end": 76.76,
+      "text": "We're gonna lose!",
+      "words": [
+        {
+          "word": "We're",
+          "start": 75.76,
+          "end": 76.28
+        },
+        {
+          "word": "gonna",
+          "start": 76.28,
+          "end": 76.4
+        },
+        {
+          "word": "lose!",
+          "start": 76.4,
+          "end": 76.76
+        }
+      ]
+    },
+    {
+      "start": 79.00000000000001,
+      "end": 82.44,
+      "text": "There were normal cracks like some of the cracks coming from the room.",
+      "words": [
+        {
+          "word": "There",
+          "start": 79.00000000000001,
+          "end": 79.52000000000001
+        },
+        {
+          "word": "were",
+          "start": 79.52000000000001,
+          "end": 80.04
+        },
+        {
+          "word": "normal",
+          "start": 80.04,
+          "end": 80.38
+        },
+        {
+          "word": "cracks",
+          "start": 80.38,
+          "end": 80.7
+        },
+        {
+          "word": "like",
+          "start": 80.7,
+          "end": 81.1
+        },
+        {
+          "word": "some",
+          "start": 81.1,
+          "end": 81.38
+        },
+        {
+          "word": "of",
+          "start": 81.38,
+          "end": 81.5
+        },
+        {
+          "word": "the",
+          "start": 81.5,
+          "end": 81.66
+        },
+        {
+          "word": "cracks",
+          "start": 81.66,
+          "end": 81.82
+        },
+        {
+          "word": "coming",
+          "start": 81.82,
+          "end": 82.12
+        },
+        {
+          "word": "from",
+          "start": 82.12,
+          "end": 82.38
+        },
+        {
+          "word": "the",
+          "start": 82.38,
+          "end": 82.44
+        },
+        {
+          "word": "room.",
+          "start": 82.44,
+          "end": 82.44
+        }
+      ]
+    },
+    {
+      "start": 82.44,
+      "end": 83.26,
+      "text": "Right, everyone out, guys.",
+      "words": [
+        {
+          "word": "Right,",
+          "start": 82.44,
+          "end": 82.7
+        },
+        {
+          "word": "everyone",
+          "start": 82.72,
+          "end": 82.9
+        },
+        {
+          "word": "out,",
+          "start": 82.9,
+          "end": 83.08
+        },
+        {
+          "word": "guys.",
+          "start": 83.1,
+          "end": 83.26
+        }
+      ]
+    },
+    {
+      "start": 83.62,
+      "end": 84.44,
+      "text": "Kids, you done?",
+      "words": [
+        {
+          "word": "Kids,",
+          "start": 83.62,
+          "end": 84.14
+        },
+        {
+          "word": "you",
+          "start": 84.14,
+          "end": 84.3
+        },
+        {
+          "word": "done?",
+          "start": 84.3,
+          "end": 84.44
+        }
+      ]
+    },
+    {
+      "start": 85.78,
+      "end": 87.4,
+      "text": "Why did you come back for them?",
+      "words": [
+        {
+          "word": "Why",
+          "start": 85.78,
+          "end": 86.3
+        },
+        {
+          "word": "did",
+          "start": 86.3,
+          "end": 86.42
+        },
+        {
+          "word": "you",
+          "start": 86.42,
+          "end": 86.52
+        },
+        {
+          "word": "come",
+          "start": 86.52,
+          "end": 86.68
+        },
+        {
+          "word": "back",
+          "start": 86.68,
+          "end": 86.92
+        },
+        {
+          "word": "for",
+          "start": 86.92,
+          "end": 87.18
+        },
+        {
+          "word": "them?",
+          "start": 87.18,
+          "end": 87.4
+        }
+      ]
+    },
+    {
+      "start": 88.6,
+      "end": 89.46,
+      "text": "Do you know her?",
+      "words": [
+        {
+          "word": "Do",
+          "start": 88.6,
+          "end": 89.08
+        },
+        {
+          "word": "you",
+          "start": 89.08,
+          "end": 89.12
+        },
+        {
+          "word": "know",
+          "start": 89.12,
+          "end": 89.26
+        },
+        {
+          "word": "her?",
+          "start": 89.26,
+          "end": 89.46
+        }
+      ]
+    },
+    {
+      "start": 89.9,
+      "end": 90.26,
+      "text": "I don't know.",
+      "words": [
+        {
+          "word": "I",
+          "start": 89.9,
+          "end": 90.26
+        },
+        {
+          "word": "don't",
+          "start": 90.26,
+          "end": 90.26
+        },
+        {
+          "word": "know.",
+          "start": 90.26,
+          "end": 90.26
+        }
+      ]
+    },
+    {
+      "start": 90.26,
+      "end": 90.26,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 90.26,
+      "end": 90.26,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 90.26,
+      "end": 90.26,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 90.26,
+      "end": 90.26,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 90.26,
+      "end": 90.26,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 90.26,
+      "end": 90.64,
+      "text": "Tyler?",
+      "words": [
+        {
+          "word": "Tyler?",
+          "start": 90.26,
+          "end": 90.64
+        }
+      ]
+    },
+    {
+      "start": 97.66,
+      "end": 98.76,
+      "text": "Get new outta here, okay?",
+      "words": [
+        {
+          "word": "Get",
+          "start": 97.66,
+          "end": 98.02
+        },
+        {
+          "word": "new",
+          "start": 98.02,
+          "end": 98.16
+        },
+        {
+          "word": "outta",
+          "start": 98.16,
+          "end": 98.34
+        },
+        {
+          "word": "here,",
+          "start": 98.34,
+          "end": 98.52
+        },
+        {
+          "word": "okay?",
+          "start": 98.62,
+          "end": 98.76
+        }
+      ]
+    },
+    {
+      "start": 116.24,
+      "end": 118.6,
+      "text": "We're told we'd find a reason to fool my way back.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 116.24,
+          "end": 116.6
+        },
+        {
+          "word": "told",
+          "start": 116.6,
+          "end": 116.96
+        },
+        {
+          "word": "we'd",
+          "start": 116.96,
+          "end": 117.12
+        },
+        {
+          "word": "find",
+          "start": 117.12,
+          "end": 117.36
+        },
+        {
+          "word": "a",
+          "start": 117.36,
+          "end": 117.44
+        },
+        {
+          "word": "reason",
+          "start": 117.44,
+          "end": 117.66
+        },
+        {
+          "word": "to",
+          "start": 117.66,
+          "end": 117.82
+        },
+        {
+          "word": "fool",
+          "start": 117.82,
+          "end": 118.0
+        },
+        {
+          "word": "my",
+          "start": 118.0,
+          "end": 118.16
+        },
+        {
+          "word": "way",
+          "start": 118.16,
+          "end": 118.32
+        },
+        {
+          "word": "back.",
+          "start": 118.32,
+          "end": 118.6
+        }
+      ]
+    },
+    {
+      "start": 124.38,
+      "end": 126.08,
+      "text": "That's for endorse.",
+      "words": [
+        {
+          "word": "That's",
+          "start": 124.38,
+          "end": 125.78
+        },
+        {
+          "word": "for",
+          "start": 125.78,
+          "end": 125.88
+        },
+        {
+          "word": "endorse.",
+          "start": 125.88,
+          "end": 126.08
+        }
+      ]
+    }
+  ]
+}

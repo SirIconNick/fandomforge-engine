@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project_slug": "action-legends",
   "video_path": "projects/action-legends/exports/graded.mp4",
-  "generated_at": "2026-04-20T00:32:21.460139+00:00",
+  "generated_at": "2026-04-20T01:47:58.998603+00:00",
   "overall": "yellow",
   "overall_verdict": "warn",
   "score": 83.5,
@@ -20,13 +20,13 @@
         "video_codec": "h264",
         "pix_fmt": "yuv420p",
         "fps": 24.0,
-        "duration_sec": 58.5,
-        "video_bitrate_bps": 5554789,
-        "container_bitrate_bps": 5880771,
+        "duration_sec": 221.416667,
+        "video_bitrate_bps": 6375502,
+        "container_bitrate_bps": 6702621,
         "audio_codec": "aac",
         "sample_rate": 48000,
         "channels": 2,
-        "audio_bitrate_bps": 320402
+        "audio_bitrate_bps": 321912
       }
     },
     {
@@ -34,42 +34,57 @@
       "verdict": "warn",
       "score": 45.0,
       "findings": [
-        "dark segment @ 20.50s \u2192 21.25s (0.75s)",
-        "dark segment @ 25.88s \u2192 26.38s (0.50s)",
-        "dark segment @ 38.04s \u2192 38.33s (0.29s)",
-        "dark segment @ 43.75s \u2192 44.42s (0.67s)",
-        "dark segment @ 50.17s \u2192 50.54s (0.38s)"
+        "dark segment @ 37.79s \u2192 38.04s (0.25s)",
+        "dark segment @ 40.96s \u2192 41.42s (0.46s)",
+        "dark segment @ 65.96s \u2192 66.25s (0.29s)",
+        "dark segment @ 66.29s \u2192 66.62s (0.33s)",
+        "dark segment @ 78.08s \u2192 78.79s (0.71s)"
       ],
       "measurements": {
         "black_segments": [
           {
-            "start": 20.5,
-            "end": 21.25,
-            "duration": 0.75
+            "start": 37.791667,
+            "end": 38.041667,
+            "duration": 0.25
           },
           {
-            "start": 25.875,
-            "end": 26.375,
-            "duration": 0.5
+            "start": 40.958333,
+            "end": 41.416667,
+            "duration": 0.458333
           },
           {
-            "start": 38.041667,
-            "end": 38.333333,
+            "start": 65.958333,
+            "end": 66.25,
             "duration": 0.291667
           },
           {
-            "start": 43.75,
-            "end": 44.416667,
-            "duration": 0.666667
+            "start": 66.291667,
+            "end": 66.625,
+            "duration": 0.333333
           },
           {
-            "start": 50.166667,
-            "end": 50.541667,
-            "duration": 0.375
+            "start": 78.083333,
+            "end": 78.791667,
+            "duration": 0.708333
+          },
+          {
+            "start": 94.166667,
+            "end": 94.458333,
+            "duration": 0.291667
+          },
+          {
+            "start": 148.875,
+            "end": 149.083333,
+            "duration": 0.208333
+          },
+          {
+            "start": 203.375,
+            "end": 203.666667,
+            "duration": 0.291667
           }
         ],
         "freeze_events": [],
-        "total_black_sec": 2.583
+        "total_black_sec": 2.833
       }
     },
     {
@@ -78,12 +93,12 @@
       "score": 100.0,
       "findings": [],
       "measurements": {
-        "input_i": -11.81,
-        "input_tp": -2.42,
+        "input_i": -11.49,
+        "input_tp": -1.42,
         "input_lra": 2.6,
-        "input_thresh": -22.11,
-        "mean_dbfs": -15.4,
-        "max_dbfs": -2.7,
+        "input_thresh": -21.64,
+        "mean_dbfs": -14.8,
+        "max_dbfs": -2.2,
         "silences": []
       }
     },
@@ -93,11 +108,11 @@
       "score": 100.0,
       "findings": [],
       "measurements": {
-        "rendered_duration_sec": 58.5,
-        "expected_duration_sec": 58.667,
-        "shot_count": 52,
-        "delta_sec": -0.167,
-        "delta_pct": 0.0028
+        "rendered_duration_sec": 221.416667,
+        "expected_duration_sec": 221.75,
+        "shot_count": 217,
+        "delta_sec": -0.333,
+        "delta_pct": 0.0015
       }
     },
     {
@@ -106,17 +121,23 @@
       "score": 100.0,
       "findings": [],
       "measurements": {
-        "shot_count": 52,
-        "unique_shots": 52,
+        "shot_count": 217,
+        "unique_shots": 217,
         "intentional_callbacks": 0,
         "accidental_reuse": 0,
         "source_distribution": {
-          "extraction-2": 13,
-          "john-wick-4": 14,
-          "mad-max-fury-road": 13,
-          "the-raid-2": 12
+          "extraction-2": 19,
+          "fight_raid_all_best_fights": 20,
+          "fight_extraction2_every_fight": 18,
+          "mad-max-fury-road": 46,
+          "fight_raid2_brutal_fights": 22,
+          "john-wick-4": 15,
+          "the-raid-2": 14,
+          "fight_extraction2_tyler_rake": 25,
+          "fight_jw_best_fights_4k": 18,
+          "fight_jw_ultimate_mashup": 20
         },
-        "top_source_share": 0.269
+        "top_source_share": 0.212
       }
     }
   ]

@@ -1,0 +1,179 @@
+{
+  "segments": [
+    {
+      "start": 194.34,
+      "end": 195.06,
+      "text": "Ah!",
+      "words": [
+        {
+          "word": "Ah!",
+          "start": 194.34,
+          "end": 195.06
+        }
+      ]
+    },
+    {
+      "start": 204.16,
+      "end": 204.88,
+      "text": "Ouch!",
+      "words": [
+        {
+          "word": "Ouch!",
+          "start": 204.16,
+          "end": 204.88
+        }
+      ]
+    },
+    {
+      "start": 205.08,
+      "end": 205.58,
+      "text": "Ouch, my ass!",
+      "words": [
+        {
+          "word": "Ouch,",
+          "start": 205.08,
+          "end": 205.08
+        },
+        {
+          "word": "my",
+          "start": 205.08,
+          "end": 205.46
+        },
+        {
+          "word": "ass!",
+          "start": 205.46,
+          "end": 205.58
+        }
+      ]
+    },
+    {
+      "start": 205.76,
+      "end": 207.08,
+      "text": "Ouch, please.",
+      "words": [
+        {
+          "word": "Ouch,",
+          "start": 205.76,
+          "end": 206.22
+        },
+        {
+          "word": "please.",
+          "start": 206.56,
+          "end": 207.08
+        }
+      ]
+    },
+    {
+      "start": 209.0,
+      "end": 209.72,
+      "text": "Ouch, my ass!",
+      "words": [
+        {
+          "word": "Ouch,",
+          "start": 209.0,
+          "end": 209.72
+        },
+        {
+          "word": "my",
+          "start": 209.72,
+          "end": 209.72
+        },
+        {
+          "word": "ass!",
+          "start": 209.72,
+          "end": 209.72
+        }
+      ]
+    },
+    {
+      "start": 209.72,
+      "end": 209.76,
+      "text": "Help me woo!",
+      "words": [
+        {
+          "word": "Help",
+          "start": 209.72,
+          "end": 209.72
+        },
+        {
+          "word": "me",
+          "start": 209.72,
+          "end": 209.76
+        },
+        {
+          "word": "woo!",
+          "start": 209.76,
+          "end": 209.76
+        }
+      ]
+    },
+    {
+      "start": 209.76,
+      "end": 209.98,
+      "text": "Whoa, whoa, whoa, whoa!",
+      "words": [
+        {
+          "word": "Whoa,",
+          "start": 209.76,
+          "end": 209.76
+        },
+        {
+          "word": "whoa,",
+          "start": 209.88,
+          "end": 209.98
+        },
+        {
+          "word": "whoa,",
+          "start": 209.98,
+          "end": 209.98
+        },
+        {
+          "word": "whoa!",
+          "start": 209.98,
+          "end": 209.98
+        }
+      ]
+    },
+    {
+      "start": 209.98,
+      "end": 209.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 209.98,
+      "end": 209.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 209.98,
+      "end": 209.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 989.98,
+      "end": 989.98,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1090.46,
+      "end": 1091.9,
+      "text": "Kn...DER yeary.",
+      "words": [
+        {
+          "word": "Kn...DER",
+          "start": 1090.46,
+          "end": 1091.38
+        },
+        {
+          "word": "yeary.",
+          "start": 1091.38,
+          "end": 1091.9
+        }
+      ]
+    }
+  ]
+}

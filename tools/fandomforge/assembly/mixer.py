@@ -168,10 +168,10 @@ def mix_audio(
     for idx, (input_i, cue) in enumerate(valid_cues, start=1):
         delay_ms = int(cue.start_sec * 1000)
         gain = cue.gain_db
-        # Input index is based on position in cmd's -i list: song is input 0, first cue is 1
+        # input_i is the actual ffmpeg input index (song is 0, first cue is 1, etc.)
         label = f"[dcue{idx}]"
         filter_parts.append(
-            f"[{input_i + 1}:a]volume={gain}dB,"
+            f"[{input_i}:a]volume={gain}dB,"
             f"adelay={delay_ms}|{delay_ms},"
             f"apad=pad_dur={total_duration_sec}"
             f"{label}"
@@ -254,14 +254,14 @@ def mix_audio(
 
     if len(final_layers) == 1:
         filter_parts.append(
-            f"{song_bus_label}alimiter=level_in=0.9:level_out=0.86:limit=0.86[master]"
+            f"{song_bus_label}alimiter=level_in=0.9:level_out=0.82:limit=0.82[master]"
         )
     else:
         filter_parts.append(
             f"{''.join(final_layers)}amix=inputs={len(final_layers)}:"
             f"duration=first:dropout_transition=0:normalize=0,"
             f"atrim=end={total_duration_sec},"
-            f"alimiter=level_in=0.9:level_out=0.86:limit=0.86:"
+            f"alimiter=level_in=0.9:level_out=0.82:limit=0.82:"
             f"attack=5:release=50[master]"
         )
 

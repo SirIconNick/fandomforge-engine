@@ -32,12 +32,34 @@ def _check_ffmpeg() -> None:
 
 
 def _find_source_video(raw_dir: Path, source_id: str) -> Path | None:
-    """Find a downloaded video file for a source ID in raw/."""
-    candidates = list(raw_dir.glob(f"{source_id}.*"))
-    video_files = [
-        p for p in candidates if p.suffix.lower() in {".mp4", ".mkv", ".webm", ".mov", ".m4v"}
-    ]
-    return video_files[0] if video_files else None
+    """Find a downloaded video file for a source ID in raw/ (recursive).
+
+    Searches:
+      1. raw/<source_id>.*
+      2. raw/**/<source_id>.*  (any subdirectory, e.g. raw/fights/)
+      3. If source_id starts with 'fight_', strips the prefix and retries
+         (supports the convention where fight-comp source_ids are tagged
+         with 'fight_' but the actual files live under raw/fights/<stem>.mp4)
+    """
+    VIDEO_EXTS = {".mp4", ".mkv", ".webm", ".mov", ".m4v"}
+
+    def _find(stem: str) -> Path | None:
+        # Try direct raw/<stem>.<ext> first
+        for p in raw_dir.glob(f"{stem}.*"):
+            if p.suffix.lower() in VIDEO_EXTS:
+                return p
+        # Then recursive search
+        for p in raw_dir.rglob(f"{stem}.*"):
+            if p.suffix.lower() in VIDEO_EXTS:
+                return p
+        return None
+
+    hit = _find(source_id)
+    if hit:
+        return hit
+    if source_id.startswith("fight_"):
+        return _find(source_id[len("fight_"):])
+    return None
 
 
 def _extract_clip(

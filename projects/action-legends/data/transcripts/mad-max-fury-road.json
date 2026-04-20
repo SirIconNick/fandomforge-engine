@@ -1,0 +1,530 @@
+{
+  "segments": [
+    {
+      "start": 4.040000000000001,
+      "end": 4.76,
+      "text": "The",
+      "words": [
+        {
+          "word": "The",
+          "start": 4.040000000000001,
+          "end": 4.76
+        }
+      ]
+    },
+    {
+      "start": 4.76,
+      "end": 10.86,
+      "text": "In this voice I am the one who runs for both the living and the dead",
+      "words": [
+        {
+          "word": "In",
+          "start": 4.76,
+          "end": 4.84
+        },
+        {
+          "word": "this",
+          "start": 4.84,
+          "end": 4.96
+        },
+        {
+          "word": "voice",
+          "start": 4.96,
+          "end": 5.2
+        },
+        {
+          "word": "I",
+          "start": 5.2,
+          "end": 5.6
+        },
+        {
+          "word": "am",
+          "start": 5.6,
+          "end": 6.94
+        },
+        {
+          "word": "the",
+          "start": 6.94,
+          "end": 7.1
+        },
+        {
+          "word": "one",
+          "start": 7.1,
+          "end": 7.3
+        },
+        {
+          "word": "who",
+          "start": 7.3,
+          "end": 7.6
+        },
+        {
+          "word": "runs",
+          "start": 7.6,
+          "end": 7.96
+        },
+        {
+          "word": "for",
+          "start": 7.96,
+          "end": 8.3
+        },
+        {
+          "word": "both",
+          "start": 8.3,
+          "end": 8.68
+        },
+        {
+          "word": "the",
+          "start": 8.68,
+          "end": 8.86
+        },
+        {
+          "word": "living",
+          "start": 8.86,
+          "end": 9.12
+        },
+        {
+          "word": "and",
+          "start": 9.12,
+          "end": 10.14
+        },
+        {
+          "word": "the",
+          "start": 10.14,
+          "end": 10.5
+        },
+        {
+          "word": "dead",
+          "start": 10.5,
+          "end": 10.86
+        }
+      ]
+    },
+    {
+      "start": 17.96,
+      "end": 19.4,
+      "text": "So five",
+      "words": [
+        {
+          "word": "So",
+          "start": 17.96,
+          "end": 18.68
+        },
+        {
+          "word": "five",
+          "start": 18.68,
+          "end": 19.4
+        }
+      ]
+    },
+    {
+      "start": 33.2,
+      "end": 37.6,
+      "text": "From the ashes of this world.",
+      "words": [
+        {
+          "word": "From",
+          "start": 33.2,
+          "end": 34.0
+        },
+        {
+          "word": "the",
+          "start": 34.0,
+          "end": 34.18
+        },
+        {
+          "word": "ashes",
+          "start": 34.18,
+          "end": 34.58
+        },
+        {
+          "word": "of",
+          "start": 34.58,
+          "end": 36.8
+        },
+        {
+          "word": "this",
+          "start": 36.8,
+          "end": 37.1
+        },
+        {
+          "word": "world.",
+          "start": 37.1,
+          "end": 37.6
+        }
+      ]
+    },
+    {
+      "start": 42.68,
+      "end": 45.98,
+      "text": "We have not things. We are not things.",
+      "words": [
+        {
+          "word": "We",
+          "start": 42.68,
+          "end": 43.48
+        },
+        {
+          "word": "have",
+          "start": 43.48,
+          "end": 43.6
+        },
+        {
+          "word": "not",
+          "start": 43.6,
+          "end": 43.74
+        },
+        {
+          "word": "things.",
+          "start": 43.74,
+          "end": 44.1
+        },
+        {
+          "word": "We",
+          "start": 44.8,
+          "end": 45.02
+        },
+        {
+          "word": "are",
+          "start": 45.02,
+          "end": 45.18
+        },
+        {
+          "word": "not",
+          "start": 45.18,
+          "end": 45.5
+        },
+        {
+          "word": "things.",
+          "start": 45.5,
+          "end": 45.98
+        }
+      ]
+    },
+    {
+      "start": 46.3,
+      "end": 48.6,
+      "text": "Where is he taking them?",
+      "words": [
+        {
+          "word": "Where",
+          "start": 46.3,
+          "end": 46.6
+        },
+        {
+          "word": "is",
+          "start": 46.6,
+          "end": 47.3
+        },
+        {
+          "word": "he",
+          "start": 47.3,
+          "end": 47.64
+        },
+        {
+          "word": "taking",
+          "start": 47.64,
+          "end": 48.16
+        },
+        {
+          "word": "them?",
+          "start": 48.16,
+          "end": 48.6
+        }
+      ]
+    },
+    {
+      "start": 60.68,
+      "end": 63.7,
+      "text": "I want them back, they're not in poverty.",
+      "words": [
+        {
+          "word": "I",
+          "start": 60.68,
+          "end": 61.2
+        },
+        {
+          "word": "want",
+          "start": 61.2,
+          "end": 61.34
+        },
+        {
+          "word": "them",
+          "start": 61.34,
+          "end": 61.6
+        },
+        {
+          "word": "back,",
+          "start": 61.6,
+          "end": 62.04
+        },
+        {
+          "word": "they're",
+          "start": 62.72,
+          "end": 62.88
+        },
+        {
+          "word": "not",
+          "start": 62.88,
+          "end": 63.06
+        },
+        {
+          "word": "in",
+          "start": 63.06,
+          "end": 63.32
+        },
+        {
+          "word": "poverty.",
+          "start": 63.32,
+          "end": 63.7
+        }
+      ]
+    },
+    {
+      "start": 68.38000000000001,
+      "end": 69.34,
+      "text": "I want a day.",
+      "words": [
+        {
+          "word": "I",
+          "start": 68.38000000000001,
+          "end": 68.9
+        },
+        {
+          "word": "want",
+          "start": 68.9,
+          "end": 69.06
+        },
+        {
+          "word": "a",
+          "start": 69.06,
+          "end": 69.2
+        },
+        {
+          "word": "day.",
+          "start": 69.2,
+          "end": 69.34
+        }
+      ]
+    },
+    {
+      "start": 70.04,
+      "end": 71.04,
+      "text": "I want a lovely day.",
+      "words": [
+        {
+          "word": "I",
+          "start": 70.04,
+          "end": 70.14
+        },
+        {
+          "word": "want",
+          "start": 70.14,
+          "end": 70.18
+        },
+        {
+          "word": "a",
+          "start": 70.18,
+          "end": 70.3
+        },
+        {
+          "word": "lovely",
+          "start": 70.3,
+          "end": 70.66
+        },
+        {
+          "word": "day.",
+          "start": 70.66,
+          "end": 71.04
+        }
+      ]
+    },
+    {
+      "start": 75.02000000000001,
+      "end": 76.14,
+      "text": "Wanna get through this?",
+      "words": [
+        {
+          "word": "Wanna",
+          "start": 75.02000000000001,
+          "end": 75.54
+        },
+        {
+          "word": "get",
+          "start": 75.54,
+          "end": 75.68
+        },
+        {
+          "word": "through",
+          "start": 75.68,
+          "end": 75.9
+        },
+        {
+          "word": "this?",
+          "start": 75.9,
+          "end": 76.14
+        }
+      ]
+    },
+    {
+      "start": 76.86,
+      "end": 77.32,
+      "text": "Let's go!",
+      "words": [
+        {
+          "word": "Let's",
+          "start": 76.86,
+          "end": 77.2
+        },
+        {
+          "word": "go!",
+          "start": 77.2,
+          "end": 77.32
+        }
+      ]
+    },
+    {
+      "start": 99.1,
+      "end": 104.68,
+      "text": "As the world fell, each of us in our own way was broken.",
+      "words": [
+        {
+          "word": "As",
+          "start": 99.1,
+          "end": 99.78
+        },
+        {
+          "word": "the",
+          "start": 99.78,
+          "end": 99.96
+        },
+        {
+          "word": "world",
+          "start": 99.96,
+          "end": 100.2
+        },
+        {
+          "word": "fell,",
+          "start": 100.2,
+          "end": 100.68
+        },
+        {
+          "word": "each",
+          "start": 101.24,
+          "end": 102.76
+        },
+        {
+          "word": "of",
+          "start": 102.76,
+          "end": 102.96
+        },
+        {
+          "word": "us",
+          "start": 102.96,
+          "end": 103.2
+        },
+        {
+          "word": "in",
+          "start": 103.2,
+          "end": 103.36
+        },
+        {
+          "word": "our",
+          "start": 103.36,
+          "end": 103.52
+        },
+        {
+          "word": "own",
+          "start": 103.52,
+          "end": 103.76
+        },
+        {
+          "word": "way",
+          "start": 103.76,
+          "end": 103.96
+        },
+        {
+          "word": "was",
+          "start": 103.96,
+          "end": 104.26
+        },
+        {
+          "word": "broken.",
+          "start": 104.26,
+          "end": 104.68
+        }
+      ]
+    },
+    {
+      "start": 105.88,
+      "end": 114.52,
+      "text": "It was hard to know who was more crazy, me, or everyone else.",
+      "words": [
+        {
+          "word": "It",
+          "start": 105.88,
+          "end": 106.32
+        },
+        {
+          "word": "was",
+          "start": 106.32,
+          "end": 106.48
+        },
+        {
+          "word": "hard",
+          "start": 106.48,
+          "end": 106.72
+        },
+        {
+          "word": "to",
+          "start": 106.72,
+          "end": 106.94
+        },
+        {
+          "word": "know",
+          "start": 106.94,
+          "end": 107.12
+        },
+        {
+          "word": "who",
+          "start": 107.12,
+          "end": 107.46
+        },
+        {
+          "word": "was",
+          "start": 107.46,
+          "end": 107.68
+        },
+        {
+          "word": "more",
+          "start": 107.68,
+          "end": 107.9
+        },
+        {
+          "word": "crazy,",
+          "start": 107.9,
+          "end": 108.4
+        },
+        {
+          "word": "me,",
+          "start": 109.88,
+          "end": 111.72
+        },
+        {
+          "word": "or",
+          "start": 112.64,
+          "end": 113.7
+        },
+        {
+          "word": "everyone",
+          "start": 113.7,
+          "end": 114.12
+        },
+        {
+          "word": "else.",
+          "start": 114.12,
+          "end": 114.52
+        }
+      ]
+    }
+  ]
+}

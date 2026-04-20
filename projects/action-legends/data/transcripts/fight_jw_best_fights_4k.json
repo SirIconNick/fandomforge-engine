@@ -1,0 +1,3284 @@
+{
+  "segments": [
+    {
+      "start": 95.26,
+      "end": 97.24,
+      "text": "No, I don't for seek.",
+      "words": [
+        {
+          "word": "No,",
+          "start": 95.26,
+          "end": 96.54
+        },
+        {
+          "word": "I",
+          "start": 96.54,
+          "end": 96.54
+        },
+        {
+          "word": "don't",
+          "start": 96.54,
+          "end": 96.54
+        },
+        {
+          "word": "for",
+          "start": 96.54,
+          "end": 97.24
+        },
+        {
+          "word": "seek.",
+          "start": 97.24,
+          "end": 97.24
+        }
+      ]
+    },
+    {
+      "start": 113.16,
+      "end": 113.88,
+      "text": "Evening, John?",
+      "words": [
+        {
+          "word": "Evening,",
+          "start": 113.04,
+          "end": 113.68
+        },
+        {
+          "word": "John?",
+          "start": 113.76,
+          "end": 113.88
+        }
+      ]
+    },
+    {
+      "start": 114.58,
+      "end": 116.0,
+      "text": "Evening, Jimm surfaces.",
+      "words": [
+        {
+          "word": "Evening,",
+          "start": 114.58,
+          "end": 115.14
+        },
+        {
+          "word": "Jimm",
+          "start": 115.26,
+          "end": 115.46
+        },
+        {
+          "word": "surfaces.",
+          "start": 115.46,
+          "end": 116.0
+        }
+      ]
+    },
+    {
+      "start": 116.64,
+      "end": 117.72,
+      "text": "Noise complains.",
+      "words": [
+        {
+          "word": "Noise",
+          "start": 116.64,
+          "end": 117.28
+        },
+        {
+          "word": "complains.",
+          "start": 117.28,
+          "end": 117.72
+        }
+      ]
+    },
+    {
+      "start": 119.36,
+      "end": 133.66,
+      "text": "I'm not sure if I'm going to work in again.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 119.36,
+          "end": 119.66
+        },
+        {
+          "word": "not",
+          "start": 119.66,
+          "end": 119.78
+        },
+        {
+          "word": "sure",
+          "start": 119.78,
+          "end": 120.02
+        },
+        {
+          "word": "if",
+          "start": 120.02,
+          "end": 120.02
+        },
+        {
+          "word": "I'm",
+          "start": 120.02,
+          "end": 129.36
+        },
+        {
+          "word": "going",
+          "start": 129.36,
+          "end": 129.46
+        },
+        {
+          "word": "to",
+          "start": 129.46,
+          "end": 129.66
+        },
+        {
+          "word": "work",
+          "start": 129.66,
+          "end": 129.66
+        },
+        {
+          "word": "in",
+          "start": 129.66,
+          "end": 133.52
+        },
+        {
+          "word": "again.",
+          "start": 133.52,
+          "end": 133.66
+        }
+      ]
+    },
+    {
+      "start": 134.44,
+      "end": 135.88,
+      "text": "No, I just sorting some stuff out.",
+      "words": [
+        {
+          "word": "No,",
+          "start": 134.44,
+          "end": 134.6
+        },
+        {
+          "word": "I",
+          "start": 134.64,
+          "end": 134.7
+        },
+        {
+          "word": "just",
+          "start": 134.7,
+          "end": 134.8
+        },
+        {
+          "word": "sorting",
+          "start": 134.8,
+          "end": 135.06
+        },
+        {
+          "word": "some",
+          "start": 135.06,
+          "end": 135.3
+        },
+        {
+          "word": "stuff",
+          "start": 135.3,
+          "end": 135.54
+        },
+        {
+          "word": "out.",
+          "start": 135.54,
+          "end": 135.88
+        }
+      ]
+    },
+    {
+      "start": 136.82,
+      "end": 137.7,
+      "text": "Yeah, I want to live in.",
+      "words": [
+        {
+          "word": "Yeah,",
+          "start": 136.82,
+          "end": 136.92
+        },
+        {
+          "word": "I",
+          "start": 137.04,
+          "end": 137.06
+        },
+        {
+          "word": "want",
+          "start": 137.06,
+          "end": 137.14
+        },
+        {
+          "word": "to",
+          "start": 137.14,
+          "end": 137.24
+        },
+        {
+          "word": "live",
+          "start": 137.24,
+          "end": 137.42
+        },
+        {
+          "word": "in.",
+          "start": 137.42,
+          "end": 137.7
+        }
+      ]
+    },
+    {
+      "start": 137.8,
+      "end": 138.32,
+      "text": "Oh, well.",
+      "words": [
+        {
+          "word": "Oh,",
+          "start": 137.8,
+          "end": 138.1
+        },
+        {
+          "word": "well.",
+          "start": 138.18,
+          "end": 138.32
+        }
+      ]
+    },
+    {
+      "start": 141.98,
+      "end": 142.76,
+      "text": "I'll leave you be there.",
+      "words": [
+        {
+          "word": "I'll",
+          "start": 141.98,
+          "end": 142.28
+        },
+        {
+          "word": "leave",
+          "start": 142.28,
+          "end": 142.4
+        },
+        {
+          "word": "you",
+          "start": 142.4,
+          "end": 142.46
+        },
+        {
+          "word": "be",
+          "start": 142.46,
+          "end": 142.6
+        },
+        {
+          "word": "there.",
+          "start": 142.6,
+          "end": 142.76
+        }
+      ]
+    },
+    {
+      "start": 144.5,
+      "end": 145.14,
+      "text": "Good night, John.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 144.5,
+          "end": 144.8
+        },
+        {
+          "word": "night,",
+          "start": 144.8,
+          "end": 144.88
+        },
+        {
+          "word": "John.",
+          "start": 145.0,
+          "end": 145.14
+        }
+      ]
+    },
+    {
+      "start": 145.64,
+      "end": 146.12,
+      "text": "Good night to me.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 145.64,
+          "end": 145.74
+        },
+        {
+          "word": "night",
+          "start": 145.74,
+          "end": 145.82
+        },
+        {
+          "word": "to",
+          "start": 145.82,
+          "end": 145.98
+        },
+        {
+          "word": "me.",
+          "start": 145.98,
+          "end": 146.12
+        }
+      ]
+    },
+    {
+      "start": 146.84,
+      "end": 147.44,
+      "text": "Good night.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 146.84,
+          "end": 147.14
+        },
+        {
+          "word": "night.",
+          "start": 147.14,
+          "end": 147.44
+        }
+      ]
+    },
+    {
+      "start": 147.56,
+      "end": 147.7,
+      "text": "Good night, John.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 147.56,
+          "end": 147.7
+        },
+        {
+          "word": "night,",
+          "start": 147.7,
+          "end": 147.7
+        },
+        {
+          "word": "John.",
+          "start": 147.7,
+          "end": 147.7
+        }
+      ]
+    },
+    {
+      "start": 147.7,
+      "end": 147.7,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 147.7,
+      "end": 147.7,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 147.7,
+      "end": 147.7,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 147.7,
+      "end": 147.7,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 147.7,
+      "end": 147.7,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 150.02,
+      "end": 151.22,
+      "text": "We've seen you.",
+      "words": [
+        {
+          "word": "We've",
+          "start": 150.02,
+          "end": 150.72
+        },
+        {
+          "word": "seen",
+          "start": 150.72,
+          "end": 151.04
+        },
+        {
+          "word": "you.",
+          "start": 151.04,
+          "end": 151.22
+        }
+      ]
+    },
+    {
+      "start": 151.96,
+      "end": 152.92,
+      "text": "Donnie, nothing.",
+      "words": [
+        {
+          "word": "Donnie,",
+          "start": 151.96,
+          "end": 152.66
+        },
+        {
+          "word": "nothing.",
+          "start": 152.78,
+          "end": 152.92
+        }
+      ]
+    },
+    {
+      "start": 153.4,
+      "end": 153.92,
+      "text": "The second floor.",
+      "words": [
+        {
+          "word": "The",
+          "start": 153.4,
+          "end": 153.54
+        },
+        {
+          "word": "second",
+          "start": 153.54,
+          "end": 153.72
+        },
+        {
+          "word": "floor.",
+          "start": 153.72,
+          "end": 153.92
+        }
+      ]
+    },
+    {
+      "start": 154.26,
+      "end": 154.62,
+      "text": "Status.",
+      "words": [
+        {
+          "word": "Status.",
+          "start": 154.26,
+          "end": 154.62
+        }
+      ]
+    },
+    {
+      "start": 160.08,
+      "end": 161.48,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 160.08,
+          "end": 160.78
+        },
+        {
+          "word": "here.",
+          "start": 160.78,
+          "end": 161.48
+        }
+      ]
+    },
+    {
+      "start": 162.32,
+      "end": 162.62,
+      "text": "Yes.",
+      "words": [
+        {
+          "word": "Yes.",
+          "start": 162.32,
+          "end": 162.62
+        }
+      ]
+    },
+    {
+      "start": 163.96,
+      "end": 164.96,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 163.96,
+          "end": 164.56
+        },
+        {
+          "word": "here.",
+          "start": 164.56,
+          "end": 164.96
+        }
+      ]
+    },
+    {
+      "start": 167.98,
+      "end": 168.34,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 167.98,
+          "end": 168.34
+        },
+        {
+          "word": "here.",
+          "start": 168.34,
+          "end": 168.34
+        }
+      ]
+    },
+    {
+      "start": 168.64,
+      "end": 168.8,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 168.64,
+          "end": 168.78
+        },
+        {
+          "word": "here.",
+          "start": 168.78,
+          "end": 168.8
+        }
+      ]
+    },
+    {
+      "start": 169.2,
+      "end": 169.34,
+      "text": "Yes.",
+      "words": [
+        {
+          "word": "Yes.",
+          "start": 169.2,
+          "end": 169.34
+        }
+      ]
+    },
+    {
+      "start": 170.04000000000002,
+      "end": 171.14,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 170.04000000000002,
+          "end": 170.74
+        },
+        {
+          "word": "here.",
+          "start": 170.74,
+          "end": 171.14
+        }
+      ]
+    },
+    {
+      "start": 171.84,
+      "end": 172.4,
+      "text": "Yes.",
+      "words": [
+        {
+          "word": "Yes.",
+          "start": 171.84,
+          "end": 172.4
+        }
+      ]
+    },
+    {
+      "start": 172.4,
+      "end": 172.56,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 172.4,
+          "end": 172.46
+        },
+        {
+          "word": "here.",
+          "start": 172.46,
+          "end": 172.56
+        }
+      ]
+    },
+    {
+      "start": 172.56,
+      "end": 172.56,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 172.56,
+      "end": 172.56,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 172.68,
+      "end": 172.82,
+      "text": "We're here.",
+      "words": [
+        {
+          "word": "We're",
+          "start": 172.68,
+          "end": 172.68
+        },
+        {
+          "word": "here.",
+          "start": 172.68,
+          "end": 172.82
+        }
+      ]
+    },
+    {
+      "start": 172.82,
+      "end": 174.88,
+      "text": "You are now",
+      "words": [
+        {
+          "word": "You",
+          "start": 172.82,
+          "end": 172.82
+        },
+        {
+          "word": "are",
+          "start": 172.82,
+          "end": 172.94
+        },
+        {
+          "word": "now",
+          "start": 172.94,
+          "end": 174.88
+        }
+      ]
+    },
+    {
+      "start": 177.72,
+      "end": 179.16,
+      "text": "I am here",
+      "words": [
+        {
+          "word": "I",
+          "start": 177.72,
+          "end": 178.42
+        },
+        {
+          "word": "am",
+          "start": 178.42,
+          "end": 178.58
+        },
+        {
+          "word": "here",
+          "start": 178.58,
+          "end": 179.16
+        }
+      ]
+    },
+    {
+      "start": 179.16,
+      "end": 183.12,
+      "text": "In a door",
+      "words": [
+        {
+          "word": "In",
+          "start": 179.16,
+          "end": 180.26
+        },
+        {
+          "word": "a",
+          "start": 180.26,
+          "end": 180.56
+        },
+        {
+          "word": "door",
+          "start": 180.56,
+          "end": 183.12
+        }
+      ]
+    },
+    {
+      "start": 183.12,
+      "end": 192.62,
+      "text": "Let me let me let me",
+      "words": [
+        {
+          "word": "Let",
+          "start": 183.12,
+          "end": 184.12
+        },
+        {
+          "word": "me",
+          "start": 184.12,
+          "end": 186.26
+        },
+        {
+          "word": "let",
+          "start": 186.26,
+          "end": 187.84
+        },
+        {
+          "word": "me",
+          "start": 187.84,
+          "end": 191.88
+        },
+        {
+          "word": "let",
+          "start": 191.88,
+          "end": 191.88
+        },
+        {
+          "word": "me",
+          "start": 191.88,
+          "end": 192.62
+        }
+      ]
+    },
+    {
+      "start": 192.62,
+      "end": 193.7,
+      "text": "You stand straight",
+      "words": [
+        {
+          "word": "You",
+          "start": 192.62,
+          "end": 193.04
+        },
+        {
+          "word": "stand",
+          "start": 193.04,
+          "end": 193.46
+        },
+        {
+          "word": "straight",
+          "start": 193.46,
+          "end": 193.7
+        }
+      ]
+    },
+    {
+      "start": 202.82,
+      "end": 203.58,
+      "text": "You're driving my car.",
+      "words": [
+        {
+          "word": "You're",
+          "start": 202.82,
+          "end": 202.84
+        },
+        {
+          "word": "driving",
+          "start": 202.84,
+          "end": 203.58
+        },
+        {
+          "word": "my",
+          "start": 203.58,
+          "end": 203.58
+        },
+        {
+          "word": "car.",
+          "start": 203.58,
+          "end": 203.58
+        }
+      ]
+    },
+    {
+      "start": 204.02,
+      "end": 204.6,
+      "text": "It's count from the box.",
+      "words": [
+        {
+          "word": "It's",
+          "start": 204.02,
+          "end": 204.6
+        },
+        {
+          "word": "count",
+          "start": 204.6,
+          "end": 204.6
+        },
+        {
+          "word": "from",
+          "start": 204.6,
+          "end": 204.6
+        },
+        {
+          "word": "the",
+          "start": 204.6,
+          "end": 204.6
+        },
+        {
+          "word": "box.",
+          "start": 204.6,
+          "end": 204.6
+        }
+      ]
+    },
+    {
+      "start": 204.6,
+      "end": 204.76,
+      "text": "Undead.",
+      "words": [
+        {
+          "word": "Undead.",
+          "start": 204.6,
+          "end": 204.76
+        }
+      ]
+    },
+    {
+      "start": 207.22,
+      "end": 208.56,
+      "text": "Ah!",
+      "words": [
+        {
+          "word": "Ah!",
+          "start": 207.22,
+          "end": 208.56
+        }
+      ]
+    },
+    {
+      "start": 212.46,
+      "end": 213.62,
+      "text": "My hand.",
+      "words": [
+        {
+          "word": "My",
+          "start": 212.46,
+          "end": 213.38
+        },
+        {
+          "word": "hand.",
+          "start": 213.38,
+          "end": 213.62
+        }
+      ]
+    },
+    {
+      "start": 215.34,
+      "end": 217.64,
+      "text": "My hand hurts.",
+      "words": [
+        {
+          "word": "My",
+          "start": 215.34,
+          "end": 216.68
+        },
+        {
+          "word": "hand",
+          "start": 216.68,
+          "end": 217.64
+        },
+        {
+          "word": "hurts.",
+          "start": 217.64,
+          "end": 217.64
+        }
+      ]
+    },
+    {
+      "start": 226.98,
+      "end": 227.12,
+      "text": "Ah!",
+      "words": [
+        {
+          "word": "Ah!",
+          "start": 226.98,
+          "end": 227.64999999999998
+        }
+      ]
+    },
+    {
+      "start": 227.65,
+      "end": 228.41,
+      "text": "I'm gonna die!",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 227.65,
+          "end": 228.33
+        },
+        {
+          "word": "gonna",
+          "start": 228.33,
+          "end": 228.33
+        },
+        {
+          "word": "die!",
+          "start": 228.33,
+          "end": 228.41
+        }
+      ]
+    },
+    {
+      "start": 229.63,
+      "end": 232.37,
+      "text": "I'm gonna die!",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 229.63,
+          "end": 230.97
+        },
+        {
+          "word": "gonna",
+          "start": 230.97,
+          "end": 231.67
+        },
+        {
+          "word": "die!",
+          "start": 231.67,
+          "end": 232.37
+        }
+      ]
+    },
+    {
+      "start": 232.99,
+      "end": 233.81,
+      "text": "I'm gonna die!",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 232.99,
+          "end": 233.51
+        },
+        {
+          "word": "gonna",
+          "start": 233.51,
+          "end": 233.63
+        },
+        {
+          "word": "die!",
+          "start": 233.63,
+          "end": 233.81
+        }
+      ]
+    },
+    {
+      "start": 238.53,
+      "end": 240.37,
+      "text": "I'm gonna die!",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 238.53,
+          "end": 239.91
+        },
+        {
+          "word": "gonna",
+          "start": 239.91,
+          "end": 239.91
+        },
+        {
+          "word": "die!",
+          "start": 239.91,
+          "end": 240.37
+        }
+      ]
+    },
+    {
+      "start": 265.71,
+      "end": 266.31,
+      "text": "Choose!",
+      "words": [
+        {
+          "word": "Choose!",
+          "start": 265.71,
+          "end": 266.31
+        }
+      ]
+    },
+    {
+      "start": 266.41,
+      "end": 276.85,
+      "text": "Go, \ube14\ufffd street keywords and shout out to me.",
+      "words": [
+        {
+          "word": "Go,",
+          "start": 266.41,
+          "end": 266.75
+        },
+        {
+          "word": "\ube14\ufffd",
+          "start": 266.89,
+          "end": 266.89
+        },
+        {
+          "word": "street",
+          "start": 266.89,
+          "end": 266.99
+        },
+        {
+          "word": "keywords",
+          "start": 266.99,
+          "end": 268.01
+        },
+        {
+          "word": "and",
+          "start": 268.01,
+          "end": 271.81
+        },
+        {
+          "word": "shout",
+          "start": 271.81,
+          "end": 276.59
+        },
+        {
+          "word": "out",
+          "start": 276.59,
+          "end": 276.85
+        },
+        {
+          "word": "to",
+          "start": 276.85,
+          "end": 276.85
+        },
+        {
+          "word": "me.",
+          "start": 276.85,
+          "end": 276.85
+        }
+      ]
+    },
+    {
+      "start": 289.03000000000003,
+      "end": 290.23,
+      "text": "Hey John!",
+      "words": [
+        {
+          "word": "Hey",
+          "start": 289.03000000000003,
+          "end": 289.93
+        },
+        {
+          "word": "John!",
+          "start": 289.93,
+          "end": 290.23
+        }
+      ]
+    },
+    {
+      "start": 293.97,
+      "end": 294.87,
+      "text": "Brookings?",
+      "words": [
+        {
+          "word": "Brookings?",
+          "start": 293.97,
+          "end": 294.87
+        }
+      ]
+    },
+    {
+      "start": 295.39,
+      "end": 296.59,
+      "text": "I thought I thought myself in.",
+      "words": [
+        {
+          "word": "I",
+          "start": 295.39,
+          "end": 295.67
+        },
+        {
+          "word": "thought",
+          "start": 295.67,
+          "end": 295.77
+        },
+        {
+          "word": "I",
+          "start": 295.77,
+          "end": 295.93
+        },
+        {
+          "word": "thought",
+          "start": 295.93,
+          "end": 295.93
+        },
+        {
+          "word": "myself",
+          "start": 295.93,
+          "end": 296.31
+        },
+        {
+          "word": "in.",
+          "start": 296.31,
+          "end": 296.59
+        }
+      ]
+    },
+    {
+      "start": 297.63,
+      "end": 298.87,
+      "text": "I noticed.",
+      "words": [
+        {
+          "word": "I",
+          "start": 297.63,
+          "end": 298.53
+        },
+        {
+          "word": "noticed.",
+          "start": 298.53,
+          "end": 298.87
+        }
+      ]
+    },
+    {
+      "start": 298.87,
+      "end": 299.89,
+      "text": "I'm just...",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 298.87,
+          "end": 299.05
+        },
+        {
+          "word": "just...",
+          "start": 299.05,
+          "end": 299.89
+        }
+      ]
+    },
+    {
+      "start": 306.93000000000006,
+      "end": 309.93,
+      "text": "I never knew Ms. Perkins got a bed for less than three.",
+      "words": [
+        {
+          "word": "I",
+          "start": 306.93000000000006,
+          "end": 307.33000000000004
+        },
+        {
+          "word": "never",
+          "start": 307.33000000000004,
+          "end": 307.73
+        },
+        {
+          "word": "knew",
+          "start": 307.73,
+          "end": 307.95
+        },
+        {
+          "word": "Ms.",
+          "start": 307.95,
+          "end": 308.17
+        },
+        {
+          "word": "Perkins",
+          "start": 308.25,
+          "end": 308.45
+        },
+        {
+          "word": "got",
+          "start": 308.45,
+          "end": 308.75
+        },
+        {
+          "word": "a",
+          "start": 308.75,
+          "end": 308.89
+        },
+        {
+          "word": "bed",
+          "start": 308.89,
+          "end": 309.03
+        },
+        {
+          "word": "for",
+          "start": 309.03,
+          "end": 309.23
+        },
+        {
+          "word": "less",
+          "start": 309.23,
+          "end": 309.41
+        },
+        {
+          "word": "than",
+          "start": 309.41,
+          "end": 309.57
+        },
+        {
+          "word": "three.",
+          "start": 309.57,
+          "end": 309.93
+        }
+      ]
+    },
+    {
+      "start": 310.45,
+      "end": 312.13,
+      "text": "He goes giving me four to break hotel rules.",
+      "words": [
+        {
+          "word": "He",
+          "start": 310.45,
+          "end": 310.63
+        },
+        {
+          "word": "goes",
+          "start": 310.63,
+          "end": 310.79
+        },
+        {
+          "word": "giving",
+          "start": 310.79,
+          "end": 310.99
+        },
+        {
+          "word": "me",
+          "start": 310.99,
+          "end": 311.09
+        },
+        {
+          "word": "four",
+          "start": 311.09,
+          "end": 311.33
+        },
+        {
+          "word": "to",
+          "start": 311.33,
+          "end": 311.45
+        },
+        {
+          "word": "break",
+          "start": 311.45,
+          "end": 311.61
+        },
+        {
+          "word": "hotel",
+          "start": 311.61,
+          "end": 311.81
+        },
+        {
+          "word": "rules.",
+          "start": 311.81,
+          "end": 312.13
+        }
+      ]
+    },
+    {
+      "start": 312.39,
+      "end": 313.77,
+      "text": "That's all I know, I saw your shirt.",
+      "words": [
+        {
+          "word": "That's",
+          "start": 312.39,
+          "end": 312.55
+        },
+        {
+          "word": "all",
+          "start": 312.55,
+          "end": 312.63
+        },
+        {
+          "word": "I",
+          "start": 312.63,
+          "end": 312.83
+        },
+        {
+          "word": "know,",
+          "start": 312.83,
+          "end": 312.85
+        },
+        {
+          "word": "I",
+          "start": 313.01,
+          "end": 313.11
+        },
+        {
+          "word": "saw",
+          "start": 313.11,
+          "end": 313.23
+        },
+        {
+          "word": "your",
+          "start": 313.23,
+          "end": 313.39
+        },
+        {
+          "word": "shirt.",
+          "start": 313.39,
+          "end": 313.77
+        }
+      ]
+    },
+    {
+      "start": 320.97,
+      "end": 322.07,
+      "text": "You're always a pussy.",
+      "words": [
+        {
+          "word": "You're",
+          "start": 320.97,
+          "end": 321.37
+        },
+        {
+          "word": "always",
+          "start": 321.37,
+          "end": 321.65
+        },
+        {
+          "word": "a",
+          "start": 321.65,
+          "end": 321.75
+        },
+        {
+          "word": "pussy.",
+          "start": 321.75,
+          "end": 322.07
+        }
+      ]
+    },
+    {
+      "start": 388.87,
+      "end": 391.35,
+      "text": "You're just doing it right?",
+      "words": [
+        {
+          "word": "You're",
+          "start": 388.87,
+          "end": 388.87
+        },
+        {
+          "word": "just",
+          "start": 388.87,
+          "end": 388.87
+        },
+        {
+          "word": "doing",
+          "start": 388.87,
+          "end": 389.65
+        },
+        {
+          "word": "it",
+          "start": 389.65,
+          "end": 389.65
+        },
+        {
+          "word": "right?",
+          "start": 389.65,
+          "end": 391.35
+        }
+      ]
+    },
+    {
+      "start": 417.45000000000005,
+      "end": 418.85,
+      "text": "Okay, boss.",
+      "words": [
+        {
+          "word": "Okay,",
+          "start": 417.45000000000005,
+          "end": 418.85
+        },
+        {
+          "word": "boss.",
+          "start": 418.85,
+          "end": 418.85
+        }
+      ]
+    },
+    {
+      "start": 418.85,
+      "end": 418.85,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 418.85,
+      "end": 418.85,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 418.85,
+      "end": 418.85,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 418.85,
+      "end": 418.85,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 418.85,
+      "end": 418.85,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 414.59000000000003,
+      "end": 415.59000000000003,
+      "text": "\ufffd\ubc30\ufffd\ub3c4.",
+      "words": []
+    },
+    {
+      "start": 418.85,
+      "end": 419.89,
+      "text": "Cassie.",
+      "words": [
+        {
+          "word": "Cassie.",
+          "start": 418.85,
+          "end": 419.89
+        }
+      ]
+    },
+    {
+      "start": 422.85,
+      "end": 423.87,
+      "text": "You working?",
+      "words": [
+        {
+          "word": "You",
+          "start": 422.77000000000004,
+          "end": 423.47
+        },
+        {
+          "word": "working?",
+          "start": 423.47,
+          "end": 423.87
+        }
+      ]
+    },
+    {
+      "start": 425.61,
+      "end": 427.01,
+      "text": "Yeah.",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 425.61,
+          "end": 427.01
+        }
+      ]
+    },
+    {
+      "start": 428.39,
+      "end": 428.97,
+      "text": "You?",
+      "words": [
+        {
+          "word": "You?",
+          "start": 428.39,
+          "end": 428.97
+        }
+      ]
+    },
+    {
+      "start": 430.13,
+      "end": 431.39,
+      "text": "Yeah.",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 430.13,
+          "end": 431.39
+        }
+      ]
+    },
+    {
+      "start": 434.61,
+      "end": 436.27,
+      "text": "Good night.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 434.61,
+          "end": 436.01
+        },
+        {
+          "word": "night.",
+          "start": 436.01,
+          "end": 436.27
+        }
+      ]
+    },
+    {
+      "start": 438.75,
+      "end": 440.53,
+      "text": "Afraid so.",
+      "words": [
+        {
+          "word": "Afraid",
+          "start": 438.75,
+          "end": 440.15
+        },
+        {
+          "word": "so.",
+          "start": 440.15,
+          "end": 440.53
+        }
+      ]
+    },
+    {
+      "start": 442.89,
+      "end": 444.33,
+      "text": "I'm sorry to hear that.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 442.89,
+          "end": 443.49
+        },
+        {
+          "word": "sorry",
+          "start": 443.49,
+          "end": 443.73
+        },
+        {
+          "word": "to",
+          "start": 443.73,
+          "end": 443.95
+        },
+        {
+          "word": "hear",
+          "start": 443.95,
+          "end": 444.11
+        },
+        {
+          "word": "that.",
+          "start": 444.11,
+          "end": 444.33
+        }
+      ]
+    },
+    {
+      "start": 448.85,
+      "end": 451.27000000000004,
+      "text": "Go away mom!",
+      "words": [
+        {
+          "word": "Go",
+          "start": 448.85,
+          "end": 448.85
+        },
+        {
+          "word": "away",
+          "start": 448.85,
+          "end": 451.11
+        },
+        {
+          "word": "mom",
+          "start": 451.11,
+          "end": 451.11
+        },
+        {
+          "word": "!\u62f4\u4e2d\u963f\u514b",
+          "start": 451.11,
+          "end": 451.81
+        }
+      ]
+    },
+    {
+      "start": 459.97,
+      "end": 460.35,
+      "text": "\u62f4\u4e2d\u963f\u514b borne",
+      "words": [
+        {
+          "word": "borne\u62f4\u4e2d\u963f\u514b",
+          "start": 459.97,
+          "end": 460.67
+        }
+      ]
+    },
+    {
+      "start": 474.11,
+      "end": 475.51,
+      "text": "\u62f4\u4e2d\u963f\u514b Borne",
+      "words": [
+        {
+          "word": "Borne",
+          "start": 474.11,
+          "end": 475.51
+        }
+      ]
+    },
+    {
+      "start": 543.9300000000001,
+      "end": 546.73,
+      "text": "Oh yeah!",
+      "words": [
+        {
+          "word": "Oh",
+          "start": 543.9300000000001,
+          "end": 545.33
+        },
+        {
+          "word": "yeah!",
+          "start": 545.33,
+          "end": 546.73
+        }
+      ]
+    },
+    {
+      "start": 557.27,
+      "end": 558.67,
+      "text": "Lucence?",
+      "words": [
+        {
+          "word": "Lucence?",
+          "start": 557.27,
+          "end": 558.67
+        }
+      ]
+    },
+    {
+      "start": 558.67,
+      "end": 559.55,
+      "text": "Sir...",
+      "words": [
+        {
+          "word": "Sir...",
+          "start": 558.67,
+          "end": 559.55
+        }
+      ]
+    },
+    {
+      "start": 568.63,
+      "end": 570.03,
+      "text": "Yeah...",
+      "words": [
+        {
+          "word": "Yeah...",
+          "start": 568.63,
+          "end": 570.03
+        }
+      ]
+    },
+    {
+      "start": 773.9300000000001,
+      "end": 775.85,
+      "text": "I'm not having a good night, are you John?",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 773.9300000000001,
+          "end": 774.35
+        },
+        {
+          "word": "not",
+          "start": 774.35,
+          "end": 774.45
+        },
+        {
+          "word": "having",
+          "start": 774.45,
+          "end": 774.71
+        },
+        {
+          "word": "a",
+          "start": 774.71,
+          "end": 774.81
+        },
+        {
+          "word": "good",
+          "start": 774.81,
+          "end": 774.99
+        },
+        {
+          "word": "night,",
+          "start": 774.99,
+          "end": 775.21
+        },
+        {
+          "word": "are",
+          "start": 775.41,
+          "end": 775.41
+        },
+        {
+          "word": "you",
+          "start": 775.41,
+          "end": 775.61
+        },
+        {
+          "word": "John?",
+          "start": 775.61,
+          "end": 775.85
+        }
+      ]
+    },
+    {
+      "start": 921.89,
+      "end": 922.79,
+      "text": "Gentlemen!",
+      "words": [
+        {
+          "word": "Gentlemen!",
+          "start": 921.89,
+          "end": 922.79
+        }
+      ]
+    },
+    {
+      "start": 925.07,
+      "end": 925.79,
+      "text": "Gentlemen!",
+      "words": [
+        {
+          "word": "Gentlemen!",
+          "start": 925.07,
+          "end": 925.79
+        }
+      ]
+    },
+    {
+      "start": 937.45,
+      "end": 944.43,
+      "text": "Do I need to remind you that there will be no business conducted on the continental grounds?",
+      "words": [
+        {
+          "word": "Do",
+          "start": 937.45,
+          "end": 938.35
+        },
+        {
+          "word": "I",
+          "start": 938.35,
+          "end": 939.25
+        },
+        {
+          "word": "need",
+          "start": 939.25,
+          "end": 939.45
+        },
+        {
+          "word": "to",
+          "start": 939.45,
+          "end": 939.69
+        },
+        {
+          "word": "remind",
+          "start": 939.69,
+          "end": 939.97
+        },
+        {
+          "word": "you",
+          "start": 939.97,
+          "end": 940.35
+        },
+        {
+          "word": "that",
+          "start": 940.35,
+          "end": 941.15
+        },
+        {
+          "word": "there",
+          "start": 941.15,
+          "end": 941.29
+        },
+        {
+          "word": "will",
+          "start": 941.29,
+          "end": 941.41
+        },
+        {
+          "word": "be",
+          "start": 941.41,
+          "end": 941.63
+        },
+        {
+          "word": "no",
+          "start": 941.63,
+          "end": 941.91
+        },
+        {
+          "word": "business",
+          "start": 941.91,
+          "end": 942.39
+        },
+        {
+          "word": "conducted",
+          "start": 942.39,
+          "end": 943.01
+        },
+        {
+          "word": "on",
+          "start": 943.01,
+          "end": 943.25
+        },
+        {
+          "word": "the",
+          "start": 943.25,
+          "end": 943.39
+        },
+        {
+          "word": "continental",
+          "start": 943.39,
+          "end": 943.81
+        },
+        {
+          "word": "grounds?",
+          "start": 943.81,
+          "end": 944.43
+        }
+      ]
+    },
+    {
+      "start": 1098.67,
+      "end": 1098.67,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1114.8899999999999,
+      "end": 1116.29,
+      "text": "the",
+      "words": [
+        {
+          "word": "the",
+          "start": 1114.8899999999999,
+          "end": 1116.29
+        }
+      ]
+    },
+    {
+      "start": 1116.29,
+      "end": 1116.69,
+      "text": "that",
+      "words": [
+        {
+          "word": "that",
+          "start": 1116.29,
+          "end": 1116.69
+        }
+      ]
+    },
+    {
+      "start": 1122.31,
+      "end": 1123.71,
+      "text": "the",
+      "words": [
+        {
+          "word": "the",
+          "start": 1122.31,
+          "end": 1123.71
+        }
+      ]
+    },
+    {
+      "start": 1123.71,
+      "end": 1124.29,
+      "text": "one",
+      "words": [
+        {
+          "word": "one",
+          "start": 1123.71,
+          "end": 1124.29
+        }
+      ]
+    },
+    {
+      "start": 1124.29,
+      "end": 1126.29,
+      "text": "Uh, ah, well...",
+      "words": [
+        {
+          "word": "Uh,",
+          "start": 1124.29,
+          "end": 1125.19
+        },
+        {
+          "word": "ah,",
+          "start": 1125.19,
+          "end": 1125.67
+        },
+        {
+          "word": "well...",
+          "start": 1125.67,
+          "end": 1126.3700000000001
+        }
+      ]
+    },
+    {
+      "start": 1132.81,
+      "end": 1134.57,
+      "text": "Ch Groans",
+      "words": [
+        {
+          "word": "Ch",
+          "start": 1132.81,
+          "end": 1134.21
+        },
+        {
+          "word": "Groans",
+          "start": 1134.21,
+          "end": 1134.57
+        }
+      ]
+    },
+    {
+      "start": 1184.29,
+      "end": 1186.73,
+      "text": "Run, run, run, run!",
+      "words": [
+        {
+          "word": "Run,",
+          "start": 1184.29,
+          "end": 1184.97
+        },
+        {
+          "word": "run,",
+          "start": 1185.33,
+          "end": 1185.51
+        },
+        {
+          "word": "run,",
+          "start": 1185.95,
+          "end": 1186.27
+        },
+        {
+          "word": "run!",
+          "start": 1186.45,
+          "end": 1186.73
+        }
+      ]
+    },
+    {
+      "start": 1246.23,
+      "end": 1249.29,
+      "text": "So, put your weapon down.",
+      "words": [
+        {
+          "word": "So,",
+          "start": 1246.23,
+          "end": 1247.03
+        },
+        {
+          "word": "put",
+          "start": 1247.79,
+          "end": 1248.15
+        },
+        {
+          "word": "your",
+          "start": 1248.15,
+          "end": 1248.57
+        },
+        {
+          "word": "weapon",
+          "start": 1248.57,
+          "end": 1248.95
+        },
+        {
+          "word": "down.",
+          "start": 1248.95,
+          "end": 1249.3500000000001
+        }
+      ]
+    },
+    {
+      "start": 1250.83,
+      "end": 1252.23,
+      "text": "Is Jack's communicator?",
+      "words": [
+        {
+          "word": "Is",
+          "start": 1250.83,
+          "end": 1251.17
+        },
+        {
+          "word": "Jack's",
+          "start": 1251.17,
+          "end": 1251.49
+        },
+        {
+          "word": "communicator?",
+          "start": 1251.49,
+          "end": 1252.23
+        }
+      ]
+    },
+    {
+      "start": 1253.53,
+      "end": 1255.69,
+      "text": "Unless you wish to become the same,",
+      "words": [
+        {
+          "word": "Unless",
+          "start": 1253.53,
+          "end": 1254.17
+        },
+        {
+          "word": "you",
+          "start": 1254.17,
+          "end": 1254.51
+        },
+        {
+          "word": "wish",
+          "start": 1254.51,
+          "end": 1254.73
+        },
+        {
+          "word": "to",
+          "start": 1254.73,
+          "end": 1254.93
+        },
+        {
+          "word": "become",
+          "start": 1254.93,
+          "end": 1255.19
+        },
+        {
+          "word": "the",
+          "start": 1255.19,
+          "end": 1255.41
+        },
+        {
+          "word": "same,",
+          "start": 1255.41,
+          "end": 1255.69
+        }
+      ]
+    },
+    {
+      "start": 1256.27,
+      "end": 1259.45,
+      "text": "I suggest you lower your gun.",
+      "words": [
+        {
+          "word": "I",
+          "start": 1256.27,
+          "end": 1257.27
+        },
+        {
+          "word": "suggest",
+          "start": 1257.27,
+          "end": 1258.13
+        },
+        {
+          "word": "you",
+          "start": 1258.13,
+          "end": 1258.59
+        },
+        {
+          "word": "lower",
+          "start": 1258.59,
+          "end": 1258.91
+        },
+        {
+          "word": "your",
+          "start": 1258.91,
+          "end": 1259.21
+        },
+        {
+          "word": "gun.",
+          "start": 1259.21,
+          "end": 1259.45
+        }
+      ]
+    },
+    {
+      "start": 1265.71,
+      "end": 1267.63,
+      "text": "I'd like to see the manager.",
+      "words": [
+        {
+          "word": "I'd",
+          "start": 1265.71,
+          "end": 1266.51
+        },
+        {
+          "word": "like",
+          "start": 1266.51,
+          "end": 1266.61
+        },
+        {
+          "word": "to",
+          "start": 1266.61,
+          "end": 1266.79
+        },
+        {
+          "word": "see",
+          "start": 1266.79,
+          "end": 1267.01
+        },
+        {
+          "word": "the",
+          "start": 1267.01,
+          "end": 1267.15
+        },
+        {
+          "word": "manager.",
+          "start": 1267.15,
+          "end": 1267.63
+        }
+      ]
+    },
+    {
+      "start": 1270.3300000000002,
+      "end": 1271.35,
+      "text": "Of course.",
+      "words": [
+        {
+          "word": "Of",
+          "start": 1270.3300000000002,
+          "end": 1271.13
+        },
+        {
+          "word": "course.",
+          "start": 1271.13,
+          "end": 1271.35
+        }
+      ]
+    },
+    {
+      "start": 1272.77,
+      "end": 1275.25,
+      "text": "If you would be so kind, that's to follow me.",
+      "words": [
+        {
+          "word": "If",
+          "start": 1272.77,
+          "end": 1273.21
+        },
+        {
+          "word": "you",
+          "start": 1273.21,
+          "end": 1273.47
+        },
+        {
+          "word": "would",
+          "start": 1273.47,
+          "end": 1273.65
+        },
+        {
+          "word": "be",
+          "start": 1273.65,
+          "end": 1273.79
+        },
+        {
+          "word": "so",
+          "start": 1273.79,
+          "end": 1273.99
+        },
+        {
+          "word": "kind,",
+          "start": 1273.99,
+          "end": 1274.25
+        },
+        {
+          "word": "that's",
+          "start": 1274.37,
+          "end": 1274.55
+        },
+        {
+          "word": "to",
+          "start": 1274.55,
+          "end": 1274.65
+        },
+        {
+          "word": "follow",
+          "start": 1274.65,
+          "end": 1274.89
+        },
+        {
+          "word": "me.",
+          "start": 1274.89,
+          "end": 1275.25
+        }
+      ]
+    },
+    {
+      "start": 1336.7300000000002,
+      "end": 1339.01,
+      "text": "You got it, you got it.",
+      "words": [
+        {
+          "word": "You",
+          "start": 1336.7300000000002,
+          "end": 1337.3500000000001
+        },
+        {
+          "word": "got",
+          "start": 1337.3500000000001,
+          "end": 1337.97
+        },
+        {
+          "word": "it,",
+          "start": 1337.97,
+          "end": 1338.11
+        },
+        {
+          "word": "you",
+          "start": 1338.35,
+          "end": 1338.49
+        },
+        {
+          "word": "got",
+          "start": 1338.49,
+          "end": 1338.53
+        },
+        {
+          "word": "it.",
+          "start": 1338.53,
+          "end": 1339.01
+        }
+      ]
+    },
+    {
+      "start": 1339.25,
+      "end": 1339.25,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1342.33,
+      "end": 1352.25,
+      "text": "Get on the jackpot.",
+      "words": [
+        {
+          "word": "Get",
+          "start": 1342.33,
+          "end": 1342.33
+        },
+        {
+          "word": "on",
+          "start": 1342.33,
+          "end": 1342.55
+        },
+        {
+          "word": "the",
+          "start": 1342.55,
+          "end": 1351.93
+        },
+        {
+          "word": "jackpot.",
+          "start": 1351.93,
+          "end": 1352.25
+        }
+      ]
+    },
+    {
+      "start": 1354.7700000000002,
+      "end": 1355.69,
+      "text": "Get it!",
+      "words": [
+        {
+          "word": "Get",
+          "start": 1354.7700000000002,
+          "end": 1355.39
+        },
+        {
+          "word": "it!",
+          "start": 1355.39,
+          "end": 1355.69
+        }
+      ]
+    },
+    {
+      "start": 1443.1899999999998,
+      "end": 1445.37,
+      "text": "Good news, buffers.",
+      "words": [
+        {
+          "word": "Good",
+          "start": 1443.1899999999998,
+          "end": 1444.07
+        },
+        {
+          "word": "news,",
+          "start": 1444.07,
+          "end": 1444.83
+        },
+        {
+          "word": "buffers.",
+          "start": 1445.07,
+          "end": 1445.37
+        }
+      ]
+    },
+    {
+      "start": 1446.03,
+      "end": 1447.09,
+      "text": "We have a sighting.",
+      "words": [
+        {
+          "word": "We",
+          "start": 1446.03,
+          "end": 1446.25
+        },
+        {
+          "word": "have",
+          "start": 1446.25,
+          "end": 1446.41
+        },
+        {
+          "word": "a",
+          "start": 1446.41,
+          "end": 1446.51
+        },
+        {
+          "word": "sighting.",
+          "start": 1446.51,
+          "end": 1447.09
+        }
+      ]
+    },
+    {
+      "start": 1448.29,
+      "end": 1452.23,
+      "text": "Our men in black has been spotted in the city of Mount Ismonger.",
+      "words": [
+        {
+          "word": "Our",
+          "start": 1448.29,
+          "end": 1448.87
+        },
+        {
+          "word": "men",
+          "start": 1448.87,
+          "end": 1449.15
+        },
+        {
+          "word": "in",
+          "start": 1449.15,
+          "end": 1449.39
+        },
+        {
+          "word": "black",
+          "start": 1449.39,
+          "end": 1449.55
+        },
+        {
+          "word": "has",
+          "start": 1449.55,
+          "end": 1449.79
+        },
+        {
+          "word": "been",
+          "start": 1449.79,
+          "end": 1449.97
+        },
+        {
+          "word": "spotted",
+          "start": 1449.97,
+          "end": 1450.39
+        },
+        {
+          "word": "in",
+          "start": 1450.39,
+          "end": 1450.75
+        },
+        {
+          "word": "the",
+          "start": 1450.75,
+          "end": 1450.85
+        },
+        {
+          "word": "city",
+          "start": 1450.85,
+          "end": 1451.15
+        },
+        {
+          "word": "of",
+          "start": 1451.15,
+          "end": 1451.33
+        },
+        {
+          "word": "Mount",
+          "start": 1451.33,
+          "end": 1451.45
+        },
+        {
+          "word": "Ismonger.",
+          "start": 1451.45,
+          "end": 1452.23
+        }
+      ]
+    },
+    {
+      "start": 1453.11,
+      "end": 1455.95,
+      "text": "I think it's high time we paint him red.",
+      "words": [
+        {
+          "word": "I",
+          "start": 1453.11,
+          "end": 1453.39
+        },
+        {
+          "word": "think",
+          "start": 1453.39,
+          "end": 1453.67
+        },
+        {
+          "word": "it's",
+          "start": 1453.67,
+          "end": 1454.05
+        },
+        {
+          "word": "high",
+          "start": 1454.05,
+          "end": 1454.23
+        },
+        {
+          "word": "time",
+          "start": 1454.23,
+          "end": 1454.65
+        },
+        {
+          "word": "we",
+          "start": 1454.65,
+          "end": 1455.13
+        },
+        {
+          "word": "paint",
+          "start": 1455.13,
+          "end": 1455.43
+        },
+        {
+          "word": "him",
+          "start": 1455.43,
+          "end": 1455.63
+        },
+        {
+          "word": "red.",
+          "start": 1455.63,
+          "end": 1455.95
+        }
+      ]
+    },
+    {
+      "start": 1477.09,
+      "end": 1479.69,
+      "text": "I'll tell you, touch him, there's no more.",
+      "words": [
+        {
+          "word": "I'll",
+          "start": 1477.09,
+          "end": 1477.33
+        },
+        {
+          "word": "tell",
+          "start": 1477.33,
+          "end": 1477.51
+        },
+        {
+          "word": "you,",
+          "start": 1477.51,
+          "end": 1477.77
+        },
+        {
+          "word": "touch",
+          "start": 1478.11,
+          "end": 1478.37
+        },
+        {
+          "word": "him,",
+          "start": 1478.37,
+          "end": 1478.75
+        },
+        {
+          "word": "there's",
+          "start": 1478.87,
+          "end": 1479.11
+        },
+        {
+          "word": "no",
+          "start": 1479.11,
+          "end": 1479.33
+        },
+        {
+          "word": "more.",
+          "start": 1479.33,
+          "end": 1479.69
+        }
+      ]
+    },
+    {
+      "start": 1480.69,
+      "end": 1480.69,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1481.81,
+      "end": 1481.81,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1481.81,
+      "end": 1481.99,
+      "text": "I'm sorry.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 1481.81,
+          "end": 1481.81
+        },
+        {
+          "word": "sorry.",
+          "start": 1481.81,
+          "end": 1481.99
+        }
+      ]
+    },
+    {
+      "start": 1482.27,
+      "end": 1483.61,
+      "text": "Come on, man.",
+      "words": [
+        {
+          "word": "Come",
+          "start": 1482.27,
+          "end": 1482.93
+        },
+        {
+          "word": "on,",
+          "start": 1482.93,
+          "end": 1483.37
+        },
+        {
+          "word": "man.",
+          "start": 1483.49,
+          "end": 1483.61
+        }
+      ]
+    },
+    {
+      "start": 1484.49,
+      "end": 1485.33,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1484.49,
+          "end": 1485.33
+        }
+      ]
+    },
+    {
+      "start": 1486.8700000000001,
+      "end": 1487.71,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1486.8700000000001,
+          "end": 1487.71
+        }
+      ]
+    },
+    {
+      "start": 1487.71,
+      "end": 1487.71,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1487.71,
+      "end": 1487.71,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1487.71,
+      "end": 1489.73,
+      "text": "Hey, baby, stop.",
+      "words": [
+        {
+          "word": "Hey,",
+          "start": 1487.71,
+          "end": 1487.71
+        },
+        {
+          "word": "baby,",
+          "start": 1488.75,
+          "end": 1489.31
+        },
+        {
+          "word": "stop.",
+          "start": 1489.31,
+          "end": 1489.73
+        }
+      ]
+    },
+    {
+      "start": 1490.29,
+      "end": 1491.95,
+      "text": "Hey, you're hurting me.",
+      "words": [
+        {
+          "word": "Hey,",
+          "start": 1490.29,
+          "end": 1490.29
+        },
+        {
+          "word": "you're",
+          "start": 1490.31,
+          "end": 1490.73
+        },
+        {
+          "word": "hurting",
+          "start": 1490.73,
+          "end": 1491.03
+        },
+        {
+          "word": "me.",
+          "start": 1491.03,
+          "end": 1491.95
+        }
+      ]
+    },
+    {
+      "start": 1495.97,
+      "end": 1496.81,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1495.97,
+          "end": 1496.81
+        }
+      ]
+    },
+    {
+      "start": 1497.71,
+      "end": 1498.55,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1497.71,
+          "end": 1498.55
+        }
+      ]
+    },
+    {
+      "start": 1499.05,
+      "end": 1499.45,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1499.05,
+          "end": 1499.45
+        }
+      ]
+    },
+    {
+      "start": 1499.45,
+      "end": 1499.57,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1499.45,
+          "end": 1499.57
+        }
+      ]
+    },
+    {
+      "start": 1500.19,
+      "end": 1500.89,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1500.19,
+          "end": 1500.89
+        }
+      ]
+    },
+    {
+      "start": 1500.89,
+      "end": 1500.95,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1500.89,
+          "end": 1500.95
+        }
+      ]
+    },
+    {
+      "start": 1501.55,
+      "end": 1501.55,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1501.67,
+      "end": 1502.01,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1501.67,
+          "end": 1502.01
+        }
+      ]
+    },
+    {
+      "start": 1502.19,
+      "end": 1502.53,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1502.19,
+          "end": 1502.53
+        }
+      ]
+    },
+    {
+      "start": 1502.75,
+      "end": 1503.59,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1502.75,
+          "end": 1503.59
+        }
+      ]
+    },
+    {
+      "start": 1503.59,
+      "end": 1503.59,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 1503.59,
+      "end": 1503.77,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1503.59,
+          "end": 1503.77
+        }
+      ]
+    },
+    {
+      "start": 1505.09,
+      "end": 1505.21,
+      "text": "Ugh.",
+      "words": [
+        {
+          "word": "Ugh.",
+          "start": 1504.79,
+          "end": 1505.21
+        }
+      ]
+    },
+    {
+      "start": 1579.17,
+      "end": 1582.77,
+      "text": "It seems like our friends at the guild dropped the bomb.",
+      "words": [
+        {
+          "word": "It",
+          "start": 1579.17,
+          "end": 1579.73
+        },
+        {
+          "word": "seems",
+          "start": 1579.73,
+          "end": 1580.03
+        },
+        {
+          "word": "like",
+          "start": 1580.03,
+          "end": 1580.31
+        },
+        {
+          "word": "our",
+          "start": 1580.31,
+          "end": 1580.55
+        },
+        {
+          "word": "friends",
+          "start": 1580.55,
+          "end": 1581.09
+        },
+        {
+          "word": "at",
+          "start": 1581.09,
+          "end": 1581.45
+        },
+        {
+          "word": "the",
+          "start": 1581.45,
+          "end": 1581.61
+        },
+        {
+          "word": "guild",
+          "start": 1581.61,
+          "end": 1581.87
+        },
+        {
+          "word": "dropped",
+          "start": 1581.87,
+          "end": 1582.35
+        },
+        {
+          "word": "the",
+          "start": 1582.35,
+          "end": 1582.57
+        },
+        {
+          "word": "bomb.",
+          "start": 1582.57,
+          "end": 1582.77
+        }
+      ]
+    },
+    {
+      "start": 1583.47,
+      "end": 1585.99,
+      "text": "And now it's rolling to the arch of triumphant.",
+      "words": [
+        {
+          "word": "And",
+          "start": 1583.47,
+          "end": 1583.77
+        },
+        {
+          "word": "now",
+          "start": 1583.77,
+          "end": 1584.01
+        },
+        {
+          "word": "it's",
+          "start": 1584.01,
+          "end": 1584.33
+        },
+        {
+          "word": "rolling",
+          "start": 1584.33,
+          "end": 1584.63
+        },
+        {
+          "word": "to",
+          "start": 1584.63,
+          "end": 1584.97
+        },
+        {
+          "word": "the",
+          "start": 1584.97,
+          "end": 1585.11
+        },
+        {
+          "word": "arch",
+          "start": 1585.11,
+          "end": 1585.39
+        },
+        {
+          "word": "of",
+          "start": 1585.39,
+          "end": 1585.47
+        },
+        {
+          "word": "triumphant.",
+          "start": 1585.47,
+          "end": 1585.99
+        }
+      ]
+    },
+    {
+      "start": 1586.57,
+      "end": 1587.85,
+      "text": "Let's see who picks it up.",
+      "words": [
+        {
+          "word": "Let's",
+          "start": 1586.57,
+          "end": 1587.01
+        },
+        {
+          "word": "see",
+          "start": 1587.01,
+          "end": 1587.09
+        },
+        {
+          "word": "who",
+          "start": 1587.09,
+          "end": 1587.27
+        },
+        {
+          "word": "picks",
+          "start": 1587.27,
+          "end": 1587.51
+        },
+        {
+          "word": "it",
+          "start": 1587.51,
+          "end": 1587.69
+        },
+        {
+          "word": "up.",
+          "start": 1587.69,
+          "end": 1587.85
+        }
+      ]
+    },
+    {
+      "start": 1745.21,
+      "end": 1745.47,
+      "text": "No.",
+      "words": [
+        {
+          "word": "No.",
+          "start": 1745.21,
+          "end": 1745.47
+        }
+      ]
+    },
+    {
+      "start": 1775.4299999999998,
+      "end": 1776.83,
+      "text": "Ready?",
+      "words": [
+        {
+          "word": "Ready?",
+          "start": 1775.4299999999998,
+          "end": 1776.83
+        }
+      ]
+    },
+    {
+      "start": 1779.61,
+      "end": 1781.01,
+      "text": "Yeah.",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 1779.61,
+          "end": 1781.01
+        }
+      ]
+    },
+    {
+      "start": 1797.6299999999999,
+      "end": 1799.03,
+      "text": "Iran",
+      "words": [
+        {
+          "word": "Iran",
+          "start": 1797.6299999999999,
+          "end": 1799.03
+        }
+      ]
+    },
+    {
+      "start": 1809.59,
+      "end": 1810.99,
+      "text": "12 watering",
+      "words": [
+        {
+          "word": "12",
+          "start": 1809.59,
+          "end": 1810.99
+        },
+        {
+          "word": "watering",
+          "start": 1810.99,
+          "end": 1810.99
+        }
+      ]
+    },
+    {
+      "start": 1810.99,
+      "end": 1811.01,
+      "text": ".",
+      "words": [
+        {
+          "word": ".",
+          "start": 1810.99,
+          "end": 1811.01
+        }
+      ]
+    },
+    {
+      "start": 1825.37,
+      "end": 1826.77,
+      "text": "K",
+      "words": [
+        {
+          "word": "K",
+          "start": 1825.37,
+          "end": 1826.77
+        }
+      ]
+    },
+    {
+      "start": 1834.57,
+      "end": 1835.97,
+      "text": "to",
+      "words": [
+        {
+          "word": "to",
+          "start": 1834.57,
+          "end": 1835.97
+        }
+      ]
+    },
+    {
+      "start": 1835.97,
+      "end": 1836.83,
+      "text": "Thanks.",
+      "words": [
+        {
+          "word": "Thanks.",
+          "start": 1835.97,
+          "end": 1836.83
+        }
+      ]
+    },
+    {
+      "start": 1895.97,
+      "end": 1896.09,
+      "text": "if",
+      "words": [
+        {
+          "word": "if",
+          "start": 1895.97,
+          "end": 1896.09
+        }
+      ]
+    },
+    {
+      "start": 1903.1499999999999,
+      "end": 1904.55,
+      "text": "beside",
+      "words": [
+        {
+          "word": "beside",
+          "start": 1903.1499999999999,
+          "end": 1904.55
+        }
+      ]
+    },
+    {
+      "start": 1904.55,
+      "end": 1904.81,
+      "text": "I'm sorry.",
+      "words": [
+        {
+          "word": "I'm",
+          "start": 1904.55,
+          "end": 1904.55
+        },
+        {
+          "word": "sorry.",
+          "start": 1904.55,
+          "end": 1904.81
+        }
+      ]
+    },
+    {
+      "start": 1912.3100000000002,
+      "end": 1913.87,
+      "text": "Ciao, ciao Mr. Wolf.",
+      "words": [
+        {
+          "word": "Ciao,",
+          "start": 1912.3100000000002,
+          "end": 1912.93
+        },
+        {
+          "word": "ciao",
+          "start": 1913.03,
+          "end": 1913.21
+        },
+        {
+          "word": "Mr.",
+          "start": 1913.21,
+          "end": 1913.55
+        },
+        {
+          "word": "Wolf.",
+          "start": 1913.77,
+          "end": 1913.87
+        }
+      ]
+    },
+    {
+      "start": 1927.1100000000001,
+      "end": 1928.75,
+      "text": "You can't shoot me.",
+      "words": [
+        {
+          "word": "You",
+          "start": 1927.1100000000001,
+          "end": 1927.73
+        },
+        {
+          "word": "can't",
+          "start": 1927.73,
+          "end": 1928.35
+        },
+        {
+          "word": "shoot",
+          "start": 1928.35,
+          "end": 1928.47
+        },
+        {
+          "word": "me.",
+          "start": 1928.47,
+          "end": 1928.75
+        }
+      ]
+    },
+    {
+      "start": 1933.33,
+      "end": 1934.23,
+      "text": "You're right.",
+      "words": [
+        {
+          "word": "You're",
+          "start": 1933.33,
+          "end": 1934.05
+        },
+        {
+          "word": "right.",
+          "start": 1934.05,
+          "end": 1934.23
+        }
+      ]
+    },
+    {
+      "start": 1935.25,
+      "end": 1936.65,
+      "text": "But I can shoot him.",
+      "words": [
+        {
+          "word": "But",
+          "start": 1935.25,
+          "end": 1935.89
+        },
+        {
+          "word": "I",
+          "start": 1935.89,
+          "end": 1936.03
+        },
+        {
+          "word": "can",
+          "start": 1936.03,
+          "end": 1936.15
+        },
+        {
+          "word": "shoot",
+          "start": 1936.15,
+          "end": 1936.41
+        },
+        {
+          "word": "him.",
+          "start": 1936.41,
+          "end": 1936.65
+        }
+      ]
+    },
+    {
+      "start": 1948.07,
+      "end": 1950.01,
+      "text": "I can hit you.",
+      "words": [
+        {
+          "word": "I",
+          "start": 1948.07,
+          "end": 1948.79
+        },
+        {
+          "word": "can",
+          "start": 1948.79,
+          "end": 1949.51
+        },
+        {
+          "word": "hit",
+          "start": 1949.51,
+          "end": 1949.75
+        },
+        {
+          "word": "you.",
+          "start": 1949.75,
+          "end": 1950.01
+        }
+      ]
+    },
+    {
+      "start": 1951.01,
+      "end": 1951.67,
+      "text": "Oh the fucker.",
+      "words": [
+        {
+          "word": "Oh",
+          "start": 1951.01,
+          "end": 1951.19
+        },
+        {
+          "word": "the",
+          "start": 1951.19,
+          "end": 1951.31
+        },
+        {
+          "word": "fucker.",
+          "start": 1951.31,
+          "end": 1951.67
+        }
+      ]
+    },
+    {
+      "start": 1954.69,
+      "end": 1958.63,
+      "text": "I can hit you.",
+      "words": [
+        {
+          "word": "I",
+          "start": 1954.69,
+          "end": 1955.41
+        },
+        {
+          "word": "can",
+          "start": 1955.41,
+          "end": 1955.41
+        },
+        {
+          "word": "hit",
+          "start": 1955.41,
+          "end": 1958.63
+        },
+        {
+          "word": "you.",
+          "start": 1958.63,
+          "end": 1958.63
+        }
+      ]
+    },
+    {
+      "start": 1958.63,
+      "end": 1958.73,
+      "text": "Oh the fucker.",
+      "words": [
+        {
+          "word": "Oh",
+          "start": 1958.63,
+          "end": 1958.73
+        },
+        {
+          "word": "the",
+          "start": 1958.73,
+          "end": 1958.73
+        },
+        {
+          "word": "fucker.",
+          "start": 1958.73,
+          "end": 1958.73
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "segments": [
+    {
+      "start": 1.4400000000000057,
+      "end": 6.3,
+      "text": "You have no idea what's coming to you.",
+      "words": [
+        {
+          "word": "You",
+          "start": 1.4400000000000057,
+          "end": 2.04
+        },
+        {
+          "word": "have",
+          "start": 2.04,
+          "end": 2.34
+        },
+        {
+          "word": "no",
+          "start": 2.34,
+          "end": 2.74
+        },
+        {
+          "word": "idea",
+          "start": 2.74,
+          "end": 3.64
+        },
+        {
+          "word": "what's",
+          "start": 3.64,
+          "end": 4.9
+        },
+        {
+          "word": "coming",
+          "start": 4.9,
+          "end": 5.26
+        },
+        {
+          "word": "to",
+          "start": 5.26,
+          "end": 5.54
+        },
+        {
+          "word": "you.",
+          "start": 5.54,
+          "end": 6.3
+        }
+      ]
+    },
+    {
+      "start": 7.040000000000005,
+      "end": 12.98,
+      "text": "You stabbed the devil in the back and forced him back into the life that he had just left.",
+      "words": [
+        {
+          "word": "You",
+          "start": 7.040000000000005,
+          "end": 7.64
+        },
+        {
+          "word": "stabbed",
+          "start": 7.64,
+          "end": 8.06
+        },
+        {
+          "word": "the",
+          "start": 8.06,
+          "end": 8.34
+        },
+        {
+          "word": "devil",
+          "start": 8.34,
+          "end": 8.56
+        },
+        {
+          "word": "in",
+          "start": 8.56,
+          "end": 8.78
+        },
+        {
+          "word": "the",
+          "start": 8.78,
+          "end": 8.88
+        },
+        {
+          "word": "back",
+          "start": 8.88,
+          "end": 9.3
+        },
+        {
+          "word": "and",
+          "start": 9.3,
+          "end": 10.36
+        },
+        {
+          "word": "forced",
+          "start": 10.36,
+          "end": 10.76
+        },
+        {
+          "word": "him",
+          "start": 10.76,
+          "end": 10.94
+        },
+        {
+          "word": "back",
+          "start": 10.94,
+          "end": 11.16
+        },
+        {
+          "word": "into",
+          "start": 11.16,
+          "end": 11.46
+        },
+        {
+          "word": "the",
+          "start": 11.46,
+          "end": 11.58
+        },
+        {
+          "word": "life",
+          "start": 11.58,
+          "end": 11.9
+        },
+        {
+          "word": "that",
+          "start": 11.9,
+          "end": 12.2
+        },
+        {
+          "word": "he",
+          "start": 12.2,
+          "end": 12.36
+        },
+        {
+          "word": "had",
+          "start": 12.36,
+          "end": 12.44
+        },
+        {
+          "word": "just",
+          "start": 12.44,
+          "end": 12.68
+        },
+        {
+          "word": "left.",
+          "start": 12.68,
+          "end": 12.98
+        }
+      ]
+    },
+    {
+      "start": 14.62,
+      "end": 16.14,
+      "text": "Now he's free of the marker.",
+      "words": [
+        {
+          "word": "Now",
+          "start": 14.62,
+          "end": 15.08
+        },
+        {
+          "word": "he's",
+          "start": 15.08,
+          "end": 15.3
+        },
+        {
+          "word": "free",
+          "start": 15.3,
+          "end": 15.52
+        },
+        {
+          "word": "of",
+          "start": 15.52,
+          "end": 15.68
+        },
+        {
+          "word": "the",
+          "start": 15.68,
+          "end": 15.78
+        },
+        {
+          "word": "marker.",
+          "start": 15.78,
+          "end": 16.14
+        }
+      ]
+    },
+    {
+      "start": 16.96,
+      "end": 18.4,
+      "text": "What do you think you'll do with him?",
+      "words": [
+        {
+          "word": "What",
+          "start": 16.96,
+          "end": 17.16
+        },
+        {
+          "word": "do",
+          "start": 17.16,
+          "end": 17.22
+        },
+        {
+          "word": "you",
+          "start": 17.22,
+          "end": 17.32
+        },
+        {
+          "word": "think",
+          "start": 17.32,
+          "end": 17.48
+        },
+        {
+          "word": "you'll",
+          "start": 17.48,
+          "end": 17.76
+        },
+        {
+          "word": "do",
+          "start": 17.76,
+          "end": 17.86
+        },
+        {
+          "word": "with",
+          "start": 17.86,
+          "end": 18.1
+        },
+        {
+          "word": "him?",
+          "start": 18.1,
+          "end": 18.4
+        }
+      ]
+    },
+    {
+      "start": 22.780000000000005,
+      "end": 23.38,
+      "text": "Winston.",
+      "words": [
+        {
+          "word": "Winston.",
+          "start": 22.780000000000005,
+          "end": 23.38
+        }
+      ]
+    },
+    {
+      "start": 24.740000000000002,
+      "end": 26.1,
+      "text": "Tell them.",
+      "words": [
+        {
+          "word": "Tell",
+          "start": 24.740000000000002,
+          "end": 25.62
+        },
+        {
+          "word": "them.",
+          "start": 25.62,
+          "end": 26.1
+        }
+      ]
+    },
+    {
+      "start": 27.12,
+      "end": 28.58,
+      "text": "Whoever comes.",
+      "words": [
+        {
+          "word": "Whoever",
+          "start": 27.12,
+          "end": 27.94
+        },
+        {
+          "word": "comes.",
+          "start": 27.94,
+          "end": 28.58
+        }
+      ]
+    },
+    {
+      "start": 30.14,
+      "end": 31.36,
+      "text": "I'll kill them.",
+      "words": [
+        {
+          "word": "I'll",
+          "start": 30.14,
+          "end": 30.52
+        },
+        {
+          "word": "kill",
+          "start": 30.52,
+          "end": 30.88
+        },
+        {
+          "word": "them.",
+          "start": 30.88,
+          "end": 31.36
+        }
+      ]
+    },
+    {
+      "start": 32.44,
+      "end": 33.68,
+      "text": "I'll kill them all.",
+      "words": [
+        {
+          "word": "I'll",
+          "start": 32.44,
+          "end": 32.88
+        },
+        {
+          "word": "kill",
+          "start": 32.88,
+          "end": 33.2
+        },
+        {
+          "word": "them",
+          "start": 33.2,
+          "end": 33.46
+        },
+        {
+          "word": "all.",
+          "start": 33.46,
+          "end": 33.68
+        }
+      ]
+    },
+    {
+      "start": 34.68,
+      "end": 35.64,
+      "text": "Of course you will.",
+      "words": [
+        {
+          "word": "Of",
+          "start": 34.68,
+          "end": 35.02
+        },
+        {
+          "word": "course",
+          "start": 35.02,
+          "end": 35.1
+        },
+        {
+          "word": "you",
+          "start": 35.1,
+          "end": 35.38
+        },
+        {
+          "word": "will.",
+          "start": 35.38,
+          "end": 35.64
+        }
+      ]
+    },
+    {
+      "start": 47.08,
+      "end": 49.5,
+      "text": "Kill them all.",
+      "words": [
+        {
+          "word": "Kill",
+          "start": 47.08,
+          "end": 47.96
+        },
+        {
+          "word": "them",
+          "start": 47.96,
+          "end": 48.2
+        },
+        {
+          "word": "all.",
+          "start": 48.2,
+          "end": 49.5
+        }
+      ]
+    },
+    {
+      "start": 51.3,
+      "end": 52.66,
+      "text": "Of course you will.",
+      "words": [
+        {
+          "word": "Of",
+          "start": 51.3,
+          "end": 52.18
+        },
+        {
+          "word": "course",
+          "start": 52.18,
+          "end": 52.34
+        },
+        {
+          "word": "you",
+          "start": 52.34,
+          "end": 52.52
+        },
+        {
+          "word": "will.",
+          "start": 52.52,
+          "end": 52.66
+        }
+      ]
+    },
+    {
+      "start": 53.5,
+      "end": 54.46,
+      "text": "She have will.",
+      "words": [
+        {
+          "word": "She",
+          "start": 53.5,
+          "end": 54.02
+        },
+        {
+          "word": "have",
+          "start": 54.02,
+          "end": 54.26
+        },
+        {
+          "word": "will.",
+          "start": 54.26,
+          "end": 54.46
+        }
+      ]
+    },
+    {
+      "start": 56.14,
+      "end": 58.82,
+      "text": "I want to saw him kill three men in a bar.",
+      "words": [
+        {
+          "word": "I",
+          "start": 56.14,
+          "end": 56.66
+        },
+        {
+          "word": "want",
+          "start": 56.66,
+          "end": 56.82
+        },
+        {
+          "word": "to",
+          "start": 56.82,
+          "end": 56.98
+        },
+        {
+          "word": "saw",
+          "start": 56.98,
+          "end": 57.18
+        },
+        {
+          "word": "him",
+          "start": 57.18,
+          "end": 57.4
+        },
+        {
+          "word": "kill",
+          "start": 57.4,
+          "end": 57.68
+        },
+        {
+          "word": "three",
+          "start": 57.68,
+          "end": 58.0
+        },
+        {
+          "word": "men",
+          "start": 58.0,
+          "end": 58.22
+        },
+        {
+          "word": "in",
+          "start": 58.22,
+          "end": 58.48
+        },
+        {
+          "word": "a",
+          "start": 58.48,
+          "end": 58.54
+        },
+        {
+          "word": "bar.",
+          "start": 58.54,
+          "end": 58.82
+        }
+      ]
+    },
+    {
+      "start": 59.96,
+      "end": 60.96,
+      "text": "With a pencil.",
+      "words": [
+        {
+          "word": "With",
+          "start": 59.96,
+          "end": 60.4
+        },
+        {
+          "word": "a",
+          "start": 60.4,
+          "end": 60.54
+        },
+        {
+          "word": "pencil.",
+          "start": 60.54,
+          "end": 60.96
+        }
+      ]
+    },
+    {
+      "start": 62.980000000000004,
+      "end": 64.02,
+      "text": "Fucking pencil!",
+      "words": [
+        {
+          "word": "Fucking",
+          "start": 62.980000000000004,
+          "end": 63.5
+        },
+        {
+          "word": "pencil!",
+          "start": 63.5,
+          "end": 64.02
+        }
+      ]
+    },
+    {
+      "start": 64.6,
+      "end": 65.96,
+      "text": "Who the fuck can do that?",
+      "words": [
+        {
+          "word": "Who",
+          "start": 64.6,
+          "end": 64.78
+        },
+        {
+          "word": "the",
+          "start": 64.78,
+          "end": 64.94
+        },
+        {
+          "word": "fuck",
+          "start": 64.94,
+          "end": 65.24
+        },
+        {
+          "word": "can",
+          "start": 65.24,
+          "end": 65.5
+        },
+        {
+          "word": "do",
+          "start": 65.5,
+          "end": 65.7
+        },
+        {
+          "word": "that?",
+          "start": 65.7,
+          "end": 65.96
+        }
+      ]
+    },
+    {
+      "start": 68.26,
+      "end": 68.94,
+      "text": "Evening, John.",
+      "words": [
+        {
+          "word": "Evening,",
+          "start": 68.26,
+          "end": 68.78
+        },
+        {
+          "word": "John.",
+          "start": 68.8,
+          "end": 68.94
+        }
+      ]
+    },
+    {
+      "start": 69.54,
+      "end": 70.16,
+      "text": "Evening, Jimmy.",
+      "words": [
+        {
+          "word": "Evening,",
+          "start": 69.54,
+          "end": 69.82
+        },
+        {
+          "word": "Jimmy.",
+          "start": 69.98,
+          "end": 70.16
+        }
+      ]
+    },
+    {
+      "start": 70.8,
+      "end": 71.8,
+      "text": "You, uh, working again?",
+      "words": [
+        {
+          "word": "You,",
+          "start": 70.8,
+          "end": 70.98
+        },
+        {
+          "word": "uh,",
+          "start": 71.1,
+          "end": 71.26
+        },
+        {
+          "word": "working",
+          "start": 71.42,
+          "end": 71.64
+        },
+        {
+          "word": "again?",
+          "start": 71.64,
+          "end": 71.8
+        }
+      ]
+    },
+    {
+      "start": 73.58,
+      "end": 75.0,
+      "text": "Now just sorting some stuff.",
+      "words": [
+        {
+          "word": "Now",
+          "start": 73.58,
+          "end": 74.1
+        },
+        {
+          "word": "just",
+          "start": 74.1,
+          "end": 74.24
+        },
+        {
+          "word": "sorting",
+          "start": 74.24,
+          "end": 74.54
+        },
+        {
+          "word": "some",
+          "start": 74.54,
+          "end": 74.76
+        },
+        {
+          "word": "stuff.",
+          "start": 74.76,
+          "end": 75.0
+        }
+      ]
+    },
+    {
+      "start": 81.4,
+      "end": 82.64,
+      "text": "I need a ride.",
+      "words": [
+        {
+          "word": "I",
+          "start": 81.4,
+          "end": 81.92
+        },
+        {
+          "word": "need",
+          "start": 81.92,
+          "end": 82.44
+        },
+        {
+          "word": "a",
+          "start": 82.44,
+          "end": 82.56
+        },
+        {
+          "word": "ride.",
+          "start": 82.56,
+          "end": 82.64
+        }
+      ]
+    },
+    {
+      "start": 82.64,
+      "end": 82.64,
+      "text": "",
+      "words": []
+    },
+    {
+      "start": 85.89999999999999,
+      "end": 87.96,
+      "text": "Let know you're coming, of course.",
+      "words": [
+        {
+          "word": "Let",
+          "start": 85.89999999999999,
+          "end": 86.46
+        },
+        {
+          "word": "know",
+          "start": 86.46,
+          "end": 86.62
+        },
+        {
+          "word": "you're",
+          "start": 86.62,
+          "end": 86.88
+        },
+        {
+          "word": "coming,",
+          "start": 86.88,
+          "end": 87.14
+        },
+        {
+          "word": "of",
+          "start": 87.44,
+          "end": 87.56
+        },
+        {
+          "word": "course.",
+          "start": 87.56,
+          "end": 87.96
+        }
+      ]
+    },
+    {
+      "start": 113.97999999999999,
+      "end": 115.38,
+      "text": ".",
+      "words": [
+        {
+          "word": ".",
+          "start": 113.97999999999999,
+          "end": 115.38
+        }
+      ]
+    },
+    {
+      "start": 115.38,
+      "end": 126.54,
+      "text": "Uh-music",
+      "words": [
+        {
+          "word": "Uh",
+          "start": 115.38,
+          "end": 115.38
+        },
+        {
+          "word": "-music",
+          "start": 115.38,
+          "end": 126.54
+        }
+      ]
+    },
+    {
+      "start": 139.86,
+      "end": 140.16,
+      "text": ".",
+      "words": [
+        {
+          "word": ".",
+          "start": 139.86,
+          "end": 140.16
+        }
+      ]
+    },
+    {
+      "start": 140.16,
+      "end": 141.36,
+      "text": "What have you done?",
+      "words": [
+        {
+          "word": "What",
+          "start": 140.16,
+          "end": 140.48
+        },
+        {
+          "word": "have",
+          "start": 140.48,
+          "end": 140.74
+        },
+        {
+          "word": "you",
+          "start": 140.74,
+          "end": 141.06
+        },
+        {
+          "word": "done?",
+          "start": 141.06,
+          "end": 141.36
+        }
+      ]
+    },
+    {
+      "start": 142.92,
+      "end": 144.08,
+      "text": "Finished it.",
+      "words": [
+        {
+          "word": "Finished",
+          "start": 142.92,
+          "end": 143.62
+        },
+        {
+          "word": "it.",
+          "start": 143.62,
+          "end": 144.08
+        }
+      ]
+    }
+  ]
+}
