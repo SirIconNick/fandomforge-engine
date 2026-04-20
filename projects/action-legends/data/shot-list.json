@@ -6079,7 +6079,7 @@
       "start_frame": 4872,
       "duration_frames": 16,
       "source_id": "fight_jw_best_fights_4k",
-      "source_timecode": "0:08:07.594",
+      "source_timecode": "0:07:45.222",
       "role": "motion",
       "mood_tags": [
         "action",
@@ -6101,7 +6101,7 @@
       },
       "fandom": "John Wick",
       "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.146 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18 | phase0-relit2 luma>=0.3"
+      "color_notes": "tier=mid luma=0.18 | phase0-relit2 luma>=0.3 | phase0-relit-final"
     },
     {
       "id": "s204",
