@@ -35,13 +35,74 @@ VERDICT_RANK = {"pass": 0, "warn": 1, "fail": 2}
 
 # Per-dimension contribution to the overall 0-100 score. Visual weighs heaviest
 # because dark / frozen / flashed frames are what the human eye catches first.
+# These are the LEGACY/default weights — Phase 4.2 lets edit-types override
+# via TYPE_DIMENSION_WEIGHTS.
 DIMENSION_WEIGHTS: dict[str, float] = {
-    "technical":  0.20,
-    "visual":     0.30,
-    "audio":      0.20,
-    "structural": 0.15,
-    "shot_list":  0.15,
+    "technical":  0.15,
+    "visual":     0.22,
+    "audio":      0.15,
+    "structural": 0.10,
+    "shot_list":  0.10,
+    "coherence":  0.10,  # Phase 4.1
+    "arc_shape":  0.10,  # Phase 4.4
+    "engagement": 0.08,  # Phase 4.6
 }
+
+# Phase 4.2 — per-edit-type rubric weights. Missing types fall back to
+# DIMENSION_WEIGHTS. Each type's weights must sum to 1.0.
+TYPE_DIMENSION_WEIGHTS: dict[str, dict[str, float]] = {
+    "action": {
+        "technical": 0.10, "visual": 0.20, "audio": 0.15,
+        "structural": 0.10, "shot_list": 0.10,
+        "coherence": 0.10, "arc_shape": 0.10, "engagement": 0.15,  # rhythm matters most
+    },
+    "emotional": {
+        "technical": 0.10, "visual": 0.20, "audio": 0.10,
+        "structural": 0.10, "shot_list": 0.10,
+        "coherence": 0.20, "arc_shape": 0.15, "engagement": 0.05,  # narrative + flow
+    },
+    "tribute": {
+        "technical": 0.10, "visual": 0.20, "audio": 0.10,
+        "structural": 0.10, "shot_list": 0.15,
+        "coherence": 0.15, "arc_shape": 0.15, "engagement": 0.05,
+    },
+    "comedy": {
+        "technical": 0.10, "visual": 0.10, "audio": 0.10,
+        "structural": 0.15, "shot_list": 0.15,
+        "coherence": 0.05, "arc_shape": 0.15, "engagement": 0.20,  # timing > prettiness
+    },
+    "speed_amv": {
+        "technical": 0.10, "visual": 0.20, "audio": 0.10,
+        "structural": 0.10, "shot_list": 0.05,
+        "coherence": 0.05, "arc_shape": 0.10, "engagement": 0.30,  # pacing dominates
+    },
+    "cinematic": {
+        "technical": 0.15, "visual": 0.25, "audio": 0.15,
+        "structural": 0.10, "shot_list": 0.10,
+        "coherence": 0.15, "arc_shape": 0.10, "engagement": 0.00,
+    },
+    "dialogue_narrative": {
+        "technical": 0.10, "visual": 0.15, "audio": 0.20,  # dialogue clarity weighs hard
+        "structural": 0.15, "shot_list": 0.10,
+        "coherence": 0.10, "arc_shape": 0.15, "engagement": 0.05,
+    },
+}
+
+
+# Phase 4.5 tier thresholds.
+def classify_tier(report: "ReviewReport") -> str:
+    """Return one of Exceptional / Competent / Amateur per amendments-A4
+    threshold rules. Calibrated as a starting point; tune via expanded
+    corpus percentiles after Phase 0.5.2.
+    """
+    score = report.score
+    dim_scores = {d.name: d.score for d in report.dimensions}
+    coherence = dim_scores.get("coherence", 0)
+    if score >= 90 and all(s >= 80 for s in dim_scores.values()) and coherence >= 85:
+        return "Exceptional"
+    if score >= 75 and all(s >= 60 for s in dim_scores.values()):
+        return "Competent"
+    return "Amateur"
 
 # Base credit per verdict (before per-finding adjustments).
 _VERDICT_BASE = {"pass": 1.00, "warn": 0.75, "fail": 0.25}
@@ -73,12 +134,28 @@ def _dimension_score(dim: "DimensionReport") -> float:
     return max(0.0, (base - deduction)) * 100.0
 
 
-def overall_score(dimensions: list["DimensionReport"]) -> float:
-    """Weighted 0-100 score across all review dimensions."""
+def overall_score(
+    dimensions: list["DimensionReport"],
+    *,
+    edit_type: str | None = None,
+) -> float:
+    """Weighted 0-100 score across all review dimensions.
+
+    Phase 4.2: when `edit_type` matches an entry in TYPE_DIMENSION_WEIGHTS,
+    those weights override the defaults. Falls back to DIMENSION_WEIGHTS
+    otherwise.
+    """
+    weights = TYPE_DIMENSION_WEIGHTS.get(edit_type or "") or DIMENSION_WEIGHTS
     total = 0.0
+    weight_total = 0.0
     for d in dimensions:
-        weight = DIMENSION_WEIGHTS.get(d.name, 0.0)
-        total += weight * _dimension_score(d)
+        w = weights.get(d.name, 0.0)
+        total += w * _dimension_score(d)
+        weight_total += w
+    # Normalize in case the active weights don't sum to 1.0 (e.g., a
+    # legacy review with only the original 5 dimensions).
+    if weight_total > 0:
+        total = total / weight_total
     return round(total, 1)
 
 
@@ -103,6 +180,8 @@ class ReviewReport:
     overall_verdict: str                # pass | warn | fail
     score: float = 100.0                # 0 - 100, weighted across dimensions
     grade: str = "A+"                   # A+ / A / A- / B+ ... / F
+    tier: str = "Amateur"               # Phase 4.5: Exceptional/Competent/Amateur
+    edit_type: str | None = None        # Phase 4.2: which weight profile was used
     dimensions: list[DimensionReport] = field(default_factory=list)
     ship_recommendation: str = ""
 
@@ -116,6 +195,8 @@ class ReviewReport:
             "overall_verdict": self.overall_verdict,
             "score": self.score,
             "grade": self.grade,
+            "tier": self.tier,
+            "edit_type": self.edit_type,
             "ship_recommendation": self.ship_recommendation,
             "dimensions": [
                 {
@@ -633,12 +714,24 @@ def review_rendered_edit(
     structural = _dim_structural(video, duration, shot_list)
     shotlist = _dim_shot_list(shot_list)
 
-    dimensions = [tech, visual, audio, structural, shotlist]
+    # Phase 4.1/4.4/4.6 — extra dimensions
+    edit_plan = _load_json(project_dir / "data" / "edit-plan.json")
+    tension_curve = _load_json(project_dir / "data" / "tension-curve.json")
+    intent = _load_json(project_dir / "data" / "intent.json")
+    complement_plan = _load_json(project_dir / "data" / "complement-plan.json")
+    edit_type = (intent or {}).get("edit_type") if intent else None
+
+    coherence_dim = _dim_coherence(shot_list, edit_plan)
+    arc_shape_dim = _dim_arc_shape(tension_curve)
+    engagement_dim = _dim_engagement(shot_list, edit_type, complement_plan)
+
+    dimensions = [tech, visual, audio, structural, shotlist,
+                  coherence_dim, arc_shape_dim, engagement_dim]
     overall_verdict = _roll_up([d.verdict for d in dimensions])
-    score = overall_score(dimensions)
+    score = overall_score(dimensions, edit_type=edit_type)
     grade = score_to_letter(score)
 
-    return ReviewReport(
+    report = ReviewReport(
         project_slug=project_dir.name,
         video_path=str(video),
         generated_at=datetime.now(timezone.utc).isoformat(),
@@ -646,15 +739,88 @@ def review_rendered_edit(
         overall_verdict=overall_verdict,
         score=score,
         grade=grade,
+        edit_type=edit_type,
         dimensions=dimensions,
         ship_recommendation=_ship_recommendation(overall_verdict, dimensions),
+    )
+    report.tier = classify_tier(report)
+    return report
+
+
+# ---------- Phase 4 dimension helpers ----------
+
+
+def _dim_coherence(
+    shot_list: dict | None, edit_plan: dict | None,
+) -> DimensionReport:
+    if not shot_list:
+        return DimensionReport(name="coherence", verdict="warn",
+                               findings=["no shot-list — skipped"], measurements={})
+    from fandomforge.intelligence.review_metrics import score_coherence
+    rep = score_coherence(shot_list, edit_plan)
+    composite = rep.composite
+    if composite >= 75:
+        verdict = "pass"
+    elif composite >= 50:
+        verdict = "warn"
+    else:
+        verdict = "fail"
+    findings = [n for n in rep.notes if n] if verdict != "pass" else []
+    return DimensionReport(
+        name="coherence", verdict=verdict, findings=findings,
+        measurements=rep.to_dict(),
+    )
+
+
+def _dim_arc_shape(tension_curve: dict | None) -> DimensionReport:
+    from fandomforge.intelligence.review_metrics import score_arc_shape
+    rep = score_arc_shape(tension_curve)
+    composite = rep.composite
+    if not tension_curve:
+        return DimensionReport(name="arc_shape", verdict="warn",
+                               findings=["no tension-curve — run autopilot"],
+                               measurements=rep.to_dict())
+    if composite >= 75:
+        verdict = "pass"
+    elif composite >= 50:
+        verdict = "warn"
+    else:
+        verdict = "fail"
+    findings = list(rep.notes) if verdict != "pass" else []
+    return DimensionReport(
+        name="arc_shape", verdict=verdict, findings=findings,
+        measurements=rep.to_dict(),
+    )
+
+
+def _dim_engagement(
+    shot_list: dict | None, edit_type: str | None, complement_plan: dict | None,
+) -> DimensionReport:
+    from fandomforge.intelligence.review_metrics import score_engagement
+    from fandomforge.intelligence.edit_classifier import load_type_priors
+    priors = load_type_priors(edit_type) if edit_type else None
+    rep = score_engagement(shot_list or {}, edit_type_priors=priors,
+                           complement_plan=complement_plan)
+    composite = rep.composite
+    if composite >= 70:
+        verdict = "pass"
+    elif composite >= 45:
+        verdict = "warn"
+    else:
+        verdict = "fail"
+    findings = list(rep.notes) if verdict != "pass" else []
+    return DimensionReport(
+        name="engagement", verdict=verdict, findings=findings,
+        measurements=rep.to_dict(),
     )
 
 
 __all__ = [
     "DIMENSION_WEIGHTS",
+    "TYPE_DIMENSION_WEIGHTS",
     "DimensionReport",
     "ReviewReport",
+    "classify_tier",
     "overall_score",
     "review_rendered_edit",
     "score_to_letter",

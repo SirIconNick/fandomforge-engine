@@ -212,6 +212,16 @@
         "slot_fit_score": {
           "description": "Phase 2.2 — composite slot-fit score 0-1 stamped after the slot-fit scorer runs.",
           "type": "number", "minimum": 0, "maximum": 1
+        },
+        "diegetic_flags": {
+          "description": "Phase 4.11 — editorial decisions about how the source clip's own audio is treated in the final mix. preserve_diegetic keeps the impact/explosion sound on the punch, score_strip mutes the source music when layering the new song, voice_carry keeps a character's breathing/grunt even when dialogue is stripped.",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "preserve_diegetic": {"type": "boolean"},
+            "score_strip": {"type": "boolean"},
+            "voice_carry": {"type": "boolean"}
+          }
         }
       }
     }

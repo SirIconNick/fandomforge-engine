@@ -109,19 +109,43 @@ def rule(
     rule_id: str,
     name: str,
     level: str = "block",
+    applies_to: list[str] | None = None,
+    type_severity: dict[str, str] | None = None,
 ) -> Callable[[Callable[[GateContext], RuleResult]], Callable[[GateContext], RuleResult]]:
     """Decorator that registers a QA rule.
 
-    The decorated function may return a RuleResult directly, OR a tuple
-    (status, message, evidence) and we'll fill in the id/name/level.
+    Args:
+        rule_id: stable id like 'qa.beat_sync'
+        name: human-readable name shown in reports
+        level: default severity ('block' | 'warn' | 'skipped')
+        applies_to: Phase 4.10 — list of edit_type ids this rule applies to.
+            If None, the rule runs for every edit type (the legacy behavior).
+            If set, the rule is skipped for any edit_type not in the list.
+        type_severity: Phase 4.10 — per-edit-type severity override. e.g.
+            {"action": "block", "emotional": "warn"} makes the same rule
+            fail-blocking for action edits but warn-only for emotional.
     """
     def _wrap(fn: Callable[[GateContext], Any]) -> Callable[[GateContext], RuleResult]:
         def _run(ctx: GateContext) -> RuleResult:
+            # Phase 4.10 — applies_to filter: skip when the active edit_type
+            # isn't covered by this rule.
+            active_type = _ctx_edit_type(ctx)
+            if applies_to and active_type and active_type not in applies_to:
+                return RuleResult(
+                    id=rule_id, name=name, level=level,
+                    status="skipped",
+                    message=f"rule does not apply to edit_type={active_type}",
+                )
+            # Per-type severity override
+            effective_level = level
+            if type_severity and active_type and active_type in type_severity:
+                effective_level = type_severity[active_type]
+
             out = fn(ctx)
             if isinstance(out, RuleResult):
                 out.id = out.id or rule_id
                 out.name = out.name or name
-                out.level = out.level or level
+                out.level = out.level or effective_level
                 return out
             status, message, evidence = (
                 out[0] if len(out) > 0 else "pass",
@@ -129,15 +153,38 @@ def rule(
                 out[2] if len(out) > 2 else {},
             )
             return RuleResult(
-                id=rule_id, name=name, level=level,
+                id=rule_id, name=name, level=effective_level,
                 status=status, message=message, evidence=evidence,
             )
         _run.id = rule_id
         _run.name = name
         _run.level = level
+        _run.applies_to = applies_to
+        _run.type_severity = type_severity or {}
         _RULES.append(_run)
         return _run
     return _wrap
+
+
+def _ctx_edit_type(ctx: GateContext) -> str | None:
+    """Pull the active edit_type from intent.json (Phase 4.10 helper).
+    Cached on the context to avoid re-reading per rule."""
+    cached = getattr(ctx, "_edit_type_cache", _SENTINEL)
+    if cached is not _SENTINEL:
+        return cached
+    p = ctx.project_dir / "data" / "intent.json"
+    edit_type = None
+    if p.exists():
+        try:
+            import json as _json
+            edit_type = _json.loads(p.read_text(encoding="utf-8")).get("edit_type")
+        except Exception:  # noqa: BLE001
+            edit_type = None
+    object.__setattr__(ctx, "_edit_type_cache", edit_type)
+    return edit_type
+
+
+_SENTINEL = object()
 
 
 # ---------------------------------------------------------------------------

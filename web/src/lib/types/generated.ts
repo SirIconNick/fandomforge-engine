@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T04:23:28.395Z
+// Generated at: 2026-04-20T04:37:56.109Z
 
 
 export type Layer = {
@@ -504,8 +504,12 @@ export interface PostRenderReview {
     grade: "A+" | "A" | "A-" | "B+" | "B" | "B-" | "C+" | "C" | "C-" | "D+" | "D" | "D-" | "F";
     /** Human-readable guidance: ship / review with caveats / do not ship. */
     ship_recommendation: string;
+    /** Phase 4.5 tier classification — coarser than letter grade. Exceptional requires score >=90, all dims >=80, coherence >=85. Competent requires score >=75, all dims >=60. Otherwise Amateur. */
+    tier?: "Amateur" | "Competent" | "Exceptional";
+    /** The edit_type whose dimension weights were applied (Phase 4.2). null when no intent.json was present and defaults were used. */
+    edit_type?: string | null;
     dimensions: Array<{
-    name: "technical" | "visual" | "audio" | "structural" | "shot_list";
+    name: "technical" | "visual" | "audio" | "structural" | "shot_list" | "coherence" | "arc_shape" | "engagement";
     verdict: "pass" | "warn" | "fail";
     score: number;
     findings?: Array<string>;
@@ -840,6 +844,12 @@ export type Shot = {
     energy_zone_fit?: Array<number>;
     /** Phase 2.2 — composite slot-fit score 0-1 stamped after the slot-fit scorer runs. */
     slot_fit_score?: number;
+    /** Phase 4.11 — editorial decisions about how the source clip's own audio is treated in the final mix. preserve_diegetic keeps the impact/explosion sound on the punch, score_strip mutes the source music when layering the new song, voice_carry keeps a character's breathing/grunt even when dialogue is stripped. */
+    diegetic_flags?: {
+    preserve_diegetic?: boolean;
+    score_strip?: boolean;
+    voice_carry?: boolean;
+  };
   };
 
 /** The authoritative shot list for an edit. Produced by shot-curator / ff match shots and consumed by QA gate, NLE exporters, and the dashboard timeline editor. */

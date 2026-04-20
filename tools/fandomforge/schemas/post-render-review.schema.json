@@ -45,6 +45,15 @@
       "minLength": 1,
       "description": "Human-readable guidance: ship / review with caveats / do not ship."
     },
+    "tier": {
+      "type": "string",
+      "enum": ["Amateur", "Competent", "Exceptional"],
+      "description": "Phase 4.5 tier classification — coarser than letter grade. Exceptional requires score >=90, all dims >=80, coherence >=85. Competent requires score >=75, all dims >=60. Otherwise Amateur."
+    },
+    "edit_type": {
+      "type": ["string", "null"],
+      "description": "The edit_type whose dimension weights were applied (Phase 4.2). null when no intent.json was present and defaults were used."
+    },
     "dimensions": {
       "type": "array",
       "minItems": 1,
@@ -55,7 +64,8 @@
         "properties": {
           "name": {
             "type": "string",
-            "enum": ["technical", "visual", "audio", "structural", "shot_list"]
+            "enum": ["technical", "visual", "audio", "structural", "shot_list",
+                     "coherence", "arc_shape", "engagement"]
           },
           "verdict": {
             "type": "string",

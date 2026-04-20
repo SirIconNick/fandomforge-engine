@@ -225,10 +225,11 @@ class TestGradeAndScore:
         assert score <= 20
         assert score_to_letter(score) == "F"
 
-    def test_one_visual_warn_is_B_range(self) -> None:
-        """Visual is the heaviest dim (0.30). Other four pass clean. Visual warn
-        with one finding deducts 0.06 + 0.75 = 0.69. Contribution 0.30 * 69 = 20.7.
-        Others contribute 0.70 * 100 = 70. Total ~90.7 → A-."""
+    def test_one_visual_warn_is_A_range(self) -> None:
+        """Visual is the heaviest of the legacy dims (0.22 after Phase 4
+        rebalance). Other four pass clean. With weight normalization across
+        the legacy 5 dims (sum 0.72), visual contributes (0.22/0.72)*69 = 21.1.
+        Others contribute (0.50/0.72)*100 = 69.4. Total ~90.5 → A-/A range."""
         dims = self._dims_all("pass", 0)
         for d in dims:
             if d.name == "visual":
@@ -236,8 +237,8 @@ class TestGradeAndScore:
                 d.findings = ["dark segment 0.5s"]
         score = overall_score(dims)
         letter = score_to_letter(score)
-        # Should be in the A-/B+ range
-        assert letter in ("A-", "B+"), f"got {letter} from score {score}"
+        # With Phase 4's rebalanced weights, a single visual warn lands in A-/A range
+        assert letter in ("A-", "A", "B+"), f"got {letter} from score {score}"
 
     def test_letter_bands_are_monotonic(self) -> None:
         """Sanity — higher scores should never map to worse letters."""
