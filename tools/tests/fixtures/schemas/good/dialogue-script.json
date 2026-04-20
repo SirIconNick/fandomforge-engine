@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "concept": "broken to reborn — protagonist comes back",
+  "lines": [
+    {
+      "index": 0,
+      "text": "I'm not who I was.",
+      "intent": "defiant",
+      "speaker_role": "protagonist",
+      "target_duration_ms": 1400,
+      "voice_register": "low"
+    },
+    {
+      "index": 1,
+      "text": "Now I see it clearly.",
+      "intent": "recognition",
+      "speaker_role": "protagonist",
+      "target_duration_ms": 1700
+    }
+  ],
+  "generated_at": "2026-04-19T22:30:00+00:00",
+  "generator": "ff dialogue scriptwriter (Phase 6.1)"
+}

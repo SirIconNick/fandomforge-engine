@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T04:48:59.456Z
+// Generated at: 2026-04-20T04:57:39.066Z
 
 
 /** Per-clip aspect-ratio normalization decisions (Phase 3.1). For every shot in the timeline, records whether it should be pillarboxed, letterboxed, cropped, scaled, or left alone — plus the safe-zone polygon of content the engine must preserve. Read by the orchestrator before color grade so AR adjustments precede visual unification. */
@@ -285,6 +285,30 @@ export interface DialoguePlacementPlan {
     shift: number;
     reject: number;
   };
+    generator?: string;
+  }
+
+/** Phase 6.1 — ordered list of utterances the dialogue-narrative edit needs. Produced from the user prompt by the dialogue scriptwriter. Read by dialogue_search to find candidate snippets across all ingested transcripts. */
+export interface DialogueScript {
+    schema_version: 1;
+    project_slug: string;
+    /** One-sentence summary of what the spliced dialogue should mean. */
+    concept?: string;
+    lines: Array<{
+    index: number;
+    /** The literal utterance the engine should find or assemble. */
+    text: string;
+    /** Editorial purpose — defiant, recognition, turn, declaration, question, etc. */
+    intent?: string;
+    speaker_role?: "protagonist" | "antagonist" | "narrator" | "supporting" | "ensemble" | "any";
+    /** How long the spoken line should be when found. */
+    target_duration_ms?: number;
+    /** Vocal quality preference for the search stage. */
+    voice_register?: "neutral" | "low" | "high" | "soft" | "loud" | "any";
+    /** Restrict candidates to a particular fandom/source. */
+    fandom_constraint?: string;
+  }>;
+    generated_at?: string;
     generator?: string;
   }
 
@@ -1210,6 +1234,7 @@ export interface ArtifactSchemaMap {
   "color-plan": ColorPlan;
   "complement-plan": ComplementPlan;
   "dialogue-placement-plan": DialoguePlacementPlan;
+  "dialogue-script": DialogueScript;
   "dialogue-windows": DialogueWindows;
   "edit-plan": EditPlan;
   "emotion-arc": EmotionArc;
@@ -1237,4 +1262,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["aspect-plan", "audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "psychology-report", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "tension-curve", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["aspect-plan", "audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-script", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "psychology-report", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "tension-curve", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

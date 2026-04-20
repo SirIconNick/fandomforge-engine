@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/dialogue-script.schema.json",
+  "title": "DialogueScript",
+  "description": "Phase 6.1 — ordered list of utterances the dialogue-narrative edit needs. Produced from the user prompt by the dialogue scriptwriter. Read by dialogue_search to find candidate snippets across all ingested transcripts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_slug", "lines"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string", "minLength": 1},
+    "concept": {
+      "type": "string",
+      "description": "One-sentence summary of what the spliced dialogue should mean."
+    },
+    "lines": {
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["index", "text"],
+        "properties": {
+          "index": {"type": "integer", "minimum": 0},
+          "text": {"type": "string", "minLength": 1,
+            "description": "The literal utterance the engine should find or assemble."},
+          "intent": {
+            "type": "string",
+            "description": "Editorial purpose — defiant, recognition, turn, declaration, question, etc."
+          },
+          "speaker_role": {
+            "type": "string",
+            "enum": ["protagonist", "antagonist", "narrator", "supporting", "ensemble", "any"]
+          },
+          "target_duration_ms": {
+            "type": "integer", "minimum": 200, "maximum": 8000,
+            "description": "How long the spoken line should be when found."
+          },
+          "voice_register": {
+            "type": "string",
+            "enum": ["neutral", "low", "high", "soft", "loud", "any"],
+            "description": "Vocal quality preference for the search stage."
+          },
+          "fandom_constraint": {
+            "type": "string",
+            "description": "Restrict candidates to a particular fandom/source."
+          }
+        }
+      }
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}
