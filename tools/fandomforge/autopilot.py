@@ -642,14 +642,23 @@ def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
         skipped = 0
         failed = 0
         for entry in catalog.get("sources") or []:
-            sid = entry.get("id") or entry.get("source_id")
             path_str = entry.get("path")
-            if not sid or not path_str:
+            if not path_str:
                 continue
             path = Path(path_str)
             if not path.exists():
                 failed += 1
                 continue
+
+            # Use the path stem as the source_id so it joins with shot-list's
+            # human-readable source_id (e.g. "extraction-2"). For sources
+            # under raw/fights/, prepend "fight_" to match the shot-list
+            # convention (the assembly's _find_source_video strips this
+            # prefix back when locating the actual file).
+            sid = path.stem
+            if "fights" in path.parent.name.lower():
+                sid = f"fight_{sid}"
+            catalog_id = entry.get("id") or entry.get("source_id") or ""
 
             # Idempotent: skip if a profile already exists at the current
             # generator version.
@@ -665,6 +674,8 @@ def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
 
             try:
                 profile = profile_source(path, sid, deep=True, n_frames=20)
+                if catalog_id:
+                    profile["era_label"] = profile.get("era_label") or f"catalog:{catalog_id[:16]}"
                 write_source_profile(profile, ctx.project_dir)
                 profiled += 1
             except Exception:  # noqa: BLE001 — best-effort per-source
@@ -773,6 +784,81 @@ def step_intent(ctx: AutopilotContext) -> AutopilotEvent:
         ts=_now(), run_id=ctx.run_id, step_id="intent",
         status="ok", message=msg,
         evidence={"path": str(out), "edit_type": intent["edit_type"]},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
+def step_arc_architect(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 2.1 — overlay cross-type pacing/tension/arc-role onto the
+    edit-plan's acts[]. Idempotent: re-runs whenever an existing edit-plan
+    lacks the Phase 2.1 fields. Replaces the post-process inside
+    step_edit_plan so it can fire even when edit-plan generation skipped.
+    """
+    start = time.perf_counter()
+    plan_path = ctx.project_dir / "data" / "edit-plan.json"
+    intent_path = ctx.project_dir / "data" / "intent.json"
+    beat_map_path = ctx.project_dir / "data" / "beat-map.json"
+
+    if not plan_path.exists() or not intent_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="arc_architect",
+            status="skipped",
+            message="edit-plan.json or intent.json missing",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="arc_architect",
+            status="failed",
+            message=f"could not read edit-plan or intent: {exc}",
+        )
+
+    existing_acts = plan.get("acts") or []
+    has_phase2_fields = any(
+        "pacing" in a and "tension_target" in a and "arc_role" in a
+        for a in existing_acts
+    )
+    if has_phase2_fields:
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="arc_architect",
+            status="skipped",
+            message=f"acts already carry Phase 2.1 fields ({len(existing_acts)} acts)",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.arc_architect import build_acts as _build_acts
+        from fandomforge.validation import validate_and_write
+
+        beat_map = None
+        if beat_map_path.exists():
+            beat_map = json.loads(beat_map_path.read_text(encoding="utf-8"))
+        target_duration = float(intent.get("target_duration_sec") or plan.get("length_seconds") or 60.0)
+        new_acts = _build_acts(
+            intent, beat_map=beat_map, target_duration_sec=target_duration,
+        )
+        plan["acts"] = new_acts
+        validate_and_write(plan, "edit-plan", plan_path)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="arc_architect",
+            status="failed",
+            message=f"arc_architect failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="arc_architect",
+        status="ok",
+        message=(
+            f"arc_architect overlaid {len(new_acts)} acts with cross-type "
+            f"pacing/tension/role for edit_type={intent.get('edit_type')}"
+        ),
+        evidence={"path": str(plan_path), "act_count": len(new_acts)},
         duration_sec=round(time.perf_counter() - start, 3),
     )
 
@@ -1887,11 +1973,7 @@ STEPS: list[Step] = [
          lambda _ctx: False,  # re-runs cheaply; its own logic checks what's done
          step_ingest_sources),
     Step("profile_sources", "Build per-source visual profiles",
-         lambda ctx: not (ctx.project_dir / "data" / "source-catalog.json").exists()
-                     or (
-                         (ctx.project_dir / "data" / "source-profiles").is_dir()
-                         and any((ctx.project_dir / "data" / "source-profiles").iterdir())
-                     ),
+         lambda ctx: not (ctx.project_dir / "data" / "source-catalog.json").exists(),
          step_profile_sources),
     Step("beat_analyze", "ff beat analyze",
          lambda ctx: _artifact_exists_and_valid(ctx, "beat-map"),
@@ -1905,6 +1987,9 @@ STEPS: list[Step] = [
     Step("edit_plan_stub", "Draft edit-plan (stub)",
          lambda ctx: _artifact_exists_and_valid(ctx, "edit-plan"),
          step_edit_plan_stub),
+    Step("arc_architect", "Overlay Phase 2.1 pacing/tension/role onto acts",
+         lambda _ctx: False,  # cheap; idempotent (skips when fields present)
+         step_arc_architect),
     Step("propose_shots", "Propose shot list",
          lambda ctx: _artifact_exists_and_valid(ctx, "shot-list"),
          step_propose_shots),
