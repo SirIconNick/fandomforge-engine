@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:24:05.410Z
+// Generated at: 2026-04-20T03:29:08.985Z
 
 
 export type Layer = {
@@ -448,6 +448,41 @@ export type Scene = {
 export interface Fandoms {
     schema_version: 1;
     fandoms: Array<Fandom>;
+  }
+
+/** First-pass interpretation of a user prompt into structured edit intent. Drives every downstream stage: edit_type picks priors, tone_vector picks template + color, speakers seed dialogue search, target_duration_sec drives arc-length math. Produced before any audio analysis or ingest, so the rest of the pipeline can plan around it. */
+export interface Intent {
+    schema_version: 1;
+    /** The original prompt the user supplied. Stored verbatim for re-classification when the classifier is updated. */
+    prompt_text: string;
+    /** Resolved edit type from the existing 8-type taxonomy plus the new dialogue_narrative + dance_movement + sad_emotional types added in v2. */
+    edit_type: "action" | "emotional" | "tribute" | "shipping" | "speed_amv" | "cinematic" | "comedy" | "hype_trailer" | "dialogue_narrative" | "dance_movement" | "sad_emotional";
+    /** Where the edit_type came from. */
+    edit_type_source?: "explicit" | "classified" | "default";
+    /** 8-dim emotional tone target. Order: [grief, triumph, fear, awe, tension, release, sorrow, elation]. Each 0-1. */
+    tone_vector: Array<number>;
+    /** Named characters / speakers referenced in the prompt or implied by the source list. Used by the dialogue-narrative pipeline to seed dialogue search. */
+    speakers: Array<{
+    name: string;
+    role?: "protagonist" | "antagonist" | "narrator" | "supporting" | "ensemble" | "unknown";
+    fandom?: string;
+    /** Short note on how this speaker was inferred (prompt mention / source filename / fandom roster). */
+    evidence?: string;
+  }>;
+    /** Recommended template id (matches one of edit-types.json templates) or 'custom' if no preset matches well. */
+    auto_template: "action" | "emotional" | "tribute" | "shipping" | "speed_amv" | "cinematic" | "comedy" | "hype_trailer" | "dialogue_narrative" | "dance_movement" | "sad_emotional" | "custom";
+    /** How long the final edit should run. Parsed from prompt ('30 seconds', 'full song', '2 minutes') or defaults to the song duration. */
+    target_duration_sec: number;
+    /** Where the target duration came from. */
+    duration_source?: "prompt" | "song" | "default";
+    /** Fandom families involved (anime, marvel, mcu, etc.). Used for fandom-balance + per-bucket prior selection. */
+    fandoms?: Array<string>;
+    /** Overall classifier confidence. Below 0.5 → engine should ask the user to confirm. */
+    confidence: number;
+    /** True if confidence is low enough that the engine should pause and confirm with the user before proceeding. */
+    needs_user_confirmation?: boolean;
+    generated_at?: string;
+    generator?: string;
   }
 
 /** Output of `ff review` and autopilot `post_render_review` step. Captures the five-dimension grading pass against a rendered edit (technical, visual, audio, structural, shot_list) with an overall letter grade and ship recommendation. */
@@ -964,6 +999,7 @@ export interface ArtifactSchemaMap {
   "emotion-arc": EmotionArc;
   "energy-zones": EnergyZones;
   "fandoms": Fandoms;
+  "intent": Intent;
   "post-render-review": PostRenderReview;
   "project-config": ProjectConfig;
   "qa-report": QaReport;
@@ -982,4 +1018,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

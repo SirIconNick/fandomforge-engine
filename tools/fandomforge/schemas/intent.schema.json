@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/intent.schema.json",
+  "title": "Intent",
+  "description": "First-pass interpretation of a user prompt into structured edit intent. Drives every downstream stage: edit_type picks priors, tone_vector picks template + color, speakers seed dialogue search, target_duration_sec drives arc-length math. Produced before any audio analysis or ingest, so the rest of the pipeline can plan around it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "prompt_text", "edit_type", "tone_vector",
+    "speakers", "auto_template", "target_duration_sec", "confidence"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "prompt_text": {
+      "type": "string",
+      "description": "The original prompt the user supplied. Stored verbatim for re-classification when the classifier is updated."
+    },
+    "edit_type": {
+      "type": "string",
+      "description": "Resolved edit type from the existing 8-type taxonomy plus the new dialogue_narrative + dance_movement + sad_emotional types added in v2.",
+      "enum": [
+        "action", "emotional", "tribute", "shipping", "speed_amv",
+        "cinematic", "comedy", "hype_trailer",
+        "dialogue_narrative", "dance_movement", "sad_emotional"
+      ]
+    },
+    "edit_type_source": {
+      "type": "string",
+      "enum": ["explicit", "classified", "default"],
+      "description": "Where the edit_type came from."
+    },
+    "tone_vector": {
+      "type": "array",
+      "description": "8-dim emotional tone target. Order: [grief, triumph, fear, awe, tension, release, sorrow, elation]. Each 0-1.",
+      "items": {"type": "number", "minimum": 0, "maximum": 1},
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "speakers": {
+      "type": "array",
+      "description": "Named characters / speakers referenced in the prompt or implied by the source list. Used by the dialogue-narrative pipeline to seed dialogue search.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "role": {
+            "type": "string",
+            "enum": ["protagonist", "antagonist", "narrator", "supporting", "ensemble", "unknown"]
+          },
+          "fandom": {"type": "string"},
+          "evidence": {
+            "type": "string",
+            "description": "Short note on how this speaker was inferred (prompt mention / source filename / fandom roster)."
+          }
+        }
+      }
+    },
+    "auto_template": {
+      "type": "string",
+      "description": "Recommended template id (matches one of edit-types.json templates) or 'custom' if no preset matches well.",
+      "enum": [
+        "action", "emotional", "tribute", "shipping", "speed_amv",
+        "cinematic", "comedy", "hype_trailer",
+        "dialogue_narrative", "dance_movement", "sad_emotional",
+        "custom"
+      ]
+    },
+    "target_duration_sec": {
+      "type": "number",
+      "minimum": 5,
+      "description": "How long the final edit should run. Parsed from prompt ('30 seconds', 'full song', '2 minutes') or defaults to the song duration."
+    },
+    "duration_source": {
+      "type": "string",
+      "enum": ["prompt", "song", "default"],
+      "description": "Where the target duration came from."
+    },
+    "fandoms": {
+      "type": "array",
+      "description": "Fandom families involved (anime, marvel, mcu, etc.). Used for fandom-balance + per-bucket prior selection.",
+      "items": {"type": "string"}
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Overall classifier confidence. Below 0.5 → engine should ask the user to confirm."
+    },
+    "needs_user_confirmation": {
+      "type": "boolean",
+      "description": "True if confidence is low enough that the engine should pause and confirm with the user before proceeding."
+    },
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generator": {"type": "string"}
+  }
+}

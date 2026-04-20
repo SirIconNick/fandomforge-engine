@@ -445,6 +445,97 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_intent(ctx: AutopilotContext) -> AutopilotEvent:
+    """Build intent.json from the user prompt + project config + song hint.
+
+    Runs early (before ingest) so downstream stages — edit-plan, arc
+    architect, slot-fit, dialogue script — all key off a single resolved
+    edit_type, tone vector, speaker list, and target duration. Produces the
+    intent.schema.json artifact.
+    """
+    start = time.perf_counter()
+    out = ctx.project_dir / "data" / "intent.json"
+    if _artifact_exists_and_valid(ctx, "intent"):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="intent",
+            status="skipped", message="intent.json already valid",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    project_config: dict[str, Any] | None = None
+    cfg_path = ctx.project_dir / "project-config.json"
+    if cfg_path.exists():
+        try:
+            project_config = json.loads(cfg_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            project_config = None
+
+    # Song duration for default target_duration_sec
+    song_duration_sec: float | None = None
+    song_path = _find_song(ctx)
+    if song_path is not None:
+        try:
+            from fandomforge.assembly.mixer import _probe_duration
+            d = _probe_duration(song_path)
+            if d > 0:
+                song_duration_sec = float(d)
+        except Exception:  # noqa: BLE001
+            song_duration_sec = None
+
+    # Fandom roster for speaker inference
+    fandom_roster: list[dict[str, Any]] = []
+    if project_config:
+        roster = project_config.get("fandoms") or []
+        if isinstance(roster, list):
+            fandom_roster = [f if isinstance(f, dict) else {"name": str(f)} for f in roster]
+
+    # Source ids for additional speaker evidence
+    source_ids: list[str] = []
+    sc_path = ctx.project_dir / "data" / "source-catalog.json"
+    if sc_path.exists():
+        try:
+            sc = json.loads(sc_path.read_text(encoding="utf-8"))
+            for s in (sc.get("sources") or []):
+                sid = s.get("id") or s.get("source_id")
+                if sid:
+                    source_ids.append(str(sid))
+        except (json.JSONDecodeError, OSError):
+            source_ids = []
+
+    try:
+        from fandomforge.intelligence.intent_classifier import classify_intent
+        from fandomforge.validation import validate_and_write
+
+        intent = classify_intent(
+            ctx.prompt,
+            project_config=project_config,
+            song_duration_sec=song_duration_sec,
+            fandom_roster=fandom_roster,
+            source_ids=source_ids,
+        )
+        validate_and_write(intent, "intent", out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="intent",
+            status="failed",
+            message=f"intent classifier failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    msg = (
+        f"intent: {intent['edit_type']} ({intent['edit_type_source']}), "
+        f"target={intent['target_duration_sec']}s ({intent['duration_source']}), "
+        f"conf={intent['confidence']:.2f}"
+        + (" [needs-confirm]" if intent.get("needs_user_confirmation") else "")
+    )
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="intent",
+        status="ok", message=msg,
+        evidence={"path": str(out), "edit_type": intent["edit_type"]},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_zone_classify(ctx: AutopilotContext) -> AutopilotEvent:
     """Build energy-zones.json from the song + beat-map.
 
@@ -1520,6 +1611,9 @@ STEPS: list[Step] = [
     Step("copy_song", "Copy song into assets/",
          lambda ctx: ctx.song_path is None or (ctx.project_dir / "assets" / f"song{ctx.song_path.suffix}").exists(),
          step_copy_song),
+    Step("intent", "Classify intent (edit_type + tone + speakers + duration)",
+         lambda ctx: _artifact_exists_and_valid(ctx, "intent"),
+         step_intent),
     Step("ingest_sources", "Ingest source videos",
          lambda _ctx: False,  # re-runs cheaply; its own logic checks what's done
          step_ingest_sources),

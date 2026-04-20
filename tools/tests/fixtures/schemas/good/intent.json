@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "prompt_text": "Tribute to Leon Kennedy across the RE2-RE6 arc — broken to reborn",
+  "edit_type": "tribute",
+  "edit_type_source": "classified",
+  "tone_vector": [0.6, 1.0, 0.3, 0.7, 0.4, 0.5, 0.4, 0.3],
+  "speakers": [
+    {"name": "Leon Kennedy", "role": "protagonist", "fandom": "Resident Evil",
+     "evidence": "fandom_roster_match"}
+  ],
+  "auto_template": "tribute",
+  "target_duration_sec": 222.0,
+  "duration_source": "song",
+  "fandoms": ["Resident Evil"],
+  "confidence": 0.85,
+  "needs_user_confirmation": false,
+  "generated_at": "2026-04-19T22:00:00+00:00",
+  "generator": "ff intent classifier (heuristic)"
+}
