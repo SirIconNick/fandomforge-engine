@@ -72,15 +72,37 @@ Format per entry:
 
 **Symptom:** After all other fixes, final render graded D+/68. `visual` dimension landed at 0 (15+ dark segments across 229s).
 **Root cause:** My scene-picker ranks by intensity (derived from duration as a proxy when `intensity_tier` is missing) + source rotation, but NOT by `avg_luma`. Source material (John Wick 4, Raid 2) is famously dark; without a luma-based filter the picker happily grabs 4s black-frame sections.
-**Fix (this project):** NOT FIXED — the D+ is an honest reflection of picking dark source content without luma-aware filtering.
-**Permanent guard:** extend `_pick_scene` to deprioritize scenes where `avg_luma < 0.15` (below visible-threshold). Derived scenes don't carry luma; either (a) compute luma at scene-detect time in `ff ingest`, or (b) add a luma-sample probe in densify for scenes without the field. Target: dark pockets become last-choice, not default.
+**Fix:** **FIXED 2026-04-21** — six-letter plan (commits fff5c28 → 31e0d17). `MIN_SCENE_LUMA=0.22` hard filter in `_pick_scene` with brightest-dark last-resort fallback. Also added `scene_enricher` (new module) that backfills `avg_luma` and `motion_dir` on every scene at autopilot time (or via `ff scenes enrich <project>`). After fix: centuries-action dark runtime 2.24s → 0.67s. Grade visual 0 → 57. See `docs/SHOT_PICKER_LOGIC.md` for current picker behavior.
 
 ### target_duration_sec=90 but engine renders 229s (full song)
 
 **Symptom:** project-config says 90s target, engine renders 229s full song duration.
 **Root cause:** densify fills to `song_duration_sec` (from beat-map.json) without respecting `target_duration_sec`. The truncation isn't wired into the pipeline.
-**Fix (this project):** **NOT YET FIXED — tracked separately.** For this render we accepted the 229s output.
-**Permanent guard:** add `target_duration_sec` awareness to densify. Options: (a) truncate song + beat-map to target; (b) subset sync_points to fit target; (c) explicit warning when target < song_duration. Decide per-project and ship one.
+**Fix:** **FIXED 2026-04-21** (commit fff5c28). `densify_shot_list` now accepts `target_duration_sec`. Slot shots starting past target are dropped; the final kept slot shot has its duration clamped; tail fill terminates at min(song, target). `autopilot.step_densify_shot_list` reads `edit_plan.length_seconds` and passes it through. `qa.duration` now grades shot-list total against min(song, target) and reports which one in `evidence.graded_against`. Verified: centuries-action renders 90.00s exactly.
+
+### machine-gun cutting — 297 shots in 229s (74 cpm, seizure pacing)
+
+**Symptom:** Even after the above were conceptually scoped, the densifier emitted 0.425s fillers for every gap because every action act is classified 'frantic' (band 0.25-0.6s) and the picker used the band median with no upper bound.
+**Root cause:** `_filler_dur_sec` returned `(lo + hi) / 2` unconditionally. A 90s edit filled to ~141 natural cpm. Tests measured "duration correct" but the viewer experiences it as chaos.
+**Fix:** **FIXED 2026-04-21** (commit 8c11001). Shot-count budget governor in `densify_shot_list`. `_resolve_target_cpm` pulls from `edit_plan.target_cpm` → edit_type default (action=45, sad=18, tribute=25, dance=30, hype_trailer=55) → 35. Natural cpm is estimated across all gaps; stretch_factor multiplies every filler's band median to land near budget. Clamped to `[lo, hi*1.5]` so slow acts stay recognizably slower than frantic. Centuries-action cpm 78 → 42.
+
+### flash cuts — dark/bright alternation between consecutive scenes
+
+**Symptom:** After dark-scene reject, the picker still bounced between avg_luma=0.3 and avg_luma=0.8 scenes, creating visible flicker.
+**Root cause:** No shot-to-shot luma continuity. Source rotation was the only cross-shot signal.
+**Fix:** **FIXED 2026-04-21** (commit 4a928a9). `_pick_scene` accepts `prev_luma`; when multiple candidates pass the hard filters, it ranks them by `abs(cand.avg_luma - prev_luma)`. `last_picked_luma` tracked across fillers. Plus Fix F (commit b2a25a2) adds `motion_dir` continuity — opposite-axis directions (left↔right, up↔down) take a +0.3 cost in the same continuity sort. `coherence` dim went 0 → 100.
+
+### filler spilled past picked scene boundary
+
+**Symptom:** Even after dark-scene reject tightened to 0.22, some dark segments remained — picks of 2.6s duration on 1.5s scenes grabbed the scene PLUS 1.1s of whatever came after.
+**Root cause:** `_make_filler` used the caller's requested duration verbatim without bounding to the picked scene's actual length. Extraction would slide past the scene into the next one.
+**Fix:** **FIXED 2026-04-21** (commit 31e0d17). `_make_filler` caps `dur_frames` to the picked scene's duration. `_fill_gap` reads the returned filler's stored duration and advances `cursor` by that (not the requested one) so gaps stay covered by additional fillers. Centuries-action dark runtime 1.50s → 0.67s.
+
+### source-missing — bare stem doesn't resolve to `fight_<stem>` raw file
+
+**Symptom:** Roughcut emitted "filled with black (source-missing:extraction2_tyler_rake)" for 9 of 53 shots even though the file `fight_extraction2_tyler_rake.mp4` was present in `raw/`.
+**Root cause:** `_find_source_video` handled `fight_X` → `X` (for scene data that carries fight_ prefix but files don't) but not the reverse — bare stem from scene data when files DO carry the prefix.
+**Fix:** **FIXED 2026-04-21** (commit 31e0d17). Added inverse lookup: if bare stem misses, try `fight_<stem>`. All centuries-action source resolutions now succeed.
 
 ---
 
