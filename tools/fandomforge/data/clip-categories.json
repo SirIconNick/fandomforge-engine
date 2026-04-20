@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "categories": [
+    {
+      "id": "establishing",
+      "label": "Establishing",
+      "description": "Sets context — wide of a location, character intro, world snapshot. Usually slower, often the first shot of an act.",
+      "energy_zone_affinity": ["low", "breakdown"],
+      "edit_type_bias": {
+        "action": 0.7,
+        "emotional": 1.2,
+        "tribute": 1.4,
+        "cinematic": 1.5,
+        "speed_amv": 0.4,
+        "comedy": 0.8,
+        "hype_trailer": 1.3,
+        "dialogue_narrative": 1.3,
+        "dance_movement": 0.8,
+        "sad_emotional": 1.4
+      }
+    },
+    {
+      "id": "action-high",
+      "label": "Action — peak intensity",
+      "description": "Combat impact, weapon discharge, explosion, hard physical hit. Belongs on drops and in high-energy zones. Sub-second cuts work here.",
+      "energy_zone_affinity": ["high", "drop"],
+      "edit_type_bias": {
+        "action": 1.6,
+        "emotional": 0.3,
+        "tribute": 0.9,
+        "cinematic": 0.8,
+        "speed_amv": 1.5,
+        "comedy": 0.5,
+        "hype_trailer": 1.4,
+        "dialogue_narrative": 0.4,
+        "dance_movement": 1.2,
+        "sad_emotional": 0.2
+      }
+    },
+    {
+      "id": "action-mid",
+      "label": "Action — sustained motion",
+      "description": "Chase, footwork, parry-and-step, kinetic but not climactic. Pre/post drop, mid energy zones. 0.6-1.5s typical.",
+      "energy_zone_affinity": ["mid", "buildup", "high"],
+      "edit_type_bias": {
+        "action": 1.4,
+        "emotional": 0.5,
+        "tribute": 1.0,
+        "cinematic": 1.0,
+        "speed_amv": 1.3,
+        "comedy": 0.7,
+        "hype_trailer": 1.3,
+        "dialogue_narrative": 0.6,
+        "dance_movement": 1.5,
+        "sad_emotional": 0.4
+      }
+    },
+    {
+      "id": "reaction-quiet",
+      "label": "Reaction — quiet",
+      "description": "Character reacts subtly — eye-flick, half-smile, gaze. Low motion. Belongs in instrumental valleys and after drops.",
+      "energy_zone_affinity": ["low", "mid", "breakdown"],
+      "edit_type_bias": {
+        "action": 0.6,
+        "emotional": 1.4,
+        "tribute": 1.5,
+        "cinematic": 1.4,
+        "speed_amv": 0.5,
+        "comedy": 1.2,
+        "hype_trailer": 0.7,
+        "dialogue_narrative": 1.4,
+        "dance_movement": 0.4,
+        "sad_emotional": 1.6
+      }
+    },
+    {
+      "id": "reaction-emotional",
+      "label": "Reaction — overt emotion",
+      "description": "Tears, scream, breaking, laughing, raw recognition. Carries emotional payload directly. Pairs with emotional swells in the song.",
+      "energy_zone_affinity": ["mid", "high", "drop"],
+      "edit_type_bias": {
+        "action": 0.4,
+        "emotional": 1.7,
+        "tribute": 1.6,
+        "cinematic": 1.3,
+        "speed_amv": 0.5,
+        "comedy": 1.3,
+        "hype_trailer": 0.8,
+        "dialogue_narrative": 1.2,
+        "dance_movement": 0.4,
+        "sad_emotional": 1.8
+      }
+    },
+    {
+      "id": "dialogue-primary",
+      "label": "Dialogue — character speaking",
+      "description": "Character is delivering an active line on-screen, mouth visible. Goes in DIALOGUE_SAFE windows. Lip-sync plausibility scored separately.",
+      "energy_zone_affinity": ["low", "breakdown"],
+      "edit_type_bias": {
+        "action": 0.4,
+        "emotional": 1.0,
+        "tribute": 0.8,
+        "cinematic": 1.4,
+        "speed_amv": 0.2,
+        "comedy": 1.4,
+        "hype_trailer": 1.1,
+        "dialogue_narrative": 1.9,
+        "dance_movement": 0.1,
+        "sad_emotional": 0.9
+      }
+    },
+    {
+      "id": "dialogue-reaction",
+      "label": "Dialogue — listener / reaction shot",
+      "description": "Character listening to dialogue (theirs or another's). No active mouth movement. Useful for cutaways during long lines.",
+      "energy_zone_affinity": ["low", "mid", "breakdown"],
+      "edit_type_bias": {
+        "action": 0.4,
+        "emotional": 1.2,
+        "tribute": 1.0,
+        "cinematic": 1.3,
+        "speed_amv": 0.2,
+        "comedy": 1.5,
+        "hype_trailer": 0.8,
+        "dialogue_narrative": 1.7,
+        "dance_movement": 0.1,
+        "sad_emotional": 1.1
+      }
+    },
+    {
+      "id": "transitional",
+      "label": "Transitional — cover the cut",
+      "description": "Whip pan, light leak, motion blur, match-cut hinge. Doesn't carry meaning on its own; bridges two scenes.",
+      "energy_zone_affinity": ["mid", "buildup", "high"],
+      "edit_type_bias": {
+        "action": 1.1,
+        "emotional": 0.8,
+        "tribute": 0.9,
+        "cinematic": 0.9,
+        "speed_amv": 1.4,
+        "comedy": 1.0,
+        "hype_trailer": 1.3,
+        "dialogue_narrative": 0.7,
+        "dance_movement": 1.2,
+        "sad_emotional": 0.7
+      }
+    },
+    {
+      "id": "climactic",
+      "label": "Climactic — peak narrative moment",
+      "description": "The defining shot — hero turn, recognition, decisive blow, last embrace. Only ONE per act usually. Hold longer than its duration suggests.",
+      "energy_zone_affinity": ["drop", "high"],
+      "edit_type_bias": {
+        "action": 1.5,
+        "emotional": 1.6,
+        "tribute": 1.7,
+        "cinematic": 1.6,
+        "speed_amv": 1.2,
+        "comedy": 1.3,
+        "hype_trailer": 1.6,
+        "dialogue_narrative": 1.4,
+        "dance_movement": 1.3,
+        "sad_emotional": 1.7
+      }
+    },
+    {
+      "id": "resolution",
+      "label": "Resolution — release / aftermath",
+      "description": "Comes down from the climax. Walking away, embrace held, fade-out, post-fight breath. Belongs in breakdowns and final acts.",
+      "energy_zone_affinity": ["low", "mid", "breakdown"],
+      "edit_type_bias": {
+        "action": 0.9,
+        "emotional": 1.4,
+        "tribute": 1.5,
+        "cinematic": 1.3,
+        "speed_amv": 0.7,
+        "comedy": 0.9,
+        "hype_trailer": 1.0,
+        "dialogue_narrative": 1.2,
+        "dance_movement": 0.9,
+        "sad_emotional": 1.5
+      }
+    },
+    {
+      "id": "texture",
+      "label": "Texture — b-roll / pattern",
+      "description": "Insert shot with no specific narrative weight — flickering lights, hands, environmental detail. Used to create rhythm or buy editorial breath. Cheap to drop or extend.",
+      "energy_zone_affinity": ["low", "mid"],
+      "edit_type_bias": {
+        "action": 0.7,
+        "emotional": 1.1,
+        "tribute": 1.2,
+        "cinematic": 1.4,
+        "speed_amv": 1.1,
+        "comedy": 0.9,
+        "hype_trailer": 1.0,
+        "dialogue_narrative": 1.0,
+        "dance_movement": 0.8,
+        "sad_emotional": 1.3
+      }
+    }
+  ]
+}

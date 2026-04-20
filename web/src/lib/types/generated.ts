@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:17:30.087Z
+// Generated at: 2026-04-20T03:24:05.410Z
 
 
 export type Layer = {
@@ -111,6 +111,33 @@ export interface Catalog {
     version: 1;
     updated_at: string;
     clips: Array<Clip>;
+  }
+
+/** Formal taxonomy of clip categories, shared across the engine. Locked here so multiple modules (energy-zone mapping, slot-fit scoring, type-specific weighting, QA rules) all key off the same vocabulary instead of inventing their own. Reference this schema's enum from any module that classifies a shot's purpose. */
+export interface ClipCategory {
+    schema_version: 1;
+    /** The full enumerated taxonomy. Order is the canonical ordering for documentation and UI surfaces. */
+    categories: Array<{
+    id: "establishing" | "action-high" | "action-mid" | "reaction-quiet" | "reaction-emotional" | "dialogue-primary" | "dialogue-reaction" | "transitional" | "climactic" | "resolution" | "texture";
+    label: string;
+    description: string;
+    /** Which energy zones this category fits naturally. From energy-zones.schema.json zone labels. */
+    energy_zone_affinity: Array<"low" | "mid" | "high" | "drop" | "buildup" | "breakdown">;
+    /** Per edit-type weight multiplier (1.0 = neutral). Slot-fit scorer multiplies a candidate's category-fit score by this for the active edit type. */
+    edit_type_bias?: {
+    action?: number;
+    emotional?: number;
+    tribute?: number;
+    shipping?: number;
+    speed_amv?: number;
+    cinematic?: number;
+    comedy?: number;
+    hype_trailer?: number;
+    dialogue_narrative?: number;
+    dance_movement?: number;
+    sad_emotional?: number;
+  };
+  }>;
   }
 
 /** One node in a DaVinci-style color tree. Floats are in their natural ranges (exposure in stops, saturation 0..2, etc). */
@@ -928,6 +955,7 @@ export interface ArtifactSchemaMap {
   "audio-plan": AudioPlan;
   "beat-map": BeatMap;
   "catalog": Catalog;
+  "clip-category": ClipCategory;
   "color-plan": ColorPlan;
   "complement-plan": ComplementPlan;
   "dialogue-placement-plan": DialoguePlacementPlan;
@@ -954,4 +982,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "categories": [
+    {
+      "id": "made-up-category",
+      "label": "",
+      "energy_zone_affinity": []
+    }
+  ]
+}

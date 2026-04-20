@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "categories": [
+    {
+      "id": "establishing",
+      "label": "Establishing",
+      "description": "Sets context — wide of a location.",
+      "energy_zone_affinity": ["low", "breakdown"],
+      "edit_type_bias": {"action": 0.7, "tribute": 1.4}
+    },
+    {
+      "id": "action-high",
+      "label": "Action — peak intensity",
+      "description": "Combat impact, weapon discharge.",
+      "energy_zone_affinity": ["high", "drop"]
+    }
+  ]
+}

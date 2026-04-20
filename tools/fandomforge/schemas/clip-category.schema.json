@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/clip-category.schema.json",
+  "title": "ClipCategory",
+  "description": "Formal taxonomy of clip categories, shared across the engine. Locked here so multiple modules (energy-zone mapping, slot-fit scoring, type-specific weighting, QA rules) all key off the same vocabulary instead of inventing their own. Reference this schema's enum from any module that classifies a shot's purpose.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "categories"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "categories": {
+      "type": "array",
+      "description": "The full enumerated taxonomy. Order is the canonical ordering for documentation and UI surfaces.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "description", "energy_zone_affinity"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "establishing",
+              "action-high",
+              "action-mid",
+              "reaction-quiet",
+              "reaction-emotional",
+              "dialogue-primary",
+              "dialogue-reaction",
+              "transitional",
+              "climactic",
+              "resolution",
+              "texture"
+            ]
+          },
+          "label": {"type": "string", "minLength": 1},
+          "description": {"type": "string", "minLength": 1},
+          "energy_zone_affinity": {
+            "type": "array",
+            "description": "Which energy zones this category fits naturally. From energy-zones.schema.json zone labels.",
+            "items": {
+              "type": "string",
+              "enum": ["low", "mid", "high", "drop", "buildup", "breakdown"]
+            },
+            "minItems": 1
+          },
+          "edit_type_bias": {
+            "type": "object",
+            "description": "Per edit-type weight multiplier (1.0 = neutral). Slot-fit scorer multiplies a candidate's category-fit score by this for the active edit type.",
+            "additionalProperties": false,
+            "properties": {
+              "action": {"type": "number", "minimum": 0},
+              "emotional": {"type": "number", "minimum": 0},
+              "tribute": {"type": "number", "minimum": 0},
+              "shipping": {"type": "number", "minimum": 0},
+              "speed_amv": {"type": "number", "minimum": 0},
+              "cinematic": {"type": "number", "minimum": 0},
+              "comedy": {"type": "number", "minimum": 0},
+              "hype_trailer": {"type": "number", "minimum": 0},
+              "dialogue_narrative": {"type": "number", "minimum": 0},
+              "dance_movement": {"type": "number", "minimum": 0},
+              "sad_emotional": {"type": "number", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}
