@@ -5495,5 +5495,170 @@ def reference_rebuild_priors_cmd(refs_root_str: str | None) -> None:
         console.print(f"  [yellow]skipped[/yellow] {s}")
 
 
+# ---------------------------------------------------------------------------
+# orchestrator — autonomous thermal-gated queue runner
+# ---------------------------------------------------------------------------
+
+
+@main.group("orchestrator")
+def orchestrator_grp() -> None:
+    """Autonomous background daemon that drives outstanding engine work
+    (whisper batches, fresh renders, content discovery) under thermal
+    supervision. Runs queued tasks when the machine is cool, backs off
+    when it's hot, resumes automatically."""
+
+
+@orchestrator_grp.command("run")
+@click.option("--queue", "queue_path", type=click.Path(),
+              default=None, help="Override queue JSON path.")
+@click.option("--log", "log_path", type=click.Path(),
+              default="/tmp/claude/ff-ingest/orchestrator.log",
+              help="Where to write the daemon log.")
+def orchestrator_run_cmd(queue_path: str | None, log_path: str) -> None:
+    """Block and run the daemon loop. Launchd entry point."""
+    from fandomforge.orchestrator.runner import (
+        OrchestratorRunner, configure_logging,
+    )
+    configure_logging(Path(log_path) if log_path else None)
+    runner = OrchestratorRunner(
+        queue_path=Path(queue_path) if queue_path else None,
+    )
+    runner.run()
+
+
+@orchestrator_grp.command("status")
+@click.option("--queue", "queue_path", type=click.Path(), default=None)
+def orchestrator_status_cmd(queue_path: str | None) -> None:
+    """Print a queue summary: pending / running / done / failed counts
+    plus the next 10 pending tasks."""
+    from fandomforge.orchestrator.queue import Queue
+    q = Queue(Path(queue_path) if queue_path else None)
+    summary = q.summary()
+    console.print(f"[bold]Queue[/bold] ({q.path})")
+    for k, v in summary.items():
+        console.print(f"  {k:<8s} {v}")
+    pending = [t for t in q.tasks if t.status == "pending"]
+    if pending:
+        console.print("\n[bold]Next 10 pending:[/bold]")
+        for t in pending[:10]:
+            blk = f" [blocked_by {','.join(t.blocked_by)}]" if t.blocked_by else ""
+            console.print(f"  {t.id:<40s} {t.type:<28s}{blk}")
+    failed = [t for t in q.tasks if t.status == "failed"]
+    if failed:
+        console.print("\n[bold red]Failed:[/bold red]")
+        for t in failed[:5]:
+            console.print(f"  {t.id}: {(t.last_error or '')[:100]}")
+
+
+@orchestrator_grp.command("add")
+@click.option("--type", "task_type", required=True, help="Handler type.")
+@click.option("--id", "task_id", required=True, help="Unique task id.")
+@click.option("--params", "params_json", default="{}",
+              help="JSON object of task params.")
+@click.option("--blocked-by", "blocked_by", default="",
+              help="Comma-separated task ids that must finish first.")
+@click.option("--queue", "queue_path", type=click.Path(), default=None)
+def orchestrator_add_cmd(
+    task_type: str, task_id: str, params_json: str,
+    blocked_by: str, queue_path: str | None,
+) -> None:
+    """Append a task to the queue."""
+    from fandomforge.orchestrator.queue import Queue, Task
+    q = Queue(Path(queue_path) if queue_path else None)
+    try:
+        params = json.loads(params_json)
+    except json.JSONDecodeError as exc:
+        console.print(f"[red]invalid --params JSON:[/red] {exc}")
+        sys.exit(1)
+    blk = [b.strip() for b in blocked_by.split(",") if b.strip()]
+    q.add(Task(id=task_id, type=task_type, params=params, blocked_by=blk))
+    console.print(f"[green]added[/green] task={task_id} type={task_type}")
+
+
+@orchestrator_grp.command("clear")
+@click.option("--queue", "queue_path", type=click.Path(), default=None)
+def orchestrator_clear_cmd(queue_path: str | None) -> None:
+    """Drop all pending tasks. Keeps done/failed for audit."""
+    from fandomforge.orchestrator.queue import Queue
+    q = Queue(Path(queue_path) if queue_path else None)
+    n = q.clear_pending()
+    console.print(f"[yellow]removed[/yellow] {n} pending task(s)")
+
+
+@orchestrator_grp.command("seed")
+@click.option("--queue", "queue_path", type=click.Path(), default=None)
+def orchestrator_seed_cmd(queue_path: str | None) -> None:
+    """Seed the queue with the 23 standing outstanding tasks (whisper tags,
+    render verify, rescue search, code upgrades, dialogue scaffold)."""
+    from fandomforge.orchestrator.queue import Queue, Task
+    q = Queue(Path(queue_path) if queue_path else None)
+    whisper_tags = [
+        "action-pl1", "action-pl2", "action-pl3", "action-pl4",
+        "action-pl5", "action-pl6",
+        "sad-pl1",
+        "tribute-pl1", "tribute-pl2", "tribute-pl3", "tribute-pl4",
+        "tribute-pl5", "tribute-pl6", "tribute-pl7", "tribute-pl8",
+        "tribute-pl9",
+        "hype-pl1",
+    ]
+    tasks: list[Task] = []
+    for tag in whisper_tags:
+        tasks.append(Task(id=f"whisper-{tag}", type="whisper_tag",
+                          params={"tag": tag}))
+    tasks.append(Task(
+        id="render-verify-baseline",
+        type="render_verify",
+        params={
+            "source_project": "action-legends",
+            "target_slug": "action-legends.orch-baseline",
+            "song_filename": "the-search.mp3",
+            "prompt": "Action legends rising through chaos — "
+                      "one-man-army heroes, bullet choreography, "
+                      "hand-to-hand carnage. Hard cuts on every drop. 60 seconds.",
+        },
+    ))
+    tasks.append(Task(
+        id="rescue-missing-playlist",
+        type="rescue_playlist_search",
+        params={"playlist_id": "PL6z3IIDqsIEysAax78R8Cn3ET3geUOkh4"},
+    ))
+    tasks.append(Task(id="code-emotional-bias", type="emotional_register_bias"))
+    tasks.append(Task(id="code-motion-continuity", type="motion_continuity"))
+    tasks.append(Task(
+        id="dialogue-scaffold-smoke",
+        type="dialogue_test_scaffold",
+        params={"target_slug": "dialogue-smoke"},
+    ))
+    tasks.append(Task(
+        id="render-verify-post-upgrades",
+        type="render_verify",
+        params={
+            "source_project": "action-legends",
+            "target_slug": "action-legends.orch-post-upgrades",
+            "song_filename": "the-search.mp3",
+            "prompt": "Action legends rising through chaos. 60 seconds.",
+        },
+        blocked_by=["code-emotional-bias", "code-motion-continuity",
+                    "render-verify-baseline"],
+    ))
+    q.extend(tasks)
+    console.print(f"[green]seeded[/green] {len(tasks)} tasks (dedup'd to "
+                  f"{len(q.tasks)} total)")
+
+
+@orchestrator_grp.command("tail")
+@click.option("--log", "log_path", type=click.Path(),
+              default="/tmp/claude/ff-ingest/orchestrator.log")
+def orchestrator_tail_cmd(log_path: str) -> None:
+    """Print the last 50 lines of the orchestrator log."""
+    p = Path(log_path)
+    if not p.exists():
+        console.print(f"[yellow]no log yet at {p}[/yellow]")
+        return
+    lines = p.read_text(encoding="utf-8", errors="replace").splitlines()
+    for line in lines[-50:]:
+        console.print(line)
+
+
 if __name__ == "__main__":
     main()

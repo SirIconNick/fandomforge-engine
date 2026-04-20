@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-04-20T20:36:48.005043+00:00",
+  "tasks": [
+    {
+      "id": "whisper-action-pl1",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl1"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005003+00:00"
+    },
+    {
+      "id": "whisper-action-pl2",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl2"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005013+00:00"
+    },
+    {
+      "id": "whisper-action-pl3",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl3"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005016+00:00"
+    },
+    {
+      "id": "whisper-action-pl4",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl4"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005017+00:00"
+    },
+    {
+      "id": "whisper-action-pl5",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl5"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005018+00:00"
+    },
+    {
+      "id": "whisper-action-pl6",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "action-pl6"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005020+00:00"
+    },
+    {
+      "id": "whisper-sad-pl1",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "sad-pl1"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005021+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl1",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl1"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005022+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl2",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl2"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005023+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl3",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl3"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005024+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl4",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl4"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005025+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl5",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl5"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005026+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl6",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl6"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005027+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl7",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl7"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005028+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl8",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl8"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005029+00:00"
+    },
+    {
+      "id": "whisper-tribute-pl9",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "tribute-pl9"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005030+00:00"
+    },
+    {
+      "id": "whisper-hype-pl1",
+      "type": "whisper_tag",
+      "params": {
+        "tag": "hype-pl1"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005031+00:00"
+    },
+    {
+      "id": "render-verify-baseline",
+      "type": "render_verify",
+      "params": {
+        "source_project": "action-legends",
+        "target_slug": "action-legends.orch-baseline",
+        "song_filename": "the-search.mp3",
+        "prompt": "Action legends rising through chaos \u2014 one-man-army heroes, bullet choreography, hand-to-hand carnage. Hard cuts on every drop. 60 seconds."
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005032+00:00"
+    },
+    {
+      "id": "rescue-missing-playlist",
+      "type": "rescue_playlist_search",
+      "params": {
+        "playlist_id": "PL6z3IIDqsIEysAax78R8Cn3ET3geUOkh4"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005034+00:00"
+    },
+    {
+      "id": "code-emotional-bias",
+      "type": "emotional_register_bias",
+      "params": {},
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005035+00:00"
+    },
+    {
+      "id": "code-motion-continuity",
+      "type": "motion_continuity",
+      "params": {},
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005036+00:00"
+    },
+    {
+      "id": "dialogue-scaffold-smoke",
+      "type": "dialogue_test_scaffold",
+      "params": {
+        "target_slug": "dialogue-smoke"
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005037+00:00"
+    },
+    {
+      "id": "render-verify-post-upgrades",
+      "type": "render_verify",
+      "params": {
+        "source_project": "action-legends",
+        "target_slug": "action-legends.orch-post-upgrades",
+        "song_filename": "the-search.mp3",
+        "prompt": "Action legends rising through chaos. 60 seconds."
+      },
+      "status": "pending",
+      "retries": 0,
+      "max_retries": 3,
+      "thermal_kills": 0,
+      "blocked_by": [
+        "code-emotional-bias",
+        "code-motion-continuity",
+        "render-verify-baseline"
+      ],
+      "last_run_at": null,
+      "last_error": null,
+      "added_at": "2026-04-20T20:36:48.005038+00:00"
+    }
+  ]
+}
