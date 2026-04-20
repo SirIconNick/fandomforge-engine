@@ -4,7 +4,9 @@
 
 ## TL;DR
 
-Two-day megasession landed Phase 0.5.2 + Phase 0.5.3 (corpus expansion + per-bucket priors), Phase 3.3 (color_grade_confidence stamping), Phase 4.10 (applies_to QA routing), AND the dense-fill shot-pass that was called out as the single biggest architectural gap. **Fresh autopilot now renders end-to-end for the first time** — clone test produced roughcut.mp4 + graded.mp4 + fcpxml. Action-legends baseline preserved at B/85.7 throughout. 790 pytest, 0 regressions.
+Three-day megasession landed Phase 0.5.2 + Phase 0.5.3 (corpus expansion + per-bucket priors), Phase 3.3 (color_grade_confidence stamping), Phase 4.10 (applies_to QA routing, 6 rules decorated), dense-fill shot-pass, **scene-match filler selection**, **editorial propose_shots**, **arc_shape rubric recalibration**, **platform target hard-override**, and **Phase 6 dialogue autopilot wiring**. 
+
+**action-legends now grades A-/91.3** under the updated rubric (was B/85.7 — rubric honesty fix, no content change). Fresh-autopilot quality lift verified analytically: 278 distinct filler timecodes (was 1), 4-way source rotation, 100% action-family clip_category. Full re-render deferred due to thermal budget. 792 pytest, 0 regressions.
 
 ## State snapshot
 
