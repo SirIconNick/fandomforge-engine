@@ -222,6 +222,12 @@
             "score_strip": {"type": "boolean"},
             "voice_carry": {"type": "boolean"}
           }
+        },
+        "color_grade_confidence": {
+          "description": "Phase 3.3 — 0.0-1.0 estimate of how well the auto-grade will bring this shot into the target palette. Stamped by step_stamp_color_grade_confidence from the source's quality_tier + color_cast. qa.color_grade_confidence warns when any shot falls below 0.6.",
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0
         }
       }
     }

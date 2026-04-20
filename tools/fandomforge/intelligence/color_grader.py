@@ -230,6 +230,10 @@ class ShotColorNote:
         lut_path: Absolute path to the .cube LUT for this shot.
         intensity: Blend intensity to use when applying the LUT.
         era: Leon era tag if applicable.
+        confidence: Phase 3.3 — 0.0-1.0 estimate of how well the auto-grade
+            will bring this shot into the target palette. Low values flag the
+            shot for manual Resolve pass. Default 1.0 means the grader has
+            nothing negative to report.
     """
 
     cut_index: int
@@ -237,6 +241,56 @@ class ShotColorNote:
     lut_path: str
     intensity: float
     era: str | None
+    confidence: float = 1.0
+
+
+# Phase 3.3 — per-tier base confidence used when stamping shots. D-tier lands
+# below the QA floor (0.6) because crushed/blurry/low-res sources basically
+# always need a manual Resolve pass. The QA rule keys off this exact floor.
+_TIER_CONFIDENCE: dict[str, float] = {
+    "S": 1.00,
+    "A": 0.90,
+    "B": 0.78,
+    "C": 0.65,
+    "D": 0.45,
+    "UNKNOWN": 0.70,
+}
+
+
+def compute_shot_confidence(source_profile: dict[str, Any] | None) -> float:
+    """Phase 3.3 — estimate how confident the auto-grader is on this shot.
+
+    Uses the source's quality_tier as the base signal, with small penalties
+    for extreme color casts (which a single LUT pass can only partially
+    correct). Returns a clamped 0.0-1.0 value stamped into shot-list.json
+    and read by qa.color_grade_confidence.
+
+    Contract: no source_profile → 0.70 (mid-confidence, no data to judge).
+    """
+    if not source_profile:
+        return _TIER_CONFIDENCE["UNKNOWN"]
+
+    tier = str(source_profile.get("quality_tier") or "UNKNOWN").upper()
+    base = _TIER_CONFIDENCE.get(tier, _TIER_CONFIDENCE["UNKNOWN"])
+
+    # Color-cast penalty. An extreme cast (strong warm or strong cool tint)
+    # makes palette matching harder; a mild cast barely moves the needle.
+    cast = source_profile.get("color_cast") or {}
+    if isinstance(cast, dict):
+        severity = str(cast.get("severity") or "").lower()
+        if severity == "extreme":
+            base -= 0.15
+        elif severity == "strong":
+            base -= 0.08
+
+    # Saturation penalty. Way-too-hot or way-too-flat sources both resist
+    # the teal-orange pull.
+    sat = source_profile.get("saturation_avg")
+    if isinstance(sat, (int, float)):
+        if sat > 200 or sat < 40:
+            base -= 0.10
+
+    return max(0.0, min(1.0, base))
 
 
 @dataclass

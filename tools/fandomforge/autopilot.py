@@ -609,6 +609,78 @@ def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_stamp_color_grade_confidence(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 3.3 — stamp `color_grade_confidence` into every shot of
+    shot-list.json from the source's quality_tier + color_cast. The
+    `qa.color_grade_confidence` rule reads this field to warn on shots
+    that will likely need a manual Resolve pass."""
+    start = time.perf_counter()
+    shot_list_path = ctx.project_dir / "data" / "shot-list.json"
+    profiles_dir = ctx.project_dir / "data" / "source-profiles"
+    if not shot_list_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="stamp_color_grade_confidence",
+            status="skipped",
+            message="no shot-list.json — nothing to stamp",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.color_grader import compute_shot_confidence
+        from fandomforge.validation import validate_and_write
+
+        shot_list = json.loads(shot_list_path.read_text(encoding="utf-8"))
+
+        # Cache the per-source profile reads so a 217-shot list doesn't hit
+        # disk 217 times.
+        profile_cache: dict[str, dict[str, Any] | None] = {}
+
+        def _profile_for(source_id: str) -> dict[str, Any] | None:
+            if source_id in profile_cache:
+                return profile_cache[source_id]
+            path = profiles_dir / f"{source_id}.json"
+            data: dict[str, Any] | None = None
+            if path.exists():
+                try:
+                    data = json.loads(path.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    data = None
+            profile_cache[source_id] = data
+            return data
+
+        stamped = 0
+        low_count = 0
+        for shot in shot_list.get("shots") or []:
+            source_id = shot.get("source_id")
+            profile = _profile_for(source_id) if source_id else None
+            confidence = compute_shot_confidence(profile)
+            shot["color_grade_confidence"] = round(confidence, 3)
+            stamped += 1
+            if confidence < 0.6:
+                low_count += 1
+
+        validate_and_write(shot_list, "shot-list", shot_list_path)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="stamp_color_grade_confidence",
+            status="failed",
+            message=f"stamp failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="stamp_color_grade_confidence",
+        status="ok",
+        message=(
+            f"stamped color_grade_confidence on {stamped} shot(s); "
+            f"{low_count} below 0.6 floor (manual Resolve pass recommended)"
+            if stamped else "no shots in list — nothing stamped"
+        ),
+        evidence={"stamped": stamped, "low_confidence_count": low_count},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
     """Build a source-profile.json per ingested source.
 
@@ -2020,6 +2092,11 @@ STEPS: list[Step] = [
     Step("extract_clip_metadata", "Enrich shot-list with Phase 1.3 metadata",
          lambda _ctx: False,  # always re-run; cheap + idempotent (only fills missing fields)
          step_extract_clip_metadata),
+    Step("stamp_color_grade_confidence",
+         "Stamp per-shot color_grade_confidence (Phase 3.3)",
+         # Always re-run — cheap, idempotent, stamps from source-profiles.
+         lambda _ctx: False,
+         step_stamp_color_grade_confidence),
     Step("aspect_normalize", "Plan per-clip aspect-ratio normalization",
          lambda _ctx: False,  # cheap; re-runs whenever shot list changes
          step_aspect_normalize),
