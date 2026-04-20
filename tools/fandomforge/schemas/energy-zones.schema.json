@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/energy-zones.schema.json",
+  "title": "EnergyZones",
+  "description": "Per-time energy classification of a song. Splits the track into labeled structural zones (low/mid/high/drop/buildup/breakdown), provides per-band (bass/mid/treble) energy at fixed resolution, and types each detected onset as percussive vs sustained. Foundation for pacing logic and dialogue-window detection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "duration_sec", "sample_rate_hz", "resolution_sec", "zones", "bands", "transients"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "duration_sec": {"type": "number", "minimum": 0},
+    "sample_rate_hz": {"type": "integer", "minimum": 1},
+    "resolution_sec": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Time resolution of the bands array and zone boundary precision. 0.25s default = 4 samples/sec."
+    },
+    "zones": {
+      "type": "array",
+      "description": "Contiguous regions of similar energy character. Sorted by start_sec.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start_sec", "end_sec", "label", "confidence", "avg_energy"],
+        "properties": {
+          "start_sec": {"type": "number", "minimum": 0},
+          "end_sec": {"type": "number", "minimum": 0},
+          "label": {
+            "type": "string",
+            "enum": ["low", "mid", "high", "drop", "buildup", "breakdown"]
+          },
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "avg_energy": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "bands": {
+      "type": "array",
+      "description": "Per-band normalized energy at fixed time resolution. Each band is normalized to its own peak so cross-band comparisons reflect relative dominance, not absolute loudness.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["time_sec", "bass", "mid", "treble"],
+        "properties": {
+          "time_sec": {"type": "number", "minimum": 0},
+          "bass": {"type": "number", "minimum": 0, "maximum": 1.5},
+          "mid": {"type": "number", "minimum": 0, "maximum": 1.5},
+          "treble": {"type": "number", "minimum": 0, "maximum": 1.5}
+        }
+      }
+    },
+    "transients": {
+      "type": "array",
+      "description": "Detected onsets with type label. Percussive onsets are sharp transients suitable for cuts; sustained onsets are tonal swells where cutting feels off-beat.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["time_sec", "amplitude", "kind", "flatness"],
+        "properties": {
+          "time_sec": {"type": "number", "minimum": 0},
+          "amplitude": {"type": "number", "minimum": 0, "maximum": 1.5},
+          "kind": {
+            "type": "string",
+            "enum": ["percussive", "sustained"]
+          },
+          "flatness": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "generator": {"type": "string"}
+  }
+}

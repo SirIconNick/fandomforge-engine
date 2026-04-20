@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "duration_sec": 8.0,
+  "sample_rate_hz": 22050,
+  "resolution_sec": 0.25,
+  "zones": [
+    {
+      "start_sec": 0.0,
+      "end_sec": 4.0,
+      "label": "low",
+      "confidence": 0.85,
+      "avg_energy": 0.12
+    },
+    {
+      "start_sec": 4.0,
+      "end_sec": 5.5,
+      "label": "buildup",
+      "confidence": 0.8,
+      "avg_energy": 0.5
+    },
+    {
+      "start_sec": 5.5,
+      "end_sec": 6.0,
+      "label": "drop",
+      "confidence": 0.9,
+      "avg_energy": 0.95
+    },
+    {
+      "start_sec": 6.0,
+      "end_sec": 8.0,
+      "label": "high",
+      "confidence": 0.8,
+      "avg_energy": 0.78
+    }
+  ],
+  "bands": [
+    {"time_sec": 0.0, "bass": 0.05, "mid": 0.1, "treble": 0.02},
+    {"time_sec": 0.25, "bass": 0.1, "mid": 0.15, "treble": 0.05},
+    {"time_sec": 4.0, "bass": 0.6, "mid": 0.5, "treble": 0.3},
+    {"time_sec": 5.5, "bass": 1.0, "mid": 0.9, "treble": 0.7},
+    {"time_sec": 6.0, "bass": 0.8, "mid": 0.85, "treble": 1.0}
+  ],
+  "transients": [
+    {"time_sec": 5.5, "amplitude": 1.0, "kind": "percussive", "flatness": 0.15},
+    {"time_sec": 6.0, "amplitude": 0.85, "kind": "percussive", "flatness": 0.2},
+    {"time_sec": 6.5, "amplitude": 0.6, "kind": "sustained", "flatness": 0.55}
+  ],
+  "generator": "ff energy zones"
+}

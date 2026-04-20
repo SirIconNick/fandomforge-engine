@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T02:30:48.656Z
+// Generated at: 2026-04-20T03:12:25.365Z
 
 
 export type Layer = {
@@ -311,6 +311,38 @@ export interface EmotionArc {
     samples: Array<Sample>;
     method?: "heuristic_v1" | "clip_prompts_v1" | "transcript_sentiment_v1" | "mixed_v1";
     generated_at?: string;
+    generator?: string;
+  }
+
+/** Per-time energy classification of a song. Splits the track into labeled structural zones (low/mid/high/drop/buildup/breakdown), provides per-band (bass/mid/treble) energy at fixed resolution, and types each detected onset as percussive vs sustained. Foundation for pacing logic and dialogue-window detection. */
+export interface EnergyZones {
+    schema_version: 1;
+    duration_sec: number;
+    sample_rate_hz: number;
+    /** Time resolution of the bands array and zone boundary precision. 0.25s default = 4 samples/sec. */
+    resolution_sec: number;
+    /** Contiguous regions of similar energy character. Sorted by start_sec. */
+    zones: Array<{
+    start_sec: number;
+    end_sec: number;
+    label: "low" | "mid" | "high" | "drop" | "buildup" | "breakdown";
+    confidence: number;
+    avg_energy: number;
+  }>;
+    /** Per-band normalized energy at fixed time resolution. Each band is normalized to its own peak so cross-band comparisons reflect relative dominance, not absolute loudness. */
+    bands: Array<{
+    time_sec: number;
+    bass: number;
+    mid: number;
+    treble: number;
+  }>;
+    /** Detected onsets with type label. Percussive onsets are sharp transients suitable for cuts; sustained onsets are tonal swells where cutting feels off-beat. */
+    transients: Array<{
+    time_sec: number;
+    amplitude: number;
+    kind: "percussive" | "sustained";
+    flatness: number;
+  }>;
     generator?: string;
   }
 
@@ -858,6 +890,7 @@ export interface ArtifactSchemaMap {
   "complement-plan": ComplementPlan;
   "edit-plan": EditPlan;
   "emotion-arc": EmotionArc;
+  "energy-zones": EnergyZones;
   "fandoms": Fandoms;
   "post-render-review": PostRenderReview;
   "project-config": ProjectConfig;
@@ -877,4 +910,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "color-plan", "complement-plan", "edit-plan", "emotion-arc", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "color-plan", "complement-plan", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

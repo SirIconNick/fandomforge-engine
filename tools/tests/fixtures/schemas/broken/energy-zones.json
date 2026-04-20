@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "duration_sec": 5.0,
+  "sample_rate_hz": 22050,
+  "resolution_sec": 0.25,
+  "zones": [
+    {
+      "start_sec": 0.0,
+      "end_sec": 5.0,
+      "label": "extra-loud-mode",
+      "confidence": 1.5,
+      "avg_energy": 0.5
+    }
+  ],
+  "bands": [],
+  "transients": []
+}

@@ -445,6 +445,75 @@ def step_beat_analyze(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_zone_classify(ctx: AutopilotContext) -> AutopilotEvent:
+    """Build energy-zones.json from the song + beat-map.
+
+    Produces per-250ms band energies, zone labels (low/mid/high/drop/buildup/
+    breakdown), and percussive vs sustained transient classification.
+    Foundation for downstream pacing + dialogue-window placement.
+    """
+    start = time.perf_counter()
+    out = ctx.project_dir / "data" / "energy-zones.json"
+    if _artifact_exists_and_valid(ctx, "energy-zones"):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="zone_classify",
+            status="skipped", message="energy-zones.json already valid",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    song = _find_song(ctx)
+    if not song:
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="zone_classify",
+            status="failed", message="no song found in assets/",
+        )
+    beat_map_path = ctx.project_dir / "data" / "beat-map.json"
+    beat_map = None
+    if beat_map_path.exists():
+        try:
+            beat_map = json.loads(beat_map_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            beat_map = None
+
+    try:
+        from fandomforge.audio.energy_zones import (
+            analyze_energy_zones,
+            write_energy_zones,
+        )
+        from fandomforge.validation import validate_and_write
+
+        result = analyze_energy_zones(song, resolution_sec=0.25, beat_map=beat_map)
+        payload = {
+            "schema_version": result.schema_version,
+            "duration_sec": result.duration_sec,
+            "sample_rate_hz": result.sample_rate_hz,
+            "resolution_sec": result.resolution_sec,
+            "zones": [z.to_dict() for z in result.zones],
+            "bands": [b.to_dict() for b in result.bands],
+            "transients": [t.to_dict() for t in result.transients],
+            "generator": result.generator,
+        }
+        validate_and_write(payload, "energy-zones", out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="zone_classify",
+            status="failed",
+            message=f"zone classify failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="zone_classify",
+        status="ok",
+        message=(
+            f"energy-zones.json: {len(payload['zones'])} zones, "
+            f"{len(payload['bands'])} band samples, "
+            f"{len(payload['transients'])} transients"
+        ),
+        evidence={"path": str(out)},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def _load_anthropic_key() -> str | None:
     if key := os.environ.get("ANTHROPIC_API_KEY"):
         return key.strip()
@@ -1333,6 +1402,9 @@ STEPS: list[Step] = [
     Step("beat_analyze", "ff beat analyze",
          lambda ctx: _artifact_exists_and_valid(ctx, "beat-map"),
          step_beat_analyze),
+    Step("zone_classify", "Classify energy zones + bands + transients",
+         lambda ctx: _artifact_exists_and_valid(ctx, "energy-zones"),
+         step_zone_classify),
     Step("edit_plan_stub", "Draft edit-plan (stub)",
          lambda ctx: _artifact_exists_and_valid(ctx, "edit-plan"),
          step_edit_plan_stub),
