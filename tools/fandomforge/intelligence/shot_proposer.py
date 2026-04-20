@@ -895,10 +895,21 @@ def densify_shot_list(
             return float(val)
         return None
 
+    def _opposite_dir(a: str | None, b: str | None) -> bool:
+        """Two motion_dir values face opposite directions? Same-axis opposites
+        only ('left' vs 'right', 'up' vs 'down'). 'static'/'mixed'/None are
+        always compatible — never opposite."""
+        if a is None or b is None:
+            return False
+        pairs = {("left", "right"), ("right", "left"),
+                 ("up", "down"), ("down", "up")}
+        return (a, b) in pairs
+
     def _pick_scene(
         target_intensity: str,
         used_src: set[str],
         prev_luma: float | None = None,
+        prev_motion_dir: str | None = None,
     ) -> tuple[str, dict[str, Any]] | None:
         """Pick the best scene across all sources for the target intensity.
 
@@ -924,15 +935,28 @@ def densify_shot_list(
         )
 
         def _sort_candidates(cands: list[dict[str, Any]]) -> list[dict[str, Any]]:
-            """Rank within a source: closest luma first when prev_luma known,
-            else index order (stable, predictable)."""
-            if prev_luma is None:
+            """Rank within a source by a combined continuity cost:
+               cost = luma_distance + MOTION_DIR_PENALTY * opposite_flag
+            Where opposite_flag is 1 if cand's motion_dir is the opposite of
+            prev_motion_dir, else 0. Penalty is tuned so a strong luma match
+            can still beat a direction mismatch, but when luma ties the
+            same-axis-continuity candidate wins."""
+            if prev_luma is None and prev_motion_dir is None:
                 return cands
+
             def _dist(sc: dict[str, Any]) -> float:
-                luma = _scene_luma(sc)
-                if luma is None:
-                    return 9e9  # unknown luma goes last
-                return abs(luma - prev_luma)
+                # Luma component
+                if prev_luma is not None:
+                    luma = _scene_luma(sc)
+                    luma_part = abs(luma - prev_luma) if luma is not None else 1.0
+                else:
+                    luma_part = 0.0
+                # Motion-direction component
+                mdir_part = 0.3 if _opposite_dir(
+                    sc.get("motion_dir"), prev_motion_dir,
+                ) else 0.0
+                return luma_part + mdir_part
+
             return sorted(cands, key=_dist)
 
         # Three passes: (a) strict intensity + luma, (b) any intensity + luma,
@@ -1068,12 +1092,13 @@ def densify_shot_list(
     stretch_factor = max(0.5, min(stretch_factor, 5.0))
     # ----------------------------------------------------------------------
 
-    # Tracks the avg_luma of the most-recently-picked scene, for luma-
-    # continuity ranking on the NEXT pick. None until the first scene-matched
-    # filler lands. Flank shots (slot-list entries) don't carry avg_luma yet,
-    # so the first filler after a slot shot has no reference — that's fine,
-    # _pick_scene degrades gracefully.
+    # Tracks the avg_luma and motion_dir of the most-recently-picked scene,
+    # for continuity ranking on the NEXT pick. None until the first scene-
+    # matched filler lands. Flank shots (slot-list entries) don't carry
+    # these fields yet, so the first filler after a slot shot has no
+    # reference — that's fine, _pick_scene degrades gracefully.
     last_picked_luma: dict[str, float | None] = {"v": None}
+    last_picked_dir: dict[str, str | None] = {"v": None}
 
     def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
         """Scene-matched when scenes_by_source is provided, else inherits from
@@ -1085,17 +1110,26 @@ def densify_shot_list(
         motion_vec = None
         clip_cat = "texture"  # default — overridden by intensity match below
 
-        # prev_luma for continuity: prefer the last picked scene's luma;
-        # fall back to the flank shot's avg_luma if we've got one (rare;
-        # slot-list shots don't currently carry this). None is acceptable
-        # and disables the proximity sort inside _pick_scene.
+        # prev_luma + prev_motion_dir for continuity. Prefer the last
+        # picked scene's values; fall back to flank fields if present.
+        # None is acceptable for either; _pick_scene degrades gracefully.
         prev_luma = last_picked_luma["v"]
         if prev_luma is None:
             fla = flank.get("avg_luma")
             if isinstance(fla, (int, float)):
                 prev_luma = float(fla)
+        prev_dir = last_picked_dir["v"]
+        if prev_dir is None:
+            fld = flank.get("motion_dir")
+            if isinstance(fld, str):
+                prev_dir = fld
 
-        picked = _pick_scene(target_intensity, used_src=set(), prev_luma=prev_luma)
+        picked = _pick_scene(
+            target_intensity,
+            used_src=set(),
+            prev_luma=prev_luma,
+            prev_motion_dir=prev_dir,
+        )
         if picked is not None:
             src, scene = picked
             src_id = src
@@ -1106,6 +1140,9 @@ def densify_shot_list(
             picked_luma = _scene_luma(scene)
             if picked_luma is not None:
                 last_picked_luma["v"] = picked_luma
+            picked_dir = scene.get("motion_dir")
+            if isinstance(picked_dir, str):
+                last_picked_dir["v"] = picked_dir
             # Intensity → role + clip_category mapping. High-intensity fillers
             # in frantic acts earn the "action" role + action-high clip_category;
             # low-intensity in slow acts get reaction framing. Mid-intensity

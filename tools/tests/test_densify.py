@@ -315,6 +315,39 @@ class TestDensifyShotList:
             f"last-resort should prefer brightest dark, got timecodes: " \
             f"{[f['source_timecode'] for f in scene_fillers]}"
 
+    def test_motion_dir_continuity_penalizes_opposite_direction(self):
+        """After a left-moving flank, the picker should prefer left/static/
+        mixed over a right-moving candidate. Only same-axis opposites
+        (left↔right, up↔down) trigger the penalty."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=6.0)
+        # Set the flank shot's motion_dir so the FIRST filler has continuity context.
+        sl["shots"][0]["motion_dir"] = "left"
+        sl["shots"][0]["avg_luma"] = 0.4  # give luma context too
+        scenes_by_source = {
+            "src-A": [
+                # Two candidates with matching luma; different motion_dir.
+                # cand_right has opposite dir to flank → should lose.
+                {"index": 0, "start_sec": 10.0, "end_sec": 12.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.4, "motion_dir": "right"},
+                {"index": 1, "start_sec": 20.0, "end_sec": 22.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.4, "motion_dir": "left"},
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        # First scene-matched filler should pick the 'left' scene (timecode 20s).
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        scene_matched = [
+            f for f in fillers if f["source_id"] == "src-A"
+            and f.get("clip_category") in ("action-mid", "action-high", "reaction-quiet")
+        ]
+        assert scene_matched, "expected at least one scene-matched filler"
+        first_sm = scene_matched[0]
+        # The 'left' scene starts at 20s; the 'right' scene starts at 10s.
+        assert first_sm["source_timecode"].startswith("0:00:20"), (
+            f"first scene-matched filler should pick the same-direction scene "
+            f"(20s), got {first_sm['source_timecode']}"
+        )
+
     def test_luma_continuity_prefers_proximate_candidate(self):
         """When two candidates pass every filter, the one whose avg_luma is
         closest to the previously picked scene's avg_luma wins. Prevents

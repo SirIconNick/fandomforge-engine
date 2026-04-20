@@ -44,8 +44,10 @@ class TestEnrichScenes:
         video = tmp_path / "v.mp4"
         video.write_bytes(b"fake")
         _write_scenes(scenes_path, [
-            {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "avg_luma": 0.4},
-            {"index": 1, "start_sec": 2.0, "end_sec": 4.0, "avg_luma": 0.5},
+            {"index": 0, "start_sec": 0.0, "end_sec": 2.0,
+             "avg_luma": 0.4, "motion_dir": "static"},
+            {"index": 1, "start_sec": 2.0, "end_sec": 4.0,
+             "avg_luma": 0.5, "motion_dir": "right"},
         ])
         # Mock ffmpeg available so the short-circuit hits before video probe
         with patch(
