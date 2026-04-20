@@ -1136,6 +1136,70 @@ def step_profile_sources(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_enrich_scenes(ctx: AutopilotContext) -> AutopilotEvent:
+    """Add avg_luma (and peak_luma) to every scene in every scenes.json
+    under the project.
+
+    Raw ff ingest only writes scene boundaries. The shot picker needs
+    avg_luma to reject black-frame scenes (fade-outs, cut-to-blacks).
+    Idempotent: scenes already carrying avg_luma are skipped.
+    """
+    start = time.perf_counter()
+    try:
+        from fandomforge.intelligence.scene_enricher import enrich_project
+    except ImportError as exc:
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="enrich_scenes",
+            status="skipped",
+            message=f"scene_enricher unavailable: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    catalog_path = ctx.project_dir / "data" / "source-catalog.json"
+    if not catalog_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="enrich_scenes",
+            status="skipped",
+            message="source-catalog.json not present yet",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        result = enrich_project(ctx.project_dir)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="enrich_scenes",
+            status="failed",
+            message=f"enrich_scenes failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    if not result.get("ok"):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="enrich_scenes",
+            status="skipped",
+            message=f"no scenes to enrich: {result.get('reason')}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    enriched = result.get("enriched", 0)
+    skipped = result.get("skipped", 0)
+    failed = result.get("failed", 0)
+    total = result.get("sources_total", 0)
+    status = "ok" if failed == 0 else "warn"
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="enrich_scenes",
+        status=status,
+        message=(
+            f"scene luma: {enriched}/{total} sources enriched, "
+            f"{skipped} already enriched, {failed} failed"
+        ),
+        evidence={"sources_total": total, "enriched": enriched,
+                  "skipped": skipped, "failed": failed},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_intent(ctx: AutopilotContext) -> AutopilotEvent:
     """Build intent.json from the user prompt + project config + song hint.
 
@@ -2478,6 +2542,9 @@ STEPS: list[Step] = [
     Step("profile_sources", "Build per-source visual profiles",
          lambda ctx: not (ctx.project_dir / "data" / "source-catalog.json").exists(),
          step_profile_sources),
+    Step("enrich_scenes", "Add avg_luma to every scene",
+         lambda _ctx: False,  # cheap + idempotent; always re-checks
+         step_enrich_scenes),
     Step("beat_analyze", "ff beat analyze",
          lambda ctx: _artifact_exists_and_valid(ctx, "beat-map"),
          step_beat_analyze),

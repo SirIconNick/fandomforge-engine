@@ -1085,6 +1085,51 @@ def video_info(path: Path) -> None:
     console.print(table)
 
 
+# ---------- scenes ----------
+
+@main.group()
+def scenes() -> None:
+    """Per-scene metadata commands (avg_luma backfill, etc.)."""
+
+
+@scenes.command("enrich")
+@click.argument("project", type=click.Path(exists=True, file_okay=False, path_type=Path))
+@click.option("--force", is_flag=True, default=False,
+              help="Re-compute avg_luma even for scenes that already have it.")
+def scenes_enrich(project: Path, force: bool) -> None:
+    """Add avg_luma to every scenes.json under a project.
+
+    Raw ff ingest writes scene boundaries only. The shot picker needs
+    avg_luma to reject black-frame scenes. This command backfills that
+    field without re-running the whole ingest pipeline.
+    """
+    from fandomforge.intelligence.scene_enricher import enrich_project
+
+    result = enrich_project(project, force=force)
+    if not result.get("ok"):
+        console.print(f"[red]Failed:[/red] {result.get('reason')}")
+        raise click.Abort()
+
+    console.print(
+        f"Sources: {result['sources_total']} | "
+        f"enriched: {result['enriched']} | "
+        f"skipped (already had luma): {result['skipped']} | "
+        f"failed: {result['failed']}"
+    )
+    for detail in result.get("details") or []:
+        if detail.get("ok") and not detail.get("skipped"):
+            console.print(
+                f"  [green]✓[/green] {detail['source']}: "
+                f"{detail.get('enriched', 0)}/{detail.get('scenes', 0)} scenes"
+            )
+        elif detail.get("skipped"):
+            console.print(f"  [dim]·[/dim] {detail['source']}: already enriched")
+        else:
+            console.print(
+                f"  [red]✗[/red] {detail['source']}: {detail.get('reason')}"
+            )
+
+
 # ---------- catalog ----------
 
 @main.group()
