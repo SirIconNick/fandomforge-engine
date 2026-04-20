@@ -1,0 +1,3022 @@
+{
+  "schema_version": 1,
+  "tag": "tribute-pl6",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIEyTPymxJIChUUBD0hVprBs6"
+  ],
+  "video_count": 15,
+  "videos": [
+    {
+      "id": "TrAs8BS_AMI",
+      "title": "Supernatural // UNDEAD",
+      "url": "https://www.youtube.com/watch?v=TrAs8BS_AMI",
+      "duration_sec": 266.0,
+      "metrics": {
+        "shot_count": 258,
+        "avg_shot_duration_sec": 1.02,
+        "median_shot_duration_sec": 0.767,
+        "cuts_per_minute": 58.85,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 3.737,
+        "shot_duration_stddev_sec": 0.719,
+        "shot_duration_p25": 0.5,
+        "shot_duration_p75": 1.335,
+        "shot_duration_p90": 2.102,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 71.91
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 75.84
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 83.48
+          }
+        ],
+        "act_pacing_pct": [
+          29.5,
+          34.1,
+          36.4
+        ],
+        "intro_to_first_cut_sec": 0.634,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1379,
+        "luma_stddev": 0.0871,
+        "dark_shot_pct": 80.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 68.47,
+        "saturation_mean": 0.3985,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 83.7,
+        "cuts_checked": 257,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 14,
+            "dissolve": 40,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 23.33,
+            "dissolve": 66.67,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9269,
+          "variety_entropy_normalized": 0.5759,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 3,
+            "neutral": 15,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 7.5,
+            "neutral": 37.5,
+            "disconnected": 42.5
+          },
+          "continuity_score": 31.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3466,
+        "like_count": 72,
+        "like_ratio": 0.020773,
+        "duration_sec": 265.0,
+        "channel": "TJ Garvey",
+        "upload_date": "20120225",
+        "title": "Supernatural // UNDEAD"
+      },
+      "quality_score": 44.69,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 0.78,
+        "variety": 57.59,
+        "beat_sync": 83.7,
+        "lyric_sync": 50.0,
+        "motion": 31.25,
+        "approval": 69.24
+      }
+    },
+    {
+      "id": "BZpJSo7e2ZQ",
+      "title": "Seven Nation Army || Supernatural",
+      "url": "https://www.youtube.com/watch?v=BZpJSo7e2ZQ",
+      "duration_sec": 187.0,
+      "metrics": {
+        "shot_count": 291,
+        "avg_shot_duration_sec": 0.631,
+        "median_shot_duration_sec": 0.534,
+        "cuts_per_minute": 95.02,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 4.938,
+        "shot_duration_stddev_sec": 0.423,
+        "shot_duration_p25": 0.434,
+        "shot_duration_p75": 0.701,
+        "shot_duration_p90": 0.934,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 102.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 100.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 94.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 88.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 94.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 114.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 100.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 94.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 86.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 108.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 102.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 100.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 86.52
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 80.72
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 56.67
+          }
+        ],
+        "act_pacing_pct": [
+          33.0,
+          33.7,
+          33.3
+        ],
+        "intro_to_first_cut_sec": 1.335,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.3161,
+        "luma_stddev": 0.1686,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 40.23,
+        "saturation_mean": 0.3629,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 59.3,
+        "cuts_checked": 290,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 36,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 60.0,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8237,
+          "variety_entropy_normalized": 0.5118,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 13,
+            "impact_cut": 6,
+            "neutral": 8,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 32.5,
+            "impact_cut": 15.0,
+            "neutral": 20.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 50.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 441802,
+        "like_count": 8045,
+        "like_ratio": 0.01821,
+        "duration_sec": 186.0,
+        "channel": "mat",
+        "upload_date": "20110830",
+        "title": "Seven Nation Army || Supernatural"
+      },
+      "quality_score": 65.72,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 51.18,
+        "beat_sync": 59.3,
+        "lyric_sync": 50.0,
+        "motion": 50.75,
+        "approval": 60.7
+      }
+    },
+    {
+      "id": "4rzVzIuZkZE",
+      "title": "Supernatural- Boulevard of broken songs",
+      "url": "https://www.youtube.com/watch?v=4rzVzIuZkZE",
+      "duration_sec": 273.0,
+      "metrics": {
+        "shot_count": 118,
+        "avg_shot_duration_sec": 2.309,
+        "median_shot_duration_sec": 1.74,
+        "cuts_per_minute": 25.99,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 13.44,
+        "shot_duration_stddev_sec": 2.115,
+        "shot_duration_p25": 0.92,
+        "shot_duration_p75": 3.04,
+        "shot_duration_p90": 4.44,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 23.6
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 27.95
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.83
+          }
+        ],
+        "act_pacing_pct": [
+          29.7,
+          34.7,
+          35.6
+        ],
+        "intro_to_first_cut_sec": 1.28,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1726,
+        "luma_stddev": 0.1422,
+        "dark_shot_pct": 73.8,
+        "bright_shot_pct": 2.5,
+        "hue_median_deg": 72.0,
+        "saturation_mean": 0.3233,
+        "beat_sync_available": true,
+        "tempo_bpm": 83.35,
+        "cuts_on_beat_pct": 41.9,
+        "cuts_checked": 117,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 14,
+            "dissolve": 35,
+            "flash_cut": 4,
+            "whip_pan": 3,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 23.33,
+            "dissolve": 58.33,
+            "flash_cut": 6.67,
+            "whip_pan": 5.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 1.1648,
+          "variety_entropy_normalized": 0.7238,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 17,
+            "disconnected": 14
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 42.5,
+            "disconnected": 35.0
+          },
+          "continuity_score": 34.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 350635,
+        "like_count": 2117,
+        "like_ratio": 0.006038,
+        "duration_sec": 273.0,
+        "channel": "karowyn",
+        "upload_date": "20061026",
+        "title": "Supernatural- Boulevard of broken songs"
+      },
+      "quality_score": 53.82,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 79.36,
+        "variety": 72.38,
+        "beat_sync": 41.9,
+        "lyric_sync": 50.0,
+        "motion": 34.88,
+        "approval": 20.13
+      }
+    },
+    {
+      "id": "-Xk6A792le0",
+      "title": "Supernatural: It's Been Awhile",
+      "url": "https://www.youtube.com/watch?v=-Xk6A792le0",
+      "duration_sec": 273.0,
+      "metrics": {
+        "shot_count": 91,
+        "avg_shot_duration_sec": 2.897,
+        "median_shot_duration_sec": 1.533,
+        "cuts_per_minute": 20.71,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 21.867,
+        "shot_duration_stddev_sec": 3.857,
+        "shot_duration_p25": 0.933,
+        "shot_duration_p75": 3.033,
+        "shot_duration_p90": 6.0,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 28.8
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 48.0
+          }
+        ],
+        "act_pacing_pct": [
+          30.8,
+          42.9,
+          26.4
+        ],
+        "intro_to_first_cut_sec": 3.033,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.137,
+        "luma_stddev": 0.086,
+        "dark_shot_pct": 78.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 77.65,
+        "saturation_mean": 0.3963,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 48.9,
+        "cuts_checked": 90,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 16,
+            "dissolve": 39,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 26.67,
+            "dissolve": 65.0,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8813,
+          "variety_entropy_normalized": 0.5476,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 2,
+            "neutral": 24,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 5.0,
+            "neutral": 60.0,
+            "disconnected": 17.5
+          },
+          "continuity_score": 42.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 8401,
+        "like_count": 80,
+        "like_ratio": 0.009523,
+        "duration_sec": 273.0,
+        "channel": "mnallison03",
+        "upload_date": "20070523",
+        "title": "Supernatural: It's Been Awhile"
+      },
+      "quality_score": 35.48,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.9,
+        "variety": 54.76,
+        "beat_sync": 48.9,
+        "lyric_sync": 50.0,
+        "motion": 42.25,
+        "approval": 31.74
+      }
+    },
+    {
+      "id": "bCkfiahR20k",
+      "title": "supernatural | the apocalypse",
+      "url": "https://www.youtube.com/watch?v=bCkfiahR20k",
+      "duration_sec": 171.0,
+      "metrics": {
+        "shot_count": 77,
+        "avg_shot_duration_sec": 2.207,
+        "median_shot_duration_sec": 1.435,
+        "cuts_per_minute": 27.18,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 14.081,
+        "shot_duration_stddev_sec": 2.461,
+        "shot_duration_p25": 0.701,
+        "shot_duration_p75": 2.703,
+        "shot_duration_p90": 5.539,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 17.42
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 5.62
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          19.5,
+          46.8,
+          33.8
+        ],
+        "intro_to_first_cut_sec": 14.081,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 77,
+        "avg_luma": 0.2534,
+        "luma_stddev": 0.1994,
+        "dark_shot_pct": 48.1,
+        "bright_shot_pct": 2.6,
+        "hue_median_deg": 221.65,
+        "saturation_mean": 0.3103,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 44.7,
+        "cuts_checked": 76,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 45,
+            "dissolve": 10,
+            "flash_cut": 2,
+            "whip_pan": 1,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 75.0,
+            "dissolve": 16.67,
+            "flash_cut": 3.33,
+            "whip_pan": 1.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.8094,
+          "variety_entropy_normalized": 0.5029,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 3,
+            "neutral": 22,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 7.5,
+            "neutral": 55.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 32.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 269632,
+        "like_count": 7101,
+        "like_ratio": 0.026336,
+        "duration_sec": 171.0,
+        "channel": "Bexism",
+        "upload_date": "20121101",
+        "title": "supernatural | the apocalypse"
+      },
+      "quality_score": 52.88,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 61.03,
+        "variety": 50.29,
+        "beat_sync": 44.7,
+        "lyric_sync": 50.0,
+        "motion": 32.38,
+        "approval": 87.79
+      }
+    },
+    {
+      "id": "ay26d0X46qE",
+      "title": "Supernatural - Dean/Castiel - All Around Me",
+      "url": "https://www.youtube.com/watch?v=ay26d0X46qE",
+      "duration_sec": 196.0,
+      "metrics": {
+        "shot_count": 89,
+        "avg_shot_duration_sec": 2.17,
+        "median_shot_duration_sec": 1.168,
+        "cuts_per_minute": 27.65,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 16.149,
+        "shot_duration_stddev_sec": 2.78,
+        "shot_duration_p25": 0.667,
+        "shot_duration_p75": 2.469,
+        "shot_duration_p90": 5.405,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 30.24
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 18.99
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          27.0,
+          30.3,
+          42.7
+        ],
+        "intro_to_first_cut_sec": 10.844,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2583,
+        "luma_stddev": 0.2129,
+        "dark_shot_pct": 50.0,
+        "bright_shot_pct": 7.5,
+        "hue_median_deg": 72.0,
+        "saturation_mean": 0.3034,
+        "beat_sync_available": true,
+        "tempo_bpm": 73.83,
+        "cuts_on_beat_pct": 34.1,
+        "cuts_checked": 88,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 20,
+            "dissolve": 32,
+            "flash_cut": 1,
+            "whip_pan": 7,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 33.33,
+            "dissolve": 53.33,
+            "flash_cut": 1.67,
+            "whip_pan": 11.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 1.0204,
+          "variety_entropy_normalized": 0.634,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 10,
+            "impact_cut": 2,
+            "neutral": 13,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 25.0,
+            "impact_cut": 5.0,
+            "neutral": 32.5,
+            "disconnected": 37.5
+          },
+          "continuity_score": 40.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 14830,
+        "like_count": 231,
+        "like_ratio": 0.015577,
+        "duration_sec": 196.0,
+        "channel": "linseysg8",
+        "upload_date": "20090926",
+        "title": "Supernatural - Dean/Castiel - All Around Me"
+      },
+      "quality_score": 35.88,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 3.36,
+        "variety": 63.4,
+        "beat_sync": 34.1,
+        "lyric_sync": 50.0,
+        "motion": 40.12,
+        "approval": 51.92
+      }
+    },
+    {
+      "id": "vdxdntxf2yo",
+      "title": "Supernatural | There's nothing I wouldn't do for you",
+      "url": "https://www.youtube.com/watch?v=vdxdntxf2yo",
+      "duration_sec": 266.0,
+      "metrics": {
+        "shot_count": 74,
+        "avg_shot_duration_sec": 3.587,
+        "median_shot_duration_sec": 2.586,
+        "cuts_per_minute": 16.73,
+        "min_shot_duration_sec": 0.417,
+        "max_shot_duration_sec": 18.977,
+        "shot_duration_stddev_sec": 3.576,
+        "shot_duration_p25": 1.46,
+        "shot_duration_p75": 4.63,
+        "shot_duration_p90": 7.09,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 7.08
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 3.89
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          32.4,
+          41.9,
+          25.7
+        ],
+        "intro_to_first_cut_sec": 12.554,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 74,
+        "avg_luma": 0.2393,
+        "luma_stddev": 0.0992,
+        "dark_shot_pct": 39.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.76,
+        "saturation_mean": 0.1838,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 72.6,
+        "cuts_checked": 73,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 27,
+            "dissolve": 28,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 45.0,
+            "dissolve": 46.67,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9221,
+          "variety_entropy_normalized": 0.5729,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 5,
+            "neutral": 28,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 12.5,
+            "neutral": 70.0,
+            "disconnected": 12.5
+          },
+          "continuity_score": 38.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 421534,
+        "like_count": 10468,
+        "like_ratio": 0.024833,
+        "duration_sec": 265.0,
+        "channel": "mguib",
+        "upload_date": "20150521",
+        "title": "Supernatural | There's nothing I wouldn't do for you"
+      },
+      "quality_score": 68.58,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 95.41,
+        "variety": 57.29,
+        "beat_sync": 72.6,
+        "lyric_sync": 50.0,
+        "motion": 38.88,
+        "approval": 82.78
+      }
+    },
+    {
+      "id": "TCVyne28PFk",
+      "title": "Supernatural: 8 Times Dean Winchester Broke Our Hearts",
+      "url": "https://www.youtube.com/watch?v=TCVyne28PFk",
+      "duration_sec": 491.0,
+      "metrics": {
+        "shot_count": 109,
+        "avg_shot_duration_sec": 4.499,
+        "median_shot_duration_sec": 2.8,
+        "cuts_per_minute": 13.34,
+        "min_shot_duration_sec": 0.5,
+        "max_shot_duration_sec": 39.167,
+        "shot_duration_stddev_sec": 5.789,
+        "shot_duration_p25": 1.867,
+        "shot_duration_p75": 4.633,
+        "shot_duration_p90": 8.9,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 450.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 460.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 470.0,
+            "cpm": 2.92
+          },
+          {
+            "t_sec": 480.0,
+            "cpm": 5.68
+          },
+          {
+            "t_sec": 490.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          33.9,
+          42.2,
+          23.9
+        ],
+        "intro_to_first_cut_sec": 3.7,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2841,
+        "luma_stddev": 0.1152,
+        "dark_shot_pct": 20.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 39.53,
+        "saturation_mean": 0.3218,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 83.3,
+        "cuts_checked": 108,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 30,
+            "dissolve": 30,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 50.0,
+            "dissolve": 50.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6931,
+          "variety_entropy_normalized": 0.4307,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 2,
+            "neutral": 25,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 5.0,
+            "neutral": 62.5,
+            "disconnected": 17.5
+          },
+          "continuity_score": 40.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 985019,
+        "like_count": 20529,
+        "like_ratio": 0.020841,
+        "duration_sec": 491.0,
+        "channel": "TV Guide",
+        "upload_date": "20170816",
+        "title": "Supernatural: 8 Times Dean Winchester Broke Our Hearts"
+      },
+      "quality_score": 68.66,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 43.07,
+        "beat_sync": 83.3,
+        "lyric_sync": 50.0,
+        "motion": 40.62,
+        "approval": 69.47
+      }
+    },
+    {
+      "id": "XYrfGt11hGM",
+      "title": "Supernatural - hunting or apple-pie life? [TFC round 2]",
+      "url": "https://www.youtube.com/watch?v=XYrfGt11hGM",
+      "duration_sec": 257.0,
+      "metrics": {
+        "shot_count": 23,
+        "avg_shot_duration_sec": 11.163,
+        "median_shot_duration_sec": 7.549,
+        "cuts_per_minute": 5.37,
+        "min_shot_duration_sec": 0.459,
+        "max_shot_duration_sec": 35.494,
+        "shot_duration_stddev_sec": 10.233,
+        "shot_duration_p25": 4.296,
+        "shot_duration_p75": 15.098,
+        "shot_duration_p90": 32.032,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 4.46
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          34.8,
+          43.5,
+          21.7
+        ],
+        "intro_to_first_cut_sec": 21.355,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 23,
+        "avg_luma": 0.1997,
+        "luma_stddev": 0.0937,
+        "dark_shot_pct": 56.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 35.29,
+        "saturation_mean": 0.3459,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 72.7,
+        "cuts_checked": 22,
+        "transitions": {
+          "sample_count": 22,
+          "distribution": {
+            "hard_cut": 3,
+            "dissolve": 19,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 13.64,
+            "dissolve": 86.36,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.3983,
+          "variety_entropy_normalized": 0.2475,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 22,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 0,
+            "neutral": 20,
+            "disconnected": 0
+          },
+          "distribution_pct": {
+            "match_cut": 9.09,
+            "impact_cut": 0.0,
+            "neutral": 90.91,
+            "disconnected": 0.0
+          },
+          "continuity_score": 40.91
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1483,
+        "like_count": 72,
+        "like_ratio": 0.04855,
+        "duration_sec": 257.0,
+        "channel": "Smurfa85",
+        "upload_date": "20170507",
+        "title": "Supernatural - hunting or apple-pie life? [TFC round 2]"
+      },
+      "quality_score": 41.97,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 0.34,
+        "variety": 24.75,
+        "beat_sync": 72.7,
+        "lyric_sync": 50.0,
+        "motion": 40.91,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "gNnLvFHMMNc",
+      "title": "Dean Winchester | I'm the darkness",
+      "url": "https://www.youtube.com/watch?v=gNnLvFHMMNc",
+      "duration_sec": 116.0,
+      "metrics": {
+        "shot_count": 111,
+        "avg_shot_duration_sec": 1.037,
+        "median_shot_duration_sec": 0.876,
+        "cuts_per_minute": 57.88,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 4.004,
+        "shot_duration_stddev_sec": 0.66,
+        "shot_duration_p25": 0.626,
+        "shot_duration_p75": 1.21,
+        "shot_duration_p90": 1.877,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 45.09
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 43.19
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 22.72
+          }
+        ],
+        "act_pacing_pct": [
+          41.4,
+          30.6,
+          27.9
+        ],
+        "intro_to_first_cut_sec": 0.959,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2537,
+        "luma_stddev": 0.118,
+        "dark_shot_pct": 38.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 97.41,
+        "saturation_mean": 0.2531,
+        "beat_sync_available": true,
+        "tempo_bpm": 95.7,
+        "cuts_on_beat_pct": 52.7,
+        "cuts_checked": 110,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 38,
+            "dissolve": 13,
+            "flash_cut": 0,
+            "whip_pan": 7,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 63.33,
+            "dissolve": 21.67,
+            "flash_cut": 0.0,
+            "whip_pan": 11.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.9847,
+          "variety_entropy_normalized": 0.6118,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 5,
+            "neutral": 12,
+            "disconnected": 20
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 12.5,
+            "neutral": 30.0,
+            "disconnected": 50.0
+          },
+          "continuity_score": 27.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 295424,
+        "like_count": 8878,
+        "like_ratio": 0.030052,
+        "duration_sec": 115.0,
+        "channel": "MinimalistVideos",
+        "upload_date": "20151009",
+        "title": "Dean Winchester | I'm the darkness"
+      },
+      "quality_score": 58.04,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 66.87,
+        "variety": 61.18,
+        "beat_sync": 52.7,
+        "lyric_sync": 50.0,
+        "motion": 27.38,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "xckNi0zuLc8",
+      "title": "Multifandom | \"Nobody care that you're broken\"",
+      "url": "https://www.youtube.com/watch?v=xckNi0zuLc8",
+      "duration_sec": 174.0,
+      "metrics": {
+        "shot_count": 39,
+        "avg_shot_duration_sec": 4.429,
+        "median_shot_duration_sec": 3.3,
+        "cuts_per_minute": 13.55,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 21.767,
+        "shot_duration_stddev_sec": 3.904,
+        "shot_duration_p25": 2.0,
+        "shot_duration_p75": 6.133,
+        "shot_duration_p90": 9.3,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 7.67
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          28.2,
+          41.0,
+          30.8
+        ],
+        "intro_to_first_cut_sec": 2.767,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 39,
+        "avg_luma": 0.151,
+        "luma_stddev": 0.1132,
+        "dark_shot_pct": 71.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 69.88,
+        "saturation_mean": 0.5527,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 57.9,
+        "cuts_checked": 38,
+        "transitions": {
+          "sample_count": 38,
+          "distribution": {
+            "hard_cut": 13,
+            "dissolve": 25,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 34.21,
+            "dissolve": 65.79,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6424,
+          "variety_entropy_normalized": 0.3992,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 38,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 1,
+            "neutral": 28,
+            "disconnected": 6
+          },
+          "distribution_pct": {
+            "match_cut": 7.89,
+            "impact_cut": 2.63,
+            "neutral": 73.68,
+            "disconnected": 15.79
+          },
+          "continuity_score": 35.66
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 58011,
+        "like_count": 1375,
+        "like_ratio": 0.023702,
+        "duration_sec": 174.0,
+        "channel": "Walking ouat",
+        "upload_date": "20161203",
+        "title": "Multifandom | \"Nobody care that you're broken\""
+      },
+      "quality_score": 41.6,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 13.13,
+        "variety": 39.92,
+        "beat_sync": 57.9,
+        "lyric_sync": 50.0,
+        "motion": 35.66,
+        "approval": 79.01
+      }
+    },
+    {
+      "id": "RzQZlDw1rBM",
+      "title": "Supernatural: The Breaking of Dean Winchester -- Arctic (Sleeping At Last)",
+      "url": "https://www.youtube.com/watch?v=RzQZlDw1rBM",
+      "duration_sec": 287.0,
+      "metrics": {
+        "shot_count": 108,
+        "avg_shot_duration_sec": 2.644,
+        "median_shot_duration_sec": 1.354,
+        "cuts_per_minute": 22.7,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 13.542,
+        "shot_duration_stddev_sec": 2.949,
+        "shot_duration_p25": 0.75,
+        "shot_duration_p75": 3.167,
+        "shot_duration_p90": 7.208,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 8.94
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 10.69
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          39.8,
+          25.9,
+          34.3
+        ],
+        "intro_to_first_cut_sec": 1.458,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1972,
+        "luma_stddev": 0.1597,
+        "dark_shot_pct": 61.3,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 32.47,
+        "saturation_mean": 0.3491,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 55.1,
+        "cuts_checked": 107,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 24,
+            "dissolve": 34,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 40.0,
+            "dissolve": 56.67,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8017,
+          "variety_entropy_normalized": 0.4982,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 2,
+            "neutral": 23,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 5.0,
+            "neutral": 57.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 33.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 86112,
+        "like_count": 2715,
+        "like_ratio": 0.031529,
+        "duration_sec": 287.0,
+        "channel": "Anonymouslyawesome",
+        "upload_date": "20161201",
+        "title": "Supernatural: The Breaking of Dean Winchester -- Arctic (Sleeping At Last)"
+      },
+      "quality_score": 45.95,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 19.49,
+        "variety": 49.82,
+        "beat_sync": 55.1,
+        "lyric_sync": 50.0,
+        "motion": 33.88,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "JSh_VRLwDug",
+      "title": "Supernatural: if the situation was reversed ; Waiting Between Worlds (Zack Hemsey) -- Sam and Dean",
+      "url": "https://www.youtube.com/watch?v=JSh_VRLwDug",
+      "duration_sec": 462.0,
+      "metrics": {
+        "shot_count": 178,
+        "avg_shot_duration_sec": 2.586,
+        "median_shot_duration_sec": 1.875,
+        "cuts_per_minute": 23.2,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 16.667,
+        "shot_duration_stddev_sec": 2.311,
+        "shot_duration_p25": 1.167,
+        "shot_duration_p75": 3.125,
+        "shot_duration_p90": 5.417,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 8.31
+          },
+          {
+            "t_sec": 450.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 460.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          37.6,
+          31.5,
+          30.9
+        ],
+        "intro_to_first_cut_sec": 13.292,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1613,
+        "luma_stddev": 0.1269,
+        "dark_shot_pct": 68.8,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 120.0,
+        "saturation_mean": 0.5427,
+        "beat_sync_available": true,
+        "tempo_bpm": 99.38,
+        "cuts_on_beat_pct": 58.8,
+        "cuts_checked": 177,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 16,
+            "dissolve": 39,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 26.67,
+            "dissolve": 65.0,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8396,
+          "variety_entropy_normalized": 0.5216,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 4,
+            "neutral": 26,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 10.0,
+            "neutral": 65.0,
+            "disconnected": 20.0
+          },
+          "continuity_score": 35.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6698,
+        "like_count": 229,
+        "like_ratio": 0.034189,
+        "duration_sec": 462.0,
+        "channel": "Anonymouslyawesome",
+        "upload_date": "20170904",
+        "title": "Supernatural: if the situation was reversed ; Waiting Between Worlds (Zack Hemsey) -- Sam and Dean"
+      },
+      "quality_score": 42.75,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.52,
+        "variety": 52.16,
+        "beat_sync": 58.8,
+        "lyric_sync": 50.0,
+        "motion": 35.25,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "v1Mm7o8hoV8",
+      "title": "Dean Winchester || Unsteady",
+      "url": "https://www.youtube.com/watch?v=v1Mm7o8hoV8",
+      "duration_sec": 196.0,
+      "metrics": {
+        "shot_count": 33,
+        "avg_shot_duration_sec": 5.915,
+        "median_shot_duration_sec": 4.238,
+        "cuts_per_minute": 10.14,
+        "min_shot_duration_sec": 0.534,
+        "max_shot_duration_sec": 21.355,
+        "shot_duration_stddev_sec": 5.16,
+        "shot_duration_p25": 2.402,
+        "shot_duration_p75": 7.374,
+        "shot_duration_p90": 14.281,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 4.76
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 7.9
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          36.4,
+          27.3,
+          36.4
+        ],
+        "intro_to_first_cut_sec": 2.402,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 33,
+        "avg_luma": 0.1373,
+        "luma_stddev": 0.0688,
+        "dark_shot_pct": 78.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 63.53,
+        "saturation_mean": 0.4219,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 68.8,
+        "cuts_checked": 32,
+        "transitions": {
+          "sample_count": 32,
+          "distribution": {
+            "hard_cut": 4,
+            "dissolve": 27,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 12.5,
+            "dissolve": 84.38,
+            "flash_cut": 0.0,
+            "whip_pan": 3.12,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.5116,
+          "variety_entropy_normalized": 0.3179,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 32,
+          "distribution": {
+            "match_cut": 0,
+            "impact_cut": 2,
+            "neutral": 25,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 0.0,
+            "impact_cut": 6.25,
+            "neutral": 78.12,
+            "disconnected": 15.62
+          },
+          "continuity_score": 32.03
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 445141,
+        "like_count": 8256,
+        "like_ratio": 0.018547,
+        "duration_sec": 195.0,
+        "channel": "deansbanshee",
+        "upload_date": "20161219",
+        "title": "Dean Winchester || Unsteady"
+      },
+      "quality_score": 62.02,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 31.79,
+        "beat_sync": 68.8,
+        "lyric_sync": 50.0,
+        "motion": 32.03,
+        "approval": 61.82
+      }
+    },
+    {
+      "id": "p8QlWxDHA48",
+      "title": "No Time | Sam & Dean",
+      "url": "https://www.youtube.com/watch?v=p8QlWxDHA48",
+      "duration_sec": 278.0,
+      "metrics": {
+        "shot_count": 138,
+        "avg_shot_duration_sec": 2.007,
+        "median_shot_duration_sec": 1.376,
+        "cuts_per_minute": 29.89,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 27.361,
+        "shot_duration_stddev_sec": 2.736,
+        "shot_duration_p25": 0.834,
+        "shot_duration_p75": 2.252,
+        "shot_duration_p90": 3.462,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 57.37
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 52.35
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 25.02
+          }
+        ],
+        "act_pacing_pct": [
+          13.0,
+          35.5,
+          51.4
+        ],
+        "intro_to_first_cut_sec": 27.361,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2637,
+        "luma_stddev": 0.1691,
+        "dark_shot_pct": 46.2,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 41.64,
+        "saturation_mean": 0.3555,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 78.1,
+        "cuts_checked": 137,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 30,
+            "dissolve": 24,
+            "flash_cut": 1,
+            "whip_pan": 3,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 50.0,
+            "dissolve": 40.0,
+            "flash_cut": 1.67,
+            "whip_pan": 5.0,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 1.0445,
+          "variety_entropy_normalized": 0.649,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 9,
+            "neutral": 13,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 22.5,
+            "neutral": 32.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 45.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 180474,
+        "like_count": 4520,
+        "like_ratio": 0.025045,
+        "duration_sec": 277.0,
+        "channel": "eemersonm",
+        "upload_date": "20140612",
+        "title": "No Time | Sam & Dean"
+      },
+      "quality_score": 58.28,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 40.85,
+        "variety": 64.9,
+        "beat_sync": 78.1,
+        "lyric_sync": 50.0,
+        "motion": 45.75,
+        "approval": 83.48
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.533,
+    "cuts_per_minute": 30.99,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      0.631,
+      4.499
+    ],
+    "typical_act_pacing_pct": [
+      31.1,
+      36.1,
+      32.7
+    ],
+    "cuts_on_beat_pct_mean": 60.84,
+    "tempo_bpm_median": 117.45,
+    "avg_luma_mean": 0.2108,
+    "dark_shot_pct_mean": 56.14,
+    "bright_shot_pct_mean": 1.08,
+    "saturation_mean_mean": 0.3614,
+    "intro_to_first_cut_sec_median": 3.033,
+    "pacing_profile": "escalator",
+    "tier_samples": {
+      "D": 9,
+      "B": 3,
+      "C": 3
+    }
+  },
+  "generated_at": "2026-04-20T09:44:34.597529+00:00",
+  "generator": "ff reference ingest"
+}

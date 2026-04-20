@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "tag": "sad-singles",
+  "source_playlists": [
+    "https://www.youtube.com/watch?v=polwiLRjX8k",
+    "https://www.youtube.com/watch?v=f4DpkLnBWKY"
+  ],
+  "video_count": 2,
+  "videos": [
+    {
+      "id": "polwiLRjX8k",
+      "title": "what is pain? | sad multifandom",
+      "url": "https://www.youtube.com/watch?v=polwiLRjX8k",
+      "duration_sec": 469.0,
+      "metrics": {
+        "shot_count": 119,
+        "avg_shot_duration_sec": 3.933,
+        "median_shot_duration_sec": 2.333,
+        "cuts_per_minute": 15.26,
+        "min_shot_duration_sec": 0.367,
+        "max_shot_duration_sec": 56.233,
+        "shot_duration_stddev_sec": 6.291,
+        "shot_duration_p25": 1.367,
+        "shot_duration_p75": 4.1,
+        "shot_duration_p90": 6.967,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 450.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 460.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          24.4,
+          39.5,
+          36.1
+        ],
+        "intro_to_first_cut_sec": 33.7,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1748,
+        "luma_stddev": 0.1042,
+        "dark_shot_pct": 78.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 153.88,
+        "saturation_mean": 0.394,
+        "beat_sync_available": true,
+        "tempo_bpm": 172.27,
+        "cuts_on_beat_pct": 80.5,
+        "cuts_checked": 118,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 25,
+            "dissolve": 35,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 41.67,
+            "dissolve": 58.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6792,
+          "variety_entropy_normalized": 0.422,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 3,
+            "neutral": 29,
+            "disconnected": 6
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 7.5,
+            "neutral": 72.5,
+            "disconnected": 15.0
+          },
+          "continuity_score": 36.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1732162,
+        "like_count": 30808,
+        "like_ratio": 0.017786,
+        "duration_sec": 469.0,
+        "channel": "cengiz",
+        "upload_date": "20240422",
+        "title": "what is pain? | sad multifandom"
+      },
+      "quality_score": 66.26,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 42.2,
+        "beat_sync": 80.5,
+        "lyric_sync": 50.0,
+        "motion": 36.0,
+        "approval": 59.29
+      }
+    },
+    {
+      "id": "f4DpkLnBWKY",
+      "title": "I don't feel anything (Multifandom)",
+      "url": "https://www.youtube.com/watch?v=f4DpkLnBWKY",
+      "duration_sec": 269.0,
+      "metrics": {
+        "shot_count": 147,
+        "avg_shot_duration_sec": 1.821,
+        "median_shot_duration_sec": 1.268,
+        "cuts_per_minute": 32.94,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 9.243,
+        "shot_duration_stddev_sec": 1.583,
+        "shot_duration_p25": 0.934,
+        "shot_duration_p75": 1.902,
+        "shot_duration_p90": 3.737,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 29.47
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 32.43
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 21.17
+          }
+        ],
+        "act_pacing_pct": [
+          21.8,
+          38.8,
+          39.5
+        ],
+        "intro_to_first_cut_sec": 0.3,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2713,
+        "luma_stddev": 0.1088,
+        "dark_shot_pct": 27.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 43.76,
+        "saturation_mean": 0.3047,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 78.1,
+        "cuts_checked": 146,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 40,
+            "dissolve": 9,
+            "flash_cut": 0,
+            "whip_pan": 8,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 66.67,
+            "dissolve": 15.0,
+            "flash_cut": 0.0,
+            "whip_pan": 13.33,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 0.9733,
+          "variety_entropy_normalized": 0.6048,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 3,
+            "neutral": 18,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 7.5,
+            "neutral": 45.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 38.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 867531,
+        "like_count": 12700,
+        "like_ratio": 0.014639,
+        "duration_sec": 269.0,
+        "channel": "Sooraj Vids",
+        "upload_date": "20230521",
+        "title": "I don't feel anything (Multifandom)"
+      },
+      "quality_score": 67.9,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 60.48,
+        "beat_sync": 78.1,
+        "lyric_sync": 50.0,
+        "motion": 38.88,
+        "approval": 48.8
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.268,
+    "cuts_per_minute": 24.21,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      1.821,
+      3.933
+    ],
+    "typical_act_pacing_pct": [
+      23.1,
+      39.1,
+      37.8
+    ],
+    "cuts_on_beat_pct_mean": 79.3,
+    "tempo_bpm_median": 150.74,
+    "avg_luma_mean": 0.223,
+    "dark_shot_pct_mean": 53.15,
+    "bright_shot_pct_mean": 0.0,
+    "saturation_mean_mean": 0.3494,
+    "intro_to_first_cut_sec_median": 17.0,
+    "pacing_profile": "steady",
+    "tier_samples": {
+      "B": 2
+    }
+  },
+  "generated_at": "2026-04-20T10:06:51.784422+00:00",
+  "generator": "ff reference ingest"
+}

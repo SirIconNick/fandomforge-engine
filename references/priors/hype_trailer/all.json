@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "edit_type": "hype_trailer",
+  "fandom_family": "all",
+  "video_count": 15,
+  "priors": {
+    "median_shot_duration_sec": 0.918,
+    "cuts_per_minute": 52.59,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      0.939,
+      1.439
+    ],
+    "typical_act_pacing_pct": [
+      29.8,
+      34.4,
+      35.8
+    ],
+    "cuts_on_beat_pct_mean": 61.28,
+    "tempo_bpm_median": 129.2,
+    "avg_luma_mean": 0.1775,
+    "dark_shot_pct_mean": 63.02,
+    "bright_shot_pct_mean": 0.11,
+    "saturation_mean_mean": 0.3857,
+    "intro_to_first_cut_sec_median": 1.501,
+    "pacing_profile": "machine-gun",
+    "tier_samples": {
+      "C": 4,
+      "D": 9
+    }
+  },
+  "generated_at": "2026-04-20T10:07:41.673224+00:00",
+  "generator": "ff reference rebuild-priors"
+}

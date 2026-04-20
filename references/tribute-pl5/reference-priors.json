@@ -1,0 +1,1713 @@
+{
+  "schema_version": 1,
+  "tag": "tribute-pl5",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIEwGth6zd-bV0cbZ-KosUagH"
+  ],
+  "video_count": 15,
+  "videos": [
+    {
+      "id": "rY6cWkn9ldE",
+      "title": "Rick vs Negan || Redesigned Fight Scene (8x16)",
+      "url": "https://www.youtube.com/watch?v=rY6cWkn9ldE",
+      "duration_sec": 339.0,
+      "metrics": {
+        "shot_count": 109,
+        "avg_shot_duration_sec": 3.102,
+        "median_shot_duration_sec": 2.1,
+        "cuts_per_minute": 19.35,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 25.133,
+        "shot_duration_stddev_sec": 3.394,
+        "shot_duration_p25": 1.267,
+        "shot_duration_p75": 3.6,
+        "shot_duration_p90": 6.667,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 2.14
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          27.5,
+          47.7,
+          24.8
+        ],
+        "intro_to_first_cut_sec": 9.233,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2607,
+        "luma_stddev": 0.1031,
+        "dark_shot_pct": 32.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 76.24,
+        "saturation_mean": 0.271,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 60.2,
+        "cuts_checked": 108,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 38,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 63.33,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.725,
+          "variety_entropy_normalized": 0.4504,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 7,
+            "neutral": 14,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 17.5,
+            "neutral": 35.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 40.37
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1562815,
+        "like_count": 27359,
+        "like_ratio": 0.017506,
+        "duration_sec": 338.0,
+        "channel": "The Warleader Productions",
+        "upload_date": "20190913",
+        "title": "Rick vs Negan || Redesigned Fight Scene (8x16)"
+      },
+      "quality_score": 52.11,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 55.71,
+        "variety": 45.04,
+        "beat_sync": 60.2,
+        "lyric_sync": 50.0,
+        "motion": 40.37,
+        "approval": 58.35
+      }
+    },
+    {
+      "id": "Xp1CG6aMZYQ",
+      "title": "(TWD) Daryl Dixon || Last Man Standing",
+      "url": "https://www.youtube.com/watch?v=Xp1CG6aMZYQ",
+      "duration_sec": 362.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "2yMYFTOwKic",
+      "title": "TWD * Rick and Daryl * BROTHER *",
+      "url": "https://www.youtube.com/watch?v=2yMYFTOwKic",
+      "duration_sec": 185.0,
+      "metrics": {
+        "shot_count": 141,
+        "avg_shot_duration_sec": 1.309,
+        "median_shot_duration_sec": 1.084,
+        "cuts_per_minute": 45.85,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 4.838,
+        "shot_duration_stddev_sec": 0.76,
+        "shot_duration_p25": 0.792,
+        "shot_duration_p75": 1.668,
+        "shot_duration_p90": 2.085,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 39.16
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 37.2
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 26.56
+          }
+        ],
+        "act_pacing_pct": [
+          34.0,
+          30.5,
+          35.5
+        ],
+        "intro_to_first_cut_sec": 0.584,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.444,
+        "luma_stddev": 0.1423,
+        "dark_shot_pct": 1.2,
+        "bright_shot_pct": 5.0,
+        "hue_median_deg": 98.12,
+        "saturation_mean": 0.2994,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 56.4,
+        "cuts_checked": 140,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 47,
+            "dissolve": 8,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 78.33,
+            "dissolve": 13.33,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.7087,
+          "variety_entropy_normalized": 0.4404,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 8,
+            "neutral": 11,
+            "disconnected": 19
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 20.0,
+            "neutral": 27.5,
+            "disconnected": 47.5
+          },
+          "continuity_score": 29.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 4145621,
+        "like_count": 91899,
+        "like_ratio": 0.022168,
+        "duration_sec": 185.0,
+        "channel": "Jen Andrews",
+        "upload_date": "20181206",
+        "title": "TWD * Rick and Daryl * BROTHER *"
+      },
+      "quality_score": 62.22,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 44.04,
+        "beat_sync": 56.4,
+        "lyric_sync": 50.0,
+        "motion": 29.62,
+        "approval": 73.89
+      }
+    },
+    {
+      "id": "DqxBtIlny-U",
+      "title": "Rick & Daryl Tribute || Seven Nation Army [TWD w/@TheWarleader]",
+      "url": "https://www.youtube.com/watch?v=DqxBtIlny-U",
+      "duration_sec": 275.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "02ZOzzLCXfk",
+      "title": "Daryl Dixon Tribute || Soldier [TWD]",
+      "url": "https://www.youtube.com/watch?v=02ZOzzLCXfk",
+      "duration_sec": 230.0,
+      "metrics": {
+        "shot_count": 164,
+        "avg_shot_duration_sec": 1.379,
+        "median_shot_duration_sec": 1.051,
+        "cuts_per_minute": 43.5,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 6.139,
+        "shot_duration_stddev_sec": 1.117,
+        "shot_duration_p25": 0.667,
+        "shot_duration_p75": 1.502,
+        "shot_duration_p90": 2.87,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 61.72
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 40.7
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 6.55
+          }
+        ],
+        "act_pacing_pct": [
+          25.0,
+          32.9,
+          42.1
+        ],
+        "intro_to_first_cut_sec": 4.905,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2606,
+        "luma_stddev": 0.12,
+        "dark_shot_pct": 37.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 144.0,
+        "saturation_mean": 0.1869,
+        "beat_sync_available": true,
+        "tempo_bpm": 83.35,
+        "cuts_on_beat_pct": 62.6,
+        "cuts_checked": 163,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 37,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 61.67,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.7789,
+          "variety_entropy_normalized": 0.484,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 8,
+            "neutral": 17,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 20.0,
+            "neutral": 42.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 34.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 891657,
+        "like_count": 22341,
+        "like_ratio": 0.025056,
+        "duration_sec": 229.0,
+        "channel": "Kekker",
+        "upload_date": "20181207",
+        "title": "Daryl Dixon Tribute || Soldier [TWD]"
+      },
+      "quality_score": 48.81,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 31.78,
+        "variety": 48.4,
+        "beat_sync": 62.6,
+        "lyric_sync": 50.0,
+        "motion": 34.88,
+        "approval": 83.52
+      }
+    },
+    {
+      "id": "RMUNDFoqN50",
+      "title": "The walking dead 10x16 |  Daryl kills Beta",
+      "url": "https://www.youtube.com/watch?v=RMUNDFoqN50",
+      "duration_sec": 53.0,
+      "metrics": {
+        "shot_count": 24,
+        "avg_shot_duration_sec": 2.194,
+        "median_shot_duration_sec": 1.65,
+        "cuts_per_minute": 27.34,
+        "min_shot_duration_sec": 0.367,
+        "max_shot_duration_sec": 5.6,
+        "shot_duration_stddev_sec": 1.334,
+        "shot_duration_p25": 1.333,
+        "shot_duration_p75": 2.933,
+        "shot_duration_p90": 4.167,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 15.88
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 14.21
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          50.0,
+          29.2,
+          20.8
+        ],
+        "intro_to_first_cut_sec": 1.3,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 24,
+        "avg_luma": 0.0714,
+        "luma_stddev": 0.0402,
+        "dark_shot_pct": 95.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 240.0,
+        "saturation_mean": 0.3626,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 73.9,
+        "cuts_checked": 23,
+        "transitions": {
+          "sample_count": 23,
+          "distribution": {
+            "hard_cut": 6,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 26.09,
+            "dissolve": 73.91,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.574,
+          "variety_entropy_normalized": 0.3566,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 23,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 2,
+            "neutral": 8,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 13.04,
+            "impact_cut": 8.7,
+            "neutral": 34.78,
+            "disconnected": 43.48
+          },
+          "continuity_score": 31.74
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 108293,
+        "like_count": 1085,
+        "like_ratio": 0.010019,
+        "duration_sec": 53.0,
+        "channel": "\ud835\udd4c\ud835\udd5f\ud835\udd5c\ud835\udd5f\ud835\udd60\ud835\udd68\ud835\udd5f\ud835\udd42\ud835\udfdc\ud835\udd58\ud835\udd56",
+        "upload_date": "20210202",
+        "title": "The walking dead 10x16 |  Daryl kills Beta"
+      },
+      "quality_score": 36.69,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 3.86,
+        "variety": 35.66,
+        "beat_sync": 73.9,
+        "lyric_sync": 50.0,
+        "motion": 31.74,
+        "approval": 33.4
+      }
+    },
+    {
+      "id": "29OKXtjtt1s",
+      "title": "Daryl Dixon Tribute || I'm So Sorry [TWD]",
+      "url": "https://www.youtube.com/watch?v=29OKXtjtt1s",
+      "duration_sec": 221.0,
+      "metrics": {
+        "shot_count": 229,
+        "avg_shot_duration_sec": 0.961,
+        "median_shot_duration_sec": 0.834,
+        "cuts_per_minute": 62.43,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 8.675,
+        "shot_duration_stddev_sec": 0.764,
+        "shot_duration_p25": 0.542,
+        "shot_duration_p75": 0.918,
+        "shot_duration_p90": 1.71,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 68.67
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 23.77
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.4,
+          31.4,
+          33.2
+        ],
+        "intro_to_first_cut_sec": 0.834,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2127,
+        "luma_stddev": 0.1389,
+        "dark_shot_pct": 50.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 98.82,
+        "saturation_mean": 0.4371,
+        "beat_sync_available": true,
+        "tempo_bpm": 71.78,
+        "cuts_on_beat_pct": 51.8,
+        "cuts_checked": 228,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 39,
+            "dissolve": 11,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 6
+          },
+          "distribution_pct": {
+            "hard_cut": 65.0,
+            "dissolve": 18.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 10.0
+          },
+          "variety_entropy": 1.0018,
+          "variety_entropy_normalized": 0.6225,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 4,
+            "neutral": 11,
+            "disconnected": 18
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 10.0,
+            "neutral": 27.5,
+            "disconnected": 45.0
+          },
+          "continuity_score": 34.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 793762,
+        "like_count": 24198,
+        "like_ratio": 0.030485,
+        "duration_sec": 220.0,
+        "channel": "Kekker",
+        "upload_date": "20210206",
+        "title": "Daryl Dixon Tribute || I'm So Sorry [TWD]"
+      },
+      "quality_score": 49.46,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 28.29,
+        "variety": 62.25,
+        "beat_sync": 51.8,
+        "lyric_sync": 50.0,
+        "motion": 34.62,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "SjQM_IDD8IU",
+      "title": "Daryl Dixon Tribute || Way Down We Go [TWD]",
+      "url": "https://www.youtube.com/watch?v=SjQM_IDD8IU",
+      "duration_sec": 223.0,
+      "metrics": {
+        "shot_count": 149,
+        "avg_shot_duration_sec": 1.489,
+        "median_shot_duration_sec": 1.126,
+        "cuts_per_minute": 40.3,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 18.685,
+        "shot_duration_stddev_sec": 1.841,
+        "shot_duration_p25": 0.584,
+        "shot_duration_p75": 1.668,
+        "shot_duration_p90": 2.878,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 100.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 88.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.73
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          25.5,
+          31.5,
+          43.0
+        ],
+        "intro_to_first_cut_sec": 1.501,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2436,
+        "luma_stddev": 0.1549,
+        "dark_shot_pct": 41.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 98.12,
+        "saturation_mean": 0.3427,
+        "beat_sync_available": true,
+        "tempo_bpm": 80.75,
+        "cuts_on_beat_pct": 60.8,
+        "cuts_checked": 148,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 18,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 30.0,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.9616,
+          "variety_entropy_normalized": 0.5975,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 9,
+            "impact_cut": 5,
+            "neutral": 14,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 22.5,
+            "impact_cut": 12.5,
+            "neutral": 35.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 44.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 714475,
+        "like_count": 23366,
+        "like_ratio": 0.032704,
+        "duration_sec": 222.0,
+        "channel": "Kekker",
+        "upload_date": "20200930",
+        "title": "Daryl Dixon Tribute || Way Down We Go [TWD]"
+      },
+      "quality_score": 51.61,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 25.47,
+        "variety": 59.75,
+        "beat_sync": 60.8,
+        "lyric_sync": 50.0,
+        "motion": 44.12,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "WKZt7l8tDp4",
+      "title": "Daryl Dixon Tribute || Gladiator [TWD]",
+      "url": "https://www.youtube.com/watch?v=WKZt7l8tDp4",
+      "duration_sec": 195.0,
+      "metrics": {
+        "shot_count": 227,
+        "avg_shot_duration_sec": 0.854,
+        "median_shot_duration_sec": 0.667,
+        "cuts_per_minute": 70.27,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 11.97,
+        "shot_duration_stddev_sec": 0.96,
+        "shot_duration_p25": 0.417,
+        "shot_duration_p75": 0.834,
+        "shot_duration_p90": 1.668,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 90.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 102.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 63.49
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 28.83
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          33.5,
+          33.9,
+          32.6
+        ],
+        "intro_to_first_cut_sec": 1.001,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2442,
+        "luma_stddev": 0.1553,
+        "dark_shot_pct": 46.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 96.0,
+        "saturation_mean": 0.5436,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 83.2,
+        "cuts_checked": 226,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 35,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 58.33,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.9086,
+          "variety_entropy_normalized": 0.5645,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 7,
+            "neutral": 16,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 17.5,
+            "neutral": 40.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 39.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1118714,
+        "like_count": 21920,
+        "like_ratio": 0.019594,
+        "duration_sec": 195.0,
+        "channel": "Kekker",
+        "upload_date": "20200717",
+        "title": "Daryl Dixon Tribute || Gladiator [TWD]"
+      },
+      "quality_score": 55.05,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 39.88,
+        "variety": 56.45,
+        "beat_sync": 83.2,
+        "lyric_sync": 50.0,
+        "motion": 39.62,
+        "approval": 65.31
+      }
+    },
+    {
+      "id": "OkXM6RT1T4s",
+      "title": "OkXM6RT1T4s",
+      "url": "https://www.youtube.com/watch?v=OkXM6RT1T4s",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "Fp-hLthubwM",
+      "title": "Fp-hLthubwM",
+      "url": "https://www.youtube.com/watch?v=Fp-hLthubwM",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "Pq1PeLGhelk",
+      "title": "The Walking Dead season 10 episode 14- Negan saves Daryl",
+      "url": "https://www.youtube.com/watch?v=Pq1PeLGhelk",
+      "duration_sec": 206.0,
+      "metrics": {
+        "shot_count": 56,
+        "avg_shot_duration_sec": 3.673,
+        "median_shot_duration_sec": 2.8,
+        "cuts_per_minute": 16.33,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 14.9,
+        "shot_duration_stddev_sec": 3.136,
+        "shot_duration_p25": 1.467,
+        "shot_duration_p75": 4.5,
+        "shot_duration_p90": 8.133,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 35.02
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 34.39
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 21.05
+          }
+        ],
+        "act_pacing_pct": [
+          32.1,
+          32.1,
+          35.7
+        ],
+        "intro_to_first_cut_sec": 11.333,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 56,
+        "avg_luma": 0.0447,
+        "luma_stddev": 0.0166,
+        "dark_shot_pct": 100.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 228.71,
+        "saturation_mean": 0.3061,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 56.4,
+        "cuts_checked": 55,
+        "transitions": {
+          "sample_count": 55,
+          "distribution": {
+            "hard_cut": 10,
+            "dissolve": 45,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 18.18,
+            "dissolve": 81.82,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.4741,
+          "variety_entropy_normalized": 0.2946,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 6,
+            "neutral": 22,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 15.0,
+            "neutral": 55.0,
+            "disconnected": 25.0
+          },
+          "continuity_score": 35.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 395305,
+        "like_count": 5855,
+        "like_ratio": 0.014811,
+        "duration_sec": 206.0,
+        "channel": "\ud835\udd4c\ud835\udd5f\ud835\udd5c\ud835\udd5f\ud835\udd60\ud835\udd68\ud835\udd5f\ud835\udd42\ud835\udfdc\ud835\udd58\ud835\udd56",
+        "upload_date": "20200405",
+        "title": "The Walking Dead season 10 episode 14- Negan saves Daryl"
+      },
+      "quality_score": 36.98,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.09,
+        "variety": 29.46,
+        "beat_sync": 56.4,
+        "lyric_sync": 50.0,
+        "motion": 35.5,
+        "approval": 49.37
+      }
+    },
+    {
+      "id": "QXumHKPvljU",
+      "title": "QXumHKPvljU",
+      "url": "https://www.youtube.com/watch?v=QXumHKPvljU",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "O_YRYHEqSQM",
+      "title": "The Walking Dead 10x16 \"Negan & Daryl Kill Beta\" Season 10 Episode 16 HD \"A Certain Doom\"",
+      "url": "https://www.youtube.com/watch?v=O_YRYHEqSQM",
+      "duration_sec": 141.0,
+      "metrics": {
+        "shot_count": 53,
+        "avg_shot_duration_sec": 2.642,
+        "median_shot_duration_sec": 1.668,
+        "cuts_per_minute": 22.71,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 10.344,
+        "shot_duration_stddev_sec": 2.154,
+        "shot_duration_p25": 1.043,
+        "shot_duration_p75": 3.837,
+        "shot_duration_p90": 4.922,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 14.83
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 11.74
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          30.2,
+          45.3,
+          24.5
+        ],
+        "intro_to_first_cut_sec": 0.375,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 53,
+        "avg_luma": 0.1177,
+        "luma_stddev": 0.1119,
+        "dark_shot_pct": 86.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 192.0,
+        "saturation_mean": 0.3291,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 71.2,
+        "cuts_checked": 52,
+        "transitions": {
+          "sample_count": 52,
+          "distribution": {
+            "hard_cut": 9,
+            "dissolve": 38,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 17.31,
+            "dissolve": 73.08,
+            "flash_cut": 0.0,
+            "whip_pan": 7.69,
+            "speed_ramp": 1.92
+          },
+          "variety_entropy": 0.8061,
+          "variety_entropy_normalized": 0.5008,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 14,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 35.0,
+            "disconnected": 37.5
+          },
+          "continuity_score": 35.37
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2805407,
+        "like_count": null,
+        "like_ratio": null,
+        "duration_sec": 140.0,
+        "channel": "OneFergus",
+        "upload_date": "20201005",
+        "title": "The Walking Dead 10x16 \"Negan & Daryl Kill Beta\" Season 10 Episode 16 HD \"A Certain Doom\""
+      },
+      "quality_score": 64.56,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 50.08,
+        "beat_sync": 71.2,
+        "lyric_sync": 50.0,
+        "motion": 35.37,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "0nGiTFh99kc",
+      "title": "0nGiTFh99kc",
+      "url": "https://www.youtube.com/watch?v=0nGiTFh99kc",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.126,
+    "cuts_per_minute": 39.55,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      0.854,
+      3.102
+    ],
+    "typical_act_pacing_pct": [
+      32.6,
+      34.9,
+      32.5
+    ],
+    "cuts_on_beat_pct_mean": 64.06,
+    "tempo_bpm_median": 117.45,
+    "avg_luma_mean": 0.2111,
+    "dark_shot_pct_mean": 54.58,
+    "bright_shot_pct_mean": 0.56,
+    "saturation_mean_mean": 0.3421,
+    "intro_to_first_cut_sec_median": 1.3,
+    "pacing_profile": "peaks-and-valleys",
+    "tier_samples": {
+      "D": 6,
+      "C": 3
+    }
+  },
+  "generated_at": "2026-04-20T09:38:28.273269+00:00",
+  "generator": "ff reference ingest"
+}

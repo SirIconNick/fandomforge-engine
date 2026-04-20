@@ -1,0 +1,1237 @@
+{
+  "schema_version": 1,
+  "tag": "tribute-pl7",
+  "source_playlists": [
+    "https://www.youtube.com/watch?v=6dlKITHsGmE&list=PL6z3IIDqsIEyR4b-OrZmtqUH3mVNT5NmJ"
+  ],
+  "video_count": 6,
+  "videos": [
+    {
+      "id": "6dlKITHsGmE",
+      "title": "lost | paralyzed",
+      "url": "https://www.youtube.com/watch?v=6dlKITHsGmE",
+      "duration_sec": 316.0,
+      "metrics": {
+        "shot_count": 49,
+        "avg_shot_duration_sec": 6.423,
+        "median_shot_duration_sec": 3.637,
+        "cuts_per_minute": 9.34,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 49.883,
+        "shot_duration_stddev_sec": 8.691,
+        "shot_duration_p25": 1.401,
+        "shot_duration_p75": 7.741,
+        "shot_duration_p90": 15.983,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 9.53
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 11.86
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          32.7,
+          44.9,
+          22.4
+        ],
+        "intro_to_first_cut_sec": 2.636,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 49,
+        "avg_luma": 0.4032,
+        "luma_stddev": 0.1882,
+        "dark_shot_pct": 20.4,
+        "bright_shot_pct": 4.1,
+        "hue_median_deg": 196.24,
+        "saturation_mean": 0.3672,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 70.8,
+        "cuts_checked": 48,
+        "transitions": {
+          "sample_count": 48,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 3,
+            "flash_cut": 1,
+            "whip_pan": 11,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 66.67,
+            "dissolve": 6.25,
+            "flash_cut": 2.08,
+            "whip_pan": 22.92,
+            "speed_ramp": 2.08
+          },
+          "variety_entropy": 0.9425,
+          "variety_entropy_normalized": 0.5856,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 7,
+            "neutral": 18,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 15.0,
+            "impact_cut": 17.5,
+            "neutral": 45.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 43.88
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 28372,
+        "like_count": 1002,
+        "like_ratio": 0.035317,
+        "duration_sec": 315.0,
+        "channel": "sxftblondie",
+        "upload_date": "20190826",
+        "title": "lost | paralyzed"
+      },
+      "quality_score": 51.02,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 15.99,
+        "variety": 58.56,
+        "beat_sync": 70.8,
+        "lyric_sync": 50.0,
+        "motion": 43.88,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "r1syrC_3fzg",
+      "title": "Lost | James Sawyer Ford",
+      "url": "https://www.youtube.com/watch?v=r1syrC_3fzg",
+      "duration_sec": 195.0,
+      "metrics": {
+        "shot_count": 128,
+        "avg_shot_duration_sec": 1.518,
+        "median_shot_duration_sec": 1.0,
+        "cuts_per_minute": 39.52,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 9.04,
+        "shot_duration_stddev_sec": 1.185,
+        "shot_duration_p25": 0.88,
+        "shot_duration_p75": 1.88,
+        "shot_duration_p90": 2.76,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 14.42
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 8.02
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.9,
+          40.6,
+          23.4
+        ],
+        "intro_to_first_cut_sec": 0.28,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2715,
+        "luma_stddev": 0.1509,
+        "dark_shot_pct": 38.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 77.65,
+        "saturation_mean": 0.3043,
+        "beat_sync_available": true,
+        "tempo_bpm": 66.26,
+        "cuts_on_beat_pct": 69.3,
+        "cuts_checked": 127,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 39,
+            "dissolve": 15,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 65.0,
+            "dissolve": 25.0,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8568,
+          "variety_entropy_normalized": 0.5324,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 6,
+            "neutral": 21,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 15.0,
+            "neutral": 52.5,
+            "disconnected": 25.0
+          },
+          "continuity_score": 37.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 198756,
+        "like_count": 5217,
+        "like_ratio": 0.026248,
+        "duration_sec": 195.0,
+        "channel": "anng edits",
+        "upload_date": "20200106",
+        "title": "Lost | James Sawyer Ford"
+      },
+      "quality_score": 68.66,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 53.24,
+        "beat_sync": 69.3,
+        "lyric_sync": 50.0,
+        "motion": 37.12,
+        "approval": 87.49
+      }
+    },
+    {
+      "id": "KhgfZrSVSh8",
+      "title": "Jack Shephard (Lost) | Paralyzed",
+      "url": "https://www.youtube.com/watch?v=KhgfZrSVSh8",
+      "duration_sec": 271.0,
+      "metrics": {
+        "shot_count": 125,
+        "avg_shot_duration_sec": 2.163,
+        "median_shot_duration_sec": 1.833,
+        "cuts_per_minute": 27.73,
+        "min_shot_duration_sec": 0.333,
+        "max_shot_duration_sec": 8.2,
+        "shot_duration_stddev_sec": 1.498,
+        "shot_duration_p25": 0.933,
+        "shot_duration_p75": 2.9,
+        "shot_duration_p90": 3.8,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 11.61
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 5.63
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          20.8,
+          46.4,
+          32.8
+        ],
+        "intro_to_first_cut_sec": 7.7,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2875,
+        "luma_stddev": 0.1503,
+        "dark_shot_pct": 30.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 299.29,
+        "saturation_mean": 0.3396,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 84.7,
+        "cuts_checked": 124,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 46,
+            "dissolve": 5,
+            "flash_cut": 1,
+            "whip_pan": 7,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 76.67,
+            "dissolve": 8.33,
+            "flash_cut": 1.67,
+            "whip_pan": 11.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.7979,
+          "variety_entropy_normalized": 0.4958,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 9,
+            "impact_cut": 2,
+            "neutral": 16,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 22.5,
+            "impact_cut": 5.0,
+            "neutral": 40.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 40.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 162977,
+        "like_count": 3809,
+        "like_ratio": 0.023371,
+        "duration_sec": 271.0,
+        "channel": "DFPUR",
+        "upload_date": "20190109",
+        "title": "Jack Shephard (Lost) | Paralyzed"
+      },
+      "quality_score": 68.67,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 91.87,
+        "variety": 49.58,
+        "beat_sync": 84.7,
+        "lyric_sync": 50.0,
+        "motion": 40.25,
+        "approval": 77.9
+      }
+    },
+    {
+      "id": "rA9xqZtnDEg",
+      "title": "Stranger Things S3 | Way Down We Go",
+      "url": "https://www.youtube.com/watch?v=rA9xqZtnDEg",
+      "duration_sec": 217.0,
+      "metrics": {
+        "shot_count": 110,
+        "avg_shot_duration_sec": 1.96,
+        "median_shot_duration_sec": 1.835,
+        "cuts_per_minute": 30.61,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 8.375,
+        "shot_duration_stddev_sec": 1.341,
+        "shot_duration_p25": 0.901,
+        "shot_duration_p75": 2.569,
+        "shot_duration_p90": 3.504,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 13.66
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 7.34
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          29.1,
+          35.5,
+          35.5
+        ],
+        "intro_to_first_cut_sec": 2.369,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1866,
+        "luma_stddev": 0.1207,
+        "dark_shot_pct": 62.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 158.82,
+        "saturation_mean": 0.5768,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 84.4,
+        "cuts_checked": 109,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 29,
+            "dissolve": 27,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 48.33,
+            "dissolve": 45.0,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9288,
+          "variety_entropy_normalized": 0.5771,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 7,
+            "neutral": 21,
+            "disconnected": 11
+          },
+          "distribution_pct": {
+            "match_cut": 2.5,
+            "impact_cut": 17.5,
+            "neutral": 52.5,
+            "disconnected": 27.5
+          },
+          "continuity_score": 34.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 177409,
+        "like_count": 5067,
+        "like_ratio": 0.028561,
+        "duration_sec": 216.0,
+        "channel": "Petrova Army",
+        "upload_date": "20190711",
+        "title": "Stranger Things S3 | Way Down We Go"
+      },
+      "quality_score": 72.66,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 57.71,
+        "beat_sync": 84.4,
+        "lyric_sync": 50.0,
+        "motion": 34.0,
+        "approval": 95.2
+      }
+    },
+    {
+      "id": "GCl-mDOFmQE",
+      "title": "LOST || Forget the Horror Here",
+      "url": "https://www.youtube.com/watch?v=GCl-mDOFmQE",
+      "duration_sec": 409.0,
+      "metrics": {
+        "shot_count": 317,
+        "avg_shot_duration_sec": 1.288,
+        "median_shot_duration_sec": 1.043,
+        "cuts_per_minute": 46.57,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 7.007,
+        "shot_duration_stddev_sec": 0.807,
+        "shot_duration_p25": 0.834,
+        "shot_duration_p75": 1.501,
+        "shot_duration_p90": 2.002,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 23.23
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 19.56
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 7.14
+          }
+        ],
+        "act_pacing_pct": [
+          26.2,
+          37.2,
+          36.6
+        ],
+        "intro_to_first_cut_sec": 1.501,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.3179,
+        "luma_stddev": 0.1356,
+        "dark_shot_pct": 21.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 40.23,
+        "saturation_mean": 0.4125,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 52.8,
+        "cuts_checked": 316,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 46,
+            "dissolve": 9,
+            "flash_cut": 1,
+            "whip_pan": 2,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 76.67,
+            "dissolve": 15.0,
+            "flash_cut": 1.67,
+            "whip_pan": 3.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.7833,
+          "variety_entropy_normalized": 0.4867,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 3,
+            "neutral": 11,
+            "disconnected": 22
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 7.5,
+            "neutral": 27.5,
+            "disconnected": 55.0
+          },
+          "continuity_score": 25.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 120831,
+        "like_count": 5607,
+        "like_ratio": 0.046404,
+        "duration_sec": 409.0,
+        "channel": "Grable424",
+        "upload_date": "20201127",
+        "title": "LOST || Forget the Horror Here"
+      },
+      "quality_score": 56.18,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 68.11,
+        "variety": 48.67,
+        "beat_sync": 52.8,
+        "lyric_sync": 50.0,
+        "motion": 25.25,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "hvg0shQ_vlI",
+      "title": "what's done is done || LOST (Jack/Locke)",
+      "url": "https://www.youtube.com/watch?v=hvg0shQ_vlI",
+      "duration_sec": 168.0,
+      "metrics": {
+        "shot_count": 84,
+        "avg_shot_duration_sec": 1.995,
+        "median_shot_duration_sec": 1.68,
+        "cuts_per_minute": 30.07,
+        "min_shot_duration_sec": 0.72,
+        "max_shot_duration_sec": 7.48,
+        "shot_duration_stddev_sec": 1.306,
+        "shot_duration_p25": 1.16,
+        "shot_duration_p75": 2.28,
+        "shot_duration_p90": 3.8,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 23.91
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 17.05
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 7.89
+          }
+        ],
+        "act_pacing_pct": [
+          28.6,
+          33.3,
+          38.1
+        ],
+        "intro_to_first_cut_sec": 6.36,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2175,
+        "luma_stddev": 0.1311,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 32.47,
+        "saturation_mean": 0.4868,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 65.1,
+        "cuts_checked": 83,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 23,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 53.33,
+            "dissolve": 38.33,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9099,
+          "variety_entropy_normalized": 0.5653,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 6,
+            "neutral": 14,
+            "disconnected": 17
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 15.0,
+            "neutral": 35.0,
+            "disconnected": 42.5
+          },
+          "continuity_score": 31.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 98767,
+        "like_count": 2096,
+        "like_ratio": 0.021222,
+        "duration_sec": 168.0,
+        "channel": "WalterPinkman",
+        "upload_date": "20150310",
+        "title": "what's done is done || LOST (Jack/Locke)"
+      },
+      "quality_score": 54.64,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 55.67,
+        "variety": 56.53,
+        "beat_sync": 65.1,
+        "lyric_sync": 50.0,
+        "motion": 31.0,
+        "approval": 70.74
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.833,
+    "cuts_per_minute": 31.14,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      1.288,
+      2.163
+    ],
+    "typical_act_pacing_pct": [
+      28.9,
+      39.6,
+      31.5
+    ],
+    "cuts_on_beat_pct_mean": 71.18,
+    "tempo_bpm_median": 129.2,
+    "avg_luma_mean": 0.2807,
+    "dark_shot_pct_mean": 36.32,
+    "bright_shot_pct_mean": 0.68,
+    "saturation_mean_mean": 0.4145,
+    "intro_to_first_cut_sec_median": 2.503,
+    "pacing_profile": "escalator",
+    "tier_samples": {
+      "D": 2,
+      "B": 3,
+      "C": 1
+    }
+  },
+  "generated_at": "2026-04-20T09:47:08.670499+00:00",
+  "generator": "ff reference ingest"
+}

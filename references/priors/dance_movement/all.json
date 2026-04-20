@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "edit_type": "dance_movement",
+  "fandom_family": "all",
+  "video_count": 5,
+  "priors": {
+    "median_shot_duration_sec": 1.55,
+    "cuts_per_minute": 34.42,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      1.378,
+      2.284
+    ],
+    "typical_act_pacing_pct": [
+      34.7,
+      33.7,
+      31.7
+    ],
+    "cuts_on_beat_pct_mean": 56.22,
+    "tempo_bpm_median": 117.45,
+    "avg_luma_mean": 0.2246,
+    "dark_shot_pct_mean": 50.16,
+    "bright_shot_pct_mean": 0.24,
+    "saturation_mean_mean": 0.434,
+    "intro_to_first_cut_sec_median": 2.933,
+    "pacing_profile": "escalator",
+    "tier_samples": {
+      "C": 4,
+      "B": 1
+    }
+  },
+  "generated_at": "2026-04-20T10:07:41.673026+00:00",
+  "generator": "ff reference rebuild-priors"
+}

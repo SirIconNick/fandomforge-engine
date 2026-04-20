@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "edit_type": "tribute",
+  "fandom_family": "all",
+  "video_count": 126,
+  "priors": {
+    "median_shot_duration_sec": 1.376,
+    "cuts_per_minute": 35.43,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      0.823,
+      2.933
+    ],
+    "typical_act_pacing_pct": [
+      31.7,
+      34.8,
+      33.5
+    ],
+    "cuts_on_beat_pct_mean": 61.27,
+    "tempo_bpm_median": 123.05,
+    "avg_luma_mean": 0.2151,
+    "dark_shot_pct_mean": 55.09,
+    "bright_shot_pct_mean": 0.96,
+    "saturation_mean_mean": 0.4072,
+    "intro_to_first_cut_sec_median": 2.717,
+    "pacing_profile": "peaks-and-valleys",
+    "tier_samples": {
+      "B": 20,
+      "D": 74,
+      "C": 20
+    }
+  },
+  "generated_at": "2026-04-20T10:07:41.674210+00:00",
+  "generator": "ff reference rebuild-priors"
+}

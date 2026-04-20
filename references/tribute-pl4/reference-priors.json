@@ -1,0 +1,2694 @@
+{
+  "schema_version": 1,
+  "tag": "tribute-pl4",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIExJenALBf-S1AZLK3Rvvzkd"
+  ],
+  "video_count": 15,
+  "videos": [
+    {
+      "id": "x-FRmbxWkBk",
+      "title": "Multifandom | READY OR NOT",
+      "url": "https://www.youtube.com/watch?v=x-FRmbxWkBk",
+      "duration_sec": 156.0,
+      "metrics": {
+        "shot_count": 72,
+        "avg_shot_duration_sec": 2.136,
+        "median_shot_duration_sec": 0.9,
+        "cuts_per_minute": 28.1,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 31.28,
+        "shot_duration_stddev_sec": 4.021,
+        "shot_duration_p25": 0.48,
+        "shot_duration_p75": 2.52,
+        "shot_duration_p90": 3.96,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 14.42
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 4.01
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          9.7,
+          48.6,
+          41.7
+        ],
+        "intro_to_first_cut_sec": 4.56,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 72,
+        "avg_luma": 0.2619,
+        "luma_stddev": 0.1671,
+        "dark_shot_pct": 44.4,
+        "bright_shot_pct": 1.4,
+        "hue_median_deg": 49.41,
+        "saturation_mean": 0.2257,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 56.3,
+        "cuts_checked": 71,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 27,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 16
+          },
+          "distribution_pct": {
+            "hard_cut": 45.0,
+            "dissolve": 28.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 26.67
+          },
+          "variety_entropy": 1.0691,
+          "variety_entropy_normalized": 0.6643,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 9,
+            "impact_cut": 10,
+            "neutral": 13,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 22.5,
+            "impact_cut": 25.0,
+            "neutral": 32.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 52.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 648031,
+        "like_count": 13282,
+        "like_ratio": 0.020496,
+        "duration_sec": 155.0,
+        "channel": "AnneSoshi",
+        "upload_date": "20141031",
+        "title": "Multifandom | READY OR NOT"
+      },
+      "quality_score": 68.45,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 66.43,
+        "beat_sync": 56.3,
+        "lyric_sync": 50.0,
+        "motion": 52.62,
+        "approval": 68.32
+      }
+    },
+    {
+      "id": "VGLgtlZzOQk",
+      "title": "what is a hero? [multifandom]",
+      "url": "https://www.youtube.com/watch?v=VGLgtlZzOQk",
+      "duration_sec": 267.0,
+      "metrics": {
+        "shot_count": 87,
+        "avg_shot_duration_sec": 3.065,
+        "median_shot_duration_sec": 2.083,
+        "cuts_per_minute": 19.58,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 14.208,
+        "shot_duration_stddev_sec": 2.7,
+        "shot_duration_p25": 1.208,
+        "shot_duration_p75": 3.833,
+        "shot_duration_p90": 7.25,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 20.12
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 10.69
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          31.0,
+          25.3,
+          43.7
+        ],
+        "intro_to_first_cut_sec": 10.708,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.239,
+        "luma_stddev": 0.1846,
+        "dark_shot_pct": 55.0,
+        "bright_shot_pct": 3.8,
+        "hue_median_deg": 245.65,
+        "saturation_mean": 0.6548,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 70.9,
+        "cuts_checked": 86,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 25,
+            "dissolve": 25,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 41.67,
+            "dissolve": 41.67,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 1.1404,
+          "variety_entropy_normalized": 0.7085,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 6,
+            "neutral": 16,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 15.0,
+            "neutral": 40.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 37.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 432347,
+        "like_count": 8481,
+        "like_ratio": 0.019616,
+        "duration_sec": 267.0,
+        "channel": "xSilentHarmony",
+        "upload_date": "20140630",
+        "title": "what is a hero? [multifandom]"
+      },
+      "quality_score": 69.51,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 70.85,
+        "beat_sync": 70.9,
+        "lyric_sync": 50.0,
+        "motion": 37.75,
+        "approval": 65.39
+      }
+    },
+    {
+      "id": "PblBPJY8aVc",
+      "title": "Sad multifandom | \"hide as villains or live as heroes\"",
+      "url": "https://www.youtube.com/watch?v=PblBPJY8aVc",
+      "duration_sec": 263.0,
+      "metrics": {
+        "shot_count": 17,
+        "avg_shot_duration_sec": 15.409,
+        "median_shot_duration_sec": 7.84,
+        "cuts_per_minute": 3.89,
+        "min_shot_duration_sec": 0.32,
+        "max_shot_duration_sec": 51.32,
+        "shot_duration_stddev_sec": 16.403,
+        "shot_duration_p25": 2.64,
+        "shot_duration_p75": 24.72,
+        "shot_duration_p90": 44.8,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 5.34
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 4.81
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          29.4,
+          29.4,
+          41.2
+        ],
+        "intro_to_first_cut_sec": 10.56,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 17,
+        "avg_luma": 0.2344,
+        "luma_stddev": 0.2049,
+        "dark_shot_pct": 52.9,
+        "bright_shot_pct": 5.9,
+        "hue_median_deg": 221.65,
+        "saturation_mean": 0.4234,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 50.0,
+        "cuts_checked": 16,
+        "transitions": {
+          "sample_count": 16,
+          "distribution": {
+            "hard_cut": 6,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 37.5,
+            "dissolve": 62.5,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6616,
+          "variety_entropy_normalized": 0.4111,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 16,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 0,
+            "neutral": 12,
+            "disconnected": 3
+          },
+          "distribution_pct": {
+            "match_cut": 6.25,
+            "impact_cut": 0.0,
+            "neutral": 75.0,
+            "disconnected": 18.75
+          },
+          "continuity_score": 32.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 70964,
+        "like_count": 1294,
+        "like_ratio": 0.018235,
+        "duration_sec": 263.0,
+        "channel": "\u2665TheMica993\u2665",
+        "upload_date": "20141214",
+        "title": "Sad multifandom | \"hide as villains or live as heroes\""
+      },
+      "quality_score": 38.72,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 16.41,
+        "variety": 41.11,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 32.5,
+        "approval": 60.78
+      }
+    },
+    {
+      "id": "8EQwcLboCWw",
+      "title": "Multifandom Mashup 2014",
+      "url": "https://www.youtube.com/watch?v=8EQwcLboCWw",
+      "duration_sec": 385.0,
+      "metrics": {
+        "shot_count": 462,
+        "avg_shot_duration_sec": 0.823,
+        "median_shot_duration_sec": 0.68,
+        "cuts_per_minute": 72.89,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 9.76,
+        "shot_duration_stddev_sec": 0.719,
+        "shot_duration_p25": 0.52,
+        "shot_duration_p75": 0.88,
+        "shot_duration_p90": 1.32,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 90.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 106.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 90.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 68.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 82.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 36.23
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 12.13
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 12.4
+          }
+        ],
+        "act_pacing_pct": [
+          37.9,
+          32.9,
+          29.2
+        ],
+        "intro_to_first_cut_sec": 1.64,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.4022,
+        "luma_stddev": 0.1871,
+        "dark_shot_pct": 10.0,
+        "bright_shot_pct": 6.2,
+        "hue_median_deg": 209.65,
+        "saturation_mean": 0.4648,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 46.6,
+        "cuts_checked": 461,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 45,
+            "dissolve": 5,
+            "flash_cut": 1,
+            "whip_pan": 7,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 75.0,
+            "dissolve": 8.33,
+            "flash_cut": 1.67,
+            "whip_pan": 11.67,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.8551,
+          "variety_entropy_normalized": 0.5313,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 2,
+            "neutral": 20,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 5.0,
+            "neutral": 50.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 33.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 608572,
+        "like_count": 19860,
+        "like_ratio": 0.032634,
+        "duration_sec": 385.0,
+        "channel": "Pteryx Videos",
+        "upload_date": "20141216",
+        "title": "Multifandom Mashup 2014"
+      },
+      "quality_score": 64.85,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 53.13,
+        "beat_sync": 46.6,
+        "lyric_sync": 50.0,
+        "motion": 33.75,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "fpTtgY8wYoY",
+      "title": "multifandom | life is pain",
+      "url": "https://www.youtube.com/watch?v=fpTtgY8wYoY",
+      "duration_sec": 293.0,
+      "metrics": {
+        "shot_count": 37,
+        "avg_shot_duration_sec": 7.889,
+        "median_shot_duration_sec": 2.336,
+        "cuts_per_minute": 7.61,
+        "min_shot_duration_sec": 0.334,
+        "max_shot_duration_sec": 50.35,
+        "shot_duration_stddev_sec": 12.539,
+        "shot_duration_p25": 0.868,
+        "shot_duration_p75": 6.34,
+        "shot_duration_p90": 25.425,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          24.3,
+          24.3,
+          51.4
+        ],
+        "intro_to_first_cut_sec": 7.908,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 37,
+        "avg_luma": 0.2773,
+        "luma_stddev": 0.1527,
+        "dark_shot_pct": 32.4,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 213.18,
+        "saturation_mean": 0.406,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 66.7,
+        "cuts_checked": 36,
+        "transitions": {
+          "sample_count": 36,
+          "distribution": {
+            "hard_cut": 12,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 33.33,
+            "dissolve": 58.33,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8877,
+          "variety_entropy_normalized": 0.5516,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 36,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 3,
+            "neutral": 24,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 11.11,
+            "impact_cut": 8.33,
+            "neutral": 66.67,
+            "disconnected": 13.89
+          },
+          "continuity_score": 40.69
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 61304,
+        "like_count": 1071,
+        "like_ratio": 0.01747,
+        "duration_sec": 292.0,
+        "channel": "xladyxmacbethx",
+        "upload_date": "20150109",
+        "title": "multifandom | life is pain"
+      },
+      "quality_score": 44.59,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.18,
+        "variety": 55.16,
+        "beat_sync": 66.7,
+        "lyric_sync": 50.0,
+        "motion": 40.69,
+        "approval": 58.23
+      }
+    },
+    {
+      "id": "f6ROMOX8TCw",
+      "title": "Multifandom || What a Wonderful World",
+      "url": "https://www.youtube.com/watch?v=f6ROMOX8TCw",
+      "duration_sec": 151.0,
+      "metrics": {
+        "shot_count": 173,
+        "avg_shot_duration_sec": 0.859,
+        "median_shot_duration_sec": 0.92,
+        "cuts_per_minute": 69.83,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 3.56,
+        "shot_duration_stddev_sec": 0.475,
+        "shot_duration_p25": 0.52,
+        "shot_duration_p75": 1.04,
+        "shot_duration_p90": 1.12,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 80.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 84.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 92.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 66.6
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 33.58
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          28.3,
+          37.6,
+          34.1
+        ],
+        "intro_to_first_cut_sec": 1.08,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1814,
+        "luma_stddev": 0.1182,
+        "dark_shot_pct": 61.3,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 103.76,
+        "saturation_mean": 0.4126,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 52.3,
+        "cuts_checked": 172,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 17,
+            "dissolve": 39,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 4
+          },
+          "distribution_pct": {
+            "hard_cut": 28.33,
+            "dissolve": 65.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 6.67
+          },
+          "variety_entropy": 0.8179,
+          "variety_entropy_normalized": 0.5082,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 6,
+            "neutral": 15,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 15.0,
+            "neutral": 37.5,
+            "disconnected": 37.5
+          },
+          "continuity_score": 34.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 22331,
+        "like_count": 675,
+        "like_ratio": 0.030227,
+        "duration_sec": 151.0,
+        "channel": "Zurik 23M",
+        "upload_date": "20150313",
+        "title": "Multifandom || What a Wonderful World"
+      },
+      "quality_score": 42.03,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 5.17,
+        "variety": 50.82,
+        "beat_sync": 52.3,
+        "lyric_sync": 50.0,
+        "motion": 34.38,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "mefFUK0RaA0",
+      "title": "Everybody loves a hero [multifandom]",
+      "url": "https://www.youtube.com/watch?v=mefFUK0RaA0",
+      "duration_sec": 95.0,
+      "metrics": {
+        "shot_count": 7,
+        "avg_shot_duration_sec": 13.476,
+        "median_shot_duration_sec": 13.733,
+        "cuts_per_minute": 4.45,
+        "min_shot_duration_sec": 2.367,
+        "max_shot_duration_sec": 22.667,
+        "shot_duration_stddev_sec": 6.136,
+        "shot_duration_p25": 8.467,
+        "shot_duration_p75": 18.033,
+        "shot_duration_p90": 22.667,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 4.93
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          28.6,
+          42.9,
+          28.6
+        ],
+        "intro_to_first_cut_sec": 13.733,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 7,
+        "avg_luma": 0.1723,
+        "luma_stddev": 0.0746,
+        "dark_shot_pct": 57.1,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 225.88,
+        "saturation_mean": 0.8139,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 50.0,
+        "cuts_checked": 6,
+        "transitions": {
+          "sample_count": 6,
+          "distribution": {
+            "hard_cut": 3,
+            "dissolve": 2,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 50.0,
+            "dissolve": 33.33,
+            "flash_cut": 0.0,
+            "whip_pan": 16.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 1.0114,
+          "variety_entropy_normalized": 0.6284,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 6,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 0,
+            "neutral": 2,
+            "disconnected": 2
+          },
+          "distribution_pct": {
+            "match_cut": 33.33,
+            "impact_cut": 0.0,
+            "neutral": 33.33,
+            "disconnected": 33.33
+          },
+          "continuity_score": 45.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6791,
+        "like_count": 139,
+        "like_ratio": 0.020468,
+        "duration_sec": 94.0,
+        "channel": "more valkyrie",
+        "upload_date": "20141113",
+        "title": "Everybody loves a hero [multifandom]"
+      },
+      "quality_score": 40.89,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.57,
+        "variety": 62.84,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 45.0,
+        "approval": 68.23
+      }
+    },
+    {
+      "id": "B2LgMcHhbe4",
+      "title": "Multifandom || All Men Fall",
+      "url": "https://www.youtube.com/watch?v=B2LgMcHhbe4",
+      "duration_sec": 214.0,
+      "metrics": {
+        "shot_count": 50,
+        "avg_shot_duration_sec": 4.269,
+        "median_shot_duration_sec": 2.08,
+        "cuts_per_minute": 14.06,
+        "min_shot_duration_sec": 0.36,
+        "max_shot_duration_sec": 28.52,
+        "shot_duration_stddev_sec": 5.289,
+        "shot_duration_p25": 1.12,
+        "shot_duration_p75": 4.8,
+        "shot_duration_p90": 12.52,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.61
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 8.7
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 15.79
+          }
+        ],
+        "act_pacing_pct": [
+          38.0,
+          24.0,
+          38.0
+        ],
+        "intro_to_first_cut_sec": 13.28,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 50,
+        "avg_luma": 0.315,
+        "luma_stddev": 0.1897,
+        "dark_shot_pct": 34.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 76.94,
+        "saturation_mean": 0.3864,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 67.3,
+        "cuts_checked": 49,
+        "transitions": {
+          "sample_count": 49,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 14,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 67.35,
+            "dissolve": 28.57,
+            "flash_cut": 0.0,
+            "whip_pan": 2.04,
+            "speed_ramp": 2.04
+          },
+          "variety_entropy": 0.783,
+          "variety_entropy_normalized": 0.4865,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 7,
+            "neutral": 17,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 17.5,
+            "neutral": 42.5,
+            "disconnected": 30.0
+          },
+          "continuity_score": 38.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 6804,
+        "like_count": 219,
+        "like_ratio": 0.032187,
+        "duration_sec": 214.0,
+        "channel": "Zurik 23M",
+        "upload_date": "20140704",
+        "title": "Multifandom || All Men Fall"
+      },
+      "quality_score": 44.35,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.57,
+        "variety": 48.65,
+        "beat_sync": 67.3,
+        "lyric_sync": 50.0,
+        "motion": 38.0,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "pQDbuEnDW9M",
+      "title": "Person of Interest || Nobody Can Save Me Now",
+      "url": "https://www.youtube.com/watch?v=pQDbuEnDW9M",
+      "duration_sec": 244.0,
+      "metrics": {
+        "shot_count": 239,
+        "avg_shot_duration_sec": 1.009,
+        "median_shot_duration_sec": 0.84,
+        "cuts_per_minute": 59.47,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 6.72,
+        "shot_duration_stddev_sec": 0.701,
+        "shot_duration_p25": 0.48,
+        "shot_duration_p75": 1.52,
+        "shot_duration_p90": 1.88,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 76.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 74.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 94.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 104.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 104.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 90.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 72.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 26.09
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 23.08
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          20.1,
+          43.9,
+          36.0
+        ],
+        "intro_to_first_cut_sec": 1.88,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2172,
+        "luma_stddev": 0.1613,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 2.5,
+        "hue_median_deg": 57.18,
+        "saturation_mean": 0.4948,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 40.8,
+        "cuts_checked": 238,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 31,
+            "dissolve": 25,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 51.67,
+            "dissolve": 41.67,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.924,
+          "variety_entropy_normalized": 0.5741,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 6,
+            "neutral": 18,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 15.0,
+            "neutral": 45.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 44.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 172173,
+        "like_count": 2843,
+        "like_ratio": 0.016512,
+        "duration_sec": 243.0,
+        "channel": "Zurik 23M",
+        "upload_date": "20150110",
+        "title": "Person of Interest || Nobody Can Save Me Now"
+      },
+      "quality_score": 46.41,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 39.82,
+        "variety": 57.41,
+        "beat_sync": 40.8,
+        "lyric_sync": 50.0,
+        "motion": 44.5,
+        "approval": 55.04
+      }
+    },
+    {
+      "id": "vmdJXKW4IR4",
+      "title": "Person of interest | Kings & pawns",
+      "url": "https://www.youtube.com/watch?v=vmdJXKW4IR4",
+      "duration_sec": 142.0,
+      "metrics": {
+        "shot_count": 125,
+        "avg_shot_duration_sec": 1.116,
+        "median_shot_duration_sec": 0.92,
+        "cuts_per_minute": 53.76,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 4.2,
+        "shot_duration_stddev_sec": 0.787,
+        "shot_duration_p25": 0.52,
+        "shot_duration_p75": 1.36,
+        "shot_duration_p90": 1.84,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 64.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 42.78
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 38.04
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          34.4,
+          36.0,
+          29.6
+        ],
+        "intro_to_first_cut_sec": 3.4,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2847,
+        "luma_stddev": 0.1606,
+        "dark_shot_pct": 40.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 192.0,
+        "saturation_mean": 0.1371,
+        "beat_sync_available": true,
+        "tempo_bpm": 78.3,
+        "cuts_on_beat_pct": 38.7,
+        "cuts_checked": 124,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 36,
+            "dissolve": 14,
+            "flash_cut": 0,
+            "whip_pan": 9,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 60.0,
+            "dissolve": 23.33,
+            "flash_cut": 0.0,
+            "whip_pan": 15.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9989,
+          "variety_entropy_normalized": 0.6206,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 8,
+            "impact_cut": 2,
+            "neutral": 17,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 20.0,
+            "impact_cut": 5.0,
+            "neutral": 42.5,
+            "disconnected": 32.5
+          },
+          "continuity_score": 38.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 48920,
+        "like_count": 990,
+        "like_ratio": 0.020237,
+        "duration_sec": 141.0,
+        "channel": "Eyildr",
+        "upload_date": "20150117",
+        "title": "Person of interest | Kings & pawns"
+      },
+      "quality_score": 39.92,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 11.31,
+        "variety": 62.06,
+        "beat_sync": 38.7,
+        "lyric_sync": 50.0,
+        "motion": 38.62,
+        "approval": 67.46
+      }
+    },
+    {
+      "id": "mIIqzuSi0II",
+      "title": "grant ward | stronger",
+      "url": "https://www.youtube.com/watch?v=mIIqzuSi0II",
+      "duration_sec": 87.0,
+      "metrics": {
+        "shot_count": 22,
+        "avg_shot_duration_sec": 3.921,
+        "median_shot_duration_sec": 3.253,
+        "cuts_per_minute": 15.3,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 11.745,
+        "shot_duration_stddev_sec": 2.91,
+        "shot_duration_p25": 1.235,
+        "shot_duration_p75": 6.206,
+        "shot_duration_p90": 6.74,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 13.54
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 14.47
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 18.22
+          }
+        ],
+        "act_pacing_pct": [
+          22.7,
+          36.4,
+          40.9
+        ],
+        "intro_to_first_cut_sec": 8.575,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 22,
+        "avg_luma": 0.1385,
+        "luma_stddev": 0.12,
+        "dark_shot_pct": 72.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 42.36,
+        "saturation_mean": 0.4148,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 42.9,
+        "cuts_checked": 21,
+        "transitions": {
+          "sample_count": 21,
+          "distribution": {
+            "hard_cut": 10,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 47.62,
+            "dissolve": 47.62,
+            "flash_cut": 0.0,
+            "whip_pan": 4.76,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8516,
+          "variety_entropy_normalized": 0.5291,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 21,
+          "distribution": {
+            "match_cut": 6,
+            "impact_cut": 4,
+            "neutral": 5,
+            "disconnected": 6
+          },
+          "distribution_pct": {
+            "match_cut": 28.57,
+            "impact_cut": 19.05,
+            "neutral": 23.81,
+            "disconnected": 28.57
+          },
+          "continuity_score": 51.19
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 34716,
+        "like_count": 483,
+        "like_ratio": 0.013913,
+        "duration_sec": 87.0,
+        "channel": "asdfmercury",
+        "upload_date": "20140517",
+        "title": "grant ward | stronger"
+      },
+      "quality_score": 38.34,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 8.03,
+        "variety": 52.91,
+        "beat_sync": 42.9,
+        "lyric_sync": 50.0,
+        "motion": 51.19,
+        "approval": 46.38
+      }
+    },
+    {
+      "id": "rfo6EBcfoLg",
+      "title": "Multifandom - Lullaby",
+      "url": "https://www.youtube.com/watch?v=rfo6EBcfoLg",
+      "duration_sec": 229.0,
+      "metrics": {
+        "shot_count": 96,
+        "avg_shot_duration_sec": 2.351,
+        "median_shot_duration_sec": 0.868,
+        "cuts_per_minute": 25.52,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 16.717,
+        "shot_duration_stddev_sec": 3.136,
+        "shot_duration_p25": 0.534,
+        "shot_duration_p75": 2.703,
+        "shot_duration_p90": 7.14,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 6.4
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 6.62
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          24.0,
+          60.4,
+          15.6
+        ],
+        "intro_to_first_cut_sec": 6.139,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2475,
+        "luma_stddev": 0.1448,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 48.0,
+        "saturation_mean": 0.4469,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 70.5,
+        "cuts_checked": 95,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 37,
+            "dissolve": 19,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 2
+          },
+          "distribution_pct": {
+            "hard_cut": 61.67,
+            "dissolve": 31.67,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 3.33
+          },
+          "variety_entropy": 0.889,
+          "variety_entropy_normalized": 0.5524,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 2,
+            "neutral": 25,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 5.0,
+            "neutral": 62.5,
+            "disconnected": 25.0
+          },
+          "continuity_score": 33.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 80214,
+        "like_count": 937,
+        "like_ratio": 0.011681,
+        "duration_sec": 228.0,
+        "channel": "LonesomeMultiAngel",
+        "upload_date": "20120103",
+        "title": "Multifandom - Lullaby"
+      },
+      "quality_score": 43.39,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 18.55,
+        "variety": 55.24,
+        "beat_sync": 70.5,
+        "lyric_sync": 50.0,
+        "motion": 33.12,
+        "approval": 38.94
+      }
+    },
+    {
+      "id": "-nWrK6oSem4",
+      "title": "\u25b6Sad Multifandom || \"please don't do that to me...\"",
+      "url": "https://www.youtube.com/watch?v=-nWrK6oSem4",
+      "duration_sec": 168.0,
+      "metrics": {
+        "shot_count": 12,
+        "avg_shot_duration_sec": 13.947,
+        "median_shot_duration_sec": 4.354,
+        "cuts_per_minute": 4.3,
+        "min_shot_duration_sec": 0.601,
+        "max_shot_duration_sec": 44.311,
+        "shot_duration_stddev_sec": 16.15,
+        "shot_duration_p25": 1.802,
+        "shot_duration_p75": 33.734,
+        "shot_duration_p90": 41.541,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 2.19
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 3.45
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 8.14
+          }
+        ],
+        "act_pacing_pct": [
+          25.0,
+          50.0,
+          25.0
+        ],
+        "intro_to_first_cut_sec": 1.235,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 12,
+        "avg_luma": 0.2693,
+        "luma_stddev": 0.2166,
+        "dark_shot_pct": 33.3,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 214.59,
+        "saturation_mean": 0.4842,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 54.5,
+        "cuts_checked": 11,
+        "transitions": {
+          "sample_count": 11,
+          "distribution": {
+            "hard_cut": 3,
+            "dissolve": 8,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 27.27,
+            "dissolve": 72.73,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.586,
+          "variety_entropy_normalized": 0.3641,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 11,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 1,
+            "neutral": 5,
+            "disconnected": 2
+          },
+          "distribution_pct": {
+            "match_cut": 27.27,
+            "impact_cut": 9.09,
+            "neutral": 45.45,
+            "disconnected": 18.18
+          },
+          "continuity_score": 50.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 198196,
+        "like_count": 3421,
+        "like_ratio": 0.017261,
+        "duration_sec": 167.0,
+        "channel": "Vivien",
+        "upload_date": "20150214",
+        "title": "\u25b6Sad Multifandom || \"please don't do that to me...\""
+      },
+      "quality_score": 48.58,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 45.84,
+        "variety": 36.41,
+        "beat_sync": 54.5,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 57.54
+      }
+    },
+    {
+      "id": "GDwBliHmcFE",
+      "title": "\u00bb nine crimes | multifandom.",
+      "url": "https://www.youtube.com/watch?v=GDwBliHmcFE",
+      "duration_sec": 226.0,
+      "metrics": {
+        "shot_count": 12,
+        "avg_shot_duration_sec": 18.721,
+        "median_shot_duration_sec": 18.569,
+        "cuts_per_minute": 3.2,
+        "min_shot_duration_sec": 0.367,
+        "max_shot_duration_sec": 45.512,
+        "shot_duration_stddev_sec": 15.759,
+        "shot_duration_p25": 5.405,
+        "shot_duration_p75": 38.472,
+        "shot_duration_p90": 38.705,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 2.4
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 12.02
+          }
+        ],
+        "act_pacing_pct": [
+          41.7,
+          33.3,
+          25.0
+        ],
+        "intro_to_first_cut_sec": 5.405,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 12,
+        "avg_luma": 0.255,
+        "luma_stddev": 0.2577,
+        "dark_shot_pct": 41.7,
+        "bright_shot_pct": 8.3,
+        "hue_median_deg": 225.88,
+        "saturation_mean": 0.3882,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 63.6,
+        "cuts_checked": 11,
+        "transitions": {
+          "sample_count": 11,
+          "distribution": {
+            "hard_cut": 1,
+            "dissolve": 10,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 9.09,
+            "dissolve": 90.91,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.3046,
+          "variety_entropy_normalized": 0.1893,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 11,
+          "distribution": {
+            "match_cut": 0,
+            "impact_cut": 0,
+            "neutral": 11,
+            "disconnected": 0
+          },
+          "distribution_pct": {
+            "match_cut": 0.0,
+            "impact_cut": 0.0,
+            "neutral": 100.0,
+            "disconnected": 0.0
+          },
+          "continuity_score": 35.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 58064,
+        "like_count": 690,
+        "like_ratio": 0.011883,
+        "duration_sec": 225.0,
+        "channel": "suliels",
+        "upload_date": "20131210",
+        "title": "\u00bb nine crimes | multifandom."
+      },
+      "quality_score": 35.63,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 13.43,
+        "variety": 18.93,
+        "beat_sync": 63.6,
+        "lyric_sync": 50.0,
+        "motion": 35.0,
+        "approval": 39.61
+      }
+    },
+    {
+      "id": "NNBmcndBsYk",
+      "title": "Multifandom | 5 Stages of Grief",
+      "url": "https://www.youtube.com/watch?v=NNBmcndBsYk",
+      "duration_sec": 152.0,
+      "metrics": {
+        "shot_count": 108,
+        "avg_shot_duration_sec": 1.397,
+        "median_shot_duration_sec": 0.88,
+        "cuts_per_minute": 42.96,
+        "min_shot_duration_sec": 0.28,
+        "max_shot_duration_sec": 35.52,
+        "shot_duration_stddev_sec": 3.404,
+        "shot_duration_p25": 0.84,
+        "shot_duration_p75": 1.24,
+        "shot_duration_p90": 1.64,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 70.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 45.03
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 21.2
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          12.0,
+          44.4,
+          43.5
+        ],
+        "intro_to_first_cut_sec": 35.52,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2792,
+        "luma_stddev": 0.2084,
+        "dark_shot_pct": 45.0,
+        "bright_shot_pct": 5.0,
+        "hue_median_deg": 38.82,
+        "saturation_mean": 0.3483,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 41.1,
+        "cuts_checked": 107,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 39,
+            "dissolve": 14,
+            "flash_cut": 3,
+            "whip_pan": 3,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 65.0,
+            "dissolve": 23.33,
+            "flash_cut": 5.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9874,
+          "variety_entropy_normalized": 0.6135,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 16,
+            "disconnected": 15
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 40.0,
+            "disconnected": 37.5
+          },
+          "continuity_score": 34.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 119009,
+        "like_count": 4227,
+        "like_ratio": 0.035518,
+        "duration_sec": 151.0,
+        "channel": "EnchantedxPassion",
+        "upload_date": "20150427",
+        "title": "Multifandom | 5 Stages of Grief"
+      },
+      "quality_score": 46.9,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 27.53,
+        "variety": 61.35,
+        "beat_sync": 41.1,
+        "lyric_sync": 50.0,
+        "motion": 34.0,
+        "approval": 100.0
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 2.08,
+    "cuts_per_minute": 29.72,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      0.823,
+      3.065
+    ],
+    "typical_act_pacing_pct": [
+      27.1,
+      38.0,
+      34.9
+    ],
+    "cuts_on_beat_pct_mean": 54.15,
+    "tempo_bpm_median": 129.2,
+    "avg_luma_mean": 0.2517,
+    "dark_shot_pct_mean": 45.4,
+    "bright_shot_pct_mean": 2.21,
+    "saturation_mean_mean": 0.4335,
+    "intro_to_first_cut_sec_median": 6.139,
+    "pacing_profile": "escalator",
+    "tier_samples": {
+      "B": 2,
+      "D": 12,
+      "C": 1
+    }
+  },
+  "generated_at": "2026-04-20T09:34:40.594686+00:00",
+  "generator": "ff reference ingest"
+}

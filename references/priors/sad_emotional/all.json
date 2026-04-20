@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "edit_type": "sad_emotional",
+  "fandom_family": "all",
+  "video_count": 17,
+  "priors": {
+    "median_shot_duration_sec": 2.352,
+    "cuts_per_minute": 17.4,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      1.821,
+      4.151
+    ],
+    "typical_act_pacing_pct": [
+      33.6,
+      31.1,
+      35.3
+    ],
+    "cuts_on_beat_pct_mean": 56.26,
+    "tempo_bpm_median": 129.2,
+    "avg_luma_mean": 0.2344,
+    "dark_shot_pct_mean": 44.95,
+    "bright_shot_pct_mean": 0.08,
+    "saturation_mean_mean": 0.337,
+    "intro_to_first_cut_sec_median": 3.72,
+    "pacing_profile": "steady",
+    "tier_samples": {
+      "D": 7,
+      "C": 5,
+      "B": 3
+    }
+  },
+  "generated_at": "2026-04-20T10:07:41.673515+00:00",
+  "generator": "ff reference rebuild-priors"
+}

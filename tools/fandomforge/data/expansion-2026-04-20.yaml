@@ -1,12 +1,14 @@
 # Phase 0.5.2 corpus expansion config — generated 2026-04-20.
 # Source: user-provided URLs in plan cataloged-and-ready-mossy-bear.md
 #
+# Re-bucketed 2026-04-20 after validate pass. 4 playlists dropped as
+# unfetchable (yt-dlp no entries — private/deleted/radio). 2 more dropped
+# after content review: one trailer playlist moved to new hype_trailer
+# bucket, talk-show/meme playlist removed entirely.
+#
 # Per-bucket structure:
 #   buckets.<edit_type>.playlists  — full playlist URLs, top-N per playlist
 #   buckets.<edit_type>.singles    — individual video URLs, all under <edit_type>-singles
-#
-# After validate pass, mixed_unclassified entries get re-bucketed based on
-# the auto-suggest pass (title keyword analysis) + user confirm.
 
 schema_version: 1
 defaults:
@@ -19,61 +21,75 @@ buckets:
     description: "Dance / movement multifandom — K-pop fancam, choreography matching"
     playlists: []
     singles:
-      - https://www.youtube.com/watch?v=287LolDpfcU
-      - https://www.youtube.com/watch?v=-yHCeSZ-Nik
-      - https://www.youtube.com/watch?v=ETMk4m-_7A0
-      - https://www.youtube.com/watch?v=00ezoTnw1HM
+      - https://www.youtube.com/watch?v=287LolDpfcU  # Multifandom || HandClap
+      - https://www.youtube.com/watch?v=-yHCeSZ-Nik  # Multifandom || Dancin
+      - https://www.youtube.com/watch?v=ETMk4m-_7A0  # Multifandom | Dance Monkey
+      - https://www.youtube.com/watch?v=00ezoTnw1HM  # Shut Up and Dance | Movie Compilation
+      - https://www.youtube.com/watch?v=uvrJ0oYoZJs  # Dance Monkey // Multifandom (validated 1.4M views)
 
   sad:
     description: "Sad / emotional multifandom — grief, loss, restraint-prioritized"
     playlists:
-      - https://www.youtube.com/playlist?list=PL1xSxjuOQA3PjmXLhEWy2hTVwzBRidO4N
+      - https://www.youtube.com/playlist?list=PL1xSxjuOQA3PjmXLhEWy2hTVwzBRidO4N  # sad multifandom, confirmed
     singles:
-      - https://www.youtube.com/watch?v=f4DpkLnBWKY
-      - https://www.youtube.com/watch?v=polwiLRjX8k
-
-  tribute_or_dialogue:
-    description: "Character tribute or dialogue-narrative — needs validation pass to disambiguate"
-    playlists:
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEw1rC-YCLZ1-P187cMowVaa
-    singles: []
+      - https://www.youtube.com/watch?v=f4DpkLnBWKY  # I don't feel anything (Multifandom)
+      - https://www.youtube.com/watch?v=polwiLRjX8k  # what is pain? | sad multifandom
 
   action:
-    description: "Additional action / fighting playlist — supplements existing action-pl1..5"
+    description: "Action / fighting multifandom — supplements existing action-pl1..5"
     playlists:
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwpDpUDabKQ34uPHO6_bHIs
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwpDpUDabKQ34uPHO6_bHIs  # confirmed action (Thor/Troy/Kingsman/Daredevil/John Wick)
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA  # Marvel action-leaning (Bones, Run Boy Run, War)
     singles: []
 
-  mixed_unclassified:
+  tribute:
     description: |
-      User flagged 'could work for any' — validation pass auto-suggests a
-      bucket per playlist via title keyword analysis. User confirms or
-      reassigns. Held back from ingest until reclassified.
+      Character-tribute and multifandom retrospective edits — character-
+      spotlight content, show/movie retrospectives, "the grand story" type
+      edits. Emotional-leaning but not pure grief (that's `sad`).
     playlists:
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEyg220h2i5vPfGk8Yw2rCQs
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEz7ryMqSAzqI_k53FjEm3lb
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEznJu1h5-8TMIbPB96lcx-w
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEzxhS9ToFAtrzYPHInL4oeG
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIExJenALBf-S1AZLK3Rvvzkd
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEysAax78R8Cn3ET3geUOkh4
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwG35GCWfxsLHcazf53926A
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIExUYbCXStUJt3a7CQRMOnfA
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwGth6zd-bV0cbZ-KosUagH
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEyTPymxJIChUUBD0hVprBs6
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEyRHrLbE_0Oz3a2rVVXPdEf
-      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEyR4b-OrZmtqUH3mVNT5NmJ
-    singles:
-      # YouTube radio — yt-dlp likely 404s. Default behavior: skip silently.
-      - https://www.youtube.com/watch?v=uvrJ0oYoZJs
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEw1rC-YCLZ1-P187cMowVaa  # Bond 50 yrs / Supernatural grand story / multifandom mashups
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEz7ryMqSAzqI_k53FjEm3lb  # GoT Starks — Arya/Jon Snow character spotlights
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEznJu1h5-8TMIbPB96lcx-w  # Marvel character tributes — Tony/Steve/Thor
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIExJenALBf-S1AZLK3Rvvzkd  # Multifandom retrospectives — hero / never fall away / final cut
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEwGth6zd-bV0cbZ-KosUagH  # TWD character tributes — Rick/Daryl/Negan
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEyTPymxJIChUUBD0hVprBs6  # Supernatural / Dean Winchester character tributes
+      # Rescue URLs supplied 2026-04-20 — the 3 playlists validate couldn't
+      # fetch via `playlist?list=` form. Using watch?v=X&list=Y form which
+      # yt-dlp handles as a playlist when list= is present.
+      - https://www.youtube.com/watch?v=6dlKITHsGmE&list=PL6z3IIDqsIEyR4b-OrZmtqUH3mVNT5NmJ
+      - https://www.youtube.com/watch?v=M5Bz3gT3iB0&list=PL6z3IIDqsIEwG35GCWfxsLHcazf53926A
+      - https://www.youtube.com/watch?v=ZTeOw2FTGnA&list=PL6z3IIDqsIEyg220h2i5vPfGk8Yw2rCQs
+    singles: []
 
-# Bucket → tag mapping. Tags use prefix that edit_type_for_tag() parses.
+  hype_trailer:
+    description: |
+      Hype-trailer style references — official movie trailers (Baby Driver,
+      Infinity War, Spider-Man, Black Panther). Different editorial grammar
+      from fan-edits — reveal-structured pacing, trailer beats. Kept
+      separate so their priors don't contaminate action/tribute buckets.
+    playlists:
+      - https://www.youtube.com/playlist?list=PL6z3IIDqsIEzxhS9ToFAtrzYPHInL4oeG
+    singles: []
+
+# Bucket → tag-prefix mapping. The prefix must end in `-pl` so that
+# ingest-batch can derive `<prefix>-singles` (trimmed) and `<prefix><N>`
+# tags correctly. edit_type_for_tag() in reference_library.py parses
+# the prefix via split('-')[0].
 tag_naming:
-  dance:               "dance-pl"
-  sad:                 "sad-pl"
-  tribute_or_dialogue: "tribute-pl"  # may flip to dialogue-pl after validation
-  action:              "action-pl"   # appended to existing action-pl1..5 → pl6+
-  dance_movement:      "dance-pl"
-  sad_emotional:       "sad-pl"
-  dialogue_narrative:  "dialogue-pl"
-  tribute:             "tribute-pl"
-  mixed_unclassified:  "mixed-pl"
+  dance:        "dance-pl"
+  sad:          "sad-pl"
+  action:       "action-pl"   # appended to existing action-pl1..5 → pl6+
+  tribute:      "tribute-pl"
+  hype_trailer: "hype-pl"
+
+# Dropped during 2026-04-20 re-bucketing:
+#
+# UNFETCHABLE via playlist?list= form (1 still unrecovered):
+#   - PL6z3IIDqsIEysAax78R8Cn3ET3geUOkh4  (user didn't re-supply — unknown)
+#
+# The other 3 previously-unfetchable playlists were rescued via their
+# watch?v=X&list=Y form (see tribute bucket, 3 rescue URLs at the bottom).
+#
+# WRONG EDITORIAL GRAMMAR (talk-show / meme clip compilation — no edit):
+#   - PL6z3IIDqsIEyRHrLbE_0Oz3a2rVVXPdEf  (Evolution of Dance / Ellen / Cumberbatch)

@@ -1,0 +1,2510 @@
+{
+  "schema_version": 1,
+  "tag": "sad-pl1",
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL1xSxjuOQA3PjmXLhEWy2hTVwzBRidO4N"
+  ],
+  "video_count": 15,
+  "videos": [
+    {
+      "id": "vPg1ni545Ag",
+      "title": "sad multifandom \u2022 breathin",
+      "url": "https://www.youtube.com/watch?v=vPg1ni545Ag",
+      "duration_sec": 124.0,
+      "metrics": {
+        "shot_count": 3,
+        "avg_shot_duration_sec": 41.066,
+        "median_shot_duration_sec": 27.666,
+        "cuts_per_minute": 1.46,
+        "min_shot_duration_sec": 1.833,
+        "max_shot_duration_sec": 93.699,
+        "shot_duration_stddev_sec": 38.683,
+        "shot_duration_p25": 1.833,
+        "shot_duration_p75": 93.699,
+        "shot_duration_p90": 93.699,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 2.56
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.48
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 17.65
+          }
+        ],
+        "act_pacing_pct": [
+          33.3,
+          0.0,
+          66.7
+        ],
+        "intro_to_first_cut_sec": 93.699,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 3,
+        "avg_luma": 0.1697,
+        "luma_stddev": 0.1244,
+        "dark_shot_pct": 66.7,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 289.41,
+        "saturation_mean": 0.1643,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 50.0,
+        "cuts_checked": 2,
+        "transitions": {
+          "sample_count": 2,
+          "distribution": {
+            "hard_cut": 1,
+            "dissolve": 1,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 50.0,
+            "dissolve": 50.0,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6931,
+          "variety_entropy_normalized": 0.4307,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 2,
+          "distribution": {
+            "match_cut": 0,
+            "impact_cut": 0,
+            "neutral": 2,
+            "disconnected": 0
+          },
+          "distribution_pct": {
+            "match_cut": 0.0,
+            "impact_cut": 0.0,
+            "neutral": 100.0,
+            "disconnected": 0.0
+          },
+          "continuity_score": 35.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 78097,
+        "like_count": 582,
+        "like_ratio": 0.007452,
+        "duration_sec": 123.0,
+        "channel": "moviexshow edits",
+        "upload_date": "20200905",
+        "title": "sad multifandom \u2022 breathin"
+      },
+      "quality_score": 32.61,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 3.65,
+        "variety": 43.07,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 35.0,
+        "approval": 24.84
+      }
+    },
+    {
+      "id": "SCNxXN5y5O0",
+      "title": "Sad Multifandom | Where's my love?",
+      "url": "https://www.youtube.com/watch?v=SCNxXN5y5O0",
+      "duration_sec": 248.0,
+      "metrics": {
+        "shot_count": 80,
+        "avg_shot_duration_sec": 3.086,
+        "median_shot_duration_sec": 2.236,
+        "cuts_per_minute": 19.45,
+        "min_shot_duration_sec": 0.367,
+        "max_shot_duration_sec": 16.183,
+        "shot_duration_stddev_sec": 3.038,
+        "shot_duration_p25": 1.034,
+        "shot_duration_p75": 3.804,
+        "shot_duration_p90": 8.108,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 36.72
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 23.62
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 15.42
+          }
+        ],
+        "act_pacing_pct": [
+          21.2,
+          38.8,
+          40.0
+        ],
+        "intro_to_first_cut_sec": 0.634,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2841,
+        "luma_stddev": 0.1706,
+        "dark_shot_pct": 35.0,
+        "bright_shot_pct": 1.2,
+        "hue_median_deg": 38.82,
+        "saturation_mean": 0.2668,
+        "beat_sync_available": true,
+        "tempo_bpm": 103.36,
+        "cuts_on_beat_pct": 39.2,
+        "cuts_checked": 79,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 42,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 70.0,
+            "dissolve": 28.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.6752,
+          "variety_entropy_normalized": 0.4195,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 0,
+            "neutral": 24,
+            "disconnected": 12
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 0.0,
+            "neutral": 60.0,
+            "disconnected": 30.0
+          },
+          "continuity_score": 31.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 117190,
+        "like_count": 2575,
+        "like_ratio": 0.021973,
+        "duration_sec": 248.0,
+        "channel": "SunnyVids",
+        "upload_date": "20161213",
+        "title": "Sad Multifandom | Where's my love?"
+      },
+      "quality_score": 34.98,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 5.48,
+        "variety": 41.95,
+        "beat_sync": 39.2,
+        "lyric_sync": 50.0,
+        "motion": 31.0,
+        "approval": 73.24
+      }
+    },
+    {
+      "id": "CYMwQnSZas4",
+      "title": "Sad Multifandom || Trauma",
+      "url": "https://www.youtube.com/watch?v=CYMwQnSZas4",
+      "duration_sec": 93.0,
+      "metrics": {
+        "shot_count": 44,
+        "avg_shot_duration_sec": 2.093,
+        "median_shot_duration_sec": 2.219,
+        "cuts_per_minute": 28.67,
+        "min_shot_duration_sec": 0.334,
+        "max_shot_duration_sec": 4.605,
+        "shot_duration_stddev_sec": 1.002,
+        "shot_duration_p25": 1.568,
+        "shot_duration_p75": 2.369,
+        "shot_duration_p90": 3.971,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.62
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 19.11
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 23.45
+          }
+        ],
+        "act_pacing_pct": [
+          34.1,
+          40.9,
+          25.0
+        ],
+        "intro_to_first_cut_sec": 0.334,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 44,
+        "avg_luma": 0.2914,
+        "luma_stddev": 0.1464,
+        "dark_shot_pct": 27.3,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 160.94,
+        "saturation_mean": 0.2328,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 60.5,
+        "cuts_checked": 43,
+        "transitions": {
+          "sample_count": 43,
+          "distribution": {
+            "hard_cut": 23,
+            "dissolve": 0,
+            "flash_cut": 0,
+            "whip_pan": 20,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 53.49,
+            "dissolve": 0.0,
+            "flash_cut": 0.0,
+            "whip_pan": 46.51,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6907,
+          "variety_entropy_normalized": 0.4292,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 2,
+            "neutral": 29,
+            "disconnected": 6
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 5.0,
+            "neutral": 72.5,
+            "disconnected": 15.0
+          },
+          "continuity_score": 36.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 149478,
+        "like_count": 4702,
+        "like_ratio": 0.031456,
+        "duration_sec": 93.0,
+        "channel": "KeepHopeAlive",
+        "upload_date": "20200531",
+        "title": "Sad Multifandom || Trauma"
+      },
+      "quality_score": 43.28,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 6.99,
+        "variety": 42.92,
+        "beat_sync": 60.5,
+        "lyric_sync": 50.0,
+        "motion": 36.62,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "0YldqEe9U9U",
+      "title": "Sad Multifandom | I can't be strong all the time",
+      "url": "https://www.youtube.com/watch?v=0YldqEe9U9U",
+      "duration_sec": 306.0,
+      "metrics": {
+        "shot_count": 37,
+        "avg_shot_duration_sec": 8.258,
+        "median_shot_duration_sec": 4.922,
+        "cuts_per_minute": 7.27,
+        "min_shot_duration_sec": 0.918,
+        "max_shot_duration_sec": 39.373,
+        "shot_duration_stddev_sec": 8.159,
+        "shot_duration_p25": 3.17,
+        "shot_duration_p75": 10.636,
+        "shot_duration_p90": 20.312,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 7.04
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 3.86
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          37.8,
+          24.3,
+          37.8
+        ],
+        "intro_to_first_cut_sec": 7.382,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 37,
+        "avg_luma": 0.3088,
+        "luma_stddev": 0.1197,
+        "dark_shot_pct": 18.9,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 172.24,
+        "saturation_mean": 0.2545,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 52.8,
+        "cuts_checked": 36,
+        "transitions": {
+          "sample_count": 36,
+          "distribution": {
+            "hard_cut": 22,
+            "dissolve": 11,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 61.11,
+            "dissolve": 30.56,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8703,
+          "variety_entropy_normalized": 0.5408,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 36,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 2,
+            "neutral": 19,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 5.56,
+            "impact_cut": 5.56,
+            "neutral": 52.78,
+            "disconnected": 36.11
+          },
+          "continuity_score": 28.19
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1385117,
+        "like_count": 32635,
+        "like_ratio": 0.023561,
+        "duration_sec": 306.0,
+        "channel": "xShadowBanshee",
+        "upload_date": "20200326",
+        "title": "Sad Multifandom | I can't be strong all the time"
+      },
+      "quality_score": 54.44,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 64.73,
+        "variety": 54.08,
+        "beat_sync": 52.8,
+        "lyric_sync": 50.0,
+        "motion": 28.19,
+        "approval": 78.54
+      }
+    },
+    {
+      "id": "mOUg8dL-2n8",
+      "title": "Sad Multifandom | Are you okay?",
+      "url": "https://www.youtube.com/watch?v=mOUg8dL-2n8",
+      "duration_sec": 187.0,
+      "metrics": {
+        "shot_count": 40,
+        "avg_shot_duration_sec": 4.658,
+        "median_shot_duration_sec": 2.853,
+        "cuts_per_minute": 12.88,
+        "min_shot_duration_sec": 0.601,
+        "max_shot_duration_sec": 25.626,
+        "shot_duration_stddev_sec": 4.884,
+        "shot_duration_p25": 1.969,
+        "shot_duration_p75": 4.972,
+        "shot_duration_p90": 9.943,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 4.56
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 7.35
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 9.49
+          }
+        ],
+        "act_pacing_pct": [
+          52.5,
+          27.5,
+          20.0
+        ],
+        "intro_to_first_cut_sec": 7.274,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 40,
+        "avg_luma": 0.1781,
+        "luma_stddev": 0.1285,
+        "dark_shot_pct": 65.0,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 192.0,
+        "saturation_mean": 0.4642,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 43.6,
+        "cuts_checked": 39,
+        "transitions": {
+          "sample_count": 39,
+          "distribution": {
+            "hard_cut": 20,
+            "dissolve": 17,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 51.28,
+            "dissolve": 43.59,
+            "flash_cut": 0.0,
+            "whip_pan": 5.13,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8568,
+          "variety_entropy_normalized": 0.5323,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 39,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 4,
+            "neutral": 26,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 2.56,
+            "impact_cut": 10.26,
+            "neutral": 66.67,
+            "disconnected": 20.51
+          },
+          "continuity_score": 33.59
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3626978,
+        "like_count": 80193,
+        "like_ratio": 0.02211,
+        "duration_sec": 186.0,
+        "channel": "Julia",
+        "upload_date": "20161115",
+        "title": "Sad Multifandom | Are you okay?"
+      },
+      "quality_score": 61.61,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 53.23,
+        "beat_sync": 43.6,
+        "lyric_sync": 50.0,
+        "motion": 33.59,
+        "approval": 73.7
+      }
+    },
+    {
+      "id": "WRK15lqGhcQ",
+      "title": "\u25ba sad multifandom | i wish i could take it all back.",
+      "url": "https://www.youtube.com/watch?v=WRK15lqGhcQ",
+      "duration_sec": 285.0,
+      "metrics": {
+        "shot_count": 77,
+        "avg_shot_duration_sec": 3.698,
+        "median_shot_duration_sec": 3.437,
+        "cuts_per_minute": 16.22,
+        "min_shot_duration_sec": 0.334,
+        "max_shot_duration_sec": 11.211,
+        "shot_duration_stddev_sec": 1.757,
+        "shot_duration_p25": 2.836,
+        "shot_duration_p75": 4.371,
+        "shot_duration_p90": 5.939,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 9.7
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 12.2
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          33.8,
+          37.7,
+          28.6
+        ],
+        "intro_to_first_cut_sec": 11.211,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 77,
+        "avg_luma": 0.3618,
+        "luma_stddev": 0.1379,
+        "dark_shot_pct": 2.6,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 48.0,
+        "saturation_mean": 0.178,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 77.6,
+        "cuts_checked": 76,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 29,
+            "dissolve": 24,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 48.33,
+            "dissolve": 40.0,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 1.0164,
+          "variety_entropy_normalized": 0.6315,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 4,
+            "neutral": 25,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 10.0,
+            "neutral": 62.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 34.38
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1048001,
+        "like_count": 23046,
+        "like_ratio": 0.02199,
+        "duration_sec": 285.0,
+        "channel": "sanp\u00e9",
+        "upload_date": "20180712",
+        "title": "\u25ba sad multifandom | i wish i could take it all back."
+      },
+      "quality_score": 57.22,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 48.97,
+        "variety": 63.15,
+        "beat_sync": 77.6,
+        "lyric_sync": 50.0,
+        "motion": 34.38,
+        "approval": 73.3
+      }
+    },
+    {
+      "id": "7CgDocGpUAk",
+      "title": "sad multifandom {I don't feel anything}",
+      "url": "https://www.youtube.com/watch?v=7CgDocGpUAk",
+      "duration_sec": 70.0,
+      "metrics": {
+        "shot_count": 22,
+        "avg_shot_duration_sec": 3.122,
+        "median_shot_duration_sec": 2.82,
+        "cuts_per_minute": 19.22,
+        "min_shot_duration_sec": 0.32,
+        "max_shot_duration_sec": 7.04,
+        "shot_duration_stddev_sec": 1.74,
+        "shot_duration_p25": 1.64,
+        "shot_duration_p75": 4.6,
+        "shot_duration_p90": 5.24,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.75
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.2
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 20.18
+          }
+        ],
+        "act_pacing_pct": [
+          27.3,
+          36.4,
+          36.4
+        ],
+        "intro_to_first_cut_sec": 1.48,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 22,
+        "avg_luma": 0.2021,
+        "luma_stddev": 0.1029,
+        "dark_shot_pct": 54.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 168.0,
+        "saturation_mean": 0.3554,
+        "beat_sync_available": true,
+        "tempo_bpm": 143.55,
+        "cuts_on_beat_pct": 71.4,
+        "cuts_checked": 21,
+        "transitions": {
+          "sample_count": 21,
+          "distribution": {
+            "hard_cut": 18,
+            "dissolve": 2,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 85.71,
+            "dissolve": 9.52,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 4.76
+          },
+          "variety_entropy": 0.501,
+          "variety_entropy_normalized": 0.3113,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 21,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 2,
+            "neutral": 12,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 9.52,
+            "impact_cut": 9.52,
+            "neutral": 57.14,
+            "disconnected": 23.81
+          },
+          "continuity_score": 36.67
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 26052,
+        "like_count": 94,
+        "like_ratio": 0.003608,
+        "duration_sec": 69.0,
+        "channel": "CrucioEdits",
+        "upload_date": "20200904",
+        "title": "sad multifandom {I don't feel anything}"
+      },
+      "quality_score": 33.46,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.22,
+        "variety": 31.13,
+        "beat_sync": 71.4,
+        "lyric_sync": 50.0,
+        "motion": 36.67,
+        "approval": 12.03
+      }
+    },
+    {
+      "id": "7O1160-dIsw",
+      "title": "Sad Multifandom - \"I Don't Like the Way I Look\"",
+      "url": "https://www.youtube.com/watch?v=7O1160-dIsw",
+      "duration_sec": 441.0,
+      "metrics": {
+        "shot_count": 106,
+        "avg_shot_duration_sec": 4.151,
+        "median_shot_duration_sec": 2.352,
+        "cuts_per_minute": 14.46,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 62.696,
+        "shot_duration_stddev_sec": 6.966,
+        "shot_duration_p25": 0.968,
+        "shot_duration_p75": 4.204,
+        "shot_duration_p90": 9.042,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 8.71
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 11.24
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 89.02
+          }
+        ],
+        "act_pacing_pct": [
+          36.8,
+          35.8,
+          27.4
+        ],
+        "intro_to_first_cut_sec": 0.667,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2276,
+        "luma_stddev": 0.1573,
+        "dark_shot_pct": 51.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 25.41,
+        "saturation_mean": 0.3865,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 64.8,
+        "cuts_checked": 105,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 26,
+            "dissolve": 29,
+            "flash_cut": 2,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 43.33,
+            "dissolve": 48.33,
+            "flash_cut": 3.33,
+            "whip_pan": 5.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9769,
+          "variety_entropy_normalized": 0.607,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 0,
+            "neutral": 28,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 0.0,
+            "neutral": 70.0,
+            "disconnected": 20.0
+          },
+          "continuity_score": 34.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2238253,
+        "like_count": 95874,
+        "like_ratio": 0.042834,
+        "duration_sec": 441.0,
+        "channel": "MermaidGal90",
+        "upload_date": "20190602",
+        "title": "Sad Multifandom - \"I Don't Like the Way I Look\""
+      },
+      "quality_score": 69.74,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 60.7,
+        "beat_sync": 64.8,
+        "lyric_sync": 50.0,
+        "motion": 34.5,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "rbfdGTZUyIg",
+      "title": "sad multifandom: 'i don't have any friends'",
+      "url": "https://www.youtube.com/watch?v=rbfdGTZUyIg",
+      "duration_sec": 221.0,
+      "metrics": {
+        "shot_count": 73,
+        "avg_shot_duration_sec": 3.011,
+        "median_shot_duration_sec": 2.211,
+        "cuts_per_minute": 19.93,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 21.355,
+        "shot_duration_stddev_sec": 3.215,
+        "shot_duration_p25": 1.168,
+        "shot_duration_p75": 3.378,
+        "shot_duration_p90": 6.131,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 31.6
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 33.07
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 135.29
+          }
+        ],
+        "act_pacing_pct": [
+          30.1,
+          37.0,
+          32.9
+        ],
+        "intro_to_first_cut_sec": 1.46,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 73,
+        "avg_luma": 0.2042,
+        "luma_stddev": 0.0876,
+        "dark_shot_pct": 47.9,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 211.76,
+        "saturation_mean": 0.3928,
+        "beat_sync_available": true,
+        "tempo_bpm": 99.38,
+        "cuts_on_beat_pct": 40.3,
+        "cuts_checked": 72,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 31,
+            "dissolve": 25,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 51.67,
+            "dissolve": 41.67,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.924,
+          "variety_entropy_normalized": 0.5741,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 0,
+            "neutral": 30,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 0.0,
+            "neutral": 75.0,
+            "disconnected": 12.5
+          },
+          "continuity_score": 38.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2104135,
+        "like_count": 65572,
+        "like_ratio": 0.031163,
+        "duration_sec": 221.0,
+        "channel": "skhan",
+        "upload_date": "20180712",
+        "title": "sad multifandom: 'i don't have any friends'"
+      },
+      "quality_score": 64.57,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 98.33,
+        "variety": 57.41,
+        "beat_sync": 40.3,
+        "lyric_sync": 50.0,
+        "motion": 38.75,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "bfJx6pTLoIA",
+      "title": "Sad Multifandom | In A Broken Home |",
+      "url": "https://www.youtube.com/watch?v=bfJx6pTLoIA",
+      "duration_sec": 213.0,
+      "metrics": {
+        "shot_count": 59,
+        "avg_shot_duration_sec": 3.595,
+        "median_shot_duration_sec": 2.96,
+        "cuts_per_minute": 16.69,
+        "min_shot_duration_sec": 0.56,
+        "max_shot_duration_sec": 12.8,
+        "shot_duration_stddev_sec": 2.742,
+        "shot_duration_p25": 1.16,
+        "shot_duration_p75": 5.68,
+        "shot_duration_p90": 7.84,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 27.17
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 39.74
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          35.6,
+          28.8,
+          35.6
+        ],
+        "intro_to_first_cut_sec": 3.72,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 59,
+        "avg_luma": 0.1158,
+        "luma_stddev": 0.0715,
+        "dark_shot_pct": 83.1,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 29.65,
+        "saturation_mean": 0.3585,
+        "beat_sync_available": true,
+        "tempo_bpm": 92.29,
+        "cuts_on_beat_pct": 27.6,
+        "cuts_checked": 58,
+        "transitions": {
+          "sample_count": 58,
+          "distribution": {
+            "hard_cut": 3,
+            "dissolve": 55,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 5.17,
+            "dissolve": 94.83,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.2036,
+          "variety_entropy_normalized": 0.1265,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 2,
+            "neutral": 26,
+            "disconnected": 7
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 5.0,
+            "neutral": 65.0,
+            "disconnected": 17.5
+          },
+          "continuity_score": 39.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 1110387,
+        "like_count": 27367,
+        "like_ratio": 0.024646,
+        "duration_sec": 212.0,
+        "channel": "CarpeD!em Lyrics",
+        "upload_date": "20171018",
+        "title": "Sad Multifandom | In A Broken Home |"
+      },
+      "quality_score": 41.96,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 51.89,
+        "variety": 12.65,
+        "beat_sync": 27.6,
+        "lyric_sync": 50.0,
+        "motion": 39.0,
+        "approval": 82.15
+      }
+    },
+    {
+      "id": "nLRl4PZM_T4",
+      "title": "Sad multifandom - parents issues",
+      "url": "https://www.youtube.com/watch?v=nLRl4PZM_T4",
+      "duration_sec": 199.0,
+      "metrics": {
+        "shot_count": 22,
+        "avg_shot_duration_sec": 9.029,
+        "median_shot_duration_sec": 6.7,
+        "cuts_per_minute": 6.65,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 24.567,
+        "shot_duration_stddev_sec": 7.875,
+        "shot_duration_p25": 2.133,
+        "shot_duration_p75": 15.4,
+        "shot_duration_p90": 21.867,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 12.57
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 12.88
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 13.9
+          }
+        ],
+        "act_pacing_pct": [
+          40.9,
+          18.2,
+          40.9
+        ],
+        "intro_to_first_cut_sec": 2.7,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 22,
+        "avg_luma": 0.1875,
+        "luma_stddev": 0.0866,
+        "dark_shot_pct": 54.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 27.53,
+        "saturation_mean": 0.4797,
+        "beat_sync_available": true,
+        "tempo_bpm": 136.0,
+        "cuts_on_beat_pct": 61.9,
+        "cuts_checked": 21,
+        "transitions": {
+          "sample_count": 21,
+          "distribution": {
+            "hard_cut": 8,
+            "dissolve": 12,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 38.1,
+            "dissolve": 57.14,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 4.76
+          },
+          "variety_entropy": 0.8324,
+          "variety_entropy_normalized": 0.5172,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 21,
+          "distribution": {
+            "match_cut": 0,
+            "impact_cut": 2,
+            "neutral": 14,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 0.0,
+            "impact_cut": 9.52,
+            "neutral": 66.67,
+            "disconnected": 23.81
+          },
+          "continuity_score": 30.48
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 831255,
+        "like_count": 24696,
+        "like_ratio": 0.029709,
+        "duration_sec": 199.0,
+        "channel": "kingcobra",
+        "upload_date": "20190903",
+        "title": "Sad multifandom - parents issues"
+      },
+      "quality_score": 51.82,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 38.85,
+        "variety": 51.72,
+        "beat_sync": 61.9,
+        "lyric_sync": 50.0,
+        "motion": 30.48,
+        "approval": 99.03
+      }
+    },
+    {
+      "id": "r_wkf2bUQkI",
+      "title": "Sad Multifandom | Kids ain't supposed to be grateful",
+      "url": "https://www.youtube.com/watch?v=r_wkf2bUQkI",
+      "duration_sec": 285.0,
+      "metrics": {
+        "shot_count": 92,
+        "avg_shot_duration_sec": 3.087,
+        "median_shot_duration_sec": 2.417,
+        "cuts_per_minute": 19.44,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 14.767,
+        "shot_duration_stddev_sec": 2.449,
+        "shot_duration_p25": 1.167,
+        "shot_duration_p75": 4.267,
+        "shot_duration_p90": 6.0,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 9.94
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 12.74
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 14.52
+          }
+        ],
+        "act_pacing_pct": [
+          46.7,
+          28.3,
+          25.0
+        ],
+        "intro_to_first_cut_sec": 4.5,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2773,
+        "luma_stddev": 0.1005,
+        "dark_shot_pct": 18.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 33.88,
+        "saturation_mean": 0.3504,
+        "beat_sync_available": true,
+        "tempo_bpm": 107.67,
+        "cuts_on_beat_pct": 44.0,
+        "cuts_checked": 91,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 37,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 61.67,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.802,
+          "variety_entropy_normalized": 0.4983,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 1,
+            "neutral": 29,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 2.5,
+            "neutral": 72.5,
+            "disconnected": 12.5
+          },
+          "continuity_score": 39.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2104805,
+        "like_count": 78483,
+        "like_ratio": 0.037288,
+        "duration_sec": 284.0,
+        "channel": "LifeReader",
+        "upload_date": "20190602",
+        "title": "Sad Multifandom | Kids ain't supposed to be grateful"
+      },
+      "quality_score": 64.33,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 98.36,
+        "variety": 49.83,
+        "beat_sync": 44.0,
+        "lyric_sync": 50.0,
+        "motion": 39.75,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "LbOZS5VCJ-8",
+      "title": "Sad multifandom | I'm a horrible person",
+      "url": "https://www.youtube.com/watch?v=LbOZS5VCJ-8",
+      "duration_sec": 353.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "Yq0ZJyJ9o5c",
+      "title": "Multifandom | You did this to me (TRIGGER WARNING)",
+      "url": "https://www.youtube.com/watch?v=Yq0ZJyJ9o5c",
+      "duration_sec": 374.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "a5cPV2lFsoI",
+      "title": "sad multifandom-broken",
+      "url": "https://www.youtube.com/watch?v=a5cPV2lFsoI",
+      "duration_sec": 331.0,
+      "metrics": {
+        "shot_count": 129,
+        "avg_shot_duration_sec": 2.552,
+        "median_shot_duration_sec": 1.72,
+        "cuts_per_minute": 23.51,
+        "min_shot_duration_sec": 0.32,
+        "max_shot_duration_sec": 12.28,
+        "shot_duration_stddev_sec": 2.345,
+        "shot_duration_p25": 0.8,
+        "shot_duration_p75": 3.4,
+        "shot_duration_p90": 5.84,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 50.4
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 52.73
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          27.9,
+          34.9,
+          37.2
+        ],
+        "intro_to_first_cut_sec": 10.44,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.261,
+        "luma_stddev": 0.1465,
+        "dark_shot_pct": 42.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 59.29,
+        "saturation_mean": 0.4721,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 51.6,
+        "cuts_checked": 128,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9265,
+          "variety_entropy_normalized": 0.5757,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 5,
+            "neutral": 18,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 12.5,
+            "neutral": 45.0,
+            "disconnected": 25.0
+          },
+          "continuity_score": 42.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 2139924,
+        "like_count": 27434,
+        "like_ratio": 0.01282,
+        "duration_sec": 330.0,
+        "channel": "lissaloves",
+        "upload_date": "20170301",
+        "title": "sad multifandom-broken"
+      },
+      "quality_score": 62.12,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 57.57,
+        "beat_sync": 51.6,
+        "lyric_sync": 50.0,
+        "motion": 42.62,
+        "approval": 42.73
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 2.417,
+    "cuts_per_minute": 16.04,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      2.552,
+      4.658
+    ],
+    "typical_act_pacing_pct": [
+      35.2,
+      29.9,
+      34.9
+    ],
+    "cuts_on_beat_pct_mean": 52.72,
+    "tempo_bpm_median": 117.45,
+    "avg_luma_mean": 0.2361,
+    "dark_shot_pct_mean": 43.69,
+    "bright_shot_pct_mean": 0.09,
+    "saturation_mean_mean": 0.3351,
+    "intro_to_first_cut_sec_median": 3.72,
+    "pacing_profile": "steady",
+    "tier_samples": {
+      "D": 7,
+      "C": 5,
+      "B": 1
+    }
+  },
+  "generated_at": "2026-04-20T09:01:47.771469+00:00",
+  "generator": "ff reference ingest"
+}

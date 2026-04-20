@@ -1,0 +1,3070 @@
+{
+  "schema_version": 1,
+  "tag": "tribute-pl8",
+  "source_playlists": [
+    "https://www.youtube.com/watch?v=M5Bz3gT3iB0&list=PL6z3IIDqsIEwG35GCWfxsLHcazf53926A"
+  ],
+  "video_count": 15,
+  "videos": [
+    {
+      "id": "FT5lpUF4JS4",
+      "title": "FT5lpUF4JS4",
+      "url": "https://www.youtube.com/watch?v=FT5lpUF4JS4",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    },
+    {
+      "id": "M5Bz3gT3iB0",
+      "title": "Buffy Summers | There's Only Me",
+      "url": "https://www.youtube.com/watch?v=M5Bz3gT3iB0",
+      "duration_sec": 229.0,
+      "metrics": {
+        "shot_count": 129,
+        "avg_shot_duration_sec": 1.769,
+        "median_shot_duration_sec": 1.268,
+        "cuts_per_minute": 33.92,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 7.908,
+        "shot_duration_stddev_sec": 1.518,
+        "shot_duration_p25": 0.467,
+        "shot_duration_p75": 2.569,
+        "shot_duration_p90": 4.371,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 60.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 78.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 10.52
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 9.72
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 7.04
+          }
+        ],
+        "act_pacing_pct": [
+          21.7,
+          35.7,
+          42.6
+        ],
+        "intro_to_first_cut_sec": 3.67,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.182,
+        "luma_stddev": 0.1218,
+        "dark_shot_pct": 67.5,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 33.18,
+        "saturation_mean": 0.3328,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 71.9,
+        "cuts_checked": 128,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 23,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 38.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8769,
+          "variety_entropy_normalized": 0.5449,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 6,
+            "neutral": 18,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 15.0,
+            "neutral": 45.0,
+            "disconnected": 22.5
+          },
+          "continuity_score": 44.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 108909,
+        "like_count": 2494,
+        "like_ratio": 0.0229,
+        "duration_sec": 229.0,
+        "channel": "BloodyThorn",
+        "upload_date": "20200604",
+        "title": "Buffy Summers | There's Only Me"
+      },
+      "quality_score": 53.53,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 36.69,
+        "variety": 54.49,
+        "beat_sync": 71.9,
+        "lyric_sync": 50.0,
+        "motion": 44.5,
+        "approval": 76.33
+      }
+    },
+    {
+      "id": "aYNDZ4OCisg",
+      "title": "Buffyverse but it's a heist movie",
+      "url": "https://www.youtube.com/watch?v=aYNDZ4OCisg",
+      "duration_sec": 231.0,
+      "metrics": {
+        "shot_count": 165,
+        "avg_shot_duration_sec": 1.386,
+        "median_shot_duration_sec": 1.067,
+        "cuts_per_minute": 43.3,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 9.0,
+        "shot_duration_stddev_sec": 1.202,
+        "shot_duration_p25": 0.633,
+        "shot_duration_p75": 1.667,
+        "shot_duration_p90": 2.7,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 56.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 23.8
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 11.8
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          23.6,
+          40.6,
+          35.8
+        ],
+        "intro_to_first_cut_sec": 2.667,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1492,
+        "luma_stddev": 0.0891,
+        "dark_shot_pct": 78.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 70.59,
+        "saturation_mean": 0.4318,
+        "beat_sync_available": true,
+        "tempo_bpm": 117.45,
+        "cuts_on_beat_pct": 59.1,
+        "cuts_checked": 164,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 24,
+            "dissolve": 30,
+            "flash_cut": 0,
+            "whip_pan": 5,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 40.0,
+            "dissolve": 50.0,
+            "flash_cut": 0.0,
+            "whip_pan": 8.33,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.9884,
+          "variety_entropy_normalized": 0.6141,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 6,
+            "neutral": 20,
+            "disconnected": 13
+          },
+          "distribution_pct": {
+            "match_cut": 2.5,
+            "impact_cut": 15.0,
+            "neutral": 50.0,
+            "disconnected": 32.5
+          },
+          "continuity_score": 31.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 4058,
+        "like_count": 244,
+        "like_ratio": 0.060128,
+        "duration_sec": 230.0,
+        "channel": "SlayerVid",
+        "upload_date": "20220529",
+        "title": "Buffyverse but it's a heist movie"
+      },
+      "quality_score": 43.56,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.37,
+        "variety": 61.41,
+        "beat_sync": 59.1,
+        "lyric_sync": 50.0,
+        "motion": 31.25,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "B4I5Gkmhk48",
+      "title": "one clip from every episode of buffy the vampire slayer",
+      "url": "https://www.youtube.com/watch?v=B4I5Gkmhk48",
+      "duration_sec": 1305.0,
+      "metrics": {
+        "shot_count": 444,
+        "avg_shot_duration_sec": 2.933,
+        "median_shot_duration_sec": 2.186,
+        "cuts_per_minute": 20.46,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 30.197,
+        "shot_duration_stddev_sec": 3.106,
+        "shot_duration_p25": 1.268,
+        "shot_duration_p75": 3.504,
+        "shot_duration_p90": 5.606,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 450.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 460.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 470.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 480.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 490.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 500.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 510.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 520.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 530.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 540.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 550.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 560.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 570.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 580.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 590.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 600.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 610.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 620.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 630.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 640.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 650.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 660.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 670.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 680.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 690.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 700.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 710.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 720.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 730.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 740.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 750.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 760.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 770.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 780.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 790.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 800.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 810.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 820.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 830.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 840.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 850.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 860.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 870.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 880.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 890.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 900.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 910.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 920.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 930.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 940.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 950.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 960.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 970.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 980.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 990.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 1000.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 1010.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 1020.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 1030.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 1040.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 1050.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 1060.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 1070.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 1080.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 1090.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 1100.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 1110.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 1120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 1130.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 1140.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 1150.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 1160.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 1170.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 1180.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 1190.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 1200.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 1210.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 1220.0,
+            "cpm": 2.0
+          },
+          {
+            "t_sec": 1230.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 1240.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 1250.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 1260.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 1270.0,
+            "cpm": 8.0
+          },
+          {
+            "t_sec": 1280.0,
+            "cpm": 2.49
+          },
+          {
+            "t_sec": 1290.0,
+            "cpm": 4.26
+          },
+          {
+            "t_sec": 1300.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          38.5,
+          34.0,
+          27.5
+        ],
+        "intro_to_first_cut_sec": 2.402,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1881,
+        "luma_stddev": 0.0954,
+        "dark_shot_pct": 53.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 28.24,
+        "saturation_mean": 0.4414,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 68.4,
+        "cuts_checked": 443,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 33,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 6,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 55.0,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 10.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.9265,
+          "variety_entropy_normalized": 0.5757,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 2,
+            "impact_cut": 1,
+            "neutral": 29,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 5.0,
+            "impact_cut": 2.5,
+            "neutral": 72.5,
+            "disconnected": 20.0
+          },
+          "continuity_score": 32.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 296820,
+        "like_count": 6774,
+        "like_ratio": 0.022822,
+        "duration_sec": 1304.0,
+        "channel": "heda reyes",
+        "upload_date": "20211231",
+        "title": "one clip from every episode of buffy the vampire slayer"
+      },
+      "quality_score": 67.26,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 57.57,
+        "beat_sync": 68.4,
+        "lyric_sync": 50.0,
+        "motion": 32.25,
+        "approval": 76.07
+      }
+    },
+    {
+      "id": "aDOz9aYyvJU",
+      "title": "Buffy The Vampire Slayer: A Taste of Darkness (BTVS)",
+      "url": "https://www.youtube.com/watch?v=aDOz9aYyvJU",
+      "duration_sec": 189.0,
+      "metrics": {
+        "shot_count": 88,
+        "avg_shot_duration_sec": 2.136,
+        "median_shot_duration_sec": 1.001,
+        "cuts_per_minute": 28.09,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 27.319,
+        "shot_duration_stddev_sec": 3.698,
+        "shot_duration_p25": 0.5,
+        "shot_duration_p75": 2.461,
+        "shot_duration_p90": 4.046,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 66.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 25.58
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 0.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          22.7,
+          23.9,
+          53.4
+        ],
+        "intro_to_first_cut_sec": 2.169,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1981,
+        "luma_stddev": 0.1535,
+        "dark_shot_pct": 66.2,
+        "bright_shot_pct": 2.5,
+        "hue_median_deg": 22.59,
+        "saturation_mean": 0.3599,
+        "beat_sync_available": true,
+        "tempo_bpm": 152.0,
+        "cuts_on_beat_pct": 72.4,
+        "cuts_checked": 87,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 26,
+            "dissolve": 26,
+            "flash_cut": 1,
+            "whip_pan": 4,
+            "speed_ramp": 3
+          },
+          "distribution_pct": {
+            "hard_cut": 43.33,
+            "dissolve": 43.33,
+            "flash_cut": 1.67,
+            "whip_pan": 6.67,
+            "speed_ramp": 5.0
+          },
+          "variety_entropy": 1.1233,
+          "variety_entropy_normalized": 0.698,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 4,
+            "neutral": 12,
+            "disconnected": 20
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 10.0,
+            "neutral": 30.0,
+            "disconnected": 50.0
+          },
+          "continuity_score": 28.0
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 3696,
+        "like_count": 124,
+        "like_ratio": 0.03355,
+        "duration_sec": 188.0,
+        "channel": "A Restless Mind",
+        "upload_date": "20210809",
+        "title": "Buffy The Vampire Slayer: A Taste of Darkness (BTVS)"
+      },
+      "quality_score": 46.96,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.25,
+        "variety": 69.8,
+        "beat_sync": 72.4,
+        "lyric_sync": 50.0,
+        "motion": 28.0,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "RyeeBFbKFnM",
+      "title": "Buffy the Vampire Slayer || Enemy",
+      "url": "https://www.youtube.com/watch?v=RyeeBFbKFnM",
+      "duration_sec": 106.0,
+      "metrics": {
+        "shot_count": 91,
+        "avg_shot_duration_sec": 1.159,
+        "median_shot_duration_sec": 0.801,
+        "cuts_per_minute": 51.77,
+        "min_shot_duration_sec": 0.3,
+        "max_shot_duration_sec": 7.007,
+        "shot_duration_stddev_sec": 0.87,
+        "shot_duration_p25": 0.767,
+        "shot_duration_p75": 1.535,
+        "shot_duration_p90": 1.969,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 62.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 58.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 42.12
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 38.37
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          38.5,
+          31.9,
+          29.7
+        ],
+        "intro_to_first_cut_sec": 2.803,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1894,
+        "luma_stddev": 0.1047,
+        "dark_shot_pct": 68.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 32.47,
+        "saturation_mean": 0.5241,
+        "beat_sync_available": true,
+        "tempo_bpm": 76.0,
+        "cuts_on_beat_pct": 36.7,
+        "cuts_checked": 90,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 34,
+            "dissolve": 26,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 56.67,
+            "dissolve": 43.33,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6842,
+          "variety_entropy_normalized": 0.4251,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 9,
+            "neutral": 9,
+            "disconnected": 21
+          },
+          "distribution_pct": {
+            "match_cut": 2.5,
+            "impact_cut": 22.5,
+            "neutral": 22.5,
+            "disconnected": 52.5
+          },
+          "continuity_score": 27.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 5523,
+        "like_count": 178,
+        "like_ratio": 0.032229,
+        "duration_sec": 106.0,
+        "channel": "heda reyes",
+        "upload_date": "20220509",
+        "title": "Buffy the Vampire Slayer || Enemy"
+      },
+      "quality_score": 35.77,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 1.86,
+        "variety": 42.51,
+        "beat_sync": 36.7,
+        "lyric_sync": 50.0,
+        "motion": 27.25,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "Gpo2uBjf8UU",
+      "title": "The First - Power | BTVS",
+      "url": "https://www.youtube.com/watch?v=Gpo2uBjf8UU",
+      "duration_sec": 210.0,
+      "metrics": {
+        "shot_count": 119,
+        "avg_shot_duration_sec": 1.759,
+        "median_shot_duration_sec": 1.376,
+        "cuts_per_minute": 34.12,
+        "min_shot_duration_sec": 0.269,
+        "max_shot_duration_sec": 10.539,
+        "shot_duration_stddev_sec": 1.483,
+        "shot_duration_p25": 0.873,
+        "shot_duration_p75": 2.081,
+        "shot_duration_p90": 3.524,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 24.38
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 24.58
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 18.88
+          }
+        ],
+        "act_pacing_pct": [
+          30.3,
+          37.8,
+          31.9
+        ],
+        "intro_to_first_cut_sec": 2.047,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1053,
+        "luma_stddev": 0.0733,
+        "dark_shot_pct": 88.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 25.41,
+        "saturation_mean": 0.5062,
+        "beat_sync_available": true,
+        "tempo_bpm": 112.35,
+        "cuts_on_beat_pct": 53.4,
+        "cuts_checked": 118,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 24,
+            "dissolve": 33,
+            "flash_cut": 0,
+            "whip_pan": 3,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 40.0,
+            "dissolve": 55.0,
+            "flash_cut": 0.0,
+            "whip_pan": 5.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8451,
+          "variety_entropy_normalized": 0.5251,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 9,
+            "impact_cut": 1,
+            "neutral": 25,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 22.5,
+            "impact_cut": 2.5,
+            "neutral": 62.5,
+            "disconnected": 12.5
+          },
+          "continuity_score": 46.25
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 27158,
+        "like_count": 446,
+        "like_ratio": 0.016422,
+        "duration_sec": 210.0,
+        "channel": "SlayerVid",
+        "upload_date": "20221120",
+        "title": "The First - Power | BTVS"
+      },
+      "quality_score": 40.76,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 9.15,
+        "variety": 52.51,
+        "beat_sync": 53.4,
+        "lyric_sync": 50.0,
+        "motion": 46.25,
+        "approval": 54.74
+      }
+    },
+    {
+      "id": "iWhCL2VN0rM",
+      "title": "Buffy The Vampire Slayer",
+      "url": "https://www.youtube.com/watch?v=iWhCL2VN0rM",
+      "duration_sec": 446.0,
+      "metrics": {
+        "shot_count": 264,
+        "avg_shot_duration_sec": 1.688,
+        "median_shot_duration_sec": 1.376,
+        "cuts_per_minute": 35.55,
+        "min_shot_duration_sec": 0.25,
+        "max_shot_duration_sec": 12.262,
+        "shot_duration_stddev_sec": 1.317,
+        "shot_duration_p25": 0.834,
+        "shot_duration_p75": 2.169,
+        "shot_duration_p90": 3.212,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 420.0,
+            "cpm": 6.98
+          },
+          {
+            "t_sec": 430.0,
+            "cpm": 3.8
+          },
+          {
+            "t_sec": 440.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          38.6,
+          31.1,
+          30.3
+        ],
+        "intro_to_first_cut_sec": 5.631,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1513,
+        "luma_stddev": 0.1279,
+        "dark_shot_pct": 76.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 25.41,
+        "saturation_mean": 0.4981,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 68.8,
+        "cuts_checked": 263,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 26,
+            "dissolve": 31,
+            "flash_cut": 0,
+            "whip_pan": 2,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 43.33,
+            "dissolve": 51.67,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.8852,
+          "variety_entropy_normalized": 0.55,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 7,
+            "impact_cut": 3,
+            "neutral": 20,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 17.5,
+            "impact_cut": 7.5,
+            "neutral": 50.0,
+            "disconnected": 25.0
+          },
+          "continuity_score": 40.62
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 21716,
+        "like_count": 820,
+        "like_ratio": 0.03776,
+        "duration_sec": 446.0,
+        "channel": "The Rusty Lion",
+        "upload_date": "20220629",
+        "title": "Buffy The Vampire Slayer"
+      },
+      "quality_score": 47.43,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 7.32,
+        "variety": 55.0,
+        "beat_sync": 68.8,
+        "lyric_sync": 50.0,
+        "motion": 40.62,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "QbagbeBC4po",
+      "title": "Spike | The Way",
+      "url": "https://www.youtube.com/watch?v=QbagbeBC4po",
+      "duration_sec": 417.0,
+      "metrics": {
+        "shot_count": 264,
+        "avg_shot_duration_sec": 1.576,
+        "median_shot_duration_sec": 1.333,
+        "cuts_per_minute": 38.08,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 5.933,
+        "shot_duration_stddev_sec": 0.901,
+        "shot_duration_p25": 0.933,
+        "shot_duration_p75": 1.967,
+        "shot_duration_p90": 2.767,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 50.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 54.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 43.51
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 48.15
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 58.06
+          }
+        ],
+        "act_pacing_pct": [
+          32.6,
+          28.4,
+          39.0
+        ],
+        "intro_to_first_cut_sec": 1.233,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1271,
+        "luma_stddev": 0.0724,
+        "dark_shot_pct": 88.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 59.29,
+        "saturation_mean": 0.2312,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 58.6,
+        "cuts_checked": 263,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 22,
+            "dissolve": 36,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 36.67,
+            "dissolve": 60.0,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.8109,
+          "variety_entropy_normalized": 0.5038,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 7,
+            "neutral": 25,
+            "disconnected": 5
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 17.5,
+            "neutral": 62.5,
+            "disconnected": 12.5
+          },
+          "continuity_score": 42.5
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 112215,
+        "like_count": 2444,
+        "like_ratio": 0.02178,
+        "duration_sec": 416.0,
+        "channel": "LeahEdits",
+        "upload_date": "20220922",
+        "title": "Spike | The Way"
+      },
+      "quality_score": 49.86,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 37.81,
+        "variety": 50.38,
+        "beat_sync": 58.6,
+        "lyric_sync": 50.0,
+        "motion": 42.5,
+        "approval": 72.6
+      }
+    },
+    {
+      "id": "lIEbBOA2EI8",
+      "title": "Buffy the Vampire Slayer 7x05 \"Selfless\" - Scoobies Argument",
+      "url": "https://www.youtube.com/watch?v=lIEbBOA2EI8",
+      "duration_sec": 212.0,
+      "metrics": {
+        "shot_count": 66,
+        "avg_shot_duration_sec": 3.204,
+        "median_shot_duration_sec": 2.783,
+        "cuts_per_minute": 18.73,
+        "min_shot_duration_sec": 0.5,
+        "max_shot_duration_sec": 11.033,
+        "shot_duration_stddev_sec": 2.039,
+        "shot_duration_p25": 1.933,
+        "shot_duration_p75": 3.667,
+        "shot_duration_p90": 5.467,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 19.6
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 20.99
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          30.3,
+          37.9,
+          31.8
+        ],
+        "intro_to_first_cut_sec": 0.7,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 66,
+        "avg_luma": 0.2791,
+        "luma_stddev": 0.0596,
+        "dark_shot_pct": 10.6,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 12.71,
+        "saturation_mean": 0.4888,
+        "beat_sync_available": true,
+        "tempo_bpm": 172.27,
+        "cuts_on_beat_pct": 86.2,
+        "cuts_checked": 65,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 37,
+            "dissolve": 6,
+            "flash_cut": 0,
+            "whip_pan": 17,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 61.67,
+            "dissolve": 10.0,
+            "flash_cut": 0.0,
+            "whip_pan": 28.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8857,
+          "variety_entropy_normalized": 0.5503,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 5,
+            "neutral": 30,
+            "disconnected": 2
+          },
+          "distribution_pct": {
+            "match_cut": 7.5,
+            "impact_cut": 12.5,
+            "neutral": 75.0,
+            "disconnected": 5.0
+          },
+          "continuity_score": 43.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 110645,
+        "like_count": 1360,
+        "like_ratio": 0.012292,
+        "duration_sec": 211.0,
+        "channel": "Andrew Li",
+        "upload_date": "20200325",
+        "title": "Buffy the Vampire Slayer 7x05 \"Selfless\" - Scoobies Argument"
+      },
+      "quality_score": 52.88,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 37.28,
+        "variety": 55.03,
+        "beat_sync": 86.2,
+        "lyric_sync": 50.0,
+        "motion": 43.12,
+        "approval": 40.97
+      }
+    },
+    {
+      "id": "rkH_YSGgyg4",
+      "title": "Buffy the Vampire Slayer \u2022 The Chosen One [25th Anniversary]",
+      "url": "https://www.youtube.com/watch?v=rkH_YSGgyg4",
+      "duration_sec": 419.0,
+      "metrics": {
+        "shot_count": 186,
+        "avg_shot_duration_sec": 2.246,
+        "median_shot_duration_sec": 1.71,
+        "cuts_per_minute": 26.71,
+        "min_shot_duration_sec": 0.292,
+        "max_shot_duration_sec": 21.563,
+        "shot_duration_stddev_sec": 2.299,
+        "shot_duration_p25": 1.001,
+        "shot_duration_p75": 2.502,
+        "shot_duration_p90": 4.213,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 28.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 52.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 4.0
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 6.0
+          },
+          {
+            "t_sec": 390.0,
+            "cpm": 4.29
+          },
+          {
+            "t_sec": 400.0,
+            "cpm": 6.67
+          },
+          {
+            "t_sec": 410.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          26.9,
+          38.2,
+          34.9
+        ],
+        "intro_to_first_cut_sec": 2.586,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.1303,
+        "luma_stddev": 0.1052,
+        "dark_shot_pct": 83.8,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 20.47,
+        "saturation_mean": 0.6649,
+        "beat_sync_available": true,
+        "tempo_bpm": 123.05,
+        "cuts_on_beat_pct": 66.5,
+        "cuts_checked": 185,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 21,
+            "dissolve": 35,
+            "flash_cut": 0,
+            "whip_pan": 4,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 35.0,
+            "dissolve": 58.33,
+            "flash_cut": 0.0,
+            "whip_pan": 6.67,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.8624,
+          "variety_entropy_normalized": 0.5358,
+          "dominant_kind": "dissolve"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 5,
+            "impact_cut": 4,
+            "neutral": 15,
+            "disconnected": 16
+          },
+          "distribution_pct": {
+            "match_cut": 12.5,
+            "impact_cut": 10.0,
+            "neutral": 37.5,
+            "disconnected": 40.0
+          },
+          "continuity_score": 33.12
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 44232,
+        "like_count": 1913,
+        "like_ratio": 0.043249,
+        "duration_sec": 418.0,
+        "channel": "ItsATwinThing",
+        "upload_date": "20220310",
+        "title": "Buffy the Vampire Slayer \u2022 The Chosen One [25th Anniversary]"
+      },
+      "quality_score": 47.53,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 14.9,
+        "variety": 53.58,
+        "beat_sync": 66.5,
+        "lyric_sync": 50.0,
+        "motion": 33.12,
+        "approval": 100.0
+      }
+    },
+    {
+      "id": "EN-9GeMDRWY",
+      "title": "Best Buffy Moments: \"Buffy Summers, Class Protector.\"",
+      "url": "https://www.youtube.com/watch?v=EN-9GeMDRWY",
+      "duration_sec": 143.0,
+      "metrics": {
+        "shot_count": 59,
+        "avg_shot_duration_sec": 2.405,
+        "median_shot_duration_sec": 2.127,
+        "cuts_per_minute": 24.95,
+        "min_shot_duration_sec": 0.375,
+        "max_shot_duration_sec": 5.339,
+        "shot_duration_stddev_sec": 1.231,
+        "shot_duration_p25": 1.376,
+        "shot_duration_p75": 3.212,
+        "shot_duration_p90": 4.463,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 22.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 24.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 27.41
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 35.32
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 31.73
+          }
+        ],
+        "act_pacing_pct": [
+          33.9,
+          33.9,
+          32.2
+        ],
+        "intro_to_first_cut_sec": 4.463,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 59,
+        "avg_luma": 0.1257,
+        "luma_stddev": 0.0777,
+        "dark_shot_pct": 83.1,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 25.41,
+        "saturation_mean": 0.7241,
+        "beat_sync_available": true,
+        "tempo_bpm": 129.2,
+        "cuts_on_beat_pct": 56.9,
+        "cuts_checked": 58,
+        "transitions": {
+          "sample_count": 58,
+          "distribution": {
+            "hard_cut": 32,
+            "dissolve": 26,
+            "flash_cut": 0,
+            "whip_pan": 0,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 55.17,
+            "dissolve": 44.83,
+            "flash_cut": 0.0,
+            "whip_pan": 0.0,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.6878,
+          "variety_entropy_normalized": 0.4273,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 1,
+            "impact_cut": 5,
+            "neutral": 25,
+            "disconnected": 9
+          },
+          "distribution_pct": {
+            "match_cut": 2.5,
+            "impact_cut": 12.5,
+            "neutral": 62.5,
+            "disconnected": 22.5
+          },
+          "continuity_score": 33.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 469737,
+        "like_count": 7970,
+        "like_ratio": 0.016967,
+        "duration_sec": 142.0,
+        "channel": "Johanna K\u00fcnstler",
+        "upload_date": "20140119",
+        "title": "Best Buffy Moments: \"Buffy Summers, Class Protector.\""
+      },
+      "quality_score": 61.01,
+      "quality_tier": "C",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 42.73,
+        "beat_sync": 56.9,
+        "lyric_sync": 50.0,
+        "motion": 33.75,
+        "approval": 56.56
+      }
+    },
+    {
+      "id": "bT3xPZZsCeU",
+      "title": "Buffy Summers | The Chosen One",
+      "url": "https://www.youtube.com/watch?v=bT3xPZZsCeU",
+      "duration_sec": 387.0,
+      "metrics": {
+        "shot_count": 224,
+        "avg_shot_duration_sec": 1.718,
+        "median_shot_duration_sec": 1.535,
+        "cuts_per_minute": 34.92,
+        "min_shot_duration_sec": 0.267,
+        "max_shot_duration_sec": 11.845,
+        "shot_duration_stddev_sec": 1.175,
+        "shot_duration_p25": 1.034,
+        "shot_duration_p75": 2.035,
+        "shot_duration_p90": 2.836,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 48.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 130.0,
+            "cpm": 32.0
+          },
+          {
+            "t_sec": 140.0,
+            "cpm": 26.0
+          },
+          {
+            "t_sec": 150.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 160.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 170.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 180.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 190.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 200.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 210.0,
+            "cpm": 34.0
+          },
+          {
+            "t_sec": 220.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 230.0,
+            "cpm": 36.0
+          },
+          {
+            "t_sec": 240.0,
+            "cpm": 30.0
+          },
+          {
+            "t_sec": 250.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 260.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 270.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 280.0,
+            "cpm": 46.0
+          },
+          {
+            "t_sec": 290.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 300.0,
+            "cpm": 42.0
+          },
+          {
+            "t_sec": 310.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 320.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 330.0,
+            "cpm": 40.0
+          },
+          {
+            "t_sec": 340.0,
+            "cpm": 38.0
+          },
+          {
+            "t_sec": 350.0,
+            "cpm": 44.0
+          },
+          {
+            "t_sec": 360.0,
+            "cpm": 31.75
+          },
+          {
+            "t_sec": 370.0,
+            "cpm": 29.17
+          },
+          {
+            "t_sec": 380.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          36.2,
+          26.8,
+          37.1
+        ],
+        "intro_to_first_cut_sec": 3.537,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 80,
+        "avg_luma": 0.2064,
+        "luma_stddev": 0.1099,
+        "dark_shot_pct": 56.2,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 22.59,
+        "saturation_mean": 0.3303,
+        "beat_sync_available": true,
+        "tempo_bpm": 112.35,
+        "cuts_on_beat_pct": 55.6,
+        "cuts_checked": 223,
+        "transitions": {
+          "sample_count": 60,
+          "distribution": {
+            "hard_cut": 37,
+            "dissolve": 21,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 1
+          },
+          "distribution_pct": {
+            "hard_cut": 61.67,
+            "dissolve": 35.0,
+            "flash_cut": 0.0,
+            "whip_pan": 1.67,
+            "speed_ramp": 1.67
+          },
+          "variety_entropy": 0.802,
+          "variety_entropy_normalized": 0.4983,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 40,
+          "distribution": {
+            "match_cut": 4,
+            "impact_cut": 2,
+            "neutral": 24,
+            "disconnected": 10
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 5.0,
+            "neutral": 60.0,
+            "disconnected": 25.0
+          },
+          "continuity_score": 34.75
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 146175,
+        "like_count": 3885,
+        "like_ratio": 0.026578,
+        "duration_sec": 386.0,
+        "channel": "BloodyThorn",
+        "upload_date": "20201201",
+        "title": "Buffy Summers | The Chosen One"
+      },
+      "quality_score": 52.48,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 49.25,
+        "variety": 49.83,
+        "beat_sync": 55.6,
+        "lyric_sync": 50.0,
+        "motion": 34.75,
+        "approval": 88.59
+      }
+    },
+    {
+      "id": "NyT1Od9Q5Dc",
+      "title": "Buffy The Vampire Slayer - 7x22 - Chosen - Speech",
+      "url": "https://www.youtube.com/watch?v=NyT1Od9Q5Dc",
+      "duration_sec": 121.0,
+      "metrics": {
+        "shot_count": 31,
+        "avg_shot_duration_sec": 3.902,
+        "median_shot_duration_sec": 3.16,
+        "cuts_per_minute": 15.38,
+        "min_shot_duration_sec": 0.76,
+        "max_shot_duration_sec": 9.4,
+        "shot_duration_stddev_sec": 2.432,
+        "shot_duration_p25": 1.84,
+        "shot_duration_p75": 5.8,
+        "shot_duration_p90": 7.64,
+        "pacing_curve": [
+          {
+            "t_sec": 0.0,
+            "cpm": 20.0
+          },
+          {
+            "t_sec": 10.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 20.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 30.0,
+            "cpm": 16.0
+          },
+          {
+            "t_sec": 40.0,
+            "cpm": 18.0
+          },
+          {
+            "t_sec": 50.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 60.0,
+            "cpm": 10.0
+          },
+          {
+            "t_sec": 70.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 80.0,
+            "cpm": 12.0
+          },
+          {
+            "t_sec": 90.0,
+            "cpm": 14.0
+          },
+          {
+            "t_sec": 100.0,
+            "cpm": 11.45
+          },
+          {
+            "t_sec": 110.0,
+            "cpm": 10.95
+          },
+          {
+            "t_sec": 120.0,
+            "cpm": 0.0
+          }
+        ],
+        "act_pacing_pct": [
+          38.7,
+          35.5,
+          25.8
+        ],
+        "intro_to_first_cut_sec": 1.12,
+        "outro_after_last_cut_sec": 0.0,
+        "sampled_shots": 31,
+        "avg_luma": 0.1534,
+        "luma_stddev": 0.0599,
+        "dark_shot_pct": 80.6,
+        "bright_shot_pct": 0.0,
+        "hue_median_deg": 22.59,
+        "saturation_mean": 0.5837,
+        "beat_sync_available": true,
+        "tempo_bpm": 161.5,
+        "cuts_on_beat_pct": 83.3,
+        "cuts_checked": 30,
+        "transitions": {
+          "sample_count": 30,
+          "distribution": {
+            "hard_cut": 16,
+            "dissolve": 13,
+            "flash_cut": 0,
+            "whip_pan": 1,
+            "speed_ramp": 0
+          },
+          "distribution_pct": {
+            "hard_cut": 53.33,
+            "dissolve": 43.33,
+            "flash_cut": 0.0,
+            "whip_pan": 3.33,
+            "speed_ramp": 0.0
+          },
+          "variety_entropy": 0.811,
+          "variety_entropy_normalized": 0.5039,
+          "dominant_kind": "hard_cut"
+        },
+        "motion_cuts": {
+          "sample_count": 30,
+          "distribution": {
+            "match_cut": 3,
+            "impact_cut": 3,
+            "neutral": 16,
+            "disconnected": 8
+          },
+          "distribution_pct": {
+            "match_cut": 10.0,
+            "impact_cut": 10.0,
+            "neutral": 53.33,
+            "disconnected": 26.67
+          },
+          "continuity_score": 36.17
+        }
+      },
+      "youtube_metadata": {
+        "view_count": 492076,
+        "like_count": 4244,
+        "like_ratio": 0.008625,
+        "duration_sec": 121.0,
+        "channel": "Tito Luiz Pereira",
+        "upload_date": "20131029",
+        "title": "Buffy The Vampire Slayer - 7x22 - Chosen - Speech"
+      },
+      "quality_score": 65.02,
+      "quality_tier": "B",
+      "quality_components": {
+        "audience": 100.0,
+        "variety": 50.39,
+        "beat_sync": 83.3,
+        "lyric_sync": 50.0,
+        "motion": 36.17,
+        "approval": 28.75
+      }
+    },
+    {
+      "id": "WA7jbzNjAmA",
+      "title": "WA7jbzNjAmA",
+      "url": "https://www.youtube.com/watch?v=WA7jbzNjAmA",
+      "duration_sec": 0.0,
+      "metrics": {},
+      "quality_score": 50.0,
+      "quality_tier": "D",
+      "quality_components": {
+        "audience": 50.0,
+        "variety": 50.0,
+        "beat_sync": 50.0,
+        "lyric_sync": 50.0,
+        "motion": 50.0,
+        "approval": 50.0
+      }
+    }
+  ],
+  "priors": {
+    "median_shot_duration_sec": 1.535,
+    "cuts_per_minute": 29.88,
+    "quality_weighted": true,
+    "shot_duration_range_sec": [
+      1.576,
+      2.933
+    ],
+    "typical_act_pacing_pct": [
+      31.7,
+      33.5,
+      34.8
+    ],
+    "cuts_on_beat_pct_mean": 64.45,
+    "tempo_bpm_median": 129.2,
+    "avg_luma_mean": 0.1681,
+    "dark_shot_pct_mean": 69.48,
+    "bright_shot_pct_mean": 0.19,
+    "saturation_mean_mean": 0.4706,
+    "intro_to_first_cut_sec_median": 2.586,
+    "pacing_profile": "escalator",
+    "tier_samples": {
+      "D": 10,
+      "B": 2,
+      "C": 1
+    }
+  },
+  "generated_at": "2026-04-20T09:52:56.682578+00:00",
+  "generator": "ff reference ingest"
+}
