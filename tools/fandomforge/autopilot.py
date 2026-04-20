@@ -904,11 +904,19 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
                 if scenes:
                     scenes_by_source[stem] = scenes
 
+        # Target duration overrides song duration as the fill target when
+        # set in project-config (→ edit-plan.length_seconds). Keeps a 90s
+        # action edit from rendering the full 229s song.
+        target_duration_sec = None
+        lp = (edit_plan or {}).get("length_seconds")
+        if isinstance(lp, (int, float)) and lp > 0:
+            target_duration_sec = float(lp)
         densified = densify_shot_list(
             shot_list,
             edit_plan=edit_plan,
             song_duration_sec=song_duration,
             scenes_by_source=scenes_by_source or None,
+            target_duration_sec=target_duration_sec,
         )
         validate_and_write(densified, "shot-list", shot_list_path)
 

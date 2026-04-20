@@ -178,6 +178,59 @@ class TestDensifyShotList:
         assert first_filler["source_timecode"].startswith("0:00:10"), \
             f"frantic act should pick high-intensity scene, got {first_filler['source_timecode']}"
 
+    def test_target_duration_clamps_tail_fill(self):
+        """target_duration_sec < song_duration_sec → tail fill stops at target.
+        Guards against the 229s machine-gun render when project-config says 90s."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=60.0)
+        out = densify_shot_list(sl, target_duration_sec=20.0)
+        total_sec = sum(s["duration_frames"] for s in out["shots"]) / out["fps"]
+        assert abs(total_sec - 20.0) < (1.0 / out["fps"]), \
+            f"expected ~20s shot total, got {total_sec:.2f}s"
+
+    def test_target_duration_drops_slot_shots_past_target(self):
+        """Slot shots starting past target_duration must be dropped. Without
+        this filter, propose_shot_list's full-song sync points bleed through."""
+        sl = _sparse_list(
+            slots=[(0.0, 1.0), (5.0, 1.0), (15.0, 1.0), (25.0, 1.0)],
+            song_sec=30.0,
+        )
+        out = densify_shot_list(sl, target_duration_sec=10.0)
+        # The 15s and 25s slot shots must not survive. Check remaining slot
+        # shots (non-densified) all start before 10s.
+        slot_shots = [s for s in out["shots"] if not s.get("densified")]
+        for s in slot_shots:
+            start_sec = s["start_frame"] / out["fps"]
+            assert start_sec < 10.0, \
+                f"slot shot at {start_sec:.2f}s survived past target=10s"
+
+    def test_target_duration_clamps_final_slot_shot(self):
+        """A slot shot whose end crosses target must be clamped, not dropped."""
+        sl = _sparse_list(slots=[(0.0, 1.0), (8.0, 5.0)], song_sec=30.0)
+        out = densify_shot_list(sl, target_duration_sec=10.0)
+        total_sec = sum(s["duration_frames"] for s in out["shots"]) / out["fps"]
+        assert abs(total_sec - 10.0) < (1.0 / out["fps"]), \
+            f"expected ~10s total after clamp, got {total_sec:.2f}s"
+        # The 8s slot shot should still be present but shorter than 5s
+        slot_shots = [s for s in out["shots"] if not s.get("densified")]
+        clamped = [s for s in slot_shots if (s["start_frame"] / out["fps"]) >= 7.9]
+        assert clamped, "expected the 8s slot shot to survive (clamped)"
+        assert clamped[0]["duration_frames"] / out["fps"] < 3.0, \
+            "8s slot shot should be clamped to <3s (10 - 8 = 2s remaining)"
+
+    def test_target_duration_none_falls_back_to_song(self):
+        """target_duration_sec=None keeps legacy behavior — fill to full song."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=10.0)
+        out = densify_shot_list(sl, target_duration_sec=None)
+        total_sec = sum(s["duration_frames"] for s in out["shots"]) / out["fps"]
+        assert abs(total_sec - 10.0) < (1.0 / out["fps"])
+
+    def test_target_duration_larger_than_song_is_clamped_to_song(self):
+        """target > song → don't over-fill. min(song, target) guards this."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=10.0)
+        out = densify_shot_list(sl, target_duration_sec=30.0)
+        total_sec = sum(s["duration_frames"] for s in out["shots"]) / out["fps"]
+        assert abs(total_sec - 10.0) < (1.0 / out["fps"])
+
     def test_small_tail_absorbed_by_previous_filler(self):
         """When the last fill segment would be below MIN_FILLER_SEC, the
         remainder gets folded into the previous filler so total coverage

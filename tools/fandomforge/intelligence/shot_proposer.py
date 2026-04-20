@@ -746,16 +746,24 @@ def densify_shot_list(
     song_duration_sec: float | None = None,
     scenes_by_source: dict[str, list[dict[str, Any]]] | None = None,
     source_catalog: list[dict[str, Any]] | None = None,
+    target_duration_sec: float | None = None,
 ) -> dict[str, Any]:
-    """Expand a sparse slot-list shot-list to cover the full song duration.
+    """Expand a sparse slot-list shot-list to cover the target duration.
 
     propose_shot_list() emits one shot per sync point (drops + downbeats),
     which for a 229s song with 13 drops + 3 downbeats produces ~15 shots
     totaling only ~16s. qa.duration then hard-fails because total shot
-    duration doesn't match song duration.
+    duration doesn't match the target.
 
     This pass fills the gap between each pair of consecutive slot shots
-    (plus the tail to song end) with "insert"-role filler shots.
+    (plus the tail to target end) with "insert"-role filler shots.
+
+    `target_duration_sec` is the authoritative output length. When set and
+    less than song_duration_sec, the densifier (1) drops slot shots whose
+    start is past target, (2) clamps the final kept slot shot so it does
+    not spill past target, and (3) terminates the tail fill at target.
+    When unset, behavior falls through to song_duration_sec (legacy — a
+    full-song edit).
 
     When `scenes_by_source` is provided (dict of source_id → list of scene
     dicts with start_sec / intensity_tier / motion / avg_luma), fillers are
@@ -779,6 +787,15 @@ def densify_shot_list(
     if song_sec <= 0.0:
         # No song duration known — nothing to fill to. Return untouched.
         return dict(shot_list)
+
+    # target_duration_sec overrides song length as the fill target. Required
+    # so a 90s project-config doesn't render 229s of song. min() guards the
+    # case where a user set target > song — don't fill past song either.
+    target_sec_in = float(target_duration_sec or 0.0)
+    if target_sec_in > 0.0:
+        fill_sec = min(song_sec, target_sec_in)
+    else:
+        fill_sec = song_sec
 
     acts = (edit_plan or {}).get("acts") or []
 
@@ -875,6 +892,25 @@ def densify_shot_list(
 
     # Sort slot shots by start time so gap-fill is linear.
     shots_sorted = sorted(shots_in, key=lambda s: int(s.get("start_frame", 0)))
+
+    # Clamp slot shots to fill_sec. propose_shot_list emits one shot per
+    # sync point across the WHOLE song, so a 229s song with target 90s
+    # still arrives with sync-point shots past 90s. Drop those; clamp the
+    # last kept shot's duration if it spills past target. Without this
+    # step the tail-fill logic runs on a clamped end but the slot shots
+    # themselves still bleed past target_duration.
+    fill_frames_total = max(1, int(round(fill_sec * fps)))
+    clamped_shots: list[dict[str, Any]] = []
+    for _s in shots_sorted:
+        _start = int(_s.get("start_frame", 0) or 0)
+        if _start >= fill_frames_total:
+            continue  # slot shot starts past target → drop
+        _dur = int(_s.get("duration_frames", 0) or 0)
+        _copy = dict(_s)
+        if _start + _dur > fill_frames_total:
+            _copy["duration_frames"] = max(1, fill_frames_total - _start)
+        clamped_shots.append(_copy)
+    shots_sorted = clamped_shots
 
     def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
         """Scene-matched when scenes_by_source is provided, else inherits from
@@ -980,7 +1016,7 @@ def densify_shot_list(
         if i + 1 < len(shots_sorted):
             next_start_frame = int(shots_sorted[i + 1]["start_frame"])
         else:
-            next_start_frame = _frames(song_sec)
+            next_start_frame = _frames(fill_sec)
 
         if next_start_frame <= cur_end_frame:
             continue  # no gap

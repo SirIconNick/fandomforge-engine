@@ -139,6 +139,29 @@ def test_duration_fails_when_off_by_more_than_tolerance(tmp_path: Path) -> None:
     assert dur["evidence"]["delta_sec"] <= -4.5 or dur["evidence"]["delta_sec"] >= 4.5
 
 
+def test_duration_grades_against_target_when_shorter_than_song(tmp_path: Path) -> None:
+    """When edit-plan.length_seconds < beat-map.duration_sec, qa.duration
+    grades the shot-list against the target, not the song. Guards the
+    90s-in-a-229s-song failure mode."""
+    bundle = _fresh_bundle()
+    # Make the song longer than the shot-list so a naive "grade against
+    # song" would fail, but declare length_seconds == shot-list total.
+    fps = int(bundle["shot-list"]["fps"])
+    shot_total_sec = sum(
+        int(s["duration_frames"]) for s in bundle["shot-list"]["shots"]
+    ) / fps
+    bundle["beat-map"]["duration_sec"] = shot_total_sec + 50.0
+    bundle["edit-plan"]["length_seconds"] = shot_total_sec  # target == shot total
+
+    project = _write_project(tmp_path, bundle)
+    report = run_gate(project)
+    dur = next(r for r in report["rules"] if r["id"] == "qa.duration")
+    assert dur["status"] == "pass", (
+        f"qa.duration should pass when shot_total==target, got {dur}"
+    )
+    assert dur["evidence"]["graded_against"] == "target_duration"
+
+
 # ---------------------------------------------------------------------------
 # qa.beat_sync
 # ---------------------------------------------------------------------------
