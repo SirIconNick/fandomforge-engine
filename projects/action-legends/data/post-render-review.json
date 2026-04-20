@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "video_path": "projects/action-legends/exports/graded.mp4",
+  "generated_at": "2026-04-20T00:12:14.599031+00:00",
+  "overall": "yellow",
+  "overall_verdict": "warn",
+  "score": 85.3,
+  "grade": "B",
+  "ship_recommendation": "Reviewable with caveats \u2014 visual flagged. Open the output and eyeball before shipping.",
+  "dimensions": [
+    {
+      "name": "technical",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "width": 1920,
+        "height": 1080,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "fps": 24.0,
+        "duration_sec": 60.0,
+        "video_bitrate_bps": 6084719,
+        "container_bitrate_bps": 6396661,
+        "audio_codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "audio_bitrate_bps": 318966
+      }
+    },
+    {
+      "name": "visual",
+      "verdict": "warn",
+      "score": 51.0,
+      "findings": [
+        "dark segment @ 34.83s \u2192 35.58s (0.75s)",
+        "dark segment @ 41.21s \u2192 41.46s (0.25s)",
+        "dark segment @ 50.33s \u2192 51.33s (1.00s)",
+        "dark segment @ 52.46s \u2192 53.33s (0.88s)"
+      ],
+      "measurements": {
+        "black_segments": [
+          {
+            "start": 34.833333,
+            "end": 35.583333,
+            "duration": 0.75
+          },
+          {
+            "start": 41.208333,
+            "end": 41.458333,
+            "duration": 0.25
+          },
+          {
+            "start": 50.333333,
+            "end": 51.333333,
+            "duration": 1.0
+          },
+          {
+            "start": 52.458333,
+            "end": 53.333333,
+            "duration": 0.875
+          }
+        ],
+        "freeze_events": [],
+        "total_black_sec": 2.875
+      }
+    },
+    {
+      "name": "audio",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "input_i": -11.75,
+        "input_tp": -2.59,
+        "input_lra": 2.6,
+        "input_thresh": -22.08,
+        "mean_dbfs": -15.4,
+        "max_dbfs": -2.7,
+        "silences": []
+      }
+    },
+    {
+      "name": "structural",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "rendered_duration_sec": 60.0,
+        "expected_duration_sec": 60.0,
+        "shot_count": 50,
+        "delta_sec": 0.0,
+        "delta_pct": 0.0
+      }
+    },
+    {
+      "name": "shot_list",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "shot_count": 50,
+        "unique_shots": 50,
+        "intentional_callbacks": 0,
+        "accidental_reuse": 0,
+        "source_distribution": {
+          "mad-max-fury-road": 16,
+          "the-raid-2": 14,
+          "john-wick-4": 4,
+          "extraction-2": 16
+        },
+        "top_source_share": 0.32
+      }
+    }
+  ]
+}

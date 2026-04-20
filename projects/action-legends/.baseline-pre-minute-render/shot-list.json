@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "fps": 24.0,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "song_duration_sec": 229.20421768707482,
+  "shots": [
+    {
+      "id": "s001",
+      "act": 3,
+      "start_frame": 700,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:06.690",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 0,
+        "time_sec": 29.187
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s002",
+      "act": 4,
+      "start_frame": 1061,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:23.997",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 1,
+        "time_sec": 44.211
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s003",
+      "act": 5,
+      "start_frame": 1421,
+      "duration_frames": 48,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:14.605",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 2,
+        "time_sec": 59.211
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s004",
+      "act": 5,
+      "start_frame": 1774,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:02:18.332",
+      "role": "reaction",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "downbeat",
+        "index": 3,
+        "time_sec": 73.92
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.0
+      }
+    },
+    {
+      "id": "s006",
+      "act": 5,
+      "start_frame": 2036,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:22.668",
+      "role": "motion",
+      "mood_tags": [],
+      "framing": "MS",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "downbeat",
+        "index": 5,
+        "time_sec": 84.83
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.0
+      }
+    },
+    {
+      "id": "s007",
+      "act": 5,
+      "start_frame": 2202,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:29.293",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 6,
+        "time_sec": 91.765
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s008",
+      "act": 5,
+      "start_frame": 2583,
+      "duration_frames": 48,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:22.046",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 7,
+        "time_sec": 107.624
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s009",
+      "act": 5,
+      "start_frame": 3029,
+      "duration_frames": 48,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:23.290",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 8,
+        "time_sec": 126.2
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s010",
+      "act": 5,
+      "start_frame": 3280,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:44.123",
+      "role": "action",
+      "mood_tags": [],
+      "framing": "medium",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "downbeat",
+        "index": 9,
+        "time_sec": 136.65
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.0
+      }
+    },
+    {
+      "id": "s011",
+      "act": 5,
+      "start_frame": 3389,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:53.252",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 10,
+        "time_sec": 141.201
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s012",
+      "act": 5,
+      "start_frame": 3748,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:37.165",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 11,
+        "time_sec": 156.177
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s013",
+      "act": 5,
+      "start_frame": 4108,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:54.087",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 12,
+        "time_sec": 171.178
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s014",
+      "act": 5,
+      "start_frame": 4468,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:59.915",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 13,
+        "time_sec": 186.178
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s015",
+      "act": 5,
+      "start_frame": 4833,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:14.455",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 14,
+        "time_sec": 201.387
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    },
+    {
+      "id": "s016",
+      "act": 5,
+      "start_frame": 5201,
+      "duration_frames": 48,
+      "source_id": "extraction-2",
+      "source_timecode": "0:02:07.719",
+      "role": "hero",
+      "mood_tags": [],
+      "framing": "CU",
+      "motion_vector": null,
+      "eyeline": "",
+      "beat_sync": {
+        "type": "drop",
+        "index": 15,
+        "time_sec": 216.712
+      },
+      "scores": {
+        "theme_fit": 3.0,
+        "fandom_balance": 3.0,
+        "emotion": 3.0,
+        "beat_sync_score": 4.5
+      }
+    }
+  ],
+  "generated_at": "2026-04-19T20:28:50.574509+00:00",
+  "generator": "shot_proposer/heuristic-v1",
+  "fandom_quota": {
+    "act1": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act2": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act3": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act4": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act5": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    }
+  }
+}

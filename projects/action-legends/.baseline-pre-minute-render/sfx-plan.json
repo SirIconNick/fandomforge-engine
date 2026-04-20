@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "scene_audio_blend": {
+    "enabled": true,
+    "gain_db": -20.0,
+    "duck_to_song_db": -8.0
+  },
+  "events": [
+    {
+      "id": "sfx003",
+      "time_sec": 29.187,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_1"
+    },
+    {
+      "id": "sfx004",
+      "time_sec": 44.211,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_2"
+    },
+    {
+      "id": "sfx005",
+      "time_sec": 59.211,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_3"
+    },
+    {
+      "id": "sfx006",
+      "time_sec": 74.281,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_4"
+    },
+    {
+      "id": "sfx001",
+      "time_sec": 84.83,
+      "kind": "impact",
+      "variant": "impact-heavy-01.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s006",
+      "beat_aligned": true,
+      "reason": "cue=motion;mood="
+    },
+    {
+      "id": "sfx007",
+      "time_sec": 91.765,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_5"
+    },
+    {
+      "id": "sfx008",
+      "time_sec": 107.624,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_6"
+    },
+    {
+      "id": "sfx009",
+      "time_sec": 126.2,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_7"
+    },
+    {
+      "id": "sfx002",
+      "time_sec": 136.65,
+      "kind": "impact",
+      "variant": "impact-heavy-02.wav",
+      "gain_db": 0.0,
+      "source_shot_id": "s010",
+      "beat_aligned": true,
+      "reason": "cue=action;mood="
+    },
+    {
+      "id": "sfx010",
+      "time_sec": 141.201,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_8"
+    },
+    {
+      "id": "sfx011",
+      "time_sec": 156.177,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_9"
+    },
+    {
+      "id": "sfx012",
+      "time_sec": 171.178,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_10"
+    },
+    {
+      "id": "sfx013",
+      "time_sec": 186.178,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_11"
+    },
+    {
+      "id": "sfx014",
+      "time_sec": 201.387,
+      "kind": "sub_boom",
+      "variant": "sub-boom-01.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_12"
+    },
+    {
+      "id": "sfx015",
+      "time_sec": 216.712,
+      "kind": "sub_boom",
+      "variant": "sub-boom-02.wav",
+      "gain_db": -1.0,
+      "beat_aligned": true,
+      "reason": "drop_13"
+    }
+  ],
+  "generated_at": "2026-04-19T23:41:42.109084+00:00",
+  "generator": "ff sfx plan"
+}

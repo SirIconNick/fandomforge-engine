@@ -1,0 +1,90 @@
+{
+  "project_slug": "action-legends",
+  "video_path": "projects/action-legends/exports/graded.mp4",
+  "generated_at": "2026-04-19T21:03:12.456979+00:00",
+  "overall": "green",
+  "overall_verdict": "pass",
+  "score": 100.0,
+  "grade": "A+",
+  "ship_recommendation": "Green across the board. Safe to pull into the NLE.",
+  "dimensions": [
+    {
+      "name": "technical",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "width": 1920,
+        "height": 1080,
+        "video_codec": "h264",
+        "pix_fmt": "yuv420p",
+        "fps": 24.0,
+        "duration_sec": 26.666667,
+        "video_bitrate_bps": 7062048,
+        "container_bitrate_bps": 7382373,
+        "audio_codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "audio_bitrate_bps": 314348
+      }
+    },
+    {
+      "name": "visual",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "black_segments": [],
+        "freeze_events": [],
+        "total_black_sec": 0
+      }
+    },
+    {
+      "name": "audio",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "input_i": -12.57,
+        "input_tp": -2.54,
+        "input_lra": 3.0,
+        "input_thresh": -23.09,
+        "mean_dbfs": -16.8,
+        "max_dbfs": -2.8,
+        "silences": []
+      }
+    },
+    {
+      "name": "structural",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "rendered_duration_sec": 26.666667,
+        "expected_duration_sec": 27.0,
+        "shot_count": 15,
+        "delta_sec": -0.333,
+        "delta_pct": 0.0123
+      }
+    },
+    {
+      "name": "shot_list",
+      "verdict": "pass",
+      "score": 100.0,
+      "findings": [],
+      "measurements": {
+        "shot_count": 15,
+        "unique_shots": 15,
+        "intentional_callbacks": 0,
+        "accidental_reuse": 0,
+        "source_distribution": {
+          "mad-max-fury-road": 5,
+          "the-raid-2": 4,
+          "john-wick-4": 1,
+          "extraction-2": 5
+        },
+        "top_source_share": 0.333
+      }
+    }
+  ]
+}

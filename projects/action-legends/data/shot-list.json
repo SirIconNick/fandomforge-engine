@@ -1,0 +1,751 @@
+{
+  "schema_version": 1,
+  "project_slug": "action-legends",
+  "fps": 24.0,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "song_duration_sec": 60,
+  "shots": [
+    {
+      "id": "s001",
+      "act": 3,
+      "start_frame": 0,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:06.802",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s002",
+      "act": 3,
+      "start_frame": 48,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:03.310",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s003",
+      "act": 3,
+      "start_frame": 72,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:09.010",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s004",
+      "act": 3,
+      "start_frame": 96,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:11.969",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s005",
+      "act": 4,
+      "start_frame": 120,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:24.186",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s006",
+      "act": 4,
+      "start_frame": 168,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:21.138",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s007",
+      "act": 4,
+      "start_frame": 192,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:26.811",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s008",
+      "act": 4,
+      "start_frame": 216,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:29.167",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s009",
+      "act": 5,
+      "start_frame": 240,
+      "duration_frames": 48,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:14.543",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s010",
+      "act": 5,
+      "start_frame": 288,
+      "duration_frames": 24,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:11.229",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s011",
+      "act": 5,
+      "start_frame": 312,
+      "duration_frames": 24,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:16.880",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s012",
+      "act": 5,
+      "start_frame": 336,
+      "duration_frames": 24,
+      "source_id": "john-wick-4",
+      "source_timecode": "0:00:20.109",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s013",
+      "act": 5,
+      "start_frame": 360,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:02:17.953",
+      "role": "reaction",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s014",
+      "act": 5,
+      "start_frame": 384,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:02:15.091",
+      "role": "reaction",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s015",
+      "act": 5,
+      "start_frame": 408,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:02:20.952",
+      "role": "reaction",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s016",
+      "act": 5,
+      "start_frame": 432,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:02:23.868",
+      "role": "reaction",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s017",
+      "act": 5,
+      "start_frame": 456,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:22.444",
+      "role": "motion",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s018",
+      "act": 5,
+      "start_frame": 480,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:19.739",
+      "role": "motion",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s019",
+      "act": 5,
+      "start_frame": 504,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:25.416",
+      "role": "motion",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s020",
+      "act": 5,
+      "start_frame": 528,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:27.773",
+      "role": "motion",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s021",
+      "act": 5,
+      "start_frame": 552,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:29.538",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s022",
+      "act": 5,
+      "start_frame": 600,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:26.452",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s023",
+      "act": 5,
+      "start_frame": 624,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:31.665",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s024",
+      "act": 5,
+      "start_frame": 648,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:00:34.517",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s025",
+      "act": 5,
+      "start_frame": 672,
+      "duration_frames": 48,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:22.412",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s026",
+      "act": 5,
+      "start_frame": 720,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:18.915",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s027",
+      "act": 5,
+      "start_frame": 744,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:24.220",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s028",
+      "act": 5,
+      "start_frame": 768,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:01:27.223",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s029",
+      "act": 5,
+      "start_frame": 792,
+      "duration_frames": 48,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:23.568",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s030",
+      "act": 5,
+      "start_frame": 840,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:20.373",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s031",
+      "act": 5,
+      "start_frame": 864,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:26.036",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s032",
+      "act": 5,
+      "start_frame": 888,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:28.974",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s033",
+      "act": 5,
+      "start_frame": 912,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:44.152",
+      "role": "action",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s034",
+      "act": 5,
+      "start_frame": 936,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:41.501",
+      "role": "action",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s035",
+      "act": 5,
+      "start_frame": 960,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:46.526",
+      "role": "action",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s036",
+      "act": 5,
+      "start_frame": 984,
+      "duration_frames": 24,
+      "source_id": "extraction-2",
+      "source_timecode": "0:00:49.665",
+      "role": "action",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s037",
+      "act": 5,
+      "start_frame": 1008,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:53.516",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s038",
+      "act": 5,
+      "start_frame": 1056,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:50.347",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s039",
+      "act": 5,
+      "start_frame": 1080,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:56.041",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s040",
+      "act": 5,
+      "start_frame": 1104,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:58.814",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s041",
+      "act": 5,
+      "start_frame": 1128,
+      "duration_frames": 48,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:37.329",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s042",
+      "act": 5,
+      "start_frame": 1176,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:33.802",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s043",
+      "act": 5,
+      "start_frame": 1200,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:39.447",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s044",
+      "act": 5,
+      "start_frame": 1224,
+      "duration_frames": 24,
+      "source_id": "mad-max-fury-road",
+      "source_timecode": "0:01:42.497",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s045",
+      "act": 5,
+      "start_frame": 1248,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:53.751",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s046",
+      "act": 5,
+      "start_frame": 1296,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:50.873",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s047",
+      "act": 5,
+      "start_frame": 1320,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:56.268",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s048",
+      "act": 5,
+      "start_frame": 1344,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:59.409",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s049",
+      "act": 5,
+      "start_frame": 1368,
+      "duration_frames": 48,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:02:00.024",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    },
+    {
+      "id": "s050",
+      "act": 5,
+      "start_frame": 1416,
+      "duration_frames": 24,
+      "source_id": "the-raid-2",
+      "source_timecode": "0:01:56.807",
+      "role": "hero",
+      "mood_tags": [
+        "intense",
+        "combat"
+      ],
+      "fandom": ""
+    }
+  ],
+  "generated_at": "2026-04-19T20:28:50.574509+00:00",
+  "generator": "shot_proposer/heuristic-v1",
+  "fandom_quota": {
+    "act1": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act2": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act3": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act4": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    },
+    "act5": {
+      "John Wick franchise": 0.2,
+      "The Matrix franchise": 0.2,
+      "Mad Max Fury Road": 0.2,
+      "John Woo films": 0.2,
+      "The Raid franchise": 0.2
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "edit_type": "action",
+  "target_duration_sec": 60,
+  "song": "song.mp3",
+  "song_offset_sec": 0,
+  "song_gain_db": -4,
+  "default_duck_db": -6,
+  "apply_transitions": true,
+  "add_titles": false,
+  "run_qa": true,
+  "run_director": false,
+  "platform_target": "youtube",
+  "target_loudness_lufs": -14,
+  "true_peak_ceiling_dbtp": -1,
+  "fandoms": [
+    {"name": "John Wick"},
+    {"name": "Mad Max: Fury Road"},
+    {"name": "The Raid 2"},
+    {"name": "Extraction"}
+  ]
+}
