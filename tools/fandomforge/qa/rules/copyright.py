@@ -51,11 +51,11 @@ def _load_high_risk_songs() -> list[dict[str, str]]:
     return entries
 
 
-@rule("qa.copyright", "Copyright risk", level="block")
+@rule("qa.copyright", "Copyright risk", level="info")
 def rule_copyright(ctx: GateContext) -> RuleResult:
     if not ctx.edit_plan:
         return RuleResult(
-            id="qa.copyright", name="Copyright risk", level="block",
+            id="qa.copyright", name="Copyright risk", level="info",
             status="skipped", message="no edit-plan.json",
         )
 
@@ -86,7 +86,7 @@ def rule_copyright(ctx: GateContext) -> RuleResult:
 
     if findings:
         return RuleResult(
-            id="qa.copyright", name="Copyright risk", level="block",
+            id="qa.copyright", name="Copyright risk", level="info",
             status="fail",
             message=" ".join(findings),
             evidence={

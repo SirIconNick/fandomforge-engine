@@ -795,6 +795,36 @@ def densify_shot_list(
             return _PACING_TO_INTENSITY[pacing]
         return "medium"
 
+    def _scene_duration(sc: dict[str, Any]) -> float:
+        """Handle minimal scene dicts (no duration_sec field) by falling back
+        to end_sec - start_sec. Derived scenes from ff ingest emit the latter;
+        legacy hand-curated scenes emit the former."""
+        d = sc.get("duration_sec")
+        if isinstance(d, (int, float)) and d > 0:
+            return float(d)
+        start = sc.get("start_sec")
+        end = sc.get("end_sec")
+        if isinstance(start, (int, float)) and isinstance(end, (int, float)):
+            return max(0.0, float(end) - float(start))
+        return 0.0
+
+    def _scene_intensity(sc: dict[str, Any]) -> str:
+        """Fallback intensity classification when the scene doesn't carry
+        `intensity_tier`. Uses duration as a crude proxy: short scenes are
+        high-energy (fast action cuts), long scenes are low-energy
+        (establishing / reaction).
+          <1.0s → high, 1.0-3.0s → medium, ≥3.0s → low
+        Scenes with explicit intensity_tier keep theirs."""
+        tier = sc.get("intensity_tier")
+        if tier in ("low", "medium", "high"):
+            return tier
+        dur = _scene_duration(sc)
+        if dur < 1.0:
+            return "high"
+        if dur < 3.0:
+            return "medium"
+        return "low"
+
     def _pick_scene(target_intensity: str, used_src: set[str]) -> tuple[str, dict[str, Any]] | None:
         """Pick the best scene across all sources for the target intensity.
 
@@ -817,9 +847,9 @@ def densify_shot_list(
                     idx = sc.get("index", -1)
                     if (src, idx) in used_scenes:
                         continue
-                    if strict and sc.get("intensity_tier") != target_intensity:
+                    if strict and _scene_intensity(sc) != target_intensity:
                         continue
-                    if sc.get("duration_sec", 0) < 0.4:
+                    if _scene_duration(sc) < 0.4:
                         continue  # too short to be a meaningful clip
                     return src, sc
         return None

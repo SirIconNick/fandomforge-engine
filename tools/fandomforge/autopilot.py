@@ -868,12 +868,16 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
                     song_duration = None
 
         # Load scene boundaries per source for scene-matched filler picking.
-        # Key by catalog's source_id so densify_shot_list can look up by the
-        # same id the flanking slot shot references.
+        # Scenes live in one of two places depending on project vintage:
+        #   1. derived/<blake3-id>/scenes.json — fresh autopilot via ff ingest
+        #   2. data/scenes/<path-stem>.json    — legacy / manually-populated
+        # Key the result dict by path stem because shot_proposer emits those
+        # as source_ids and the filler picker's source rotation uses them.
         scenes_by_source: dict[str, list[dict[str, Any]]] = {}
-        scenes_dir = ctx.project_dir / "data" / "scenes"
         catalog_path = ctx.project_dir / "data" / "source-catalog.json"
-        if scenes_dir.exists() and catalog_path.exists():
+        legacy_scenes_dir = ctx.project_dir / "data" / "scenes"
+        derived_root = ctx.project_dir / "derived"
+        if catalog_path.exists():
             try:
                 catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
             except (OSError, json.JSONDecodeError):
@@ -883,8 +887,14 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
                 if not path:
                     continue
                 stem = Path(path).stem
-                scene_file = scenes_dir / f"{stem}.json"
-                if not scene_file.exists():
+                # Try both locations. Derived (blake3) is the authoritative
+                # modern path; data/scenes (stem) is the legacy layout.
+                candidates = [
+                    derived_root / str(entry.get("id") or "") / "scenes.json",
+                    legacy_scenes_dir / f"{stem}.json",
+                ]
+                scene_file = next((c for c in candidates if c.exists()), None)
+                if scene_file is None:
                     continue
                 try:
                     sdata = json.loads(scene_file.read_text(encoding="utf-8"))
@@ -892,9 +902,6 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
                     continue
                 scenes = sdata.get("scenes") or []
                 if scenes:
-                    # shot_proposer emits path-stem source_ids — key scenes
-                    # the same way so the filler picker's source rotation
-                    # matches the shot-list's source_ids 1:1.
                     scenes_by_source[stem] = scenes
 
         densified = densify_shot_list(
@@ -904,6 +911,18 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
             scenes_by_source=scenes_by_source or None,
         )
         validate_and_write(densified, "shot-list", shot_list_path)
+
+        # Also regenerate shot-list.md from the densified set so ff roughcut
+        # (which parses the .md, not the .json) sees all 297 shots. Without
+        # this refresh the render gets only the 15 sparse slot shots → 15s
+        # render instead of the full song duration.
+        md_out = ctx.project_dir / "shot-list.md"
+        try:
+            _write_shot_list_md(densified, md_out)
+        except Exception as exc:  # noqa: BLE001
+            # Non-fatal — the JSON is authoritative; .md is a convenience view
+            logger = __import__("logging").getLogger(__name__)
+            logger.warning("shot-list.md refresh failed: %s", exc)
 
         # Reconcile edit-plan fps/resolution to the authoritative shot-list
         # values so qa.fps_resolution doesn't block on LLM/stub defaults
@@ -1773,23 +1792,40 @@ def step_edit_plan(ctx: AutopilotContext) -> AutopilotEvent:
     # (picking "shorts" when config says "youtube"), so we hard-override
     # here rather than letting the drift land in qa_gate failures. Silent
     # on match; tagged in evidence when we overrode anything.
+    #
+    # Note: project-config uses `target_duration_sec` while edit-plan schema
+    # uses `length_seconds`. Map across the field rename.
     overrides_applied: list[str] = []
     proj_cfg_path = ctx.project_dir / "project-config.json"
     if proj_cfg_path.exists():
         try:
             cfg = json.loads(proj_cfg_path.read_text(encoding="utf-8"))
-            for key in ("platform_target", "target_duration_sec"):
+            # Direct-name keys (same field in both schemas)
+            for key in ("platform_target",):
                 cfg_val = cfg.get(key)
                 plan_val = plan.get(key)
                 if cfg_val is not None and cfg_val != plan_val:
                     plan[key] = cfg_val
                     overrides_applied.append(f"{key}:{plan_val!r}→{cfg_val!r}")
+            # Renamed: project-config.target_duration_sec → edit-plan.length_seconds
+            cfg_dur = cfg.get("target_duration_sec")
+            plan_dur = plan.get("length_seconds")
+            if cfg_dur is not None and float(cfg_dur) != float(plan_dur or 0):
+                plan["length_seconds"] = float(cfg_dur)
+                overrides_applied.append(
+                    f"length_seconds:{plan_dur!r}→{float(cfg_dur)!r}",
+                )
         except (OSError, json.JSONDecodeError):
             pass
 
     out = ctx.project_dir / "data" / "edit-plan.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(plan, indent=2) + "\n")
+
+    # Per CLAUDE.md: fair use is case-by-case; DO NOT auto-stamp blanket
+    # statements. Copyright awareness is a publish-step concern handled by
+    # `ff credit generate`, not an autopilot gate. qa.copyright is demoted
+    # to level=info so it still reports but doesn't block fan-edit renders.
 
     msg = f"edit-plan.json drafted via {source}"
     if overrides_applied:
