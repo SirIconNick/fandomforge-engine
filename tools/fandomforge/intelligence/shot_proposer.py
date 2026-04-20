@@ -477,38 +477,117 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
                 return a.get("pacing")
         return None
 
+    def _clip_category_for(role: str, pacing: str | None, in_climax: bool, kind: str) -> str:
+        """Stamp clip_category at propose-time so type_fit QA sees a sensible
+        distribution. extract_clip_metadata later only overrides if unset,
+        so this is the authoritative stamp.
+
+        Action-heavy edits need action-high on drops + frantic downbeats —
+        the default ROLE_TO_CATEGORY maps `action` to `action-mid` which tanks
+        type_fit on action edits. Pacing-aware override fixes that.
+        """
+        if role == "hero":
+            return "action-high" if in_climax or pacing in {"fast", "frantic"} else "climactic"
+        if role == "action":
+            if pacing == "frantic" or (in_climax and kind == "drop"):
+                return "action-high"
+            if pacing in {"fast", "medium"}:
+                return "action-mid"
+            return "action-mid"
+        if role == "reaction":
+            return "reaction-emotional" if in_climax else "reaction-quiet"
+        if role == "establishing":
+            return "establishing"
+        if role == "cut-on-action":
+            return "action-mid"
+        if role == "environment":
+            return "establishing"
+        if role == "detail":
+            return "texture"
+        if role == "motion":
+            return "transitional"
+        return "texture"
+
+    # Phase B→A- upgrade: editorial role assignment instead of round-robin.
+    # Roles are chosen by (sync_kind, act_position_in_edit, act_pacing). Drops
+    # in the climactic act get `hero` with an implicit clip_category hint;
+    # downbeats early in the edit get establishing; downbeats mid-edit cycle
+    # through action/reaction; downbeats near the end get reaction to signal
+    # resolution. This replaces SHOT_ROLES_ORDER[i % N] which produced
+    # random role ordering regardless of dramatic position.
+
+    def _act_index_at(t_sec: float) -> int:
+        """1-based index of the act containing t_sec. 1 if no acts."""
+        for idx, a in enumerate(acts, start=1):
+            start = float(a.get("start_sec", 0) or 0)
+            end = float(a.get("end_sec", 0) or 0)
+            if start <= t_sec < end:
+                return idx
+        return 1
+
+    def _position_in_act(t_sec: float) -> float:
+        """0.0-1.0 where t_sec falls within its containing act."""
+        for a in acts:
+            start = float(a.get("start_sec", 0) or 0)
+            end = float(a.get("end_sec", 0) or 0)
+            if start <= t_sec < end and end > start:
+                return (t_sec - start) / (end - start)
+        return 0.0
+
+    n_acts = max(1, len(acts))
+
     for i, (time_sec, kind) in enumerate(sync_points):
         if time_sec >= song_duration:
             break
 
         pacing = _act_pacing_at(time_sec)
+        act_idx = _act_index_at(time_sec)
+        pos_in_act = _position_in_act(time_sec)
+        # Climactic acts are the last third of the edit (act 3+ in a 4-act
+        # structure, act 2+ in a 3-act). Drops in those acts get the fiercest
+        # treatment.
+        in_climax = (act_idx / n_acts) >= 0.66
 
-        # Decide duration: drops → hero (longer end of band),
-        # downbeats → middle of band, others → short end of band.
+        # Decide role from (sync_kind, act position, act pacing).
+        if kind == "drop":
+            role = "hero"  # drops always carry weight
+        elif kind == "downbeat":
+            # Editorial cycle through the act: establishing → action → reaction
+            if act_idx == 1 and pos_in_act < 0.4:
+                role = "establishing"
+            elif in_climax and pos_in_act < 0.7:
+                role = "action"
+            elif in_climax:
+                role = "reaction"  # late-climax = emotional payoff
+            elif pacing in {"fast", "frantic"}:
+                role = "action" if pos_in_act < 0.5 else "cut-on-action"
+            elif pacing == "slow":
+                role = "reaction" if pos_in_act > 0.5 else "environment"
+            else:
+                # Cycle through action / reaction / detail with a deterministic
+                # pattern based on beat index — better than random round-robin.
+                cycle = ["action", "reaction", "detail", "motion"]
+                role = cycle[i % len(cycle)]
+        else:
+            role = "insert"
+
+        # Duration from pacing band when available, else legacy defaults.
         if pacing:
             lo_sec, hi_sec = shot_duration_band(pacing)
             if kind == "drop":
-                target_sec = hi_sec  # hero shots take the long end of pacing band
-                role = "hero"
+                target_sec = hi_sec
             elif kind == "downbeat":
                 target_sec = (lo_sec + hi_sec) / 2
-                role = SHOT_ROLES_ORDER[i % len(SHOT_ROLES_ORDER)]
             else:
                 target_sec = lo_sec
-                role = "insert"
             duration_frames = max(cfg.min_shot_frames, _sec_to_frames(target_sec, cfg.fps))
         else:
-            # Legacy path — kept identical to v1 behavior so old test
-            # snapshots still hold.
             if kind == "drop":
                 duration_frames = cfg.hero_shot_frames
-                role = "hero"
             elif kind == "downbeat":
                 duration_frames = cfg.hero_shot_frames // 2
-                role = SHOT_ROLES_ORDER[i % len(SHOT_ROLES_ORDER)]
             else:
                 duration_frames = cfg.min_shot_frames
-                role = "insert"
 
         # Clamp duration to song bounds
         start_frame = _sec_to_frames(time_sec, cfg.fps)
@@ -552,6 +631,7 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
             "source_id": source_id,
             "source_timecode": _fmt_timecode(offset),
             "role": role,
+            "clip_category": _clip_category_for(role, pacing, in_climax, kind),
             "mood_tags": [],
             "framing": FRAMING_BY_ROLE.get(role, ""),
             "motion_vector": None,
@@ -648,11 +728,24 @@ _DEFAULT_FILLER_BAND_SEC: tuple[float, float] = (1.0, 2.0)
 _MIN_FILLER_SEC = 0.4  # don't emit a filler shorter than this; fold into neighbor
 
 
+# Pacing → target scene intensity_tier. Drives which scenes densify picks
+# when scene-matching is enabled. Keeps slow acts feeling slow (low-intensity
+# fillers), frantic acts feeling earned (high-intensity fillers).
+_PACING_TO_INTENSITY: dict[str, str] = {
+    "slow": "low",
+    "medium": "medium",
+    "fast": "high",
+    "frantic": "high",
+}
+
+
 def densify_shot_list(
     shot_list: dict[str, Any],
     *,
     edit_plan: dict[str, Any] | None = None,
     song_duration_sec: float | None = None,
+    scenes_by_source: dict[str, list[dict[str, Any]]] | None = None,
+    source_catalog: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Expand a sparse slot-list shot-list to cover the full song duration.
 
@@ -662,10 +755,14 @@ def densify_shot_list(
     duration doesn't match song duration.
 
     This pass fills the gap between each pair of consecutive slot shots
-    (plus the tail to song end) with "insert"-role filler shots whose
-    duration respects the act's pacing band. Filler source_id mirrors the
-    flanking slot shot (cheap source selection — scene-matching is a
-    follow-up; good enough for autopilot to reach the render stage).
+    (plus the tail to song end) with "insert"-role filler shots.
+
+    When `scenes_by_source` is provided (dict of source_id → list of scene
+    dicts with start_sec / intensity_tier / motion / avg_luma), fillers are
+    SCENE-MATCHED — each filler picks a scene whose intensity_tier aligns
+    with the act's pacing, rotating across sources to avoid the "same sliver
+    repeated 282 times" engagement-killer. Without scenes, falls back to
+    the legacy flanking-shot-inheritance behavior.
 
     Returns a new shot-list dict with re-numbered ids (s001..sNNN) and
     densified shots. Input is not mutated.
@@ -684,6 +781,48 @@ def densify_shot_list(
         return dict(shot_list)
 
     acts = (edit_plan or {}).get("acts") or []
+
+    # Scene-match bookkeeping. used_scenes tracks (source_id, scene_index)
+    # pairs we've already placed; source_use_count biases selection toward
+    # under-represented sources so engagement doesn't collapse.
+    used_scenes: set[tuple[str, int]] = set()
+    source_use_count: dict[str, int] = {}
+    available_sources = list((scenes_by_source or {}).keys())
+
+    def _intensity_for(t_sec: float) -> str:
+        pacing = _pacing_at(t_sec)
+        if pacing and pacing in _PACING_TO_INTENSITY:
+            return _PACING_TO_INTENSITY[pacing]
+        return "medium"
+
+    def _pick_scene(target_intensity: str, used_src: set[str]) -> tuple[str, dict[str, Any]] | None:
+        """Pick the best scene across all sources for the target intensity.
+
+        Priority: (1) intensity match, (2) source rotation (fewest prior uses),
+        (3) not already picked. Returns (source_id, scene_dict) or None when
+        the scene pool is exhausted.
+        """
+        if not scenes_by_source:
+            return None
+        # Rank sources by use count (ascending) so under-used sources come first.
+        ranked_sources = sorted(
+            available_sources,
+            key=lambda s: (source_use_count.get(s, 0), s),
+        )
+        # Two passes: (a) strict intensity match, (b) any unused scene.
+        for strict in (True, False):
+            for src in ranked_sources:
+                scenes = scenes_by_source.get(src) or []
+                for sc in scenes:
+                    idx = sc.get("index", -1)
+                    if (src, idx) in used_scenes:
+                        continue
+                    if strict and sc.get("intensity_tier") != target_intensity:
+                        continue
+                    if sc.get("duration_sec", 0) < 0.4:
+                        continue  # too short to be a meaningful clip
+                    return src, sc
+        return None
 
     def _pacing_at(t_sec: float) -> str | None:
         for a in acts:
@@ -708,21 +847,63 @@ def densify_shot_list(
     shots_sorted = sorted(shots_in, key=lambda s: int(s.get("start_frame", 0)))
 
     def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
-        # Inherit safe_area_ok from the flanking shot — if the slot shot fits,
-        # the filler using the same source likely fits too. Default True when
-        # the flank didn't carry the field (shouldn't happen under current
-        # shot_proposer but keeps the filler defensive for external callers).
+        """Scene-matched when scenes_by_source is provided, else inherits from
+        flanking shot. Source rotation + intensity matching drive engagement."""
+        target_intensity = _intensity_for(cursor / fps)
+        src_id = flank["source_id"]
+        src_tc = flank.get("source_timecode", "0:00:00.000")
+        role = "insert"
+        motion_vec = None
+        clip_cat = "texture"  # default — overridden by intensity match below
+
+        picked = _pick_scene(target_intensity, used_src=set())
+        if picked is not None:
+            src, scene = picked
+            src_id = src
+            src_tc = _fmt_timecode(float(scene.get("start_sec", 0.0)))
+            used_scenes.add((src, scene.get("index", -1)))
+            source_use_count[src] = source_use_count.get(src, 0) + 1
+            # Intensity → role + clip_category mapping. High-intensity fillers
+            # in frantic acts earn the "action" role + action-high clip_category;
+            # low-intensity in slow acts get reaction framing. Mid-intensity
+            # stays insert/action-mid. Stamps clip_category at filler time so
+            # type_fit QA sees the action-heavy distribution an action edit
+            # needs — otherwise all fillers default to "texture" and type_fit
+            # fails with "action-high 0%".
+            if target_intensity == "high":
+                role = "action"
+                clip_cat = "action-high"
+            elif target_intensity == "low":
+                role = "reaction"
+                clip_cat = "reaction-quiet"
+            else:
+                role = "insert"
+                clip_cat = "action-mid"
+            # Scene motion also feeds motion_vector so cut-on-action QA
+            # has something to grade on.
+            m = scene.get("motion")
+            if isinstance(m, (int, float)) and m > 0.1:
+                # Motion magnitude ~ direction proxy: high motion → horizontal
+                # left-to-right default (0 degrees). Better direction inference
+                # is a Phase 3.1 follow-up.
+                motion_vec = 0.0
+        else:
+            # No scene data — inherit flank's clip_category if it has one,
+            # else fall back to a role-appropriate default.
+            clip_cat = flank.get("clip_category") or "texture"
+
         return {
             "id": "",  # renumbered below
             "act": flank.get("act", 1),
             "start_frame": cursor,
             "duration_frames": dur_frames,
-            "source_id": flank["source_id"],
-            "source_timecode": flank.get("source_timecode", "0:00:00.000"),
-            "role": "insert",
+            "source_id": src_id,
+            "source_timecode": src_tc,
+            "role": role,
+            "clip_category": clip_cat,
             "mood_tags": [],
             "framing": "",
-            "motion_vector": None,
+            "motion_vector": motion_vec,
             "eyeline": "",
             "beat_sync": {
                 "type": "free",

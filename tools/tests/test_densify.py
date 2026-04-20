@@ -127,6 +127,57 @@ class TestDensifyShotList:
         ]
         assert len(fillers_between) == 0
 
+    def test_scene_match_picks_from_scenes_dict(self):
+        """When scenes_by_source is provided, fillers pick source_id + source_timecode
+        from scenes rather than inheriting from flanking shot. Scene rotation
+        across sources prevents the engagement-killing repeat."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=10.0)
+        scenes_by_source = {
+            "src-A": [
+                {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "motion": 0.3, "avg_luma": 0.5},
+                {"index": 1, "start_sec": 10.0, "end_sec": 12.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "motion": 0.3, "avg_luma": 0.5},
+            ],
+            "src-B": [
+                {"index": 0, "start_sec": 5.0, "end_sec": 7.5, "duration_sec": 2.5,
+                 "intensity_tier": "medium", "motion": 0.4, "avg_luma": 0.6},
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        # Fillers should come from both sources (rotation) and use scene
+        # timecodes — not the flanking shot's 0:00:00.000.
+        srcs = {f["source_id"] for f in fillers}
+        assert srcs - {"src-A"}, f"expected fillers from multiple sources, got {srcs}"
+        timecodes = {f["source_timecode"] for f in fillers}
+        assert len(timecodes) > 1, f"expected varied timecodes, got {timecodes}"
+
+    def test_scene_match_respects_intensity_band(self):
+        """Frantic pacing should pull high-intensity scenes; slow should pull low."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=10.0)
+        edit_plan = {
+            "acts": [{"start_sec": 0.0, "end_sec": 10.0, "pacing": "frantic"}],
+        }
+        scenes_by_source = {
+            "src-A": [
+                {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "duration_sec": 2.0,
+                 "intensity_tier": "low", "motion": 0.05, "avg_luma": 0.3},
+                {"index": 1, "start_sec": 10.0, "end_sec": 12.0, "duration_sec": 2.0,
+                 "intensity_tier": "high", "motion": 0.8, "avg_luma": 0.7},
+            ],
+        }
+        out = densify_shot_list(
+            sl, edit_plan=edit_plan, scenes_by_source=scenes_by_source,
+        )
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        # First filler in the frantic act should favor the high-intensity scene.
+        # Its source_timecode should match scene[1]'s start_sec (10.0s).
+        first_filler = fillers[0] if fillers else None
+        assert first_filler is not None
+        assert first_filler["source_timecode"].startswith("0:00:10"), \
+            f"frantic act should pick high-intensity scene, got {first_filler['source_timecode']}"
+
     def test_small_tail_absorbed_by_previous_filler(self):
         """When the last fill segment would be below MIN_FILLER_SEC, the
         remainder gets folded into the previous filler so total coverage

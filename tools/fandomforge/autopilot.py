@@ -609,6 +609,207 @@ def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def _is_dialogue_edit(ctx: AutopilotContext) -> bool:
+    """True when the project's active edit_type is dialogue_narrative.
+    Used to gate Phase 6 dialogue pipeline steps — they only make sense
+    for dialogue-driven edits."""
+    intent_path = ctx.project_dir / "data" / "intent.json"
+    if not intent_path.exists():
+        return False
+    try:
+        intent = json.loads(intent_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    return str(intent.get("edit_type") or "") == "dialogue_narrative"
+
+
+def step_dialogue_script_draft(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 6 — draft a dialogue script from the prompt + intent. Skipped
+    for non-dialogue edits. Writes data/dialogue-script.json."""
+    start = time.perf_counter()
+    if not _is_dialogue_edit(ctx):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_script_draft",
+            status="skipped",
+            message="not a dialogue_narrative edit — skipping",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    try:
+        from fandomforge.intelligence.dialogue_script import build_script
+        from fandomforge.validation import validate_and_write
+        intent_path = ctx.project_dir / "data" / "intent.json"
+        intent = json.loads(intent_path.read_text(encoding="utf-8"))
+        script = build_script(
+            prompt=ctx.prompt,
+            project_slug=ctx.project_slug,
+            intent=intent,
+        )
+        out = ctx.project_dir / "data" / "dialogue-script.json"
+        validate_and_write(script, "dialogue-script", out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_script_draft",
+            status="failed",
+            message=f"script draft failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    n_lines = len((script or {}).get("lines") or [])
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="dialogue_script_draft",
+        status="ok",
+        message=f"drafted {n_lines} dialogue line(s)",
+        evidence={"line_count": n_lines},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
+def step_dialogue_clip_search(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 6 — search whisper transcripts for clips that match each
+    scripted line. Writes data/dialogue-candidates.json (one entry per
+    line, each with a top-K ranked list of candidates)."""
+    start = time.perf_counter()
+    if not _is_dialogue_edit(ctx):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_clip_search",
+            status="skipped",
+            message="not a dialogue_narrative edit — skipping",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    script_path = ctx.project_dir / "data" / "dialogue-script.json"
+    if not script_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_clip_search",
+            status="skipped",
+            message="no dialogue-script.json — script step must run first",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    try:
+        from fandomforge.intelligence.dialogue_search import (
+            search_script, load_transcripts,
+        )
+        script = json.loads(script_path.read_text(encoding="utf-8"))
+        transcripts = load_transcripts(ctx.project_dir)
+        if not transcripts:
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="dialogue_clip_search",
+                status="skipped",
+                message="no whisper transcripts in data/transcripts/ — cannot search",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+        candidates_raw = search_script(script, transcripts, top_k=5)
+        candidates = {
+            line_idx: [
+                {"source_id": c.source_id, "start_sec": c.start_sec,
+                 "end_sec": c.end_sec, "text": c.text, "score": c.score}
+                for c in cands
+            ]
+            for line_idx, cands in candidates_raw.items()
+        }
+        out = ctx.project_dir / "data" / "dialogue-candidates.json"
+        out.write_text(json.dumps({
+            "schema_version": 1,
+            "project_slug": ctx.project_slug,
+            "candidates_per_line": candidates,
+            "generated_at": _now(),
+            "generator": "autopilot/dialogue_search",
+        }, indent=2))
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_clip_search",
+            status="failed",
+            message=f"search failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    total_cands = sum(len(v) for v in candidates.values())
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="dialogue_clip_search",
+        status="ok",
+        message=f"found {total_cands} candidate(s) across {len(candidates)} line(s)",
+        evidence={"lines_searched": len(candidates), "total_candidates": total_cands},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
+def step_dialogue_placement(ctx: AutopilotContext) -> AutopilotEvent:
+    """Phase 6 — assign each script line to a SAFE dialogue window and
+    build the mixer cue plan. Writes data/dialogue-placement-plan.json."""
+    start = time.perf_counter()
+    if not _is_dialogue_edit(ctx):
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_placement",
+            status="skipped",
+            message="not a dialogue_narrative edit — skipping",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    script_path = ctx.project_dir / "data" / "dialogue-script.json"
+    candidates_path = ctx.project_dir / "data" / "dialogue-candidates.json"
+    windows_path = ctx.project_dir / "data" / "dialogue-windows.json"
+    for p in (script_path, candidates_path, windows_path):
+        if not p.exists():
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="dialogue_placement",
+                status="skipped",
+                message=f"missing {p.name} — run upstream steps first",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+    try:
+        from fandomforge.intelligence.dialogue_place import (
+            assign_lines_to_windows, build_mixer_cues,
+        )
+        script = json.loads(script_path.read_text(encoding="utf-8"))
+        cands_payload = json.loads(candidates_path.read_text(encoding="utf-8"))
+        windows = json.loads(windows_path.read_text(encoding="utf-8"))
+        candidates_per_line = cands_payload.get("candidates_per_line") or {}
+        placements = assign_lines_to_windows(script, candidates_per_line, windows)
+        placement_dicts = []
+        for p in placements:
+            pdict = {
+                "line_index": p.line_index,
+                "decision": p.decision,
+                "requested_start_sec": p.requested_start_sec,
+                "requested_duration_sec": p.requested_duration_sec,
+                "flag_at_placement": p.flag_at_placement,
+                "placed_start_sec": p.placed_start_sec,
+                "reason": p.reason,
+            }
+            if getattr(p, "cue_index", None) is not None:
+                pdict["cue_index"] = p.cue_index
+            if getattr(p, "cue_text", None) is not None:
+                pdict["cue_text"] = p.cue_text
+            if getattr(p, "suggested_alternative_sec", None) is not None:
+                pdict["suggested_alternative_sec"] = p.suggested_alternative_sec
+            placement_dicts.append(pdict)
+
+        payload = {
+            "schema_version": 1,
+            "project_slug": ctx.project_slug,
+            "song_duration_sec": float(windows.get("song_duration_sec", 0.0)),
+            "placements": placement_dicts,
+            "mixer_cues": build_mixer_cues(placements),
+            "generated_at": _now(),
+            "generator": "autopilot/dialogue_place",
+        }
+        out = ctx.project_dir / "data" / "dialogue-placement-plan.json"
+        out.write_text(json.dumps(payload, indent=2))
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_placement",
+            status="failed",
+            message=f"placement failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+    placed = sum(1 for p in placement_dicts if p.get("decision") == "PLACE")
+    rejected = sum(1 for p in placement_dicts if p.get("decision") == "REJECT")
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="dialogue_placement",
+        status="ok",
+        message=f"placed {placed} / rejected {rejected} / total {len(placement_dicts)}",
+        evidence={"placed": placed, "rejected": rejected,
+                  "total": len(placement_dicts)},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
     """Fill gaps between sync-point shots so total duration matches song.
 
@@ -666,8 +867,41 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
                 except (OSError, json.JSONDecodeError):
                     song_duration = None
 
+        # Load scene boundaries per source for scene-matched filler picking.
+        # Key by catalog's source_id so densify_shot_list can look up by the
+        # same id the flanking slot shot references.
+        scenes_by_source: dict[str, list[dict[str, Any]]] = {}
+        scenes_dir = ctx.project_dir / "data" / "scenes"
+        catalog_path = ctx.project_dir / "data" / "source-catalog.json"
+        if scenes_dir.exists() and catalog_path.exists():
+            try:
+                catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                catalog = {"sources": []}
+            for entry in (catalog.get("sources") or []):
+                path = entry.get("path") or ""
+                if not path:
+                    continue
+                stem = Path(path).stem
+                scene_file = scenes_dir / f"{stem}.json"
+                if not scene_file.exists():
+                    continue
+                try:
+                    sdata = json.loads(scene_file.read_text(encoding="utf-8"))
+                except (OSError, json.JSONDecodeError):
+                    continue
+                scenes = sdata.get("scenes") or []
+                if scenes:
+                    # shot_proposer emits path-stem source_ids — key scenes
+                    # the same way so the filler picker's source rotation
+                    # matches the shot-list's source_ids 1:1.
+                    scenes_by_source[stem] = scenes
+
         densified = densify_shot_list(
-            shot_list, edit_plan=edit_plan, song_duration_sec=song_duration,
+            shot_list,
+            edit_plan=edit_plan,
+            song_duration_sec=song_duration,
+            scenes_by_source=scenes_by_source or None,
         )
         validate_and_write(densified, "shot-list", shot_list_path)
 
@@ -1534,18 +1768,41 @@ def step_edit_plan(ctx: AutopilotContext) -> AutopilotEvent:
                 duration_sec=round(time.perf_counter() - start, 3),
             )
 
+    # project-config.json is the source of truth for platform_target +
+    # target_duration_sec + edit_type. LLM edit-strategists frequently drift
+    # (picking "shorts" when config says "youtube"), so we hard-override
+    # here rather than letting the drift land in qa_gate failures. Silent
+    # on match; tagged in evidence when we overrode anything.
+    overrides_applied: list[str] = []
+    proj_cfg_path = ctx.project_dir / "project-config.json"
+    if proj_cfg_path.exists():
+        try:
+            cfg = json.loads(proj_cfg_path.read_text(encoding="utf-8"))
+            for key in ("platform_target", "target_duration_sec"):
+                cfg_val = cfg.get(key)
+                plan_val = plan.get(key)
+                if cfg_val is not None and cfg_val != plan_val:
+                    plan[key] = cfg_val
+                    overrides_applied.append(f"{key}:{plan_val!r}→{cfg_val!r}")
+        except (OSError, json.JSONDecodeError):
+            pass
+
     out = ctx.project_dir / "data" / "edit-plan.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(plan, indent=2) + "\n")
 
+    msg = f"edit-plan.json drafted via {source}"
+    if overrides_applied:
+        msg += f" (project-config overrides: {'; '.join(overrides_applied)})"
     return AutopilotEvent(
         ts=_now(), run_id=ctx.run_id, step_id="edit_plan_stub",
         status="ok",
-        message=f"edit-plan.json drafted via {source}",
+        message=msg,
         evidence={
             "source": source,
             "fandoms": [f.get("name") for f in plan.get("fandoms", []) if isinstance(f, dict)],
             "acts": len(plan.get("acts", [])),
+            "project_config_overrides": overrides_applied,
         },
         duration_sec=round(time.perf_counter() - start, 3),
     )
@@ -2195,6 +2452,18 @@ STEPS: list[Step] = [
     Step("propose_shots", "Propose shot list",
          lambda ctx: _artifact_exists_and_valid(ctx, "shot-list"),
          step_propose_shots),
+    Step("dialogue_script_draft",
+         "Phase 6 — draft dialogue script (dialogue_narrative only)",
+         lambda ctx: (ctx.project_dir / "data" / "dialogue-script.json").exists(),
+         step_dialogue_script_draft),
+    Step("dialogue_clip_search",
+         "Phase 6 — search transcripts for dialogue candidates",
+         lambda ctx: (ctx.project_dir / "data" / "dialogue-candidates.json").exists(),
+         step_dialogue_clip_search),
+    Step("dialogue_placement",
+         "Phase 6 — assign dialogue to SAFE windows",
+         lambda ctx: (ctx.project_dir / "data" / "dialogue-placement-plan.json").exists(),
+         step_dialogue_placement),
     Step("densify_shot_list",
          "Fill gaps between sync-point shots to cover song duration",
          # Cheap, idempotent (step's own logic skips when already densified).
