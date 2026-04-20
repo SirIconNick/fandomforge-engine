@@ -33,7 +33,8 @@ def _load_tier_map(ctx: GateContext) -> dict[str, str]:
     return tiers
 
 
-@rule("qa.quality_tier_distribution", "D-tier shot share", level="warn")
+@rule("qa.quality_tier_distribution", "D-tier shot share", level="warn",
+      type_severity={"hype_trailer": "block", "cinematic": "block"})
 def rule_quality_tier_distribution(ctx: GateContext) -> RuleResult:
     if not ctx.shot_list:
         return RuleResult(

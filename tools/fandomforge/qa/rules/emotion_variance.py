@@ -1,4 +1,10 @@
-"""qa.emotion_variance — warn when the emotional arc flatlines for too long."""
+"""qa.emotion_variance — warn when the emotional arc flatlines for too long.
+
+Phase 4.10: sad_emotional edits intentionally sustain a single emotional
+register (grief / longing) across long stretches. A 20s "dead zone" in a
+sad edit is the whole point, not a flaw. Demoted to info-level there so
+it shows up as a note but doesn't count toward warn tallies.
+"""
 
 from __future__ import annotations
 
@@ -11,7 +17,8 @@ MIN_DEAD_ZONE_SEC = 20.0
 FLAT_TOLERANCE = 0.05
 
 
-@rule("qa.emotion_variance", "Emotion variance", level="warn")
+@rule("qa.emotion_variance", "Emotion variance", level="warn",
+      type_severity={"sad_emotional": "info"})
 def rule_emotion_variance(ctx: GateContext) -> RuleResult:
     arc_path = ctx.project_dir / "data" / "emotion-arc.json"
     if not arc_path.exists():
