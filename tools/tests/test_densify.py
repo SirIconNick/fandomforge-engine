@@ -178,6 +178,75 @@ class TestDensifyShotList:
         assert first_filler["source_timecode"].startswith("0:00:10"), \
             f"frantic act should pick high-intensity scene, got {first_filler['source_timecode']}"
 
+    def test_budget_governor_reduces_cpm_when_frantic_bands_would_overshoot(self):
+        """A 60s gap with frantic band (0.25-0.6, median 0.425) would emit
+        ~141 fillers naturally = ~141 cpm. Budget governor should stretch
+        those fillers so total cpm lands close to target_cpm=45 for action."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=60.0)
+        edit_plan = {
+            "edit_type": "action",
+            "acts": [{"start_sec": 0.0, "end_sec": 60.0, "pacing": "frantic"}],
+        }
+        out = densify_shot_list(sl, edit_plan=edit_plan)
+        shot_count = len(out["shots"])
+        cpm = shot_count / (60.0 / 60.0)
+        # action target is 45 cpm. Band clamping at hi*1.5 (0.9s) means the
+        # stretchable ceiling for frantic is ~66 cpm. Just verify we're in
+        # that sane band, not the 141 cpm unbounded mode.
+        assert cpm <= 70, f"cpm {cpm:.1f} exceeds clamped ceiling (expected <= 70)"
+        assert cpm >= 30, f"cpm {cpm:.1f} below reasonable floor (expected >= 30)"
+
+    def test_budget_governor_respects_relative_pacing_between_acts(self):
+        """Slow acts should still have longer fillers than frantic acts even
+        after the global stretch_factor is applied. The relative difference
+        between bands is preserved because stretch is multiplicative."""
+        sl = _sparse_list(slots=[(0.0, 0.5), (30.0, 0.5)], song_sec=60.0)
+        edit_plan = {
+            "edit_type": "action",
+            "acts": [
+                {"start_sec": 0.0, "end_sec": 30.0, "pacing": "slow"},
+                {"start_sec": 30.0, "end_sec": 60.0, "pacing": "frantic"},
+            ],
+        }
+        out = densify_shot_list(sl, edit_plan=edit_plan)
+        fps = out["fps"]
+        slow_fillers = [
+            s for s in out["shots"]
+            if s.get("densified") and (s["start_frame"] / fps) < 30.0
+        ]
+        frantic_fillers = [
+            s for s in out["shots"]
+            if s.get("densified") and (s["start_frame"] / fps) >= 30.0
+        ]
+        assert slow_fillers and frantic_fillers
+        avg_slow = sum(s["duration_frames"] for s in slow_fillers) / len(slow_fillers) / fps
+        avg_frantic = sum(s["duration_frames"] for s in frantic_fillers) / len(frantic_fillers) / fps
+        assert avg_slow > avg_frantic, (
+            f"slow act fillers ({avg_slow:.2f}s) should be longer than "
+            f"frantic act fillers ({avg_frantic:.2f}s)"
+        )
+
+    def test_explicit_target_cpm_overrides_edit_type_default(self):
+        """When edit_plan.target_cpm is set explicitly, it wins over the
+        edit_type default. A 60s sad edit with target_cpm=60 should emit
+        way more shots than the edit_type default (18 cpm) would allow."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=60.0)
+        plan_default = {
+            "edit_type": "sad",
+            "acts": [{"start_sec": 0.0, "end_sec": 60.0, "pacing": "medium"}],
+        }
+        plan_override = dict(plan_default)
+        plan_override["target_cpm"] = 60.0
+
+        out_default = densify_shot_list(sl, edit_plan=plan_default)
+        out_override = densify_shot_list(sl, edit_plan=plan_override)
+
+        assert len(out_override["shots"]) > len(out_default["shots"]), (
+            f"target_cpm=60 override ({len(out_override['shots'])} shots) "
+            f"should produce more than edit_type=sad default "
+            f"({len(out_default['shots'])} shots)"
+        )
+
     def test_dark_scene_rejected_when_brighter_sibling_exists(self):
         """A scene with avg_luma < 0.15 must not be picked when a brighter
         scene is available at the same intensity band. Guards the

@@ -746,6 +746,43 @@ _PACING_TO_INTENSITY: dict[str, str] = {
 }
 
 
+# Target cuts-per-minute by edit_type. Drives how aggressively densify
+# stretches filler durations when the pacing bands alone would emit too
+# many shots. Numbers come from reference_priors empirical medians —
+# action edits sit around 45 cpm, sad edits around 18, tribute around 25.
+# Lower bounds on natural editing feel; stretch never takes a filler
+# below its pacing band's `lo`. Upper clamp is `hi * 1.5` so slow acts
+# stay recognizably slower than frantic acts.
+_TARGET_CPM_BY_EDIT_TYPE: dict[str, float] = {
+    "action": 45.0,
+    "sad": 18.0,
+    "tribute": 25.0,
+    "dance": 30.0,
+    "hype_trailer": 55.0,
+    "cataloged_and_ready": 40.0,
+    "fan_mashup": 40.0,
+}
+_DEFAULT_TARGET_CPM = 35.0
+_STRETCH_CLAMP_HI_MULT = 1.5  # never stretch a filler past band_hi * this
+
+
+def _resolve_target_cpm(edit_plan: dict[str, Any] | None) -> float:
+    """Pick the target cuts-per-minute for this edit.
+
+    Priority: explicit edit_plan.target_cpm > edit_type lookup > default.
+    Rejects non-numeric / non-positive values (defensive — LLM-generated
+    edit plans have been known to emit strings).
+    """
+    if edit_plan:
+        explicit = edit_plan.get("target_cpm")
+        if isinstance(explicit, (int, float)) and float(explicit) > 0:
+            return float(explicit)
+        et = str(edit_plan.get("edit_type") or "")
+        if et in _TARGET_CPM_BY_EDIT_TYPE:
+            return _TARGET_CPM_BY_EDIT_TYPE[et]
+    return _DEFAULT_TARGET_CPM
+
+
 def densify_shot_list(
     shot_list: dict[str, Any],
     *,
@@ -914,13 +951,20 @@ def densify_shot_list(
                 return a.get("pacing")
         return None
 
-    def _filler_dur_sec(at_t: float) -> float:
+    def _band_at(at_t: float) -> tuple[float, float]:
         pacing = _pacing_at(at_t)
         if pacing:
-            lo, hi = shot_duration_band(pacing)
-        else:
-            lo, hi = _DEFAULT_FILLER_BAND_SEC
-        return (lo + hi) / 2.0
+            return shot_duration_band(pacing)
+        return _DEFAULT_FILLER_BAND_SEC
+
+    def _filler_dur_sec(at_t: float) -> float:
+        lo, hi = _band_at(at_t)
+        median = (lo + hi) / 2.0
+        # stretch_factor is computed once below; it multiplies every filler
+        # so the global cpm lands near target_cpm. Clamp so a frantic act
+        # can't become a slow act and vice versa.
+        stretched = median * stretch_factor
+        return max(lo, min(stretched, hi * _STRETCH_CLAMP_HI_MULT))
 
     def _frames(sec: float) -> int:
         return max(1, int(round(sec * fps)))
@@ -946,6 +990,62 @@ def densify_shot_list(
             _copy["duration_frames"] = max(1, fill_frames_total - _start)
         clamped_shots.append(_copy)
     shots_sorted = clamped_shots
+
+    # --- Shot-count budget governor ---------------------------------------
+    # Compute a global stretch_factor so the final render's cuts-per-minute
+    # lands near target_cpm (pulled from edit_plan.target_cpm → intent →
+    # edit_type default). Without this, every "frantic" act uses the band
+    # median of ~0.425s and a 229s song produces 297 shots (74 cpm) —
+    # machine-gun cutting that tests measure as "duration-correct" but the
+    # viewer experiences as unwatchable. See docs/RENDER_POSTMORTEM.md.
+    target_cpm = _resolve_target_cpm(edit_plan)
+
+    # Estimate natural fill count: sum over every gap, gap_sec / band_median
+    # for that gap's pacing. Include the head gap (0 → first slot) and the
+    # tail gap (last slot → fill_sec). Slot shots themselves count toward
+    # the output shot count but not toward the stretch math (they're fixed).
+    def _iter_gap_windows() -> list[tuple[float, float]]:
+        gaps: list[tuple[float, float]] = []
+        if not shots_sorted:
+            gaps.append((0.0, fill_sec))
+            return gaps
+        first_start_sec = shots_sorted[0]["start_frame"] / fps
+        if first_start_sec > 0:
+            gaps.append((0.0, first_start_sec))
+        for i, sh in enumerate(shots_sorted):
+            sh_end_sec = (int(sh["start_frame"]) + int(sh["duration_frames"])) / fps
+            if i + 1 < len(shots_sorted):
+                nxt = shots_sorted[i + 1]["start_frame"] / fps
+            else:
+                nxt = fill_sec
+            if nxt > sh_end_sec:
+                gaps.append((sh_end_sec, nxt))
+        return gaps
+
+    def _natural_filler_count() -> float:
+        total = 0.0
+        for lo_t, hi_t in _iter_gap_windows():
+            mid_t = (lo_t + hi_t) / 2.0
+            pacing = _pacing_at(mid_t)
+            lo_d, hi_d = shot_duration_band(pacing) if pacing else _DEFAULT_FILLER_BAND_SEC
+            med = max(0.05, (lo_d + hi_d) / 2.0)
+            total += (hi_t - lo_t) / med
+        return total
+
+    natural_fillers = _natural_filler_count()
+    slot_count = len(shots_sorted)
+    budget_total = max(1.0, target_cpm * fill_sec / 60.0)
+    # Fillers we're allowed: budget minus slots. Guard against the case
+    # where slot count already exceeds budget — leave stretch_factor=1
+    # (caller wanted sparse slots + many fillers, we can't delete slots).
+    budget_fillers = max(1.0, budget_total - slot_count)
+    if natural_fillers > 0.1:
+        stretch_factor = natural_fillers / budget_fillers
+    else:
+        stretch_factor = 1.0
+    # Safety bounds: don't extreme-stretch (loses act feel) or extreme-shrink.
+    stretch_factor = max(0.5, min(stretch_factor, 5.0))
+    # ----------------------------------------------------------------------
 
     def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
         """Scene-matched when scenes_by_source is provided, else inherits from
