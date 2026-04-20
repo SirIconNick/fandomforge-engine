@@ -14,20 +14,24 @@
       "recommended_shots": [
         {
           "shot_id": "s004",
-          "score": 0.638,
+          "score": 0.616,
           "reasons": [
             "mood=tender pairs with somber"
           ]
         },
         {
           "shot_id": "s001",
-          "score": 0.53,
-          "reasons": []
+          "score": 0.557,
+          "reasons": [
+            "duration matches reference priors"
+          ]
         },
         {
           "shot_id": "s002",
-          "score": 0.52,
-          "reasons": []
+          "score": 0.547,
+          "reasons": [
+            "duration matches reference priors"
+          ]
         }
       ],
       "end_sec": 5.248
@@ -42,7 +46,7 @@
       "recommended_shots": [
         {
           "shot_id": "s006",
-          "score": 0.79,
+          "score": 0.768,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match"
@@ -50,7 +54,7 @@
         },
         {
           "shot_id": "s010",
-          "score": 0.756,
+          "score": 0.734,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match"
@@ -58,9 +62,10 @@
         },
         {
           "shot_id": "s001",
-          "score": 0.656,
+          "score": 0.683,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -75,7 +80,7 @@
       "recommended_shots": [
         {
           "shot_id": "s010",
-          "score": 0.769,
+          "score": 0.747,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match"
@@ -83,16 +88,18 @@
         },
         {
           "shot_id": "s002",
-          "score": 0.653,
+          "score": 0.68,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s001",
-          "score": 0.643,
+          "score": 0.67,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -107,23 +114,26 @@
       "recommended_shots": [
         {
           "shot_id": "s003",
-          "score": 0.623,
+          "score": 0.65,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s002",
-          "score": 0.613,
+          "score": 0.64,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s001",
-          "score": 0.603,
+          "score": 0.63,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -138,23 +148,26 @@
       "recommended_shots": [
         {
           "shot_id": "s007",
-          "score": 0.642,
+          "score": 0.669,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s002",
-          "score": 0.633,
+          "score": 0.66,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s008",
-          "score": 0.631,
+          "score": 0.658,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -169,23 +182,26 @@
       "recommended_shots": [
         {
           "shot_id": "s001",
-          "score": 0.669,
+          "score": 0.696,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s008",
-          "score": 0.647,
+          "score": 0.674,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s009",
-          "score": 0.635,
+          "score": 0.662,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -200,23 +216,26 @@
       "recommended_shots": [
         {
           "shot_id": "s008",
-          "score": 0.653,
+          "score": 0.68,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s009",
-          "score": 0.641,
+          "score": 0.668,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s011",
-          "score": 0.631,
+          "score": 0.658,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -231,23 +250,26 @@
       "recommended_shots": [
         {
           "shot_id": "s009",
-          "score": 0.651,
+          "score": 0.678,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s011",
-          "score": 0.641,
+          "score": 0.668,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s012",
-          "score": 0.631,
+          "score": 0.658,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -262,23 +284,26 @@
       "recommended_shots": [
         {
           "shot_id": "s011",
-          "score": 0.622,
+          "score": 0.649,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s012",
-          "score": 0.613,
+          "score": 0.64,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s013",
-          "score": 0.603,
+          "score": 0.63,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -293,23 +318,26 @@
       "recommended_shots": [
         {
           "shot_id": "s012",
-          "score": 0.646,
+          "score": 0.673,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s013",
-          "score": 0.636,
+          "score": 0.663,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s014",
-          "score": 0.627,
+          "score": 0.654,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -324,23 +352,26 @@
       "recommended_shots": [
         {
           "shot_id": "s013",
-          "score": 0.658,
+          "score": 0.685,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s014",
-          "score": 0.649,
+          "score": 0.676,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s015",
-          "score": 0.639,
+          "score": 0.666,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -355,23 +386,26 @@
       "recommended_shots": [
         {
           "shot_id": "s014",
-          "score": 0.624,
+          "score": 0.651,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s015",
-          "score": 0.614,
+          "score": 0.641,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s016",
-          "score": 0.604,
+          "score": 0.631,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -386,23 +420,26 @@
       "recommended_shots": [
         {
           "shot_id": "s015",
-          "score": 0.639,
+          "score": 0.666,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s016",
-          "score": 0.629,
+          "score": 0.656,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s002",
-          "score": 0.588,
+          "score": 0.615,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         }
       ]
@@ -417,21 +454,23 @@
       "recommended_shots": [
         {
           "shot_id": "s016",
-          "score": 0.655,
+          "score": 0.682,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s002",
-          "score": 0.595,
+          "score": 0.622,
           "reasons": [
-            "mood=defiant pairs with intense"
+            "mood=defiant pairs with intense",
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s010",
-          "score": 0.474,
+          "score": 0.453,
           "reasons": [
             "mood=intense matches intense",
             "intensity-match",
@@ -450,22 +489,25 @@
       "recommended_shots": [
         {
           "shot_id": "s002",
-          "score": 0.471,
-          "reasons": []
-        },
-        {
-          "shot_id": "s004",
-          "score": 0.275,
+          "score": 0.498,
           "reasons": [
-            "mood=tender pairs with somber",
-            "already-used-earlier"
+            "duration matches reference priors"
           ]
         },
         {
           "shot_id": "s001",
-          "score": 0.236,
+          "score": 0.263,
           "reasons": [
             "act 3 lands in song-act 3",
+            "duration matches reference priors",
+            "already-used-earlier"
+          ]
+        },
+        {
+          "shot_id": "s016",
+          "score": 0.259,
+          "reasons": [
+            "duration matches reference priors",
             "already-used-earlier"
           ]
         }
@@ -473,6 +515,6 @@
       "end_sec": 229.204
     }
   ],
-  "generated_at": "2026-04-19T23:42:30.527795+00:00",
+  "generated_at": "2026-04-20T00:01:28.372898+00:00",
   "generator": "ff sync plan"
 }

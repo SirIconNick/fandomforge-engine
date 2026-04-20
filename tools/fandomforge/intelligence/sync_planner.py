@@ -405,11 +405,13 @@ class MatchResult:
 
 
 def _duration_prior_score(shot: dict[str, Any], priors: dict[str, Any] | None) -> float:
-    """Reward shots whose duration is close to the learned reference median.
+    """Reward shots whose duration is close to the target median.
 
-    When reference-priors.json exists, shots matching the median duration
-    ± 25% get the full bonus; far-out shots get less. With no priors, returns
-    1.0 (neutral — no bias).
+    `priors` carries a `median_shot_duration_sec` target. When edit-type
+    priors are blended in, this target is the type's declared ideal (e.g.
+    action → 1.0s, emotional → 4.0s). Falls back to corpus median when no
+    type priors were supplied. Shots matching the target within ±25% get
+    the full bonus; far-out shots get less.
     """
     if not priors:
         return 1.0
@@ -420,6 +422,59 @@ def _duration_prior_score(shot: dict[str, Any], priors: dict[str, Any] | None) -
         return 0.5
     ratio = min(shot_dur, target) / max(shot_dur, target)
     return max(0.25, ratio)
+
+
+def blend_type_and_corpus_priors(
+    type_priors: dict[str, Any] | None,
+    corpus_priors: dict[str, Any] | None,
+    *,
+    type_weight: float = 0.6,
+) -> dict[str, Any] | None:
+    """Merge edit-type priors (the TARGET signature) with corpus priors
+    (the measured-real signature) into a single priors dict the scorer
+    can consume.
+
+    The type sets what the edit *should* look like; the corpus calibrates
+    what real editors *actually* do. 60% type / 40% corpus leans toward
+    the type's declared target while respecting the corpus's measured reality.
+
+    Returns None when both inputs are absent.
+    """
+    if not type_priors and not corpus_priors:
+        return None
+    if not type_priors:
+        return corpus_priors
+    if not corpus_priors:
+        # Wrap the type priors in the reference-priors envelope shape so the
+        # rest of the planner code treats it identically to a corpus.
+        return {"priors": {
+            "median_shot_duration_sec": type_priors.get("target_shot_duration_sec", 2.0),
+            "cuts_per_minute": type_priors.get("target_cuts_per_minute", 20),
+            "typical_act_pacing_pct": [25.0, 45.0, 30.0],
+        }}
+
+    corpus_block = corpus_priors.get("priors") if isinstance(corpus_priors, dict) else {}
+    corpus_block = corpus_block or {}
+
+    corpus_median = float(corpus_block.get("median_shot_duration_sec") or 2.0)
+    type_target = float(type_priors.get("target_shot_duration_sec") or 2.0)
+    blended_median = type_target * type_weight + corpus_median * (1.0 - type_weight)
+
+    corpus_cpm = float(corpus_block.get("cuts_per_minute") or 20.0)
+    type_cpm = float(type_priors.get("target_cuts_per_minute") or 20.0)
+    blended_cpm = type_cpm * type_weight + corpus_cpm * (1.0 - type_weight)
+
+    return {
+        "priors": {
+            **corpus_block,
+            "median_shot_duration_sec": round(blended_median, 3),
+            "cuts_per_minute": round(blended_cpm, 2),
+            "edit_type": type_priors.get("label", "blended"),
+            "edit_type_target_sec": type_target,
+        },
+        "tag": (corpus_priors.get("tag", "corpus") if isinstance(corpus_priors, dict) else "corpus")
+               + f"+{type_priors.get('label', 'type')}",
+    }
 
 
 def _score_shot_for_point(
@@ -548,12 +603,15 @@ def build_sync_plan(
     include_downbeats: bool = False,
     top_k: int = 3,
     reference_priors: dict[str, Any] | None = None,
+    edit_type_priors: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Produce a schema-valid sync-plan.json dict.
 
-    When `reference_priors` is provided (loaded via
-    `reference_library.load_priors`), the matcher biases toward shot durations
-    typical of the reference corpus — closer to how real fandom edits cut.
+    When `reference_priors` is provided, the matcher biases toward shot
+    durations typical of the reference corpus. When `edit_type_priors` is
+    ALSO provided (from `fandomforge.intelligence.edit_classifier`), the
+    two are blended 60% type / 40% corpus — type sets the target, corpus
+    calibrates against measured real edits.
     """
     song_duration = float(beat_map.get("duration_sec") or 0.0)
     lyric_sections: list[LyricSection] = (
@@ -573,6 +631,13 @@ def build_sync_plan(
             # Wrap as a full reference-priors envelope so the existing
             # consumer in match_shots_to_song_points works unchanged.
             effective_priors = {"priors": tiered, "tag": reference_priors.get("tag", "") + "+S-tier"}
+
+    # Blend in edit-type priors when provided. Type sets the target shot
+    # duration / cpm; corpus calibrates against measured real edits.
+    if edit_type_priors:
+        effective_priors = blend_type_and_corpus_priors(
+            edit_type_priors, effective_priors
+        )
 
     shots = shot_list.get("shots") or []
     point_dicts = match_shots_to_song_points(

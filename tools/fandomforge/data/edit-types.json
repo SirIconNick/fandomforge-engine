@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "description": "Per-edit-type priors. Each type carries target pacing, sync preference, transition bias, and emotion palette. Values distilled from public editor guidance (animemusicvideos.org, studiobinder.com, editor forums) plus the 148-video reference corpus. The planner blends these with corpus priors — type priors set the TARGET, corpus priors calibrate against real examples.",
+  "generator": "research + reference corpus v1 — 2026-04-19",
+  "types": {
+    "action": {
+      "label": "Action / Hype",
+      "description": "Fast, beat-locked, high-energy edits. Think multifandom action compilations and combat sequences synced to drops.",
+      "target_shot_duration_sec": 1.0,
+      "target_shot_duration_range": [0.5, 2.0],
+      "target_cuts_per_minute": 50,
+      "target_beat_sync_pct": 70,
+      "preferred_sync_type": "beat",
+      "transition_bias": {
+        "hard_cut": 0.55,
+        "whip_pan": 0.15,
+        "flash_cut": 0.10,
+        "speed_ramp": 0.10,
+        "dissolve": 0.10
+      },
+      "motion_emphasis": "match_cut_heavy",
+      "dominant_emotions": ["intense", "defiant"],
+      "color_palette": "dark-saturated",
+      "target_avg_luma": 0.25,
+      "target_saturation": 0.42,
+      "craft_notes": "Hard cuts dominate; variety comes from beat-aligned flash and whip transitions on drops. Use match cuts across fandoms to keep motion continuity. Movement intensity matters more than narrative coherence within a sequence. Heavy reliance on drop-timed impacts and sub-boom SFX."
+    },
+    "emotional": {
+      "label": "Emotional / Tender",
+      "description": "Slow, breathing edits that let moments land. Used for grief, loss, quiet triumph, reflective character moments.",
+      "target_shot_duration_sec": 4.0,
+      "target_shot_duration_range": [2.5, 8.0],
+      "target_cuts_per_minute": 15,
+      "target_beat_sync_pct": 35,
+      "preferred_sync_type": "mood",
+      "transition_bias": {
+        "hard_cut": 0.25,
+        "dissolve": 0.55,
+        "fade": 0.15,
+        "speed_ramp": 0.05,
+        "whip_pan": 0.0
+      },
+      "motion_emphasis": "neutral_ok",
+      "dominant_emotions": ["somber", "tender"],
+      "color_palette": "cool-muted",
+      "target_avg_luma": 0.28,
+      "target_saturation": 0.30,
+      "craft_notes": "Let shots breathe 5+ seconds. Crossfades carry the emotional register. Internal sync (a tear landing on a musical swell) beats beat-sync. Eyeline and gaze shots matter more than action. Low saturation, cool color palette. Dialogue cues often carry more weight than the song's drops."
+    },
+    "tribute": {
+      "label": "Character Tribute",
+      "description": "Character-focused edit celebrating a single character's arc across their appearances. Structured around the character's emotional journey.",
+      "target_shot_duration_sec": 2.2,
+      "target_shot_duration_range": [1.2, 4.0],
+      "target_cuts_per_minute": 27,
+      "target_beat_sync_pct": 55,
+      "preferred_sync_type": "mood",
+      "transition_bias": {
+        "hard_cut": 0.50,
+        "dissolve": 0.30,
+        "match_cut": 0.10,
+        "flash_cut": 0.05,
+        "fade": 0.05
+      },
+      "motion_emphasis": "match_cut_selective",
+      "dominant_emotions": ["defiant", "hopeful", "somber"],
+      "color_palette": "balanced",
+      "target_avg_luma": 0.28,
+      "target_saturation": 0.38,
+      "craft_notes": "Three-act structure: introduce character → escalate their struggle → resolution/triumph or fall. Keep ONE character on screen for most shots. Act transitions often use dissolves; within-act uses hard cuts. Reaction shots carry emotional beats."
+    },
+    "shipping": {
+      "label": "Shipping / Romance",
+      "description": "Romantic pairing edit. Soft, tender, dissolve-heavy. Celebrates a relationship arc — meet-cute through connection to intimacy or loss.",
+      "target_shot_duration_sec": 3.2,
+      "target_shot_duration_range": [2.0, 6.0],
+      "target_cuts_per_minute": 19,
+      "target_beat_sync_pct": 40,
+      "preferred_sync_type": "lyric",
+      "transition_bias": {
+        "dissolve": 0.45,
+        "hard_cut": 0.30,
+        "fade": 0.15,
+        "soft_wipe": 0.05,
+        "match_cut": 0.05
+      },
+      "motion_emphasis": "gaze_and_eyeline",
+      "dominant_emotions": ["tender", "hopeful"],
+      "color_palette": "warm-soft",
+      "target_avg_luma": 0.35,
+      "target_saturation": 0.35,
+      "craft_notes": "Pairing must share screen time — two-shot compositions and eyeline matches dominate. Dissolves signal emotional continuity. Lyric sync is strong here: visuals should support the lyric's meaning. Warm color palette, softer grade than action. Reaction shots of one partner to the other are the core language."
+    },
+    "speed_amv": {
+      "label": "Speed AMV / Anime Speed-Edit",
+      "description": "Machine-gun pacing, heavy effects, anime-first aesthetic. Impact frames, zoom-ins, flash transitions.",
+      "target_shot_duration_sec": 0.5,
+      "target_shot_duration_range": [0.15, 1.2],
+      "target_cuts_per_minute": 85,
+      "target_beat_sync_pct": 85,
+      "preferred_sync_type": "beat",
+      "transition_bias": {
+        "hard_cut": 0.40,
+        "flash_cut": 0.25,
+        "speed_ramp": 0.20,
+        "whip_pan": 0.10,
+        "dissolve": 0.05
+      },
+      "motion_emphasis": "impact_cut_heavy",
+      "dominant_emotions": ["intense"],
+      "color_palette": "saturated-high-contrast",
+      "target_avg_luma": 0.30,
+      "target_saturation": 0.55,
+      "craft_notes": "Speed ramps, impact frames, zoom punches on every downbeat. Overlay effects, light leaks, chromatic aberration are expected. Lyric sync rarely; pure beat/cut sync drives everything. Anime hand-drawn style benefits from higher saturation. Length typically 30-90s — shorter than most fandom types."
+    },
+    "cinematic": {
+      "label": "Cinematic / Slow-Burn",
+      "description": "Baseline-paced film-style edit. Shots breathe. Motivated cuts. Emphasis on storytelling over synchronization.",
+      "target_shot_duration_sec": 5.0,
+      "target_shot_duration_range": [3.0, 10.0],
+      "target_cuts_per_minute": 12,
+      "target_beat_sync_pct": 25,
+      "preferred_sync_type": "internal",
+      "transition_bias": {
+        "hard_cut": 0.70,
+        "dissolve": 0.15,
+        "fade": 0.10,
+        "match_cut": 0.05
+      },
+      "motion_emphasis": "motivated_continuity",
+      "dominant_emotions": ["neutral", "somber", "hopeful"],
+      "color_palette": "filmic-teal-orange",
+      "target_avg_luma": 0.32,
+      "target_saturation": 0.40,
+      "craft_notes": "4-6s average shot length matches modern feature film baseline. Cuts motivated by performance or narrative beats, NOT music. Internal sync (action-on-music-peak) beats cut-sync. Color grade is feature-film-adjacent (teal shadows, orange skin tones). Dialogue/VO often layered in."
+    },
+    "comedy": {
+      "label": "Comedy / Meme",
+      "description": "Timing-driven humor edit. Comic beats, punchline cuts, intentional rule-breaking. Structure exists to serve the joke.",
+      "target_shot_duration_sec": 1.5,
+      "target_shot_duration_range": [0.3, 5.0],
+      "target_cuts_per_minute": 35,
+      "target_beat_sync_pct": 45,
+      "preferred_sync_type": "internal",
+      "transition_bias": {
+        "hard_cut": 0.75,
+        "freeze_frame": 0.10,
+        "speed_ramp": 0.05,
+        "flash_cut": 0.05,
+        "dissolve": 0.05
+      },
+      "motion_emphasis": "timing_over_continuity",
+      "dominant_emotions": ["neutral", "defiant"],
+      "color_palette": "bright-natural",
+      "target_avg_luma": 0.42,
+      "target_saturation": 0.40,
+      "craft_notes": "Pacing serves the punchline — setup shots can breathe long, punch cuts hit hard and short. Freeze frames, record-scratches, and smash cuts are core vocabulary. Rules get broken intentionally. Audio gags (dialogue rips, meme sounds) often carry more weight than music. Brighter grade than action/emotional."
+    },
+    "hype_trailer": {
+      "label": "Hype / Trailer",
+      "description": "Rising-tension edit that builds across three acts — quiet intro → escalation → explosive payoff. Structured like a movie trailer.",
+      "target_shot_duration_sec": 2.0,
+      "target_shot_duration_range": [0.5, 6.0],
+      "target_cuts_per_minute": 30,
+      "target_beat_sync_pct": 60,
+      "preferred_sync_type": "beat",
+      "transition_bias": {
+        "hard_cut": 0.55,
+        "dissolve": 0.15,
+        "flash_cut": 0.10,
+        "whip_pan": 0.10,
+        "speed_ramp": 0.10
+      },
+      "motion_emphasis": "escalating",
+      "dominant_emotions": ["hopeful", "defiant", "intense"],
+      "color_palette": "trailer-graded",
+      "target_avg_luma": 0.28,
+      "target_saturation": 0.45,
+      "craft_notes": "Shot duration decreases across the three acts: act 1 averages 3s (establishing), act 2 averages 2s (escalation), act 3 averages 1s (climax). Sub-boom impacts mark each act transition. Title cards between acts. Lip-sync dialogue lands on the quiet intro to set stakes."
+    }
+  }
+}

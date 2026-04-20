@@ -4409,22 +4409,53 @@ def sync_plan_cmd(project: str, include_downbeats: bool, top_k: int) -> None:
     """Build sync-plan.json from beat-map + shot-list + (optional) lyrics.
 
     Auto-loads reference priors from FF_REFERENCES_DIR (or ~/.fandomforge/references)
-    when present so the planner biases toward real fandom-edit patterns.
+    and the project's edit_type priors from project-config.yaml (or classifies
+    from edit-plan.json when not declared). Blends the two so the matcher
+    biases toward the style target AND real fandom-edit patterns.
     """
     from fandomforge.intelligence.sync_planner import build_sync_plan, write_sync_plan
     from fandomforge.intelligence.reference_library import load_priors
+    from fandomforge.intelligence.edit_classifier import (
+        load_type_priors, resolve_edit_type,
+    )
 
     proj = Path("projects") / project
     beat_map = json.loads((proj / "data" / "beat-map.json").read_text())
     shot_list = json.loads((proj / "data" / "shot-list.json").read_text())
     lyrics_path = proj / "data" / "song-lyrics.json"
     lyrics = json.loads(lyrics_path.read_text()) if lyrics_path.exists() else None
-    priors = load_priors()
-    if priors:
+
+    corpus_priors = load_priors()
+    if corpus_priors:
         console.print(
-            f"[dim]using reference priors from tag [bold]{priors.get('tag','?')}[/bold] "
-            f"({priors.get('video_count','?')} videos)[/dim]"
+            f"[dim]corpus priors: [bold]{corpus_priors.get('tag','?')}[/bold] "
+            f"({corpus_priors.get('video_count','?')} videos)[/dim]"
         )
+
+    # Resolve edit_type from project-config (explicit) or edit-plan (classified)
+    project_config_path = proj / "project-config.json"
+    project_config: dict[str, Any] | None = None
+    if project_config_path.exists():
+        try:
+            project_config = json.loads(project_config_path.read_text())
+        except (json.JSONDecodeError, OSError):
+            pass
+    edit_plan_path = proj / "data" / "edit-plan.json"
+    edit_plan: dict[str, Any] | None = None
+    if edit_plan_path.exists():
+        try:
+            edit_plan = json.loads(edit_plan_path.read_text())
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    edit_type, source = resolve_edit_type(project_config, edit_plan)
+    type_priors = load_type_priors(edit_type)
+    console.print(
+        f"[dim]edit type: [bold]{edit_type}[/bold] ({source}) — "
+        f"target {type_priors['target_shot_duration_sec']}s shots, "
+        f"{type_priors['target_cuts_per_minute']} cpm[/dim]"
+        if type_priors else f"[dim]edit type: {edit_type} ({source})[/dim]"
+    )
 
     plan = build_sync_plan(
         project_slug=project,
@@ -4433,7 +4464,8 @@ def sync_plan_cmd(project: str, include_downbeats: bool, top_k: int) -> None:
         lyrics_transcript=lyrics,
         include_downbeats=include_downbeats,
         top_k=top_k,
-        reference_priors=priors,
+        reference_priors=corpus_priors,
+        edit_type_priors=type_priors,
     )
     out = write_sync_plan(plan, proj)
     console.print(

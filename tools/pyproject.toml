@@ -42,6 +42,10 @@ build-backend = "setuptools.build_meta"
 where = ["."]
 include = ["fandomforge*"]
 
+[tool.setuptools.package-data]
+"fandomforge.schemas" = ["*.schema.json"]
+"fandomforge.data" = ["*.json"]
+
 [tool.ruff]
 line-length = 100
 target-version = "py313"

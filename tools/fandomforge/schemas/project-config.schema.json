@@ -107,6 +107,20 @@
       "enum": ["youtube", "tiktok", "reels", "shorts", "twitter", "master"]
     },
     "target_loudness_lufs": {"type": "number", "minimum": -30, "maximum": -8},
-    "true_peak_ceiling_dbtp": {"type": "number", "minimum": -6, "maximum": 0}
+    "true_peak_ceiling_dbtp": {"type": "number", "minimum": -6, "maximum": 0},
+    "edit_type": {
+      "description": "The category of edit this project is — drives type-specific priors (target pacing, sync style, transition bias, color palette). When absent, the sync planner auto-detects from the edit-plan prompt. See docs/edit-types/ for definitions.",
+      "type": "string",
+      "enum": [
+        "action",
+        "emotional",
+        "tribute",
+        "shipping",
+        "speed_amv",
+        "cinematic",
+        "comedy",
+        "hype_trailer"
+      ]
+    }
   }
 }
