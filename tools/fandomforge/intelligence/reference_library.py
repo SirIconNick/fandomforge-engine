@@ -734,15 +734,219 @@ def fetch_youtube_metadata(url: str) -> dict[str, Any] | None:
     }
 
 
+# ---------------------------------------------------------------------------
+# Phase 0.5.2 / 0.5.3 helpers — corpus expansion + per-bucket priors
+# ---------------------------------------------------------------------------
+
+
+# Tag prefix → edit_type. Tag convention: "<prefix>-pl<N>" or
+# "<prefix>-singles". `tag.split("-")[0]` extracts the prefix.
+TAG_PREFIX_TO_EDIT_TYPE: dict[str, str | None] = {
+    "action":    "action",
+    "dance":     "dance_movement",
+    "sad":       "sad_emotional",
+    "emotional": "emotional",
+    "tribute":   "tribute",
+    "dialogue":  "dialogue_narrative",
+    "shipping":  "shipping",
+    "comedy":    "comedy",
+    "speed":     "speed_amv",
+    "cinematic": "cinematic",
+    "hype":      "hype_trailer",
+    "mixed":     None,  # explicitly held back from per-edit-type buckets
+}
+
+
+def edit_type_for_tag(tag: str) -> str | None:
+    """Map a corpus tag (e.g. 'action-pl1', 'dance-singles', 'sad-pl3') to
+    the edit_type it carries. Returns None for 'mixed-*' tags or unknown
+    prefixes — callers should fall back to the global priors then.
+
+    Phase 0.5.3 prerequisite.
+    """
+    if not tag:
+        return None
+    base = tag.split("-")[0].lower()
+    return TAG_PREFIX_TO_EDIT_TYPE.get(base)
+
+
+def list_playlist_metadata_only(
+    playlist_url: str,
+    *,
+    top_n: int = 20,
+) -> list[dict[str, Any]]:
+    """Enumerate a playlist's videos AND fetch each video's metadata
+    (view_count, like_count, channel, upload_date, title) without
+    downloading any video bytes. Sorted by view_count descending.
+
+    Phase 0.5.2 validation pass — used by `ff reference validate` to surface
+    top-rated content per playlist before committing GB of disk to download.
+
+    Returns up to `top_n` records. Records that yt-dlp fails to enumerate
+    are silently dropped; partial results are returned rather than failing
+    the whole batch.
+    """
+    try:
+        entries = list_playlist_entries(playlist_url)
+    except RuntimeError:
+        return []
+    if not entries:
+        return []
+
+    enriched: list[dict[str, Any]] = []
+    for e in entries:
+        meta = fetch_youtube_metadata(e["url"])
+        if meta is None:
+            # Couldn't reach metadata — keep the bare entry so caller knows
+            # the video EXISTS, just with unknown view_count
+            enriched.append({
+                **e,
+                "view_count": None,
+                "like_count": None,
+                "channel": "",
+                "upload_date": "",
+                "metadata_available": False,
+            })
+            continue
+        enriched.append({
+            **e,
+            **meta,
+            "metadata_available": True,
+        })
+
+    # Sort by view_count descending (None sorts last)
+    enriched.sort(
+        key=lambda r: -(r.get("view_count") or 0),
+    )
+    return enriched[:top_n]
+
+
+def aggregate_priors_per_bucket(
+    *,
+    refs_root: Path | None = None,
+) -> dict[str, Any]:
+    """Walk every tag dir under refs_root, group by edit_type_for_tag(tag),
+    aggregate priors per (edit_type, fandom_family) bucket, write
+    references/priors/<edit_type>/<fandom_family>.json.
+
+    Phase 0.5.3 implementation.
+
+    Returns a summary report:
+      {
+        "buckets_written": [{path, edit_type, fandom_family, video_count}, ...],
+        "buckets_skipped": [{tag, reason}, ...],
+        "total_tags_scanned": int,
+      }
+    """
+    root = refs_root or references_root()
+    summary: dict[str, Any] = {
+        "buckets_written": [],
+        "buckets_skipped": [],
+        "total_tags_scanned": 0,
+    }
+    if not root.exists():
+        return summary
+
+    # Gather per-tag video metric records
+    per_edit_type_videos: dict[str, list[dict[str, Any]]] = {}
+    for tag_dir in sorted(root.iterdir()):
+        if not tag_dir.is_dir():
+            continue
+        tag = tag_dir.name
+        summary["total_tags_scanned"] += 1
+        et = edit_type_for_tag(tag)
+        if et is None:
+            summary["buckets_skipped"].append({"tag": tag, "reason": "tag prefix not mapped to edit_type"})
+            continue
+        priors_path = tag_dir / "reference-priors.json"
+        if not priors_path.exists():
+            summary["buckets_skipped"].append({"tag": tag, "reason": "no reference-priors.json"})
+            continue
+        try:
+            tag_priors = json.loads(priors_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            summary["buckets_skipped"].append({"tag": tag, "reason": "could not read reference-priors.json"})
+            continue
+        videos = tag_priors.get("videos") or []
+        per_edit_type_videos.setdefault(et, []).extend(videos)
+
+    # Write per-bucket priors. For now we ship the simpler layout: one
+    # `all.json` per edit_type pooling all fandom_families. Per-fandom
+    # split (anime/live-action/kpop/western) is a follow-up once
+    # fandom_family classification per video lands.
+    priors_dir = root / "priors"
+    for edit_type, videos in per_edit_type_videos.items():
+        if len(videos) < 5:
+            summary["buckets_skipped"].append({
+                "edit_type": edit_type,
+                "reason": f"only {len(videos)} videos; need ≥5 for stable aggregate",
+            })
+            continue
+        out_dir = priors_dir / edit_type
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_path = out_dir / "all.json"
+        agg = aggregate_priors(videos)
+        payload = {
+            "schema_version": 1,
+            "edit_type": edit_type,
+            "fandom_family": "all",
+            "video_count": len(videos),
+            "priors": agg,
+            "generated_at": _now_iso(),
+            "generator": "ff reference rebuild-priors",
+        }
+        out_path.write_text(json.dumps(payload, indent=2))
+        summary["buckets_written"].append({
+            "path": str(out_path),
+            "edit_type": edit_type,
+            "fandom_family": "all",
+            "video_count": len(videos),
+        })
+
+    return summary
+
+
+def load_per_bucket_priors(
+    edit_type: str,
+    *,
+    fandom_family: str = "all",
+    refs_root: Path | None = None,
+) -> dict[str, Any] | None:
+    """Try to load `references/priors/<edit_type>/<fandom_family>.json`.
+    Returns None when the bucket file doesn't exist — caller should fall
+    back to the global reference-priors.json.
+
+    Used by sync_planner to pick the right priors per render."""
+    root = refs_root or references_root()
+    p = root / "priors" / edit_type / f"{fandom_family}.json"
+    if not p.exists():
+        return None
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+        return data.get("priors") or data
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def _now_iso() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat()
+
+
 __all__ = [
     "QUALITY_TIER_THRESHOLDS",
     "RefVideo",
+    "TAG_PREFIX_TO_EDIT_TYPE",
     "aggregate_priors",
+    "aggregate_priors_per_bucket",
     "analyze_reference_video",
     "download_reference_video",
+    "edit_type_for_tag",
     "fetch_youtube_metadata",
     "ingest_playlist",
     "list_playlist_entries",
+    "list_playlist_metadata_only",
+    "load_per_bucket_priors",
     "load_priors",
     "references_root",
     "score_quality",

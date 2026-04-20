@@ -5017,8 +5017,9 @@ def reference_grp() -> None:
 
 
 @reference_grp.command("ingest")
-@click.option("--playlist", "playlist_url", required=True,
-              help="YouTube playlist URL to ingest.")
+@click.option("--playlist", "playlist_url", required=False, default=None,
+              help="YouTube playlist URL to ingest. Optional when --no-download "
+                   "is set (re-analyzing existing videos in the tag dir).")
 @click.option("--tag", required=True,
               help="Corpus tag (e.g. 'action-fandom', 'anime-speed').")
 @click.option("--max-videos", type=int, default=None,
@@ -5033,15 +5034,38 @@ def reference_grp() -> None:
                    "(e.g. 999) to whisper every video — slow but unlocks "
                    "lyric-sync priors across the corpus.")
 def reference_ingest_cmd(
-    playlist_url: str,
+    playlist_url: str | None,
     tag: str,
     max_videos: int | None,
     max_height: int,
     no_download: bool,
     lyric_sample_n: int,
 ) -> None:
-    """Download + analyze a playlist. Writes ~/.fandomforge/references/<tag>/reference-priors.json."""
-    from fandomforge.intelligence.reference_library import ingest_playlist
+    """Download + analyze a playlist. Writes ~/.fandomforge/references/<tag>/reference-priors.json.
+
+    When --no-download is set and --playlist is omitted, re-analyzes whatever
+    videos already exist in the tag directory (useful for the overnight whisper
+    pass on already-downloaded corpora)."""
+    from fandomforge.intelligence.reference_library import (
+        ingest_playlist, references_root,
+    )
+
+    if not playlist_url:
+        if not no_download:
+            console.print(
+                "[red]--playlist is required unless --no-download is set "
+                "(can't enumerate without a URL).[/red]"
+            )
+            sys.exit(1)
+        tag_dir = references_root() / tag
+        if not tag_dir.exists():
+            console.print(
+                f"[red]--no-download set but tag dir is empty:[/red] {tag_dir}"
+            )
+            sys.exit(1)
+        # ingest_playlist with download=False reads whatever's already on
+        # disk; the URL is only used by the playlist enumerator (skipped).
+        playlist_url = f"file://{tag_dir.resolve()}"
 
     try:
         priors = ingest_playlist(
@@ -5086,6 +5110,269 @@ def reference_show_cmd(tag: str | None) -> None:
     if p.get("shot_duration_range_sec"):
         rng = p["shot_duration_range_sec"]
         console.print(f"[bold]Shot range (p10–p90):[/bold] {rng[0]}s — {rng[1]}s")
+
+
+# ---------- Phase 0.5.2 / 0.5.3 — corpus expansion + per-bucket priors ----------
+
+
+# Title-keyword hints for auto-bucketing the "mixed_unclassified" playlists.
+# Lowercase substrings that, if found in playlist title or top videos titles,
+# vote for an edit_type. Highest-vote bucket wins.
+_AUTO_BUCKET_KEYWORDS: dict[str, tuple[str, ...]] = {
+    "dance":              ("dance", "fancam", "kpop", "k-pop", "choreo", "moves", "dancing"),
+    "sad":                ("sad", "tears", "grief", "gone", "miss you", "sadness", "broken", "lost", "goodbye"),
+    "tribute":            ("tribute", "in memory", "rip", "memorial", "legacy", "thank you for the memories"),
+    "dialogue_narrative": ("dialogue", "story", "tells you", "voice", "narration", "monologue", "speech"),
+    "action":             ("fight", "battle", "combat", "epic", "action", "war", "clash", "vs"),
+    "shipping":           ("ship", "shipping", "x ", "kiss", "couple", "love story"),
+    "comedy":             ("funny", "comedy", "joke", "laugh", "crack", "memes"),
+    "speed_amv":          ("speed", "amv", "fast", "phonk", "hyperpop"),
+    "cinematic":          ("cinematic", "film", "movie magic", "scenes from"),
+    "hype_trailer":       ("trailer", "hype", "epic moments", "rise of"),
+}
+
+
+def _suggest_bucket(playlist_title: str, top_video_titles: list[str]) -> tuple[str, dict[str, int]]:
+    """Vote across bucket keywords; return (winner_or_'mixed', vote_breakdown)."""
+    haystack = (playlist_title + " " + " ".join(top_video_titles)).lower()
+    votes: dict[str, int] = {k: 0 for k in _AUTO_BUCKET_KEYWORDS}
+    for bucket, needles in _AUTO_BUCKET_KEYWORDS.items():
+        for n in needles:
+            if n in haystack:
+                votes[bucket] += 1
+    best = max(votes, key=lambda k: votes[k])
+    return (best if votes[best] > 0 else "mixed_unclassified", votes)
+
+
+@reference_grp.command("validate")
+@click.argument("config_path", type=click.Path(exists=True))
+@click.option("--top-n", type=int, default=20,
+              help="Per playlist, fetch metadata for the top-N videos by view count.")
+@click.option("--report", "report_path", type=click.Path(), default=None,
+              help="Where to write the markdown report (default: alongside config).")
+def reference_validate_cmd(config_path: str, top_n: int, report_path: str | None) -> None:
+    """Phase 0.5.2 validation pass — fetches yt-dlp metadata for every URL
+    in the config WITHOUT downloading. Writes a report flagging suspected
+    bucket mismatches and auto-suggesting buckets for the unclassified ones."""
+    import yaml as _yaml
+    from fandomforge.intelligence.reference_library import (
+        fetch_youtube_metadata, list_playlist_metadata_only,
+    )
+
+    cfg_path = Path(config_path)
+    cfg = _yaml.safe_load(cfg_path.read_text(encoding="utf-8"))
+    if not cfg:
+        console.print(f"[red]empty or invalid config:[/red] {config_path}")
+        sys.exit(1)
+
+    out_path = Path(report_path) if report_path else cfg_path.with_suffix(".validate-report.md")
+    lines: list[str] = [
+        f"# Reference validation report",
+        f"",
+        f"Config: `{config_path}`",
+        f"Generated: 2026-04-20 (no downloads — yt-dlp metadata only)",
+        f"",
+    ]
+
+    suggestions: dict[str, list[dict]] = {}  # auto-suggest collator
+
+    for bucket_name, bucket in (cfg.get("buckets") or {}).items():
+        lines.append(f"## Bucket: `{bucket_name}`")
+        lines.append("")
+        if bucket.get("description"):
+            lines.append(f"_{bucket['description']}_")
+            lines.append("")
+
+        # Singles
+        singles = bucket.get("singles") or []
+        if singles:
+            lines.append(f"### Singles ({len(singles)})")
+            lines.append("")
+            for url in singles:
+                console.print(f"  fetching meta: {url}")
+                meta = fetch_youtube_metadata(url)
+                if meta is None:
+                    lines.append(f"- [unfetchable] `{url}` — yt-dlp returned no metadata (radio? deleted? private?)")
+                    continue
+                vc = meta.get("view_count") or 0
+                ch = meta.get("channel") or "?"
+                title = meta.get("title", "?")
+                lines.append(f"- **{title}** — {vc:,} views — _{ch}_  \n  `{url}`")
+            lines.append("")
+
+        # Playlists
+        playlists = bucket.get("playlists") or []
+        for url in playlists:
+            console.print(f"  enumerating playlist: {url}")
+            meta_list = list_playlist_metadata_only(url, top_n=top_n)
+            if not meta_list:
+                lines.append(f"### Playlist (unfetchable): `{url}`")
+                lines.append(f"- yt-dlp returned no entries (private? radio? deleted?)")
+                lines.append("")
+                continue
+
+            playlist_label = f"{len(meta_list)} videos sampled"
+            top_titles = [m.get("title", "") for m in meta_list[:5]]
+            suggested, votes = _suggest_bucket(playlist_label, top_titles)
+            lines.append(f"### Playlist: `{url}`")
+            lines.append("")
+            lines.append(f"- Top-N sampled: **{len(meta_list)}** videos")
+            lines.append(f"- Auto-suggested bucket: **`{suggested}`**  "
+                         f"(votes: {', '.join(f'{k}={v}' for k, v in votes.items() if v > 0) or 'none'})")
+            mismatch = bucket_name not in (suggested, "mixed_unclassified", "tribute_or_dialogue") \
+                and suggested != "mixed_unclassified"
+            if mismatch:
+                lines.append(f"- ⚠ **Mismatch flag:** declared `{bucket_name}` but content votes `{suggested}`. Re-bucket?")
+            lines.append("")
+            lines.append(f"  Top 10 by views:")
+            for m in meta_list[:10]:
+                vc = m.get("view_count") or 0
+                title = m.get("title", "?")[:80]
+                lines.append(f"  - {vc:>10,}  {title}")
+            lines.append("")
+
+            suggestions.setdefault(bucket_name, []).append({
+                "url": url, "suggested_bucket": suggested, "votes": votes,
+                "mismatch": mismatch,
+            })
+
+    out_path.write_text("\n".join(lines), encoding="utf-8")
+    console.print(f"[green]✓ report written:[/green] {out_path}")
+    flagged = sum(1 for entries in suggestions.values() for e in entries if e.get("mismatch"))
+    if flagged:
+        console.print(f"[yellow]⚠ {flagged} playlist(s) flagged for re-bucketing.[/yellow]")
+
+
+@reference_grp.command("ingest-batch")
+@click.argument("config_path", type=click.Path(exists=True))
+@click.option("--apply", is_flag=True,
+              help="Actually download. Without this flag = dry-run (prints what would be done).")
+@click.option("--max-videos-per-playlist", type=int, default=None,
+              help="Override config default for cap per playlist.")
+@click.option("--lyric-sample-n", type=int, default=0,
+              help="Pass-through to ingest — whisper count per tag.")
+def reference_ingest_batch_cmd(
+    config_path: str,
+    apply: bool,
+    max_videos_per_playlist: int | None,
+    lyric_sample_n: int,
+) -> None:
+    """Phase 0.5.2 — iterate the config and call `ff reference ingest` per
+    bucket entry. Tag naming: <bucket>-pl<N> for playlists, <bucket>-singles
+    for single-video bundles. Per-tag subprocess so one failure doesn't
+    kill the batch. Default dry-run; --apply downloads."""
+    import yaml as _yaml
+    from fandomforge.intelligence.reference_library import ingest_playlist
+
+    cfg_path = Path(config_path)
+    cfg = _yaml.safe_load(cfg_path.read_text(encoding="utf-8"))
+    if not cfg:
+        console.print(f"[red]empty config:[/red] {config_path}")
+        sys.exit(1)
+
+    defaults = cfg.get("defaults") or {}
+    max_v = max_videos_per_playlist or defaults.get("max_videos_per_playlist") or 30
+    max_h = defaults.get("max_height") or 480
+
+    summary = {"tags_planned": 0, "tags_succeeded": 0, "tags_failed": 0, "tags_skipped": 0}
+
+    for bucket_name, bucket in (cfg.get("buckets") or {}).items():
+        if bucket_name == "mixed_unclassified":
+            console.print(f"[yellow]bucket `{bucket_name}` held back; re-bucket via validate report first.[/yellow]")
+            summary["tags_skipped"] += 1
+            continue
+
+        # Derive tag prefix
+        tag_prefix = (cfg.get("tag_naming") or {}).get(bucket_name, f"{bucket_name}-pl")
+        if tag_prefix.endswith("-pl"):
+            base = tag_prefix[:-3]  # 'dance-pl' → 'dance'
+        else:
+            base = tag_prefix
+
+        # Singles → bundle into <base>-singles
+        singles = bucket.get("singles") or []
+        if singles:
+            tag = f"{base}-singles"
+            console.print(f"\n[bold cyan]bucket={bucket_name}[/bold cyan]  tag=[bold]{tag}[/bold]  "
+                          f"({len(singles)} single video(s))")
+            summary["tags_planned"] += 1
+            for url in singles:
+                if not apply:
+                    console.print(f"  [dim](dry-run)[/dim] would ingest single: {url}")
+                    continue
+                try:
+                    priors = ingest_playlist(
+                        url, tag=tag, max_videos=1,
+                        max_height=max_h, download=True,
+                        lyric_sample_n=lyric_sample_n,
+                    )
+                    console.print(f"  [green]✓[/green] {priors['video_count']} video(s) added to tag {tag}")
+                except RuntimeError as exc:
+                    console.print(f"  [red]✗ failed:[/red] {url} — {exc}")
+                    summary["tags_failed"] += 1
+                    continue
+            if apply:
+                summary["tags_succeeded"] += 1
+
+        # Playlists → one tag per playlist (numbered)
+        playlists = bucket.get("playlists") or []
+        for i, url in enumerate(playlists, start=1):
+            tag = f"{base}-pl{i}"
+            console.print(f"\n[bold cyan]bucket={bucket_name}[/bold cyan]  tag=[bold]{tag}[/bold]  "
+                          f"playlist[{i}/{len(playlists)}]")
+            console.print(f"  url: {url}")
+            summary["tags_planned"] += 1
+            if not apply:
+                console.print(f"  [dim](dry-run)[/dim] would ingest with --max-videos {max_v} --max-height {max_h}")
+                continue
+            try:
+                priors = ingest_playlist(
+                    url, tag=tag,
+                    max_videos=max_v, max_height=max_h,
+                    download=True, lyric_sample_n=lyric_sample_n,
+                )
+                console.print(f"  [green]✓[/green] {priors['video_count']} video(s) under tag {tag}")
+                summary["tags_succeeded"] += 1
+            except RuntimeError as exc:
+                console.print(f"  [red]✗ failed:[/red] {exc}")
+                summary["tags_failed"] += 1
+
+    console.print(
+        f"\n[bold]Batch summary:[/bold] planned={summary['tags_planned']} "
+        f"succeeded={summary['tags_succeeded']} "
+        f"failed={summary['tags_failed']} "
+        f"skipped={summary['tags_skipped']}"
+    )
+    if not apply:
+        console.print("[dim]Re-run with --apply to actually download.[/dim]")
+
+
+@reference_grp.command("rebuild-priors")
+@click.option("--refs-root", "refs_root_str", type=click.Path(), default=None,
+              help="References root (default: $FF_REFERENCES_DIR or ~/.fandomforge/references/).")
+def reference_rebuild_priors_cmd(refs_root_str: str | None) -> None:
+    """Phase 0.5.3 — walk every tag dir, group by edit_type_for_tag(),
+    write per-bucket priors at references/priors/<edit_type>/<fandom_family>.json."""
+    from fandomforge.intelligence.reference_library import (
+        aggregate_priors_per_bucket, references_root,
+    )
+
+    root = Path(refs_root_str) if refs_root_str else references_root()
+    console.print(f"Rebuilding per-bucket priors under [bold]{root}[/bold]...")
+    summary = aggregate_priors_per_bucket(refs_root=root)
+    console.print(
+        f"[green]✓[/green] scanned {summary['total_tags_scanned']} tag(s); "
+        f"wrote {len(summary['buckets_written'])} bucket prior file(s); "
+        f"skipped {len(summary['buckets_skipped'])}"
+    )
+    for w in summary["buckets_written"]:
+        console.print(
+            f"  [green]wrote[/green] edit_type={w['edit_type']} "
+            f"fandom_family={w['fandom_family']} videos={w['video_count']}\n"
+            f"    {w['path']}"
+        )
+    for s in summary["buckets_skipped"][:10]:
+        console.print(f"  [yellow]skipped[/yellow] {s}")
 
 
 if __name__ == "__main__":

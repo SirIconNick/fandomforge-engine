@@ -1490,13 +1490,37 @@ def step_sync_plan(ctx: AutopilotContext) -> AutopilotEvent:
             build_complement_plan, write_complement_plan,
         )
         from fandomforge.intelligence.sfx_engine import build_sfx_plan, write_sfx_plan
-        from fandomforge.intelligence.reference_library import load_priors
+        from fandomforge.intelligence.reference_library import (
+            load_per_bucket_priors, load_priors,
+        )
 
         shot_list = json.loads(shot_list_path.read_text())
         beat_map = json.loads(beat_map_path.read_text())
         lyrics_path = data / "song-lyrics.json"
         lyrics = json.loads(lyrics_path.read_text()) if lyrics_path.exists() else None
-        priors = load_priors()
+
+        # Phase 0.5.3 — try per-bucket priors first (matches edit_type from
+        # intent.json), fall back to the global priors when no bucket file
+        # exists yet. Backwards compatible: legacy projects keep working.
+        priors = None
+        intent_path = data / "intent.json"
+        if intent_path.exists():
+            try:
+                intent = json.loads(intent_path.read_text(encoding="utf-8"))
+                edit_type = intent.get("edit_type")
+                if edit_type:
+                    bucket_priors = load_per_bucket_priors(edit_type)
+                    if bucket_priors:
+                        # Wrap to match the reference-priors envelope shape
+                        priors = {
+                            "tag": f"bucket:{edit_type}/all",
+                            "video_count": bucket_priors.get("video_count", 0),
+                            "priors": bucket_priors,
+                        }
+            except (json.JSONDecodeError, OSError):
+                pass
+        if priors is None:
+            priors = load_priors()
 
         sync = build_sync_plan(
             project_slug=ctx.project_slug,
