@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:12:25.365Z
+// Generated at: 2026-04-20T03:17:30.087Z
 
 
 export type Layer = {
@@ -199,6 +199,48 @@ export interface ComplementPlan {
     /** Received-action shots that weren't used as a complement. */
     unpaired_received?: Array<string>;
     generated_at?: string;
+    generator?: string;
+  }
+
+/** Resolved placement decisions for a list of dialogue cues against the dialogue-windows analysis. Each cue gets PLACE / SHIFT / REJECT with a reason; the mixer reads this to know where to actually drop each cue's audio. */
+export interface DialoguePlacementPlan {
+    schema_version: 1;
+    project_slug?: string;
+    placements: Array<{
+    cue_index: number;
+    requested_start_sec: number;
+    cue_duration_sec: number;
+    placed_start_sec: number;
+    decision: "PLACE" | "SHIFT" | "REJECT";
+    flag_at_placement: "SAFE" | "RISKY" | "BLOCKED";
+    reason: string;
+    suggested_alternative_sec?: number | null;
+  }>;
+    summary: {
+    place: number;
+    shift: number;
+    reject: number;
+  };
+    generator?: string;
+  }
+
+/** Per-time classification of where injected dialogue can land cleanly. Derived from energy-zones + beat-map. Each window slice is flagged SAFE / RISKY / BLOCKED with explicit reason codes so the editor can see WHY a placement was approved or refused. */
+export interface DialogueWindows {
+    schema_version: 1;
+    duration_sec: number;
+    resolution_sec: number;
+    safe_window_count: number;
+    risky_window_count: number;
+    blocked_window_count: number;
+    windows: Array<{
+    start_sec: number;
+    end_sec: number;
+    flag: "SAFE" | "RISKY" | "BLOCKED";
+    reason_codes: Array<string>;
+    min_duration_available_sec?: number;
+    rms_at_start?: number;
+    mid_density_at_start?: number;
+  }>;
     generator?: string;
   }
 
@@ -888,6 +930,8 @@ export interface ArtifactSchemaMap {
   "catalog": Catalog;
   "color-plan": ColorPlan;
   "complement-plan": ComplementPlan;
+  "dialogue-placement-plan": DialoguePlacementPlan;
+  "dialogue-windows": DialogueWindows;
   "edit-plan": EditPlan;
   "emotion-arc": EmotionArc;
   "energy-zones": EnergyZones;
@@ -910,4 +954,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "color-plan", "complement-plan", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

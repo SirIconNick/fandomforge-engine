@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/dialogue-windows.schema.json",
+  "title": "DialogueWindows",
+  "description": "Per-time classification of where injected dialogue can land cleanly. Derived from energy-zones + beat-map. Each window slice is flagged SAFE / RISKY / BLOCKED with explicit reason codes so the editor can see WHY a placement was approved or refused.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "duration_sec", "resolution_sec", "windows",
+    "safe_window_count", "risky_window_count", "blocked_window_count"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "duration_sec": {"type": "number", "minimum": 0},
+    "resolution_sec": {"type": "number", "exclusiveMinimum": 0},
+    "safe_window_count": {"type": "integer", "minimum": 0},
+    "risky_window_count": {"type": "integer", "minimum": 0},
+    "blocked_window_count": {"type": "integer", "minimum": 0},
+    "windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["start_sec", "end_sec", "flag", "reason_codes"],
+        "properties": {
+          "start_sec": {"type": "number", "minimum": 0},
+          "end_sec": {"type": "number", "minimum": 0},
+          "flag": {
+            "type": "string",
+            "enum": ["SAFE", "RISKY", "BLOCKED"]
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "min_duration_available_sec": {"type": "number", "minimum": 0},
+          "rms_at_start": {"type": "number", "minimum": 0, "maximum": 1.5},
+          "mid_density_at_start": {"type": "number", "minimum": 0, "maximum": 1.5}
+        }
+      }
+    },
+    "generator": {"type": "string"}
+  }
+}

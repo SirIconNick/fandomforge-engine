@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fandomforge.dev/schemas/dialogue-placement-plan.schema.json",
+  "title": "DialoguePlacementPlan",
+  "description": "Resolved placement decisions for a list of dialogue cues against the dialogue-windows analysis. Each cue gets PLACE / SHIFT / REJECT with a reason; the mixer reads this to know where to actually drop each cue's audio.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "placements", "summary"],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "project_slug": {"type": "string"},
+    "placements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cue_index", "requested_start_sec", "cue_duration_sec",
+          "placed_start_sec", "decision", "flag_at_placement", "reason"
+        ],
+        "properties": {
+          "cue_index": {"type": "integer", "minimum": 0},
+          "requested_start_sec": {"type": "number", "minimum": 0},
+          "cue_duration_sec": {"type": "number", "minimum": 0},
+          "placed_start_sec": {"type": "number", "minimum": 0},
+          "decision": {
+            "type": "string",
+            "enum": ["PLACE", "SHIFT", "REJECT"]
+          },
+          "flag_at_placement": {
+            "type": "string",
+            "enum": ["SAFE", "RISKY", "BLOCKED"]
+          },
+          "reason": {"type": "string"},
+          "suggested_alternative_sec": {"type": ["number", "null"]}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["place", "shift", "reject"],
+      "properties": {
+        "place": {"type": "integer", "minimum": 0},
+        "shift": {"type": "integer", "minimum": 0},
+        "reject": {"type": "integer", "minimum": 0}
+      }
+    },
+    "generator": {"type": "string"}
+  }
+}

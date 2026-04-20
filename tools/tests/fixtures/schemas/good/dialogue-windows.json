@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "duration_sec": 10.0,
+  "resolution_sec": 0.25,
+  "safe_window_count": 4,
+  "risky_window_count": 30,
+  "blocked_window_count": 6,
+  "windows": [
+    {
+      "start_sec": 0.0,
+      "end_sec": 0.25,
+      "flag": "SAFE",
+      "reason_codes": ["low_energy_zone"],
+      "min_duration_available_sec": 1.0,
+      "rms_at_start": 0.05,
+      "mid_density_at_start": 0.04
+    },
+    {
+      "start_sec": 5.0,
+      "end_sec": 5.25,
+      "flag": "BLOCKED",
+      "reason_codes": ["high_energy_zone", "dense_mid_frequencies"],
+      "min_duration_available_sec": 0.0,
+      "rms_at_start": 0.85,
+      "mid_density_at_start": 0.92
+    }
+  ],
+  "generator": "ff dialogue windows"
+}

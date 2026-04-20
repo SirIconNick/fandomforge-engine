@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "duration_sec": 10.0,
+  "resolution_sec": 0.25,
+  "safe_window_count": 0,
+  "risky_window_count": 0,
+  "blocked_window_count": 0,
+  "windows": [
+    {
+      "start_sec": 0.0,
+      "end_sec": 0.25,
+      "flag": "MAYBE-OK",
+      "reason_codes": "low_energy"
+    }
+  ]
+}

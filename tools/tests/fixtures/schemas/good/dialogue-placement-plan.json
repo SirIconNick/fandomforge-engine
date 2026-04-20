@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "project_slug": "demo",
+  "placements": [
+    {
+      "cue_index": 0,
+      "requested_start_sec": 0.5,
+      "cue_duration_sec": 3.0,
+      "placed_start_sec": 0.5,
+      "decision": "PLACE",
+      "flag_at_placement": "SAFE",
+      "reason": "low_energy_zone"
+    },
+    {
+      "cue_index": 1,
+      "requested_start_sec": 25.0,
+      "cue_duration_sec": 1.5,
+      "placed_start_sec": 26.0,
+      "decision": "SHIFT",
+      "flag_at_placement": "SAFE",
+      "reason": "shifted_to_safe_window (delta=+1.00s)",
+      "suggested_alternative_sec": 26.0
+    },
+    {
+      "cue_index": 2,
+      "requested_start_sec": 100.0,
+      "cue_duration_sec": 2.5,
+      "placed_start_sec": 100.0,
+      "decision": "REJECT",
+      "flag_at_placement": "BLOCKED",
+      "reason": "high_energy_zone;dense_mid_frequencies",
+      "suggested_alternative_sec": 145.5
+    }
+  ],
+  "summary": {
+    "place": 1,
+    "shift": 1,
+    "reject": 1
+  },
+  "generator": "ff dialogue windows"
+}

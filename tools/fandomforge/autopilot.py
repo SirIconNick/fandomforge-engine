@@ -514,6 +514,130 @@ def step_zone_classify(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_dialogue_windows(ctx: AutopilotContext) -> AutopilotEvent:
+    """Build dialogue-windows.json from energy-zones + beat-map.
+
+    Classifies every 250ms slice as SAFE / RISKY / BLOCKED for dialogue
+    placement. If a project has a dialogue.json with cues, also writes
+    dialogue-placement-plan.json resolving each cue against the windows.
+    """
+    start = time.perf_counter()
+    out = ctx.project_dir / "data" / "dialogue-windows.json"
+    if _artifact_exists_and_valid(ctx, "dialogue-windows"):
+        # Even when windows are cached, re-resolve placement plan if the
+        # cues changed. Cheap pass — no audio analysis.
+        try:
+            _maybe_write_placement_plan(ctx, out)
+        except Exception:  # noqa: BLE001
+            pass
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_windows",
+            status="skipped", message="dialogue-windows.json already valid",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    energy_zones_path = ctx.project_dir / "data" / "energy-zones.json"
+    if not energy_zones_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_windows",
+            status="failed",
+            message="energy-zones.json missing — run zone_classify first",
+        )
+    beat_map_path = ctx.project_dir / "data" / "beat-map.json"
+
+    try:
+        from fandomforge.audio.dialogue_windows import (
+            classify_windows,
+            write_dialogue_windows,
+        )
+        from fandomforge.validation import validate_and_write
+
+        energy_zones = json.loads(energy_zones_path.read_text(encoding="utf-8"))
+        beat_map = None
+        if beat_map_path.exists():
+            beat_map = json.loads(beat_map_path.read_text(encoding="utf-8"))
+        result = classify_windows(energy_zones, beat_map=beat_map)
+        payload = result.to_dict()
+        validate_and_write(payload, "dialogue-windows", out)
+
+        _maybe_write_placement_plan(ctx, out)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="dialogue_windows",
+            status="failed",
+            message=f"dialogue windows failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="dialogue_windows",
+        status="ok",
+        message=(
+            f"dialogue-windows.json: {payload['safe_window_count']} SAFE, "
+            f"{payload['risky_window_count']} RISKY, "
+            f"{payload['blocked_window_count']} BLOCKED"
+        ),
+        evidence={"path": str(out)},
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
+def _maybe_write_placement_plan(ctx: AutopilotContext, windows_path: Path) -> None:
+    """If a dialogue.json with cues exists, resolve placements and write
+    dialogue-placement-plan.json. Silent no-op when no cues are present."""
+    from fandomforge.audio.dialogue_windows import (
+        DialogueWindow,
+        build_placement_plan,
+        write_placement_plan,
+    )
+    from fandomforge.validation import validate_and_write
+
+    # Discover dialogue.json — common locations
+    dialogue_candidates = [
+        ctx.project_dir / "dialogue" / "dialogue.json",
+        ctx.project_dir / "dialogue.json",
+        ctx.project_dir / "data" / "dialogue.json",
+    ]
+    dialogue_path = next((p for p in dialogue_candidates if p.exists()), None)
+    if dialogue_path is None:
+        return
+    try:
+        dlg = json.loads(dialogue_path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return
+    cues = dlg.get("cues") or []
+    if not cues:
+        return
+
+    if not windows_path.exists():
+        return
+    windows_payload = json.loads(windows_path.read_text(encoding="utf-8"))
+    windows = [DialogueWindow(
+        start_sec=float(w["start_sec"]),
+        end_sec=float(w["end_sec"]),
+        flag=w["flag"],
+        reason_codes=list(w.get("reason_codes") or []),
+        min_duration_available_sec=float(w.get("min_duration_available_sec", 0)),
+        rms_at_start=float(w.get("rms_at_start", 0)),
+        mid_density_at_start=float(w.get("mid_density_at_start", 0)),
+    ) for w in windows_payload.get("windows") or []]
+
+    placements = build_placement_plan(cues, windows)
+    out = ctx.project_dir / "data" / "dialogue-placement-plan.json"
+    payload = {
+        "schema_version": 1,
+        "project_slug": ctx.project_slug,
+        "placements": [p.to_dict() for p in placements],
+        "summary": {
+            "place": sum(1 for p in placements if p.decision == "PLACE"),
+            "shift": sum(1 for p in placements if p.decision == "SHIFT"),
+            "reject": sum(1 for p in placements if p.decision == "REJECT"),
+        },
+        "generator": "ff dialogue windows",
+    }
+    validate_and_write(payload, "dialogue-placement-plan", out)
+
+
 def _load_anthropic_key() -> str | None:
     if key := os.environ.get("ANTHROPIC_API_KEY"):
         return key.strip()
@@ -1405,6 +1529,9 @@ STEPS: list[Step] = [
     Step("zone_classify", "Classify energy zones + bands + transients",
          lambda ctx: _artifact_exists_and_valid(ctx, "energy-zones"),
          step_zone_classify),
+    Step("dialogue_windows", "Detect SAFE/RISKY/BLOCKED dialogue windows",
+         lambda ctx: _artifact_exists_and_valid(ctx, "dialogue-windows"),
+         step_dialogue_windows),
     Step("edit_plan_stub", "Draft edit-plan (stub)",
          lambda ctx: _artifact_exists_and_valid(ctx, "edit-plan"),
          step_edit_plan_stub),

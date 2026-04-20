@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "placements": [
+    {
+      "cue_index": -1,
+      "requested_start_sec": -5,
+      "decision": "GUESS",
+      "flag_at_placement": "MEH",
+      "reason": ""
+    }
+  ],
+  "summary": {
+    "place": -1,
+    "shift": 0,
+    "reject": 0
+  }
+}
