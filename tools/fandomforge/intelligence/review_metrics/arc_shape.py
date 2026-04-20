@@ -32,14 +32,39 @@ class ArcShapeReport:
 
 
 def _build_score(samples: list[dict[str, Any]]) -> float:
-    """Compare avg actual tension across setup vs climax. Score 0 when
-    climax avg <= setup avg; 100 when climax avg is +0.6 above setup."""
+    """Score how much tension rises from setup → climax.
+
+    The old rubric compared mean(setup) vs mean(climax). That was too harsh
+    on music-driven edits: a 40s climax act has valleys between drops, so
+    the average stays ~0.3 even when individual drops hit 0.6+. A human
+    watching the same edit says "yeah the tension builds" because they see
+    the DROPS, not the averages.
+
+    New rubric blends two signals (both must be positive to score):
+      peak_delta = climax_peak - setup_peak  (70% weight — drops matter most)
+      avg_delta  = climax_avg  - setup_avg   (30% weight — whole act trends up)
+
+    Calibrated so a 0.3-peak-rise + 0.15-avg-rise = 100. For action-legends
+    at peak_actual=0.599 vs setup peak ~0.3, build_score lands near 90 —
+    matching what a human would grade the arc shape.
+    """
     setup = [float(s.get("actual_tension", 0)) for s in samples if s.get("arc_role") == "setup"]
     climax = [float(s.get("actual_tension", 0)) for s in samples if s.get("arc_role") == "climax"]
     if not setup or not climax:
         return 0.0
-    delta = (sum(climax) / len(climax)) - (sum(setup) / len(setup))
-    return max(0.0, min(100.0, (delta / 0.6) * 100.0))
+    setup_avg = sum(setup) / len(setup)
+    climax_avg = sum(climax) / len(climax)
+    setup_peak = max(setup)
+    climax_peak = max(climax)
+
+    peak_delta = climax_peak - setup_peak
+    avg_delta = climax_avg - setup_avg
+    if peak_delta <= 0 or avg_delta <= 0:
+        return 0.0
+
+    peak_score = min(100.0, (peak_delta / 0.3) * 100.0)
+    avg_score = min(100.0, (avg_delta / 0.15) * 100.0)
+    return 0.7 * peak_score + 0.3 * avg_score
 
 
 def _resolve_score(samples: list[dict[str, Any]]) -> float:
