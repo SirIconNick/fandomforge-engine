@@ -54,16 +54,102 @@ def _yt_dlp_available() -> bool:
     return shutil.which("yt-dlp") is not None
 
 
+def _yt_dlp_auth_args() -> list[str]:
+    """Optional cookie/auth args pulled from env. Used to unblock YouTube
+    bot-checks without requiring a code change.
+
+    FF_YT_DLP_COOKIES_BROWSER: browser name (e.g. "chrome", "firefox", "brave")
+    FF_YT_DLP_COOKIES_FILE: path to cookies.txt (takes precedence)
+    FF_YT_DLP_EXTRA_ARGS: freeform extra args, space-separated
+    """
+    args: list[str] = []
+    cookies_file = os.environ.get("FF_YT_DLP_COOKIES_FILE")
+    if cookies_file:
+        args.extend(["--cookies", cookies_file])
+    else:
+        cookies_browser = os.environ.get("FF_YT_DLP_COOKIES_BROWSER")
+        if cookies_browser:
+            args.extend(["--cookies-from-browser", cookies_browser])
+    extra = os.environ.get("FF_YT_DLP_EXTRA_ARGS")
+    if extra:
+        args.extend(extra.split())
+    return args
+
+
+_SINGLE_VIDEO_RE = None  # lazy-compiled in _is_single_video_url
+
+
+def _is_single_video_url(url: str) -> bool:
+    """True for YouTube single-video URLs (watch?v=... or youtu.be/...).
+
+    yt-dlp's `--flat-playlist -J` triggers the full video extractor (and the
+    anti-bot signature challenge) when fed a single-video URL. Playlist URLs
+    stay at the cheap metadata layer. We route singles through the gentler
+    `--dump-json --skip-download --no-playlist` path instead.
+    """
+    import re as _re
+    global _SINGLE_VIDEO_RE
+    if _SINGLE_VIDEO_RE is None:
+        _SINGLE_VIDEO_RE = _re.compile(
+            r"(?:youtube\.com/watch\?v=|youtu\.be/)[A-Za-z0-9_-]{6,}",
+            _re.IGNORECASE,
+        )
+    lower = url.lower()
+    # Any `list=` param (either playlist?list=... or watch?v=X&list=Y) means
+    # yt-dlp will treat the URL as a playlist — don't route to single path.
+    if "list=" in lower:
+        return False
+    return bool(_SINGLE_VIDEO_RE.search(url))
+
+
+def _single_video_entry(url: str) -> dict[str, Any] | None:
+    """Resolve a single video URL to the same dict shape `list_playlist_entries`
+    returns — via the metadata-only yt-dlp call path."""
+    try:
+        proc = subprocess.run(
+            ["yt-dlp", *_yt_dlp_auth_args(),
+             "--dump-json", "--skip-download", "--no-playlist", url],
+            capture_output=True, text=True, check=True, timeout=30,
+        )
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return None
+    try:
+        payload = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return None
+    vid = payload.get("id")
+    if not vid:
+        return None
+    return {
+        "id": str(vid),
+        "title": str(payload.get("title") or vid),
+        "url": str(payload.get("webpage_url") or url),
+        "duration_sec": float(payload.get("duration") or 0),
+    }
+
+
 def list_playlist_entries(playlist_url: str) -> list[dict[str, Any]]:
     """Enumerate a YouTube playlist via yt-dlp --flat-playlist.
+
+    For single-video URLs (watch?v=... / youtu.be/...), routes through the
+    metadata-only path instead — `--flat-playlist` triggers the video-player
+    bot-check on those now.
 
     Returns each entry's id, title, url, duration. Does NOT download.
     """
     if not _yt_dlp_available():
         raise RuntimeError("yt-dlp not installed; cannot enumerate playlist")
+
+    if _is_single_video_url(playlist_url):
+        entry = _single_video_entry(playlist_url)
+        if entry is None:
+            raise RuntimeError(f"yt-dlp failed: could not resolve single video {playlist_url}")
+        return [entry]
+
     try:
         proc = subprocess.run(
-            ["yt-dlp", "--flat-playlist", "-J", playlist_url],
+            ["yt-dlp", *_yt_dlp_auth_args(),
+             "--flat-playlist", "-J", playlist_url],
             capture_output=True, text=True, check=True, timeout=60,
         )
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
@@ -110,6 +196,7 @@ def download_reference_video(
     outtmpl = str(target_dir / "%(id)s.%(ext)s")
     args = [
         "yt-dlp",
+        *_yt_dlp_auth_args(),
         "-f", f"bv*[height<={max_height}]+ba/best[height<={max_height}]/best",
         "--merge-output-format", "mp4",
         "-o", outtmpl,
@@ -539,19 +626,48 @@ def ingest_playlist(
         v["quality_tier"] = q["quality_tier"]
         v["quality_components"] = q["components"]
 
+    out = target_dir / "reference-priors.json"
+
+    # Merge with any existing priors file at this tag. Singles + repeat-ingests
+    # used to overwrite the file, losing every video except the last one — so
+    # a 5-single batch ended up with video_count=1. Now we accumulate by id
+    # (new analysis replaces the old for the same video) and dedupe source
+    # playlist URLs.
+    merged_videos: dict[str, dict[str, Any]] = {}
+    merged_sources: list[str] = []
+    if out.exists():
+        try:
+            prior = json.loads(out.read_text(encoding="utf-8"))
+            for v in prior.get("videos") or []:
+                vid = v.get("id")
+                if vid:
+                    merged_videos[vid] = v
+            for src in prior.get("source_playlists") or []:
+                if src not in merged_sources:
+                    merged_sources.append(src)
+        except (json.JSONDecodeError, OSError):
+            pass
+    for v in analyzed:
+        vid = v.get("id")
+        if vid:
+            merged_videos[vid] = v
+    if playlist_url not in merged_sources:
+        merged_sources.append(playlist_url)
+
+    all_videos = list(merged_videos.values())
+
     priors_payload: dict[str, Any] = {
         "schema_version": 1,
         "tag": tag,
-        "source_playlists": [playlist_url],
-        "video_count": len(analyzed),
-        "videos": analyzed,
-        "priors": aggregate_priors(analyzed),
+        "source_playlists": merged_sources,
+        "video_count": len(all_videos),
+        "videos": all_videos,
+        "priors": aggregate_priors(all_videos),
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "generator": "ff reference ingest",
     }
     validate(priors_payload, "reference-priors")
 
-    out = target_dir / "reference-priors.json"
     out.write_text(json.dumps(priors_payload, indent=2) + "\n", encoding="utf-8")
     return priors_payload
 
@@ -703,7 +819,8 @@ def fetch_youtube_metadata(url: str) -> dict[str, Any] | None:
         return None
     try:
         proc = subprocess.run(
-            ["yt-dlp", "--dump-json", "--skip-download", "--no-playlist", url],
+            ["yt-dlp", *_yt_dlp_auth_args(),
+             "--dump-json", "--skip-download", "--no-playlist", url],
             capture_output=True, text=True, check=True, timeout=30,
         )
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired):

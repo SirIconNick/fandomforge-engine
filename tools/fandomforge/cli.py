@@ -5339,6 +5339,50 @@ def reference_ingest_batch_cmd(
     max_v = max_videos_per_playlist or defaults.get("max_videos_per_playlist") or 30
     max_h = defaults.get("max_height") or 480
 
+    from fandomforge.intelligence.reference_library import references_root as _refs_root_fn
+    _refs_root = _refs_root_fn()
+
+    def _existing_max_pl_index(base: str) -> int:
+        """Scan refs_root for existing tag dirs matching <base>-pl<N>, return
+        max N (0 if none). Prevents new ingest from colliding with the
+        existing corpus."""
+        import re as _re
+        if not _refs_root.exists():
+            return 0
+        pat = _re.compile(rf"^{_re.escape(base)}-pl(\d+)$")
+        max_n = 0
+        for child in _refs_root.iterdir():
+            if not child.is_dir():
+                continue
+            m = pat.match(child.name)
+            if m:
+                max_n = max(max_n, int(m.group(1)))
+        return max_n
+
+    def _existing_tag_for_url(base: str, url: str) -> str | None:
+        """Return the tag name (e.g. 'tribute-pl3') if `url` is already present
+        in some tag's reference-priors.json `source_playlists` under this base.
+        Makes repeat runs of the same config idempotent instead of generating
+        duplicate `-pl<N+1>` dirs."""
+        import re as _re
+        if not _refs_root.exists():
+            return None
+        pat = _re.compile(rf"^{_re.escape(base)}-pl(\d+)$")
+        for child in _refs_root.iterdir():
+            if not child.is_dir() or not pat.match(child.name):
+                continue
+            priors = child / "reference-priors.json"
+            if not priors.exists():
+                continue
+            try:
+                import json as _json
+                payload = _json.loads(priors.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            if url in (payload.get("source_playlists") or []):
+                return child.name
+        return None
+
     summary = {"tags_planned": 0, "tags_succeeded": 0, "tags_failed": 0, "tags_skipped": 0}
 
     for bucket_name, bucket in (cfg.get("buckets") or {}).items():
@@ -5379,12 +5423,23 @@ def reference_ingest_batch_cmd(
             if apply:
                 summary["tags_succeeded"] += 1
 
-        # Playlists → one tag per playlist (numbered)
+        # Playlists → one tag per playlist (numbered, offset past existing,
+        # reusing existing tag when the same URL was ingested before).
         playlists = bucket.get("playlists") or []
-        for i, url in enumerate(playlists, start=1):
-            tag = f"{base}-pl{i}"
+        _next_index = _existing_max_pl_index(base) + 1
+        if _next_index > 1 and playlists:
+            console.print(f"  [dim](offsetting {base}-pl start to pl{_next_index} — "
+                          f"{_next_index - 1} existing tag(s) found)[/dim]")
+        for offset, url in enumerate(playlists):
+            reused = _existing_tag_for_url(base, url)
+            if reused is not None:
+                tag = reused
+            else:
+                tag = f"{base}-pl{_next_index}"
+                _next_index += 1
+            i = int(tag.rsplit("pl", 1)[-1])
             console.print(f"\n[bold cyan]bucket={bucket_name}[/bold cyan]  tag=[bold]{tag}[/bold]  "
-                          f"playlist[{i}/{len(playlists)}]")
+                          f"playlist[{offset + 1}/{len(playlists)}]")
             console.print(f"  url: {url}")
             summary["tags_planned"] += 1
             if not apply:
