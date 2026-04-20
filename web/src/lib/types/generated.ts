@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-20T03:29:08.985Z
+// Generated at: 2026-04-20T03:33:59.433Z
 
 
 export type Layer = {
@@ -851,6 +851,77 @@ export interface SourceCatalog {
     generated_at?: string;
   }
 
+/** Compact fixed-width histogram. bins is always 16 for this schema version. counts is an array of exactly 16 non-negative integers, where counts[i] is the number of sampled pixels falling in the i-th equal-width bin across the 0-255 range of the measured channel. */
+export type Histogram16 = {
+    /** Number of histogram bins. Fixed at 16 for this schema version. */
+    bins: 16;
+    /** Raw pixel counts per bin, not normalized. The caller normalizes as needed (e.g. divide by total sampled pixels for a probability mass). Storing raw counts preserves the ability to merge histograms from multiple frames without information loss. */
+    counts: Array<number>;
+  };
+
+/** Per-source visual and container fingerprint, produced at ingest time. Every field here is computed from the raw video file itself — not from the edit project. This schema is the feeder for Phase 3's visual signature DB, the slot-fit scorer, the aspect-ratio arbiter, the quality-gap mitigator, and the color grader's per-source nudges. A valid record can be produced in a quick-pass (required fields only) without a full feature-extraction run; optional fields fill in as the profiler does deeper analysis. Source-type-neutral by design (A3 constraint): anime, live-action, 3d-render, and archival sources all use the same schema. */
+export interface SourceProfile {
+    /** Schema version. Always 1 for records conforming to this draft. */
+    schema_version: 1;
+    /** Foreign key into source-catalog.schema.json. Should be the same stable identifier (blake3 hash or CAS key) used there. */
+    source_id: string;
+    /** Broad production category of the source. Used by the slot-fit scorer for cross-type blend warnings and by the color grader when choosing a starting LUT strategy. Generic across all edit types — no anime-specific fields; use this tag + era_bucket to represent a 90s anime the same way you'd represent a 2010s live-action film. */
+    source_type: "anime" | "live_action" | "western_animation" | "3d_render" | "archival" | "music_video" | "sports" | "documentary";
+    /** Production-decade bucket. Drives the color grader's grain-compensation nudge and helps the slot-fit scorer warn when mixing sources from radically different eras (e.g. pre-2000 anime grain next to post-2020 3d render). */
+    era_bucket: "pre-2000" | "2000-2010" | "2010-2020" | "post-2020";
+    /** Optional free-text era label for human context. Not used by any downstream algorithm — purely for inspection. Example: 'extraction2-2023', 'original-1997-broadcast'. */
+    era_label?: string;
+    /** Source-level quality tier on the same S/A/B/C/D axis used in reference-priors.schema.json. Applied to the whole source file, not to individual clips. D-tier sources are refused by default unless --allow-dtier is set. */
+    quality_tier: "S" | "A" | "B" | "C" | "D";
+    /** Known recurring visual defects or editorial constraints detected in this source. Stored as free-text strings so the QA gate and slot-fit scorer can surface them as warnings without needing a fixed enum that would need updating for every new defect type. Examples: 'HUD overlay', 'watermark', 'consistent dark scenes', 'heavy compression', 'interlace artifacts', 'timecode burn-in'. */
+    visual_hazards?: Array<string>;
+    /** 16-bin luminance histogram averaged across sampled frames. Bins span 0-255 in equal steps (each bin covers 16 luma units). Stored as integer counts (not normalized) so the caller controls normalization. 16 bins chosen over 32 to keep per-source records compact while retaining enough discriminatory power for luma-range matching (e.g. detecting consistently dark sources vs. blown-out sources). */
+    luma_histogram?: Histogram16;
+    /** 16-bin chroma saturation histogram averaged across sampled frames. Bins span 0-255 chroma magnitude in equal steps. Useful for distinguishing heavily desaturated sources (grief-tone tribute) from oversaturated sources (hyper-stylized anime). Same 16-bin rationale as luma_histogram. */
+    chroma_histogram?: Histogram16;
+    /** Estimated dominant color temperature in Kelvin, derived from the white-balance of sampled frames. Not a camera-sensor reading — this is a perceptual estimate used to flag warm/cool source mismatches going into the color grader. */
+    color_temperature_kelvin?: {
+    /** Estimated color temperature in Kelvin. Typical range: 2700K (tungsten warm) to 6500K (daylight) to 9000K+ (blue-shifted archival or stylized anime). */
+    estimate_k: number;
+    /** Profiler confidence in the estimate. Low confidence expected for heavily color-graded sources or sources with strongly mixed lighting. */
+    confidence: number;
+  };
+    /** Mean saturation of sampled frames, normalized 0-1. Quick scalar proxy for the chroma_histogram. 0 = fully desaturated / black-and-white, 1 = maximally saturated. */
+    saturation_avg?: number;
+    /** Dominant color cast across sampled frames. Used by the color grader when computing the nudge needed to blend this source into a unified palette. */
+    color_cast?: {
+    /** Dominant hue angle in degrees (0=red, 60=yellow, 120=green, 180=cyan, 240=blue, 300=magenta). */
+    hue_degrees: number;
+    /** Up to 5 dominant hex colors sampled via k-means across profiled frames. Stored as 6-digit uppercase hex strings without the # prefix. */
+    dominant_colors?: Array<string>;
+  };
+    /** Proxy measure of film grain or compression noise, 0-1. Computed as the median high-pass energy across sampled frames after a sharpening kernel is subtracted. 0 = clean digital, 1 = heavy grain or severe compression noise. Used by the quality-gap mitigator to flag sources that will look mismatched next to clean digital sources. */
+    grain_noise_floor?: number;
+    /** Edge density proxy for perceived sharpness, 0-1. Computed as the normalized mean of a Laplacian edge map across sampled frames. 0 = soft / heavily blurred, 1 = very sharp. Distinct from grain_noise_floor: high sharpness + high grain = over-sharpened noisy source. Low sharpness + low grain = intentional soft look (some 2000s anime). */
+    sharpness_score?: number;
+    /** Native display aspect ratio of the source file expressed as a ratio string. Must capture the actual display ratio, not the pixel storage ratio. Examples: '16:9', '4:3', '2.39:1', '1:1', '9:16'. Letterboxed or pillarboxed sources should report the enclosing container ratio here and set letterbox_detected or pillarbox_detected true. */
+    aspect_ratio_native: string;
+    /** Native playback frame rate of the source in frames per second. Use the exact container value (e.g. 23.976, 29.97, 24.0, 60.0). Used by the aspect-ratio arbiter when checking for frame-rate mismatch risk at the timeline join point. */
+    framerate_native: number;
+    /** Native pixel resolution of the source container. */
+    resolution_native: {
+    /** Frame width in pixels. */
+    width: number;
+    /** Frame height in pixels. */
+    height: number;
+  };
+    /** True if horizontal black bars were detected at the top and bottom of sampled frames, indicating the active picture is narrower vertically than the container. Triggers a crop-or-pad decision in the aspect-ratio arbiter. */
+    letterbox_detected: boolean;
+    /** True if vertical black bars were detected on the left and right sides of sampled frames, indicating the active picture is narrower horizontally than the container (common in 4:3 content in a 16:9 wrapper). */
+    pillarbox_detected: boolean;
+    /** Number of frames that were analyzed to compute the visual stats in this profile. The visual stat fields (luma_histogram, chroma_histogram, grain_noise_floor, sharpness_score, saturation_avg, color_cast, color_temperature_kelvin) are only as reliable as this count. A quick-pass profiler might sample 30 frames; a deep-pass profiler might sample 500+. */
+    frames_sampled: number;
+    /** ISO 8601 date-time when this profile was generated. */
+    generated_at: string;
+    /** Name and version of the profiler that produced this record. Examples: 'source_profiler/0.1.0', 'source_profiler/0.2.0+manual'. Bumping the profiler version and re-ingesting will produce a new profile; comparing generator values is how you detect stale profiles. */
+    generator: string;
+  }
+
 /** Unifies the song's structural points (drops, breakdowns, buildups, downbeats) with timestamped lyric sections, and recommends which shots from the shot list should land on each point. Produced by `ff sync plan` and consumed by the timeline editor + NLE export to surface sync opportunities. */
 export interface SyncPlan {
     schema_version: 1;
@@ -1009,6 +1080,7 @@ export interface ArtifactSchemaMap {
   "share-config": ShareConfig;
   "shot-list": ShotList;
   "source-catalog": SourceCatalog;
+  "source-profile": SourceProfile;
   "sync-plan": SyncPlan;
   "title-plan": TitlePlan;
   "transcript": Transcript;
@@ -1018,4 +1090,4 @@ export interface ArtifactSchemaMap {
 
 export type ArtifactSchemaId = keyof ArtifactSchemaMap;
 
-export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;
+export const ARTIFACT_SCHEMA_IDS: readonly ArtifactSchemaId[] = ["audio-plan", "beat-map", "catalog", "clip-category", "color-plan", "complement-plan", "dialogue-placement-plan", "dialogue-windows", "edit-plan", "emotion-arc", "energy-zones", "fandoms", "intent", "post-render-review", "project-config", "qa-report", "reference-priors", "scenes", "sfx-plan", "share-config", "shot-list", "source-catalog", "source-profile", "sync-plan", "title-plan", "transcript", "transition-plan", "webhooks"] as const;

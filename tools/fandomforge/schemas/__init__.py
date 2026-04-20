@@ -63,6 +63,7 @@ SCHEMA_IDS: tuple[str, ...] = (
     "dialogue-placement-plan",
     "clip-category",
     "intent",
+    "source-profile",
 )
 
 

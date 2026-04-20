@@ -4548,12 +4548,18 @@ def reference_grp() -> None:
               help="Max video height for download (lower = faster analysis).")
 @click.option("--no-download", is_flag=True,
               help="Skip download; analyze videos already in the tag dir.")
+@click.option("--lyric-sample-n", type=int, default=0,
+              help="Run whisper-based lyric alignment on the first N videos. "
+                   "0 (default) = skip whisper entirely. Pass a large number "
+                   "(e.g. 999) to whisper every video — slow but unlocks "
+                   "lyric-sync priors across the corpus.")
 def reference_ingest_cmd(
     playlist_url: str,
     tag: str,
     max_videos: int | None,
     max_height: int,
     no_download: bool,
+    lyric_sample_n: int,
 ) -> None:
     """Download + analyze a playlist. Writes ~/.fandomforge/references/<tag>/reference-priors.json."""
     from fandomforge.intelligence.reference_library import ingest_playlist
@@ -4565,6 +4571,7 @@ def reference_ingest_cmd(
             max_videos=max_videos,
             max_height=max_height,
             download=not no_download,
+            lyric_sample_n=lyric_sample_n,
         )
     except RuntimeError as exc:
         console.print(f"[red]ingest failed:[/red] {exc}")

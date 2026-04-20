@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "source_id": "mad-max-fury-road-2015-bluray-1080p",
+  "source_type": "live_action",
+  "era_bucket": "2010-2020",
+  "era_label": "fury-road-2015-bluray",
+  "quality_tier": "S",
+  "visual_hazards": ["consistent dark scenes"],
+  "luma_histogram": {
+    "bins": 16,
+    "counts": [3820, 8410, 14230, 21050, 29760, 38940, 44110, 47880, 46320, 41200, 33770, 25640, 17450, 10320, 5940, 2110]
+  },
+  "chroma_histogram": {
+    "bins": 16,
+    "counts": [2100, 5430, 11280, 19640, 28870, 36590, 41200, 43760, 42110, 37840, 30120, 21340, 13670, 7890, 3420, 1230]
+  },
+  "color_temperature_kelvin": {
+    "estimate_k": 4200,
+    "confidence": 0.82
+  },
+  "saturation_avg": 0.61,
+  "color_cast": {
+    "hue_degrees": 32.4,
+    "dominant_colors": ["C87941", "8B5E3C", "E0A96D", "3B2A1A", "F5D6A8"]
+  },
+  "grain_noise_floor": 0.09,
+  "sharpness_score": 0.87,
+  "aspect_ratio_native": "2.39:1",
+  "framerate_native": 23.976,
+  "resolution_native": {
+    "width": 1920,
+    "height": 800
+  },
+  "letterbox_detected": true,
+  "pillarbox_detected": false,
+  "frames_sampled": 240,
+  "generated_at": "2026-04-19T14:32:00Z",
+  "generator": "source_profiler/0.1.0"
+}

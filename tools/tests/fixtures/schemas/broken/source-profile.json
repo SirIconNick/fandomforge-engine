@@ -1,0 +1,22 @@
+{
+  "_comment": "Deliberately invalid — three violations: (1) source_type 'cartoon' is not in the enum; (2) luma_histogram.counts has 17 items, violating maxItems:16; (3) required field letterbox_detected is absent.",
+  "schema_version": 1,
+  "source_id": "bad-source-001",
+  "source_type": "cartoon",
+  "era_bucket": "2010-2020",
+  "quality_tier": "B",
+  "luma_histogram": {
+    "bins": 16,
+    "counts": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700]
+  },
+  "aspect_ratio_native": "16:9",
+  "framerate_native": 24.0,
+  "resolution_native": {
+    "width": 1920,
+    "height": 1080
+  },
+  "pillarbox_detected": false,
+  "frames_sampled": 30,
+  "generated_at": "2026-04-19T00:00:00Z",
+  "generator": "source_profiler/0.1.0"
+}
