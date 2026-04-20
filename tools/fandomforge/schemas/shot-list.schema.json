@@ -47,7 +47,12 @@
       }
     },
     "generated_at": {"type": "string", "format": "date-time"},
-    "generator": {"type": "string"}
+    "generator": {"type": "string"},
+    "warnings": {
+      "description": "Non-fatal notes produced by shot-list generators (shot_proposer / densify_shot_list). QA reports can surface these but they don't block export.",
+      "type": "array",
+      "items": {"type": "string"}
+    }
   },
   "$defs": {
     "Shot": {
@@ -228,6 +233,10 @@
           "type": "number",
           "minimum": 0.0,
           "maximum": 1.0
+        },
+        "densified": {
+          "description": "True when this shot was inserted by step_densify_shot_list to fill a gap between sync-point shots. Downstream passes (scene-matching, clip-metadata enrichment) may give these lower weight or upgrade their source_timecode once a proper scene is matched.",
+          "type": "boolean"
         }
       }
     }

@@ -567,6 +567,13 @@ def propose_shot_list(inputs: ProposerInputs) -> dict[str, Any]:
                 "emotion": 3.0,
                 "beat_sync_score": 4.5 if kind == "drop" else 4.0 if kind == "downbeat" else 3.0,
             },
+            # Default to SAFE — aspect_normalize will flip this to False on
+            # any shot it can't fit within the target platform's safe envelope.
+            # Strict platforms (tiktok/reels/shorts) require this field; the
+            # default stamp means qa.safe_area doesn't spuriously block on
+            # shot_proposer-drafted lists where aspect_normalize still computed
+            # a clean fit.
+            "safe_area_ok": True,
         }
         if intent:
             shot["intent"] = intent
@@ -629,9 +636,166 @@ def propose_for_project(project_slug: str, *, project_root: Path | None = None) 
     return propose_shot_list(inputs)
 
 
+# ---------------------------------------------------------------------------
+# Densify — fill gaps between sync-point shots so total duration covers song
+# ---------------------------------------------------------------------------
+
+
+# Conservative filler band when no act pacing is declared. 1.5s average keeps
+# pacing readable without hammering the viewer; the real pacing bands from
+# arc_architect.shot_duration_band() take over whenever acts carry `pacing`.
+_DEFAULT_FILLER_BAND_SEC: tuple[float, float] = (1.0, 2.0)
+_MIN_FILLER_SEC = 0.4  # don't emit a filler shorter than this; fold into neighbor
+
+
+def densify_shot_list(
+    shot_list: dict[str, Any],
+    *,
+    edit_plan: dict[str, Any] | None = None,
+    song_duration_sec: float | None = None,
+) -> dict[str, Any]:
+    """Expand a sparse slot-list shot-list to cover the full song duration.
+
+    propose_shot_list() emits one shot per sync point (drops + downbeats),
+    which for a 229s song with 13 drops + 3 downbeats produces ~15 shots
+    totaling only ~16s. qa.duration then hard-fails because total shot
+    duration doesn't match song duration.
+
+    This pass fills the gap between each pair of consecutive slot shots
+    (plus the tail to song end) with "insert"-role filler shots whose
+    duration respects the act's pacing band. Filler source_id mirrors the
+    flanking slot shot (cheap source selection — scene-matching is a
+    follow-up; good enough for autopilot to reach the render stage).
+
+    Returns a new shot-list dict with re-numbered ids (s001..sNNN) and
+    densified shots. Input is not mutated.
+    """
+    from fandomforge.intelligence.arc_architect import shot_duration_band
+
+    shots_in = list(shot_list.get("shots") or [])
+    fps = float(shot_list.get("fps") or 24.0)
+    song_sec = float(
+        song_duration_sec
+        or shot_list.get("song_duration_sec")
+        or 0.0
+    )
+    if song_sec <= 0.0:
+        # No song duration known — nothing to fill to. Return untouched.
+        return dict(shot_list)
+
+    acts = (edit_plan or {}).get("acts") or []
+
+    def _pacing_at(t_sec: float) -> str | None:
+        for a in acts:
+            start = float(a.get("start_sec", 0) or 0)
+            end = float(a.get("end_sec", 0) or 0)
+            if start <= t_sec < end:
+                return a.get("pacing")
+        return None
+
+    def _filler_dur_sec(at_t: float) -> float:
+        pacing = _pacing_at(at_t)
+        if pacing:
+            lo, hi = shot_duration_band(pacing)
+        else:
+            lo, hi = _DEFAULT_FILLER_BAND_SEC
+        return (lo + hi) / 2.0
+
+    def _frames(sec: float) -> int:
+        return max(1, int(round(sec * fps)))
+
+    # Sort slot shots by start time so gap-fill is linear.
+    shots_sorted = sorted(shots_in, key=lambda s: int(s.get("start_frame", 0)))
+
+    def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
+        # Inherit safe_area_ok from the flanking shot — if the slot shot fits,
+        # the filler using the same source likely fits too. Default True when
+        # the flank didn't carry the field (shouldn't happen under current
+        # shot_proposer but keeps the filler defensive for external callers).
+        return {
+            "id": "",  # renumbered below
+            "act": flank.get("act", 1),
+            "start_frame": cursor,
+            "duration_frames": dur_frames,
+            "source_id": flank["source_id"],
+            "source_timecode": flank.get("source_timecode", "0:00:00.000"),
+            "role": "insert",
+            "mood_tags": [],
+            "framing": "",
+            "motion_vector": None,
+            "eyeline": "",
+            "beat_sync": {
+                "type": "free",
+                "index": 0,
+                "time_sec": cursor / fps,
+            },
+            "scores": {
+                "theme_fit": 3.0, "fandom_balance": 3.0,
+                "emotion": 3.0, "beat_sync_score": 2.5,
+            },
+            "safe_area_ok": bool(flank.get("safe_area_ok", True)),
+            "densified": True,
+        }
+
+    def _fill_gap(cursor: int, end_frame: int, flank: dict[str, Any]) -> list[dict[str, Any]]:
+        fillers: list[dict[str, Any]] = []
+        while cursor < end_frame:
+            cursor_sec = cursor / fps
+            target_sec = _filler_dur_sec(cursor_sec)
+            remaining_frames = end_frame - cursor
+            dur_frames = min(_frames(target_sec), remaining_frames)
+            if dur_frames / fps < _MIN_FILLER_SEC:
+                # Tail is too short to justify its own shot. Fold it into
+                # the previous filler so the total gap coverage is exact
+                # — otherwise qa.duration accumulates ~0.3s * N segments
+                # of "almost" coverage.
+                if fillers:
+                    fillers[-1]["duration_frames"] += remaining_frames
+                break
+            fillers.append(_make_filler(cursor, dur_frames, flank))
+            cursor += dur_frames
+        return fillers
+
+    densified: list[dict[str, Any]] = []
+    # Head-fill: zero to first slot shot.
+    if shots_sorted:
+        first_start = int(shots_sorted[0]["start_frame"])
+        if first_start > 0:
+            densified.extend(_fill_gap(0, first_start, shots_sorted[0]))
+
+    for i, shot in enumerate(shots_sorted):
+        densified.append(dict(shot))  # copy so we can renumber without mutating caller
+        cur_end_frame = int(shot["start_frame"]) + int(shot["duration_frames"])
+        if i + 1 < len(shots_sorted):
+            next_start_frame = int(shots_sorted[i + 1]["start_frame"])
+        else:
+            next_start_frame = _frames(song_sec)
+
+        if next_start_frame <= cur_end_frame:
+            continue  # no gap
+        densified.extend(_fill_gap(cur_end_frame, next_start_frame, shot))
+
+    # Re-ID shots sequentially.
+    for idx, shot in enumerate(densified, start=1):
+        shot["id"] = f"s{idx:03d}"
+
+    out = dict(shot_list)
+    out["shots"] = densified
+    if warnings := out.get("warnings"):
+        out["warnings"] = list(warnings)
+    else:
+        out["warnings"] = []
+    out["warnings"].append(
+        f"densified from {len(shots_in)} slot shots to {len(densified)} "
+        f"(filler={len(densified) - len(shots_in)}, role=insert)"
+    )
+    return out
+
+
 __all__ = [
     "ProposerConfig",
     "ProposerInputs",
+    "densify_shot_list",
     "load_inputs",
     "propose_shot_list",
     "propose_for_project",

@@ -609,6 +609,112 @@ def step_extract_clip_metadata(ctx: AutopilotContext) -> AutopilotEvent:
     )
 
 
+def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
+    """Fill gaps between sync-point shots so total duration matches song.
+
+    propose_shot_list() emits one shot per drop+downbeat, which leaves the
+    timeline mostly empty (229s song → 15 shots → 16s total). qa.duration
+    hard-fails, so autopilot never reaches the render stage.
+
+    This step reads the sparse shot-list and inserts "insert"-role filler
+    shots in every gap, respecting each act's pacing band. Filler
+    source_id mirrors the flanking slot shot (cheap; scene-matching is a
+    follow-up).
+
+    Idempotent: detects when a shot-list has already been densified (any
+    shot carries `densified=true`) and skips to avoid double-expansion.
+    """
+    start = time.perf_counter()
+    shot_list_path = ctx.project_dir / "data" / "shot-list.json"
+    if not shot_list_path.exists():
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="densify_shot_list",
+            status="skipped", message="no shot-list.json to densify",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    try:
+        from fandomforge.intelligence.shot_proposer import densify_shot_list
+        from fandomforge.validation import validate_and_write
+
+        shot_list = json.loads(shot_list_path.read_text(encoding="utf-8"))
+        if any(s.get("densified") for s in shot_list.get("shots") or []):
+            return AutopilotEvent(
+                ts=_now(), run_id=ctx.run_id, step_id="densify_shot_list",
+                status="skipped",
+                message="shot-list already densified",
+                duration_sec=round(time.perf_counter() - start, 3),
+            )
+
+        before_count = len(shot_list.get("shots") or [])
+        edit_plan_path = ctx.project_dir / "data" / "edit-plan.json"
+        edit_plan = None
+        if edit_plan_path.exists():
+            try:
+                edit_plan = json.loads(edit_plan_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                edit_plan = None
+
+        # Beat-map gives us song duration if the shot-list doesn't have it.
+        song_duration = shot_list.get("song_duration_sec")
+        if not song_duration:
+            bm_path = ctx.project_dir / "data" / "beat-map.json"
+            if bm_path.exists():
+                try:
+                    bm = json.loads(bm_path.read_text(encoding="utf-8"))
+                    song_duration = bm.get("duration_sec")
+                except (OSError, json.JSONDecodeError):
+                    song_duration = None
+
+        densified = densify_shot_list(
+            shot_list, edit_plan=edit_plan, song_duration_sec=song_duration,
+        )
+        validate_and_write(densified, "shot-list", shot_list_path)
+
+        # Reconcile edit-plan fps/resolution to the authoritative shot-list
+        # values so qa.fps_resolution doesn't block on LLM/stub defaults
+        # picking a wrong fps. shot-list is the source of truth here — it
+        # was computed from actual source video metadata.
+        if edit_plan is not None and edit_plan_path.exists():
+            new_fps = densified.get("fps")
+            new_res = densified.get("resolution")
+            changed = False
+            if new_fps is not None and edit_plan.get("fps") != new_fps:
+                edit_plan["fps"] = new_fps
+                changed = True
+            if new_res is not None and edit_plan.get("resolution") != new_res:
+                edit_plan["resolution"] = new_res
+                changed = True
+            if changed:
+                validate_and_write(edit_plan, "edit-plan", edit_plan_path)
+    except Exception as exc:  # noqa: BLE001
+        return AutopilotEvent(
+            ts=_now(), run_id=ctx.run_id, step_id="densify_shot_list",
+            status="failed",
+            message=f"densify failed: {type(exc).__name__}: {exc}",
+            duration_sec=round(time.perf_counter() - start, 3),
+        )
+
+    after_count = len(densified.get("shots") or [])
+    total_sec = sum(
+        int(s.get("duration_frames", 0)) for s in densified.get("shots") or []
+    ) / float(densified.get("fps") or 24.0)
+    return AutopilotEvent(
+        ts=_now(), run_id=ctx.run_id, step_id="densify_shot_list",
+        status="ok",
+        message=(
+            f"densified {before_count} → {after_count} shots "
+            f"(+{after_count - before_count} fillers), total {total_sec:.1f}s"
+        ),
+        evidence={
+            "shots_before": before_count,
+            "shots_after": after_count,
+            "total_duration_sec": round(total_sec, 2),
+        },
+        duration_sec=round(time.perf_counter() - start, 3),
+    )
+
+
 def step_stamp_color_grade_confidence(ctx: AutopilotContext) -> AutopilotEvent:
     """Phase 3.3 — stamp `color_grade_confidence` into every shot of
     shot-list.json from the source's quality_tier + color_cast. The
@@ -2089,6 +2195,11 @@ STEPS: list[Step] = [
     Step("propose_shots", "Propose shot list",
          lambda ctx: _artifact_exists_and_valid(ctx, "shot-list"),
          step_propose_shots),
+    Step("densify_shot_list",
+         "Fill gaps between sync-point shots to cover song duration",
+         # Cheap, idempotent (step's own logic skips when already densified).
+         lambda _ctx: False,
+         step_densify_shot_list),
     Step("extract_clip_metadata", "Enrich shot-list with Phase 1.3 metadata",
          lambda _ctx: False,  # always re-run; cheap + idempotent (only fills missing fields)
          step_extract_clip_metadata),
