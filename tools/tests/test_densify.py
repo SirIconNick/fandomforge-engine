@@ -315,6 +315,53 @@ class TestDensifyShotList:
             f"last-resort should prefer brightest dark, got timecodes: " \
             f"{[f['source_timecode'] for f in scene_fillers]}"
 
+    def test_luma_continuity_prefers_proximate_candidate(self):
+        """When two candidates pass every filter, the one whose avg_luma is
+        closest to the previously picked scene's avg_luma wins. Prevents
+        flash-cuts between very dark and very bright scenes."""
+        # One slot shot, then several fillers. First pick has nothing to
+        # compare against; subsequent picks should stick near the first's luma.
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=8.0)
+        scenes_by_source = {
+            "src-A": [
+                # Group near 0.3 luma.
+                {"index": 0, "start_sec": 0.0, "end_sec": 1.5, "duration_sec": 1.5,
+                 "intensity_tier": "medium", "avg_luma": 0.32},
+                {"index": 1, "start_sec": 2.0, "end_sec": 3.5, "duration_sec": 1.5,
+                 "intensity_tier": "medium", "avg_luma": 0.30},
+                {"index": 2, "start_sec": 4.0, "end_sec": 5.5, "duration_sec": 1.5,
+                 "intensity_tier": "medium", "avg_luma": 0.35},
+                # Way brighter outlier — should NOT be preferred when the
+                # previous pick was in the 0.3 range.
+                {"index": 3, "start_sec": 6.0, "end_sec": 7.5, "duration_sec": 1.5,
+                 "intensity_tier": "medium", "avg_luma": 0.85},
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        # First filler is free to pick anything; subsequent fillers should
+        # prefer the dim group. Check that the 0.85 outlier is picked LAST
+        # (or not at all), proving the continuity ranker works.
+        scene_matched = [
+            f for f in fillers if f["source_id"] == "src-A"
+            and f.get("clip_category") in ("action-mid", "action-high", "reaction-quiet")
+        ]
+        assert len(scene_matched) >= 2, \
+            "test needs multiple scene-matched fillers to exercise continuity"
+        # The outlier's timecode is 0:00:06 — it should land LAST among
+        # scene-matched picks if at all.
+        outlier_picks = [
+            (i, f) for i, f in enumerate(scene_matched)
+            if f["source_timecode"].startswith("0:00:06")
+        ]
+        if outlier_picks:
+            outlier_idx = outlier_picks[0][0]
+            non_outlier_count = len(scene_matched) - 1
+            assert outlier_idx == non_outlier_count, (
+                f"bright outlier picked at position {outlier_idx}; "
+                f"continuity should defer it to last (expected {non_outlier_count})"
+            )
+
     def test_missing_avg_luma_does_not_reject(self):
         """Scenes without avg_luma must not be rejected — the field is
         optional and legacy sources don't carry it."""

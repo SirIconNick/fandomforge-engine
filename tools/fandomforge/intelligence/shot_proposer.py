@@ -895,17 +895,25 @@ def densify_shot_list(
             return float(val)
         return None
 
-    def _pick_scene(target_intensity: str, used_src: set[str]) -> tuple[str, dict[str, Any]] | None:
+    def _pick_scene(
+        target_intensity: str,
+        used_src: set[str],
+        prev_luma: float | None = None,
+    ) -> tuple[str, dict[str, Any]] | None:
         """Pick the best scene across all sources for the target intensity.
 
         Priority: (1) avg_luma ≥ MIN_SCENE_LUMA (no black frames),
         (2) intensity match, (3) source rotation (fewest prior uses),
-        (4) not already picked. Returns (source_id, scene_dict) or None
-        when the scene pool is exhausted.
+        (4) within that source, luma proximity to prev_luma (continuity).
 
         If every unused scene across every source is dark, falls back to
         the brightest dark scene rather than returning None — better a
         slightly-dim filler than a crash or a gap.
+
+        prev_luma is the flanking shot's avg_luma. When known, candidates
+        within the chosen source are ranked by |cand.avg_luma - prev_luma|
+        so consecutive cuts don't flash between very dark and very bright
+        scenes. When prev_luma is None (no data), rotation order decides.
         """
         if not scenes_by_source:
             return None
@@ -914,29 +922,42 @@ def densify_shot_list(
             available_sources,
             key=lambda s: (source_use_count.get(s, 0), s),
         )
+
+        def _sort_candidates(cands: list[dict[str, Any]]) -> list[dict[str, Any]]:
+            """Rank within a source: closest luma first when prev_luma known,
+            else index order (stable, predictable)."""
+            if prev_luma is None:
+                return cands
+            def _dist(sc: dict[str, Any]) -> float:
+                luma = _scene_luma(sc)
+                if luma is None:
+                    return 9e9  # unknown luma goes last
+                return abs(luma - prev_luma)
+            return sorted(cands, key=_dist)
+
         # Three passes: (a) strict intensity + luma, (b) any intensity + luma,
         # (c) last-resort including dark scenes (picks brightest dark).
-        # Last resort is necessary because some sources (fade-heavy cinematic
-        # clips) may have ONLY dark scenes after filtering — we'd rather use
-        # them than fail hard.
         dark_fallbacks: list[tuple[float, str, dict[str, Any]]] = []
         for strict in (True, False):
             for src in ranked_sources:
                 scenes = scenes_by_source.get(src) or []
+                passing: list[dict[str, Any]] = []
                 for sc in scenes:
                     idx = sc.get("index", -1)
                     if (src, idx) in used_scenes:
                         continue
                     if _scene_duration(sc) < 0.4:
-                        continue  # too short to be a meaningful clip
+                        continue
                     if strict and _scene_intensity(sc) != target_intensity:
                         continue
                     luma = _scene_luma(sc)
                     if luma is not None and luma < MIN_SCENE_LUMA:
-                        # Track for last-resort; don't return yet.
                         dark_fallbacks.append((luma, src, sc))
                         continue
-                    return src, sc
+                    passing.append(sc)
+                if passing:
+                    best = _sort_candidates(passing)[0]
+                    return src, best
         # Every candidate was dark. Pick the brightest.
         if dark_fallbacks:
             dark_fallbacks.sort(key=lambda t: -t[0])
@@ -1047,6 +1068,13 @@ def densify_shot_list(
     stretch_factor = max(0.5, min(stretch_factor, 5.0))
     # ----------------------------------------------------------------------
 
+    # Tracks the avg_luma of the most-recently-picked scene, for luma-
+    # continuity ranking on the NEXT pick. None until the first scene-matched
+    # filler lands. Flank shots (slot-list entries) don't carry avg_luma yet,
+    # so the first filler after a slot shot has no reference — that's fine,
+    # _pick_scene degrades gracefully.
+    last_picked_luma: dict[str, float | None] = {"v": None}
+
     def _make_filler(cursor: int, dur_frames: int, flank: dict[str, Any]) -> dict[str, Any]:
         """Scene-matched when scenes_by_source is provided, else inherits from
         flanking shot. Source rotation + intensity matching drive engagement."""
@@ -1057,13 +1085,27 @@ def densify_shot_list(
         motion_vec = None
         clip_cat = "texture"  # default — overridden by intensity match below
 
-        picked = _pick_scene(target_intensity, used_src=set())
+        # prev_luma for continuity: prefer the last picked scene's luma;
+        # fall back to the flank shot's avg_luma if we've got one (rare;
+        # slot-list shots don't currently carry this). None is acceptable
+        # and disables the proximity sort inside _pick_scene.
+        prev_luma = last_picked_luma["v"]
+        if prev_luma is None:
+            fla = flank.get("avg_luma")
+            if isinstance(fla, (int, float)):
+                prev_luma = float(fla)
+
+        picked = _pick_scene(target_intensity, used_src=set(), prev_luma=prev_luma)
         if picked is not None:
             src, scene = picked
             src_id = src
             src_tc = _fmt_timecode(float(scene.get("start_sec", 0.0)))
             used_scenes.add((src, scene.get("index", -1)))
             source_use_count[src] = source_use_count.get(src, 0) + 1
+            # Update the continuity memory for the next filler.
+            picked_luma = _scene_luma(scene)
+            if picked_luma is not None:
+                last_picked_luma["v"] = picked_luma
             # Intensity → role + clip_category mapping. High-intensity fillers
             # in frantic acts earn the "action" role + action-high clip_category;
             # low-intensity in slow acts get reaction framing. Mid-intensity
