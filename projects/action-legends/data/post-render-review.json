@@ -2,11 +2,11 @@
   "schema_version": 1,
   "project_slug": "action-legends",
   "video_path": "projects/action-legends/exports/graded.mp4",
-  "generated_at": "2026-04-20T01:47:58.998603+00:00",
+  "generated_at": "2026-04-20T02:47:19.432486+00:00",
   "overall": "yellow",
   "overall_verdict": "warn",
-  "score": 83.5,
-  "grade": "B",
+  "score": 90.7,
+  "grade": "A-",
   "ship_recommendation": "Reviewable with caveats \u2014 visual flagged. Open the output and eyeball before shipping.",
   "dimensions": [
     {
@@ -21,70 +21,31 @@
         "pix_fmt": "yuv420p",
         "fps": 24.0,
         "duration_sec": 221.416667,
-        "video_bitrate_bps": 6375502,
-        "container_bitrate_bps": 6702621,
+        "video_bitrate_bps": 6481482,
+        "container_bitrate_bps": 6808336,
         "audio_codec": "aac",
         "sample_rate": 48000,
         "channels": 2,
-        "audio_bitrate_bps": 321912
+        "audio_bitrate_bps": 321650
       }
     },
     {
       "name": "visual",
       "verdict": "warn",
-      "score": 45.0,
+      "score": 69.0,
       "findings": [
-        "dark segment @ 37.79s \u2192 38.04s (0.25s)",
-        "dark segment @ 40.96s \u2192 41.42s (0.46s)",
-        "dark segment @ 65.96s \u2192 66.25s (0.29s)",
-        "dark segment @ 66.29s \u2192 66.62s (0.33s)",
-        "dark segment @ 78.08s \u2192 78.79s (0.71s)"
+        "dark segment @ 203.38s \u2192 203.62s (0.25s)"
       ],
       "measurements": {
         "black_segments": [
           {
-            "start": 37.791667,
-            "end": 38.041667,
-            "duration": 0.25
-          },
-          {
-            "start": 40.958333,
-            "end": 41.416667,
-            "duration": 0.458333
-          },
-          {
-            "start": 65.958333,
-            "end": 66.25,
-            "duration": 0.291667
-          },
-          {
-            "start": 66.291667,
-            "end": 66.625,
-            "duration": 0.333333
-          },
-          {
-            "start": 78.083333,
-            "end": 78.791667,
-            "duration": 0.708333
-          },
-          {
-            "start": 94.166667,
-            "end": 94.458333,
-            "duration": 0.291667
-          },
-          {
-            "start": 148.875,
-            "end": 149.083333,
-            "duration": 0.208333
-          },
-          {
             "start": 203.375,
-            "end": 203.666667,
-            "duration": 0.291667
+            "end": 203.625,
+            "duration": 0.25
           }
         ],
         "freeze_events": [],
-        "total_black_sec": 2.833
+        "total_black_sec": 0.25
       }
     },
     {
@@ -93,12 +54,12 @@
       "score": 100.0,
       "findings": [],
       "measurements": {
-        "input_i": -11.49,
-        "input_tp": -1.42,
+        "input_i": -11.47,
+        "input_tp": -1.4,
         "input_lra": 2.6,
-        "input_thresh": -21.64,
+        "input_thresh": -21.63,
         "mean_dbfs": -14.8,
-        "max_dbfs": -2.2,
+        "max_dbfs": -2.1,
         "silences": []
       }
     },

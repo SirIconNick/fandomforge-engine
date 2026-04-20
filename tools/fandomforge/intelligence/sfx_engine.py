@@ -168,6 +168,7 @@ def build_sfx_plan(
     scene_audio_enabled: bool = True,
     scene_audio_gain_db: float = -20.0,
     scene_audio_duck_db: float = -8.0,
+    scene_audio_duck_db_during_dialogue: float = -60.0,
     snap_window_sec: float = 0.15,
     seed: int | None = None,
 ) -> dict[str, Any]:
@@ -267,6 +268,7 @@ def build_sfx_plan(
             "enabled": bool(scene_audio_enabled),
             "gain_db": float(scene_audio_gain_db),
             "duck_to_song_db": float(scene_audio_duck_db),
+            "duck_db_during_dialogue": float(scene_audio_duck_db_during_dialogue),
         },
         "events": events,
         "generated_at": datetime.now(timezone.utc).isoformat(),

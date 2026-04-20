@@ -3,7 +3,7 @@
 // DO NOT EDIT BY HAND. Run `pnpm types:gen` after any schema change.
 //
 // Source of truth: tools/fandomforge/schemas/*.schema.json
-// Generated at: 2026-04-19T21:47:47.758Z
+// Generated at: 2026-04-20T02:30:48.656Z
 
 
 export type Layer = {
@@ -426,6 +426,8 @@ export interface ProjectConfig {
     platform_target?: "youtube" | "tiktok" | "reels" | "shorts" | "twitter" | "master";
     target_loudness_lufs?: number;
     true_peak_ceiling_dbtp?: number;
+    /** The category of edit this project is — drives type-specific priors (target pacing, sync style, transition bias, color palette). When absent, the sync planner auto-detects from the edit-plan prompt. See docs/edit-types/ for definitions. */
+    edit_type?: "action" | "emotional" | "tribute" | "shipping" | "speed_amv" | "cinematic" | "comedy" | "hype_trailer";
   }
 
 /** Output of `ff qa gate` and `ff qa post-render`. Captures every rule checked, its result, and any override used. */
@@ -467,6 +469,14 @@ export interface ReferencePriors {
     title: string;
     url?: string;
     duration_sec: number;
+    /** Optional YouTube-sourced metadata — view_count, like_count, like_ratio, channel, upload_date (YYYYMMDD), duration_sec, title. */
+    youtube_metadata?: Record<string, unknown>;
+    /** Composite 0-100 quality score combining audience reception + editing craft. */
+    quality_score?: number;
+    quality_tier?: "S" | "A" | "B" | "C" | "D";
+    /** Per-axis scores that combine into quality_score. */
+    quality_components?: Record<string, unknown>;
+    /** Extensible metrics block. Deep analyzer adds pacing curve, visual stats, beat-sync rate, transitions distribution, motion-cut distribution, and lyric-alignment on top of the basic duration stats. */
     metrics: {
     shot_count?: number;
     avg_shot_duration_sec?: number;
@@ -475,8 +485,34 @@ export interface ReferencePriors {
     min_shot_duration_sec?: number;
     max_shot_duration_sec?: number;
     shot_duration_stddev_sec?: number;
+    shot_duration_p25?: number;
+    shot_duration_p75?: number;
+    shot_duration_p90?: number;
+    /** Cuts-per-minute over time (sliding window). */
+    pacing_curve?: Array<{
+    t_sec: number;
+    cpm: number;
+  }>;
+    /** Percentage of shots in act 1 / 2 / 3 thirds. */
+    act_pacing_pct?: Array<number>;
+    intro_to_first_cut_sec?: number;
+    outro_after_last_cut_sec?: number;
+    sampled_shots?: number;
+    avg_luma?: number;
+    luma_stddev?: number;
+    dark_shot_pct?: number;
+    bright_shot_pct?: number;
+    hue_median_deg?: number;
+    saturation_mean?: number;
+    motion_available?: boolean;
+    motion_events?: number;
+    beat_sync_available?: boolean;
+    tempo_bpm?: number;
+    cuts_on_beat_pct?: number;
+    cuts_checked?: number;
   };
   }>;
+    /** Corpus-wide editing signatures. Used by the sync planner to bias matches toward reference style. */
     priors: {
     median_shot_duration_sec: number;
     cuts_per_minute: number;
@@ -484,6 +520,18 @@ export interface ReferencePriors {
     typical_act_pacing_pct?: Array<number>;
     /** [p10, p90] shot duration range. */
     shot_duration_range_sec?: Array<number>;
+    /** Average % of cuts that fall on the beat across the corpus. */
+    cuts_on_beat_pct_mean?: number;
+    /** Median tempo of the corpus's songs. */
+    tempo_bpm_median?: number;
+    /** Corpus-wide average luma — low = mostly dark edits, high = bright. */
+    avg_luma_mean?: number;
+    dark_shot_pct_mean?: number;
+    bright_shot_pct_mean?: number;
+    saturation_mean_mean?: number;
+    intro_to_first_cut_sec_median?: number;
+    /** Categorical pacing signature derived from the average pacing curve shape. */
+    pacing_profile?: "slow-burn" | "steady" | "escalator" | "peaks-and-valleys" | "machine-gun";
   };
     generated_at?: string;
     generator?: string;
@@ -520,6 +568,8 @@ export interface SfxPlan {
     gain_db: number;
     /** Duck the scene audio by this much when the song peaks (drops). */
     duck_to_song_db?: number;
+    /** Duck the scene audio by this much (additive on top of gain_db) while a dialogue cue is playing. Default -60 dB = effectively silent. Lets injected narrative dialogue sit clean on top of source ambient bleed. */
+    duck_db_during_dialogue?: number;
   };
     /** Ordered list of SFX placements, each pointing at a variant pack. */
     events: Array<{

@@ -1009,7 +1009,7 @@
       "start_frame": 962,
       "duration_frames": 33,
       "source_id": "the-raid-2",
-      "source_timecode": "0:02:04.883",
+      "source_timecode": "0:01:17.942",
       "role": "action",
       "mood_tags": [
         "action",
@@ -1031,7 +1031,7 @@
       },
       "fandom": "The Raid 2",
       "description": "act1/sustain \u00b7 tier=high \u00b7 motion=0.238 \u00b7 luma=0.20",
-      "color_notes": "tier=high luma=0.20"
+      "color_notes": "tier=high luma=0.20 | phase0-relit luma>=0.22"
     },
     {
       "id": "s035",
@@ -1789,7 +1789,7 @@
       "start_frame": 1552,
       "duration_frames": 33,
       "source_id": "fight_jw_best_fights_4k",
-      "source_timecode": "0:10:29.912",
+      "source_timecode": "0:08:05.937",
       "role": "action",
       "mood_tags": [
         "action",
@@ -1811,7 +1811,7 @@
       },
       "fandom": "John Wick",
       "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.21",
-      "color_notes": "tier=high luma=0.21"
+      "color_notes": "tier=high luma=0.21 | phase0-relit luma>=0.22"
     },
     {
       "id": "s061",
@@ -1819,7 +1819,7 @@
       "start_frame": 1585,
       "duration_frames": 16,
       "source_id": "fight_jw_ultimate_mashup",
-      "source_timecode": "0:01:14.074",
+      "source_timecode": "0:01:42.374",
       "role": "action",
       "mood_tags": [
         "action",
@@ -1841,7 +1841,7 @@
       },
       "fandom": "John Wick",
       "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.253 \u00b7 luma=0.19",
-      "color_notes": "tier=high luma=0.19"
+      "color_notes": "tier=high luma=0.19 | phase0-relit luma>=0.22"
     },
     {
       "id": "s062",
@@ -2269,7 +2269,7 @@
       "start_frame": 1860,
       "duration_frames": 16,
       "source_id": "fight_raid2_brutal_fights",
-      "source_timecode": "0:04:02.409",
+      "source_timecode": "0:03:33.412",
       "role": "action",
       "mood_tags": [
         "action",
@@ -2291,7 +2291,7 @@
       },
       "fandom": "The Raid 2",
       "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.190 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "color_notes": "tier=high luma=0.24 | phase0-relit luma>=0.22 | phase0-relit2 luma>=0.3"
     },
     {
       "id": "s077",
@@ -2299,7 +2299,7 @@
       "start_frame": 1876,
       "duration_frames": 33,
       "source_id": "john-wick-4",
-      "source_timecode": "0:00:02.336",
+      "source_timecode": "0:01:22.129",
       "role": "action",
       "mood_tags": [
         "action",
@@ -2321,7 +2321,7 @@
       },
       "fandom": "John Wick",
       "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.240 \u00b7 luma=0.24",
-      "color_notes": "tier=high luma=0.24"
+      "color_notes": "tier=high luma=0.24 | phase0-relit3 jw4-relaxed"
     },
     {
       "id": "s078",
@@ -2779,7 +2779,7 @@
       "start_frame": 2252,
       "duration_frames": 17,
       "source_id": "mad-max-fury-road",
-      "source_timecode": "0:01:13.345",
+      "source_timecode": "0:00:28.849",
       "role": "action",
       "mood_tags": [
         "action",
@@ -2801,7 +2801,7 @@
       },
       "fandom": "Mad Max: Fury Road",
       "description": "act2/sustain \u00b7 tier=high \u00b7 motion=0.184 \u00b7 luma=0.27",
-      "color_notes": "tier=high luma=0.27"
+      "color_notes": "tier=high luma=0.27 | phase0-relit luma>=0.22"
     },
     {
       "id": "s094",
@@ -6079,7 +6079,7 @@
       "start_frame": 4872,
       "duration_frames": 16,
       "source_id": "fight_jw_best_fights_4k",
-      "source_timecode": "0:23:21.806",
+      "source_timecode": "0:08:07.594",
       "role": "motion",
       "mood_tags": [
         "action",
@@ -6101,7 +6101,7 @@
       },
       "fandom": "John Wick",
       "description": "act3/sustain \u00b7 tier=mid \u00b7 motion=0.146 \u00b7 luma=0.18",
-      "color_notes": "tier=mid luma=0.18"
+      "color_notes": "tier=mid luma=0.18 | phase0-relit2 luma>=0.3"
     },
     {
       "id": "s204",

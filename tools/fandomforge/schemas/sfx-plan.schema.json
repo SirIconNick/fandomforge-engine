@@ -27,6 +27,12 @@
           "description": "Duck the scene audio by this much when the song peaks (drops).",
           "minimum": -30,
           "maximum": 0
+        },
+        "duck_db_during_dialogue": {
+          "type": "number",
+          "description": "Duck the scene audio by this much (additive on top of gain_db) while a dialogue cue is playing. Default -60 dB = effectively silent. Lets injected narrative dialogue sit clean on top of source ambient bleed.",
+          "minimum": -60,
+          "maximum": 0
         }
       }
     },

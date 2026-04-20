@@ -81,15 +81,20 @@ def mix_audio(
     sfx_cues: list[SfxCue] | None = None,
     scene_audio_path: Path | None = None,
     scene_audio_gain_db: float = -20.0,
+    scene_audio_duck_db: float = -60.0,
 ) -> MixResult:
     """Mix a song with dialogue cues into a single audio file.
 
     Uses ffmpeg's complex filter graph:
     1. Apply per-cue gain + delay to each dialogue audio
     2. Mix all dialogue into a single "dialogue bus"
-    3. Run sidechain compressor on song (triggered by dialogue bus) — auto-duck
-    4. Amix song + dialogue
-    5. Loudnorm to target LUFS
+    3. Apply deterministic volume automation to the song — duck each cue
+       window by cue.duck_db with 200ms linear fades.
+    4. If scene-audio bed is present, apply the same automation but uniformly
+       duck to scene_audio_duck_db (default -60 dB ≈ silent) so injected
+       dialogue isn't competing with source-clip ambient bleed. Scene bleed
+       returns to full scene_audio_gain_db outside dialogue windows.
+    5. Amix song + dialogue + sfx + scene_bed → alimiter for peak protection.
 
     Args:
         song_path: Path to the song audio file (will be trimmed to total_duration)
@@ -100,6 +105,12 @@ def mix_audio(
         target_lufs: integrated LUFS target (-14 = YouTube)
         sample_rate: output sample rate
         song_start_offset_sec: offset into the song if you want to skip the intro
+        scene_audio_path: optional WAV/AAC bed of source-clip ambient audio
+        scene_audio_gain_db: baseline scene-audio level (typical -18 to -24 dB)
+        scene_audio_duck_db: duck depth applied to scene_audio across each
+            dialogue cue window. Default -60 dB ≈ silent so narrative dialogue
+            sits clean. Use a softer value (e.g. -20 dB) if you want some
+            source bleed to remain audible underneath dialogue.
     """
     _check_ffmpeg()
 
@@ -203,6 +214,37 @@ def mix_audio(
             f"{scene_label}"
         )
 
+    # Probe each cue's duration once — used by both song-duck and scene-duck
+    # volume expressions. A cue with unreadable duration is dropped from the
+    # ducking automation but still plays (its delay/gain/pad path is intact).
+    duck_windows: list[tuple[float, float, float]] = []  # (start, end, per_cue_duck_db)
+    for _idx, cue in valid_cues:
+        cue_dur = _probe_duration(cue.audio_path)
+        if cue_dur <= 0:
+            continue
+        duck_windows.append((cue.start_sec, cue.start_sec + cue_dur, cue.duck_db))
+
+    fade_pad = 0.20
+
+    def _build_duck_expr(windows: list[tuple[float, float, float]], uniform_duck_db: float | None) -> str:
+        """Build an ffmpeg volume= expression that ducks the carrier at each
+        window. If uniform_duck_db is provided, every window uses that depth
+        (useful for scene-audio: duck to silence regardless of per-cue value).
+        Otherwise each window uses its own per_cue_duck_db."""
+        parts: list[str] = []
+        for start, end, per_cue_duck_db in windows:
+            duck_db = uniform_duck_db if uniform_duck_db is not None else per_cue_duck_db
+            duck_ratio = max(0.001, 10 ** (duck_db / 20))
+            rise = 1 - duck_ratio
+            parts.append(
+                f"if(between(t,{start - fade_pad:.3f},{start:.3f}),"
+                f"1-({rise:.4f})*(t-{start - fade_pad:.3f})/{fade_pad:.3f},"
+                f"if(between(t,{start:.3f},{end:.3f}),{duck_ratio:.4f},"
+                f"if(between(t,{end:.3f},{end + fade_pad:.3f}),"
+                f"{duck_ratio:.4f}+({rise:.4f})*(t-{end:.3f})/{fade_pad:.3f},"
+            )
+        return "".join(parts) + "1" + ")))" * len(parts)
+
     if dialogue_labels:
         # Mix dialogue cues together into one bus (normalize=0 so each stays hot)
         mix_inputs = "".join(dialogue_labels)
@@ -213,32 +255,26 @@ def mix_audio(
             f"[dialogue_out]"
         )
 
-        # Deterministic volume automation on the song: duck each cue window.
-        # Duck amount is per-cue (from DialogueCue.duck_db); default -12 dB.
+        # Deterministic volume automation on the song: per-cue duck depth.
         # 200ms linear fade in/out at each edge.
-        fade_pad = 0.20
-        vol_expr_parts: list[str] = []
-        for _idx, cue in valid_cues:
-            cue_dur = _probe_duration(cue.audio_path)
-            if cue_dur <= 0:
-                continue
-            start = cue.start_sec
-            end = start + cue_dur
-            duck_ratio = max(0.01, 10 ** (cue.duck_db / 20))
-            rise = 1 - duck_ratio
-            vol_expr_parts.append(
-                f"if(between(t,{start - fade_pad:.3f},{start:.3f}),"
-                f"1-({rise:.4f})*(t-{start - fade_pad:.3f})/{fade_pad:.3f},"
-                f"if(between(t,{start:.3f},{end:.3f}),{duck_ratio:.4f},"
-                f"if(between(t,{end:.3f},{end + fade_pad:.3f}),"
-                f"{duck_ratio:.4f}+({rise:.4f})*(t-{end:.3f})/{fade_pad:.3f},"
+        if duck_windows:
+            song_vol_expr = _build_duck_expr(duck_windows, uniform_duck_db=None)
+            filter_parts.append(
+                f"[song_pre]volume='{song_vol_expr}':eval=frame[song_ducked]"
             )
-        vol_expr = "".join(vol_expr_parts) + "1" + ")))" * len(vol_expr_parts)
+            song_bus_label = "[song_ducked]"
+        else:
+            song_bus_label = "[song_pre]"
 
-        filter_parts.append(
-            f"[song_pre]volume='{vol_expr}':eval=frame[song_ducked]"
-        )
-        song_bus_label = "[song_ducked]"
+        # Scene audio gets the same automation but uniformly ducked to silence
+        # (default -60 dB) so injected dialogue isn't fighting source bleed.
+        # Scene bleed comes back at full scene_audio_gain_db outside dialogue.
+        if scene_label is not None and duck_windows:
+            scene_vol_expr = _build_duck_expr(duck_windows, uniform_duck_db=scene_audio_duck_db)
+            filter_parts.append(
+                f"{scene_label}volume='{scene_vol_expr}':eval=frame[scene_ducked]"
+            )
+            scene_label = "[scene_ducked]"
     else:
         song_bus_label = "[song_pre]"
 

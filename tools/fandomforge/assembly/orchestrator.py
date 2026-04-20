@@ -503,15 +503,19 @@ def build_rough_cut(
             warnings.extend(dialogue_warnings)
 
             # Resolve optional sfx-plan.json (arg override > default path).
-            sfx_cues, scene_audio_path, scene_audio_gain_db, sfx_warnings = (
-                _prepare_sfx_and_scene_audio(
-                    project_dir=project_dir,
-                    work_dir=work_dir,
-                    shots=shots,
-                    raw_dir=raw_dir,
-                    total_duration_sec=asm.duration_sec,
-                    sfx_plan_json=sfx_plan_json,
-                )
+            (
+                sfx_cues,
+                scene_audio_path,
+                scene_audio_gain_db,
+                scene_audio_duck_db,
+                sfx_warnings,
+            ) = _prepare_sfx_and_scene_audio(
+                project_dir=project_dir,
+                work_dir=work_dir,
+                shots=shots,
+                raw_dir=raw_dir,
+                total_duration_sec=asm.duration_sec,
+                sfx_plan_json=sfx_plan_json,
             )
             warnings.extend(sfx_warnings)
 
@@ -526,6 +530,7 @@ def build_rough_cut(
                 sfx_cues=sfx_cues,
                 scene_audio_path=scene_audio_path,
                 scene_audio_gain_db=scene_audio_gain_db,
+                scene_audio_duck_db=scene_audio_duck_db,
             )
             if not mix_result.success:
                 warnings.append(
@@ -609,13 +614,14 @@ def _prepare_sfx_and_scene_audio(
     raw_dir: Path,
     total_duration_sec: float,
     sfx_plan_json: str | None,
-) -> tuple[list[SfxCue], Path | None, float, list[str]]:
+) -> tuple[list[SfxCue], Path | None, float, float, list[str]]:
     """Build SfxCue list + scene-audio WAV from sfx-plan.json.
 
     - Resolves SFX file paths (falls back silently when a variant is missing)
     - Builds scene_audio.wav by extracting source-clip audio per shot and
       concatenating onto a timeline track. Respects scene_audio_blend.enabled.
-    - Returns (cues, scene_audio_path, scene_audio_gain_db, warnings).
+    - Returns (cues, scene_audio_path, scene_audio_gain_db,
+      scene_audio_duck_db_during_dialogue, warnings).
     """
     warnings: list[str] = []
 
@@ -633,13 +639,13 @@ def _prepare_sfx_and_scene_audio(
 
     plan_path = next((p for p in candidates if p.exists()), None)
     if plan_path is None:
-        return [], None, -20.0, warnings
+        return [], None, -20.0, -60.0, warnings
 
     try:
         plan = json.loads(plan_path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, OSError) as exc:
         warnings.append(f"Could not read sfx-plan.json: {exc}")
-        return [], None, -20.0, warnings
+        return [], None, -20.0, -60.0, warnings
 
     from fandomforge.intelligence.sfx_engine import resolve_sfx_file
 
@@ -670,6 +676,9 @@ def _prepare_sfx_and_scene_audio(
     blend = plan.get("scene_audio_blend") or {}
     scene_enabled = bool(blend.get("enabled", False))
     scene_gain = float(blend.get("gain_db", -20.0))
+    # New (Phase 0.2): how much to duck scene audio while injected dialogue plays.
+    # Default -60 dB ≈ silent. Older plans without the field still work.
+    scene_duck_during_dialogue = float(blend.get("duck_db_during_dialogue", -60.0))
     scene_path: Path | None = None
     if scene_enabled and shots:
         scene_path = work_dir / "scene_audio.wav"
@@ -687,7 +696,7 @@ def _prepare_sfx_and_scene_audio(
             )
             scene_path = None
 
-    return cues, scene_path, scene_gain, warnings
+    return cues, scene_path, scene_gain, scene_duck_during_dialogue, warnings
 
 
 def _build_scene_audio_track(

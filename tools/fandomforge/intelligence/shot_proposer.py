@@ -274,8 +274,9 @@ def _pick_offset_in_scene(
     return rng.uniform(lo, hi)
 
 
-MIN_LUMA_YAVG = 35.0  # Out of 255. Frames below this read as "too dark" in final render.
+MIN_LUMA_YAVG = 56.0  # Out of 255 (~0.22 normalized). Frames below this read as "too dark" in final render.
 LUMA_PROBE_MAX_RETRIES = 12
+LUMA_SOURCE_SWAP_MAX_RETRIES = 4  # try up to 4 different catalog clips before accepting a dim window
 LUMA_SHOT_SPAN_SEC = 2.0  # length of the shot we're trying to place
 
 
@@ -312,28 +313,48 @@ def _pick_source(
          (avoid fade boundaries).
       2. Probe the proposed 2-second window's start / middle / end frames via
          ffmpeg signalstats. If any is below MIN_LUMA_YAVG, pick a new offset.
-      3. Retry up to LUMA_PROBE_MAX_RETRIES times, then give up (no dark-
-         content source will ever produce a bright window — accept it).
+      3. Retry up to LUMA_PROBE_MAX_RETRIES offsets within the picked clip.
+      4. If a clip's offset pool is exhausted, swap to a different catalog
+         clip (up to LUMA_SOURCE_SWAP_MAX_RETRIES tries). Swapping sources is
+         preferred over swapping tiers — preserves intent-match.
+      5. If every attempt exhausts, return the last (dim) candidate so the
+         caller still gets a placement rather than nothing.
     """
     if catalog:
-        clip = rng.choice(catalog)
-        source_id = clip.get("id") or clip.get("source_id") or f"catalog_{fallback_index}"
-        duration = float(clip.get("duration_sec") or clip.get("duration") or 60.0)
-        scenes = _load_scenes_for_clip(clip)
-        video_path = _clip_video_path(clip)
+        last_attempt: tuple[str, float] | None = None
+        for source_attempt in range(LUMA_SOURCE_SWAP_MAX_RETRIES):
+            clip = rng.choice(catalog)
+            source_id = clip.get("id") or clip.get("source_id") or f"catalog_{fallback_index}"
+            duration = float(clip.get("duration_sec") or clip.get("duration") or 60.0)
+            scenes = _load_scenes_for_clip(clip)
+            video_path = _clip_video_path(clip)
 
-        def _fresh_offset() -> float:
-            if scenes:
-                return _pick_offset_in_scene(scenes, duration, rng)
-            return rng.uniform(1.0, max(2.0, duration - 5.0))
+            def _fresh_offset() -> float:
+                if scenes:
+                    return _pick_offset_in_scene(scenes, duration, rng)
+                return rng.uniform(1.0, max(2.0, duration - 5.0))
 
-        offset = _fresh_offset()
-        if video_path:
+            offset = _fresh_offset()
+            if not video_path:
+                # No video probe available — accept the first clip immediately.
+                return source_id, offset
+
+            bright_found = False
             for _ in range(LUMA_PROBE_MAX_RETRIES):
                 if _shot_span_is_bright(video_path, offset):
+                    bright_found = True
                     break
                 offset = _fresh_offset()
-        return source_id, offset
+
+            if bright_found:
+                return source_id, offset
+            last_attempt = (source_id, offset)
+            # otherwise loop and try a different clip from the catalog
+
+        # Every catalog swap exhausted — use the most recent attempt.
+        if last_attempt is not None:
+            return last_attempt
+        # Defensive fallback (catalog became empty mid-loop somehow).
     fandom = fandoms[fallback_index % max(1, len(fandoms))] if fandoms else "placeholder"
     safe = "".join(c if c.isalnum() else "_" for c in fandom).upper() or "SOURCE"
     return f"PLACEHOLDER_{safe}_{fallback_index}", float(fallback_index) * 3.0 + 1.0
