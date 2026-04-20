@@ -4,6 +4,10 @@ makes the eye constantly readjust. Phase 3.8 rule.
 Reads aspect-plan.json. Counts AR transitions per 10-second sliding
 window of the timeline; warns when any window contains more than 2 AR
 changes (jarring), passes when all windows are ≤2.
+
+Phase 4.10: type_severity elevates this to BLOCK for hype_trailer edits
+— reveal-trailer grammar depends on consistent framing, so jumping AR
+mid-reveal genuinely breaks the edit. Other edit types stay warn-only.
 """
 
 from __future__ import annotations
@@ -16,7 +20,8 @@ WINDOW_SEC = 10.0
 MAX_AR_CHANGES_PER_WINDOW = 2
 
 
-@rule("qa.aspect_consistency", "Aspect-ratio change density", level="warn")
+@rule("qa.aspect_consistency", "Aspect-ratio change density", level="warn",
+      type_severity={"hype_trailer": "block"})
 def rule_aspect_consistency(ctx: GateContext) -> RuleResult:
     plan_path = ctx.project_dir / "data" / "aspect-plan.json"
     if not plan_path.exists():

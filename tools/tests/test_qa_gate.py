@@ -367,3 +367,103 @@ def test_report_validates_against_qa_report_schema(tmp_path: Path) -> None:
     validate(report, "qa-report")
     disk_copy = json.loads((tmp_path / "qa-report.json").read_text())
     validate(disk_copy, "qa-report")
+
+
+# ---------------------------------------------------------------------------
+# Phase 4.10 — applies_to + type_severity routing
+# ---------------------------------------------------------------------------
+
+
+def _write_intent(project_dir: Path, edit_type: str) -> None:
+    """Helper: stamp a minimal intent.json so _ctx_edit_type picks up the edit_type."""
+    intent = {"schema_version": 1, "edit_type": edit_type, "tone_vector": [0.0] * 8,
+              "speakers": [], "duration_sec": 60, "confidence": 0.9}
+    (project_dir / "data" / "intent.json").write_text(json.dumps(intent))
+
+
+def test_applies_to_skips_rule_for_wrong_edit_type(tmp_path: Path) -> None:
+    """qa.dialogue_safe_window has applies_to=['dialogue_narrative']. When the
+    project is an action edit, the rule should skip cleanly with a 'does not
+    apply' message rather than silently returning skipped for missing data."""
+    project = _write_project(tmp_path, _fresh_bundle())
+    _write_intent(project, "action")
+
+    # Also put a dialogue-placement-plan.json so the rule would have data IF it
+    # ran — proving the skip is because of applies_to, not missing data.
+    placement = {
+        "schema_version": 1, "project_slug": "proj",
+        "song_duration_sec": 60.0,
+        "placements": [{
+            "cue_index": 0, "cue_text": "hi",
+            "requested_start_sec": 5.0, "requested_duration_sec": 1.0,
+            "decision": "PLACE", "flag_at_placement": "SAFE",
+            "placed_start_sec": 5.0, "reason": "ok",
+        }],
+        "generated_at": "2026-04-20T00:00:00+00:00", "generator": "test",
+    }
+    (project / "data" / "dialogue-placement-plan.json").write_text(json.dumps(placement))
+
+    report = run_gate(project)
+    dlg = next(r for r in report["rules"] if r["id"] == "qa.dialogue_safe_window")
+    assert dlg["status"] == "skipped"
+    assert "does not apply" in dlg["message"].lower()
+
+
+def test_applies_to_runs_rule_for_matching_edit_type(tmp_path: Path) -> None:
+    """Same rule, dialogue_narrative edit_type → rule runs normally."""
+    project = _write_project(tmp_path, _fresh_bundle())
+    _write_intent(project, "dialogue_narrative")
+
+    placement = {
+        "schema_version": 1, "project_slug": "proj",
+        "song_duration_sec": 60.0,
+        "placements": [{
+            "cue_index": 0, "cue_text": "hi",
+            "requested_start_sec": 5.0, "requested_duration_sec": 1.0,
+            "decision": "PLACE", "flag_at_placement": "SAFE",
+            "placed_start_sec": 5.0, "reason": "ok",
+        }],
+        "generated_at": "2026-04-20T00:00:00+00:00", "generator": "test",
+    }
+    (project / "data" / "dialogue-placement-plan.json").write_text(json.dumps(placement))
+
+    report = run_gate(project)
+    dlg = next(r for r in report["rules"] if r["id"] == "qa.dialogue_safe_window")
+    assert dlg["status"] == "pass"
+    assert "does not apply" not in dlg["message"].lower()
+
+
+def test_type_severity_elevates_level_for_matching_edit_type(tmp_path: Path) -> None:
+    """qa.aspect_consistency is warn-level by default but becomes block for
+    hype_trailer. The decorator should stamp 'block' on the RuleResult.level
+    when the active edit_type is hype_trailer."""
+    project = _write_project(tmp_path, _fresh_bundle())
+    _write_intent(project, "hype_trailer")
+
+    report = run_gate(project)
+    ac = next(r for r in report["rules"] if r["id"] == "qa.aspect_consistency")
+    assert ac["level"] == "block"
+
+
+def test_type_severity_leaves_level_alone_for_other_edit_types(tmp_path: Path) -> None:
+    """Same rule on action edit → level stays warn (the default)."""
+    project = _write_project(tmp_path, _fresh_bundle())
+    _write_intent(project, "action")
+
+    report = run_gate(project)
+    ac = next(r for r in report["rules"] if r["id"] == "qa.aspect_consistency")
+    assert ac["level"] == "warn"
+
+
+def test_no_intent_json_falls_back_to_legacy_behavior(tmp_path: Path) -> None:
+    """No intent.json → _ctx_edit_type returns None → applies_to / type_severity
+    are all no-ops. Dialogue rule stays in its legacy 'skipped: no data' state
+    (since the fresh bundle doesn't include a dialogue-placement-plan)."""
+    project = _write_project(tmp_path, _fresh_bundle())
+    # Deliberately NO intent.json
+
+    report = run_gate(project)
+    dlg = next(r for r in report["rules"] if r["id"] == "qa.dialogue_safe_window")
+    assert dlg["status"] == "skipped"
+    # Message is the rule's own skip message, not the applies_to one
+    assert "does not apply" not in dlg["message"].lower()

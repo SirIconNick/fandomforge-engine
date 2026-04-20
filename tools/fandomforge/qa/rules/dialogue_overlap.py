@@ -4,6 +4,10 @@ Per NOTES.md:89 — dialogue shots need deprioritization and a 1.2s duration cap
 under unrelated voiceover. This rule scans the shot-list for shots flagged
 with mood 'dialogue' or for characters talking while another dialogue layer
 is active, and flags any shot that exceeds the cap.
+
+Phase 4.10: applies_to=["dialogue_narrative"] — only dialogue-driven edits
+mix dialogue over VO. Action / dance / tribute edits generally strip or
+duck source audio, so the cap doesn't apply there.
 """
 
 from __future__ import annotations
@@ -20,7 +24,8 @@ def _shot_has_dialogue(shot: dict) -> bool:
     return any(m in {"dialogue", "speaking", "monologue", "vo"} for m in moods)
 
 
-@rule("qa.dialogue_overlap", "Dialogue overlap cap", level="warn")
+@rule("qa.dialogue_overlap", "Dialogue overlap cap", level="warn",
+      applies_to=["dialogue_narrative"])
 def rule_dialogue_overlap(ctx: GateContext) -> RuleResult:
     if not ctx.shot_list:
         return RuleResult(

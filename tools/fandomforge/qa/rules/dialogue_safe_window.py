@@ -3,6 +3,10 @@
 Reads dialogue-placement-plan.json (Phase 1.2). Pass when every cue is
 PLACE@SAFE, warn when any cue is PLACE@RISKY or SHIFTED to land safely,
 fail when any cue is REJECTed because no SAFE window was reachable.
+
+Phase 4.10: applies_to=["dialogue_narrative"] — only dialogue-driven edits
+care about dialogue safety windows. Non-dialogue edit types get a clean
+"skipped: rule does not apply" instead of noise.
 """
 
 from __future__ import annotations
@@ -12,7 +16,8 @@ import json
 from fandomforge.qa.gate import GateContext, RuleResult, rule
 
 
-@rule("qa.dialogue_safe_window", "Dialogue lands in SAFE windows", level="block")
+@rule("qa.dialogue_safe_window", "Dialogue lands in SAFE windows", level="block",
+      applies_to=["dialogue_narrative"])
 def rule_dialogue_safe_window(ctx: GateContext) -> RuleResult:
     plan_path = ctx.project_dir / "data" / "dialogue-placement-plan.json"
     if not plan_path.exists():
