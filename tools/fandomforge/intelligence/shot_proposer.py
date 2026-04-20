@@ -727,6 +727,13 @@ def propose_for_project(project_slug: str, *, project_root: Path | None = None) 
 _DEFAULT_FILLER_BAND_SEC: tuple[float, float] = (1.0, 2.0)
 _MIN_FILLER_SEC = 0.4  # don't emit a filler shorter than this; fold into neighbor
 
+# Scenes whose avg_luma is below this threshold are near-black frames —
+# fade-outs, cuts-to-black, establishing darks. The old picker happily used
+# them as fillers and the render showed visible black flashes between shots.
+# We hard-reject anything below this floor and only fall back to it when the
+# source has NO brighter scenes (cataclysmic last resort).
+MIN_SCENE_LUMA = 0.15
+
 
 # Pacing → target scene intensity_tier. Drives which scenes densify picks
 # when scene-matching is enabled. Keeps slow acts feeling slow (low-intensity
@@ -842,12 +849,26 @@ def densify_shot_list(
             return "medium"
         return "low"
 
+    def _scene_luma(sc: dict[str, Any]) -> float | None:
+        """Return scene avg_luma as float, or None if the field is missing /
+        invalid. Missing luma means we can't reject dark scenes — we skip
+        the luma filter rather than reject everything."""
+        val = sc.get("avg_luma")
+        if isinstance(val, (int, float)):
+            return float(val)
+        return None
+
     def _pick_scene(target_intensity: str, used_src: set[str]) -> tuple[str, dict[str, Any]] | None:
         """Pick the best scene across all sources for the target intensity.
 
-        Priority: (1) intensity match, (2) source rotation (fewest prior uses),
-        (3) not already picked. Returns (source_id, scene_dict) or None when
-        the scene pool is exhausted.
+        Priority: (1) avg_luma ≥ MIN_SCENE_LUMA (no black frames),
+        (2) intensity match, (3) source rotation (fewest prior uses),
+        (4) not already picked. Returns (source_id, scene_dict) or None
+        when the scene pool is exhausted.
+
+        If every unused scene across every source is dark, falls back to
+        the brightest dark scene rather than returning None — better a
+        slightly-dim filler than a crash or a gap.
         """
         if not scenes_by_source:
             return None
@@ -856,7 +877,12 @@ def densify_shot_list(
             available_sources,
             key=lambda s: (source_use_count.get(s, 0), s),
         )
-        # Two passes: (a) strict intensity match, (b) any unused scene.
+        # Three passes: (a) strict intensity + luma, (b) any intensity + luma,
+        # (c) last-resort including dark scenes (picks brightest dark).
+        # Last resort is necessary because some sources (fade-heavy cinematic
+        # clips) may have ONLY dark scenes after filtering — we'd rather use
+        # them than fail hard.
+        dark_fallbacks: list[tuple[float, str, dict[str, Any]]] = []
         for strict in (True, False):
             for src in ranked_sources:
                 scenes = scenes_by_source.get(src) or []
@@ -864,11 +890,20 @@ def densify_shot_list(
                     idx = sc.get("index", -1)
                     if (src, idx) in used_scenes:
                         continue
-                    if strict and _scene_intensity(sc) != target_intensity:
-                        continue
                     if _scene_duration(sc) < 0.4:
                         continue  # too short to be a meaningful clip
+                    if strict and _scene_intensity(sc) != target_intensity:
+                        continue
+                    luma = _scene_luma(sc)
+                    if luma is not None and luma < MIN_SCENE_LUMA:
+                        # Track for last-resort; don't return yet.
+                        dark_fallbacks.append((luma, src, sc))
+                        continue
                     return src, sc
+        # Every candidate was dark. Pick the brightest.
+        if dark_fallbacks:
+            dark_fallbacks.sort(key=lambda t: -t[0])
+            return dark_fallbacks[0][1], dark_fallbacks[0][2]
         return None
 
     def _pacing_at(t_sec: float) -> str | None:

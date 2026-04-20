@@ -178,6 +178,90 @@ class TestDensifyShotList:
         assert first_filler["source_timecode"].startswith("0:00:10"), \
             f"frantic act should pick high-intensity scene, got {first_filler['source_timecode']}"
 
+    def test_dark_scene_rejected_when_brighter_sibling_exists(self):
+        """A scene with avg_luma < 0.15 must not be picked when a brighter
+        scene is available at the same intensity band. Guards the
+        black-frame-flicker failure mode. Provides enough bright scenes
+        to cover the whole gap so last-resort never has to fire."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=8.0)
+        scenes_by_source = {
+            "src-A": [
+                # Dark scene at t=0 — should NEVER be picked.
+                {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.05},
+                # A pile of bright alternatives — enough to fill the 7s gap.
+                {"index": 1, "start_sec": 20.0, "end_sec": 22.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.4},
+                {"index": 2, "start_sec": 30.0, "end_sec": 32.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.5},
+                {"index": 3, "start_sec": 40.0, "end_sec": 42.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.6},
+                {"index": 4, "start_sec": 50.0, "end_sec": 52.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.3},
+                {"index": 5, "start_sec": 60.0, "end_sec": 62.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.45},
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        # No scene-matched filler should land on the 0.0s timecode (dark scene).
+        # We distinguish scene-matched from flank-fallback fillers by checking
+        # clip_category — scene-matched ones get "action-mid"/"texture" based
+        # on intensity; only scene-matched ones mark motion_vector.
+        scene_matched = [
+            f for f in fillers if f["source_id"] == "src-A"
+            and f.get("clip_category") in ("action-mid", "action-high", "reaction-quiet")
+        ]
+        assert scene_matched, "test fixture should produce scene-matched fillers"
+        dark_pick = [
+            f for f in scene_matched
+            if f["source_timecode"].startswith("0:00:00")
+        ]
+        assert not dark_pick, \
+            f"scene-match picker used a dark scene: {dark_pick}"
+
+    def test_dark_scene_last_resort_when_nothing_brighter(self):
+        """When every scene in every source is dark, the picker falls back
+        to the brightest of the dark ones rather than returning None."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=6.0)
+        scenes_by_source = {
+            "src-A": [
+                {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.05},
+                {"index": 1, "start_sec": 10.0, "end_sec": 12.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium", "avg_luma": 0.12},  # brightest dark
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        # At least one filler picked; should be the 0.12 one (brighter).
+        scene_fillers = [f for f in fillers if f["source_id"] == "src-A"]
+        assert scene_fillers, "expected at least one scene-matched filler"
+        # The 10.0s scene (avg_luma=0.12) is brighter than 0.0s (0.05);
+        # at least one filler should point to the brighter of the two.
+        picks_brighter = any(
+            f["source_timecode"].startswith("0:00:10") for f in scene_fillers
+        )
+        assert picks_brighter, \
+            f"last-resort should prefer brightest dark, got timecodes: " \
+            f"{[f['source_timecode'] for f in scene_fillers]}"
+
+    def test_missing_avg_luma_does_not_reject(self):
+        """Scenes without avg_luma must not be rejected — the field is
+        optional and legacy sources don't carry it."""
+        sl = _sparse_list(slots=[(0.0, 1.0)], song_sec=6.0)
+        scenes_by_source = {
+            "src-A": [
+                {"index": 0, "start_sec": 0.0, "end_sec": 2.0, "duration_sec": 2.0,
+                 "intensity_tier": "medium"},  # no avg_luma
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        fillers = [s for s in out["shots"] if s.get("densified")]
+        scene_fillers = [f for f in fillers if f["source_id"] == "src-A"]
+        assert scene_fillers, \
+            "scene without avg_luma should still be usable as a filler"
+
     def test_target_duration_clamps_tail_fill(self):
         """target_duration_sec < song_duration_sec → tail fill stops at target.
         Guards against the 229s machine-gun render when project-config says 90s."""
