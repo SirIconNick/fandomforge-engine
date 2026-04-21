@@ -856,16 +856,22 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
             except (OSError, json.JSONDecodeError):
                 edit_plan = None
 
-        # Beat-map gives us song duration if the shot-list doesn't have it.
+        # Beat-map gives us song duration if the shot-list doesn't have it,
+        # plus the drop times that drive beat-intensity ramping in densify.
         song_duration = shot_list.get("song_duration_sec")
-        if not song_duration:
-            bm_path = ctx.project_dir / "data" / "beat-map.json"
-            if bm_path.exists():
-                try:
-                    bm = json.loads(bm_path.read_text(encoding="utf-8"))
+        drop_times: list[float] = []
+        bm_path = ctx.project_dir / "data" / "beat-map.json"
+        if bm_path.exists():
+            try:
+                bm = json.loads(bm_path.read_text(encoding="utf-8"))
+                if not song_duration:
                     song_duration = bm.get("duration_sec")
-                except (OSError, json.JSONDecodeError):
-                    song_duration = None
+                for d in bm.get("drops") or []:
+                    t = d.get("time") if isinstance(d, dict) else d
+                    if isinstance(t, (int, float)):
+                        drop_times.append(float(t))
+            except (OSError, json.JSONDecodeError):
+                pass
 
         # Load scene boundaries per source for scene-matched filler picking.
         # Scenes live in one of two places depending on project vintage:
@@ -917,6 +923,7 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
             song_duration_sec=song_duration,
             scenes_by_source=scenes_by_source or None,
             target_duration_sec=target_duration_sec,
+            drop_times=drop_times or None,
         )
         validate_and_write(densified, "shot-list", shot_list_path)
 

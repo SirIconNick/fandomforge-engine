@@ -33,8 +33,8 @@ def test_empty_config_loads_with_defaults(tmp_path: Path) -> None:
     assert cfg.character == "test"
     assert cfg.template == "HauntedVeteran"
     assert cfg.run_qa is True
-    assert cfg.song_gain_db == -4.0
-    assert cfg.default_duck_db == -10.0
+    assert cfg.song_gain_db == -8.0
+    assert cfg.default_duck_db == -12.0
     assert cfg.export_presets == ["youtube"]
 
 

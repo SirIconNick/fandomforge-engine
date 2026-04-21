@@ -80,7 +80,10 @@ def mix_audio(
     song_start_offset_sec: float = 0.0,
     sfx_cues: list[SfxCue] | None = None,
     scene_audio_path: Path | None = None,
-    scene_audio_gain_db: float = -20.0,
+    # Default raised from -20 to -10 so clip audio is audible under music.
+    # For an AMV/fan-edit mix, clips should be close to (or slightly under)
+    # the music, not 16 dB beneath it.
+    scene_audio_gain_db: float = -10.0,
     scene_audio_duck_db: float | None = None,
     duck_fade_sec: float = 0.5,
 ) -> MixResult:
@@ -108,7 +111,7 @@ def mix_audio(
         sample_rate: output sample rate
         song_start_offset_sec: offset into the song if you want to skip the intro
         scene_audio_path: optional WAV/AAC bed of source-clip ambient audio
-        scene_audio_gain_db: baseline scene-audio level (typical -18 to -24 dB)
+        scene_audio_gain_db: baseline scene-audio level (default -10 dB for audible fan-edit mixes; lower to -20 for ambient-bed-only use)
         scene_audio_duck_db: optional override for scene-audio duck depth
             during dialogue. None (default) = mirror per-cue duck_db so the
             scene drops by the same proportion as the song — feels like one

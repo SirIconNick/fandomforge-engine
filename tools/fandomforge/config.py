@@ -105,14 +105,15 @@ class ProjectConfig:
     # --- Audio ---
     song: str = ""  # Filename in projects/<slug>/raw/
     song_offset_sec: float = 0.0
-    # Baseline song gain before per-cue ducking. Modern hyper-mastered songs
-    # (Renegades, most 2015+ pop) need -6 to -8 dB to leave headroom for VO
-    # lift; older/quieter masters (In the End choir) are fine at -4.
-    song_gain_db: float = -4.0
-    # Default duck depth during VO cues. -10 dB keeps the song clearly
-    # audible under VO (musical blend). -6 is subtle, -14 is more
-    # aggressive. Project-config.yaml can override per-project.
-    default_duck_db: float = -10.0
+    # Baseline song gain before per-cue ducking. -8 dB leaves room for
+    # clip audio (at ~-10 dB) to cut through without the song drowning it.
+    # Older/quieter masters can go to -4; modern hyper-mastered songs may
+    # need -10. Project-config.yaml can override per-project.
+    song_gain_db: float = -8.0
+    # Default duck depth during VO cues. -12 dB keeps song audible under
+    # VO while clearly giving priority to the voice/clip. -6 is subtle,
+    # -16 is aggressive. Project-config.yaml can override per-project.
+    default_duck_db: float = -12.0
 
     # --- Template ---
     template: str = "HauntedVeteran"

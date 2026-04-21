@@ -796,6 +796,7 @@ def densify_shot_list(
     scenes_by_source: dict[str, list[dict[str, Any]]] | None = None,
     source_catalog: list[dict[str, Any]] | None = None,
     target_duration_sec: float | None = None,
+    drop_times: list[float] | None = None,
 ) -> dict[str, Any]:
     """Expand a sparse slot-list shot-list to cover the target duration.
 
@@ -851,8 +852,14 @@ def densify_shot_list(
     # Scene-match bookkeeping. used_scenes tracks (source_id, scene_index)
     # pairs we've already placed; source_use_count biases selection toward
     # under-represented sources so engagement doesn't collapse.
+    # recent_source_ids is a rolling window of the last few picks — the
+    # most recent one gets a hard penalty (never use same source twice
+    # in a row), older ones get a soft penalty, so visually the edit
+    # doesn't hammer one source for 3-4 shots straight.
     used_scenes: set[tuple[str, int]] = set()
     source_use_count: dict[str, int] = {}
+    recent_source_ids: list[str] = []
+    _RECENT_WINDOW = 3
     available_sources = list((scenes_by_source or {}).keys())
 
     def _intensity_for(t_sec: float) -> str:
@@ -933,10 +940,22 @@ def densify_shot_list(
         """
         if not scenes_by_source:
             return None
-        # Rank sources by use count (ascending) so under-used sources come first.
+
+        def _recency_penalty(src: str) -> int:
+            if not recent_source_ids:
+                return 0
+            if src == recent_source_ids[-1]:
+                return 1000  # HARD: never use same source back-to-back
+            if src in recent_source_ids:
+                return 10    # SOFT: prefer sources outside the recent window
+            return 0
+
+        # Rank sources by: (1) no back-to-back repeat, (2) prefer sources
+        # not in recent window, (3) fewest prior uses overall. Breaks
+        # hard repeats and reduces clusters without starving anything.
         ranked_sources = sorted(
             available_sources,
-            key=lambda s: (source_use_count.get(s, 0), s),
+            key=lambda s: (_recency_penalty(s), source_use_count.get(s, 0), s),
         )
 
         def _sort_candidates(cands: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1001,19 +1020,63 @@ def densify_shot_list(
                 return a.get("pacing")
         return None
 
+    # Pre-sort drops for the ramp lookup. Empty list means no ramping —
+    # feature is off unless the caller supplies drops.
+    _drops_sorted = sorted(drop_times) if drop_times else []
+
     def _band_at(at_t: float) -> tuple[float, float]:
         pacing = _pacing_at(at_t)
         if pacing:
             return shot_duration_band(pacing)
         return _DEFAULT_FILLER_BAND_SEC
 
+    def _drop_ramp_factor(at_t: float) -> float:
+        """Multiplier on filler duration based on proximity to drops.
+
+        Ramps shots SHORTER in the 3.5s leading up to a drop (build
+        tension) and slightly LONGER in the 2s after (breathing room,
+        viewer recovers from the hit). Outside those windows, no effect.
+
+        Returns a factor in [0.5, 1.15] that gets multiplied into the
+        already-stretched filler duration.
+        """
+        if not _drops_sorted:
+            return 1.0
+        # Nearest upcoming drop
+        upcoming = None
+        for dt in _drops_sorted:
+            if dt >= at_t:
+                upcoming = dt
+                break
+        if upcoming is not None:
+            dist = upcoming - at_t
+            if 0.0 <= dist <= 3.5:
+                # Linear ramp: dist=3.5 → 1.0, dist=0 → 0.5
+                return 0.5 + (dist / 3.5) * 0.5
+        # Post-drop window: find the most recent drop behind us
+        recent = None
+        for dt in _drops_sorted:
+            if dt <= at_t:
+                recent = dt
+            else:
+                break
+        if recent is not None:
+            dist_since = at_t - recent
+            if 0.0 <= dist_since <= 2.0:
+                # Ramp back up: dist_since=0 → 1.15 (slight breath),
+                # dist_since=2 → 1.0
+                return 1.15 - (dist_since / 2.0) * 0.15
+        return 1.0
+
     def _filler_dur_sec(at_t: float) -> float:
         lo, hi = _band_at(at_t)
         median = (lo + hi) / 2.0
-        # stretch_factor is computed once below; it multiplies every filler
-        # so the global cpm lands near target_cpm. Clamp so a frantic act
-        # can't become a slow act and vice versa.
-        stretched = median * stretch_factor
+        # stretch_factor makes the overall cpm land near target_cpm.
+        # drop_ramp_factor makes the shots contract into drops and
+        # breathe just after. Both multiplicative, then clamped to the
+        # band's [lo, hi*1.5] so the act still feels like what the arc
+        # architect intended.
+        stretched = median * stretch_factor * _drop_ramp_factor(at_t)
         return max(lo, min(stretched, hi * _STRETCH_CLAMP_HI_MULT))
 
     def _frames(sec: float) -> int:
@@ -1115,6 +1178,18 @@ def densify_shot_list(
         motion_vec = None
         clip_cat = "texture"  # default — overridden by intensity match below
 
+        # Seed the recency window with the flanking shot's source ONLY if
+        # it's not already in the window. Without this check, repeated
+        # _make_filler calls for fillers in the same gap would re-push
+        # the same flank source on every call, cycling it back to the
+        # tail and allowing the previous filler's source to win on the
+        # next pick — defeating the back-to-back guard.
+        flank_src = flank.get("source_id")
+        if flank_src and flank_src not in recent_source_ids:
+            recent_source_ids.append(flank_src)
+            if len(recent_source_ids) > _RECENT_WINDOW:
+                recent_source_ids.pop(0)
+
         # prev_luma + prev_motion_dir for continuity. Prefer the last
         # picked scene's values; fall back to flank fields if present.
         # None is acceptable for either; _pick_scene degrades gracefully.
@@ -1141,6 +1216,10 @@ def densify_shot_list(
             src_tc = _fmt_timecode(float(scene.get("start_sec", 0.0)))
             used_scenes.add((src, scene.get("index", -1)))
             source_use_count[src] = source_use_count.get(src, 0) + 1
+            # Push this source onto the recency window and trim the head.
+            recent_source_ids.append(src)
+            if len(recent_source_ids) > _RECENT_WINDOW:
+                recent_source_ids.pop(0)
             # Cap the filler duration to the picked scene's length so the
             # extraction doesn't spill into the next scene. Otherwise a 2.6s
             # filler using a 1.5s scene grabs the first 1.5s of the scene

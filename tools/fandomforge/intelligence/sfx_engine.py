@@ -166,8 +166,12 @@ def build_sfx_plan(
     beat_map: dict[str, Any] | None = None,
     library: dict[str, SfxPack] | None = None,
     scene_audio_enabled: bool = True,
-    scene_audio_gain_db: float = -20.0,
-    scene_audio_duck_db: float = -8.0,
+    # Defaults picked so clip audio is audible under the song. With song
+    # typically at -8 dB, scene at -10 dB puts clips ~2 dB below music —
+    # close enough to hear punches/vocal bleed. Duck deepens to -14 dB
+    # when a clip is active so the music steps out of the way.
+    scene_audio_gain_db: float = -10.0,
+    scene_audio_duck_db: float = -14.0,
     scene_audio_duck_db_during_dialogue: float = -60.0,
     snap_window_sec: float = 0.15,
     seed: int | None = None,

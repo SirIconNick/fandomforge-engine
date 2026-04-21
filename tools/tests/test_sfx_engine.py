@@ -74,7 +74,7 @@ class TestBuildSfxPlan:
     def test_scene_audio_defaults_enabled(self) -> None:
         plan = build_sfx_plan(project_slug="t", shot_list={"shots": []})
         assert plan["scene_audio_blend"]["enabled"] is True
-        assert plan["scene_audio_blend"]["gain_db"] == -20.0
+        assert plan["scene_audio_blend"]["gain_db"] == -10.0
 
     def test_beat_snap(self) -> None:
         shot_list = {

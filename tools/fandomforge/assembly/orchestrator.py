@@ -132,7 +132,7 @@ def build_rough_cut(
     target_height: int = 1080,
     target_fps: int = 24,
     song_start_offset_sec: float = 0.0,
-    song_gain_db: float = -4.0,
+    song_gain_db: float = -8.0,
     keep_work_dir: bool = False,
     sfx_plan_json: str | None = None,
 ) -> RoughCutResult:

@@ -315,6 +315,95 @@ class TestDensifyShotList:
             f"last-resort should prefer brightest dark, got timecodes: " \
             f"{[f['source_timecode'] for f in scene_fillers]}"
 
+    def test_drop_ramp_shortens_shots_approaching_drop(self):
+        """Fillers in the 3.5s window before a drop should be noticeably
+        shorter than fillers far from any drop. Guards the 'beat matches
+        more when music intensifies' user complaint."""
+        # 60s song, single drop at t=30s
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=60.0)
+        edit_plan = {
+            "edit_type": "action",
+            "acts": [{"start_sec": 0.0, "end_sec": 60.0, "pacing": "medium"}],
+        }
+        out_no_drop = densify_shot_list(sl, edit_plan=edit_plan)
+        out_with_drop = densify_shot_list(sl, edit_plan=edit_plan, drop_times=[30.0])
+
+        fps = out_with_drop["fps"]
+        # Compare filler durations in the 3.5s approach window vs far away.
+        approach_fillers = [
+            s for s in out_with_drop["shots"]
+            if s.get("densified")
+            and 26.5 <= (s["start_frame"] / fps) < 30.0
+        ]
+        far_fillers = [
+            s for s in out_with_drop["shots"]
+            if s.get("densified")
+            and (s["start_frame"] / fps) < 15.0
+        ]
+        assert approach_fillers and far_fillers, (
+            f"test needs both approach and far fillers, got "
+            f"approach={len(approach_fillers)} far={len(far_fillers)}"
+        )
+        avg_approach = sum(s["duration_frames"] for s in approach_fillers) / len(approach_fillers) / fps
+        avg_far = sum(s["duration_frames"] for s in far_fillers) / len(far_fillers) / fps
+        assert avg_approach < avg_far, (
+            f"approach fillers ({avg_approach:.2f}s) should be shorter than "
+            f"far fillers ({avg_far:.2f}s) near a drop"
+        )
+
+    def test_no_drops_means_no_ramp_effect(self):
+        """When drop_times is None or empty, the output should match the
+        non-drop variant exactly. Drop ramp is opt-in."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=30.0)
+        edit_plan = {
+            "edit_type": "action",
+            "acts": [{"start_sec": 0.0, "end_sec": 30.0, "pacing": "medium"}],
+        }
+        out_a = densify_shot_list(sl, edit_plan=edit_plan, drop_times=None)
+        out_b = densify_shot_list(sl, edit_plan=edit_plan, drop_times=[])
+        # Same number of shots and same total duration
+        assert len(out_a["shots"]) == len(out_b["shots"])
+        total_a = sum(s["duration_frames"] for s in out_a["shots"])
+        total_b = sum(s["duration_frames"] for s in out_b["shots"])
+        assert total_a == total_b
+
+    def test_anti_repeat_prevents_back_to_back_same_source(self):
+        """No source should appear in two consecutive scene-matched fillers.
+        Tests the hard recency penalty: same-source-as-last-pick costs 1000,
+        so the picker always crosses to a different source if one is
+        available with passing scenes."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=15.0)
+        # Two sources, both with plenty of usable scenes.
+        scenes_by_source = {
+            "src-A": [
+                {"index": i, "start_sec": i * 3.0, "end_sec": i * 3.0 + 1.5,
+                 "duration_sec": 1.5, "intensity_tier": "medium",
+                 "avg_luma": 0.4}
+                for i in range(10)
+            ],
+            "src-B": [
+                {"index": i, "start_sec": i * 3.0, "end_sec": i * 3.0 + 1.5,
+                 "duration_sec": 1.5, "intensity_tier": "medium",
+                 "avg_luma": 0.5}
+                for i in range(10)
+            ],
+        }
+        out = densify_shot_list(sl, scenes_by_source=scenes_by_source)
+        # Extract only scene-matched fillers in order
+        scene_matched = [
+            s for s in out["shots"]
+            if s.get("densified") and s.get("clip_category") in (
+                "action-mid", "action-high", "reaction-quiet"
+            )
+        ]
+        assert len(scene_matched) >= 2
+        # Walk the sequence and make sure no two adjacent have the same source.
+        for a, b in zip(scene_matched, scene_matched[1:]):
+            assert a["source_id"] != b["source_id"], (
+                f"back-to-back same source: {a['id']} and {b['id']} "
+                f"both use {a['source_id']}"
+            )
+
     def test_motion_dir_continuity_penalizes_opposite_direction(self):
         """After a left-moving flank, the picker should prefer left/static/
         mixed over a right-moving candidate. Only same-axis opposites
