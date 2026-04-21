@@ -797,6 +797,7 @@ def densify_shot_list(
     source_catalog: list[dict[str, Any]] | None = None,
     target_duration_sec: float | None = None,
     drop_times: list[float] | None = None,
+    avoid_ranges: dict[str, list[tuple[float, float]]] | None = None,
 ) -> dict[str, Any]:
     """Expand a sparse slot-list shot-list to cover the target duration.
 
@@ -898,6 +899,25 @@ def densify_shot_list(
             return "medium"
         return "low"
 
+    def _scene_in_avoid_range(src: str, sc: dict[str, Any]) -> bool:
+        """A scene is in an avoid-range when its start OR end overlaps any
+        (start, end) tuple supplied in avoid_ranges[src]. Used to skip
+        compilation intros/outros (title cards, thumbnail grids) that
+        look bright enough to slip past the luma filter but land wrong."""
+        if not avoid_ranges:
+            return False
+        ranges = avoid_ranges.get(src) or []
+        if not ranges:
+            return False
+        start = float(sc.get("start_sec") or 0)
+        end = float(sc.get("end_sec") or start)
+        for lo, hi in ranges:
+            # Any overlap is enough to reject — partial-overlap picks tend
+            # to spill into the card's visible portion.
+            if end > lo and start < hi:
+                return True
+        return False
+
     def _scene_luma(sc: dict[str, Any]) -> float | None:
         """Return scene avg_luma as float, or None if the field is missing /
         invalid. Missing luma means we can't reject dark scenes — we skip
@@ -996,6 +1016,8 @@ def densify_shot_list(
                         continue
                     if _scene_duration(sc) < 0.4:
                         continue
+                    if _scene_in_avoid_range(src, sc):
+                        continue  # intro/outro windows of compilations
                     if strict and _scene_intensity(sc) != target_intensity:
                         continue
                     luma = _scene_luma(sc)

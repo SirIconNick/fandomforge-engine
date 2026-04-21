@@ -51,6 +51,76 @@ except ImportError:  # pragma: no cover
 
 
 # ---------------------------------------------------------------------------
+# MFV-Core adaptive cascade — per-edit-type craft weights
+# ---------------------------------------------------------------------------
+#
+# Ten MFV-CORE craft features, gated per edit type. Weight >= 0.5 activates
+# the feature; below that the magnitude is scaled proportionally for the
+# analog enhancements (ramp, micro_offset) and treated as off for the binary
+# ones (dropout, triple_cut, hero_reserve).
+#
+# Pattern mirrors arc_architect.ARC_TEMPLATES — per-type dicts over branching
+# if/else. Add new edit types by registering them here.
+
+MFV_CRAFT_FEATURES = (
+    "dropout",       # Tier 1.1 — pre-drop silence
+    "ramp",          # Tier 1.2 — cut density ramp into drops
+    "hero_reserve",  # Tier 1.3 — best clips reserved for main/second drops
+    "micro_offset",  # Tier 1.4 — off-beat tension jitter
+    "j_cut",         # Tier 2.1 — audio telegraph lead-in
+    "diegetic",      # Tier 2.2 — diegetic SFX extraction from source
+    "triple_cut",    # Tier 2.3 — drum-fill kick-snare-kick triple cuts
+    "lyric_sync",    # Tier 3.8 — lyric-word visual sync
+    "pose_match",    # Tier 3.9 — pose-aligned match cuts
+    "vlm_apex",      # Tier 3.10 — VLM action apex localization
+)
+
+MFV_CRAFT_WEIGHTS: dict[str, dict[str, float]] = {
+    "action":       {"dropout": 1.0, "ramp": 1.0, "hero_reserve": 1.0, "micro_offset": 1.0, "j_cut": 1.0, "diegetic": 1.0, "triple_cut": 1.0, "lyric_sync": 0.3, "pose_match": 1.0, "vlm_apex": 1.0},
+    "hype_trailer": {"dropout": 1.0, "ramp": 1.0, "hero_reserve": 1.0, "micro_offset": 1.0, "j_cut": 1.0, "diegetic": 0.7, "triple_cut": 1.0, "lyric_sync": 0.8, "pose_match": 0.7, "vlm_apex": 0.8},
+    "dance":        {"dropout": 0.5, "ramp": 1.0, "hero_reserve": 0.7, "micro_offset": 0.5, "j_cut": 0.5, "diegetic": 0.3, "triple_cut": 1.0, "lyric_sync": 0.5, "pose_match": 1.0, "vlm_apex": 0.7},
+    "tribute":      {"dropout": 0.0, "ramp": 0.4, "hero_reserve": 0.5, "micro_offset": 0.0, "j_cut": 0.3, "diegetic": 0.5, "triple_cut": 0.0, "lyric_sync": 0.7, "pose_match": 0.4, "vlm_apex": 0.3},
+    "emotional":    {"dropout": 0.0, "ramp": 0.2, "hero_reserve": 0.3, "micro_offset": 0.0, "j_cut": 0.2, "diegetic": 0.4, "triple_cut": 0.0, "lyric_sync": 0.9, "pose_match": 0.3, "vlm_apex": 0.2},
+    "sad":          {"dropout": 0.0, "ramp": 0.0, "hero_reserve": 0.2, "micro_offset": 0.0, "j_cut": 0.0, "diegetic": 0.2, "triple_cut": 0.0, "lyric_sync": 1.0, "pose_match": 0.2, "vlm_apex": 0.1},
+}
+
+# Unregistered edit_types resolve to the nearest neighbor via this table before
+# falling all the way through to the zero row.
+_EDIT_TYPE_FALLBACKS: dict[str, str] = {
+    "speed_amv": "action",
+    "cinematic": "tribute",
+    "comedy": "tribute",
+    "shipping": "emotional",
+    "multi_fandom": "action",
+    "horror": "action",
+}
+
+CRAFT_ACTIVATION_THRESHOLD = 0.5
+
+
+def craft_weights_for(edit_type: str | None) -> dict[str, float]:
+    """Return per-feature craft weights for an edit_type.
+
+    Always returns a dict with every key in MFV_CRAFT_FEATURES. Unknown
+    edit_types resolve through _EDIT_TYPE_FALLBACKS; anything still missing
+    falls back to the zero row (every feature off).
+    """
+    key = (edit_type or "").lower().strip()
+    row = MFV_CRAFT_WEIGHTS.get(key)
+    if row is None:
+        fallback = _EDIT_TYPE_FALLBACKS.get(key)
+        if fallback:
+            row = MFV_CRAFT_WEIGHTS.get(fallback)
+    row = row or {}
+    return {feat: float(row.get(feat, 0.0)) for feat in MFV_CRAFT_FEATURES}
+
+
+def craft_feature_active(weight: float, threshold: float = CRAFT_ACTIVATION_THRESHOLD) -> bool:
+    """Binary activation test. Features fire when weight >= threshold (default 0.5)."""
+    return float(weight) >= float(threshold)
+
+
+# ---------------------------------------------------------------------------
 # Data model
 # ---------------------------------------------------------------------------
 
@@ -144,6 +214,31 @@ class ProjectConfig:
     cluster_archetype: str = "single-character arc"
     lut_name: str = "cinematic-teal-orange"
     lut_intensity: float = 0.5
+
+    # --- MFV-Core adaptive cascade ---
+    # Master kill-switch for every craft enhancement (pre-drop dropout, cut
+    # density ramp, hero reservation, J-cut lead-in, diegetic SFX, drum-fill
+    # triple cuts, micro-offset tension, lyric sync, pose match cuts, VLM
+    # apex). Off = engine renders with legacy behavior for clean A/B.
+    mfv_craft_enabled: bool = True
+    # Per-drop silence length immediately before each drop. Default ~8 frames
+    # @ 24fps = 0.333s. Reasonable range 0.166–0.666s (4–16 frames). Gated by
+    # the craft weight "dropout" for the project's edit_type.
+    pre_drop_dropout_sec: float = 0.333
+    # SFX pre-roll for J-cut audio telegraphs. Default 3 frames @ 24fps =
+    # 0.125s. Too long reads as a mix error; too short is inaudible.
+    j_cut_lead_sec: float = 0.125
+    # Iterative-review re-propose loop (pattern borrowed from CutClaw).
+    # 0 disables (default). >0 means re-run shot proposal + roughcut when the
+    # review overall score is below review_iteration_threshold.
+    review_iteration_max: int = 0
+    review_iteration_threshold: float = 80.0
+    # Opt-in adoptions from the mining pass — all off by default so they don't
+    # surprise existing projects. Flip per-project when you want them.
+    use_faster_whisper: bool = False   # M1 — swap openai-whisper backend
+    use_allinone_segments: bool = False  # M3 — functional segmentation
+    use_transnetv2: bool = False        # M4 — neural shot detector
+    enable_vlm_action: bool = False     # Tier 3.10 — Qwen2.5-VL apex tagging
 
     # --- Internal: the on-disk path for this project ---
     _project_dir: Path | None = None

@@ -315,6 +315,48 @@ class TestDensifyShotList:
             f"last-resort should prefer brightest dark, got timecodes: " \
             f"{[f['source_timecode'] for f in scene_fillers]}"
 
+    def test_avoid_ranges_blocks_intro_outro_windows(self):
+        """Scenes whose start_sec falls inside an avoid_ranges window for
+        that source must never be picked. Tests the compilation
+        intro/outro blacklist."""
+        sl = _sparse_list(slots=[(0.0, 0.5)], song_sec=10.0)
+        scenes_by_source = {
+            "comp-src": [
+                # Intro window — should be rejected.
+                {"index": 0, "start_sec": 5.0, "end_sec": 7.0,
+                 "duration_sec": 2.0, "intensity_tier": "medium",
+                 "avg_luma": 0.5, "motion_dir": "static"},
+                # Safe mid-video range — should be picked.
+                {"index": 1, "start_sec": 100.0, "end_sec": 102.0,
+                 "duration_sec": 2.0, "intensity_tier": "medium",
+                 "avg_luma": 0.5, "motion_dir": "left"},
+                {"index": 2, "start_sec": 150.0, "end_sec": 152.0,
+                 "duration_sec": 2.0, "intensity_tier": "medium",
+                 "avg_luma": 0.5, "motion_dir": "right"},
+                {"index": 3, "start_sec": 200.0, "end_sec": 202.0,
+                 "duration_sec": 2.0, "intensity_tier": "medium",
+                 "avg_luma": 0.5, "motion_dir": "up"},
+            ],
+        }
+        avoid = {"comp-src": [(0.0, 30.0)]}  # block 0-30s
+        out = densify_shot_list(
+            sl, scenes_by_source=scenes_by_source, avoid_ranges=avoid,
+        )
+        scene_matched = [
+            s for s in out["shots"]
+            if s.get("densified") and s.get("clip_category") in (
+                "action-mid", "action-high", "reaction-quiet"
+            )
+        ]
+        # No filler should point to timecode under 30s.
+        for f in scene_matched:
+            tc = f["source_timecode"]
+            parts = tc.split(":")
+            tc_sec = int(parts[0]) * 3600 + int(parts[1]) * 60 + float(parts[2])
+            assert tc_sec >= 30.0, (
+                f"scene from avoid-range picked: {f['id']} @ {tc}"
+            )
+
     def test_drop_ramp_shortens_shots_approaching_drop(self):
         """Fillers in the 3.5s window before a drop should be noticeably
         shorter than fillers far from any drop. Guards the 'beat matches

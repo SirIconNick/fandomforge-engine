@@ -44,6 +44,9 @@ class MixResult:
     dialogue_count: int = 0
     sfx_count: int = 0
     scene_audio_applied: bool = False
+    # MFV-CORE Tier 1.1 — number of pre-drop dropout windows actually applied
+    # after dialogue-collision suppression. 0 = off or all suppressed.
+    dropout_count: int = 0
     warnings: list[str] = field(default_factory=list)
     stderr: str = ""
 
@@ -86,6 +89,15 @@ def mix_audio(
     scene_audio_gain_db: float = -10.0,
     scene_audio_duck_db: float | None = None,
     duck_fade_sec: float = 0.5,
+    # MFV-CORE Tier 1.1 — pre-drop silence dropout windows.
+    # Each entry is (start_sec, end_sec) describing the span immediately
+    # before a drop where the song + scene beds are gated to near-silence
+    # (-60 dB) to amplify the drop's impact. SFX bus stays audible so
+    # risers / reverse cymbals keep sounding through. Windows overlapping
+    # any dialogue cue get suppressed automatically.
+    dropout_windows: list[tuple[float, float]] | None = None,
+    dropout_fade_sec: float = 0.02,
+    dropout_depth_db: float = -60.0,
 ) -> MixResult:
     """Mix a song with dialogue cues into a single audio file.
 
@@ -234,6 +246,42 @@ def mix_audio(
 
     fade_pad = max(0.05, float(duck_fade_sec))
 
+    # MFV-CORE Tier 1.1 — suppress any dropout window that collides with a
+    # dialogue cue. A dropout across dialogue would silence the vocal and
+    # read as a mix error. Collision = ANY overlap between the two ranges.
+    dropout_spans: list[tuple[float, float]] = []
+    if dropout_windows:
+        for d_start, d_end in dropout_windows:
+            if d_end <= d_start:
+                continue
+            collides = False
+            for w_start, w_end, _ in duck_windows:
+                if d_start < w_end and d_end > w_start:
+                    collides = True
+                    break
+            if not collides:
+                dropout_spans.append((float(d_start), float(d_end)))
+
+    dropout_fade = max(0.005, float(dropout_fade_sec))
+    dropout_ratio = max(0.0001, 10 ** (float(dropout_depth_db) / 20))
+
+    def _build_dropout_expr(windows: list[tuple[float, float]]) -> str:
+        """Build a chained if() ladder that gates the carrier to dropout_ratio
+        across each window with a short linear fade on the leading and
+        trailing edges. Reuses the shape of _build_duck_expr but hardcodes the
+        attenuation since dropouts are binary on/off (silence vs not)."""
+        parts: list[str] = []
+        rise = 1 - dropout_ratio
+        for start, end in windows:
+            parts.append(
+                f"if(between(t,{start - dropout_fade:.3f},{start:.3f}),"
+                f"1-({rise:.4f})*(t-{start - dropout_fade:.3f})/{dropout_fade:.3f},"
+                f"if(between(t,{start:.3f},{end:.3f}),{dropout_ratio:.4f},"
+                f"if(between(t,{end:.3f},{end + dropout_fade:.3f}),"
+                f"{dropout_ratio:.4f}+({rise:.4f})*(t-{end:.3f})/{dropout_fade:.3f},"
+            )
+        return "".join(parts) + "1" + ")))" * len(parts)
+
     def _build_duck_expr(windows: list[tuple[float, float, float]], uniform_duck_db: float | None) -> str:
         """Build an ffmpeg volume= expression that ducks the carrier at each
         window. If uniform_duck_db is None, each window uses its own per-cue
@@ -286,6 +334,22 @@ def mix_audio(
             scene_label = "[scene_ducked]"
     else:
         song_bus_label = "[song_pre]"
+
+    # MFV-CORE Tier 1.1 — pre-drop dropout gate. Chains AFTER the ducking
+    # stage so it coexists with dialogue behavior. Applied to both song and
+    # scene bus; SFX intentionally not affected so risers / reverse cymbals
+    # keep sounding through the silence.
+    if dropout_spans:
+        dropout_expr = _build_dropout_expr(dropout_spans)
+        filter_parts.append(
+            f"{song_bus_label}volume='{dropout_expr}':eval=frame[song_gated]"
+        )
+        song_bus_label = "[song_gated]"
+        if scene_label is not None:
+            filter_parts.append(
+                f"{scene_label}volume='{dropout_expr}':eval=frame[scene_gated]"
+            )
+            scene_label = "[scene_gated]"
 
     # Build the final mix list. Start with song bus, then add dialogue / sfx /
     # scene layers that are present. Keep normalize=0 so layered gains stay
@@ -343,4 +407,5 @@ def mix_audio(
         dialogue_count=len(valid_cues),
         sfx_count=len(valid_sfx),
         scene_audio_applied=scene_input_idx is not None,
+        dropout_count=len(dropout_spans),
     )

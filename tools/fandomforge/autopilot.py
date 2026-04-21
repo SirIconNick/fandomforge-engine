@@ -917,6 +917,48 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
         lp = (edit_plan or {}).get("length_seconds")
         if isinstance(lp, (int, float)) and lp > 0:
             target_duration_sec = float(lp)
+
+        # Auto-block the intro + outro window of COMPILATION sources so
+        # the picker doesn't grab a YouTube title card or thumbnail grid.
+        #
+        # Compilation detection heuristic, in order:
+        #   1. source_id contains an underscore — yt-dlp-downloaded titles
+        #      always have underscores (e.g. "raid2_brutal_fights",
+        #      "extraction2_tyler_rake"). Manually-renamed movie files
+        #      use dashes (john-wick-4, mad-max-fury-road).
+        #   2. Word markers as a safety net for stems that slip past (1).
+        #
+        # Movie sources pass through without any blacklist — their first
+        # 30s is usually studio logos + cold open, which is fine content.
+        COMPILATION_MARKERS = (
+            "fights", "mashup", "compilation", "best_fights", "best_of",
+            "every_fight", "all_fights", "ultimate", "_4k", "montage",
+        )
+        INTRO_OUTRO_BUFFER_SEC = 30.0
+
+        def _is_compilation(stem: str) -> bool:
+            s = stem.lower()
+            if "_" in s:
+                return True
+            return any(m in s for m in COMPILATION_MARKERS)
+
+        avoid_ranges: dict[str, list[tuple[float, float]]] = {}
+        for src_id, scenes in (scenes_by_source or {}).items():
+            if not _is_compilation(src_id):
+                continue
+            if not scenes:
+                continue
+            try:
+                total_sec = float(scenes[-1].get("end_sec") or 0.0)
+            except (TypeError, ValueError):
+                total_sec = 0.0
+            if total_sec < INTRO_OUTRO_BUFFER_SEC * 2:
+                continue  # source is too short to safely blacklist both ends
+            avoid_ranges[src_id] = [
+                (0.0, INTRO_OUTRO_BUFFER_SEC),
+                (total_sec - INTRO_OUTRO_BUFFER_SEC, total_sec + 1.0),
+            ]
+
         densified = densify_shot_list(
             shot_list,
             edit_plan=edit_plan,
@@ -924,6 +966,7 @@ def step_densify_shot_list(ctx: AutopilotContext) -> AutopilotEvent:
             scenes_by_source=scenes_by_source or None,
             target_duration_sec=target_duration_sec,
             drop_times=drop_times or None,
+            avoid_ranges=avoid_ranges or None,
         )
         validate_and_write(densified, "shot-list", shot_list_path)
 
