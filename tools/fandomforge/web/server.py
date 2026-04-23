@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import threading
 from pathlib import Path
 from typing import Any
@@ -37,7 +38,8 @@ from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from starlette.requests import Request
 
-from fandomforge.web.jobs import store
+from fandomforge.web.auth import api_key_configured, require_api_key
+from fandomforge.web.persistent_jobs import resolve_job_store
 from fandomforge.web.pipeline import (
     extract_video_id,
     incoming_root,
@@ -45,9 +47,16 @@ from fandomforge.web.pipeline import (
     validate_url,
 )
 
+store = resolve_job_store()
+
 logger = logging.getLogger("ff.web")
 
-app = FastAPI(title="FandomForge", docs_url="/api/docs")
+_docs_url = "/api/docs"
+if os.environ.get("FF_DISABLE_DOCS", "").lower() in ("1", "true", "yes"):
+    _docs_url = None
+
+app = FastAPI(title="FandomForge", docs_url=_docs_url)
+app.middleware("http")(require_api_key)
 
 _WEB_DIR = Path(__file__).resolve().parent
 templates = Jinja2Templates(directory=str(_WEB_DIR / "templates"))
@@ -396,8 +405,17 @@ async def api_summary() -> dict[str, Any]:
 
 @app.get("/api/health")
 async def api_health() -> dict[str, Any]:
+    tunnel_file = _repo_root() / ".cache" / "ff" / "tunnel-url.txt"
+    tunnel_url = ""
+    if tunnel_file.exists():
+        try:
+            tunnel_url = tunnel_file.read_text(encoding="utf-8").strip()
+        except OSError:
+            pass
     return {
         "ok": True,
         "incoming_root": str(incoming_root()),
         "references_dir": str(_references_dir()),
+        "auth_required": api_key_configured(),
+        "tunnel_url": tunnel_url,
     }

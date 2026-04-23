@@ -1,0 +1,65 @@
+{
+  "bucket": "high_energy",
+  "sample_count": 3,
+  "top_performers": [
+    {
+      "video_id": "BI2bXRv4wI8",
+      "projected_grade": "A",
+      "projected_score": 97.0,
+      "summary": "high_energy edit, 123s, 217 shots \u2014 exceptional craft with 2 notable risks, projected grade A.",
+      "strengths_count": 7,
+      "path": "high_energy/forensic/BI2bXRv4wI8.forensic.json"
+    }
+  ],
+  "defining_moves": [
+    "**Buildup ramping** \u2014 seen in 100% of top performers, 0% of bottom"
+  ],
+  "anti_patterns": [],
+  "consensus_craft_weights": {
+    "dropout": 0.0,
+    "ramp": 1.0,
+    "hero_reserve": 0.3,
+    "diegetic": 1.0,
+    "triple_cut": 1.0,
+    "j_cut": 1.0,
+    "lyric_sync": 0.3
+  },
+  "consensus_target_cpm_range": [
+    106.1,
+    106.1
+  ],
+  "consensus_edit_type": "multifandom",
+  "mined_priors": {
+    "onset_to_cut_latency_ms_median": 128.3,
+    "onset_to_cut_latency_ms_p90_median": 320.0,
+    "cuts_on_beat_pct_mean": 0.545,
+    "cuts_on_drop_pct_mean": 0.021,
+    "cuts_on_downbeat_pct_mean": 0.022,
+    "cpm_at_drop_vs_verse_ratio_median": 1.32,
+    "ducking_depth_db_median": -8.49,
+    "ducking_events_per_min_mean": 1.824,
+    "library_sfx_per_min_median": 1.484,
+    "library_sfx_kind_distribution": {
+      "riser": 8,
+      "impact": 3
+    },
+    "dropout_windows_per_drop_pct_mean": 0.0,
+    "source_diversity_entropy_mean": 4.413,
+    "source_top_cluster_share_mean": 0.07,
+    "dialogue_density_per_min_median": 29.48,
+    "lyric_sync_pct_median": 0.0,
+    "effect_density_per_min": {
+      "flash_cuts": 0.0,
+      "rgb_splits": 0.0,
+      "zoom_punches": 0.0,
+      "speed_ramps": 2.327,
+      "glitch_rgb": 0.0
+    }
+  },
+  "per_video_grades": {
+    "287LolDpfcU": "A",
+    "XxmAxXkD59M": "A",
+    "BI2bXRv4wI8": "A"
+  },
+  "generated_at": "2026-04-23T21:46:29.034208+00:00"
+}

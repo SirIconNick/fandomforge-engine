@@ -6808,6 +6808,210 @@ def _rotate_log_if_large() -> None:
         return
 
 
+@main.command("tunnel")
+@click.option("--port", type=int, default=4321, show_default=True,
+              help="Local port where `ff serve` is running.")
+@click.option("--via", type=click.Choice(["cloudflare", "tailscale"]), default="cloudflare",
+              show_default=True,
+              help="Which tunnel provider to use. cloudflare=zero signup, "
+                   "URL regenerates. tailscale=stable URL, needs account + tailscaled.")
+def tunnel_cmd(port: int, via: str) -> None:
+    """Expose `ff serve` at a public URL for free.
+
+    Run `ff serve` in one terminal, then `ff tunnel` in another. The
+    command prints the public URL and keeps running — Ctrl+C to stop.
+
+    The discovered URL is written to .cache/ff/tunnel-url.txt so the
+    web UI's /api/health endpoint can surface it.
+    """
+    from fandomforge.web.tunnel import (
+        run_cloudflare_quick_tunnel,
+        run_tailscale_funnel,
+    )
+
+    repo_root = _resolve_repo_root()
+    if via == "cloudflare":
+        rc = run_cloudflare_quick_tunnel(repo_root, port)
+    else:
+        rc = run_tailscale_funnel(repo_root, port)
+    if rc != 0:
+        raise click.exceptions.Exit(rc)
+
+
+@main.command("tunnel-url")
+def tunnel_url_cmd() -> None:
+    """Print the current tunnel's public URL (from .cache/ff/tunnel-url.txt)."""
+    from fandomforge.web.tunnel import current_tunnel_url
+    url = current_tunnel_url(_resolve_repo_root())
+    if not url:
+        console.print("[yellow]no tunnel URL on disk — is `ff tunnel` running?[/yellow]")
+        raise click.exceptions.Exit(1)
+    console.print(url)
+
+
+@main.command("tunnel-stop")
+@click.option("--via", type=click.Choice(["cloudflare", "tailscale"]), default="tailscale",
+              show_default=True,
+              help="cloudflare tunnels are foreground processes — use Ctrl+C. "
+                   "This command only helps with tailscale's background funnels.")
+def tunnel_stop_cmd(via: str) -> None:
+    """Stop a background tunnel (tailscale-only — cloudflare quick tunnels are foreground)."""
+    from fandomforge.web.tunnel import stop_tailscale_funnel
+    if via != "tailscale":
+        console.print("[yellow]cloudflare quick tunnels run in the foreground — stop with Ctrl+C[/yellow]")
+        return
+    rc = stop_tailscale_funnel()
+    if rc != 0:
+        raise click.exceptions.Exit(rc)
+
+
+@main.command("bias")
+@click.argument("bucket")
+@click.option("--json", "as_json", is_flag=True,
+              help="Emit the raw breakdown dict as JSON.")
+def bias_cmd(bucket: str, as_json: bool) -> None:
+    """Print every bias-layer contribution to ``bucket``'s craft weights.
+
+    Useful for debugging what a correction actually did, or comparing
+    two buckets' effective craft profiles. The values here are exactly
+    what the render pipeline sees — shot_proposer, sfx_engine, and the
+    assembly modules all call craft_weights_for(bucket) and get these.
+    """
+    from fandomforge.intelligence.forensic_craft_bias import (
+        effective_weights_breakdown,
+    )
+    from fandomforge.config import craft_weights_for
+
+    breakdown = effective_weights_breakdown(bucket)
+    live = craft_weights_for(bucket)
+
+    if as_json:
+        import json as _json
+        console.print(_json.dumps(
+            {"bucket": bucket, "breakdown": breakdown, "live_effective": live},
+            indent=2,
+        ))
+        return
+
+    console.print(f"\n[bold]bias stack for bucket: {bucket}[/bold]")
+    console.print(
+        f"  {'feature':15} {'table':>7} {'forensic':>10} {'training':>10} "
+        f"{'correction':>11} {'effective':>10} {'active':>7}"
+    )
+    console.print(f"  {'-' * 80}")
+    for feat, info in breakdown.items():
+        table = f"{info['table']:.2f}"
+        forensic = "—" if info["forensic"] is None else f"{info['forensic']:.2f}"
+        train = info["training"]
+        train_s = "—" if train is None else ("ON" if train else "OFF")
+        corr = info["correction"]
+        corr_s = "—" if corr is None else f"{corr:.2f}"
+        eff = f"{info['effective']:.2f}"
+        active = "[green]yes[/green]" if info["active"] else "[dim]no[/dim]"
+        console.print(
+            f"  {feat:15} {table:>7} {forensic:>10} {train_s:>10} "
+            f"{corr_s:>11} {eff:>10} {active:>15}"
+        )
+    active_feats = [f for f, i in breakdown.items() if i["active"]]
+    console.print(
+        f"\n[dim]firing features:[/dim] "
+        f"{', '.join(active_feats) if active_feats else '[yellow]none[/yellow]'}"
+    )
+
+
+@main.command("reclassify-high-energy")
+@click.option("--dry-run", is_flag=True,
+              help="Show what would be promoted without copying forensics.")
+def reclassify_high_energy_cmd(dry_run: bool) -> None:
+    """Promote high-BPM/high-CPM action forensics into high_energy.
+
+    Scans ``references/action/forensic/*.forensic.json`` and copies any
+    that clear the high-energy thresholds (fast cuts + hot tempo OR
+    rapid CPM) into ``references/high_energy/forensic/``. Originals
+    stay put so action's sample size doesn't shrink.
+    """
+    from fandomforge.intelligence.high_energy_reclassifier import (
+        reclassify_high_energy,
+    )
+    result = reclassify_high_energy(dry_run=dry_run)
+    console.print(f"\n[bold]high_energy reclassification[/bold]")
+    console.print(f"  {'promoted:':17} {len(result['promoted'])} {'(dry-run)' if dry_run else ''}")
+    for vid in result["promoted"]:
+        console.print(f"    [green]+[/green] {vid}")
+    console.print(f"  {'already present:':17} {len(result['already_present'])}")
+    console.print(f"  {'skipped:':17} {len(result['skipped'])}")
+    if not dry_run and result["promoted"]:
+        console.print(
+            "\n[dim]next: `ff forensic bucket-report --bucket high_energy` to rebuild consensus[/dim]"
+        )
+
+
+@main.command("deploy-check")
+def deploy_check_cmd() -> None:
+    """Pre-flight check before going public — confirms env is safe.
+
+    Verifies: FF_API_KEY is set (or warns), cloudflared/tailscale is
+    available if you plan to tunnel, .cache/ff/ is writable, at least
+    one bucket-report.json exists.
+    """
+    import shutil as _sh
+    repo = _resolve_repo_root()
+    cache = repo / ".cache" / "ff"
+
+    checks: list[tuple[str, bool, str]] = []
+
+    api_key = os.environ.get("FF_API_KEY", "").strip()
+    checks.append((
+        "FF_API_KEY set",
+        bool(api_key),
+        f"len={len(api_key)}" if api_key
+        else "open-access mode (fine for local; SET THIS BEFORE TUNNELING PUBLIC)",
+    ))
+
+    cf = _sh.which("cloudflared") is not None
+    checks.append((
+        "cloudflared installed",
+        cf,
+        "brew install cloudflared" if not cf else "ok",
+    ))
+
+    ts = _sh.which("tailscale") is not None
+    checks.append((
+        "tailscale installed (optional)",
+        ts,
+        "optional fallback for stable-URL tunnels" if not ts else "ok",
+    ))
+
+    try:
+        cache.mkdir(parents=True, exist_ok=True)
+        probe = cache / ".probe"
+        probe.write_bytes(b"")
+        probe.unlink()
+        cache_ok = True
+    except (OSError, PermissionError):
+        cache_ok = False
+    checks.append((".cache/ff/ writable", cache_ok, str(cache)))
+
+    refs = repo / "references"
+    has_reports = refs.exists() and any(refs.glob("*/bucket-report.json"))
+    checks.append((
+        "≥1 bucket-report.json on disk",
+        has_reports,
+        "run `ff auto` first" if not has_reports else "ok",
+    ))
+
+    console.print("\n[bold]ff deploy-check[/bold]")
+    for name, ok, detail in checks:
+        icon = "[green]✓[/green]" if ok else "[yellow]![/yellow]"
+        console.print(f"  {icon} {name}  [dim]{detail}[/dim]")
+
+    fatal = [c for c in checks if not c[1] and c[0] in {".cache/ff/ writable"}]
+    if fatal:
+        console.print("\n[red]fatal issues above — fix before deploying[/red]")
+        raise click.exceptions.Exit(1)
+    console.print("\n[green]ok to proceed[/green]")
+
+
 @main.command("serve")
 @click.option("--host", default="127.0.0.1", show_default=True,
               help="Bind address. Use 0.0.0.0 to expose on your LAN.")
