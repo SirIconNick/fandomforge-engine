@@ -1,0 +1,56 @@
+{
+  "bucket": "dance",
+  "sample_count": 5,
+  "sample_source": "legacy-migration",
+  "top_performers": [],
+  "defining_moves": [],
+  "anti_patterns": [],
+  "consensus_craft_weights": {
+    "dropout": 0.5,
+    "ramp": 1.0,
+    "hero_reserve": 0.7,
+    "micro_offset": 0.5,
+    "j_cut": 0.5,
+    "diegetic": 0.3,
+    "triple_cut": 1.0,
+    "lyric_sync": 0.5,
+    "pose_match": 1.0,
+    "vlm_apex": 0.7
+  },
+  "consensus_target_cpm_range": [
+    34.3,
+    34.3
+  ],
+  "consensus_edit_type": "dance",
+  "mined_priors": {
+    "cuts_on_beat_pct_mean": 0.562,
+    "tempo_bpm_median": 117.45,
+    "median_shot_duration_sec": 1.55,
+    "cuts_per_minute": 34.34,
+    "avg_luma_mean": 0.225,
+    "dark_shot_pct_mean": 0.502,
+    "bright_shot_pct_mean": 0.24,
+    "saturation_mean_mean": 0.434,
+    "shot_duration_range_sec": [
+      1.378,
+      2.284
+    ]
+  },
+  "per_video_grades": {},
+  "video_ids": [
+    "uvrJ0oYoZJs",
+    "287LolDpfcU",
+    "-yHCeSZ-Nik",
+    "ETMk4m-_7A0",
+    "00ezoTnw1HM"
+  ],
+  "source_playlists": [
+    "https://www.youtube.com/watch?v=uvrJ0oYoZJs",
+    "https://www.youtube.com/watch?v=287LolDpfcU",
+    "https://www.youtube.com/watch?v=-yHCeSZ-Nik",
+    "https://www.youtube.com/watch?v=ETMk4m-_7A0",
+    "https://www.youtube.com/watch?v=00ezoTnw1HM"
+  ],
+  "generated_at": "2026-04-23T21:09:54.843299+00:00",
+  "generator": "legacy_priors_migrator"
+}

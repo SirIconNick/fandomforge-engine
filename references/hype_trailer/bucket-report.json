@@ -1,0 +1,62 @@
+{
+  "bucket": "hype_trailer",
+  "sample_count": 15,
+  "sample_source": "legacy-migration",
+  "top_performers": [],
+  "defining_moves": [],
+  "anti_patterns": [],
+  "consensus_craft_weights": {
+    "dropout": 1.0,
+    "ramp": 1.0,
+    "hero_reserve": 1.0,
+    "micro_offset": 1.0,
+    "j_cut": 1.0,
+    "diegetic": 0.7,
+    "triple_cut": 1.0,
+    "lyric_sync": 0.8,
+    "pose_match": 0.7,
+    "vlm_apex": 0.8
+  },
+  "consensus_target_cpm_range": [
+    52.1,
+    52.1
+  ],
+  "consensus_edit_type": "hype_trailer",
+  "mined_priors": {
+    "cuts_on_beat_pct_mean": 0.613,
+    "tempo_bpm_median": 129.2,
+    "median_shot_duration_sec": 0.918,
+    "cuts_per_minute": 52.07,
+    "avg_luma_mean": 0.177,
+    "dark_shot_pct_mean": 0.63,
+    "bright_shot_pct_mean": 0.11,
+    "saturation_mean_mean": 0.386,
+    "shot_duration_range_sec": [
+      0.944,
+      1.439
+    ]
+  },
+  "per_video_grades": {},
+  "video_ids": [
+    "D9YZw_X5UzQ",
+    "33iuQu3UtjI",
+    "oSzXluYfaBs",
+    "0s3XdCN1uks",
+    "1NTaDm3atkc",
+    "nWkJg4qfZG8",
+    "RXKgEBkjZ2k",
+    "YxKbJrjR9qM",
+    "aBzz7qKfVIs",
+    "Bip5ALfWCZw",
+    "JIqcMl0hzXs",
+    "Dz8R2xxeyaA",
+    "JRXWkBQ80hs",
+    "BGHGZjDguqw",
+    "ITNgeXVvJT0"
+  ],
+  "source_playlists": [
+    "https://www.youtube.com/playlist?list=PL6z3IIDqsIEzxhS9ToFAtrzYPHInL4oeG"
+  ],
+  "generated_at": "2026-04-23T21:09:54.843102+00:00",
+  "generator": "legacy_priors_migrator"
+}
