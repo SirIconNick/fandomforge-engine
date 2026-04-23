@@ -6595,6 +6595,12 @@ def auto_cmd(
     run it whenever you want the engine to catch up with your corpus.
     No individual sub-commands required.
     """
+    # Opportunistic log rotation — the launchd agent's StandardOutPath
+    # appends to .cache/ff/auto.log forever. Size-check before any work
+    # and rotate once the file crosses 5 MB so months of hourly runs
+    # don't leave a huge append-only blob lying around.
+    _rotate_log_if_large()
+
     # Route ML caches the same way the forensic group does (shared helper
     # would be cleaner but this keeps the auto command self-contained).
     import os as _os
@@ -6760,6 +6766,46 @@ def uninstall_agent_cmd() -> None:
             stdout=_sp.DEVNULL, stderr=_sp.DEVNULL)
     dest.unlink()
     console.print(f"[green]removed[/green]  {dest}")
+
+
+_LOG_ROTATE_BYTES = 5 * 1024 * 1024  # 5 MB — about a month of hourly runs
+
+
+def _rotate_log_if_large() -> None:
+    """Rotate .cache/ff/auto.log when it grows past 5 MB.
+
+    Launchd keeps the stdout handle open on the same path so we can't
+    close it from here, but renaming the file lets launchd's next write
+    create a fresh empty file at the old path (the kernel-level fd tracks
+    by path, not inode, on APFS after a rename on an open file handle).
+    Worst case rotation is best-effort — if permissions block it, we
+    silently continue.
+    """
+    try:
+        here = Path(__file__).resolve()
+        repo = None
+        for parent in here.parents:
+            if (parent / ".git").exists():
+                repo = parent
+                break
+        if repo is None:
+            return
+        log = repo / ".cache" / "ff" / "auto.log"
+        if not log.exists() or log.stat().st_size < _LOG_ROTATE_BYTES:
+            return
+        from datetime import datetime
+        stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        rotated = log.with_name(f"auto.{stamp}.log")
+        log.rename(rotated)
+        # Keep only the 5 most recent rotations
+        archives = sorted(log.parent.glob("auto.*.log"))
+        for old in archives[:-5]:
+            try:
+                old.unlink()
+            except OSError:
+                pass
+    except (OSError, PermissionError):
+        return
 
 
 @main.command("serve")

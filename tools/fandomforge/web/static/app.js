@@ -1,7 +1,6 @@
 // FandomForge web UI — paste-link forensic + human correction.
-// Plain vanilla JS so there's no build step. All dynamic content uses
-// textContent / createElement — no raw HTML injection, no user data
-// ever interpolated into markup.
+// Vanilla JS, no build step. All dynamic content uses textContent /
+// createElement — no raw HTML injection, no user data interpolated into markup.
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -17,6 +16,7 @@ const CRAFT_FEATURES = [
 
 let currentJobId = null;
 let currentAnalysis = null;
+let currentTags = {original: [], current: new Set(), removed: new Set(), added: new Set()};
 let pollTimer = null;
 
 function el(tag, props, ...children) {
@@ -154,6 +154,61 @@ async function loadRecent() {
   } catch (e) { /* non-fatal */ }
 }
 
+async function loadCorrections() {
+  try {
+    const res = await fetch("/api/corrections?limit=50");
+    const entries = await res.json();
+    const list = $("#corrections-list");
+    clear(list);
+    if (!entries.length) {
+      list.appendChild(el("li", {class: "hint", text: "No corrections yet. Analyze a video and correct it to start training."}));
+      return;
+    }
+    for (const e of entries) {
+      list.appendChild(renderCorrectionRow(e));
+    }
+  } catch (err) {
+    const list = $("#corrections-list");
+    clear(list);
+    list.appendChild(document.createTextNode("Failed to load corrections: " + err.message));
+  }
+}
+
+function renderCorrectionRow(e) {
+  const ts = e.timestamp ? new Date(e.timestamp).toLocaleString() : "";
+  const head = el("div", {class: "row-head"},
+    el("span", {class: "bucket-badge", text: e.corrected_bucket || "?"}),
+    e.original_bucket && e.original_bucket !== e.corrected_bucket
+      ? el("span", {class: "n", style: "font-size:11px;color:var(--text-dim)",
+                    text: `(was ${e.original_bucket})`})
+      : null,
+    el("span", {class: "url-short", title: e.url || "", text: e.url || e.forensic_id || ""}),
+    el("span", {class: "timestamp", text: ts}),
+  );
+  const delBtn = el("button", {
+    class: "delete",
+    text: "delete",
+    on: {click: () => deleteCorrection(e.forensic_id)},
+  });
+  const row = el("li", null, head, delBtn);
+  if (e.notes) {
+    row.appendChild(el("div", {class: "notes", text: `"${e.notes}"`}));
+  }
+  return row;
+}
+
+async function deleteCorrection(forensicId) {
+  if (!confirm(`Delete correction for ${forensicId}?`)) return;
+  const res = await fetch(`/api/correct/${encodeURIComponent(forensicId)}`, {method: "DELETE"});
+  if (res.ok) {
+    loadCorrections();
+    loadSummary();
+    loadBuckets();
+  } else {
+    alert("delete failed: " + res.status);
+  }
+}
+
 async function submitAnalyze(ev) {
   ev.preventDefault();
   const url = $("#url").value.trim();
@@ -170,15 +225,26 @@ async function submitAnalyze(ev) {
       body: JSON.stringify({url, bucket_hint}),
     });
     if (!res.ok) {
-      alert("submit failed: " + res.status);
+      const err = await res.json().catch(() => ({detail: "unknown error"}));
+      alert("submit failed: " + (err.detail || res.status));
       return;
     }
-    const {job_id} = await res.json();
-    currentJobId = job_id;
+    const data = await res.json();
+    currentJobId = data.job_id;
     $("#job-status").classList.remove("hidden");
     $("#result-panel").classList.add("hidden");
     $("#correct-panel").classList.add("hidden");
-    startPoll();
+    if (data.cached) {
+      renderJobStatus({
+        status: "done",
+        steps: [`✓ reusing cached forensic (${data.forensic_id})`],
+        forensic_id: data.forensic_id,
+        elapsed_sec: 0,
+      });
+      pollJob();
+    } else {
+      startPoll();
+    }
   } finally {
     btn.disabled = false;
     loadRecent();
@@ -242,6 +308,16 @@ function renderResult(snap) {
   const gradeEl = $("#result-grade");
   gradeEl.textContent = grade;
   gradeEl.setAttribute("data-grade", grade);
+
+  // Video preview — point <video> at /api/video/<forensic_id>
+  const previewWrap = $("#video-preview-wrap");
+  const video = $("#video-preview");
+  if (snap.forensic_id) {
+    video.src = `/api/video/${encodeURIComponent(snap.forensic_id)}`;
+    previewWrap.classList.remove("hidden");
+  } else {
+    previewWrap.classList.add("hidden");
+  }
 
   const body = $("#result-body");
   clear(body);
@@ -307,22 +383,96 @@ async function openCorrection() {
   $("#correct-panel").classList.remove("hidden");
   $("#correct-panel").scrollIntoView({behavior: "smooth"});
   populateBucketSelect($("#corrected_bucket"), currentAnalysis.bucket);
-  const weights = await fetchCurrentWeights(currentAnalysis.bucket);
-  renderWeightSliders(weights);
+
+  // Initialize tag editor with current auto-tags
+  const autoTags = currentAnalysis.auto_tags || [];
+  currentTags = {
+    original: autoTags.slice(),
+    current: new Set(autoTags),
+    removed: new Set(),
+    added: new Set(),
+  };
+  renderTagEditor();
+
+  // Load the bias breakdown for the current bucket so sliders + tooltips
+  // reflect real live weights.
+  await refreshWeightSliders(currentAnalysis.bucket);
+
+  // When user switches the bucket in the dropdown, refresh the sliders
+  $("#corrected_bucket").onchange = (ev) => refreshWeightSliders(ev.target.value);
 }
 
-async function fetchCurrentWeights(bucket) {
+async function refreshWeightSliders(bucket) {
   try {
-    const res = await fetch(`/api/bucket/${encodeURIComponent(bucket)}`);
-    if (!res.ok) return {};
+    const res = await fetch(`/api/effective-weights/${encodeURIComponent(bucket)}`);
+    if (!res.ok) {
+      renderWeightSliders({}, {});
+      return;
+    }
     const data = await res.json();
-    return (data.json && data.json.consensus_craft_weights) || {};
+    renderWeightSliders(data.live_effective || {}, data.breakdown || {});
   } catch {
-    return {};
+    renderWeightSliders({}, {});
   }
 }
 
-function renderWeightSliders(weights) {
+function renderTagEditor() {
+  const container = $("#tag-editor");
+  clear(container);
+  // Show current (original - removed + added), with visual state
+  for (const tag of currentTags.original) {
+    if (currentTags.removed.has(tag)) {
+      container.appendChild(makeTagChip(tag, "removed", () => {
+        currentTags.removed.delete(tag);
+        currentTags.current.add(tag);
+        renderTagEditor();
+      }, "undo"));
+    } else {
+      container.appendChild(makeTagChip(tag, "", () => {
+        currentTags.removed.add(tag);
+        currentTags.current.delete(tag);
+        renderTagEditor();
+      }, "×"));
+    }
+  }
+  for (const tag of currentTags.added) {
+    container.appendChild(makeTagChip(tag, "added", () => {
+      currentTags.added.delete(tag);
+      currentTags.current.delete(tag);
+      renderTagEditor();
+    }, "×"));
+  }
+}
+
+function makeTagChip(text, state, onClick, btnLabel) {
+  const chip = el("span", {class: `edit-chip ${state}`.trim()},
+    document.createTextNode(text),
+    el("button", {
+      type: "button",
+      text: btnLabel,
+      title: btnLabel === "undo" ? "restore tag" : "remove tag",
+      on: {click: onClick},
+    }),
+  );
+  return chip;
+}
+
+function addTagFromInput() {
+  const input = $("#new-tag");
+  const val = input.value.trim().toLowerCase().replace(/\s+/g, "-");
+  if (!val) return;
+  if (currentTags.original.includes(val)) {
+    currentTags.removed.delete(val);
+    currentTags.current.add(val);
+  } else {
+    currentTags.added.add(val);
+    currentTags.current.add(val);
+  }
+  input.value = "";
+  renderTagEditor();
+}
+
+function renderWeightSliders(weights, breakdown) {
   const container = $("#weight-sliders");
   clear(container);
   for (const feat of CRAFT_FEATURES) {
@@ -334,13 +484,32 @@ function renderWeightSliders(weights) {
       dataset: {feat},
       on: {input: () => { display.textContent = Number(slider.value).toFixed(2); }},
     });
-    container.appendChild(
-      el("div", {class: "weight-slider-row"},
-        el("label", {text: feat}),
-        slider,
-        display,
-      )
+
+    // Per-layer breakdown tooltip (populated if the server returned one)
+    const bd = breakdown[feat] || {};
+    const tooltip = el("div", {class: "breakdown"});
+    const rows = [
+      ["table", bd.table],
+      ["forensic", bd.forensic],
+      ["training", bd.training === null || bd.training === undefined ? "—" : (bd.training ? "1 (rec ON)" : "0 (rec OFF)")],
+      ["correction", bd.correction],
+    ];
+    for (const [label, val] of rows) {
+      const line = document.createTextNode(
+        `${label.padEnd(11)}: ${val === null || val === undefined ? "—" : typeof val === "number" ? val.toFixed(2) : val}\n`
+      );
+      tooltip.appendChild(line);
+    }
+    tooltip.appendChild(el("span", {class: "hi",
+      text: `effective   : ${(bd.effective ?? current).toFixed?.(2) ?? current}`}));
+
+    const row = el("div", {class: "weight-slider-row"},
+      el("label", {text: feat}),
+      slider,
+      display,
+      tooltip,
     );
+    container.appendChild(row);
   }
 }
 
@@ -357,16 +526,25 @@ async function submitCorrection(ev) {
   if (!currentAnalysis) return;
   const status = $("#correct-status");
   status.textContent = "saving…";
+  const bucket = $("#corrected_bucket").value;
+
+  // Grab current effective weights as the "original" reference point
+  let originalWeights = {};
+  try {
+    const res = await fetch(`/api/effective-weights/${encodeURIComponent(currentAnalysis.bucket)}`);
+    if (res.ok) originalWeights = (await res.json()).live_effective || {};
+  } catch {}
+
   const body = {
     forensic_id: currentAnalysis.forensic_id,
     url: currentAnalysis.url || "",
     title: "",
     original_bucket: currentAnalysis.bucket || "",
-    corrected_bucket: $("#corrected_bucket").value,
-    original_craft_weights: await fetchCurrentWeights(currentAnalysis.bucket),
+    corrected_bucket: bucket,
+    original_craft_weights: originalWeights,
     corrected_craft_weights: collectCorrectionWeights(),
-    tags_added: [],
-    tags_removed: [],
+    tags_added: Array.from(currentTags.added),
+    tags_removed: Array.from(currentTags.removed),
     notes: $("#notes").value,
   };
   try {
@@ -384,6 +562,9 @@ async function submitCorrection(ev) {
     status.textContent = data.message || "saved";
     loadSummary();
     loadBuckets();
+    loadCorrections();
+    // Refresh sliders so the tooltip shows the correction now in place
+    refreshWeightSliders(bucket);
   } catch (e) {
     status.textContent = "error: " + e.message;
   }
@@ -395,8 +576,13 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#correct-cancel").addEventListener("click", () => {
     $("#correct-panel").classList.add("hidden");
   });
+  $("#add-tag").addEventListener("click", addTagFromInput);
+  $("#new-tag").addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") { ev.preventDefault(); addTagFromInput(); }
+  });
   loadSummary();
   loadBuckets();
   loadRecent();
+  loadCorrections();
   setInterval(loadSummary, 30000);
 });

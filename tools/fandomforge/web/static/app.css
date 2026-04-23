@@ -261,6 +261,167 @@ button.ghost { background: transparent; }
 .recent-list .status.failed { background: var(--bad); color: #fff; border-color: var(--bad); }
 .recent-list .status.running { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
 
+.hint.tight { margin: 0 0 8px 0; font-size: 12px; }
+
+.video-preview {
+  margin: 0 0 18px 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+.video-preview video {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+  background: #000;
+}
+
+.tag-editor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+  min-height: 28px;
+}
+.tag-editor:empty::before {
+  content: "no tags yet";
+  color: var(--text-dim);
+  font-size: 12px;
+  font-style: italic;
+}
+.tag-editor .edit-chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 99px;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 8px 2px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tag-editor .edit-chip button {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+.tag-editor .edit-chip.removed {
+  background: transparent;
+  color: var(--bad);
+  border-color: var(--bad);
+  text-decoration: line-through;
+}
+.tag-editor .edit-chip.added {
+  background: var(--good);
+  color: #0d1117;
+  border-color: var(--good);
+}
+.tag-input-row {
+  display: flex;
+  gap: 8px;
+}
+.tag-input-row input {
+  flex: 1;
+  font-size: 12px;
+  font-family: var(--mono);
+}
+
+.weight-slider-row {
+  position: relative;
+}
+.weight-slider-row .breakdown {
+  display: none;
+  position: absolute;
+  left: 130px;
+  top: 100%;
+  z-index: 5;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  white-space: pre;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin-top: 4px;
+  color: var(--text-dim);
+}
+.weight-slider-row:hover .breakdown,
+.weight-slider-row:focus-within .breakdown { display: block; }
+.weight-slider-row .breakdown .hi { color: var(--accent); }
+
+.corrections-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.corrections-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 12px;
+  align-items: start;
+}
+.corrections-list li:last-child { border-bottom: none; }
+.corrections-list .row-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.corrections-list .bucket-badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 99px;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 8px;
+}
+.corrections-list .url-short {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  max-width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.corrections-list .timestamp {
+  color: var(--text-dim);
+  font-size: 11px;
+  font-family: var(--mono);
+}
+.corrections-list .notes {
+  grid-column: 1 / -1;
+  color: var(--text-dim);
+  font-size: 12px;
+  font-style: italic;
+  padding-left: 4px;
+}
+.corrections-list button.delete {
+  background: transparent;
+  color: var(--bad);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: var(--mono);
+}
+.corrections-list button.delete:hover {
+  background: var(--bad);
+  color: #fff;
+  border-color: var(--bad);
+}
+
 .modal-backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.6);

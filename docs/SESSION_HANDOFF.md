@@ -1,6 +1,38 @@
 # Session Handoff — FandomForge Engine
 
-**For any new Claude Code session picking up this work.** Read this doc in full before doing anything. It's the definitive state of the project as of the end of the 2026-04-19 marathon session.
+**For any new Claude Code session picking up this work.** Read this doc in full before doing anything.
+
+## Latest update — 2026-04-23
+
+**Major additions since the 2026-04-19 section below:**
+
+- **Full forensic corpus ingested** — 60 videos across 5 buckets (action 23, narrative 18, multifandom 10, horror 6, high_energy 3). Lives at `references/<bucket>/forensic/*.forensic.json` + `references/<bucket>/bucket-report.json`
+- **Legacy priors migrated** — 5 more buckets (tribute 126, emotional 62, sad 17, hype_trailer 15, dance 5) synthesized from pre-existing `references/<type>-pl*/reference-priors.json`. All 10 edit types now have bucket-report cards.
+- **Paste-link web UI shipped** — FastAPI app at `tools/fandomforge/web/`, runs via `tools/.venv/bin/ff serve`. User pastes YouTube URL, watches forensic analyze in real time, corrects the engine's guess via sliders + tags + notes. Correction persists to `.cache/ff/training/corrections.jsonl` and pulls that bucket's craft profile 40% toward user values for every future render.
+- **4-layer craft-weight bias stack live** — table → forensic corpus (20%) → training journal (30%) → human corrections (40%). Each gated by its own env var (`FF_FORENSIC_BIAS` / `FF_TRAINING_BIAS` / `FF_CORRECTIONS_BIAS`) for clean A/B.
+- **Launchd agent installed** — `ff install-agent` registers hourly `ff auto --limit 2` runs. Logs at `.cache/ff/auto.log` (auto-rotates at 5MB, keeps 5 archives).
+- **Autonomous auto-pilot** — `ff auto` now runs 7 phases idempotently: ingest → mine → synthesize → analyze → training → legacy-migrate.
+- **Beat detection fix** — madmom was returning 117 beats instead of 331 (64% skip rate); librosa is now primary, madmom provides downbeat snap. Cuts-on-beat measurements jumped from ~11% to realistic 46-55% across buckets.
+- **Synthetic-entry filter** — outcome_aggregator now excludes `render_id="synthetic-..."` rows from boolean_impacts so bootstrap placeholders don't generate false negative-delta signals.
+- **Test suite: 1240 passed, 10 skipped** (was 418 in the old handoff)
+- **Commits pushed to SirIconNick/fandomforge-engine:** e2e2c03 (web UI + corrections) and a45ef97 (legacy migrator + integration tests). Third commit pending in this session with UI v2 + docs.
+
+**The docs to read for the latest architecture:**
+- `docs/WEB_UI.md` — paste-link UI architecture + deployment options
+- `docs/FORENSIC_DECONSTRUCTOR.md` — how the per-video forensic pipeline works
+- `references/corpus.yaml` — the manifest the hourly agent ingests
+
+**What's NOT done yet (from an audit of the current state):**
+- Full regression render of action-legends — impossible without raw source media (gitignored)
+- Public Vercel deployment — docs/WEB_UI.md lays out three paths (frontend-only Vercel + tunneled backend, Railway+Fly self-host, pure local)
+- `high_energy` corpus expansion — still narrow at n=3, no new URLs harvested
+- Persistent job store (jobs die on server restart — fine for local, matters for prod)
+
+---
+
+## Historical context — 2026-04-19 marathon session
+
+**Everything below is the state as of 2026-04-19.** Still largely accurate for the core pipeline (sync planner, SFX engine, review, etc.) — the web UI + autonomous work above layers ON TOP of it, doesn't replace it.
 
 ## TL;DR
 
@@ -240,6 +272,24 @@ Components: `ReviewReport.tsx`, `ProjectActions.tsx`, `EnvBanner.tsx`, `Autopilo
 - `FF_CACHE_DIR` — scene-detection cache location (defaults to `~/.fandomforge/cache/`)
 - `ANTHROPIC_API_KEY` — absent in Nick's env; edit-strategist LLM falls back to heuristic
 - `OPENAI_API_KEY` — absent; GPT-4o director review skipped
+- `FF_USE_ALLINONE=1` — (new, MFV-CORE M3) opt into All-in-One functional segmentation when allin1 is installed
+- `FF_USE_TRANSNETV2=1` — (new, MFV-CORE M4) opt into TransNetV2 scene detection when transnetv2-pytorch is installed
+
+## MFV-CORE Adaptive Cascade (2026-04-21)
+
+Full plan in `~/.claude/plans/mfv-core-multifandom-video-adaptive-cascade.md` and an architecture summary at the bottom of `docs/RENDER_POSTMORTEM.md`. Key file pointers so the next session doesn't have to search:
+
+- **Master kill switch:** `ProjectConfig.mfv_craft_enabled` (default True) + `MFV_CRAFT_WEIGHTS` table in `tools/fandomforge/config.py`
+- **Tier 1 features:** `assembly/mixer.py` (dropout), `intelligence/shot_proposer.py` (ramp + hero + micro-offset)
+- **Tier 2 features:** `intelligence/sfx_engine.py` (j-cut + diegetic), `audio/drops.py::detect_drum_fills`
+- **Tier 3 scaffolding:** `intelligence/lyric_sync.py`, `intelligence/pose_extractor.py`, `intelligence/vlm_apex.py`
+- **Mining adoptions:** `audio/whisper_shim.py` (M1), `audio/structural.py` (M3), `intelligence/shot_detector_v2.py` (M4)
+- **Review metric:** `intelligence/review_metrics/audio_drop_impact.py`
+- **Iterative loop:** `intelligence/iterative_review.py` (scaffolding only; autopilot integration wire-in still open)
+
+Test count: 884 baseline → 1056 passing. Zero regressions. Run `.venv/bin/pytest` from `tools/` to verify.
+
+**Baseline render still at B/85.7** until Nick runs a regression render against `projects/action-legends/` with the cascade active. Expected lift based on the design: `engagement +3 to +8`, `arc_shape +2 to +5`, `audio +2 to +4` for action edits; `coherence + lyric` boosts for sad/emotional.
 
 ## Nick's voice / working style
 

@@ -65,6 +65,25 @@ Use `uv` or `pip` for deps. Activate venv before running.
 
 Next.js 16 App Router, TypeScript strict, Tailwind, shadcn/ui. Runs on port 4321. Provides visual beat mapping, project browser, and an expert chat interface.
 
+## Paste-link forensic UI (`ff serve`)
+
+Separate from the Next.js dashboard — FastAPI app at `tools/fandomforge/web/` that runs via `tools/.venv/bin/ff serve` (default port 4321, same port as the dashboard so pick one or use `--port`). Paste-link workflow:
+
+1. User pastes a YouTube URL
+2. `/api/analyze` downloads via yt-dlp, runs `deconstruct_video`, returns job_id (or reuses cached forensic)
+3. UI polls `/api/job/<id>` until status=done
+4. User sees auto-tagged bucket + craft analysis + inline video preview
+5. User corrects via `/api/correct` — bucket, tags, craft-weight sliders, notes
+6. Correction writes to `.cache/ff/training/corrections.jsonl` and pulls that bucket's craft-weight profile 40% toward the user's values for every future render
+
+Four-layer bias stack: table → forensic corpus (20%) → training journal (30%) → human corrections (40%). Each layer has an env toggle (`FF_FORENSIC_BIAS`, `FF_TRAINING_BIAS`, `FF_CORRECTIONS_BIAS`).
+
+Never bypass the JobStore — the pipeline is slow (minutes) and the client polls. Never inject raw HTML into the UI; all dynamic content uses DOM-building in `app.js` via the `el()` helper. Full details in `docs/WEB_UI.md`.
+
+## Autonomous mode
+
+`ff install-agent --interval 3600` registers a macOS launchd agent that runs `ff auto --limit 2` every hour. Each run: ingest new corpus URLs → re-mine bucket priors → synthesize bucket-reports → bootstrap training journal → legacy-priors migration. Logs at `.cache/ff/auto.log` (auto-rotated at 5MB, keeps 5 archives). `ff uninstall-agent` to remove.
+
 ## Rules specific to this project
 
 - **Grab is unrestricted.** `ff grab video` and `ff grab song` pull from any yt-dlp-supported URL without license gating. Nick decides what's fair game on a per-project basis — the tool doesn't police it.

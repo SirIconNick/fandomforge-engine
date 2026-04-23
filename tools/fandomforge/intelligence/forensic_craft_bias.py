@@ -39,6 +39,7 @@ __all__ = [
     "clear_cache",
     "blend_weights",
     "apply_corrections",
+    "effective_weights_breakdown",
 ]
 
 # Forensic priors blend in at 20% vs table's 80%. Training bias still
@@ -180,4 +181,66 @@ def blend_weights(
             )
         else:
             out[feat] = float(base)
+    return out
+
+
+def effective_weights_breakdown(bucket: str) -> dict[str, Any]:
+    """Return a per-feature breakdown showing each bias layer's contribution.
+
+    Lets the UI explain *why* a bucket's effective weights are what they
+    are: ``{feature: {table: 1.0, forensic: 0.0, training: None, correction:
+    0.0, effective: 0.6}}``. ``training`` is None when no recommendation
+    exists for that feature (mined_priors below threshold).
+
+    Mirrors the exact blend logic in ``config.craft_weights_for`` so the
+    UI display matches the live pipeline values byte-for-byte.
+    """
+    from fandomforge.config import MFV_CRAFT_WEIGHTS, MFV_CRAFT_FEATURES, _EDIT_TYPE_FALLBACKS
+
+    key = (bucket or "").lower().strip()
+    row = MFV_CRAFT_WEIGHTS.get(key)
+    if row is None:
+        fallback = _EDIT_TYPE_FALLBACKS.get(key)
+        if fallback:
+            row = MFV_CRAFT_WEIGHTS.get(fallback)
+    row = row or {}
+    table = {feat: float(row.get(feat, 0.0)) for feat in MFV_CRAFT_FEATURES}
+
+    forensic = forensic_craft_suggestion(key) or {}
+    corrections = corrections_suggestion(key) or {}
+
+    training: dict[str, bool | None] = {}
+    try:
+        from fandomforge.intelligence.mined_priors import training_boolean_recommends
+        for feat in MFV_CRAFT_FEATURES:
+            training[feat] = training_boolean_recommends(key, f"craft.{feat}")
+    except Exception:  # noqa: BLE001
+        for feat in MFV_CRAFT_FEATURES:
+            training[feat] = None
+
+    out: dict[str, Any] = {}
+    for feat in MFV_CRAFT_FEATURES:
+        # Layer 1 — start at table
+        current = table[feat]
+        # Layer 1 blend — forensic corpus at 20%
+        forensic_val = forensic.get(feat)
+        if forensic_val is not None:
+            current = round(0.8 * current + 0.2 * float(forensic_val), 3)
+        # Layer 2 — training bias at 30% (pulls toward 1.0 or 0.0)
+        training_val = training.get(feat)
+        if training_val is not None:
+            target = 1.0 if training_val else 0.0
+            current = round(0.7 * current + 0.3 * target, 3)
+        # Layer 3 — human corrections at 40%
+        correction_val = corrections.get(feat)
+        if correction_val is not None:
+            current = round(0.6 * current + 0.4 * float(correction_val), 3)
+        out[feat] = {
+            "table": table[feat],
+            "forensic": forensic_val,
+            "training": training_val,
+            "correction": correction_val,
+            "effective": current,
+            "active": current >= 0.5,
+        }
     return out

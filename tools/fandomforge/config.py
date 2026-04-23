@@ -124,10 +124,17 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
     """
     key = (edit_type or "").lower().strip()
     row = MFV_CRAFT_WEIGHTS.get(key)
+    # lookup_key is what we use for bias lookups. If the table didn't have
+    # the requested edit_type we fell back to a sibling row (speed_amv ≈
+    # action) and the bias layers should fall back the same way so
+    # speed_amv inherits action's forensic/training/correction signal
+    # instead of getting the bare table with no corpus learning applied.
+    lookup_key = key
     if row is None:
         fallback = _EDIT_TYPE_FALLBACKS.get(key)
         if fallback:
             row = MFV_CRAFT_WEIGHTS.get(fallback)
+            lookup_key = fallback
     row = row or {}
     weights = {feat: float(row.get(feat, 0.0)) for feat in MFV_CRAFT_FEATURES}
 
@@ -139,7 +146,7 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
                 forensic_craft_suggestion,
                 blend_weights,
             )
-            suggestion = forensic_craft_suggestion(key)
+            suggestion = forensic_craft_suggestion(lookup_key)
             if suggestion:
                 weights = blend_weights(weights, suggestion)
         except Exception:  # noqa: BLE001
@@ -150,7 +157,7 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
         try:
             from fandomforge.intelligence.mined_priors import training_boolean_recommends
             for feat in MFV_CRAFT_FEATURES:
-                rec = training_boolean_recommends(key, f"craft.{feat}")
+                rec = training_boolean_recommends(lookup_key, f"craft.{feat}")
                 if rec is None:
                     continue
                 target = 1.0 if rec else 0.0
@@ -166,7 +173,7 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
     if _os.environ.get("FF_CORRECTIONS_BIAS", "1").lower() not in ("0", "false", "no"):
         try:
             from fandomforge.intelligence.forensic_craft_bias import apply_corrections
-            weights = apply_corrections(weights, key)
+            weights = apply_corrections(weights, lookup_key)
         except Exception:  # noqa: BLE001
             pass
     return weights

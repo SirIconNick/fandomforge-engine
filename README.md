@@ -62,6 +62,22 @@ Plus four utility experts:
 
 All 14 are also invocable inside the web dashboard's **expert chat** (text-based, propose structured JSON patches you review before applying) and **expert council** (ask 2-4 experts in parallel, see disagreements).
 
+## Paste-link forensic UI (the training loop)
+
+```bash
+tools/.venv/bin/ff serve                          # http://127.0.0.1:4321
+tools/.venv/bin/ff serve --host 0.0.0.0 --port 4321  # LAN-exposed (phone + laptop)
+```
+
+Paste any YouTube URL. FandomForge downloads it, runs the forensic pipeline (PySceneDetect + librosa/madmom + OpenCLIP + whisper), auto-tags the bucket + strengths/risks + craft techniques, and lets you correct anything it got wrong. Every correction writes to `.cache/ff/training/corrections.jsonl` and pulls that bucket's craft-weight profile 40% toward your values for every future render. Four-layer bias stack: table → forensic corpus (20%) → training journal (30%) → human corrections (40%). Full details in `docs/WEB_UI.md`.
+
+**Autonomous mode:**
+
+```bash
+ff install-agent --interval 3600    # hourly launchd agent runs `ff auto`
+ff uninstall-agent                  # remove
+```
+
 ## Web dashboard
 
 Runs on http://localhost:4321 (`scripts/dev.sh`).

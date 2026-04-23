@@ -47,19 +47,31 @@
 
     <section class="panel panel-result hidden" id="result-panel">
       <h2>Results <span id="result-grade" class="grade"></span></h2>
+      <div id="video-preview-wrap" class="video-preview hidden">
+        <video id="video-preview" controls preload="metadata"></video>
+      </div>
       <div id="result-body"></div>
     </section>
 
     <section class="panel panel-correct hidden" id="correct-panel">
       <h2>Correct this analysis</h2>
-      <p class="hint">Override the engine's bucket guess, edit craft weights, or add notes. Your correction pulls the bucket's craft profile 40% toward your values for every future render — that's how FandomForge learns from you.</p>
+      <p class="hint">Override the engine's bucket guess, edit craft weights, add tags, or leave notes. Your correction pulls the bucket's craft profile 40% toward your values for every future render — that's how FandomForge learns from you.</p>
       <form id="correct-form">
         <div class="field-block">
           <label for="corrected_bucket">Bucket</label>
           <select id="corrected_bucket" name="corrected_bucket" required></select>
         </div>
+        <div class="field-block">
+          <label>Tags</label>
+          <div id="tag-editor" class="tag-editor"></div>
+          <div class="tag-input-row">
+            <input id="new-tag" type="text" placeholder="add tag (e.g. 'fire-theme', 'dialogue-driven')" autocomplete="off" />
+            <button type="button" id="add-tag" class="ghost">+ add</button>
+          </div>
+        </div>
         <div class="field-block" id="weights-block">
           <label>Craft weights (0 = off, 1 = full)</label>
+          <p class="hint tight">Each slider is the current consensus for this bucket. Hover over a row for the per-layer breakdown.</p>
           <div id="weight-sliders"></div>
         </div>
         <div class="field-block">
@@ -81,6 +93,12 @@
     </section>
 
     <section class="panel panel-history">
+      <h2>Corrections history</h2>
+      <p class="hint">Every correction you've saved, newest first. Click <em>delete</em> to remove a correction and recompute bias.</p>
+      <ul id="corrections-list" class="corrections-list">loading…</ul>
+    </section>
+
+    <section class="panel panel-recent">
       <h2>Recent jobs this session</h2>
       <ul id="recent-list" class="recent-list"></ul>
     </section>

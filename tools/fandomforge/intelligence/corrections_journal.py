@@ -34,8 +34,10 @@ logger = logging.getLogger(__name__)
 __all__ = [
     "CorrectionEntry",
     "append_correction",
+    "delete_corrections_for",
     "iter_corrections",
     "corrections_path",
+    "corrections_for_bucket",
     "latest_correction_for",
     "corrections_summary",
 ]
@@ -142,6 +144,61 @@ def latest_correction_for(forensic_id: str, path: Path | None = None) -> Correct
         if latest is None or entry.timestamp > latest.timestamp:
             latest = entry
     return latest
+
+
+def corrections_for_bucket(bucket: str, path: Path | None = None) -> list[CorrectionEntry]:
+    """Return every correction targeting ``bucket`` ordered oldest → newest."""
+    entries = [e for e in iter_corrections(path=path) if e.corrected_bucket == bucket]
+    entries.sort(key=lambda e: e.timestamp)
+    return entries
+
+
+def delete_corrections_for(
+    forensic_id: str,
+    path: Path | None = None,
+) -> int:
+    """Rewrite the journal to drop every entry matching ``forensic_id``.
+
+    Returns the number of deleted entries. This is an O(n) rewrite since
+    the journal is JSONL — acceptable given the size (corrections are
+    low-frequency user actions). Writes atomically via a temp file + rename
+    so a crash mid-write can't corrupt the journal.
+    """
+    p = Path(path) if path else corrections_path()
+    if not p.exists():
+        return 0
+    kept: list[dict[str, Any]] = []
+    deleted = 0
+    with p.open("r", encoding="utf-8") as f:
+        for raw in f:
+            raw = raw.strip()
+            if not raw:
+                continue
+            try:
+                data = json.loads(raw)
+            except json.JSONDecodeError:
+                kept.append({"__raw__": raw})
+                continue
+            if data.get("forensic_id") == forensic_id:
+                deleted += 1
+                continue
+            kept.append(data)
+    if deleted == 0:
+        return 0
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        for row in kept:
+            if "__raw__" in row:
+                f.write(row["__raw__"])
+            else:
+                f.write(json.dumps(row, ensure_ascii=False, sort_keys=True))
+            f.write("\n")
+        try:
+            os.fsync(f.fileno())
+        except OSError:
+            pass
+    tmp.replace(p)
+    return deleted
 
 
 def corrections_summary(path: Path | None = None) -> dict[str, Any]:

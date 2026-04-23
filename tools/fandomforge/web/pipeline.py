@@ -30,6 +30,40 @@ _YOUTUBE_ID_RE = re.compile(
     r"(?:v=|youtu\.be/|youtube\.com/(?:embed|shorts)/)([A-Za-z0-9_-]{8,16})"
 )
 
+_SUPPORTED_HOSTS = (
+    "youtube.com", "youtu.be", "m.youtube.com",
+    "vimeo.com", "player.vimeo.com",
+    "twitter.com", "x.com", "t.co",
+    "tiktok.com", "vm.tiktok.com",
+    "instagram.com",
+    "facebook.com", "fb.watch",
+    "twitch.tv",
+    "dailymotion.com",
+    "reddit.com", "v.redd.it",
+)
+
+
+def validate_url(url: str) -> tuple[bool, str]:
+    """Return ``(ok, message)``. Pre-flight check before kicking off a
+    background analyze — lets the API respond 400 with a helpful message
+    instead of the user watching the job fail a minute later with a
+    cryptic yt-dlp error."""
+    url = (url or "").strip()
+    if not url:
+        return False, "URL is required."
+    if not (url.startswith("http://") or url.startswith("https://")):
+        return False, "URL must start with http:// or https://."
+    if len(url) > 512:
+        return False, "URL is too long."
+    # yt-dlp supports far more than this list but these are the common
+    # ones the MFV editor community uses; unknown hosts still work, they
+    # just don't get the "definitely supported" confirmation.
+    lower = url.lower()
+    host_match = any(host in lower for host in _SUPPORTED_HOSTS)
+    if not host_match:
+        return True, "Host not in the well-known supported list — yt-dlp will try anyway."
+    return True, ""
+
 
 def extract_video_id(url: str) -> str:
     """Parse a YouTube-style URL into an 11-char video id. Falls back to a
