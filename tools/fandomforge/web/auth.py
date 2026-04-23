@@ -64,9 +64,19 @@ async def require_api_key(
     request: Request,
     call_next: Callable[[Request], Awaitable],
 ):
-    """FastAPI middleware — gate /api/* behind FF_API_KEY when set."""
+    """FastAPI middleware — gate /api/* behind FF_API_KEY when set.
+
+    CORS preflight (OPTIONS) requests are always exempt — browsers don't
+    attach custom headers to preflights, so requiring the key there would
+    fail every cross-origin POST/DELETE before it starts. The actual
+    subsequent request still gets auth-checked normally.
+    """
     expected = _expected_key()
     if expected is None:
+        return await call_next(request)
+
+    # CORS preflight — browser never sends custom headers on these
+    if request.method == "OPTIONS":
         return await call_next(request)
 
     path = request.url.path
