@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FandomForge — Paste-link Forensic</title>
+  <link rel="stylesheet" href="/static/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">FF</span>
+      <span class="title">FandomForge</span>
+      <span class="tag">paste-link forensic + human-in-the-loop training</span>
+    </div>
+    <div id="summary" class="summary-pill">loading…</div>
+  </header>
+
+  <main>
+    <section class="panel panel-analyze">
+      <h2>Analyze a video</h2>
+      <p class="hint">Paste any YouTube URL. FandomForge downloads it, runs the forensic pipeline, and auto-tags what it finds. You can then correct its guess and the correction trains the engine for next time.</p>
+      <form id="analyze-form">
+        <div class="field-row">
+          <input
+            id="url" name="url" type="url"
+            placeholder="https://www.youtube.com/watch?v=..."
+            required autocomplete="off" spellcheck="false"
+          />
+          <select id="bucket_hint" name="bucket_hint" title="First-pass bucket guess (you can correct this later)">
+            <option value="multifandom">multifandom</option>
+            <option value="action">action</option>
+            <option value="narrative">narrative</option>
+            <option value="high_energy">high_energy</option>
+            <option value="horror">horror</option>
+            <option value="tribute">tribute</option>
+            <option value="sad">sad</option>
+            <option value="dance">dance</option>
+            <option value="hype_trailer">hype_trailer</option>
+            <option value="emotional">emotional</option>
+          </select>
+          <button type="submit">Analyze</button>
+        </div>
+      </form>
+      <div id="job-status" class="job-status hidden"></div>
+    </section>
+
+    <section class="panel panel-result hidden" id="result-panel">
+      <h2>Results <span id="result-grade" class="grade"></span></h2>
+      <div id="result-body"></div>
+    </section>
+
+    <section class="panel panel-correct hidden" id="correct-panel">
+      <h2>Correct this analysis</h2>
+      <p class="hint">Override the engine's bucket guess, edit craft weights, or add notes. Your correction pulls the bucket's craft profile 40% toward your values for every future render — that's how FandomForge learns from you.</p>
+      <form id="correct-form">
+        <div class="field-block">
+          <label for="corrected_bucket">Bucket</label>
+          <select id="corrected_bucket" name="corrected_bucket" required></select>
+        </div>
+        <div class="field-block" id="weights-block">
+          <label>Craft weights (0 = off, 1 = full)</label>
+          <div id="weight-sliders"></div>
+        </div>
+        <div class="field-block">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Anything the engine missed — e.g. 'opens with 3 sec of black + text, cuts hit snares not kicks, color graded warm'"></textarea>
+        </div>
+        <div class="field-row">
+          <button type="submit" class="primary">Save correction</button>
+          <button type="button" id="correct-cancel" class="ghost">Cancel</button>
+        </div>
+        <p id="correct-status" class="hint"></p>
+      </form>
+    </section>
+
+    <section class="panel panel-guide">
+      <h2>Reference guide — what the corpus has taught the engine</h2>
+      <p class="hint">Each card summarizes one bucket's consensus craft profile from the reference MFVs. Click a card to see the full bucket report.</p>
+      <div id="bucket-grid" class="bucket-grid">loading…</div>
+    </section>
+
+    <section class="panel panel-history">
+      <h2>Recent jobs this session</h2>
+      <ul id="recent-list" class="recent-list"></ul>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -5705,5 +5705,1089 @@ def orchestrator_tail_cmd(log_path: str) -> None:
         console.print(line)
 
 
+# ---------- forensic deconstructor ----------
+
+
+@main.group("forensic")
+def forensic_cmd() -> None:
+    """Deconstruct reference multifandom videos + mine patterns the engine can learn from."""
+    # Route ML model caches into a sandbox-writable path. Honors
+    # FF_CACHE_DIR when set; falls back to <repo>/.cache then $TMPDIR.
+    import os as _os
+    override = _os.environ.get("FF_CACHE_DIR")
+    if override:
+        fallback = override
+    else:
+        # Walk up from this file to find the repo root and put caches
+        # under <repo>/.cache so they persist without needing user-home
+        # write access.
+        here = Path(__file__).resolve()
+        project_cache = None
+        for parent in here.parents:
+            if (parent / "pyproject.toml").exists() or (parent / ".git").exists():
+                project_cache = parent / ".cache" / "ff"
+                break
+        fallback = str(project_cache) if project_cache else _os.path.join(
+            _os.environ.get("TMPDIR", "/tmp"), "ff-cache"
+        )
+    _os.makedirs(fallback, exist_ok=True)
+    # Force-override: if the default ~/.cache path is sandbox-blocked,
+    # setdefault would leave the bad path in place. Overwrite aggressively
+    # so every forensic run lands in a writable cache.
+    _os.environ["HF_HOME"] = _os.path.join(fallback, "huggingface")
+    _os.environ["HUGGINGFACE_HUB_CACHE"] = _os.path.join(fallback, "huggingface")
+    _os.environ["TRANSFORMERS_CACHE"] = _os.path.join(fallback, "huggingface")
+    _os.environ["XDG_CACHE_HOME"] = fallback
+    # whisper.load_model() uses this if passed; the shim already honors it.
+    _os.environ.setdefault("WHISPER_CACHE", _os.path.join(fallback, "whisper"))
+    # Disable openai-whisper's FP16 auto-choice on CPU — removes a Metal
+    # codepath that's slow + has silent hangs on some M-series chips.
+    _os.environ.setdefault("WHISPER_FP16", "False")
+
+
+@forensic_cmd.command("video")
+@click.argument("video", type=click.Path(exists=True, dir_okay=False, path_type=Path))
+@click.option("--bucket", default="multifandom",
+              type=click.Choice([
+                  "narrative", "action", "multifandom", "high_energy", "horror",
+                  "tribute", "sad", "dance", "hype_trailer", "emotional",
+              ]))
+@click.option("--video-id", default=None, help="Override the output filename stem.")
+@click.option("--song", "song_audio", type=click.Path(exists=True, dir_okay=False, path_type=Path),
+              help="Reference song file for beat + ducking analysis.")
+@click.option("--url", default=None, help="YouTube URL to stamp in the report.")
+@click.option("--title", default=None, help="Human-readable title.")
+@click.option("--output", "output_path", type=click.Path(path_type=Path),
+              help="Override output JSON path (defaults next to video).")
+@click.option("--max-sec", "max_duration_sec", type=float, default=None,
+              help="Cap analysis at the first N seconds (speeds up long videos).")
+def forensic_video_cmd(
+    video: Path,
+    bucket: str,
+    video_id: str | None,
+    song_audio: Path | None,
+    url: str | None,
+    title: str | None,
+    output_path: Path | None,
+    max_duration_sec: float | None,
+) -> None:
+    """Analyze a single reference MFV and write reference-forensic.json."""
+    from fandomforge.intelligence.forensic_deconstructor import (
+        ForensicRequest, deconstruct_video,
+    )
+
+    vid_id = video_id or video.stem
+    req = ForensicRequest(
+        video_path=video,
+        video_id=vid_id,
+        bucket=bucket,
+        url=url,
+        title=title,
+        song_audio=song_audio,
+        output_path=output_path,
+        max_duration_sec=max_duration_sec,
+        progress=lambda msg: console.print(f"[dim]{msg}[/dim]"),
+    )
+    console.print(f"[cyan]Analyzing {video.name} as bucket={bucket}...[/cyan]")
+    try:
+        report = deconstruct_video(req)
+    except FileNotFoundError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise click.Abort()
+    out = output_path or (video.parent / f"{vid_id}.forensic.json")
+    shots_n = len(report.get("shots") or [])
+    audio = report.get("audio_forensic") or {}
+    duck_n = len(audio.get("ducking_events") or [])
+    sfx_n = len(audio.get("library_sfx_events") or [])
+    drops_n = len((report.get("music") or {}).get("drops") or [])
+    console.print(
+        f"[green]forensic written[/green]  shots={shots_n}  drops={drops_n}  "
+        f"ducks={duck_n}  lib_sfx={sfx_n}  [dim]{out}[/dim]"
+    )
+
+
+@forensic_cmd.command("ingest")
+@click.option("--bucket", required=True,
+              type=click.Choice([
+                  "narrative", "action", "multifandom", "high_energy", "horror",
+              ]))
+@click.option("--limit", type=int, default=1, help="Max videos to download + analyze.")
+@click.option("--corpus",
+              default="references/corpus.yaml",
+              type=click.Path(path_type=Path),
+              help="Path to the corpus.yaml manifest.")
+@click.option("--output-dir",
+              default=None,
+              type=click.Path(path_type=Path),
+              help="Where to save downloaded video + forensic JSON. Defaults references/<bucket>/forensic/")
+def forensic_ingest_cmd(
+    bucket: str,
+    limit: int,
+    corpus: Path,
+    output_dir: Path | None,
+) -> None:
+    """Download + analyze N reference videos from the corpus."""
+    if not corpus.exists():
+        console.print(f"[red]corpus file missing: {corpus}[/red]")
+        raise click.Abort()
+    try:
+        import yaml  # type: ignore
+    except ImportError:
+        console.print("[red]pyyaml required: pip install pyyaml[/red]")
+        raise click.Abort()
+
+    data = yaml.safe_load(corpus.read_text(encoding="utf-8"))
+    bucket_data = (data.get("buckets") or {}).get(bucket) or {}
+    videos = (bucket_data.get("videos") or [])[:max(1, limit)]
+    if not videos:
+        console.print(f"[yellow]no videos in bucket {bucket}[/yellow]")
+        return
+
+    out_root = output_dir or (Path("references") / bucket / "forensic")
+    out_root.mkdir(parents=True, exist_ok=True)
+
+    from fandomforge.intelligence.forensic_deconstructor import (
+        ForensicRequest, deconstruct_video,
+    )
+
+    for v in videos:
+        vid_id = v.get("id")
+        url = v.get("url")
+        if not url or not vid_id:
+            continue
+        video_path = out_root / f"{vid_id}.mp4"
+        if not video_path.exists():
+            console.print(f"[cyan]downloading {vid_id}...[/cyan]")
+            if not _ytdlp_download(url, video_path):
+                console.print(f"[yellow]skipped {vid_id} (download failed)[/yellow]")
+                continue
+        # Also try to fetch the song separately via the video's own audio
+        song_audio_path = out_root / f"{vid_id}.song.wav"
+        if not song_audio_path.exists():
+            _ytdlp_audio_only(url, song_audio_path)
+        req = ForensicRequest(
+            video_path=video_path,
+            video_id=vid_id,
+            bucket=bucket,
+            url=url,
+            song_audio=song_audio_path if song_audio_path.exists() else None,
+            output_path=out_root / f"{vid_id}.forensic.json",
+        )
+        console.print(f"[cyan]analyzing {vid_id}...[/cyan]")
+        try:
+            deconstruct_video(req)
+            console.print(f"[green]✓ {vid_id}[/green]")
+        except Exception as exc:  # noqa: BLE001
+            console.print(f"[red]✗ {vid_id}: {type(exc).__name__}: {exc}[/red]")
+
+
+def _ytdlp_download(url: str, out_path: Path) -> bool:
+    """Pull the video via yt-dlp. Honors FF_YT_DLP_COOKIES_FILE for gated
+    content (same pattern autopilot's grab step uses)."""
+    import os
+    import shutil as _sh
+    import subprocess as _sp
+    if _sh.which("yt-dlp") is None:
+        return False
+    cmd = [
+        "yt-dlp",
+        "-f", "bestvideo[height<=720]+bestaudio/best[height<=720]",
+        "--merge-output-format", "mp4",
+        "-o", str(out_path),
+        "--quiet",
+        url,
+    ]
+    cookies_file = os.environ.get("FF_YT_DLP_COOKIES_FILE")
+    if cookies_file and Path(cookies_file).exists():
+        cmd.extend(["--cookies", cookies_file])
+    try:
+        _sp.run(cmd, check=True, timeout=600,
+                stdout=_sp.DEVNULL, stderr=_sp.DEVNULL)
+    except (_sp.CalledProcessError, _sp.TimeoutExpired, FileNotFoundError):
+        return False
+    return out_path.exists() and out_path.stat().st_size > 10_000
+
+
+def _ytdlp_audio_only(url: str, out_path: Path) -> bool:
+    """Pull just the audio track as a WAV — used as the 'reference song'
+    for forensic beat/ducking analysis."""
+    import os
+    import shutil as _sh
+    import subprocess as _sp
+    if _sh.which("yt-dlp") is None:
+        return False
+    cmd = [
+        "yt-dlp",
+        "-x", "--audio-format", "wav",
+        "-o", str(out_path.with_suffix(".%(ext)s")),
+        "--quiet",
+        url,
+    ]
+    cookies_file = os.environ.get("FF_YT_DLP_COOKIES_FILE")
+    if cookies_file and Path(cookies_file).exists():
+        cmd.extend(["--cookies", cookies_file])
+    try:
+        _sp.run(cmd, check=True, timeout=600,
+                stdout=_sp.DEVNULL, stderr=_sp.DEVNULL)
+    except (_sp.CalledProcessError, _sp.TimeoutExpired, FileNotFoundError):
+        return False
+    return out_path.exists() and out_path.stat().st_size > 1000
+
+
+@forensic_cmd.command("mine")
+@click.option("--bucket", required=True,
+              help="Bucket name (directory name under references/). E.g. action, tribute.")
+@click.option("--output",
+              default=None,
+              type=click.Path(path_type=Path),
+              help="Write enriched priors here. Defaults to references/<bucket>/reference-priors-mined.json")
+def forensic_mine_cmd(bucket: str, output: Path | None) -> None:
+    """Aggregate every *.forensic.json in a bucket into mined priors + signatures."""
+    from fandomforge.intelligence.forensic_miner import mine_bucket
+    bucket_dir = Path("references") / bucket
+    if not bucket_dir.exists():
+        console.print(f"[red]no bucket dir at {bucket_dir}[/red]")
+        raise click.Abort()
+    m = mine_bucket(bucket_dir, bucket_name=bucket)
+    if m.sample_count == 0:
+        console.print(f"[yellow]no forensic reports under {bucket_dir}[/yellow]")
+        return
+    out = output or (bucket_dir / "reference-priors-mined.json")
+    out.write_text(json.dumps(m.to_dict(), indent=2) + "\n", encoding="utf-8")
+    console.print(
+        f"[green]mined[/green]  bucket={bucket}  samples={m.sample_count}  "
+        f"priors={len(m.priors)}  signatures={len(m.signatures)}  [dim]{out}[/dim]"
+    )
+    for line in m.signatures:
+        console.print(f"  • {line}")
+
+
+@forensic_cmd.command("show")
+@click.argument("report_path", type=click.Path(exists=True, dir_okay=False, path_type=Path))
+def forensic_show_cmd(report_path: Path) -> None:
+    """Pretty-print a single forensic report (shots + timing summary)."""
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        console.print(f"[red]cannot load {report_path}: {exc}[/red]")
+        raise click.Abort()
+
+    src = report.get("source") or {}
+    bucket = report.get("bucket") or ""
+    console.print(
+        f"[bold cyan]{src.get('title') or src.get('video_id')}[/bold cyan]  "
+        f"bucket={bucket}  duration={src.get('duration_sec'):.1f}s  "
+        f"shots={len(report.get('shots') or [])}"
+    )
+    ct = report.get("cut_timing") or {}
+    console.print(
+        f"onset-to-cut median: {ct.get('onset_to_cut_latency_ms_mean', 0):.0f}ms  "
+        f"cuts/beat: {ct.get('cuts_on_beat_pct', 0) * 100:.0f}%  "
+        f"cuts/drop: {ct.get('cuts_on_drop_pct', 0) * 100:.0f}%  "
+        f"cpm ratio: {ct.get('cpm_at_drop_vs_verse_ratio', 0):.2f}"
+    )
+    af = report.get("audio_forensic") or {}
+    console.print(
+        f"audio residual: {af.get('source_audio_present_pct', 0) * 100:.0f}% of runtime  "
+        f"ducking events: {len(af.get('ducking_events') or [])}  "
+        f"library SFX: {len(af.get('library_sfx_events') or [])}"
+    )
+    sd = report.get("source_diversity") or {}
+    console.print(
+        f"source diversity: {sd.get('num_clusters', 0)} clusters, "
+        f"entropy={sd.get('entropy', 0):.2f}, top share={sd.get('top_cluster_share', 0) * 100:.0f}%"
+    )
+    dia = report.get("dialogue") or {}
+    console.print(
+        f"dialogue: {dia.get('dialogue_count', 0)} segments "
+        f"({dia.get('dialogue_density_per_min', 0):.1f}/min)"
+    )
+    lyr = report.get("lyrics") or {}
+    console.print(
+        f"lyric sync: {lyr.get('lyric_sync_pct', 0) * 100:.0f}% of trigger words matched shots"
+    )
+
+
+@forensic_cmd.command("prewarm")
+@click.option("--whisper-size", default="base",
+              help="Whisper model size (tiny/base/small/medium/large-v3). Default: base.")
+@click.option("--skip-whisper", is_flag=True)
+@click.option("--skip-openclip", is_flag=True)
+def forensic_prewarm_cmd(
+    whisper_size: str,
+    skip_whisper: bool,
+    skip_openclip: bool,
+) -> None:
+    """Download ML model caches the forensic pipeline needs.
+
+    First `ff forensic video` or `ff auto` run on a fresh machine pulls
+    ~700MB from Hugging Face with no visible progress. Run this once
+    upfront and subsequent runs start in seconds. Safe to re-run —
+    the HF cache is content-addressed so nothing re-downloads.
+    """
+    from fandomforge.intelligence.forensic_prewarm import prewarm_forensic_models
+    report = prewarm_forensic_models(
+        whisper_size=whisper_size,
+        skip_whisper=skip_whisper,
+        skip_openclip=skip_openclip,
+        progress=lambda msg: console.print(msg),
+    )
+    console.print("\n[bold]prewarm complete[/bold]")
+    if report.whisper:
+        console.print(f"  whisper     : [green]{report.whisper}[/green]")
+    if report.openclip:
+        console.print(f"  openclip    : [green]{report.openclip}[/green]")
+    if report.transnetv2:
+        console.print(f"  transnetv2  : [green]{report.transnetv2}[/green]")
+    for skipped in report.skipped:
+        console.print(f"  {skipped:11s} : [dim]skipped[/dim]")
+    for err in report.errors:
+        console.print(f"  [yellow]⚠ {err}[/yellow]")
+
+
+@forensic_cmd.command("analyze")
+@click.argument("forensic_path", type=click.Path(exists=True, dir_okay=False, path_type=Path))
+@click.option("--bucket-priors", "bucket_priors_path",
+              type=click.Path(exists=True, dir_okay=False, path_type=Path),
+              default=None,
+              help="Optional mined-priors JSON for bucket-peer comparison.")
+@click.option("--output",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Write markdown here (default: alongside the forensic JSON as <stem>.analysis.md).")
+def forensic_analyze_cmd(
+    forensic_path: Path,
+    bucket_priors_path: Path | None,
+    output: Path | None,
+) -> None:
+    """Interpret a single forensic report — why the video works + engine-emulation recipe."""
+    from fandomforge.intelligence.forensic_analyst import analyze_forensic, format_markdown
+    forensic = json.loads(forensic_path.read_text(encoding="utf-8"))
+    priors: dict[str, Any] | None = None
+    if bucket_priors_path:
+        priors = (json.loads(bucket_priors_path.read_text(encoding="utf-8"))).get("priors")
+    report = analyze_forensic(forensic, bucket_priors=priors)
+    md = format_markdown(report)
+    out_path = output or forensic_path.with_name(forensic_path.stem.replace(".forensic", "") + ".analysis.md")
+    out_path.write_text(md, encoding="utf-8")
+    console.print(
+        f"[green]analyzed[/green]  {forensic_path.name}  "
+        f"grade=[bold]{report.projected_grade}[/bold]  "
+        f"strengths={len(report.strengths)}  weaknesses={len(report.weaknesses)}  "
+        f"[dim]{out_path}[/dim]"
+    )
+    console.print(f"> {report.summary}")
+
+
+@forensic_cmd.command("bucket-report")
+@click.option("--bucket", required=True,
+              help="Bucket directory under references/.")
+@click.option("--output",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Write bucket report here (default: references/<bucket>/bucket-report.md).")
+@click.option("--json-output",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Also write the raw synthesis JSON here.")
+def forensic_bucket_report_cmd(bucket: str, output: Path | None, json_output: Path | None) -> None:
+    """Cross-video synthesis — what makes great <bucket> edits great."""
+    from fandomforge.intelligence.forensic_bucket_synthesizer import (
+        synthesize_bucket,
+        format_bucket_report,
+    )
+    bucket_dir = Path("references") / bucket
+    if not bucket_dir.exists():
+        console.print(f"[red]no bucket dir at {bucket_dir}[/red]")
+        raise click.Abort()
+    mined_priors: dict[str, Any] | None = None
+    mined_path = bucket_dir / "reference-priors-mined.json"
+    if mined_path.exists():
+        try:
+            mined_priors = (json.loads(mined_path.read_text(encoding="utf-8"))).get("priors") or {}
+        except (OSError, json.JSONDecodeError):
+            mined_priors = None
+    syn = synthesize_bucket(bucket_dir, bucket_name=bucket, mined_priors=mined_priors)
+    if syn.sample_count == 0:
+        console.print(f"[yellow]no forensic reports under {bucket_dir}[/yellow]")
+        return
+    md = format_bucket_report(syn)
+    out_path = output or (bucket_dir / "bucket-report.md")
+    out_path.write_text(md, encoding="utf-8")
+    console.print(
+        f"[green]synthesized[/green]  bucket={bucket}  samples={syn.sample_count}  "
+        f"defining_moves={len(syn.defining_moves)}  anti_patterns={len(syn.anti_patterns)}  "
+        f"[dim]{out_path}[/dim]"
+    )
+    if json_output:
+        json_output.write_text(json.dumps(syn.to_dict(), indent=2) + "\n", encoding="utf-8")
+        console.print(f"[dim]json → {json_output}[/dim]")
+
+
+# ---------- training — render journal + outcome mining ----------
+
+
+@main.group("train")
+def train_cmd() -> None:
+    """Train the engine from render outcomes — journal, aggregation, experiments."""
+
+
+@train_cmd.command("status")
+@click.option("--journal", "journal_path_flag",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Override journal path (default ~/.fandomforge/training/journal.jsonl)")
+def train_status_cmd(journal_path_flag: Path | None) -> None:
+    """Show how many renders the engine has learned from + per-bucket stats."""
+    from fandomforge.intelligence.training_journal import summary
+    s = summary(journal_path_flag)
+    if s.get("total", 0) == 0:
+        console.print(f"[yellow]{s.get('message', 'no entries')}[/yellow]")
+        console.print(f"[dim]{s.get('path', '?')}[/dim]")
+        return
+    console.print(
+        f"[green]{s['total']}[/green] renders in journal  "
+        f"avg overall score: [bold]{s['overall_avg_score']:.1f}[/bold]"
+    )
+    console.print(f"[dim]{s['path']}[/dim]\n")
+    if s["per_bucket"]:
+        console.print("[bold]per bucket[/bold]")
+        for b, stats in sorted(s["per_bucket"].items()):
+            console.print(
+                f"  {b:12s}  n={stats['count']:3d}  "
+                f"avg={stats['avg_score']:.1f}  "
+                f"range=[{stats['min']:.0f}→{stats['max']:.0f}]"
+            )
+    if s["dimension_averages"]:
+        console.print("\n[bold]dimension averages[/bold]")
+        for name, avg in s["dimension_averages"].items():
+            console.print(f"  {name:12s}  {avg:.1f}")
+    if s["grade_distribution"]:
+        console.print("\n[bold]grade distribution[/bold]")
+        for grade, count in sorted(s["grade_distribution"].items(),
+                                   key=lambda x: (-x[1], x[0])):
+            console.print(f"  {grade:4s}  {count}")
+
+
+@train_cmd.command("mine")
+@click.option("--journal", "journal_path_flag",
+              type=click.Path(path_type=Path),
+              default=None)
+@click.option("--output", "output_path",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Where to write engine-training-priors.json "
+                   "(default ~/.fandomforge/training/priors.json)")
+@click.option("--bucket", default=None,
+              help="Mine only entries matching this edit_type; write to "
+                   "~/.fandomforge/training/priors-<bucket>.json")
+@click.option("--all-buckets", is_flag=True,
+              help="Mine the global journal AND one priors-<bucket>.json "
+                   "file per distinct edit_type seen in the journal.")
+def train_mine_cmd(
+    journal_path_flag: Path | None,
+    output_path: Path | None,
+    bucket: str | None,
+    all_buckets: bool,
+) -> None:
+    """Aggregate journal into training priors — boolean impacts + numeric correlations."""
+    from fandomforge.intelligence.training_journal import iter_entries
+    from fandomforge.intelligence.outcome_aggregator import aggregate
+    # Resolve the default output root, but DON'T mkdir until we know we
+    # need it. Callers passing an explicit --output shouldn't require
+    # write access to ~/.fandomforge.
+    default_root = Path.home() / ".fandomforge" / "training"
+
+    def _mine_and_write(entries: list, out_path: Path, label: str) -> None:
+        if not entries:
+            console.print(f"[yellow]no entries for {label}[/yellow]")
+            return
+        priors = aggregate(entries)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(priors.to_dict(), indent=2) + "\n", encoding="utf-8")
+        console.print(
+            f"[green]mined[/green] {label}  samples={priors.sample_count}  "
+            f"avg_score={priors.avg_overall_score:.1f}  "
+            f"bool_impacts={len(priors.boolean_impacts)}  "
+            f"correlations={len(priors.numeric_correlations)}  [dim]{out_path}[/dim]"
+        )
+        for line in priors.recommendations:
+            console.print(f"  • {line}")
+
+    # Pick the root to use — explicit --output.parent wins, else
+    # the default ~/.fandomforge/training/.
+    base = output_path.parent if output_path else default_root
+
+    if all_buckets:
+        all_entries = list(iter_entries(journal_path_flag))
+        if not all_entries:
+            console.print("[yellow]no journal entries — render some edits first[/yellow]")
+            return
+        # Global
+        _mine_and_write(all_entries, base / "priors.json", label="global")
+        # Per-bucket
+        seen: set[str] = set()
+        for e in all_entries:
+            if e.edit_type and e.edit_type not in seen:
+                seen.add(e.edit_type)
+        for b in sorted(seen):
+            subset = [e for e in all_entries if e.edit_type == b]
+            _mine_and_write(subset, base / f"priors-{b}.json", label=f"bucket={b}")
+        return
+
+    entries = list(iter_entries(journal_path_flag, filter_bucket=bucket))
+    if not entries:
+        console.print(
+            f"[yellow]no journal entries for "
+            f"{'bucket=' + bucket if bucket else 'global'}[/yellow]"
+        )
+        return
+    out = output_path or (
+        base / (f"priors-{bucket}.json" if bucket else "priors.json")
+    )
+    _mine_and_write(entries, out, label=f"bucket={bucket}" if bucket else "global")
+
+
+@train_cmd.command("bootstrap")
+@click.option("--references", "references_dir",
+              type=click.Path(path_type=Path),
+              default=None,
+              help="Path to references/ root (auto-detects).")
+@click.option("--samples", type=int, default=5,
+              help="Synthetic entries per bucket.")
+@click.option("--journal", "journal_path_flag",
+              type=click.Path(path_type=Path),
+              default=None)
+def train_bootstrap_cmd(
+    references_dir: Path | None,
+    samples: int,
+    journal_path_flag: Path | None,
+) -> None:
+    """Seed the training journal with synthetic entries derived from
+    forensic corpus priors — so `ff train mine` has signal on day one."""
+    from fandomforge.intelligence.training_bootstrap import (
+        bootstrap_journal_from_forensic,
+    )
+    written = bootstrap_journal_from_forensic(
+        references_dir=references_dir,
+        sample_count=samples,
+        journal_path=journal_path_flag,
+    )
+    if not written:
+        console.print("[yellow]no forensic priors found — run `ff forensic mine` first[/yellow]")
+        return
+    total = sum(written.values())
+    console.print(f"[green]seeded[/green] {total} synthetic entries across {len(written)} buckets:")
+    for b, n in sorted(written.items()):
+        console.print(f"  {b:12s}  {n} entries")
+
+
+@train_cmd.command("compare")
+@click.argument("experiment_id")
+@click.option("--journal", "journal_path_flag",
+              type=click.Path(path_type=Path),
+              default=None)
+def train_compare_cmd(experiment_id: str, journal_path_flag: Path | None) -> None:
+    """Show the A vs B outcome for a completed A/B experiment."""
+    from fandomforge.intelligence.training_journal import iter_entries
+    entries = [
+        e for e in iter_entries(journal_path_flag)
+        if e.experiment_id == experiment_id
+    ]
+    if not entries:
+        console.print(f"[yellow]no journal entries with experiment_id={experiment_id}[/yellow]")
+        return
+    variants: dict[str, list] = {}
+    vary_field = ""
+    for e in entries:
+        variants.setdefault(e.experiment_variant or "?", []).append(e)
+        if e.experiment_vary_field:
+            vary_field = e.experiment_vary_field
+    console.print(
+        f"[bold cyan]experiment {experiment_id}[/bold cyan]  "
+        f"vary={vary_field or '?'}  variants={sorted(variants.keys())}"
+    )
+    for v in sorted(variants):
+        rows = variants[v]
+        if not rows:
+            continue
+        avg = sum(r.overall_score for r in rows) / len(rows)
+        avg_audio = sum(r.dim_audio for r in rows) / len(rows)
+        avg_visual = sum(r.dim_visual for r in rows) / len(rows)
+        avg_eng = sum(r.dim_engagement for r in rows) / len(rows)
+        console.print(
+            f"  variant {v}: n={len(rows)}  "
+            f"overall={avg:.1f}  audio={avg_audio:.0f}  "
+            f"visual={avg_visual:.0f}  engagement={avg_eng:.0f}"
+        )
+    if "A" in variants and "B" in variants:
+        a_avg = sum(r.overall_score for r in variants["A"]) / len(variants["A"])
+        b_avg = sum(r.overall_score for r in variants["B"]) / len(variants["B"])
+        delta = a_avg - b_avg
+        winner = "A" if delta > 0.5 else ("B" if delta < -0.5 else "tie")
+        console.print(
+            f"\n[bold]winner:[/bold] {winner}  "
+            f"[bold]Δ:[/bold] {delta:+.2f} points"
+        )
+
+
+@train_cmd.command("report")
+@click.option("--journal", "journal_path_flag",
+              type=click.Path(path_type=Path),
+              default=None)
+@click.option("--bucket", default=None,
+              help="Scope the report to a single bucket.")
+def train_report_cmd(journal_path_flag: Path | None, bucket: str | None) -> None:
+    """Full learning summary: journal size, per-bucket scores, correlations, experiments."""
+    from fandomforge.intelligence.training_journal import iter_entries, summary
+    from fandomforge.intelligence.outcome_aggregator import aggregate
+
+    s = summary(journal_path_flag)
+    if s.get("total", 0) == 0:
+        console.print("[yellow]no journal entries — run some autopilot renders first[/yellow]")
+        return
+
+    console.print(
+        f"\n[bold cyan]FandomForge training report[/bold cyan]\n"
+        f"journal: {s['path']}\n"
+    )
+    console.print(
+        f"[bold]{s['total']}[/bold] renders logged  "
+        f"avg overall: [bold]{s['overall_avg_score']:.1f}[/bold]"
+    )
+    if s["per_bucket"]:
+        console.print("\n[bold]per bucket[/bold]")
+        for b, stats in sorted(s["per_bucket"].items(),
+                                key=lambda x: -x[1]["avg_score"]):
+            console.print(
+                f"  {b:12s}  n={stats['count']:3d}  "
+                f"avg={stats['avg_score']:.1f}  "
+                f"range=[{stats['min']:.0f}→{stats['max']:.0f}]"
+            )
+    if s["dimension_averages"]:
+        console.print("\n[bold]dimension averages[/bold]")
+        sorted_dims = sorted(s["dimension_averages"].items(), key=lambda x: -x[1])
+        for name, avg in sorted_dims:
+            bar = "█" * int(avg / 5)
+            console.print(f"  {name:12s}  {avg:>5.1f}  {bar}")
+
+    entries = list(iter_entries(journal_path_flag, filter_bucket=bucket))
+    priors = aggregate(entries)
+    console.print(
+        f"\n[bold]mined patterns[/bold]  "
+        f"({priors.sample_count} samples, "
+        f"{len(priors.boolean_impacts)} bool impacts, "
+        f"{len(priors.numeric_correlations)} correlations)"
+    )
+    for rec in priors.recommendations:
+        console.print(f"  • {rec}")
+
+    # Experiment tallies
+    exp_ids: set[str] = set()
+    for e in entries:
+        if e.experiment_id:
+            exp_ids.add(e.experiment_id)
+    if exp_ids:
+        console.print(f"\n[bold]experiments[/bold]  {len(exp_ids)} completed")
+        for xid in sorted(exp_ids):
+            variants: dict[str, list] = {}
+            vary_field = ""
+            for e in entries:
+                if e.experiment_id != xid:
+                    continue
+                variants.setdefault(e.experiment_variant or "?", []).append(e)
+                if e.experiment_vary_field:
+                    vary_field = e.experiment_vary_field
+            summary_parts = []
+            for v in sorted(variants):
+                rows = variants[v]
+                avg = sum(r.overall_score for r in rows) / len(rows)
+                summary_parts.append(f"{v}={avg:.1f}")
+            console.print(
+                f"  {xid}  vary={vary_field or '?'}  "
+                f"[{' vs '.join(summary_parts)}]"
+            )
+
+
+@train_cmd.command("experiment")
+@click.argument("project_slug")
+@click.option("--vary", "vary_field", required=True,
+              help="Config field to toggle (e.g. mfv_craft_enabled, pre_drop_dropout_sec)")
+@click.option("--high", "high_value", default=None,
+              help="Variant A value. Defaults to the field's registered high value.")
+@click.option("--low", "low_value", default=None,
+              help="Variant B value. Defaults to the field's registered low value.")
+def train_experiment_cmd(
+    project_slug: str,
+    vary_field: str,
+    high_value: str | None,
+    low_value: str | None,
+) -> None:
+    """Plan an A/B experiment. Prints the config — actual render is up to autopilot."""
+    from fandomforge.intelligence.ab_experiment import plan_experiment
+    def _coerce(v: str | None) -> Any:
+        if v is None:
+            return None
+        low = v.lower()
+        if low in ("true", "yes", "1"):
+            return True
+        if low in ("false", "no", "0"):
+            return False
+        try:
+            return float(v)
+        except ValueError:
+            return v
+    try:
+        cfg = plan_experiment(
+            project_slug, vary_field,
+            high_value=_coerce(high_value),
+            low_value=_coerce(low_value),
+        )
+    except ValueError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise click.Abort()
+    console.print(
+        f"[cyan]experiment planned[/cyan]  id={cfg.experiment_id}  "
+        f"base={cfg.base_project_slug}  vary={cfg.vary_field}"
+    )
+    console.print(f"  variant A: {cfg.vary_field}={cfg.variant_a_value!r}")
+    console.print(f"  variant B: {cfg.vary_field}={cfg.variant_b_value!r}")
+    console.print(
+        "\nNext: clone two variants + run `ff autopilot --project <variant>` "
+        "on each; journal auto-logs both."
+    )
+
+
+# ---------- `ff explain` — why did the engine pick these weights ----------
+
+
+@main.command("explain")
+@click.argument("edit_type")
+@click.option("--references-dir", default="references",
+              type=click.Path(path_type=Path),
+              help="Root where each bucket lives.")
+def explain_cmd(edit_type: str, references_dir: Path) -> None:
+    """Show the stacked craft-weight derivation for an edit_type.
+
+    Prints the hand-tuned table row, the forensic corpus row (from
+    `bucket-report.json` if present), the training bias row (from the
+    render journal), and the final blended weights the engine uses.
+    Lets you debug why a render leans on dropout but not triple_cut
+    without spelunking through config.py.
+    """
+    from fandomforge.config import (
+        MFV_CRAFT_FEATURES, MFV_CRAFT_WEIGHTS, _EDIT_TYPE_FALLBACKS,
+        craft_weights_for, CRAFT_ACTIVATION_THRESHOLD,
+    )
+    from fandomforge.intelligence.forensic_craft_bias import (
+        forensic_craft_suggestion, forensic_blend_weight,
+    )
+
+    key = edit_type.lower().strip()
+    console.print(f"\n[bold cyan]craft_weights_for({edit_type!r})[/bold cyan]\n")
+
+    # Row lookup + fallback trace
+    table_row = MFV_CRAFT_WEIGHTS.get(key)
+    fallback_note = ""
+    if table_row is None:
+        fb = _EDIT_TYPE_FALLBACKS.get(key)
+        if fb:
+            table_row = MFV_CRAFT_WEIGHTS.get(fb)
+            fallback_note = f" [dim](fallback: {fb})[/dim]"
+    table_row = table_row or {}
+
+    forensic_row = forensic_craft_suggestion(
+        key, references_dir=str(references_dir)
+    ) or {}
+    final = craft_weights_for(key)
+
+    from fandomforge.intelligence.mined_priors import training_boolean_recommends
+    training_row = {}
+    for feat in MFV_CRAFT_FEATURES:
+        rec = training_boolean_recommends(key, f"craft.{feat}")
+        if rec is not None:
+            training_row[feat] = 1.0 if rec else 0.0
+
+    # Nicely tabular output — fixed-width columns for alignment
+    header = f"{'feature':14s}  {'table':>6s}  {'forensic':>8s}  {'training':>8s}  {'final':>6s}  {'active':>6s}"
+    console.print(f"[bold]{header}[/bold]{fallback_note}")
+    console.print("─" * len(header))
+    for feat in MFV_CRAFT_FEATURES:
+        t = table_row.get(feat, 0.0)
+        f = forensic_row.get(feat)
+        tr = training_row.get(feat)
+        final_v = final.get(feat, 0.0)
+        active = "[green]✓[/green]" if final_v >= CRAFT_ACTIVATION_THRESHOLD else "[dim]·[/dim]"
+        f_str = f"{f:>8.2f}" if f is not None else "     —  "
+        tr_str = f"{tr:>8.2f}" if tr is not None else "     —  "
+        console.print(
+            f"{feat:14s}  {t:>6.2f}  {f_str}  {tr_str}  {final_v:>6.2f}    {active}"
+        )
+    console.print("")
+    console.print(
+        f"[dim]blend = (1 - {forensic_blend_weight():.2f}) · table + "
+        f"{forensic_blend_weight():.2f} · forensic, then 0.7 · blend + 0.3 · training[/dim]"
+    )
+    console.print(
+        f"[dim]activation threshold: {CRAFT_ACTIVATION_THRESHOLD:.2f} "
+        f"(features ≥ threshold fire during render)[/dim]"
+    )
+
+
+# ---------- `ff status` — one-glance engine state ----------
+
+
+@main.command("status")
+@click.option("--json", "as_json", is_flag=True, help="Emit JSON instead of a human-readable report.")
+def status_cmd(as_json: bool) -> None:
+    """Show corpus / forensic / training / cache state at a glance, plus
+    the single next action to take. No flags needed to run. No other
+    commands needed to know where you stand.
+    """
+    from fandomforge.intelligence.status_report import build_status, format_status
+    r = build_status()
+    if as_json:
+        console.print_json(data=r.to_dict())
+        return
+    console.print(format_status(r))
+
+
+# ---------- `ff auto` — one-shot maintenance pilot ----------
+
+
+@main.command("auto")
+@click.option("--limit", "ingest_limit", type=int, default=2,
+              help="Max new videos to ingest per bucket per run (default 2).")
+@click.option("--skip-ingest", is_flag=True, help="Don't pull new videos.")
+@click.option("--skip-mine", is_flag=True, help="Don't re-mine bucket priors.")
+@click.option("--skip-synthesize", is_flag=True, help="Don't rebuild bucket-reports.")
+@click.option("--skip-analyze", is_flag=True, help="Don't rebuild per-video analyses.")
+@click.option("--skip-training", is_flag=True, help="Don't touch the training journal.")
+@click.option("--bucket", "buckets_opt", multiple=True,
+              help="Limit to these buckets (repeatable). Default: all discovered.")
+@click.option("--corpus",
+              default="references/corpus.yaml",
+              type=click.Path(path_type=Path),
+              help="Path to corpus.yaml manifest.")
+@click.option("--references-dir",
+              default="references",
+              type=click.Path(path_type=Path),
+              help="Root where each bucket lives.")
+@click.option("--report",
+              default=None,
+              type=click.Path(path_type=Path),
+              help="Write the pilot report markdown here (default: references/auto-report.md).")
+def auto_cmd(
+    ingest_limit: int,
+    skip_ingest: bool,
+    skip_mine: bool,
+    skip_synthesize: bool,
+    skip_analyze: bool,
+    skip_training: bool,
+    buckets_opt: tuple[str, ...],
+    corpus: Path,
+    references_dir: Path,
+    report: Path | None,
+) -> None:
+    """One-command maintenance pilot — ingests, mines, synthesizes, trains.
+
+    Everything runs idempotently so you can put this on a cron or just
+    run it whenever you want the engine to catch up with your corpus.
+    No individual sub-commands required.
+    """
+    # Route ML caches the same way the forensic group does (shared helper
+    # would be cleaner but this keeps the auto command self-contained).
+    import os as _os
+    override = _os.environ.get("FF_CACHE_DIR")
+    if override:
+        fallback = override
+    else:
+        here = Path(__file__).resolve()
+        project_cache = None
+        for parent in here.parents:
+            if (parent / "pyproject.toml").exists() or (parent / ".git").exists():
+                project_cache = parent / ".cache" / "ff"
+                break
+        fallback = str(project_cache) if project_cache else _os.path.join(
+            _os.environ.get("TMPDIR", "/tmp"), "ff-cache"
+        )
+    _os.makedirs(fallback, exist_ok=True)
+    _os.environ["HF_HOME"] = _os.path.join(fallback, "huggingface")
+    _os.environ["HUGGINGFACE_HUB_CACHE"] = _os.path.join(fallback, "huggingface")
+    _os.environ["TRANSFORMERS_CACHE"] = _os.path.join(fallback, "huggingface")
+    _os.environ["XDG_CACHE_HOME"] = fallback
+    _os.environ.setdefault("WHISPER_CACHE", _os.path.join(fallback, "whisper"))
+    _os.environ.setdefault("WHISPER_FP16", "False")
+
+    from fandomforge.intelligence.forensic_auto import (
+        AutoConfig, run_autopilot, format_auto_report,
+    )
+
+    cfg = AutoConfig(
+        references_dir=references_dir,
+        corpus_file=corpus,
+        ingest_limit_per_bucket=max(0, ingest_limit),
+        skip_ingest=skip_ingest,
+        skip_mine=skip_mine,
+        skip_synthesize=skip_synthesize,
+        skip_analyze=skip_analyze,
+        skip_training=skip_training,
+        buckets=list(buckets_opt) if buckets_opt else None,
+        log_handler=lambda line: console.print(line),
+    )
+
+    console.print("[bold cyan]ff auto[/bold cyan] starting…")
+    result = run_autopilot(cfg)
+    out_path = report or (references_dir / "auto-report.md")
+    try:
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(format_auto_report(result), encoding="utf-8")
+        console.print(f"\n[dim]report → {out_path}[/dim]")
+    except OSError as exc:
+        console.print(f"[yellow]could not write report to {out_path}: {exc}[/yellow]")
+
+    # Short human summary to stdout
+    def _total(d: dict[str, Any]) -> int:
+        return sum(d.values()) if d else 0
+    console.print(
+        f"\n[green]done[/green]  "
+        f"ingested={_total(result.ingested)}  "
+        f"mined={len(result.mined)}  "
+        f"synth={len(result.synthesized)}  "
+        f"analyzed={_total(result.analyzed)}  "
+        f"train-bootstrap={_total(result.training_bootstrapped)}  "
+        f"train-priors={len(result.training_mined_priors)}"
+    )
+    if result.errors:
+        console.print(f"[yellow]{len(result.errors)} warning(s) — see {out_path}[/yellow]")
+
+
+# ---------- launchd agent install / uninstall ----------
+
+
+_LAUNCH_AGENTS_DIR = Path.home() / "Library" / "LaunchAgents"
+_AGENT_LABEL = "com.fandomforge.auto"
+_AGENT_PLIST_NAME = f"{_AGENT_LABEL}.plist"
+
+
+def _resolve_repo_root() -> Path:
+    here = Path(__file__).resolve()
+    for parent in here.parents:
+        if (parent / ".git").exists():
+            return parent
+    for parent in here.parents:
+        if (parent / "pyproject.toml").exists():
+            return parent
+    return Path.cwd()
+
+
+def _resolve_python() -> str:
+    """Use the project's venv interpreter if present, else system python3."""
+    repo_root = _resolve_repo_root()
+    candidates = [
+        repo_root / "tools" / ".venv" / "bin" / "python",
+        repo_root / ".venv" / "bin" / "python",
+    ]
+    for c in candidates:
+        if c.exists():
+            return str(c)
+    import shutil as _sh
+    return _sh.which("python3") or "python3"
+
+
+@main.command("install-agent")
+@click.option("--interval", type=int, default=3600,
+              help="Seconds between runs (default 3600 = hourly).")
+def install_agent_cmd(interval: int) -> None:
+    """Install a macOS launchd agent that runs `ff auto` on a schedule.
+
+    Once installed the engine keeps itself trained and up-to-date without
+    the user remembering commands. Idempotent — reinstalls overwrite.
+    """
+    import platform
+    if platform.system() != "Darwin":
+        console.print("[red]launchd agent install is macOS-only[/red]")
+        raise click.Abort()
+
+    repo_root = _resolve_repo_root()
+    template_path = repo_root / "tools" / "fandomforge" / "infra" / _AGENT_PLIST_NAME
+    if not template_path.exists():
+        console.print(f"[red]template missing: {template_path}[/red]")
+        raise click.Abort()
+    template = template_path.read_text(encoding="utf-8")
+    rendered = (
+        template
+        .replace("{PYTHON}", _resolve_python())
+        .replace("{REPO_ROOT}", str(repo_root))
+    )
+    # Swap the hardcoded 3600 with the user-chosen interval.
+    rendered = rendered.replace("<integer>3600</integer>", f"<integer>{interval}</integer>")
+
+    _LAUNCH_AGENTS_DIR.mkdir(parents=True, exist_ok=True)
+    dest = _LAUNCH_AGENTS_DIR / _AGENT_PLIST_NAME
+    dest.write_text(rendered, encoding="utf-8")
+    cache = repo_root / ".cache" / "ff"
+    cache.mkdir(parents=True, exist_ok=True)
+
+    # Reload the agent — `bootout` then `bootstrap` is the modern pattern,
+    # but `unload`/`load` still works on every macOS we care about.
+    import subprocess as _sp
+    _sp.run(["launchctl", "unload", str(dest)], check=False,
+            stdout=_sp.DEVNULL, stderr=_sp.DEVNULL)
+    try:
+        _sp.run(["launchctl", "load", str(dest)], check=True)
+    except (_sp.CalledProcessError, FileNotFoundError) as exc:
+        console.print(f"[yellow]launchctl load failed: {exc}[/yellow]")
+        console.print(f"[dim]manual load: launchctl load {dest}[/dim]")
+        return
+    console.print(
+        f"[green]installed[/green]  {dest}\n"
+        f"  interval: {interval}s  repo: {repo_root}\n"
+        f"  logs: {cache / 'auto.log'}\n"
+        f"  uninstall: ff uninstall-agent"
+    )
+
+
+@main.command("uninstall-agent")
+def uninstall_agent_cmd() -> None:
+    """Remove the FandomForge launchd agent."""
+    dest = _LAUNCH_AGENTS_DIR / _AGENT_PLIST_NAME
+    if not dest.exists():
+        console.print(f"[yellow]no agent at {dest}[/yellow]")
+        return
+    import subprocess as _sp
+    _sp.run(["launchctl", "unload", str(dest)], check=False,
+            stdout=_sp.DEVNULL, stderr=_sp.DEVNULL)
+    dest.unlink()
+    console.print(f"[green]removed[/green]  {dest}")
+
+
+@main.command("serve")
+@click.option("--host", default="127.0.0.1", show_default=True,
+              help="Bind address. Use 0.0.0.0 to expose on your LAN.")
+@click.option("--port", type=int, default=4321, show_default=True,
+              help="Port for the FandomForge web UI.")
+@click.option("--reload", is_flag=True, default=False,
+              help="Auto-reload on source changes (dev mode).")
+def serve_cmd(host: str, port: int, reload: bool) -> None:
+    """Launch the paste-link web UI + correction workflow."""
+    try:
+        import uvicorn  # type: ignore
+    except ImportError:
+        console.print(
+            "[red]missing deps — run:[/red] "
+            "tools/.venv/bin/python -m pip install fastapi uvicorn jinja2 python-multipart"
+        )
+        raise click.Abort()
+    console.print(f"[green]FandomForge web[/green]  http://{host}:{port}")
+    uvicorn.run(
+        "fandomforge.web.server:app",
+        host=host,
+        port=port,
+        reload=reload,
+        log_level="info",
+    )
+
+
 if __name__ == "__main__":
     main()

@@ -104,6 +104,23 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
     Always returns a dict with every key in MFV_CRAFT_FEATURES. Unknown
     edit_types resolve through _EDIT_TYPE_FALLBACKS; anything still missing
     falls back to the zero row (every feature off).
+
+    **Bias stack, applied in order:**
+
+    1. **Forensic corpus bias** — when ``references/<bucket>/bucket-report.json``
+       exists (produced by ``ff auto``), blend its consensus_craft_weights
+       with the table at 80/20. Lets the engine learn from what expert
+       reference editors actually do. Guarded by ``FF_FORENSIC_BIAS``.
+    2. **Training bias** — when the render journal has learned that a
+       specific craft feature helps or hurts for this edit_type, nudge
+       that feature's weight toward 1.0 or 0.0 (70/30). Guarded by
+       ``FF_TRAINING_BIAS``.
+    3. **Human corrections bias** — user-supplied corrections from the web
+       UI overlay at 40%. Heaviest single-source signal. Guarded by
+       ``FF_CORRECTIONS_BIAS``.
+
+    All three default ON. Set any env var to ``0`` / ``false`` / ``no``
+    for a clean A/B comparison against the raw table.
     """
     key = (edit_type or "").lower().strip()
     row = MFV_CRAFT_WEIGHTS.get(key)
@@ -112,7 +129,47 @@ def craft_weights_for(edit_type: str | None) -> dict[str, float]:
         if fallback:
             row = MFV_CRAFT_WEIGHTS.get(fallback)
     row = row or {}
-    return {feat: float(row.get(feat, 0.0)) for feat in MFV_CRAFT_FEATURES}
+    weights = {feat: float(row.get(feat, 0.0)) for feat in MFV_CRAFT_FEATURES}
+
+    import os as _os
+    # Layer 1 — forensic corpus bias
+    if _os.environ.get("FF_FORENSIC_BIAS", "1").lower() not in ("0", "false", "no"):
+        try:
+            from fandomforge.intelligence.forensic_craft_bias import (
+                forensic_craft_suggestion,
+                blend_weights,
+            )
+            suggestion = forensic_craft_suggestion(key)
+            if suggestion:
+                weights = blend_weights(weights, suggestion)
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Layer 2 — training bias (real render outcomes)
+    if _os.environ.get("FF_TRAINING_BIAS", "1").lower() not in ("0", "false", "no"):
+        try:
+            from fandomforge.intelligence.mined_priors import training_boolean_recommends
+            for feat in MFV_CRAFT_FEATURES:
+                rec = training_boolean_recommends(key, f"craft.{feat}")
+                if rec is None:
+                    continue
+                target = 1.0 if rec else 0.0
+                # 70% current / 30% training — training BIASES but doesn't
+                # override the taxonomy. If table+forensic says sad=0 for
+                # dropout and training says "turn it on," we land at 0.3
+                # which stays below the 0.5 activation threshold.
+                weights[feat] = 0.7 * weights[feat] + 0.3 * target
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Layer 3 — human corrections bias (from the web UI)
+    if _os.environ.get("FF_CORRECTIONS_BIAS", "1").lower() not in ("0", "false", "no"):
+        try:
+            from fandomforge.intelligence.forensic_craft_bias import apply_corrections
+            weights = apply_corrections(weights, key)
+        except Exception:  # noqa: BLE001
+            pass
+    return weights
 
 
 def craft_feature_active(weight: float, threshold: float = CRAFT_ACTIVATION_THRESHOLD) -> bool:

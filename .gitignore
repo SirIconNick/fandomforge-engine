@@ -86,3 +86,13 @@ references/**/.transcripts/
 action-legends/
 projects/
 .claude/scheduled_tasks.lock
+
+# Runtime cache (web server work dir, logs, auto-generated priors, training journal)
+.cache/
+tools/.cache/
+
+# Forensic products per-bucket — the bucket-reports are committed, raw forensics aren't
+references/*/forensic/*.forensic.json
+references/*/forensic/*.mp4
+references/*/forensic/*.wav
+references/*/forensic/*.song.wav
