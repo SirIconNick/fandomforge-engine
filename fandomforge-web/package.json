@@ -1,0 +1,14 @@
+{
+  "name": "fandomforge-web",
+  "version": "1.0.0",
+  "description": "FandomForge paste-link forensic UI — static frontend for Vercel, talks to a remote ff serve backend.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FandomForge</title>
+  <meta name="description" content="Paste-link forensic + human-in-the-loop training for multifandom video edits." />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">FF</span>
+      <span class="title">FandomForge</span>
+      <span class="tag">paste-link forensic + human-in-the-loop training</span>
+    </div>
+    <div class="topbar-right">
+      <div id="backend-status" class="summary-pill">checking backend…</div>
+      <button id="settings-btn" class="ghost" type="button">settings</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="setup-panel" class="panel panel-setup hidden">
+      <h2>First-time setup</h2>
+      <p class="hint">
+        This frontend is hosted on Vercel. The forensic engine itself runs on your
+        Mac (or wherever <code>ff serve</code> is running) and is exposed via a
+        Cloudflare Tunnel. Enter the tunnel URL and API key so this page can
+        talk to your engine.
+      </p>
+      <form id="setup-form">
+        <div class="field-block">
+          <label for="backend-url">Backend URL (from <code>ff tunnel-url</code>)</label>
+          <input
+            id="backend-url" type="url" required
+            placeholder="https://adjective-adjective-1234.trycloudflare.com"
+            autocomplete="off" spellcheck="false"
+          />
+        </div>
+        <div class="field-block">
+          <label for="api-key">API key (value of <code>$FF_API_KEY</code> on your Mac)</label>
+          <input
+            id="api-key" type="password" required
+            placeholder="64-char hex string"
+            autocomplete="off" spellcheck="false"
+          />
+        </div>
+        <div class="field-row">
+          <button type="submit" class="primary">Save and test</button>
+          <button type="button" id="setup-cancel" class="ghost">Cancel</button>
+        </div>
+        <p id="setup-status" class="hint"></p>
+      </form>
+    </section>
+
+    <section class="panel panel-analyze" id="analyze-panel">
+      <h2>Analyze a video</h2>
+      <p class="hint">Paste any YouTube URL. FandomForge downloads it, runs the forensic pipeline, and auto-tags what it finds. You can then correct its guess and the correction trains the engine for next time.</p>
+      <form id="analyze-form">
+        <div class="field-row">
+          <input
+            id="url" name="url" type="url"
+            placeholder="https://www.youtube.com/watch?v=..."
+            required autocomplete="off" spellcheck="false"
+          />
+          <select id="bucket_hint" name="bucket_hint" title="First-pass bucket guess">
+            <option value="multifandom">multifandom</option>
+            <option value="action">action</option>
+            <option value="narrative">narrative</option>
+            <option value="high_energy">high_energy</option>
+            <option value="horror">horror</option>
+            <option value="tribute">tribute</option>
+            <option value="sad">sad</option>
+            <option value="dance">dance</option>
+            <option value="hype_trailer">hype_trailer</option>
+            <option value="emotional">emotional</option>
+          </select>
+          <button type="submit">Analyze</button>
+        </div>
+      </form>
+      <div id="job-status" class="job-status hidden"></div>
+    </section>
+
+    <section class="panel panel-result hidden" id="result-panel">
+      <h2>Results <span id="result-grade" class="grade"></span></h2>
+      <div id="video-preview-wrap" class="video-preview hidden">
+        <video id="video-preview" controls preload="metadata"></video>
+      </div>
+      <div id="result-body"></div>
+    </section>
+
+    <section class="panel panel-correct hidden" id="correct-panel">
+      <h2>Correct this analysis</h2>
+      <p class="hint">Override the engine's bucket guess, edit craft weights, add tags, or leave notes. Your correction pulls the bucket's craft profile 40% toward your values for every future render.</p>
+      <form id="correct-form">
+        <div class="field-block">
+          <label for="corrected_bucket">Bucket</label>
+          <select id="corrected_bucket" name="corrected_bucket" required></select>
+        </div>
+        <div class="field-block">
+          <label>Tags</label>
+          <div id="tag-editor" class="tag-editor"></div>
+          <div class="tag-input-row">
+            <input id="new-tag" type="text" placeholder="add tag" autocomplete="off" />
+            <button type="button" id="add-tag" class="ghost">+ add</button>
+          </div>
+        </div>
+        <div class="field-block" id="weights-block">
+          <label>Craft weights (0 = off, 1 = full)</label>
+          <p class="hint tight">Hover a row for the per-layer breakdown.</p>
+          <div id="weight-sliders"></div>
+        </div>
+        <div class="field-block">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Anything the engine missed"></textarea>
+        </div>
+        <div class="field-row">
+          <button type="submit" class="primary">Save correction</button>
+          <button type="button" id="correct-cancel" class="ghost">Cancel</button>
+        </div>
+        <p id="correct-status" class="hint"></p>
+      </form>
+    </section>
+
+    <section class="panel panel-guide">
+      <h2>Reference guide</h2>
+      <p class="hint">Each card summarizes one bucket's consensus craft profile. Click a card to see the full bucket report.</p>
+      <div id="bucket-grid" class="bucket-grid">loading…</div>
+    </section>
+
+    <section class="panel panel-history">
+      <h2>Corrections history</h2>
+      <ul id="corrections-list" class="corrections-list">loading…</ul>
+    </section>
+
+    <section class="panel panel-recent">
+      <h2>Recent jobs this session</h2>
+      <ul id="recent-list" class="recent-list"></ul>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

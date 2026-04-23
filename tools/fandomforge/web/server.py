@@ -32,6 +32,7 @@ from pathlib import Path
 from typing import Any
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -56,6 +57,22 @@ if os.environ.get("FF_DISABLE_DOCS", "").lower() in ("1", "true", "yes"):
     _docs_url = None
 
 app = FastAPI(title="FandomForge", docs_url=_docs_url)
+
+# CORS — a Vercel-hosted frontend calls this backend cross-origin via the
+# cloudflared tunnel, so we need to allow specific origins. Defaults to
+# "*" for local dev; tighten via FF_CORS_ORIGINS in production (comma-
+# separated list of allowed origins, e.g.
+# "https://fandomforge.vercel.app,http://localhost:3000").
+_cors_origins_env = os.environ.get("FF_CORS_ORIGINS", "*").strip()
+_cors_origins = [o.strip() for o in _cors_origins_env.split(",") if o.strip()]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_cors_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.middleware("http")(require_api_key)
 
 _WEB_DIR = Path(__file__).resolve().parent
